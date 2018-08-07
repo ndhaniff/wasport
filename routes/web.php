@@ -11,6 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group([
+  'prefix' => LaravelLocalization::setLocale(), 
+  'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
+], function()
+{
+	Route::get('/', 'Pages\HomeController@index')->name('home.index');
+
+  Auth::routes();
+
+  Route::get('/home', 'HomeController@index')->name('home');
+
 });
+

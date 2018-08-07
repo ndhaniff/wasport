@@ -1,0 +1,44 @@
+html{
+  overflow-x:hidden;
+}
+
+#topmenu{
+  background-color:$dark;
+}
+
+#topbar{
+  height:50px;
+}
+
+#menu{
+  background-color: $darker;
+}
+
+#logo{
+  background-color:$primary;
+  padding-left:250px !important;
+  height:100px;
+  img{
+    position:absolute;
+    top:0;
+    left:250px;
+    height:90px;
+  }
+
+  + div{
+    width:100%;
+    display:block;
+    text-align:right;
+  }
+}
+
+#navbar{
+  height:80px;
+}
+ 
+#homebanner{
+  min-width:1920px;
+  height:528px;
+  background-image: url('/img/wasport_homebanner.jpg');
+  background-repeat: no-repeat;
+}

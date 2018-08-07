@@ -13,10 +13,10 @@ return [
     |
     */
 
-    'failed' => 'These credentials do not match our records.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'failed' => 'Maklumat ini tidak sama dengan rekod kami.',
+    'throttle' => 'Terlalu banyak cubaan daftar masuk, Sila cuba sebentar lagi.',
     'login' => [
-        'regular' => 'Login',
-        'withfb' => 'Login with FB'
-      ]
+      'regular' => 'Log Masuk',
+      'withfb' => 'Log Masuk Dengan FB'
+    ],
 ];
