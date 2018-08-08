@@ -16,7 +16,7 @@ return [
     'failed' => 'Maklumat ini tidak sama dengan rekod kami.',
     'throttle' => 'Terlalu banyak cubaan daftar masuk, Sila cuba sebentar lagi.',
     'login' => [
-      'regular' => 'Log Masuk',
-      'withfb' => 'Log Masuk Dengan FB'
+      'regular' => 'Login',
+      'withfb' => 'Login Dengan FB'
     ],
 ];

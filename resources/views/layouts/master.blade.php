@@ -17,7 +17,7 @@
         <nav id="topbar" class=" text-right p-2">
         <span class="dropdown">
         <a class="p-2 text-light btn locale" id="dropdownMenuLink" data-toggle="dropdown" >{{App::getLocale()}}</a>
-            <ul class="dropdown-menu" name="lang" id="lang">
+            <ul class="dropdown-menu w-50" name="lang" id="lang">
               @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
                 <li>
                     <a class="dropdown-item" rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], false) }}">

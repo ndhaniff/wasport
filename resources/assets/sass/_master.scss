@@ -42,3 +42,78 @@ html{
   background-image: url('/img/wasport_homebanner.jpg');
   background-repeat: no-repeat;
 }
+
+/*NAV*/
+
+.dropdown-menu{
+  width:350px;
+  left:-100px !important;
+}
+
+.sign-in:active {
+    color: inherit; 
+    text-decoration: none;
+    background-color: inherit;
+}
+
+.locale{
+  text-transform:uppercase;
+}
+
+.loggedIn .dropdown-menu{
+  left:-20px !important;
+}
+
+.loginFb{
+  background-color:#3B5998;
+}
+
+.bg-gray{
+  background-color:#EAEBEB;
+}
+
+.howitworks{
+  position:relative;
+  max-width: 1140px;
+  margin:auto;
+}
+
+.howitworks h2{
+  font-weight:bold;
+  margin-bottom:25px;
+}
+
+.howitworks h3:before{
+  content: "";
+  display:inline-block;
+  width:50px;
+  height:50px;
+  vertical-align:middle;
+}
+
+.howitworks .one:before{
+    background:url('/img/flag1.png') no-repeat;
+}
+
+.howitworks .two:before{
+    background:url('/img/flag2.png') no-repeat;
+}
+
+.howitworks .three:before{
+    background:url('/img/flag3.png') no-repeat;
+}
+
+.howitworks .four:before{
+    background:url('/img/flag4.png') no-repeat;
+}
+
+.line{
+  width:100%;
+  border-bottom:dotted 2px red;
+  position:absolute;
+  top:105px;
+}
+
+.howitworks p {
+  padding: 15px 0;
+}
