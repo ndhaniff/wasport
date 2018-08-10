@@ -13,14 +13,22 @@
 
 Route::group([
   'prefix' => LaravelLocalization::setLocale(), 
-  'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
+  'middleware' => [ 'localeSessionRedirect', 'localizationRedirect' ]
 ], function()
 {
-	Route::get('/', 'Pages\HomeController@index')->name('home.index');
+	Route::get('/', 'Pages\HomeController@index')->name('home');
 
   Auth::routes();
+  
+});
 
-  Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['prefix' =>'admin'],function()
+{
+  Route::get('/', 'Auth\AdminLoginController@showLogin');
+  Route::get('/dashboard', 'Admin\DashboardController@index')->name('admin.dashboard');
+  Route::post('/login', 'Auth\AdminLoginController@login');
 
+  //Races
+  Route::resource('races','Main\RacesController');
 });
 

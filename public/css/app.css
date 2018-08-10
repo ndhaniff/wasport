@@ -10548,12 +10548,13 @@ html {
 
 .howitworks {
   position: relative;
-  max-width: 1140px;
-  margin: auto;
+}
+
+h2 {
+  font-weight: bold;
 }
 
 .howitworks h2 {
-  font-weight: bold;
   margin-bottom: 25px;
 }
 
@@ -10590,5 +10591,12 @@ html {
 
 .howitworks p {
   padding: 15px 0;
+}
+
+.wbtn {
+  border-radius: 25px;
+  padding: 5px 30px;
+  font-size: 18px;
+  text-transform: uppercase;
 }
 
