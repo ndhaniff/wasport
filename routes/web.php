@@ -24,11 +24,14 @@ Route::group([
 
 Route::group(['prefix' =>'admin'],function()
 {
-  Route::get('/', 'Auth\AdminLoginController@showLogin');
+  Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
+  Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
+  Route::post('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
   Route::get('/dashboard', 'Admin\DashboardController@index')->name('admin.dashboard');
-  Route::post('/login', 'Auth\AdminLoginController@login');
-
+  Route::post('/logout', 'Auth\LoginController@logout')->name('admin.logout');
+  Route::get('/', 'Admin\AdminController@index')->name('admin');
   //Races
-  Route::resource('races','Main\RacesController');
+  Route::get('/races/create','Admin\AdminRacesController@create')->name('admin.races.create');
+  Route::post('/races/create','Admin\AdminRacesController@store');
 });
 

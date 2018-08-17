@@ -16,14 +16,24 @@
   @if(session('failed'))
   <div class="alert alert-danger">{{session('failed')}}</div>  
   @endif
-    <form class="px-3" method="POST" action="{{url('admin/login')}}">
+    <form class="px-3" method="POST" action="{{route('admin.login.submit')}}">
       <div class="form-group">
         <label for="email">Email</label>
-        <input class="form-control" type="email" name="email" id="email" required>
+        <input class="form-control" type="email" value="{{ old('email') }}" name="email" id="email" required>
       </div>
       <div class="form-group">
         <label for="password">Password</label>
         <input class="form-control" type="password" name="password" id="password" required>
+      </div>
+      <div class="form-group row">
+          <div class="col-md-6 offset-md-4">
+              <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                  <label class="form-check-label" for="remember">
+                      Remember Me
+                  </label>
+              </div>
+          </div>
       </div>
       @csrf
       <button class="btn btn-primary" type="submit">Login</button>

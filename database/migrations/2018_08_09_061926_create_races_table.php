@@ -15,12 +15,15 @@ class CreateRacesTable extends Migration
     {
         Schema::create('races', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('registration_date');
-            $table->string('where')->unique();
-            $table->string('price');
-            $table->string('about');
-            $table->string('awards');
-            $table->string('header');
+            $table->string('title');
+            $table->string('date_from')->nullable();
+            $table->string('date_to')->nullable();
+            $table->string('dead_from')->nullable();
+            $table->string('dead_to')->nullable();
+            $table->string('price')->nullable();
+            $table->longText('about')->nullable();
+            $table->longText('awards')->nullable();
+            $table->string('header')->nullable();
             $table->timestamps();
         });
     }

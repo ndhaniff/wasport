@@ -41,15 +41,21 @@ return [
             'provider' => 'users',
         ],
 
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
+        
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
         ],
 
-        'admin' => [
-            'driver' => 'session',
+        'admin-api' => [
+            'driver' => 'token',
             'provider' => 'admins',
         ],
+
     ],
 
     /*
@@ -108,8 +114,8 @@ return [
         'admins' => [
             'provider' => 'admins',
             'table' => 'password_resets',
-            'expire' => 15,
+            'expire' => 60,
         ],
     ],
-
+    
 ];

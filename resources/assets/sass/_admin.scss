@@ -1,0 +1,33 @@
+.dashboard-grid{
+  display: -ms-grid;
+  display:grid;
+  grid-template-columns: 1fr 8fr;
+}
+
+.sidebar{
+  min-height:100vh;
+  li{
+    list-style:none;
+    padding:10px;
+  }
+  li:hover{
+    background: #353333;
+  }
+  li.active{
+    background: #353333;
+  }
+  a{
+    color:#fff;
+    display:block;
+    font-size:16px;
+    padding-left:10px;
+  }
+  a:hover{
+    text-decoration:none;
+    color:#fff;
+  }
+  i{
+    font-size:25px !important;
+    padding:0 5px;
+  }
+}

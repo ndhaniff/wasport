@@ -1,4 +1,4 @@
-@extends('layouts.admin.master')
+@extends('auth.admin.dashboard')
 @section('title')
 Admin | Create Race
 @endsection
@@ -7,13 +7,8 @@ Admin | Create Race
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/react-datetime/2.15.0/css/react-datetime.min.css">
 @endsection
 
-@section('content')
+@section('dashboard-content')
 
 <div id="createraceform"></div>
-
-@endsection
-
-  
-@section('scripts')
 
 @endsection

@@ -7,6 +7,8 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>@yield('title', 'Admin | WaSport')</title>
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://bootswatch.com/4/lumen/bootstrap.min.css">
         @yield('meta')
 
     </head>
@@ -18,26 +20,23 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarToggler">
 
-        <form class="my-2 my-lg-0" role="form" method="POST" action="{{ url('/en/logout') }}">
+        <form class="my-2 my-lg-0" role="form" method="POST" action="{{ route('admin.logout') }}">
             @csrf
             <button class="btn btn-light my-2 my-sm-0" type="submit">Logout</button>
         </form>
     </div>
 </nav>
-
-        <div class="row h-100">
-            <div class="col col-md-5 col-12 m-auto">
-                @if(session('status'))
-                <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
-                    <strong>Success!</strong> {{ session('status') }}
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                @endif
-                @yield('content')
-            </div>
-        </div>
+    @if(session('status'))
+    <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+        <strong>Success!</strong> {{ session('status') }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    @endif
+    <div class="wrapper">
+    @yield('content')
+    </div>
     
     <script src="{{asset('js/app.js')}}"></script>
     @yield('scripts')

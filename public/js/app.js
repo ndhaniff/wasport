@@ -1902,7 +1902,7 @@
             try {
                 oldLocale = globalLocale._abbr;
                 var aliasedRequire = require;
-                __webpack_require__(332)("./" + name);
+                __webpack_require__(333)("./" + name);
                 getSetGlobalLocale(oldLocale);
             } catch (e) {}
         }
@@ -4963,7 +4963,7 @@ module.exports = isArray;
 
 
 var React = __webpack_require__(1);
-var factory = __webpack_require__(233);
+var factory = __webpack_require__(234);
 
 if (typeof React === 'undefined') {
   throw Error(
@@ -4986,8 +4986,8 @@ module.exports = factory(
 /* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsNative = __webpack_require__(247),
-    getValue = __webpack_require__(252);
+var baseIsNative = __webpack_require__(248),
+    getValue = __webpack_require__(253);
 
 /**
  * Gets the native function at `key` of `object`.
@@ -5107,8 +5107,8 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var Symbol = __webpack_require__(20),
-    getRawTag = __webpack_require__(248),
-    objectToString = __webpack_require__(249);
+    getRawTag = __webpack_require__(249),
+    objectToString = __webpack_require__(250);
 
 /** `Object#toString` result references. */
 var nullTag = '[object Null]',
@@ -5557,11 +5557,11 @@ module.exports = checkPropTypes;
 /* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var listCacheClear = __webpack_require__(237),
-    listCacheDelete = __webpack_require__(238),
-    listCacheGet = __webpack_require__(239),
-    listCacheHas = __webpack_require__(240),
-    listCacheSet = __webpack_require__(241);
+var listCacheClear = __webpack_require__(238),
+    listCacheDelete = __webpack_require__(239),
+    listCacheGet = __webpack_require__(240),
+    listCacheHas = __webpack_require__(241),
+    listCacheSet = __webpack_require__(242);
 
 /**
  * Creates an list cache object.
@@ -5646,7 +5646,7 @@ module.exports = nativeCreate;
 /* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isKeyable = __webpack_require__(261);
+var isKeyable = __webpack_require__(262);
 
 /**
  * Gets the data for `map`.
@@ -5670,8 +5670,8 @@ module.exports = getMapData;
 /* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayLikeKeys = __webpack_require__(281),
-    baseKeys = __webpack_require__(288),
+var arrayLikeKeys = __webpack_require__(282),
+    baseKeys = __webpack_require__(289),
     isArrayLike = __webpack_require__(24);
 
 /**
@@ -5836,7 +5836,7 @@ if (true) {
   // By explicitly using `prop-types` you are opting into new development behavior.
   // http://fb.me/prop-types-in-prod
   var throwOnDirectAccess = true;
-  module.exports = __webpack_require__(326)(isValidElement, throwOnDirectAccess);
+  module.exports = __webpack_require__(327)(isValidElement, throwOnDirectAccess);
 } else {
   // By explicitly using `prop-types` you are opting into new production behavior.
   // http://fb.me/prop-types-in-prod
@@ -6357,11 +6357,11 @@ if (false) {
 /* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseMatches = __webpack_require__(235),
-    baseMatchesProperty = __webpack_require__(298),
-    identity = __webpack_require__(309),
+var baseMatches = __webpack_require__(236),
+    baseMatchesProperty = __webpack_require__(299),
+    identity = __webpack_require__(310),
     isArray = __webpack_require__(4),
-    property = __webpack_require__(310);
+    property = __webpack_require__(311);
 
 /**
  * The base implementation of `_.iteratee`.
@@ -6450,11 +6450,11 @@ module.exports = Map;
 /* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var mapCacheClear = __webpack_require__(253),
-    mapCacheDelete = __webpack_require__(260),
-    mapCacheGet = __webpack_require__(262),
-    mapCacheHas = __webpack_require__(263),
-    mapCacheSet = __webpack_require__(264);
+var mapCacheClear = __webpack_require__(254),
+    mapCacheDelete = __webpack_require__(261),
+    mapCacheGet = __webpack_require__(263),
+    mapCacheHas = __webpack_require__(264),
+    mapCacheSet = __webpack_require__(265);
 
 /**
  * Creates a map cache object to store key-value pairs.
@@ -6488,7 +6488,7 @@ module.exports = MapCache;
 /* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsEqualDeep = __webpack_require__(265),
+var baseIsEqualDeep = __webpack_require__(266),
     isObjectLike = __webpack_require__(10);
 
 /**
@@ -31402,7 +31402,7 @@ module.exports = __webpack_require__(63);
 /***/ })
 /******/ ])["default"];
 });
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(228).Buffer))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(229).Buffer))
 
 /***/ }),
 /* 50 */
@@ -31529,8 +31529,8 @@ module.exports = QuillMixin;
 /* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var createFind = __webpack_require__(234),
-    findIndex = __webpack_require__(313);
+var createFind = __webpack_require__(235),
+    findIndex = __webpack_require__(314);
 
 /**
  * Iterates over elements of `collection`, returning the first element
@@ -31578,11 +31578,11 @@ module.exports = find;
 /***/ (function(module, exports, __webpack_require__) {
 
 var ListCache = __webpack_require__(18),
-    stackClear = __webpack_require__(242),
-    stackDelete = __webpack_require__(243),
-    stackGet = __webpack_require__(244),
-    stackHas = __webpack_require__(245),
-    stackSet = __webpack_require__(246);
+    stackClear = __webpack_require__(243),
+    stackDelete = __webpack_require__(244),
+    stackGet = __webpack_require__(245),
+    stackHas = __webpack_require__(246),
+    stackSet = __webpack_require__(247);
 
 /**
  * Creates a stack cache object to store key-value pairs.
@@ -31696,9 +31696,9 @@ module.exports = toSource;
 /* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var SetCache = __webpack_require__(266),
+var SetCache = __webpack_require__(267),
     arraySome = __webpack_require__(57),
-    cacheHas = __webpack_require__(269);
+    cacheHas = __webpack_require__(270);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1,
@@ -31814,7 +31814,7 @@ module.exports = arraySome;
 /* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsArguments = __webpack_require__(283),
+var baseIsArguments = __webpack_require__(284),
     isObjectLike = __webpack_require__(10);
 
 /** Used for built-in method references. */
@@ -31857,7 +31857,7 @@ module.exports = isArguments;
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {var root = __webpack_require__(3),
-    stubFalse = __webpack_require__(284);
+    stubFalse = __webpack_require__(285);
 
 /** Detect free variable `exports`. */
 var freeExports = typeof exports == 'object' && exports && !exports.nodeType && exports;
@@ -31901,9 +31901,9 @@ module.exports = isBuffer;
 /* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsTypedArray = __webpack_require__(285),
-    baseUnary = __webpack_require__(286),
-    nodeUtil = __webpack_require__(287);
+var baseIsTypedArray = __webpack_require__(286),
+    baseUnary = __webpack_require__(287),
+    nodeUtil = __webpack_require__(288);
 
 /* Node.js helper references. */
 var nodeIsTypedArray = nodeUtil && nodeUtil.isTypedArray;
@@ -32013,8 +32013,8 @@ module.exports = baseGet;
 
 var isArray = __webpack_require__(4),
     isKey = __webpack_require__(38),
-    stringToPath = __webpack_require__(300),
-    toString = __webpack_require__(303);
+    stringToPath = __webpack_require__(301),
+    toString = __webpack_require__(304);
 
 /**
  * Casts `value` to a path array if it's not one.
@@ -44173,7 +44173,7 @@ module.exports = Object.assign || function (target, source) {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(192);
-module.exports = __webpack_require__(342);
+module.exports = __webpack_require__(343);
 
 
 /***/ }),
@@ -44196,7 +44196,7 @@ __webpack_require__(193);
  */
 
 //require('./components/Example');
-__webpack_require__(216);
+__webpack_require__(227);
 
 /***/ }),
 /* 193 */
@@ -66410,338 +66410,7 @@ module.exports = function spread(callback) {
 
 
 /***/ }),
-/* 216 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(30);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_quill__ = __webpack_require__(227);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_quill___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_quill__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_datetime__ = __webpack_require__(331);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_datetime___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_react_datetime__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_dropzone__ = __webpack_require__(338);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-
-
-
-
-
-
-var CreateRaceForm = function (_Component) {
-    _inherits(CreateRaceForm, _Component);
-
-    function CreateRaceForm(props) {
-        _classCallCheck(this, CreateRaceForm);
-
-        var _this = _possibleConstructorReturn(this, (CreateRaceForm.__proto__ || Object.getPrototypeOf(CreateRaceForm)).call(this, props));
-
-        _this.state = {
-            about: '',
-            awards: '',
-            raceTitle: '',
-            where: '',
-            price: '',
-            headerImg: []
-        };
-        _this.handleAboutChange = _this.handleAboutChange.bind(_this);
-        _this.handleRegistrationDateChange = _this.handleRegistrationDateChange.bind(_this);
-        _this.onDrop = _this.onDrop.bind(_this);
-        _this.removePreview = _this.removePreview.bind(_this);
-        _this.handleInputChange = _this.handleInputChange.bind(_this);
-        _this.handleSubmit = _this.handleSubmit.bind(_this);
-        return _this;
-    }
-
-    _createClass(CreateRaceForm, [{
-        key: 'handleSubmit',
-        value: function handleSubmit(e) {
-            e.preventDefault();
-            console.log(this.state);
-        }
-    }, {
-        key: 'handleAboutChange',
-        value: function handleAboutChange(value) {
-            this.setState({ about: value });
-        }
-    }, {
-        key: 'handleInputChange',
-        value: function handleInputChange(_ref) {
-            var _ref$target = _ref.target,
-                value = _ref$target.value,
-                name = _ref$target.name;
-
-            this.state(_defineProperty({}, name, value));
-        }
-    }, {
-        key: 'handleAwardsChange',
-        value: function handleAwardsChange(e) {
-            //
-        }
-    }, {
-        key: 'handleRegistrationDateChange',
-        value: function handleRegistrationDateChange(moment) {
-            this.setState({
-                registrationDate: registrationDate
-            });
-        }
-    }, {
-        key: 'onDrop',
-        value: function onDrop(acceptedFiles, rejectedFiles) {
-            var headerImg = this.state.headerImg;
-
-            headerImg.push(acceptedFiles);
-            this.setState({ headerImg: headerImg });
-        }
-    }, {
-        key: 'removePreview',
-        value: function removePreview() {
-            this.setState({ headerImg: [] });
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            if (this.state.headerImg.length != 0) {
-                var previewImg = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'div',
-                    { className: 'mb-2 text-center' },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'button',
-                        { onClick: this.removePreview, className: 'btn btn-danger float-right' },
-                        'X'
-                    ),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { height: '300px', src: this.state.headerImg[0][0].preview, alt: '' })
-                );
-            } else {
-                var previewImg = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: '', alt: '' });
-            }
-
-            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'div',
-                { className: 'container p-5' },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'div',
-                    { className: 'row justify-content-center' },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'div',
-                        { className: 'col-md-12' },
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'div',
-                            { className: 'card' },
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                'div',
-                                { className: 'card-header' },
-                                'Create Race'
-                            ),
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                'div',
-                                { className: 'card-body' },
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    'form',
-                                    { onSubmit: this.handleSubmit },
-                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                        'div',
-                                        { className: 'form-group' },
-                                        previewImg,
-                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                            __WEBPACK_IMPORTED_MODULE_4_react_dropzone__["a" /* default */],
-                                            {
-                                                style: {
-                                                    "width": "100%",
-                                                    "border": "1px dashed",
-                                                    "padding": "5%" },
-                                                accept: 'image/jpeg, image/png',
-                                                onDrop: this.onDrop,
-                                                multiple: false
-                                            },
-                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                'div',
-                                                { className: 'text-center' },
-                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                    'p',
-                                                    null,
-                                                    'Try dropping some files here, or click to select files to upload.'
-                                                ),
-                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                    'p',
-                                                    null,
-                                                    'Only *.jpeg and *.png images will be accepted'
-                                                )
-                                            )
-                                        )
-                                    ),
-                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                        'div',
-                                        { className: 'form-group' },
-                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                            'label',
-                                            { htmlFor: 'racetitle' },
-                                            'Race Title'
-                                        ),
-                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { onChange: this.handleInputChange, name: 'raceTitle', className: 'form-control', type: 'text', id: 'racetitle' })
-                                    ),
-                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                        'div',
-                                        { className: 'form-group' },
-                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                            'label',
-                                            { htmlFor: 'where' },
-                                            'Where'
-                                        ),
-                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { className: 'form-control', onChange: this.handleInputChange, name: 'where', type: 'text', id: 'where' })
-                                    ),
-                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                        'div',
-                                        { className: 'form-row' },
-                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                            'div',
-                                            { className: 'col-sm-6' },
-                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                'div',
-                                                { className: 'form-group' },
-                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                    'label',
-                                                    { htmlFor: 'price' },
-                                                    'Race Datetime'
-                                                ),
-                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                    'div',
-                                                    { className: 'form-row' },
-                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                        'div',
-                                                        { className: 'col-sm-5' },
-                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_react_datetime___default.a, null)
-                                                    ),
-                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                        'div',
-                                                        { className: 'col-sm-1' },
-                                                        'to'
-                                                    ),
-                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                        'div',
-                                                        { className: 'col-sm-5' },
-                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_react_datetime___default.a, null)
-                                                    )
-                                                )
-                                            )
-                                        ),
-                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                            'div',
-                                            { className: 'col-sm-6' },
-                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                'div',
-                                                { className: 'form-group' },
-                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                    'label',
-                                                    { htmlFor: 'price' },
-                                                    'Registration Deadline'
-                                                ),
-                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                    'div',
-                                                    { className: 'form-row' },
-                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                        'div',
-                                                        { className: 'col-sm-5' },
-                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_react_datetime___default.a, null)
-                                                    ),
-                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                        'div',
-                                                        { className: 'col-sm-1' },
-                                                        'to'
-                                                    ),
-                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                        'div',
-                                                        { className: 'col-sm-5' },
-                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_react_datetime___default.a, null)
-                                                    )
-                                                )
-                                            )
-                                        ),
-                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                            'div',
-                                            { className: 'col-sm-4' },
-                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                'div',
-                                                { className: 'form-group' },
-                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                    'label',
-                                                    { htmlFor: 'price' },
-                                                    'Price'
-                                                ),
-                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { onChange: this.handleInputChange, name: 'price', className: 'form-control', type: 'text', id: 'price' })
-                                            )
-                                        )
-                                    ),
-                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                        'div',
-                                        { className: 'form-group' },
-                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                            'div',
-                                            null,
-                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                'label',
-                                                { htmlFor: 'about' },
-                                                'About'
-                                            ),
-                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_quill___default.a, { style: { 'height': '150px' }, theme: 'snow', value: this.state.about, onChange: this.handleAboutChange })
-                                        )
-                                    ),
-                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
-                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
-                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                        'div',
-                                        { className: 'form-group' },
-                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                            'div',
-                                            null,
-                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                'label',
-                                                { htmlFor: 'about' },
-                                                'Awards'
-                                            ),
-                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_quill___default.a, { style: { 'height': '150px' }, theme: 'snow', value: this.state.awards, onChange: this.handleAwardsChange })
-                                        )
-                                    ),
-                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
-                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
-                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                        'button',
-                                        { className: 'btn btn-primary', type: 'submit' },
-                                        'Submit'
-                                    )
-                                )
-                            )
-                        )
-                    )
-                )
-            );
-        }
-    }]);
-
-    return CreateRaceForm;
-}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
-
-/* harmony default export */ __webpack_exports__["default"] = (CreateRaceForm);
-
-
-if (document.getElementById('createraceform')) {
-    __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(CreateRaceForm, null), document.getElementById('createraceform'));
-}
-
-/***/ }),
+/* 216 */,
 /* 217 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -85996,6 +85665,412 @@ module.exports = camelize;
 
 /***/ }),
 /* 227 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_quill__ = __webpack_require__(228);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_quill___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_quill__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_datetime__ = __webpack_require__(332);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_datetime___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_react_datetime__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_dropzone__ = __webpack_require__(339);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+
+
+var CreateRaceForm = function (_Component) {
+    _inherits(CreateRaceForm, _Component);
+
+    function CreateRaceForm(props) {
+        _classCallCheck(this, CreateRaceForm);
+
+        var _this = _possibleConstructorReturn(this, (CreateRaceForm.__proto__ || Object.getPrototypeOf(CreateRaceForm)).call(this, props));
+
+        _this.state = {
+            about: '',
+            awards: '',
+            title: '',
+            price: '',
+            RaceDateFrom: '',
+            RaceDateTo: '',
+            RaceDeadlineFrom: '',
+            RaceDeadlineTo: '',
+            headerImg: [],
+            toggleDrop: true
+
+            /* Quill module */
+        };_this.modules = {
+            toolbar: [[{ 'header': [1, 2, false] }], ['bold', 'italic', 'underline', 'strike', 'blockquote'], [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'indent': '-1' }, { 'indent': '+1' }], [{ 'color': [] }, { 'background': [] }], ['link', 'image'], ['clean']]
+        };
+
+        _this.handleAboutChange = _this.handleAboutChange.bind(_this);
+        _this.handleAwardsChange = _this.handleAwardsChange.bind(_this);
+        _this.onDrop = _this.onDrop.bind(_this);
+        _this.removePreview = _this.removePreview.bind(_this);
+        _this.handleInputChange = _this.handleInputChange.bind(_this);
+        _this.handleSubmit = _this.handleSubmit.bind(_this);
+        _this.handleRaceDatetimeFrom = _this.handleRaceDatetimeFrom.bind(_this);
+        _this.handleRaceDatetimeTo = _this.handleRaceDatetimeTo.bind(_this);
+        _this.handleRaceDeadlineFrom = _this.handleRaceDeadlineFrom.bind(_this);
+        _this.handleRaceDeadlineTo = _this.handleRaceDeadlineTo.bind(_this);
+        return _this;
+    }
+
+    _createClass(CreateRaceForm, [{
+        key: 'handleSubmit',
+        value: function handleSubmit(e) {
+            e.preventDefault();
+
+            var _state = this.state,
+                about = _state.about,
+                awards = _state.awards,
+                title = _state.title,
+                price = _state.price,
+                RaceDateFrom = _state.RaceDateFrom,
+                RaceDateTo = _state.RaceDateTo,
+                RaceDeadlineFrom = _state.RaceDeadlineFrom,
+                RaceDeadlineTo = _state.RaceDeadlineTo,
+                headerImg = _state.headerImg;
+
+
+            var data = new FormData();
+
+            data.append('about', about);
+            data.append('awards', awards);
+            data.append('title', title);
+            data.append('price', price);
+            data.append('RaceDateFrom', RaceDateFrom);
+            data.append('RaceDateTo', RaceDateTo);
+            data.append('RaceDeadlineFrom', RaceDeadlineFrom);
+            data.append('RaceDeadlineTo', RaceDeadlineTo);
+            data.append('headerImg', headerImg[0]);
+
+            axios.post('/admin/races', data).then(function (res) {
+                console.log(res);
+            });
+        }
+    }, {
+        key: 'handleAboutChange',
+        value: function handleAboutChange(data) {
+            this.setState({ about: data });
+        }
+    }, {
+        key: 'handleAwardsChange',
+        value: function handleAwardsChange(data) {
+            this.setState({ awards: data });
+        }
+    }, {
+        key: 'handleInputChange',
+        value: function handleInputChange(_ref) {
+            var _ref$target = _ref.target,
+                value = _ref$target.value,
+                name = _ref$target.name;
+
+            this.setState(_defineProperty({}, name, value));
+        }
+    }, {
+        key: 'handleRaceDatetimeFrom',
+        value: function handleRaceDatetimeFrom(date) {
+            this.setState({
+                RaceDateFrom: date.format("YYYY-MM-DD HH:mm a")
+            });
+        }
+    }, {
+        key: 'handleRaceDatetimeTo',
+        value: function handleRaceDatetimeTo(date) {
+            this.setState({
+                RaceDateTo: date.format("YYYY-MM-DD HH:mm a")
+            });
+        }
+    }, {
+        key: 'handleRaceDeadlineFrom',
+        value: function handleRaceDeadlineFrom(date) {
+            this.setState({
+                RaceDeadlineFrom: date.format("YYYY-MM-DD HH:mm a")
+            });
+        }
+    }, {
+        key: 'handleRaceDeadlineTo',
+        value: function handleRaceDeadlineTo(date) {
+            this.setState({
+                RaceDeadlineTo: date.format("YYYY-MM-DD HH:mm:ss a")
+            });
+        }
+    }, {
+        key: 'onDrop',
+        value: function onDrop(acceptedFiles, rejectedFiles) {
+            this.setState({ headerImg: acceptedFiles, toggleDrop: false });
+        }
+    }, {
+        key: 'removePreview',
+        value: function removePreview() {
+            this.setState({ headerImg: [], toggleDrop: true });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var _this2 = this;
+
+            if (this.state.headerImg.length != 0) {
+                var previewImg = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'div',
+                    { className: 'mb-2 text-center' },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'button',
+                        { onClick: this.removePreview, className: 'btn btn-danger float-right' },
+                        'X'
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { height: '300px', src: this.state.headerImg[0].preview, alt: '' })
+                );
+            } else {
+                var previewImg = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: '', alt: '' });
+            }
+
+            if (this.state.toggleDrop) {
+                var dropzone = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    __WEBPACK_IMPORTED_MODULE_4_react_dropzone__["a" /* default */],
+                    {
+                        style: {
+                            "width": "100%",
+                            "border": "1px dashed",
+                            "padding": "5%" },
+                        accept: 'image/jpeg, image/png',
+                        onDrop: this.onDrop,
+                        multiple: false,
+                        name: 'headerimg'
+                    },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'div',
+                        { className: 'text-center' },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'p',
+                            null,
+                            'Try dropping some files here, or click to select files to upload.'
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'p',
+                            null,
+                            'Only *.jpeg and *.png images will be accepted'
+                        )
+                    )
+                );
+            } else {
+                var dropzone = "";
+            }
+
+            var yesterday = __WEBPACK_IMPORTED_MODULE_3_react_datetime___default.a.moment().subtract(1, 'day');
+            var dateFrom = function dateFrom(current) {
+                return current.isAfter(yesterday);
+            };
+            var dateTo = function dateTo(current) {
+                return current.isAfter(_this2.state.RaceDateFrom);
+            };
+            var deadFrom = function deadFrom(current) {
+                return current.isBefore(_this2.state.RaceDateFrom);
+            };
+
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'div',
+                { className: 'wrapper p-5' },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'div',
+                    { className: 'row justify-content-center' },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'div',
+                        { className: 'col-md-10' },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'div',
+                            { className: 'card' },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'div',
+                                { className: 'card-header' },
+                                'Create Race'
+                            ),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'div',
+                                { className: 'card-body' },
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'form',
+                                    { onSubmit: this.handleSubmit },
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'div',
+                                        { className: 'form-group' },
+                                        previewImg,
+                                        dropzone
+                                    ),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'div',
+                                        { className: 'form-group' },
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'label',
+                                            { htmlFor: 'racetitle' },
+                                            'Race Title'
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { onChange: this.handleInputChange, name: 'title', className: 'form-control', type: 'text', id: 'racetitle', required: true })
+                                    ),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'div',
+                                        { className: 'form-row' },
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'div',
+                                            { className: 'col-sm-6' },
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'div',
+                                                { className: 'form-group' },
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                    'label',
+                                                    { htmlFor: 'price' },
+                                                    'Race Datetime'
+                                                ),
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                    'div',
+                                                    { className: 'form-row' },
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'div',
+                                                        { className: 'col-sm-5' },
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_react_datetime___default.a, { isValidDate: dateFrom, onChange: this.handleRaceDatetimeFrom }),
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'hidden', name: 'about', value: this.state.RaceDateFrom })
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'div',
+                                                        { className: 'col-sm-1' },
+                                                        'to'
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'div',
+                                                        { className: 'col-sm-5' },
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_react_datetime___default.a, { isValidDate: dateFrom, onChange: this.handleRaceDatetimeTo }),
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'hidden', name: 'about', value: this.state.RaceDateTo })
+                                                    )
+                                                )
+                                            )
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'div',
+                                            { className: 'col-sm-6' },
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'div',
+                                                { className: 'form-group' },
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                    'label',
+                                                    { htmlFor: 'price' },
+                                                    'Registration Deadline'
+                                                ),
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                    'div',
+                                                    { className: 'form-row' },
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'div',
+                                                        { className: 'col-sm-5' },
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_react_datetime___default.a, { isValidDate: deadFrom, onChange: this.handleRaceDeadlineFrom }),
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'hidden', name: 'about', value: this.state.RaceDeadlineFrom })
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'div',
+                                                        { className: 'col-sm-1' },
+                                                        'to'
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'div',
+                                                        { className: 'col-sm-5' },
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_react_datetime___default.a, { isValidDate: deadFrom, onChange: this.handleRaceDeadlineTo }),
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'hidden', name: 'about', value: this.state.RaceDeadlineTo })
+                                                    )
+                                                )
+                                            )
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'div',
+                                            { className: 'col-sm-4' },
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'div',
+                                                { className: 'form-group' },
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                    'label',
+                                                    { htmlFor: 'price' },
+                                                    'Price'
+                                                ),
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { onChange: this.handleInputChange, name: 'price', className: 'form-control', type: 'text', id: 'price' })
+                                            )
+                                        )
+                                    ),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'div',
+                                        { className: 'form-group' },
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'div',
+                                            null,
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'label',
+                                                { htmlFor: 'about' },
+                                                'About'
+                                            ),
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_quill___default.a, { style: { 'height': '350px' }, modules: this.modules, theme: 'snow', value: this.state.about, onChange: this.handleAboutChange }),
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'hidden', name: 'about', value: this.state.about })
+                                        )
+                                    ),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'div',
+                                        { className: 'form-group' },
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'div',
+                                            null,
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'label',
+                                                { htmlFor: 'about' },
+                                                'Awards'
+                                            ),
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_quill___default.a, { style: { 'height': '350px' }, modules: this.modules, theme: 'snow', value: this.state.awards, onChange: this.handleAwardsChange }),
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'hidden', name: 'awards', value: this.state.awards })
+                                        )
+                                    ),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'button',
+                                        { className: 'btn btn-primary', type: 'submit' },
+                                        'Submit'
+                                    )
+                                )
+                            )
+                        )
+                    )
+                )
+            );
+        }
+    }]);
+
+    return CreateRaceForm;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (CreateRaceForm);
+
+
+if (document.getElementById('createraceform')) {
+    __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(CreateRaceForm, null), document.getElementById('createraceform'));
+}
+
+/***/ }),
+/* 228 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -86003,17 +86078,17 @@ React-Quill v1.0.0
 https://github.com/zenoamaro/react-quill
 */
 var Quill = __webpack_require__(49);
-var Component = __webpack_require__(232);
+var Component = __webpack_require__(233);
 
 module.exports = Component;
 module.exports.default = Component;
 module.exports.Quill = Quill;
 module.exports.Mixin = __webpack_require__(50);
-module.exports.Toolbar = __webpack_require__(327);
+module.exports.Toolbar = __webpack_require__(328);
 
 
 /***/ }),
-/* 228 */
+/* 229 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -86027,9 +86102,9 @@ module.exports.Toolbar = __webpack_require__(327);
 
 
 
-var base64 = __webpack_require__(229)
-var ieee754 = __webpack_require__(230)
-var isArray = __webpack_require__(231)
+var base64 = __webpack_require__(230)
+var ieee754 = __webpack_require__(231)
+var isArray = __webpack_require__(232)
 
 exports.Buffer = Buffer
 exports.SlowBuffer = SlowBuffer
@@ -87810,7 +87885,7 @@ function isnan (val) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))
 
 /***/ }),
-/* 229 */
+/* 230 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -87968,7 +88043,7 @@ function fromByteArray (uint8) {
 
 
 /***/ }),
-/* 230 */
+/* 231 */
 /***/ (function(module, exports) {
 
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
@@ -88058,7 +88133,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 
 
 /***/ }),
-/* 231 */
+/* 232 */
 /***/ (function(module, exports) {
 
 var toString = {}.toString;
@@ -88069,7 +88144,7 @@ module.exports = Array.isArray || function (arr) {
 
 
 /***/ }),
-/* 232 */
+/* 233 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -88080,7 +88155,7 @@ var ReactDOM = __webpack_require__(30);
 var createClass = __webpack_require__(5);
 var QuillMixin = __webpack_require__(50);
 var find = __webpack_require__(51);
-var some = __webpack_require__(318);
+var some = __webpack_require__(319);
 var isEqual = __webpack_require__(65);
 var T = __webpack_require__(27);
 var DOM = __webpack_require__(66);
@@ -88495,7 +88570,7 @@ module.exports = QuillComponent;
 
 
 /***/ }),
-/* 233 */
+/* 234 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -89428,7 +89503,7 @@ module.exports = factory;
 
 
 /***/ }),
-/* 234 */
+/* 235 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseIteratee = __webpack_require__(31),
@@ -89459,11 +89534,11 @@ module.exports = createFind;
 
 
 /***/ }),
-/* 235 */
+/* 236 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsMatch = __webpack_require__(236),
-    getMatchData = __webpack_require__(297),
+var baseIsMatch = __webpack_require__(237),
+    getMatchData = __webpack_require__(298),
     matchesStrictComparable = __webpack_require__(62);
 
 /**
@@ -89487,7 +89562,7 @@ module.exports = baseMatches;
 
 
 /***/ }),
-/* 236 */
+/* 237 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Stack = __webpack_require__(52),
@@ -89555,7 +89630,7 @@ module.exports = baseIsMatch;
 
 
 /***/ }),
-/* 237 */
+/* 238 */
 /***/ (function(module, exports) {
 
 /**
@@ -89574,7 +89649,7 @@ module.exports = listCacheClear;
 
 
 /***/ }),
-/* 238 */
+/* 239 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var assocIndexOf = __webpack_require__(19);
@@ -89615,7 +89690,7 @@ module.exports = listCacheDelete;
 
 
 /***/ }),
-/* 239 */
+/* 240 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var assocIndexOf = __webpack_require__(19);
@@ -89640,7 +89715,7 @@ module.exports = listCacheGet;
 
 
 /***/ }),
-/* 240 */
+/* 241 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var assocIndexOf = __webpack_require__(19);
@@ -89662,7 +89737,7 @@ module.exports = listCacheHas;
 
 
 /***/ }),
-/* 241 */
+/* 242 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var assocIndexOf = __webpack_require__(19);
@@ -89694,7 +89769,7 @@ module.exports = listCacheSet;
 
 
 /***/ }),
-/* 242 */
+/* 243 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var ListCache = __webpack_require__(18);
@@ -89715,7 +89790,7 @@ module.exports = stackClear;
 
 
 /***/ }),
-/* 243 */
+/* 244 */
 /***/ (function(module, exports) {
 
 /**
@@ -89739,7 +89814,7 @@ module.exports = stackDelete;
 
 
 /***/ }),
-/* 244 */
+/* 245 */
 /***/ (function(module, exports) {
 
 /**
@@ -89759,7 +89834,7 @@ module.exports = stackGet;
 
 
 /***/ }),
-/* 245 */
+/* 246 */
 /***/ (function(module, exports) {
 
 /**
@@ -89779,7 +89854,7 @@ module.exports = stackHas;
 
 
 /***/ }),
-/* 246 */
+/* 247 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var ListCache = __webpack_require__(18),
@@ -89819,11 +89894,11 @@ module.exports = stackSet;
 
 
 /***/ }),
-/* 247 */
+/* 248 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isFunction = __webpack_require__(53),
-    isMasked = __webpack_require__(250),
+    isMasked = __webpack_require__(251),
     isObject = __webpack_require__(9),
     toSource = __webpack_require__(55);
 
@@ -89872,7 +89947,7 @@ module.exports = baseIsNative;
 
 
 /***/ }),
-/* 248 */
+/* 249 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Symbol = __webpack_require__(20);
@@ -89924,7 +89999,7 @@ module.exports = getRawTag;
 
 
 /***/ }),
-/* 249 */
+/* 250 */
 /***/ (function(module, exports) {
 
 /** Used for built-in method references. */
@@ -89952,10 +90027,10 @@ module.exports = objectToString;
 
 
 /***/ }),
-/* 250 */
+/* 251 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var coreJsData = __webpack_require__(251);
+var coreJsData = __webpack_require__(252);
 
 /** Used to detect methods masquerading as native. */
 var maskSrcKey = (function() {
@@ -89978,7 +90053,7 @@ module.exports = isMasked;
 
 
 /***/ }),
-/* 251 */
+/* 252 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var root = __webpack_require__(3);
@@ -89990,7 +90065,7 @@ module.exports = coreJsData;
 
 
 /***/ }),
-/* 252 */
+/* 253 */
 /***/ (function(module, exports) {
 
 /**
@@ -90009,10 +90084,10 @@ module.exports = getValue;
 
 
 /***/ }),
-/* 253 */
+/* 254 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Hash = __webpack_require__(254),
+var Hash = __webpack_require__(255),
     ListCache = __webpack_require__(18),
     Map = __webpack_require__(33);
 
@@ -90036,14 +90111,14 @@ module.exports = mapCacheClear;
 
 
 /***/ }),
-/* 254 */
+/* 255 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var hashClear = __webpack_require__(255),
-    hashDelete = __webpack_require__(256),
-    hashGet = __webpack_require__(257),
-    hashHas = __webpack_require__(258),
-    hashSet = __webpack_require__(259);
+var hashClear = __webpack_require__(256),
+    hashDelete = __webpack_require__(257),
+    hashGet = __webpack_require__(258),
+    hashHas = __webpack_require__(259),
+    hashSet = __webpack_require__(260);
 
 /**
  * Creates a hash object.
@@ -90074,7 +90149,7 @@ module.exports = Hash;
 
 
 /***/ }),
-/* 255 */
+/* 256 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nativeCreate = __webpack_require__(21);
@@ -90095,7 +90170,7 @@ module.exports = hashClear;
 
 
 /***/ }),
-/* 256 */
+/* 257 */
 /***/ (function(module, exports) {
 
 /**
@@ -90118,7 +90193,7 @@ module.exports = hashDelete;
 
 
 /***/ }),
-/* 257 */
+/* 258 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nativeCreate = __webpack_require__(21);
@@ -90154,7 +90229,7 @@ module.exports = hashGet;
 
 
 /***/ }),
-/* 258 */
+/* 259 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nativeCreate = __webpack_require__(21);
@@ -90183,7 +90258,7 @@ module.exports = hashHas;
 
 
 /***/ }),
-/* 259 */
+/* 260 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nativeCreate = __webpack_require__(21);
@@ -90212,7 +90287,7 @@ module.exports = hashSet;
 
 
 /***/ }),
-/* 260 */
+/* 261 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getMapData = __webpack_require__(22);
@@ -90236,7 +90311,7 @@ module.exports = mapCacheDelete;
 
 
 /***/ }),
-/* 261 */
+/* 262 */
 /***/ (function(module, exports) {
 
 /**
@@ -90257,7 +90332,7 @@ module.exports = isKeyable;
 
 
 /***/ }),
-/* 262 */
+/* 263 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getMapData = __webpack_require__(22);
@@ -90279,7 +90354,7 @@ module.exports = mapCacheGet;
 
 
 /***/ }),
-/* 263 */
+/* 264 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getMapData = __webpack_require__(22);
@@ -90301,7 +90376,7 @@ module.exports = mapCacheHas;
 
 
 /***/ }),
-/* 264 */
+/* 265 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getMapData = __webpack_require__(22);
@@ -90329,14 +90404,14 @@ module.exports = mapCacheSet;
 
 
 /***/ }),
-/* 265 */
+/* 266 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Stack = __webpack_require__(52),
     equalArrays = __webpack_require__(56),
-    equalByTag = __webpack_require__(270),
-    equalObjects = __webpack_require__(274),
-    getTag = __webpack_require__(292),
+    equalByTag = __webpack_require__(271),
+    equalObjects = __webpack_require__(275),
+    getTag = __webpack_require__(293),
     isArray = __webpack_require__(4),
     isBuffer = __webpack_require__(59),
     isTypedArray = __webpack_require__(60);
@@ -90418,12 +90493,12 @@ module.exports = baseIsEqualDeep;
 
 
 /***/ }),
-/* 266 */
+/* 267 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var MapCache = __webpack_require__(34),
-    setCacheAdd = __webpack_require__(267),
-    setCacheHas = __webpack_require__(268);
+    setCacheAdd = __webpack_require__(268),
+    setCacheHas = __webpack_require__(269);
 
 /**
  *
@@ -90451,7 +90526,7 @@ module.exports = SetCache;
 
 
 /***/ }),
-/* 267 */
+/* 268 */
 /***/ (function(module, exports) {
 
 /** Used to stand-in for `undefined` hash values. */
@@ -90476,7 +90551,7 @@ module.exports = setCacheAdd;
 
 
 /***/ }),
-/* 268 */
+/* 269 */
 /***/ (function(module, exports) {
 
 /**
@@ -90496,7 +90571,7 @@ module.exports = setCacheHas;
 
 
 /***/ }),
-/* 269 */
+/* 270 */
 /***/ (function(module, exports) {
 
 /**
@@ -90515,15 +90590,15 @@ module.exports = cacheHas;
 
 
 /***/ }),
-/* 270 */
+/* 271 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Symbol = __webpack_require__(20),
-    Uint8Array = __webpack_require__(271),
+    Uint8Array = __webpack_require__(272),
     eq = __webpack_require__(32),
     equalArrays = __webpack_require__(56),
-    mapToArray = __webpack_require__(272),
-    setToArray = __webpack_require__(273);
+    mapToArray = __webpack_require__(273),
+    setToArray = __webpack_require__(274);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1,
@@ -90633,7 +90708,7 @@ module.exports = equalByTag;
 
 
 /***/ }),
-/* 271 */
+/* 272 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var root = __webpack_require__(3);
@@ -90645,7 +90720,7 @@ module.exports = Uint8Array;
 
 
 /***/ }),
-/* 272 */
+/* 273 */
 /***/ (function(module, exports) {
 
 /**
@@ -90669,7 +90744,7 @@ module.exports = mapToArray;
 
 
 /***/ }),
-/* 273 */
+/* 274 */
 /***/ (function(module, exports) {
 
 /**
@@ -90693,10 +90768,10 @@ module.exports = setToArray;
 
 
 /***/ }),
-/* 274 */
+/* 275 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getAllKeys = __webpack_require__(275);
+var getAllKeys = __webpack_require__(276);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1;
@@ -90788,11 +90863,11 @@ module.exports = equalObjects;
 
 
 /***/ }),
-/* 275 */
+/* 276 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseGetAllKeys = __webpack_require__(276),
-    getSymbols = __webpack_require__(278),
+var baseGetAllKeys = __webpack_require__(277),
+    getSymbols = __webpack_require__(279),
     keys = __webpack_require__(23);
 
 /**
@@ -90810,10 +90885,10 @@ module.exports = getAllKeys;
 
 
 /***/ }),
-/* 276 */
+/* 277 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayPush = __webpack_require__(277),
+var arrayPush = __webpack_require__(278),
     isArray = __webpack_require__(4);
 
 /**
@@ -90836,7 +90911,7 @@ module.exports = baseGetAllKeys;
 
 
 /***/ }),
-/* 277 */
+/* 278 */
 /***/ (function(module, exports) {
 
 /**
@@ -90862,11 +90937,11 @@ module.exports = arrayPush;
 
 
 /***/ }),
-/* 278 */
+/* 279 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayFilter = __webpack_require__(279),
-    stubArray = __webpack_require__(280);
+var arrayFilter = __webpack_require__(280),
+    stubArray = __webpack_require__(281);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -90898,7 +90973,7 @@ module.exports = getSymbols;
 
 
 /***/ }),
-/* 279 */
+/* 280 */
 /***/ (function(module, exports) {
 
 /**
@@ -90929,7 +91004,7 @@ module.exports = arrayFilter;
 
 
 /***/ }),
-/* 280 */
+/* 281 */
 /***/ (function(module, exports) {
 
 /**
@@ -90958,10 +91033,10 @@ module.exports = stubArray;
 
 
 /***/ }),
-/* 281 */
+/* 282 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseTimes = __webpack_require__(282),
+var baseTimes = __webpack_require__(283),
     isArguments = __webpack_require__(58),
     isArray = __webpack_require__(4),
     isBuffer = __webpack_require__(59),
@@ -91013,7 +91088,7 @@ module.exports = arrayLikeKeys;
 
 
 /***/ }),
-/* 282 */
+/* 283 */
 /***/ (function(module, exports) {
 
 /**
@@ -91039,7 +91114,7 @@ module.exports = baseTimes;
 
 
 /***/ }),
-/* 283 */
+/* 284 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGetTag = __webpack_require__(8),
@@ -91063,7 +91138,7 @@ module.exports = baseIsArguments;
 
 
 /***/ }),
-/* 284 */
+/* 285 */
 /***/ (function(module, exports) {
 
 /**
@@ -91087,7 +91162,7 @@ module.exports = stubFalse;
 
 
 /***/ }),
-/* 285 */
+/* 286 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGetTag = __webpack_require__(8),
@@ -91153,7 +91228,7 @@ module.exports = baseIsTypedArray;
 
 
 /***/ }),
-/* 286 */
+/* 287 */
 /***/ (function(module, exports) {
 
 /**
@@ -91173,7 +91248,7 @@ module.exports = baseUnary;
 
 
 /***/ }),
-/* 287 */
+/* 288 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {var freeGlobal = __webpack_require__(54);
@@ -91210,11 +91285,11 @@ module.exports = nodeUtil;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)(module)))
 
 /***/ }),
-/* 288 */
+/* 289 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isPrototype = __webpack_require__(289),
-    nativeKeys = __webpack_require__(290);
+var isPrototype = __webpack_require__(290),
+    nativeKeys = __webpack_require__(291);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -91246,7 +91321,7 @@ module.exports = baseKeys;
 
 
 /***/ }),
-/* 289 */
+/* 290 */
 /***/ (function(module, exports) {
 
 /** Used for built-in method references. */
@@ -91270,10 +91345,10 @@ module.exports = isPrototype;
 
 
 /***/ }),
-/* 290 */
+/* 291 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var overArg = __webpack_require__(291);
+var overArg = __webpack_require__(292);
 
 /* Built-in method references for those with the same name as other `lodash` methods. */
 var nativeKeys = overArg(Object.keys, Object);
@@ -91282,7 +91357,7 @@ module.exports = nativeKeys;
 
 
 /***/ }),
-/* 291 */
+/* 292 */
 /***/ (function(module, exports) {
 
 /**
@@ -91303,14 +91378,14 @@ module.exports = overArg;
 
 
 /***/ }),
-/* 292 */
+/* 293 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var DataView = __webpack_require__(293),
+var DataView = __webpack_require__(294),
     Map = __webpack_require__(33),
-    Promise = __webpack_require__(294),
-    Set = __webpack_require__(295),
-    WeakMap = __webpack_require__(296),
+    Promise = __webpack_require__(295),
+    Set = __webpack_require__(296),
+    WeakMap = __webpack_require__(297),
     baseGetTag = __webpack_require__(8),
     toSource = __webpack_require__(55);
 
@@ -91367,7 +91442,7 @@ module.exports = getTag;
 
 
 /***/ }),
-/* 293 */
+/* 294 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(6),
@@ -91380,7 +91455,7 @@ module.exports = DataView;
 
 
 /***/ }),
-/* 294 */
+/* 295 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(6),
@@ -91393,7 +91468,7 @@ module.exports = Promise;
 
 
 /***/ }),
-/* 295 */
+/* 296 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(6),
@@ -91406,7 +91481,7 @@ module.exports = Set;
 
 
 /***/ }),
-/* 296 */
+/* 297 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(6),
@@ -91419,7 +91494,7 @@ module.exports = WeakMap;
 
 
 /***/ }),
-/* 297 */
+/* 298 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isStrictComparable = __webpack_require__(61),
@@ -91449,12 +91524,12 @@ module.exports = getMatchData;
 
 
 /***/ }),
-/* 298 */
+/* 299 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseIsEqual = __webpack_require__(35),
-    get = __webpack_require__(299),
-    hasIn = __webpack_require__(306),
+    get = __webpack_require__(300),
+    hasIn = __webpack_require__(307),
     isKey = __webpack_require__(38),
     isStrictComparable = __webpack_require__(61),
     matchesStrictComparable = __webpack_require__(62),
@@ -91488,7 +91563,7 @@ module.exports = baseMatchesProperty;
 
 
 /***/ }),
-/* 299 */
+/* 300 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGet = __webpack_require__(63);
@@ -91527,10 +91602,10 @@ module.exports = get;
 
 
 /***/ }),
-/* 300 */
+/* 301 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var memoizeCapped = __webpack_require__(301);
+var memoizeCapped = __webpack_require__(302);
 
 /** Used to match property names within property paths. */
 var rePropName = /[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g;
@@ -91560,10 +91635,10 @@ module.exports = stringToPath;
 
 
 /***/ }),
-/* 301 */
+/* 302 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var memoize = __webpack_require__(302);
+var memoize = __webpack_require__(303);
 
 /** Used as the maximum memoize cache size. */
 var MAX_MEMOIZE_SIZE = 500;
@@ -91592,7 +91667,7 @@ module.exports = memoizeCapped;
 
 
 /***/ }),
-/* 302 */
+/* 303 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var MapCache = __webpack_require__(34);
@@ -91671,10 +91746,10 @@ module.exports = memoize;
 
 
 /***/ }),
-/* 303 */
+/* 304 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseToString = __webpack_require__(304);
+var baseToString = __webpack_require__(305);
 
 /**
  * Converts `value` to a string. An empty string is returned for `null`
@@ -91705,11 +91780,11 @@ module.exports = toString;
 
 
 /***/ }),
-/* 304 */
+/* 305 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Symbol = __webpack_require__(20),
-    arrayMap = __webpack_require__(305),
+    arrayMap = __webpack_require__(306),
     isArray = __webpack_require__(4),
     isSymbol = __webpack_require__(25);
 
@@ -91748,7 +91823,7 @@ module.exports = baseToString;
 
 
 /***/ }),
-/* 305 */
+/* 306 */
 /***/ (function(module, exports) {
 
 /**
@@ -91775,11 +91850,11 @@ module.exports = arrayMap;
 
 
 /***/ }),
-/* 306 */
+/* 307 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseHasIn = __webpack_require__(307),
-    hasPath = __webpack_require__(308);
+var baseHasIn = __webpack_require__(308),
+    hasPath = __webpack_require__(309);
 
 /**
  * Checks if `path` is a direct or inherited property of `object`.
@@ -91815,7 +91890,7 @@ module.exports = hasIn;
 
 
 /***/ }),
-/* 307 */
+/* 308 */
 /***/ (function(module, exports) {
 
 /**
@@ -91834,7 +91909,7 @@ module.exports = baseHasIn;
 
 
 /***/ }),
-/* 308 */
+/* 309 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var castPath = __webpack_require__(64),
@@ -91879,7 +91954,7 @@ module.exports = hasPath;
 
 
 /***/ }),
-/* 309 */
+/* 310 */
 /***/ (function(module, exports) {
 
 /**
@@ -91906,11 +91981,11 @@ module.exports = identity;
 
 
 /***/ }),
-/* 310 */
+/* 311 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseProperty = __webpack_require__(311),
-    basePropertyDeep = __webpack_require__(312),
+var baseProperty = __webpack_require__(312),
+    basePropertyDeep = __webpack_require__(313),
     isKey = __webpack_require__(38),
     toKey = __webpack_require__(26);
 
@@ -91944,7 +92019,7 @@ module.exports = property;
 
 
 /***/ }),
-/* 311 */
+/* 312 */
 /***/ (function(module, exports) {
 
 /**
@@ -91964,7 +92039,7 @@ module.exports = baseProperty;
 
 
 /***/ }),
-/* 312 */
+/* 313 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGet = __webpack_require__(63);
@@ -91986,12 +92061,12 @@ module.exports = basePropertyDeep;
 
 
 /***/ }),
-/* 313 */
+/* 314 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseFindIndex = __webpack_require__(314),
+var baseFindIndex = __webpack_require__(315),
     baseIteratee = __webpack_require__(31),
-    toInteger = __webpack_require__(315);
+    toInteger = __webpack_require__(316);
 
 /* Built-in method references for those with the same name as other `lodash` methods. */
 var nativeMax = Math.max;
@@ -92047,7 +92122,7 @@ module.exports = findIndex;
 
 
 /***/ }),
-/* 314 */
+/* 315 */
 /***/ (function(module, exports) {
 
 /**
@@ -92077,10 +92152,10 @@ module.exports = baseFindIndex;
 
 
 /***/ }),
-/* 315 */
+/* 316 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var toFinite = __webpack_require__(316);
+var toFinite = __webpack_require__(317);
 
 /**
  * Converts `value` to an integer.
@@ -92119,10 +92194,10 @@ module.exports = toInteger;
 
 
 /***/ }),
-/* 316 */
+/* 317 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var toNumber = __webpack_require__(317);
+var toNumber = __webpack_require__(318);
 
 /** Used as references for various `Number` constants. */
 var INFINITY = 1 / 0,
@@ -92167,7 +92242,7 @@ module.exports = toFinite;
 
 
 /***/ }),
-/* 317 */
+/* 318 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isObject = __webpack_require__(9),
@@ -92239,14 +92314,14 @@ module.exports = toNumber;
 
 
 /***/ }),
-/* 318 */
+/* 319 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var arraySome = __webpack_require__(57),
     baseIteratee = __webpack_require__(31),
-    baseSome = __webpack_require__(319),
+    baseSome = __webpack_require__(320),
     isArray = __webpack_require__(4),
-    isIterateeCall = __webpack_require__(325);
+    isIterateeCall = __webpack_require__(326);
 
 /**
  * Checks if `predicate` returns truthy for **any** element of `collection`.
@@ -92296,10 +92371,10 @@ module.exports = some;
 
 
 /***/ }),
-/* 319 */
+/* 320 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseEach = __webpack_require__(320);
+var baseEach = __webpack_require__(321);
 
 /**
  * The base implementation of `_.some` without support for iteratee shorthands.
@@ -92324,11 +92399,11 @@ module.exports = baseSome;
 
 
 /***/ }),
-/* 320 */
+/* 321 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseForOwn = __webpack_require__(321),
-    createBaseEach = __webpack_require__(324);
+var baseForOwn = __webpack_require__(322),
+    createBaseEach = __webpack_require__(325);
 
 /**
  * The base implementation of `_.forEach` without support for iteratee shorthands.
@@ -92344,10 +92419,10 @@ module.exports = baseEach;
 
 
 /***/ }),
-/* 321 */
+/* 322 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseFor = __webpack_require__(322),
+var baseFor = __webpack_require__(323),
     keys = __webpack_require__(23);
 
 /**
@@ -92366,10 +92441,10 @@ module.exports = baseForOwn;
 
 
 /***/ }),
-/* 322 */
+/* 323 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var createBaseFor = __webpack_require__(323);
+var createBaseFor = __webpack_require__(324);
 
 /**
  * The base implementation of `baseForOwn` which iterates over `object`
@@ -92388,7 +92463,7 @@ module.exports = baseFor;
 
 
 /***/ }),
-/* 323 */
+/* 324 */
 /***/ (function(module, exports) {
 
 /**
@@ -92419,7 +92494,7 @@ module.exports = createBaseFor;
 
 
 /***/ }),
-/* 324 */
+/* 325 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isArrayLike = __webpack_require__(24);
@@ -92457,7 +92532,7 @@ module.exports = createBaseEach;
 
 
 /***/ }),
-/* 325 */
+/* 326 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var eq = __webpack_require__(32),
@@ -92493,7 +92568,7 @@ module.exports = isIterateeCall;
 
 
 /***/ }),
-/* 326 */
+/* 327 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -93055,7 +93130,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 
 
 /***/ }),
-/* 327 */
+/* 328 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -93068,7 +93143,7 @@ See https://quilljs.com/docs/modules/toolbar
 
 
 var React = __webpack_require__(1);
-var ReactDOMServer = __webpack_require__(328);
+var ReactDOMServer = __webpack_require__(329);
 var createClass = __webpack_require__(5);
 var find = __webpack_require__(51);
 var isEqual = __webpack_require__(65);
@@ -93262,7 +93337,7 @@ QuillToolbar.defaultColors = defaultColors;
 
 
 /***/ }),
-/* 328 */
+/* 329 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -93271,12 +93346,12 @@ QuillToolbar.defaultColors = defaultColors;
 if (false) {
   module.exports = require('./cjs/react-dom-server.browser.production.min.js');
 } else {
-  module.exports = __webpack_require__(329);
+  module.exports = __webpack_require__(330);
 }
 
 
 /***/ }),
-/* 329 */
+/* 330 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -93303,7 +93378,7 @@ var React = __webpack_require__(1);
 var emptyFunction = __webpack_require__(16);
 var emptyObject = __webpack_require__(14);
 var hyphenateStyleName = __webpack_require__(47);
-var memoizeStringOnly = __webpack_require__(330);
+var memoizeStringOnly = __webpack_require__(331);
 var warning = __webpack_require__(15);
 var checkPropTypes = __webpack_require__(17);
 var camelizeStyleName = __webpack_require__(48);
@@ -96055,7 +96130,7 @@ module.exports = server_browser;
 
 
 /***/ }),
-/* 330 */
+/* 331 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -96088,7 +96163,7 @@ function memoizeStringOnly(callback) {
 module.exports = memoizeStringOnly;
 
 /***/ }),
-/* 331 */
+/* 332 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -96099,7 +96174,7 @@ var assign = __webpack_require__(67),
 	createClass = __webpack_require__(5),
 	moment = __webpack_require__(0),
 	React = __webpack_require__(1),
-	CalendarContainer = __webpack_require__(333)
+	CalendarContainer = __webpack_require__(334)
 	;
 
 var viewModes = Object.freeze({
@@ -96576,7 +96651,7 @@ module.exports = Datetime;
 
 
 /***/ }),
-/* 332 */
+/* 333 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
@@ -96841,10 +96916,10 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 332;
+webpackContext.id = 333;
 
 /***/ }),
-/* 333 */
+/* 334 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -96852,10 +96927,10 @@ webpackContext.id = 332;
 
 var React = __webpack_require__(1),
 	createClass = __webpack_require__(5),
-	DaysView = __webpack_require__(334),
-	MonthsView = __webpack_require__(335),
-	YearsView = __webpack_require__(336),
-	TimeView = __webpack_require__(337)
+	DaysView = __webpack_require__(335),
+	MonthsView = __webpack_require__(336),
+	YearsView = __webpack_require__(337),
+	TimeView = __webpack_require__(338)
 	;
 
 var CalendarContainer = createClass({
@@ -96875,7 +96950,7 @@ module.exports = CalendarContainer;
 
 
 /***/ }),
-/* 334 */
+/* 335 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -97026,7 +97101,7 @@ module.exports = DateTimePickerDays;
 
 
 /***/ }),
-/* 335 */
+/* 336 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -97140,7 +97215,7 @@ module.exports = DateTimePickerMonths;
 
 
 /***/ }),
-/* 336 */
+/* 337 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -97252,7 +97327,7 @@ module.exports = DateTimePickerYears;
 
 
 /***/ }),
-/* 337 */
+/* 338 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -97496,7 +97571,7 @@ module.exports = DateTimePickerTime;
 
 
 /***/ }),
-/* 338 */
+/* 339 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -97504,8 +97579,8 @@ module.exports = DateTimePickerTime;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(27);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils__ = __webpack_require__(339);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_styles__ = __webpack_require__(341);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils__ = __webpack_require__(340);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_styles__ = __webpack_require__(342);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -98155,7 +98230,7 @@ Dropzone.defaultProps = {
 };
 
 /***/ }),
-/* 339 */
+/* 340 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -98166,7 +98241,7 @@ Dropzone.defaultProps = {
 /* harmony export (immutable) */ __webpack_exports__["a"] = allFilesAccepted;
 /* harmony export (immutable) */ __webpack_exports__["f"] = onDocumentDragOver;
 /* harmony export (immutable) */ __webpack_exports__["e"] = isIeOrEdge;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_attr_accept__ = __webpack_require__(340);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_attr_accept__ = __webpack_require__(341);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_attr_accept___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_attr_accept__);
 
 
@@ -98228,13 +98303,13 @@ function isIeOrEdge() {
 }
 
 /***/ }),
-/* 340 */
+/* 341 */
 /***/ (function(module, exports) {
 
 module.exports=function(t){function n(e){if(r[e])return r[e].exports;var o=r[e]={i:e,l:!1,exports:{}};return t[e].call(o.exports,o,o.exports,n),o.l=!0,o.exports}var r={};return n.m=t,n.c=r,n.d=function(t,r,e){n.o(t,r)||Object.defineProperty(t,r,{configurable:!1,enumerable:!0,get:e})},n.n=function(t){var r=t&&t.__esModule?function(){return t.default}:function(){return t};return n.d(r,"a",r),r},n.o=function(t,n){return Object.prototype.hasOwnProperty.call(t,n)},n.p="",n(n.s=13)}([function(t,n){var r=t.exports="undefined"!=typeof window&&window.Math==Math?window:"undefined"!=typeof self&&self.Math==Math?self:Function("return this")();"number"==typeof __g&&(__g=r)},function(t,n){t.exports=function(t){return"object"==typeof t?null!==t:"function"==typeof t}},function(t,n){var r=t.exports={version:"2.5.0"};"number"==typeof __e&&(__e=r)},function(t,n,r){t.exports=!r(4)(function(){return 7!=Object.defineProperty({},"a",{get:function(){return 7}}).a})},function(t,n){t.exports=function(t){try{return!!t()}catch(t){return!0}}},function(t,n){var r={}.toString;t.exports=function(t){return r.call(t).slice(8,-1)}},function(t,n,r){var e=r(32)("wks"),o=r(9),i=r(0).Symbol,u="function"==typeof i;(t.exports=function(t){return e[t]||(e[t]=u&&i[t]||(u?i:o)("Symbol."+t))}).store=e},function(t,n,r){var e=r(0),o=r(2),i=r(8),u=r(22),c=r(10),f=function(t,n,r){var a,s,p,l,v=t&f.F,y=t&f.G,h=t&f.S,d=t&f.P,x=t&f.B,g=y?e:h?e[n]||(e[n]={}):(e[n]||{}).prototype,m=y?o:o[n]||(o[n]={}),b=m.prototype||(m.prototype={});y&&(r=n);for(a in r)s=!v&&g&&void 0!==g[a],p=(s?g:r)[a],l=x&&s?c(p,e):d&&"function"==typeof p?c(Function.call,p):p,g&&u(g,a,p,t&f.U),m[a]!=p&&i(m,a,l),d&&b[a]!=p&&(b[a]=p)};e.core=o,f.F=1,f.G=2,f.S=4,f.P=8,f.B=16,f.W=32,f.U=64,f.R=128,t.exports=f},function(t,n,r){var e=r(16),o=r(21);t.exports=r(3)?function(t,n,r){return e.f(t,n,o(1,r))}:function(t,n,r){return t[n]=r,t}},function(t,n){var r=0,e=Math.random();t.exports=function(t){return"Symbol(".concat(void 0===t?"":t,")_",(++r+e).toString(36))}},function(t,n,r){var e=r(24);t.exports=function(t,n,r){if(e(t),void 0===n)return t;switch(r){case 1:return function(r){return t.call(n,r)};case 2:return function(r,e){return t.call(n,r,e)};case 3:return function(r,e,o){return t.call(n,r,e,o)}}return function(){return t.apply(n,arguments)}}},function(t,n){t.exports=function(t){if(void 0==t)throw TypeError("Can't call method on  "+t);return t}},function(t,n,r){var e=r(28),o=Math.min;t.exports=function(t){return t>0?o(e(t),9007199254740991):0}},function(t,n,r){"use strict";n.__esModule=!0,n.default=function(t,n){if(t&&n){var r=Array.isArray(n)?n:n.split(","),e=t.name||"",o=t.type||"",i=o.replace(/\/.*$/,"");return r.some(function(t){var n=t.trim();return"."===n.charAt(0)?e.toLowerCase().endsWith(n.toLowerCase()):n.endsWith("/*")?i===n.replace(/\/.*$/,""):o===n})}return!0},r(14),r(34)},function(t,n,r){r(15),t.exports=r(2).Array.some},function(t,n,r){"use strict";var e=r(7),o=r(25)(3);e(e.P+e.F*!r(33)([].some,!0),"Array",{some:function(t){return o(this,t,arguments[1])}})},function(t,n,r){var e=r(17),o=r(18),i=r(20),u=Object.defineProperty;n.f=r(3)?Object.defineProperty:function(t,n,r){if(e(t),n=i(n,!0),e(r),o)try{return u(t,n,r)}catch(t){}if("get"in r||"set"in r)throw TypeError("Accessors not supported!");return"value"in r&&(t[n]=r.value),t}},function(t,n,r){var e=r(1);t.exports=function(t){if(!e(t))throw TypeError(t+" is not an object!");return t}},function(t,n,r){t.exports=!r(3)&&!r(4)(function(){return 7!=Object.defineProperty(r(19)("div"),"a",{get:function(){return 7}}).a})},function(t,n,r){var e=r(1),o=r(0).document,i=e(o)&&e(o.createElement);t.exports=function(t){return i?o.createElement(t):{}}},function(t,n,r){var e=r(1);t.exports=function(t,n){if(!e(t))return t;var r,o;if(n&&"function"==typeof(r=t.toString)&&!e(o=r.call(t)))return o;if("function"==typeof(r=t.valueOf)&&!e(o=r.call(t)))return o;if(!n&&"function"==typeof(r=t.toString)&&!e(o=r.call(t)))return o;throw TypeError("Can't convert object to primitive value")}},function(t,n){t.exports=function(t,n){return{enumerable:!(1&t),configurable:!(2&t),writable:!(4&t),value:n}}},function(t,n,r){var e=r(0),o=r(8),i=r(23),u=r(9)("src"),c=Function.toString,f=(""+c).split("toString");r(2).inspectSource=function(t){return c.call(t)},(t.exports=function(t,n,r,c){var a="function"==typeof r;a&&(i(r,"name")||o(r,"name",n)),t[n]!==r&&(a&&(i(r,u)||o(r,u,t[n]?""+t[n]:f.join(String(n)))),t===e?t[n]=r:c?t[n]?t[n]=r:o(t,n,r):(delete t[n],o(t,n,r)))})(Function.prototype,"toString",function(){return"function"==typeof this&&this[u]||c.call(this)})},function(t,n){var r={}.hasOwnProperty;t.exports=function(t,n){return r.call(t,n)}},function(t,n){t.exports=function(t){if("function"!=typeof t)throw TypeError(t+" is not a function!");return t}},function(t,n,r){var e=r(10),o=r(26),i=r(27),u=r(12),c=r(29);t.exports=function(t,n){var r=1==t,f=2==t,a=3==t,s=4==t,p=6==t,l=5==t||p,v=n||c;return function(n,c,y){for(var h,d,x=i(n),g=o(x),m=e(c,y,3),b=u(g.length),_=0,w=r?v(n,b):f?v(n,0):void 0;b>_;_++)if((l||_ in g)&&(h=g[_],d=m(h,_,x),t))if(r)w[_]=d;else if(d)switch(t){case 3:return!0;case 5:return h;case 6:return _;case 2:w.push(h)}else if(s)return!1;return p?-1:a||s?s:w}}},function(t,n,r){var e=r(5);t.exports=Object("z").propertyIsEnumerable(0)?Object:function(t){return"String"==e(t)?t.split(""):Object(t)}},function(t,n,r){var e=r(11);t.exports=function(t){return Object(e(t))}},function(t,n){var r=Math.ceil,e=Math.floor;t.exports=function(t){return isNaN(t=+t)?0:(t>0?e:r)(t)}},function(t,n,r){var e=r(30);t.exports=function(t,n){return new(e(t))(n)}},function(t,n,r){var e=r(1),o=r(31),i=r(6)("species");t.exports=function(t){var n;return o(t)&&(n=t.constructor,"function"!=typeof n||n!==Array&&!o(n.prototype)||(n=void 0),e(n)&&null===(n=n[i])&&(n=void 0)),void 0===n?Array:n}},function(t,n,r){var e=r(5);t.exports=Array.isArray||function(t){return"Array"==e(t)}},function(t,n,r){var e=r(0),o=e["__core-js_shared__"]||(e["__core-js_shared__"]={});t.exports=function(t){return o[t]||(o[t]={})}},function(t,n,r){"use strict";var e=r(4);t.exports=function(t,n){return!!t&&e(function(){n?t.call(null,function(){},1):t.call(null)})}},function(t,n,r){r(35),t.exports=r(2).String.endsWith},function(t,n,r){"use strict";var e=r(7),o=r(12),i=r(36),u="".endsWith;e(e.P+e.F*r(38)("endsWith"),"String",{endsWith:function(t){var n=i(this,t,"endsWith"),r=arguments.length>1?arguments[1]:void 0,e=o(n.length),c=void 0===r?e:Math.min(o(r),e),f=String(t);return u?u.call(n,f,c):n.slice(c-f.length,c)===f}})},function(t,n,r){var e=r(37),o=r(11);t.exports=function(t,n,r){if(e(n))throw TypeError("String#"+r+" doesn't accept regex!");return String(o(t))}},function(t,n,r){var e=r(1),o=r(5),i=r(6)("match");t.exports=function(t){var n;return e(t)&&(void 0!==(n=t[i])?!!n:"RegExp"==o(t))}},function(t,n,r){var e=r(6)("match");t.exports=function(t){var n=/./;try{"/./"[t](n)}catch(r){try{return n[e]=!1,!"/./"[t](n)}catch(t){}}return!0}}]);
 
 /***/ }),
-/* 341 */
+/* 342 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -98263,7 +98338,7 @@ module.exports=function(t){function n(e){if(r[e])return r[e].exports;var o=r[e]=
 });
 
 /***/ }),
-/* 342 */
+/* 343 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

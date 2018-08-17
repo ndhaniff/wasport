@@ -10600,3 +10600,43 @@ h2 {
   text-transform: uppercase;
 }
 
+.dashboard-grid {
+  display: -ms-grid;
+  display: grid;
+  grid-template-columns: 1fr 8fr;
+}
+
+.sidebar {
+  min-height: 100vh;
+}
+
+.sidebar li {
+  list-style: none;
+  padding: 10px;
+}
+
+.sidebar li:hover {
+  background: #353333;
+}
+
+.sidebar li.active {
+  background: #353333;
+}
+
+.sidebar a {
+  color: #fff;
+  display: block;
+  font-size: 16px;
+  padding-left: 10px;
+}
+
+.sidebar a:hover {
+  text-decoration: none;
+  color: #fff;
+}
+
+.sidebar i {
+  font-size: 25px !important;
+  padding: 0 5px;
+}
+
