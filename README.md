@@ -3,20 +3,20 @@
 ## Technology use
 
   ### Backend
-  ⋅⋅* PHP
-  ⋅⋅* Laravel / Framework  [laravel docs]: https://laravel.com/docs/5.6/
+  * PHP
+  * Laravel / Framework  laravel docs: https://laravel.com/docs/5.6/
 
   ### Front End
-  ⋅⋅* Jquery
-  ⋅⋅* React
+  * Jquery
+  * React
 
   ## Development Dependencies
-  ⋅⋅* Mysql
-  ⋅⋅* Node
+  * Mysql
+  * Node
 
 ### Step to start
-⋅⋅* clone this repo 
-⋅⋅* create .env file from .env.example
+* clone this repo 
+* create .env file from .env.example
 
 #### Command
 npm update
