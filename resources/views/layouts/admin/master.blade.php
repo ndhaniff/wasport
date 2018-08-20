@@ -13,7 +13,7 @@
 
     </head>
     <body class="">
-    <nav class="navbar navbar-expand-lg bg-dark text-light">
+    <nav class="navbar navbar-expand-lg admin-navbar text-light">
     <a class="navbar-brand" href="{{ route('admin.dashboard') }}">Wasport</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

@@ -8,7 +8,7 @@
         <title>@yield('title', 'WaSport')</title>
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         @yield('meta')
-		    @yield('script')
+		@yield('script')
     </head>
     <body>
       <div id="navbar" class="d-flex flex-column flex-md-row align-items-center bg-dark">

@@ -6,7 +6,6 @@
 <header id="homebanner">
   
 </header>
-
 <div class="container-fluid bg-gray p-5">
   <div class="howitworks container">
     <h2>{{__("HOW IT WORKS?")}}</h2>

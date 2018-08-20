@@ -6,11 +6,13 @@
 @section('meta')
   @yield('meta')
 @endsection
-
 @section('content')
+@php
+!isset($active) ? $active = '' : $active = $active
+@endphp
 <div id="dashboard">
   <div class="dashboard-grid">
-    @include('layouts.admin.sidebar')
+      @include('layouts.admin.sidebar', ['active' => $active])
     <div>
       @yield('dashboard-content')
     </div>

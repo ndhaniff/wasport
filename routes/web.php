@@ -28,10 +28,15 @@ Route::group(['prefix' =>'admin'],function()
   Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
   Route::post('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
   Route::get('/dashboard', 'Admin\DashboardController@index')->name('admin.dashboard');
-  Route::post('/logout', 'Auth\LoginController@logout')->name('admin.logout');
+  Route::post('/logout', 'Auth\LoginController@logout')->name('admin.logout')->middleware('auth:admin');
   Route::get('/', 'Admin\AdminController@index')->name('admin');
   //Races
+  Route::get('/races','Admin\AdminRacesController@index')->name('admin.races');
+  Route::delete('/races/{id}','Admin\AdminRacesController@destroy')->name('admin.races.destroy');
   Route::get('/races/create','Admin\AdminRacesController@create')->name('admin.races.create');
-  Route::post('/races/create','Admin\AdminRacesController@store');
+  Route::post('/races/create','Admin\AdminRacesController@store')->name('admin.races.submit');
+  Route::get('/races/edit/{id}','Admin\AdminRacesController@editForm')->name('admin.races.edit');
+  Route::put('/races/edit','Admin\AdminRacesController@edit')->name('admin.races.edit.submit');
+  Route::post('/races/edit/{id}','Admin\AdminRacesController@duplicate')->name('admin.races.edit.dupe');
 });
 

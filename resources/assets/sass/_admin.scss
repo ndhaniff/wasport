@@ -1,3 +1,9 @@
+.admin-navbar{
+  background-color:#212d33;
+  border-color:#666 !important;
+  border-width:0 0 .1px 0 !important;
+}
+
 .dashboard-grid{
   display: -ms-grid;
   display:grid;
@@ -6,15 +12,32 @@
 
 .sidebar{
   min-height:100vh;
+  background-color:#212d33;
   li{
     list-style:none;
     padding:10px;
   }
   li:hover{
-    background: #353333;
+    background: lighten(#212d33,4);;
   }
   li.active{
-    background: #353333;
+    position:relative;
+    background: darken(#212d33,3);
+  }
+  .children > li{
+    padding-left:25px;
+  }
+  .children li.active{
+    background: lighten(#212d33,3);
+  }
+  li.active + div > li:after{
+    content:"\25C4";
+    color:#fff;
+    position:absolute;
+    top:5px;
+    right:-2px;
+    font-size:25px;
+    font-weight:bold;
   }
   a{
     color:#fff;

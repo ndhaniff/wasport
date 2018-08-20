@@ -10600,6 +10600,17 @@ h2 {
   text-transform: uppercase;
 }
 
+.ql-editor {
+  min-height: 500px;
+  overflow: auto;
+}
+
+.admin-navbar {
+  background-color: #212d33;
+  border-color: #666 !important;
+  border-width: 0 0 .1px 0 !important;
+}
+
 .dashboard-grid {
   display: -ms-grid;
   display: grid;
@@ -10608,6 +10619,7 @@ h2 {
 
 .sidebar {
   min-height: 100vh;
+  background-color: #212d33;
 }
 
 .sidebar li {
@@ -10616,11 +10628,30 @@ h2 {
 }
 
 .sidebar li:hover {
-  background: #353333;
+  background: #29383f;
 }
 
 .sidebar li.active {
-  background: #353333;
+  position: relative;
+  background: #1b252a;
+}
+
+.sidebar .children > li {
+  padding-left: 25px;
+}
+
+.sidebar .children li.active {
+  background: #27353c;
+}
+
+.sidebar li.active + div > li:after {
+  content: "\25C4";
+  color: #fff;
+  position: absolute;
+  top: 5px;
+  right: -2px;
+  font-size: 25px;
+  font-weight: bold;
 }
 
 .sidebar a {

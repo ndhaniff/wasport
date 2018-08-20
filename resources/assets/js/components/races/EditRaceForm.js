@@ -1,27 +1,29 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import ReactQuill, {Quill} from 'react-quill';
+import ReactQuill,{ Quill } from 'react-quill';
 import Datetime from 'react-datetime';
-import Dropzone from 'react-dropzone'
+import Dropzone from 'react-dropzone';
+import Parser from 'html-react-parser';
 import ImageResize from 'quill-image-resize-module';
 
 Quill.register("modules/imageResize", ImageResize);
 
-export default class CreateRaceForm extends Component {
+export default class EditRaceForm extends Component {
 
     constructor(props){
         super(props)
         this.state = {
-            about : '',
-            awards : '',
-            title : '',
-            price : '',
-            RaceDateFrom: '',
-            RaceDateTo: '',
-            RaceDeadlineFrom: '',
-            RaceDeadlineTo: '',
-            headerImg : [],
-            toggleDrop: true,
+            about : Parser(window.race.about),
+            awards : Parser(window.race.awards),
+            title : window.race.title,
+            price : window.race.price,
+            RaceDateFrom: new Date(window.race.date_from),
+            RaceDateTo:new Date(window.race.dead_to),
+            RaceDeadlineFrom:new Date(window.race.dead_from),
+            RaceDeadlineTo:new Date(window.race.dead_to),
+            headerImg : [{preview : window.race.header}],
+            id : window.race.id,
+            toggleDrop: false,
         }
         
         /* Quill module */
@@ -53,7 +55,7 @@ export default class CreateRaceForm extends Component {
     handleSubmit(e){
         e.preventDefault()
 
-        let {about,awards,title,price,RaceDateFrom,RaceDateTo,RaceDeadlineFrom,RaceDeadlineTo,headerImg} = this.state
+        let {about,awards,title,price,RaceDateFrom,RaceDateTo,RaceDeadlineFrom,RaceDeadlineTo,headerImg,id} = this.state
 
         let data = new FormData;
 
@@ -66,11 +68,13 @@ export default class CreateRaceForm extends Component {
         data.append('RaceDeadlineFrom', RaceDeadlineFrom)
         data.append('RaceDeadlineTo', RaceDeadlineTo)
         data.append('headerImg', headerImg[0])
+        data.append('id', id)
+        data.append('_method', 'PUT')
 
-        axios.post('/admin/races/create',data).then((res) => {
+        axios.post('/admin/races/edit',data).then((res) => {
             if(res.data.success){
                 location.href = location.origin + '/admin/races/edit/'+res.data.id
-                alert('run')
+                alert('Race updated')
             } else {
                 alert('something wrong')
             }
@@ -178,7 +182,7 @@ export default class CreateRaceForm extends Component {
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="racetitle">Race Title</label>
-                                        <input onChange={this.handleInputChange} name="title" className="form-control" type="text" id="racetitle" required/>   
+                                        <input onChange={this.handleInputChange} name="title" value={this.state.title} className="form-control" type="text" id="racetitle" required/>   
                                     </div>
                                     <div className="form-row">
                                     <div className="col-sm-6">
@@ -186,15 +190,13 @@ export default class CreateRaceForm extends Component {
                                         <label htmlFor="price">Race Datetime</label>
                                         <div className="form-row">
                                             <div className="col-sm-5">
-                                            <Datetime isValidDate={ dateFrom } onChange={this.handleRaceDatetimeFrom}/>
-                                            <input type="hidden" name="about" value={this.state.RaceDateFrom}/>
+                                            <Datetime isValidDate={ dateFrom } value={this.state.RaceDateFrom} onChange={this.handleRaceDatetimeFrom}/>
                                             </div>
                                             <div className="col-sm-1">
                                             to
                                             </div>
                                             <div className="col-sm-5">
-                                            <Datetime isValidDate={ dateFrom } onChange={this.handleRaceDatetimeTo}/>
-                                            <input type="hidden" name="about" value={this.state.RaceDateTo}/>
+                                            <Datetime isValidDate={ dateFrom } value={this.state.RaceDateTo} onChange={this.handleRaceDatetimeTo}/>
                                             </div>
                                          </div>
                                         </div>
@@ -204,15 +206,13 @@ export default class CreateRaceForm extends Component {
                                         <label htmlFor="price">Registration Deadline</label>
                                          <div className="form-row">
                                             <div className="col-sm-5">
-                                            <Datetime isValidDate={ deadFrom } onChange={this.handleRaceDeadlineFrom}/>
-                                            <input type="hidden" name="about" value={this.state.RaceDeadlineFrom}/>
+                                            <Datetime isValidDate={ deadFrom } value={this.state.RaceDeadlineFrom} onChange={this.handleRaceDeadlineFrom}/>
                                             </div>
                                             <div className="col-sm-1">
                                             to
                                             </div>
                                             <div className="col-sm-5">
-                                            <Datetime isValidDate={ deadFrom } onChange={this.handleRaceDeadlineTo}/>
-                                            <input type="hidden" name="about" value={this.state.RaceDeadlineTo}/>
+                                            <Datetime isValidDate={ deadFrom } value={this.state.RaceDeadlineFrom} onChange={this.handleRaceDeadlineTo}/>
                                             </div>
                                          </div>
                                         </div>
@@ -220,22 +220,20 @@ export default class CreateRaceForm extends Component {
                                     <div className="col-sm-4">
                                         <div className="form-group">
                                                 <label htmlFor="price">Price</label>
-                                                <input onChange={this.handleInputChange} name="price" className="form-control" type="text" id="price" />
+                                                <input onChange={this.handleInputChange} value={this.state.price} name="price" className="form-control" type="text" id="price" />
                                             </div>
                                         </div>
                                     </div>
                                     <div className="form-group">
                                         <div>
                                         <label htmlFor="about">About</label>
-                                        <ReactQuill style={{'minHeight':'500px'}} modules={this.modules} theme="snow"  value={this.state.about} onChange={this.handleAboutChange} />
-                                        <input type="hidden" name="about" value={this.state.about}/>
+                                        <ReactQuill style={{'height':'500px'}} modules={this.modules} theme="snow"  defaultValue={this.state.about} onChange={this.handleAboutChange} />
                                         </div>
                                     </div><br/><br/>
                                     <div className="form-group">
                                         <div>
                                         <label htmlFor="about">Awards</label>
-                                        <ReactQuill style={{'minHeight':'500px'}} modules={this.modules} theme="snow"  value={this.state.awards} onChange={this.handleAwardsChange} />
-                                        <input type="hidden" name="awards" value={this.state.awards}/>
+                                        <ReactQuill style={{'height':'500px'}} modules={this.modules} theme="snow"  defaultValue={this.state.awards} onChange={this.handleAwardsChange} />
                                         </div>
                                     </div>
                                     <br/><br/>
@@ -250,6 +248,6 @@ export default class CreateRaceForm extends Component {
     }
 }
 
-if(document.getElementById('createraceform')){
-    ReactDOM.render(<CreateRaceForm />, document.getElementById('createraceform'))
+if(document.getElementById('editraceform')){
+    ReactDOM.render(<EditRaceForm />, document.getElementById('editraceform'))
 }

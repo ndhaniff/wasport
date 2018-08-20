@@ -1,4 +1,4 @@
-@extends('auth.admin.dashboard')
+@extends('auth.admin.dashboard', ['active' => ['parent' => 'races', 'child' => 'create']])
 @section('title')
 Admin | Create Race
 @endsection
@@ -8,7 +8,9 @@ Admin | Create Race
 @endsection
 
 @section('dashboard-content')
-
-<div id="createraceform"></div>
+<div class="p-3">
+  <h1>Add New Race</h1>
+  <div id="createraceform"></div>
+</div>
 
 @endsection
