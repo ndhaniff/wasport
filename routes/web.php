@@ -17,19 +17,23 @@ Route::group([
 ], function()
 {
 	Route::get('/', 'Pages\HomeController@index')->name('home');
-
+  //user
+  Route::get('/dashboard', 'User\UserController@dashboard' )->name('user.dashboard');;
   Auth::routes();
   
 });
 
 Route::group(['prefix' =>'admin'],function()
 {
+  //authentication
   Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
   Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
   Route::post('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
   Route::get('/dashboard', 'Admin\DashboardController@index')->name('admin.dashboard');
   Route::post('/logout', 'Auth\LoginController@logout')->name('admin.logout')->middleware('auth:admin');
-  Route::get('/', 'Admin\AdminController@index')->name('admin');
+  Route::get('/', function() {
+    return redirect()->route('admin.login');
+  });
   //Races
   Route::get('/races','Admin\AdminRacesController@index')->name('admin.races');
   Route::delete('/races/{id}','Admin\AdminRacesController@destroy')->name('admin.races.destroy');

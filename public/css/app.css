@@ -10512,7 +10512,7 @@ html {
 
 #homebanner {
   min-width: 1920px;
-  height: 528px;
+  height: auto;
   background-image: url("/img/wasport_homebanner.jpg");
   background-repeat: no-repeat;
 }
