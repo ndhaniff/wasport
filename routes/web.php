@@ -44,3 +44,7 @@ Route::group(['prefix' =>'admin'],function()
   Route::post('/races/edit/{id}','Admin\AdminRacesController@duplicate')->name('admin.races.edit.dupe');
 });
 
+//Strava
+Route::get('/strava/getAuthToken','API\StravaController@getAuthToken')->name('strava.getToken');
+Route::post('/strava/getStats','API\StravaController@getStats')->name('strava.getStats');
+
