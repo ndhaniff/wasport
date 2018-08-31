@@ -6,9 +6,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>@yield('title', 'Admin | WaSport')</title>
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://bootswatch.com/4/lumen/bootstrap.min.css">
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/style.css') }}" rel="stylesheet">
         @yield('meta')
 
     </head>
@@ -37,7 +39,7 @@
     <div class="wrapper">
     @yield('content')
     </div>
-    
+
     <script src="{{asset('js/app.js')}}"></script>
     @yield('scripts')
     </body>

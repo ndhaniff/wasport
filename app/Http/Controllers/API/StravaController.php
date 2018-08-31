@@ -4,7 +4,10 @@ namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Ixudra\Curl\Facades\Curl;
+<<<<<<< Updated upstream
 use Auth;
+=======
+>>>>>>> Stashed changes
 
 class StravaController extends Controller
 {
@@ -55,7 +58,7 @@ class StravaController extends Controller
 
        $json_response = curl_exec($ch);
        $http_response_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-       
+
        if ($http_response_code == 401) {
            throw new \Exception('Error: getOAuthToken() - Access has been revoked.');
        }
@@ -79,7 +82,7 @@ class StravaController extends Controller
 
        $json_response = curl_exec($ch);
        $http_response_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-       
+
        if ($http_response_code == 401) {
            throw new \Exception('Error: getOAuthToken() - Access has been revoked.');
        }

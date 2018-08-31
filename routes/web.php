@@ -12,15 +12,19 @@
 */
 
 Route::group([
-  'prefix' => LaravelLocalization::setLocale(), 
+  'prefix' => LaravelLocalization::setLocale(),
   'middleware' => [ 'localeSessionRedirect', 'localizationRedirect' ]
 ], function()
 {
 	Route::get('/', 'Pages\HomeController@index')->name('home');
   //user
   Route::get('/dashboard', 'User\UserController@dashboard' )->name('user.dashboard');
+  Route::get('/races', 'Pages\RacesController@index')->name('races');
+  Route::get('/racedetails/{id}', 'Pages\RacesController@details')->name('racedetails');
+  Route::get('/howitworks', 'Pages\HomeController@howitworks')->name('howitworks');
+
   Auth::routes();
-  
+
 });
 
 Route::group(['prefix' =>'admin'],function()
@@ -52,4 +56,3 @@ Route::post('/user/updateProfile', 'User\UserController@updateProfile' )->name('
 Route::get('/strava/getAuthToken','API\StravaController@getAuthToken')->name('strava.getToken');
 Route::post('/strava/getStats','API\StravaController@getStats')->name('strava.getStats');
 Route::post('/strava/disconnect','API\StravaController@disconnect')->name('strava.disconnect');
-

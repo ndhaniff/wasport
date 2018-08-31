@@ -49,7 +49,7 @@ export default class CreateRaceForm extends Component {
         this.handleRaceDeadlineFrom = this.handleRaceDeadlineFrom.bind(this)
         this.handleRaceDeadlineTo = this.handleRaceDeadlineTo.bind(this)
     }
-    
+
     handleSubmit(e){
         e.preventDefault()
 
@@ -85,7 +85,7 @@ export default class CreateRaceForm extends Component {
         this.setState({ awards: data })
     }
 
-    handleInputChange({target: {value,name}}){     
+    handleInputChange({target: {value,name}}){
         this.setState({
             [name] : value
         })
@@ -131,7 +131,7 @@ export default class CreateRaceForm extends Component {
         }
 
         if(this.state.toggleDrop){
-            var dropzone = 
+            var dropzone =
          <Dropzone
             style={{
                 "width": "100%",
@@ -148,7 +148,7 @@ export default class CreateRaceForm extends Component {
             </div>
         </Dropzone>
         } else {
-            var dropzone = "" 
+            var dropzone = ""
         }
 
         var yesterday = Datetime.moment().subtract( 1, 'day' );
@@ -178,7 +178,7 @@ export default class CreateRaceForm extends Component {
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="racetitle">Race Title</label>
-                                        <input onChange={this.handleInputChange} name="title" className="form-control" type="text" id="racetitle" required/>   
+                                        <input onChange={this.handleInputChange} name="title" className="form-control" type="text" id="racetitle" required/>
                                     </div>
                                     <div className="form-row">
                                     <div className="col-sm-6">

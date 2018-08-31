@@ -45,7 +45,7 @@ class AdminRacesController extends Controller
      * @return void
      */
     public function store(Request $request)
-    {   
+    {
         //validate request server side
         $request->validate([
             'title' => 'required|string',
@@ -58,7 +58,7 @@ class AdminRacesController extends Controller
             'RaceDeadlineTo' => 'required|string',
             'price' => 'required|string',
         ]);
-        
+
         $formdata = [
             'title' => $request->get('title'),
             'about' => $request->get('about'),
@@ -79,7 +79,7 @@ class AdminRacesController extends Controller
         $race->price = $formdata['price'];
         $race->about = $formdata['about'];
         $race->awards = $formdata['awards'];
-        
+
         //handle header img
         if($request->hasFile('headerImg')){
             $headerimg = $request->file('headerImg');
@@ -102,7 +102,7 @@ class AdminRacesController extends Controller
         $race = Race::where('id','=', $id)->first();
         return view('auth.admin.races.edit')->with('race',$race);
     }
-    
+
     /**
      * Edit Race
      *
@@ -110,7 +110,7 @@ class AdminRacesController extends Controller
      * @return void
      */
     public function edit(Request $request)
-    {   
+    {
         //validate request server side
         $request->validate([
             'title' => 'required|string',
@@ -123,7 +123,7 @@ class AdminRacesController extends Controller
             'RaceDeadlineTo' => 'required|string',
             'price' => 'required|string',
         ]);
-        
+
         $formdata = [
             'title' => $request->get('title'),
             'about' => $request->get('about'),
@@ -144,7 +144,7 @@ class AdminRacesController extends Controller
         $race->price = $formdata['price'];
         $race->about = $formdata['about'];
         $race->awards = $formdata['awards'];
-        
+
         //handle header img
         if($request->hasFile('headerImg')){
             $headerimg = $request->file('headerImg');
@@ -190,7 +190,7 @@ class AdminRacesController extends Controller
       */
     public function destroy($id)
     {
-        
+
         $race = Race::find($id);
         if($race->count()  > 0){
             $race->delete();

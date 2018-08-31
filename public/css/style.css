@@ -1,0 +1,525 @@
+
+html { overflow-x: hidden; }
+
+body {
+  font-family: 'SourceSansPro-Light';
+  font-size: 18px;
+}
+
+.full-container { min-height: 100%; }
+
+#topmenu { background-color: #2B292A; }
+
+#topbar { height: 50px; }
+
+#menu { background-color: #171717; }
+
+#logo {
+  background-color: #E02E3C;
+  padding-left: 250px !important;
+  height: 100px;
+}
+
+#logo img {
+  position: absolute;
+  top: 0;
+  left: 250px;
+  height: 80px;
+}
+
+#logo + div {
+  width: 100%;
+  display: block;
+  text-align: right;
+}
+
+#navbar { height: 80px; }
+
+#homebanner {
+  /*min-width: 1920px;
+  height: 528px;*/
+  width: 100%;
+  height: 54vh;
+  background-color: #0C1011;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url("/img/wasport_homebanner.jpg");
+  background-repeat: no-repeat;
+}
+
+/*NAV*/
+#navbar,
+#navbar-mobile { font-family: 'SourceSansPro-Regular'; }
+
+#navbar-mobile { display: none; }
+
+#navbar a:hover { text-decoration: none; }
+
+#menu { color: #fff; }
+
+.dropdown-menu {
+  width: 350px;
+  left: -100px !important;
+}
+
+.sign-in:active {
+  color: inherit;
+  text-decoration: none;
+  background-color: inherit;
+}
+
+.locale { text-transform: uppercase; }
+
+.loggedIn .dropdown-menu { left: -20px !important; }
+
+.loginFb { background-color: #3B5998; }
+
+#create-account-btn {
+  background: none;
+  border: 1px solid #fff;
+  border-radius: 25px;
+  color: #fff;
+  font-size: 13px;
+  padding: 3px 10px;
+}
+
+/*
+FOOTER
+*/
+footer {
+  background-color: #e02e3c;
+  color: #fff;
+  font-family: 'SourceSansPro-Regular';
+  padding-top: 50px;
+}
+
+.footer-social {
+  margin: 3rem 0;
+  display: block;
+}
+
+.footer-social-mobile { display: none; }
+
+footer h5 {
+  font-size: 20px;
+  font-weight: normal;
+}
+
+#footer-title-hr {
+  display: block;
+  height: 3px;
+  border: 0;
+  border-top: 3px solid #fff;
+  margin: 0 0 1rem 0;
+  padding: 0;
+  width: 5rem;
+}
+
+#copyright {
+  padding-bottom: 1rem;
+  margin-bottom: 0;
+}
+
+footer a,
+footer a:hover { color: #fff; }
+
+footer a:hover { text-decoration: none; }
+
+#footer-hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #fff;
+  margin: 1em 0;
+  padding: 0;
+}
+
+footer p { font-size: 15px; }
+
+/*
+BANNER
+*/
+#banner img { width: 100%; }
+
+/*
+CAROUSEL
+*/
+#carousel .item{
+  cursor:grab;
+  cursor:-webkit-grab;
+}
+
+#carousel .item img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Styling Pagination*/
+.owl-theme .owl-controls .owl-page span{
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+  width: 100px;
+  height: 5px;
+  margin-left: 2px;
+  margin-right: 2px;
+  background: #ccc;
+  border:none;
+}
+
+.owl-theme .owl-controls { margin-top: -63px; }
+
+/*
+HOME
+*/
+h2 { font-family: 'SourceSansPro-Semibold'; }
+
+#home-signup-section {
+  font-family: 'SourceSansPro-Regular';
+  background-color: #e02e3c;
+  height: 15vh;
+  color: #fff;
+}
+
+#home-signup-section .row { padding: 66px 0;}
+
+#home-signup-section p { padding: 5px 0; }
+
+#home-signup-btn {
+  border: 2px solid #fff;
+  border-radius: 25px;
+  background-color: #fff;
+  color: #000;
+  float: right;
+  padding: 5px 45px;
+}
+
+.bg-gray { background-color: #EAEBEB; }
+
+.howitworks { position: relative; }
+
+.howitworks-desktop { display: block; }
+
+.howitworks-mobile { display: none; }
+
+.howitworks h3 {
+  font-weight: bold;
+  font-family: 'SourceSansPro-Regular';
+}
+
+.howitworks h2 {
+  margin-bottom: 25px;
+}
+
+.howitworks h3:before {
+  content: "";
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  vertical-align: middle;
+}
+
+.howitworks .one:before { background: url("/img/flag1.png") no-repeat; }
+
+.howitworks .two:before { background: url("/img/flag2.png") no-repeat; }
+
+.howitworks .three:before { background: url("/img/flag3.png") no-repeat; }
+
+.howitworks .four:before { background: url("/img/flag4.png") no-repeat; }
+
+.line {
+  width: 100%;
+  border-bottom: dotted 2px red;
+  position: absolute;
+  top: 105px;
+}
+
+.howitworks p { padding: 15px 0; }
+
+.home-race h2 { text-align: center; }
+
+.wbtn {
+  border-radius: 25px;
+  padding: 5px 30px;
+  font-size: 18px;
+  text-transform: uppercase;
+  font-family: 'SourceSansPro-Regular';
+  letter-spacing: 2px;
+}
+
+.home-join-desktop { display: block; }
+
+.home-join-mobile { display: none; }
+
+.ql-editor {
+  min-height: 500px;
+  overflow: auto;
+}
+
+.admin-navbar {
+  background-color: #212d33;
+  border-color: #666 !important;
+  border-width: 0 0 .1px 0 !important;
+}
+
+.dashboard-grid {
+  display: -ms-grid;
+  display: grid;
+  grid-template-columns: 1fr 8fr;
+}
+
+.sidebar {
+  min-height: 100vh;
+  background-color: #212d33;
+}
+
+.sidebar li {
+  list-style: none;
+  padding: 10px;
+}
+
+.sidebar li:hover { background: #29383f; }
+
+.sidebar li.active {
+  position: relative;
+  background: #1b252a;
+}
+
+.sidebar .children > li { padding-left: 25px; }
+
+.sidebar .children li.active { background: #27353c; }
+
+.sidebar li.active + div > li:after {
+  content: "\25C4";
+  color: #fff;
+  position: absolute;
+  top: 5px;
+  right: -2px;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.sidebar a {
+  color: #fff;
+  display: block;
+  font-size: 16px;
+  padding-left: 10px;
+}
+
+.sidebar a:hover {
+  text-decoration: none;
+  color: #fff;
+}
+
+.sidebar i {
+  font-size: 25px !important;
+  padding: 0 5px;
+}
+
+/*
+Race list
+*/
+.raceslisting a:hover { text-decoration: none; }
+
+.raceslisting h2 {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.race-box {
+  padding: 0;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.race-img {
+  position: relative;
+  width: 100%;
+  height: 270px;
+  overflow: hidden;
+}
+
+.raceslisting img {
+  position: absolute;
+  margin: auto;
+  min-height: 100%;
+  min-width: 100%;
+  left: -100%;
+  right: -100%;
+  top: -100%;
+  bottom: -100%;
+}
+
+.raceslisting-date,
+.race-caption h5 {
+  font-family: 'SourceSansPro-Semibold';
+  text-align: left;
+}
+
+.raceslisting-date {
+  color: #df2e3c;
+  font-size: 14px;
+}
+
+.race-caption h5 {
+  color: #000;
+  height: 50px;
+}
+
+.race-caption { padding: 15px 25px; }
+
+.displayrace { margin-top: 40px;}
+
+.displayrace img {
+  max-width: 100%;
+  height: 80vh;
+}
+
+.displayrace h2 {
+  margin-top: 30px;
+  text-align: center;
+}
+
+/*
+HOW IT WORKS
+*/
+#howitworks {
+  margin: 5rem 0;
+  text-align: center;
+}
+
+#howitworks img { margin-bottom: 1rem; }
+
+#howitworks h3 { font-family: 'SourceSansPro-Semibold'; }
+
+@media screen and (max-width: 1024px) {
+  #navbar { display: none !important;}
+
+  #navbar-mobile { display: block; }
+
+  .navbar-header { width: 100%; }
+
+  .navbar { background: #e02e3c; }
+
+  .navbar li a { color:#fff; }
+
+  .navbar li { text-align: center; }
+
+  .navbar-toggle {
+    background: none;
+    border: 0;
+    vertical-align: middle;
+    float: right;
+    padding-top: 6px;
+  }
+
+  .bar {
+    width: 30px;
+    height: 3px;
+    background-color: #fff;
+    margin: 6px 0;
+  }
+
+  .owl-theme .owl-controls { margin-top: -20px; }
+
+  #homebanner { height: 22vh; }
+
+  #home-signup-section { height: 10vh; }
+
+  #home-signup-section .row { padding: 45px 0; }
+
+  .howitworks-desktop { display: none; }
+
+  .howitworks-mobile { display: block; }
+
+  .howitworks h3 { font-size: 1.15rem; }
+
+  #howitworks { margin: 2rem 0; }
+}
+
+@media screen and (max-width: 768px) {
+  #footer-logo { width: 80%; }
+
+  .footer-social { margin: 3rem 0 1rem 0; }
+
+  .footer-social img { width: 15%; }
+
+  #footer-content p { margin-bottom: 0; }
+
+  #footer-title-hr { margin: 0 0 10px 0; }
+
+  #footer-br { display: none; }
+
+  #logo img { left: 0; }
+
+  #homebanner { height: 21vh; }
+
+  .home-join-desktop { display: none; }
+
+  .home-join-mobile { display: block; }
+
+  #home-signup-section .row { padding: 30px 0; }
+
+  .wbtn {
+    margin: 0 auto 50px auto;
+    float: none;
+    display:block;
+    width: 12rem;
+  }
+
+  #raceslisting-datebr { display: none; }
+
+  #howitworks p { margin-bottom: 3.5rem; }
+}
+
+@media screen and (max-width: 414px) {
+  #footer-logo { width: 50%; }
+
+  #footer-logo {
+    float: none;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .footer-social { display: none; }
+
+  .footer-social-mobile {
+    display: block;
+    margin-top: 2rem;
+  }
+
+  .footer-social-mobile img { width: 7%; }
+
+  footer h5 { margin-top: 1.5rem; }
+
+  #homebanner { height: 15.5vh; }
+
+  #home-signup-section { height: 20vh; }
+
+  #home-signup-section .row {
+    padding: 20px 0;
+    text-align: center;
+  }
+
+  #home-signup-btn {
+    float: none;
+    margin: 0 auto;
+    display: block;
+    padding: 5px 20px;
+  }
+
+  .p-5 { padding: 0 !important; }
+}
+
+@media screen and (max-width: 375px) {
+  #homebanner { height: 13vh; }
+
+  #home-signup-section { height: 23vh; }
+}
+
+@media screen and (max-width: 320px) {
+  #homebanner { height: 15.5vh; }
+
+  #home-signup-section { height: 25vh; }
+}
