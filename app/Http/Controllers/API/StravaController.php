@@ -4,12 +4,14 @@ namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Ixudra\Curl\Facades\Curl;
+use Auth;
 
 class StravaController extends Controller
 {
 
   private $api_url = "https://www.strava.com/oauth/authorize";
   private $oauth_url = "https://www.strava.com/oauth/";
+  private $revoke_url = 'https://www.strava.com/oauth/deauthorize';
   private $client_id="26162";
   private $client_secret = "50970d1573958f75aa2b029edc71b73bfb6e5502";
   private $redirect_uri="http://localhost:8000/en/dashboard";
@@ -84,5 +86,16 @@ class StravaController extends Controller
 
        curl_close($ch);
        return response()->json(["success" => true, "data" => json_decode($json_response)]);
+    }
+
+    public function disconnect(Request $request){
+        $user = Auth::user();
+        //reset strava detail
+        $user->strava_id = "";
+        $user->strava_access_token = "";
+        $user->strava_email = "";
+        $user->save();
+
+       return response()->json(["success" => true, "msg" => "your access has been revoke"]);
     }
 }

@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import { Avatar } from 'antd';
+import { Avatar, Tabs } from 'antd';
 import EditProfileModal from './components/EditProfileModal';
+import AddPostModal from './components/AddPostModal';
 import axios from 'axios';
 import CountUp from 'react-countup';
+
+const TabPane = Tabs.TabPane;
 
 const Stats = (props) => {
   return (
@@ -78,21 +81,34 @@ class UserDashboard extends Component{
   render(){
     return(
       <div>
-        <div className="bg-light p-5 container">
+        <div style={{background: "#fff", maxWidth: "1240px"}} className=" p-5 container">
+        <Tabs
+          defaultActiveKey="1"
+          tabPosition="left"
+          style={{ height: 220 }}
+        >
+         <TabPane tab="Overview" key="1">
           <div className="row">
-            <div className="col-sm-3">
-              <Avatar size={90} icon="user" />
-              <EditProfileModal/>
+              <div className="col-sm-2 p-3">
+                <Avatar size={90} icon="user" />
+                <EditProfileModal/>
+              </div>
+              <div className="col-sm-10">
+                <div>Stats</div>
+                <hr />
+                <Stats 
+                  distance={this.state.distance}
+                  pace={this.state.pace}
+                  noofruns={this.state.no_of_runs}
+                />
+                <hr/>
+              </div>
             </div>
-            <div className="col-sm-9">
-              <Stats 
-                distance={this.state.distance}
-                pace={this.state.pace}
-                noofruns={this.state.no_of_runs}
-              />
-              <hr/>
-            </div>
-          </div>
+         </TabPane>
+         <TabPane tab="feed" key="2">
+          <AddPostModal />
+         </TabPane>
+        </Tabs>
         </div>
       </div>
     )

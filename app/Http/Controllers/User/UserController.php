@@ -41,4 +41,20 @@ class UserController extends Controller
       
       return view('user.dashboard')->with('user',$user);
     }
+
+    public function updateProfile(Request $request){
+      $request->get('name');
+      $request->get('firstname');
+      $request->get('lastname');
+      $request->get('motto');
+      $request->get('gender');
+      $request->get('phone');
+      $request->get('birthday');
+
+      dd($request);
+    }
+
+    public function handleProfileImg(Request $request){
+      dd($request->file('avatar'));
+    }
 }

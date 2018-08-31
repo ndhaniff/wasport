@@ -14,9 +14,9 @@ class AddStravaDetailColumnInUsers extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('strava_id');
-            $table->string('strava_email')->unique();
-            $table->string('strava_access_token');
+            $table->string('strava_id')->nullable();
+            $table->string('strava_email')->unique()->nullable();
+            $table->string('strava_access_token')->nullable();
         });
     }
 

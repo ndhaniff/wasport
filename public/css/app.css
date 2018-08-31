@@ -10511,10 +10511,11 @@ html {
 }
 
 #homebanner {
-  max-width: 1920px;
+  width: 100%;
   height: auto;
   background-image: url("/img/wasport_homebanner.jpg");
   background-repeat: no-repeat;
+  background-size: cover;
 }
 
 /*NAV*/
@@ -10548,6 +10549,7 @@ html {
 
 .howitworks {
   position: relative;
+  max-width: 1240px;
 }
 
 h2 {
@@ -10603,6 +10605,11 @@ h2 {
 .ql-editor {
   min-height: 500px;
   overflow: auto;
+}
+
+.ant-form-item-label {
+  text-align: left !important;
+  line-height: 16px !important;
 }
 
 .admin-navbar {

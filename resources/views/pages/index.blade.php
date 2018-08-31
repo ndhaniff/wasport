@@ -4,7 +4,7 @@
 
 
 <header id="homebanner">
-  <img src="/img/wasport_homebanner.jpg" style="visibility: hidden;" />
+  <img src="/img/wasport_homebanner.jpg" width="100%" style="visibility: hidden;" />
 </header>
 <div class="container-fluid bg-gray p-5">
   <div class="howitworks container">

@@ -18,7 +18,7 @@ Route::group([
 {
 	Route::get('/', 'Pages\HomeController@index')->name('home');
   //user
-  Route::get('/dashboard', 'User\UserController@dashboard' )->name('user.dashboard');;
+  Route::get('/dashboard', 'User\UserController@dashboard' )->name('user.dashboard');
   Auth::routes();
   
 });
@@ -44,7 +44,12 @@ Route::group(['prefix' =>'admin'],function()
   Route::post('/races/edit/{id}','Admin\AdminRacesController@duplicate')->name('admin.races.edit.dupe');
 });
 
+//User profile
+Route::post('/user/upload', 'User\UserController@handleProfileImg' )->name('user.profileImg');
+Route::post('/user/updateProfile', 'User\UserController@updateProfile' )->name('user.updateProfile');
+
 //Strava
 Route::get('/strava/getAuthToken','API\StravaController@getAuthToken')->name('strava.getToken');
 Route::post('/strava/getStats','API\StravaController@getStats')->name('strava.getStats');
+Route::post('/strava/disconnect','API\StravaController@disconnect')->name('strava.disconnect');
 
