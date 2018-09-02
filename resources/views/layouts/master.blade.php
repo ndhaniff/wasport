@@ -216,6 +216,5 @@
           });
         });
       </script>
->>>>>>> Stashed changes
     </body>
 </html>
