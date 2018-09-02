@@ -1,5 +1,9 @@
 @extends('layouts.master')
 
+@section('title')
+Dashboard | WaSportsrun
+@endsection
+
 @section('content')
 
   <div id ="user-dashboard"></div>
