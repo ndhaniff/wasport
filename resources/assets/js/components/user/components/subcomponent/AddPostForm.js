@@ -299,6 +299,14 @@ class FeedForm extends React.Component{
               <Checkbox>I declare my submission is truthful</Checkbox>
             )}
           </FormItem>
+          <FormItem 
+            wrapperCol = {{
+              xs: { span: 24 },
+              sm: { span: 24 },
+            }}
+          >
+            <Button type="primary" htmlType="submit">Submit</Button>
+          </FormItem>
         </Form>
     )
   }

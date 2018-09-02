@@ -4,10 +4,7 @@ namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Ixudra\Curl\Facades\Curl;
-<<<<<<< Updated upstream
 use Auth;
-=======
->>>>>>> Stashed changes
 
 class StravaController extends Controller
 {
