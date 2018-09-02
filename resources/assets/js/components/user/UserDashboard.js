@@ -13,15 +13,15 @@ const Stats = (props) => {
     <div className="row text-center">
     <div className="col-md-4">
       {props.distance } <br/>
-      Distance (KM)
+      <b>Distance (KM)</b>
     </div>
     <div className="col-md-4">
       {props.pace} <br/>
-      Pace
+      <b>Pace</b>
     </div>
     <div className="col-md-4">
       {props.noofruns} <br/>
-      No of runs
+      <b>No of runs</b>
     </div>
   </div>
   )
@@ -85,7 +85,6 @@ class UserDashboard extends Component{
         <Tabs
           defaultActiveKey="1"
           tabPosition="left"
-          style={{ height: 220 }}
         >
          <TabPane tab="Overview" key="1">
           <div className="row">
