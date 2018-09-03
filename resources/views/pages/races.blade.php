@@ -39,11 +39,11 @@
           <a href="racedetails/{{ $newrace->id }}">
             <div class="race-box">
               <div class="race-img">
-                <img src=" <?php echo asset('img/races/' . $newrace->header) ?>" alt="{{ $newrace->title }}">
+                <img src=" <?php echo asset('img/races/' . $newrace->header) ?>" alt="{{ $newrace->title_en }}">
               </div>
 
               <div class="race-caption">
-                <h5>{{ $newrace->title }}</h5>
+                <h5>{{ $newrace->title_en }}</h5>
 
                 <hr>
 
@@ -74,7 +74,7 @@
                   </div>
 
                   <div class="col-md-8">
-                    {{ $newrace->title }}
+                    {{ $newrace->title_en }}
                   </div>
                 </div>-->
               </div>
@@ -94,11 +94,11 @@
           <a href="racedetails/{{ $oldrace->id }}">
             <div class="race-box">
               <div class="race-img">
-                <img src=" <?php echo asset('img/races/' . $oldrace->header) ?>" alt="{{ $newrace->title }}">
+                <img src=" <?php echo asset('img/races/' . $oldrace->header) ?>" alt="{{ $newrace->title_en }}">
               </div>
 
               <div class="race-caption">
-                <h5>{{ $oldrace->title }}</h5>
+                <h5>{{ $oldrace->title_en }}</h5>
 
                 <hr>
 
@@ -126,7 +126,7 @@
                   </div>
 
                   <div class="col-md-8">
-                    {{ $oldrace->title }}
+                    {{ $oldrace->title_en }}
                   </div>
                 </div> -->
               </div>

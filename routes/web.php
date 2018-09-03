@@ -44,7 +44,7 @@ Route::group(['prefix' =>'admin'],function()
   Route::get('/races/create','Admin\AdminRacesController@create')->name('admin.races.create');
   Route::post('/races/create','Admin\AdminRacesController@store')->name('admin.races.submit');
   Route::get('/races/edit/{id}','Admin\AdminRacesController@editForm')->name('admin.races.edit');
-  Route::put('/races/edit','Admin\AdminRacesController@edit')->name('admin.races.edit.submit');
+  Route::post('/races/edit','Admin\AdminRacesController@edit')->name('admin.races.edit.submit');
   Route::post('/races/edit/{id}','Admin\AdminRacesController@duplicate')->name('admin.races.edit.dupe');
 });
 

@@ -7,10 +7,10 @@
   <div class="container">
 
     <section>
-      <img src=" <?php echo asset('img/races/' . $race->header) ?>" alt="{{ $race->title }}">
+      <img src=" <?php echo asset('img/races/' . $race->header) ?>" alt="{{ $race->title_en }}">
     </section>
 
-    <h2>{{ $race->title }}</h2>
+    <h2>{{ $race->title_en }}</h2>
 
     <h6>{{$race->date_from}} to {{$race->date_to}}</h6>
 

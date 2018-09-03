@@ -1,5 +1,6 @@
 let mix = require('laravel-mix');
 var webpack = require('webpack');
+const path = require('path');
 
 /*
  |--------------------------------------------------------------------------
@@ -20,4 +21,23 @@ mix.react('resources/assets/js/app.js', 'public/js')
         'window.Quill': 'quill'
       })
     ],
+    module: {
+      rules: [
+         {
+           test: /\.less$/,
+           loader: "less-loader",
+           exclude: [
+               path.resolve(__dirname, "node-modules"),
+               path.resolve(__dirname, "resources/assets/less"),
+           ],
+           options: {
+            modifyVars: {
+            'primary-color': 'red',
+            'link-color': 'red',
+            'border-radius-base': '2px',
+            },
+            javascriptEnabled: true,
+            },
+         },
+     ]} 
   });
