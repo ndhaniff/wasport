@@ -20,7 +20,7 @@ body {
   height: 100px;
 }
 
-#logo img {
+#wasport-logo {
   position: absolute;
   top: 0;
   left: 250px;
@@ -53,7 +53,9 @@ body {
 
 #navbar-mobile { display: none; }
 
-#navbar a:hover { text-decoration: none; }
+#navbar a:hover,
+#navbar a:active,
+#navbar a:focus { text-decoration: none; }
 
 #menu { color: #fff; }
 
@@ -92,6 +94,8 @@ footer {
   font-family: 'SourceSansPro-Regular';
   padding-top: 50px;
 }
+
+#footer-logo { width: 45%; }
 
 .footer-social {
   margin: 3rem 0;
@@ -440,7 +444,7 @@ HOW IT WORKS
 }
 
 @media screen and (max-width: 768px) {
-  #footer-logo { width: 80%; }
+  #footer-logo { width: 60%; }
 
   .footer-social { margin: 3rem 0 1rem 0; }
 
@@ -475,7 +479,7 @@ HOW IT WORKS
 }
 
 @media screen and (max-width: 414px) {
-  #footer-logo { width: 50%; }
+  #footer-logo { width: 35%; }
 
   #footer-logo {
     float: none;

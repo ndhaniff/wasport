@@ -1,3 +1,7 @@
+<script type="text/javascript">
+  document.getElementById("wasport-logo").style.height = "90px";
+</script>
+
 @extends('layouts.master')
 
 @section('content')
