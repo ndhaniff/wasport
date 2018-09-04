@@ -354,6 +354,8 @@ Race list
   right: -100%;
   top: -100%;
   bottom: -100%;
+  width: 335px;
+  height: 255px;
 }
 
 .raceslisting-date,
@@ -374,16 +376,128 @@ Race list
 
 .race-caption { padding: 15px 25px; }
 
+/*
+RACE DETAILS
+*/
 .displayrace { margin-top: 40px;}
 
-.displayrace img {
-  max-width: 100%;
-  height: 80vh;
+.displayrace img { max-width: 100%; }
+
+#countdown-timer,
+#closed { font-family: 'SourceSansPro-Semibold'; }
+
+#countdown-timer li {
+  display: inline-block;
+  font-size: 22px;
+  list-style-type: none;
+  padding: 1em;
 }
 
+#countdown-timer li span {
+  font-size: 22px;
+}
+
+#closed { display: none; }
+
+.race-details { text-align: left; }
+
+.displayrace h2,
+.displayrace h3,
+.displayrace h5,
+.displayrace h6 { font-family: 'SourceSansPro-Semibold'; }
+
+
+
 .displayrace h2 {
-  margin-top: 30px;
-  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.displayrace h5 {
+  color: #df2e3c;
+  margin-bottom: 2rem;
+  font-size: 17px;
+}
+
+.displayrace h6 {
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 1.5rem;
+}
+
+.details-block p {
+  color: #000;
+}
+
+.details-block a {
+  color: #df2e3c;
+}
+
+.accordion {
+	background: none;
+  color: #444;
+  cursor: pointer;
+  padding: 5px 0;
+  border: none;
+  text-align: left;
+  outline: none;
+  transition: 0.4s;
+}
+
+.accordion:focus {outline:0;}
+
+.accordion:after {
+  content: '\f0da';
+  font-family: FontAwesome;
+  color: #df2e3c;
+  float: left;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\f0d7";
+  font-family: FontAwesome;
+  color: #df2e3c;
+}
+
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+
+.awards-block { margin-bottom: 5rem; }
+
+.register-box {
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+  width: 315px;
+  float: right;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 1.5rem;
+  text-align: left;
+}
+
+.register-box h3 {
+  color: #df2e3c;
+}
+
+.race-register-btn {
+  border: none;
+  color: #fff;
+  background-color: #e93537;
+  width: 100%;
+  padding: .5rem;
+  border-radius: 5px;
+}
+
+.race-register-btn a {
+  color: #fff;
+  text-decoration: none;
+  font-family: 'SourceSansPro-Semibold';
 }
 
 /*
@@ -441,6 +555,11 @@ HOW IT WORKS
   .howitworks h3 { font-size: 1.15rem; }
 
   #howitworks { margin: 2rem 0; }
+}
+
+@media screen and (max-width: 800px) {
+  #countdown-timer { margin-top: 1rem; }
+  #countdown-timer li { padding: 0px 8px; }
 }
 
 @media screen and (max-width: 768px) {

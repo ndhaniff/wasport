@@ -43,7 +43,12 @@
               </div>
 
               <div class="race-caption">
-                <h5>{{ $newrace->title_en }}</h5>
+                <?php if(app()->getLocale() == 'en')
+                        echo '<h5>' .$newrace->title_en. '</h5>';
+                      if(app()->getLocale() == 'ms')
+                        echo '<h5>' .$newrace->title_ms. '</h5>';
+                      if(app()->getLocale() == 'zh')
+                        echo '<h5>' .$newrace->title_zh. '</h5>'; ?>
 
                 <hr>
 
@@ -59,24 +64,6 @@
                         echo $formatdateF . ' GMT +08' . '<br>-<br>' . $formatdateT . ' GMT +08' ?>
                 </div>
 
-
-
-                <!--<div class="row">
-
-                  <div class="col-md-4">
-                    <div class="raceslisting-date">
-                      <?php $date = DateTime::createFromFormat('Y-m-d H:i a', $newrace->date_from);
-
-                            $formatdate = $date->format('d M Y');
-
-                            echo '<span>' . substr($formatdate, 0, 2) . '</span><br id="raceslisting-datebr"><span>' . substr($formatdate, 3) . '</span>' ?>
-                    </div>
-                  </div>
-
-                  <div class="col-md-8">
-                    {{ $newrace->title_en }}
-                  </div>
-                </div>-->
               </div>
             </div>
           </a>
@@ -98,7 +85,12 @@
               </div>
 
               <div class="race-caption">
-                <h5>{{ $oldrace->title_en }}</h5>
+                <?php if(app()->getLocale() == 'en')
+                        echo '<h5>' .$oldrace->title_en. '</h5>';
+                      if(app()->getLocale() == 'ms')
+                        echo '<h5>' .$oldrace->title_ms. '</h5>';
+                      if(app()->getLocale() == 'zh')
+                        echo '<h5>' .$oldrace->title_zh. '</h5>'; ?>
 
                 <hr>
 
@@ -114,21 +106,6 @@
                         echo $formatdateF . ' GMT +08' . '<br>-<br>' . $formatdateT . ' GMT +08' ?>
                 </div>
 
-                <!--<div class="row">
-                  <div class="col-md-4">
-                    <div class="raceslisting-date">
-                      <?php $date = DateTime::createFromFormat('Y-m-d H:i a', $oldrace->date_from);
-
-                            $formatdate = $date->format('d M Y');
-
-                            echo '<span>' . substr($formatdate, 0, 2) . '</span><br><span>' . substr($formatdate, 3) . '</span>' ?>
-                    </div>
-                  </div>
-
-                  <div class="col-md-8">
-                    {{ $oldrace->title_en }}
-                  </div>
-                </div> -->
               </div>
             </div>
           </a>
