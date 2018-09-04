@@ -454,7 +454,7 @@ RACE DETAILS
   margin-left: 5px;
 }
 
-.active:after {
+.displayrace .active:after {
   content: "\f0d7";
   font-family: FontAwesome;
   color: #df2e3c;

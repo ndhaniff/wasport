@@ -22,12 +22,13 @@ export default class EditRaceForm extends Component {
             awards_en : Parser(window.race.awards_en),
             awards_ms : Parser(window.race.awards_ms),
             awards_zh : Parser(window.race.awards_zh),
+            medals_en : Parser(window.race.medals_en),
+            medals_ms : Parser(window.race.medals_ms),
+            medals_zh : Parser(window.race.medals_zh),
             title_en : window.race.title_en,
             title_ms : window.race.title_ms,
             title_zh : window.race.title_zh,
-            price_en : window.race.price_en,
-            price_ms : window.race.price_ms,
-            price_zh : window.race.price_zh,
+            price : window.race.price,
             RaceDateFrom: new Date(window.race.date_from),
             RaceDateTo:new Date(window.race.dead_to),
             RaceDeadlineFrom:new Date(window.race.dead_from),
@@ -57,6 +58,9 @@ export default class EditRaceForm extends Component {
         this.handleAwardsEnChange = this.handleAwardsEnChange.bind(this)
         this.handleAwardsMsChange = this.handleAwardsMsChange.bind(this)
         this.handleAwardsZhChange = this.handleAwardsZhChange.bind(this)
+        this.handleMedalsEnChange = this.handleMedalsEnChange.bind(this)
+        this.handleMedalsMsChange = this.handleMedalsMsChange.bind(this)
+        this.handleMedalsZhChange = this.handleMedalsZhChange.bind(this)
         this.onDrop = this.onDrop.bind(this)
         this.removePreview = this.removePreview.bind(this)
         this.handleInputChange = this.handleInputChange.bind(this)
@@ -70,7 +74,7 @@ export default class EditRaceForm extends Component {
     handleSubmit(e){
         e.preventDefault()
 
-        let {about_en,about_ms,about_zh,awards_en,awards_ms,awards_zh,title_en,title_ms,title_zh,price_en,price_ms,price_zh,RaceDateFrom,RaceDateTo,RaceDeadlineFrom,RaceDeadlineTo,headerImg,id} = this.state
+        let {about_en,about_ms,about_zh,awards_en,awards_ms,awards_zh,medals_en,medals_ms,medals_zh,title_en,title_ms,title_zh,price,RaceDateFrom,RaceDateTo,RaceDeadlineFrom,RaceDeadlineTo,headerImg,id} = this.state
 
         let data = new FormData;
 
@@ -80,12 +84,13 @@ export default class EditRaceForm extends Component {
         data.append('awards_en', awards_en)
         data.append('awards_ms', awards_ms)
         data.append('awards_zh', awards_zh)
+        data.append('medals_en', medals_en)
+        data.append('medals_ms', medals_ms)
+        data.append('medals_zh', medals_zh)
         data.append('title_en', title_en)
         data.append('title_ms', title_ms)
         data.append('title_zh', title_zh)
         data.append('price_en', price_en)
-        data.append('price_ms', price_ms)
-        data.append('price_zh', price_zh)
         data.append('RaceDateFrom', RaceDateFrom)
         data.append('RaceDateTo', RaceDateTo)
         data.append('RaceDeadlineFrom', RaceDeadlineFrom)
@@ -121,6 +126,16 @@ export default class EditRaceForm extends Component {
     }
     handleAwardsZhChange(data){
         this.setState({ awards_zh: data })
+    }
+
+    handleMedalsEnChange(data){
+        this.setState({ medals_en: data })
+    }
+    handleMedalsMsChange(data){
+        this.setState({ medals_ms: data })
+    }
+    handleMedalsZhChange(data){
+        this.setState({ medals_zh: data })
     }
 
     handleInputChange({target: {value,name}}){
@@ -264,23 +279,11 @@ export default class EditRaceForm extends Component {
                                         </div>
                                     </div>
                                     <div className="col-sm-4">
-                                    <div className="form-group">
-                                        <Tabs defaultActiveKey="1" type="card">
-                                            <TabPane tab="En" key="1">
-                                                <label>Price</label>
-                                                <input onChange={this.handleInputChange} name="price_en" className="form-control" type="text" value={this.state.price_en}/>
-                                            </TabPane>
-                                            <TabPane tab="Ms" key="2">
-                                                <label>Price</label>
-                                                <input onChange={this.handleInputChange} name="price_ms" className="form-control" type="text" value={this.state.price_ms}/>
-                                            </TabPane>
-                                            <TabPane tab="Zh" key="3">
-                                                <label>Price</label>
-                                                <input onChange={this.handleInputChange} name="price_zh" className="form-control" type="text" value={this.state.price_zh}/>
-                                            </TabPane>
-                                        </Tabs>
+                                        <div className="form-group">
+                                            <label>Price</label>
+                                            <input onChange={this.handleInputChange} name="price" className="form-control" type="text" />
                                         </div>
-                                        </div>
+                                    </div>
                                     </div>
                                     <div className="form-group">
                                     <Tabs defaultActiveKey="1" type="card">
@@ -298,6 +301,25 @@ export default class EditRaceForm extends Component {
                                             <label htmlFor="about">About</label>
                                             <ReactQuill style={{'minHeight':'500px'}} modules={this.modules} theme="snow"  value={this.state.about_zh} onChange={this.handleAboutZhChange} />
                                             <input type="hidden" name="about_zh" value={this.state.about_zh}/>
+                                        </TabPane>
+                                    </Tabs>
+                                    </div><br/><br/>
+                                    <div className="form-group">
+                                    <Tabs defaultActiveKey="1" type="card">
+                                        <TabPane tab="En" key="1">
+                                            <label htmlFor="medals">Medals</label>
+                                            <ReactQuill style={{'minHeight':'500px'}} modules={this.modules} theme="snow"  value={this.state.medals_en} onChange={this.handleMedalsEnChange} />
+                                            <input type="hidden" name="medals_en" value={this.state.medals_en}/>
+                                        </TabPane>
+                                        <TabPane tab="Ms" key="2">
+                                            <label htmlFor="medals">Medals</label>
+                                            <ReactQuill style={{'minHeight':'500px'}} modules={this.modules} theme="snow"  value={this.state.medals_ms} onChange={this.handleMedalsMsChange} />
+                                            <input type="hidden" name="medals_ms" value={this.state.medals_ms}/>
+                                        </TabPane>
+                                        <TabPane tab="Zh" key="3">
+                                            <label htmlFor="medals">Medals</label>
+                                            <ReactQuill style={{'minHeight':'500px'}} modules={this.modules} theme="snow"  value={this.state.medals_zh} onChange={this.handleMedalsZhChange} />
+                                            <input type="hidden" name="medals_zh" value={this.state.medals_zh}/>
                                         </TabPane>
                                     </Tabs>
                                     </div><br/><br/>

@@ -49,7 +49,7 @@
             <a href="\howitworks">How does it work</a></p>
 
           <h6>Price</h6>
-          <p>RM {{ $race->price_en }} (Incl. postage fee)</p>
+          <p>RM {{ $race->price }} (Incl. postage fee)</p>
 
           <h6>Registration Deadline</h6>
 
@@ -76,6 +76,16 @@
                   echo htmlspecialchars_decode($race->about_ms);
                 if(app()->getLocale() == 'zh')
                   echo htmlspecialchars_decode($race->about_zh); ?>
+
+          <br />
+
+          <h6>Medals</h6>
+          <?php if(app()->getLocale() == 'en')
+                  echo htmlspecialchars_decode($race->medals_en);
+                if(app()->getLocale() == 'ms')
+                  echo htmlspecialchars_decode($race->medals_ms);
+                if(app()->getLocale() == 'zh')
+                  echo htmlspecialchars_decode($race->medals_zh); ?>
         </div>
 
         <hr>
@@ -161,7 +171,7 @@
 
       <div class="col-md-4">
         <div class="register-box">
-          <h3>RM {{ number_format($race->price_en, 2) }}</h3>
+          <h3>RM {{ number_format($race->price, 2) }}</h3>
           <button type="button" class="race-register-btn"><a href="#">Register</a></button>
 
           <h6>Finisher’s Award</h6>

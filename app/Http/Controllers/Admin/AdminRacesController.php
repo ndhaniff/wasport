@@ -55,7 +55,8 @@ class AdminRacesController extends Controller
             'RaceDateTo' => 'required|string',
             'RaceDeadlineFrom' => 'required|string',
             'RaceDeadlineTo' => 'required|string',
-            'price_en' => 'required|string',
+            'medals_en' => 'required|string',
+            'price' => 'required|string',
         ]);
 
         $formdata = [
@@ -72,9 +73,10 @@ class AdminRacesController extends Controller
             'RaceDateTo' => $request->get('RaceDateTo'),
             'RaceDeadlineFrom' => $request->get('RaceDeadlineFrom'),
             'RaceDeadlineTo' => $request->get('RaceDeadlineTo'),
-            'price_en' => $request->get('price_en'),
-            'price_ms' => $request->get('price_ms'),
-            'price_zh' => $request->get('price_zh'),
+            'medals_en' => $request->get('medals_en'),
+            'medals_ms' => $request->get('medals_ms'),
+            'medals_zh' => $request->get('medals_zh'),
+            'price' => $request->get('price'),
         ];
 
         $race = new Race();
@@ -85,16 +87,17 @@ class AdminRacesController extends Controller
         $race->date_to = $formdata['RaceDateTo'];
         $race->dead_from = $formdata['RaceDeadlineFrom'];
         $race->dead_to = $formdata['RaceDeadlineTo'];
-        $race->price_en = $formdata['price_en'];
-        $race->price_ms = $formdata['price_ms'];
-        $race->price_zh = $formdata['price_zh'];
+        $race->medals_en = $formdata['medals_en'];
+        $race->medals_ms = $formdata['medals_ms'];
+        $race->medals_zh = $formdata['medals_zh'];
         $race->about_en = $formdata['about_en'];
         $race->about_ms = $formdata['about_ms'];
         $race->about_zh = $formdata['about_zh'];
         $race->awards_en = $formdata['awards_en'];
         $race->awards_ms = $formdata['awards_ms'];
         $race->awards_zh = $formdata['awards_zh'];
-        
+        $race->price = $formdata['price'];
+
         //handle header img
         if($request->hasFile('headerImg')){
             $headerimg = $request->file('headerImg');
@@ -134,7 +137,8 @@ class AdminRacesController extends Controller
             'RaceDateTo' => 'required|string',
             'RaceDeadlineFrom' => 'required|string',
             'RaceDeadlineTo' => 'required|string',
-            'price_en' => 'required|string',
+            'awards_en' => 'required|string',
+            'price' => 'required|string',
         ]);
 
         $formdata = [
@@ -151,11 +155,13 @@ class AdminRacesController extends Controller
             'RaceDateTo' => $request->get('RaceDateTo'),
             'RaceDeadlineFrom' => $request->get('RaceDeadlineFrom'),
             'RaceDeadlineTo' => $request->get('RaceDeadlineTo'),
-            'price_en' => $request->get('price_en'),
-            'price_ms' => $request->get('price_ms'),
-            'price_zh' => $request->get('price_zh'),
+            'awards_en' => $request->get('awards_en'),
+            'awards_ms' => $request->get('awards_ms'),
+            'awards_zh' => $request->get('awards_zh'),
+            'price' => $request->get('price'),
             'id' => $request->get('id')
         ];
+
         $race = Race::find($formdata['id']);
         $race->title_en = $formdata['title_en'];
         $race->title_ms = $formdata['title_ms'];
@@ -164,15 +170,17 @@ class AdminRacesController extends Controller
         $race->date_to = $formdata['RaceDateTo'];
         $race->dead_from = $formdata['RaceDeadlineFrom'];
         $race->dead_to = $formdata['RaceDeadlineTo'];
-        $race->price_en = $formdata['price_en'];
-        $race->price_ms = $formdata['price_ms'];
-        $race->price_zh = $formdata['price_zh'];
+        $race->medals_en = $formdata['medals_en'];
+        $race->medals_ms = $formdata['medals_ms'];
+        $race->medals_zh = $formdata['medals_zh'];
         $race->about_en = $formdata['about_en'];
         $race->about_ms = $formdata['about_ms'];
         $race->about_zh = $formdata['about_zh'];
         $race->awards_en = $formdata['awards_en'];
         $race->awards_ms = $formdata['awards_ms'];
         $race->awards_zh = $formdata['awards_zh'];
+        $race->price = $formdata['price'];
+
         //handle header img
         if($request->hasFile('headerImg')){
             $headerimg = $request->file('headerImg');
