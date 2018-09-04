@@ -171,11 +171,11 @@
               </div>
             </div>
             <div class="col-sm-12 col-md-2">
-              <h5>Company</h5>
+              <h5>{{__("Company")}}</h5>
               <hr id="footer-title-hr">
-              <p><a href="#">About Us</a></p>
-              <p><a href="#">Contact</a></p>
-              <p><a href="#">Life Sharing</a></p>
+              <p><a href="#">{{__("About Us")}}</a></p>
+              <p><a href="#">{{__("Contact")}}</a></p>
+              <p><a href="#">{{__("Life Sharing")}}</a></p>
             </div>
             <div class="col-sm-12 col-md-2">
               <h5><a href="\races">{{__("Event")}}</a></h5>
@@ -184,10 +184,10 @@
               <p><a href="\races#past-race">{{__("Past Race")}}</a></p>
             </div>
             <div class="col-sm-12 col-md-4">
-              <h5>Get In Touch</h5>
+              <h5>{{__("Get In Touch")}}</h5>
               <hr id="footer-title-hr">
-              <p>To work with WaSport, please click <a href="#">HERE</a><br id="footer-br"/>
-              or send email to info@wasport.com.my</p>
+              <p>{{__("To work with WaSport, please click")}} <a href="#">{{__("HERE")}}</a><br id="footer-br"/>
+              {{__("or send email to")}} info@wasport.com.my</p>
             </div>
           </div>
         </div>

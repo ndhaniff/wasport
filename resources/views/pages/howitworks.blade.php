@@ -29,20 +29,20 @@
     <div class="row">
       <div class="col-sm-12 col-md-4">
         <img src="{{asset('img/how-register.png')}}" alt="Register">
-        <h3>Register</h3>
-        <p>Find and join a virtual race that excites you!</p>
+        <h3>{{__("Register")}}</h3>
+        <p>{{__("Find and join a virtual race that excites you!")}}</p>
       </div>
 
       <div class="col-sm-12 col-md-4">
         <img src="{{asset('img/how-run.png')}}" alt="Run and record">
-        <h3>Run and record</h3>
-        <p>Use a GPS-based app or a treadmill to track your run.</p>
+        <h3>{{__("Run and record")}}</h3>
+        <p>{{__("Use a GPS-based app or a treadmill to track your run.")}}</p>
       </div>
 
       <div class="col-sm-12 col-md-4">
         <img src="{{asset('img/how-receive.png')}}" alt="Receive your award">
-        <h3>Receive your Award</h3>
-        <p>Celebrate your achievement and collect your finisher’s medal!</p>
+        <h3>{{__("Receive your Award")}}</h3>
+        <p>{{__("Celebrate your achievement and collect your finisher’s medal!")}}</p>
       </div>
     </div>
   </div>

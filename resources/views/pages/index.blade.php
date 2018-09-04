@@ -4,7 +4,6 @@
 
 @section('content')
 
-
 <!--<header id="homebanner">
   <img src="/img/wasport_homebanner.jpg" width="100%" style="visibility: hidden;" />-->
 <!--<header id="homebanner"></header>-->
@@ -34,10 +33,10 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-12 col-md-6">
-        <p>SIGN UP AS OUR MEMBER FOR FREE!</p>
+        <p>{{__("SIGN UP AS OUR MEMBER FOR FREE!")}}</p>
       </div>
       <div class="col-sm-12 col-md-6">
-        <a href="{{ route('register') }}"><button id="home-signup-btn">SIGN UP NOW</button></a>
+        <a href="{{ route('register') }}"><button id="home-signup-btn">{{__("SIGN UP NOW")}}</button></a>
       </div>
     </div>
   </div>
@@ -101,7 +100,7 @@
       <div class="col-sm-0 col-md-2"></div>
 
       <div class="col-sm-12 col-md-4">
-        <h2>NEW RACE</h2>
+        <h2>{{__("NEW RACE")}}</h2>
 
         <a href="racedetails/{{ $new->id }}">
           <div class="race-box">
@@ -110,7 +109,12 @@
             </div>
 
             <div class="race-caption">
-              <h5>{{ $new->title_en }}</h5>
+              <?php if(app()->getLocale() == 'en')
+                      echo '<h5>' .$new->title_en. '</h5>';
+                    if(app()->getLocale() == 'ms')
+                      echo '<h5>' .$new->title_ms. '</h5>';
+                    if(app()->getLocale() == 'zh')
+                      echo '<h5>' .$new->title_zh. '</h5>'; ?>
 
               <hr>
 
@@ -131,7 +135,7 @@
       </div>
 
       <div class="col-sm-12 col-md-4">
-        <h2>PAST RACE</h2>
+        <h2>{{__("PAST RACE")}}</h2>
 
         <a href="racedetails/{{ $new->id }}">
           <div class="race-box">
@@ -140,7 +144,12 @@
             </div>
 
             <div class="race-caption">
-              <h5>{{ $old->title_en }}</h5>
+              <?php if(app()->getLocale() == 'en')
+                      echo '<h5>' .$old->title_en. '</h5>';
+                    if(app()->getLocale() == 'ms')
+                      echo '<h5>' .$old->title_ms. '</h5>';
+                    if(app()->getLocale() == 'zh')
+                      echo '<h5>' .$old->title_zh. '</h5>'; ?>
 
               <hr>
 
@@ -166,8 +175,8 @@
 
   <div class="rewarding-experience mb-5">
     <div class="container">
-    <h2>Rewarding experience</h2>
-    <p>Be the envy of your friends with our exciting medals! Share the joy of earning medals with them and create new memories together.</p> <br>
+    <h2>{{__("Rewarding experience")}}</h2>
+    <p>{{__("Be the envy of your friends with our exciting medals! Share the joy of earning medals with them and create new memories together.")}}</p> <br>
     <div class="row">
       <div class="col">
         <img width="100%" src="{{asset('img/medal1.jpg')}}" alt="">
@@ -184,15 +193,15 @@
 
   <div class="connect-community">
     <div class="container">
-    <h2>Connect with our online and offline community</h2>
+    <h2>{{__("Connect with our online and offline community")}}</h2>
 
     <div class="home-join-desktop">
       <div class="row">
         <div class="col-md-10">
-          <p>8976225 runners have joined WaSport. Join our diverse community of runners, from first-time runners to elite marathon finishers - from all over the world!</p><br>
+          <p>{{__("8976225 runners have joined WaSport. Join our diverse community of runners, from first-time runners to elite marathon finishers - from all over the world!")}}</p><br>
         </div>
         <div class="col-md-2">
-          <a class="wbtn btn btn-primary" href="#">Join Now</a>
+          <a class="wbtn btn btn-primary" href="#">{{__("Join Now")}}</a>
         </div>
       </div>
     </div>
@@ -200,12 +209,12 @@
     <div class="home-join-mobile">
       <div class="row">
         <div class="col-sm-12">
-          <p>8976225 runners have joined WaSport. Join our diverse community of runners, from first-time runners to elite marathon finishers - from all over the world!</p><br>
+          <p>{{__("8976225 runners have joined WaSport. Join our diverse community of runners, from first-time runners to elite marathon finishers - from all over the world!")}}</p><br>
         </div>
       </div>
       <div class="row">
         <div class="col-sm-12">
-          <a class="wbtn btn btn-primary" href="#">Join Now</a>
+          <a class="wbtn btn btn-primary" href="#">{{__("Join Now")}}</a>
         </div>
       </div>
     </div>
