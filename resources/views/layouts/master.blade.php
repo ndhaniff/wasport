@@ -146,6 +146,8 @@
         </nav>
       </div>
 
+      <a href="#" id="scroll" style="display: none;"><span></span></a>
+
       <div class="full-container">
         @yield('content')
       </div>
@@ -213,6 +215,19 @@
             singleItem: true,
             autoPlay : true,
             stopOnHover : true,
+          });
+
+          $(window).scroll(function(){
+            if ($(this).scrollTop() > 100) {
+              $('#scroll').fadeIn();
+            } else {
+              $('#scroll').fadeOut();
+            }
+          });
+
+          $('#scroll').click(function(){
+            $("html, body").animate({ scrollTop: 0 }, 600);
+            return false;
           });
         });
       </script>
