@@ -21,13 +21,15 @@ export default class CreateRaceForm extends Component {
             awards_en : '',
             awards_ms : '',
             awards_zh : '',
+            medals_en : '',
+            medals_ms : '',
+            medals_zh : '',
             title_en : '',
             title_ms : '',
             title_zh : '',
-            awards_en : '',
-            awards_ms : '',
-            awards_zh : '',
             price : '',
+            category : '',
+            engrave : '',
             RaceDateFrom: '',
             RaceDateTo: '',
             RaceDeadlineFrom: '',
@@ -67,12 +69,13 @@ export default class CreateRaceForm extends Component {
         this.handleRaceDatetimeTo = this.handleRaceDatetimeTo.bind(this)
         this.handleRaceDeadlineFrom = this.handleRaceDeadlineFrom.bind(this)
         this.handleRaceDeadlineTo = this.handleRaceDeadlineTo.bind(this)
+        this.handleEngraveChange = this.handleEngraveChange.bind(this)
     }
 
     handleSubmit(e){
         e.preventDefault()
 
-        let {about_en,about_ms,about_zh,awards_en,awards_ms,awards_zh,medals_en,medals_ms,medals_zh,title_en,title_ms,title_zh,price,RaceDateFrom,RaceDateTo,RaceDeadlineFrom,RaceDeadlineTo,headerImg} = this.state
+        let {about_en,about_ms,about_zh,awards_en,awards_ms,awards_zh,title_en,title_ms,title_zh,medals_en,medals_ms,medals_zh,price,category,engrave,RaceDateFrom,RaceDateTo,RaceDeadlineFrom,RaceDeadlineTo,headerImg} = this.state
 
         let data = new FormData;
 
@@ -82,13 +85,15 @@ export default class CreateRaceForm extends Component {
         data.append('awards_en', awards_en)
         data.append('awards_ms', awards_ms)
         data.append('awards_zh', awards_zh)
-        data.append('medals_en', medals_en)
-        data.append('medals_ms', medals_ms)
-        data.append('medals_zh', medals_zh)
         data.append('title_en', title_en)
         data.append('title_ms', title_ms)
         data.append('title_zh', title_zh)
+        data.append('medals_en', medals_en)
+        data.append('medals_ms', medals_ms)
+        data.append('medals_zh', medals_zh)
         data.append('price', price)
+        data.append('category', category)
+        data.append('engrave', engrave)
         data.append('RaceDateFrom', RaceDateFrom)
         data.append('RaceDateTo', RaceDateTo)
         data.append('RaceDeadlineFrom', RaceDeadlineFrom)
@@ -115,16 +120,6 @@ export default class CreateRaceForm extends Component {
         this.setState({ about_zh: data })
     }
 
-    handleAwardsEnChange(data){
-        this.setState({ awards_en: data })
-    }
-    handleAwardsMsChange(data){
-        this.setState({ awards_ms: data })
-    }
-    handleAwardsZhChange(data){
-        this.setState({ awards_zh: data })
-    }
-
     handleMedalsEnChange(data){
         this.setState({ medals_en: data })
     }
@@ -133,6 +128,16 @@ export default class CreateRaceForm extends Component {
     }
     handleMedalsZhChange(data){
         this.setState({ medals_zh: data })
+    }
+
+    handleAwardsEnChange(data){
+        this.setState({ awards_en: data })
+    }
+    handleAwardsMsChange(data){
+        this.setState({ awards_ms: data })
+    }
+    handleAwardsZhChange(data){
+        this.setState({ awards_zh: data })
     }
 
     handleInputChange({target: {value,name}}){
@@ -163,6 +168,10 @@ export default class CreateRaceForm extends Component {
         this.setState({
             RaceDeadlineTo: date.format("YYYY-MM-DD HH:mm:ss a")
         })
+    }
+
+    handleEngraveChange(event) {
+      this.setState({engrave: event.target.value});
     }
 
     onDrop(acceptedFiles, rejectedFiles) {
@@ -279,12 +288,34 @@ export default class CreateRaceForm extends Component {
                                          </div>
                                         </div>
                                     </div>
-                                    <div className="col-sm-4">
+                                    </div>
+                                    <div className="form-row">
+                                      <div className="col-sm-3">
+                                        <div className="form-group">
+                                            <label>Category (Seperate with ',')</label>
+                                            <input onChange={this.handleInputChange} name="category" className="form-control" type="text" />
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div className="form-row">
+                                      <div className="col-sm-3">
                                         <div className="form-group">
                                             <label>Price</label>
                                             <input onChange={this.handleInputChange} name="price" className="form-control" type="text" />
                                         </div>
+                                      </div>
                                     </div>
+                                    <div className="form-row">
+                                      <div className="col-sm-2">
+                                        <div className="form-group">
+                                          <label>Engrave</label>
+                                          <select value={this.state.engrave} onChange={this.handleEngraveChange} style={{'display': 'block'}}>
+                                            <option disabled selected value=""> -- select an option -- </option>
+                                            <option value="no">No</option>
+                                            <option value="yes">Yes</option>
+                                          </select>
+                                        </div>
+                                      </div>
                                     </div>
                                     <div className="form-group">
                                     <Tabs defaultActiveKey="1" type="card">
@@ -329,17 +360,17 @@ export default class CreateRaceForm extends Component {
                                     <div className="form-group">
                                     <Tabs defaultActiveKey="1" type="card">
                                         <TabPane tab="En" key="1">
-                                            <label htmlFor="awards">Awards</label>
+                                            <label htmlFor="about">Awards</label>
                                             <ReactQuill style={{'minHeight':'500px'}} modules={this.modules} theme="snow"  value={this.state.awards_en} onChange={this.handleAwardsEnChange} />
                                             <input type="hidden" name="awards_en" value={this.state.awards_en}/>
                                         </TabPane>
                                         <TabPane tab="Ms" key="2">
-                                            <label htmlFor="awards">Awards</label>
+                                            <label htmlFor="about">Awards</label>
                                             <ReactQuill style={{'minHeight':'500px'}} modules={this.modules} theme="snow"  value={this.state.awards_ms} onChange={this.handleAwardsMsChange} />
                                             <input type="hidden" name="awards_ms" value={this.state.awards_ms}/>
                                         </TabPane>
                                         <TabPane tab="Zh" key="3">
-                                            <label htmlFor="awards">Awards</label>
+                                            <label htmlFor="about">Awards</label>
                                             <ReactQuill style={{'minHeight':'500px'}} modules={this.modules} theme="snow"  value={this.state.awards_zh} onChange={this.handleAwardsZhChange} />
                                             <input type="hidden" name="awards_zh" value={this.state.awards_zh}/>
                                         </TabPane>

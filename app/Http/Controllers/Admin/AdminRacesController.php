@@ -77,6 +77,8 @@ class AdminRacesController extends Controller
             'medals_ms' => $request->get('medals_ms'),
             'medals_zh' => $request->get('medals_zh'),
             'price' => $request->get('price'),
+            'category' => $request->get('category'),
+            'engrave' => $request->get('engrave'),
         ];
 
         $race = new Race();
@@ -97,6 +99,8 @@ class AdminRacesController extends Controller
         $race->awards_ms = $formdata['awards_ms'];
         $race->awards_zh = $formdata['awards_zh'];
         $race->price = $formdata['price'];
+        $race->category = $formdata['category'];
+        $race->engrave = $formdata['engrave'];
 
         //handle header img
         if($request->hasFile('headerImg')){
@@ -155,10 +159,12 @@ class AdminRacesController extends Controller
             'RaceDateTo' => $request->get('RaceDateTo'),
             'RaceDeadlineFrom' => $request->get('RaceDeadlineFrom'),
             'RaceDeadlineTo' => $request->get('RaceDeadlineTo'),
-            'awards_en' => $request->get('awards_en'),
-            'awards_ms' => $request->get('awards_ms'),
-            'awards_zh' => $request->get('awards_zh'),
+            'medals_en' => $request->get('medals_en'),
+            'medals_ms' => $request->get('medals_ms'),
+            'medals_zh' => $request->get('medals_zh'),
             'price' => $request->get('price'),
+            'category' => $request->get('category'),
+            'engrave' => $request->get('engrave'),
             'id' => $request->get('id')
         ];
 
@@ -180,6 +186,8 @@ class AdminRacesController extends Controller
         $race->awards_ms = $formdata['awards_ms'];
         $race->awards_zh = $formdata['awards_zh'];
         $race->price = $formdata['price'];
+        $race->category = $formdata['category'];
+        $race->engrave = $formdata['engrave'];
 
         //handle header img
         if($request->hasFile('headerImg')){

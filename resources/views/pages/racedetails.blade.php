@@ -49,7 +49,18 @@
             <a href="\howitworks">How does it work</a></p>
 
           <h6>Price</h6>
-          <p>RM {{ $race->price }} (Incl. postage fee)</p>
+          <?php if($race->price == 0 && app()->getLocale() == 'en')
+                  echo '<p>Free</p>';
+                if($race->price == 0 && app()->getLocale() == 'ms')
+                  echo '<p>Percuma</p>';
+                if($race->price == 0 && app()->getLocale() == 'zh')
+                  echo '<p>免费</p>';
+                if($race->price != 0 && app()->getLocale() == 'en')
+                  echo '<p>RM ' .number_format($race->price, 2). '(Incl. postage fee)</p>';
+                if($race->price != 0 && app()->getLocale() == 'ms')
+                  echo '<p>RM ' .number_format($race->price, 2). '(Termasuk pengiriman)</p>';
+                if($race->price != 0 && app()->getLocale() == 'zh')
+                  echo '<p>RM ' .number_format($race->price, 2). '(包邮)</p>'; ?>
 
           <h6>Registration Deadline</h6>
 
@@ -60,7 +71,7 @@
                 echo '<p>' .$formatdeadF. ' GMT +08  or while slots last</p>' ?>
 
           <h6>Category</h6>
-          <p></p>
+          <p>{{ $race->category }}</p>
 
           <h6>Cut Off Time</h6>
           <p>No cut off time</p>
@@ -171,12 +182,25 @@
 
       <div class="col-md-4">
         <div class="register-box">
-          <h3>RM {{ number_format($race->price, 2) }}</h3>
-          <button type="button" class="race-register-btn"><a href="#">Register</a></button>
+          <?php if($race->price == 0 && app()->getLocale() == 'en')
+                  echo '<h3>Free</h3>';
+                if($race->price == 0 && app()->getLocale() == 'ms')
+                  echo '<h3>Percuma</h3>';
+                if($race->price == 0 && app()->getLocale() == 'zh')
+                  echo '<h3>免费</h3>';
+                if($race->price != 0 && app()->getLocale() == 'en')
+                  echo '<h3>RM ' .number_format($race->price, 2). '/h3>';
+                if($race->price != 0 && app()->getLocale() == 'ms')
+                  echo '<h3>RM ' .number_format($race->price, 2). '</h3>';
+                if($race->price != 0 && app()->getLocale() == 'zh')
+                  echo '<h3>RM ' .number_format($race->price, 2). '</h3>'; ?>
 
-          <h6>Finisher’s Award</h6>
-          <p><img src="{{asset('img/register-1.png')}}">&ensp;Finisher's Medal</p>
-          <p><img src="{{asset('img/register-2.png')}}">&ensp;Finisher's Certificate</p>
+          <button type="button" class="race-register-btn"><a href="#">{{__("Register")}}</a></button>
+
+          <?php if($race->price != 0)
+                  echo '<h6>Finisher’s Award</h6>' .
+                        '<p><img src="' .asset('img/register-1.png'). '">&ensp;Finisher\'s Medal</p>' .
+                        '<p><img src="' .asset('img/register-2.png'). '">&ensp;Finisher\'s Certificate</p>'; ?>
         </div>
       </div>
     </div>

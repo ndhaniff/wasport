@@ -29,6 +29,8 @@ export default class EditRaceForm extends Component {
             title_ms : window.race.title_ms,
             title_zh : window.race.title_zh,
             price : window.race.price,
+            category : window.race.category,
+            engrave : window.race.engrave,
             RaceDateFrom: new Date(window.race.date_from),
             RaceDateTo:new Date(window.race.dead_to),
             RaceDeadlineFrom:new Date(window.race.dead_from),
@@ -69,12 +71,13 @@ export default class EditRaceForm extends Component {
         this.handleRaceDatetimeTo = this.handleRaceDatetimeTo.bind(this)
         this.handleRaceDeadlineFrom = this.handleRaceDeadlineFrom.bind(this)
         this.handleRaceDeadlineTo = this.handleRaceDeadlineTo.bind(this)
+        this.handleEngraveChange = this.handleEngraveChange.bind(this)
     }
 
     handleSubmit(e){
         e.preventDefault()
 
-        let {about_en,about_ms,about_zh,awards_en,awards_ms,awards_zh,medals_en,medals_ms,medals_zh,title_en,title_ms,title_zh,price,RaceDateFrom,RaceDateTo,RaceDeadlineFrom,RaceDeadlineTo,headerImg,id} = this.state
+        let {about_en,about_ms,about_zh,awards_en,awards_ms,awards_zh,medals_en,medals_ms,medals_zh,title_en,title_ms,title_zh,price,category,engrave,RaceDateFrom,RaceDateTo,RaceDeadlineFrom,RaceDeadlineTo,headerImg,id} = this.state
 
         let data = new FormData;
 
@@ -90,7 +93,9 @@ export default class EditRaceForm extends Component {
         data.append('title_en', title_en)
         data.append('title_ms', title_ms)
         data.append('title_zh', title_zh)
-        data.append('price_en', price_en)
+        data.append('price', price)
+        data.append('category', category)
+        data.append('engrave', engrave)
         data.append('RaceDateFrom', RaceDateFrom)
         data.append('RaceDateTo', RaceDateTo)
         data.append('RaceDeadlineFrom', RaceDeadlineFrom)
@@ -166,6 +171,10 @@ export default class EditRaceForm extends Component {
         this.setState({
             RaceDeadlineTo: date.format("YYYY-MM-DD HH:mm:ss a")
         })
+    }
+
+    handleEngraveChange(event) {
+      this.setState({engrave: event.target.value});
     }
 
     onDrop(acceptedFiles, rejectedFiles) {
@@ -278,10 +287,32 @@ export default class EditRaceForm extends Component {
                                          </div>
                                         </div>
                                     </div>
-                                    <div className="col-sm-4">
+                                    </div>
+                                    <div className="form-row">
+                                      <div className="col-sm-3">
+                                        <div className="form-group">
+                                            <label>Category (Seperate with ',')</label>
+                                            <input onChange={this.handleInputChange} name="category" className="form-control" type="text" />
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div className="form-row">
+                                    <div className="col-sm-3">
                                         <div className="form-group">
                                             <label>Price</label>
-                                            <input onChange={this.handleInputChange} name="price" className="form-control" type="text" />
+                                            <input onChange={this.handleInputChange} value={this.state.price} name="price" className="form-control" type="text" />
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <div className="form-row">
+                                    <div className="col-sm-2">
+                                        <div className="form-group">
+                                        <label>Engrave</label>
+                                        <select value={this.state.engrave} onChange={this.handleEngraveChange} style={{'display': 'block'}}>
+                                          <option disabled value=""> -- select an option -- </option>
+                                          <option value="no">No</option>
+                                          <option value="yes">Yes</option>
+                                        </select>
                                         </div>
                                     </div>
                                     </div>
