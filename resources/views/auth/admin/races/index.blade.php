@@ -24,14 +24,14 @@ Admin | Races
     @foreach($races as $race)
     <tr>
       <th scope="row">{{$race->id}}</th>
-      <td>{{$race->title}}</td>
+      <td>{{$race->title_en}}</td>
       <td>{{$race->date_from}}</td>
       <td>{{$race->date_to}}</td>
       <td>
       <div class="btn-group " role="group" aria-label="Basic example">
         <a href="{{route('admin.races.edit',['id'=>$race->id])}}"><button type="button" class="btn btn-info"><i class="fa fa-pencil"></i></button></a>
         <form method="POST" action="{{route('admin.races.destroy',['id' => $race->id ])}}">
-          @method('DELETE')  
+          @method('DELETE')
           @csrf
           <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
         </form>

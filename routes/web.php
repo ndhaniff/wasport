@@ -46,6 +46,14 @@ Route::group(['prefix' =>'admin'],function()
   Route::get('/races/edit/{id}','Admin\AdminRacesController@editForm')->name('admin.races.edit');
   Route::post('/races/edit','Admin\AdminRacesController@edit')->name('admin.races.edit.submit');
   Route::post('/races/edit/{id}','Admin\AdminRacesController@duplicate')->name('admin.races.edit.dupe');
+  //Addons
+  Route::get('/addons','Admin\AdminAddonsController@index')->name('admin.addons');
+  Route::delete('/addons/{id}','Admin\AdminAddonsController@destroy')->name('admin.addons.destroy');
+  Route::get('/addons/create','Admin\AdminAddonsController@create')->name('admin.addons.create');
+  Route::post('/addons/create','Admin\AdminAddonsController@store')->name('admin.addons.submit');
+  Route::get('/addons/edit/{id}','Admin\AdminAddonsController@editForm')->name('admin.addons.edit');
+  Route::post('/addons/edit','Admin\AdminAddonsController@edit')->name('admin.addons.edit.submit');
+  Route::post('/addons/edit/{id}','Admin\AdminAddonsController@duplicate')->name('admin.addons.edit.dupe');
 });
 
 //User profile

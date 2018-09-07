@@ -230,7 +230,7 @@ export default class EditRaceForm extends Component {
                 <div className="row">
                     <div className="col-md-12">
                         <div className="card">
-                            <div className="card-header">Create Race</div>
+                            <div className="card-header">Edit Race</div>
 
                             <div className="card-body">
                                 <form onSubmit={this.handleSubmit}>
