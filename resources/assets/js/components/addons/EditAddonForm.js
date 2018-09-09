@@ -24,7 +24,7 @@ export default class EditAddonForm extends Component {
             desc_zh : Parser(window.addons.desc_zh),
             addprice : window.addons.addprice,
             type : window.addons.type,
-            race_id : window.addons.race_id,
+            races_id : window.addons.races_id,
         }
 
         /* Quill module */
@@ -44,15 +44,25 @@ export default class EditAddonForm extends Component {
         this.handleDescEnChange = this.handleDescEnChange.bind(this)
         this.handleDescMsChange = this.handleDescMsChange.bind(this)
         this.handleDescZhChange = this.handleDescZhChange.bind(this)
-        this.removePreview = this.removePreview.bind(this)
         this.handleInputChange = this.handleInputChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleRaceChange = this.handleRaceChange.bind(this)
+    }
+
+    createSelectItems() {
+      let items = [];
+
+      for(var i=0; i<races.length; i++) {
+        items.push(<option key={races[i]['rid']} value={races[i]['rid']}>{races[i]['title']}</option>);
+      }
+
+      return items;
     }
 
     handleSubmit(e){
         e.preventDefault()
 
-        let {add_en,add_ms,add_zh,desc_en,desc_ms,desc_zh,addprice,type,race_id,id} = this.state
+        let {add_en,add_ms,add_zh,desc_en,desc_ms,desc_zh,addprice,type,races_id,id} = this.state
 
         let data = new FormData;
 
@@ -64,7 +74,7 @@ export default class EditAddonForm extends Component {
         data.append('desc_zh', desc_zh)
         data.append('addprice', addprice)
         data.append('type', type)
-        data.append('race_id', race_id)
+        data.append('races_id', races_id)
         data.append('id', id)
 
         axios.post('/admin/addon/edit',data).then((res) => {
@@ -91,6 +101,10 @@ export default class EditAddonForm extends Component {
         this.setState({
             [name] : value
         })
+    }
+
+    handleRaceChange(event) {
+      this.setState({races_id: event.target.value});
     }
 
     render() {
@@ -128,7 +142,7 @@ export default class EditAddonForm extends Component {
                                       <div className="col-sm-3">
                                         <div className="form-group">
                                             <label>Type (Seperate with ',')</label>
-                                            <input onChange={this.handleInputChange} name="type" className="form-control" type="text" />
+                                            <input onChange={this.handleInputChange} value={this.state.type} name="type" className="form-control" type="text" />
                                         </div>
                                       </div>
                                     </div>
@@ -150,7 +164,10 @@ export default class EditAddonForm extends Component {
                                     <div className="col-sm-3">
                                         <div className="form-group">
                                             <label>Race Title</label>
-                                            <input onChange={this.handleInputChange} value={this.state.race_id} name="race_id" className="form-control" type="text" />
+                                            <select value={this.state.races_id} onChange={this.handleRaceChange} style={{'display': 'block'}}>
+                                              <option disabled selected value=""> -- select an option -- </option>
+                                                {this.createSelectItems()}
+                                            </select>
                                         </div>
                                     </div>
                                     </div>
@@ -186,6 +203,6 @@ export default class EditAddonForm extends Component {
     }
 }
 
-if(document.getElementById('editaddonsform')){
-    ReactDOM.render(<EditAddonForm />, document.getElementById('editaddonsform'))
+if(document.getElementById('editaddonform')){
+    ReactDOM.render(<EditAddonForm />, document.getElementById('editaddonform'))
 }

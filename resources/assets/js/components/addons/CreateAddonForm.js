@@ -10,7 +10,7 @@ const TabPane = Tabs.TabPane;
 
 Quill.register("modules/imageResize", ImageResize);
 
-export default class CreateAddonsForm extends Component {
+export default class CreateAddonForm extends Component {
 
     constructor(props){
         super(props)
@@ -23,7 +23,7 @@ export default class CreateAddonsForm extends Component {
             desc_zh : '',
             addprice : '',
             type : '',
-            race_id: '',
+            races_id: '',
         }
 
         /* Quill module */
@@ -45,12 +45,15 @@ export default class CreateAddonsForm extends Component {
         this.handleDescZhChange = this.handleDescZhChange.bind(this)
         this.handleInputChange = this.handleInputChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleRaceChange = this.handleRaceChange.bind(this)
     }
 
     createSelectItems() {
       let items = [];
 
-      items.push(<option value={races.id}>{races.title_en}</option>);
+      for(var i=0; i<races.length; i++) {
+        items.push(<option key={races[i]['rid']} value={races[i]['rid']}>{races[i]['title']}</option>);
+      }
 
       return items;
     }
@@ -58,7 +61,7 @@ export default class CreateAddonsForm extends Component {
     handleSubmit(e){
         e.preventDefault()
 
-        let {add_en,add_ms,add_zh,desc_en,desc_ms,desc_zh,addprice,type,race_id,id} = this.state
+        let {add_en,add_ms,add_zh,desc_en,desc_ms,desc_zh,addprice,type,races_id,id} = this.state
 
         let data = new FormData;
 
@@ -70,7 +73,7 @@ export default class CreateAddonsForm extends Component {
         data.append('desc_zh', desc_zh)
         data.append('addprice', addprice)
         data.append('type', type)
-        data.append('race_id', race_id)
+        data.append('races_id', races_id)
         data.append('id', id)
 
         axios.post('/admin/addons/create',data).then((res) => {
@@ -97,6 +100,10 @@ export default class CreateAddonsForm extends Component {
         this.setState({
             [name] : value
         })
+    }
+
+    handleRaceChange(event) {
+      this.setState({races_id: event.target.value});
     }
 
     render() {
@@ -156,7 +163,7 @@ export default class CreateAddonsForm extends Component {
                                         <div className="col-sm-3">
                                           <div className="form-group">
                                             <label>Race Title</label>
-                                            <select style={{'display': 'block'}}>
+                                            <select value={this.state.races_id} onChange={this.handleRaceChange} style={{'display': 'block'}}>
                                               <option disabled selected value=""> -- select an option -- </option>
                                                 {this.createSelectItems()}
                                             </select>
@@ -195,6 +202,6 @@ export default class CreateAddonsForm extends Component {
     }
 }
 
-if(document.getElementById('createaddonsform')){
-    ReactDOM.render(<CreateAddonsForm />, document.getElementById('createaddonsform'))
+if(document.getElementById('createaddonform')){
+    ReactDOM.render(<CreateAddonForm />, document.getElementById('createaddonform'))
 }

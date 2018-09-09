@@ -16,6 +16,6 @@ require('./bootstrap');
 //require('./components/Example');
 require('./components/races/CreateRaceForm');
 require('./components/races/EditRaceForm');
-require('./components/addons/CreateAddonsForm');
-require('./components/addons/EditAddonsForm');
+require('./components/addons/CreateAddonForm');
+require('./components/addons/EditAddonForm');
 require('./components/user/UserDashboard');

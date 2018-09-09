@@ -30,9 +30,7 @@ class AdminAddonsController extends Controller
     {
       $addons = DB::table('addons')->join('races', 'races.id', '=', 'races_id')->get();
 
-      $races = DB::table('races')->get();
-
-      return view('auth.admin.addons.index', ['addons' => $addons, 'races' => $races]);
+      return view('auth.admin.addons.index', ['addons' => $addons]);
     }
 
     /**
@@ -71,7 +69,7 @@ class AdminAddonsController extends Controller
             'desc_zh' => $request->get('desc_zh'),
             'addprice' => $request->get('addprice'),
             'type' => $request->get('type'),
-            'race_id' => $request->get('race_id'),
+            'races_id' => $request->get('races_id'),
         ];
 
         $addons = new Addon();
@@ -83,7 +81,7 @@ class AdminAddonsController extends Controller
         $addons->desc_zh = $formdata['desc_zh'];
         $addons->addprice = $formdata['addprice'];
         $addons->type = $formdata['type'];
-        $addons->race_id = $formdata['race_id'];
+        $addons->races_id = $formdata['races_id'];
 
         $addons->save();
 
@@ -92,8 +90,9 @@ class AdminAddonsController extends Controller
 
     public function editForm($id){
         $addons = DB::table('addons')->where('id','=', $id)->first();
+        $races = DB::table('races')->get();
 
-        return view('auth.admin.addons.edit', ['addons' => $addons]);
+        return view('auth.admin.addons.edit', ['addons' => $addons, 'races' => $races]);
     }
 
     /**
@@ -104,8 +103,6 @@ class AdminAddonsController extends Controller
      */
     public function edit(Request $request)
     {
-        $addons = DB::table('addons')->join('races', 'races.id', '=', 'races_id')->get();
-
         //validate request server side
         $request->validate([
           'add_en' => 'required|string',
@@ -122,7 +119,7 @@ class AdminAddonsController extends Controller
           'desc_zh' => $request->get('desc_zh'),
           'addprice' => $request->get('addprice'),
           'type' => $request->get('type'),
-          'race_id' => $request->get('race_id'),
+          'races_id' => $request->get('races_id'),
         ];
 
         $addons = Addon::find($formdata['id']);
@@ -134,7 +131,7 @@ class AdminAddonsController extends Controller
         $addons->desc_zh = $formdata['desc_zh'];
         $addons->addprice = $formdata['addprice'];
         $addons->type = $formdata['type'];
-        $addons->race_id = $formdata['race_id'];
+        $addons->races_id = $formdata['races_id'];
 
         $addons->save();
 
@@ -151,7 +148,7 @@ class AdminAddonsController extends Controller
     {
         $addons = Addon::find($id);
         if($addon->count()  > 0){
-            $addons = Addons::find($id);
+            $addons = Addon::find($id);
             $newAddons = $addons->replicate();
             $newAddons->save();
             return redirect()->back();

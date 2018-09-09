@@ -103,7 +103,7 @@ export default class CreateRaceForm extends Component {
         axios.post('/admin/races/create',data).then((res) => {
             if(res.data.success){
                 location.href = location.origin + '/admin/races/edit/'+res.data.id
-                alert('run')
+                alert('Race added')
             } else {
                 alert('something wrong')
             }

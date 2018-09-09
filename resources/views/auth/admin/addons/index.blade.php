@@ -47,13 +47,4 @@ Admin | Addons
 </table>
 </div>
 
-<?php foreach($races as $race) {
-        echo '<p>' .$race->id.'</p><p>' .$race->title_en. '</p>';
-      } ?>
-
-      @foreach($races as $race)
-        <p>{{ $race->id}}</p>
-        <p>{{ $race->title_en}}</p>
-      @endforeach
-
 @endsection
