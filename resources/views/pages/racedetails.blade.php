@@ -167,6 +167,38 @@
 
           <hr>
 
+          <?php
+            if($addons->count() != 0) {
+              echo '<div class="addons-block">';
+              echo '<h6>Add-on</h6>';
+
+              $i=0;
+
+              foreach($addons as $addon) {
+                if(app()->getLocale() == 'en') {
+                  echo '<b>';
+                  echo $i+1 .'.' .$addon->add_en. ' - RM' .number_format($addon->addprice, 2);
+                  echo '</b>';
+                  echo $addon->desc_en;
+                }
+                if(app()->getLocale() == 'ms') {
+                  echo '<b>';
+                  echo $i+1 .'.' .$addon->add_ms. ' - RM' .number_format($addon->addprice, 2);
+                  echo '</b>';
+                  echo $addon->desc_ms;
+                }
+                if(app()->getLocale() == 'zh') {
+                  echo '<b>';
+                  echo $i+1 .'.' .$addon->add_zh. ' - RM' .number_format($addon->addprice, 2);
+                  echo '</b>';
+                  echo $addon->desc_zh;
+                }
+              }
+              echo '</div>';
+              echo '<hr>';
+            }
+            ?>
+
           <div class="awards-block">
             <h6>Awards</h6>
             <?php if(app()->getLocale() == 'en')
@@ -189,7 +221,7 @@
                 if($race->price == 0 && app()->getLocale() == 'zh')
                   echo '<h3>免费</h3>';
                 if($race->price != 0 && app()->getLocale() == 'en')
-                  echo '<h3>RM ' .number_format($race->price, 2). '/h3>';
+                  echo '<h3>RM ' .number_format($race->price, 2). '</h3>';
                 if($race->price != 0 && app()->getLocale() == 'ms')
                   echo '<h3>RM ' .number_format($race->price, 2). '</h3>';
                 if($race->price != 0 && app()->getLocale() == 'zh')

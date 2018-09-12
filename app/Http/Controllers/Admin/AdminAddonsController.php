@@ -28,9 +28,12 @@ class AdminAddonsController extends Controller
      */
     public function index()
     {
-      $addons = DB::table('addons')->join('races', 'races.id', '=', 'races_id')->get();
+      //$addons = DB::table('addons')->join('races', 'races.id', '=', 'races_id')->get();
 
-      return view('auth.admin.addons.index', ['addons' => $addons]);
+      $addons = DB::table('addons')->get();
+      $races = DB::table('races')->get();
+
+      return view('auth.admin.addons.index', ['addons' => $addons, 'races' => $races]);
     }
 
     /**
@@ -103,14 +106,14 @@ class AdminAddonsController extends Controller
      */
     public function edit(Request $request)
     {
-        //validate request server side
-        $request->validate([
+      //validate request server side
+      $request->validate([
           'add_en' => 'required|string',
           'desc_en' => 'required|string',
-          'price' => 'required|string',
-        ]);
+          'addprice' => 'required|string',
+      ]);
 
-        $formdata = [
+      $formdata = [
           'add_en' => $request->get('add_en'),
           'add_ms' => $request->get('add_ms'),
           'add_zh' => $request->get('add_zh'),
@@ -120,22 +123,23 @@ class AdminAddonsController extends Controller
           'addprice' => $request->get('addprice'),
           'type' => $request->get('type'),
           'races_id' => $request->get('races_id'),
-        ];
+          'id' => $request->get('id')
+      ];
 
-        $addons = Addon::find($formdata['id']);
-        $addons->add_en = $formdata['add_en'];
-        $addons->add_ms = $formdata['add_ms'];
-        $addons->add_zh = $formdata['add_zh'];
-        $addons->desc_en = $formdata['desc_en'];
-        $addons->desc_ms = $formdata['desc_ms'];
-        $addons->desc_zh = $formdata['desc_zh'];
-        $addons->addprice = $formdata['addprice'];
-        $addons->type = $formdata['type'];
-        $addons->races_id = $formdata['races_id'];
+      $addons = new Addon();
+      $addons->add_en = $formdata['add_en'];
+      $addons->add_ms = $formdata['add_ms'];
+      $addons->add_zh = $formdata['add_zh'];
+      $addons->desc_en = $formdata['desc_en'];
+      $addons->desc_ms = $formdata['desc_ms'];
+      $addons->desc_zh = $formdata['desc_zh'];
+      $addons->addprice = $formdata['addprice'];
+      $addons->type = $formdata['type'];
+      $addons->races_id = $formdata['races_id'];
 
-        $addons->save();
+      $addons->save();
 
-        return response()->json(['success' => true, 'id' => $addons->id ], 200 );
+      return response()->json(['success' => true, 'id' => $addons->id ], 200 );
     }
 
     /**
@@ -147,7 +151,7 @@ class AdminAddonsController extends Controller
     public function duplicate($id)
     {
         $addons = Addon::find($id);
-        if($addon->count()  > 0){
+        if($addons->count()  > 0){
             $addons = Addon::find($id);
             $newAddons = $addons->replicate();
             $newAddons->save();
@@ -165,7 +169,6 @@ class AdminAddonsController extends Controller
       */
     public function destroy($id)
     {
-
         $addons = Addon::find($id);
         if($addons->count()  > 0){
             $addons->delete();

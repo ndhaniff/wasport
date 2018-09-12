@@ -26,7 +26,10 @@ Admin | Addons
       <th scope="row">{{$i++ .'.'}}</th>
       <td>{{$addon->add_en}}</td>
       <td>{{$addon->type}}</td>
-      <td>{{$addon->title_en}}</td>
+      <td><?php foreach($races as $race) {
+          if($addon->races_id == $race->id)
+            echo $race->title_en;
+        } ?></td>
       <td>
       <div class="btn-group " role="group" aria-label="Basic example">
         <a href="{{route('admin.addons.edit',['id'=>$addon->id])}}"><button type="button" class="btn btn-info"><i class="fa fa-pencil"></i></button></a>

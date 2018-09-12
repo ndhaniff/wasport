@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Pages;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Race;
+use App\Model\Addon;
 use DB;
 
 class RacesController extends Controller
@@ -32,6 +33,10 @@ class RacesController extends Controller
         ->where('id', '=', $id)
         ->first();
 
-      return view('pages.racedetails', ['race' => $race]);
+      $addons = DB::table('addons')
+        ->where('id', '=', $id)
+        ->get();
+
+      return view('pages.racedetails', ['race' => $race, 'addons' => $addons]);
     }
 }

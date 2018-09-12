@@ -74,7 +74,6 @@ export default class CreateAddonForm extends Component {
         data.append('addprice', addprice)
         data.append('type', type)
         data.append('races_id', races_id)
-        data.append('id', id)
 
         axios.post('/admin/addons/create',data).then((res) => {
             if(res.data.success){

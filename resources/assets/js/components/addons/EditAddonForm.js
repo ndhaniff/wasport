@@ -25,6 +25,7 @@ export default class EditAddonForm extends Component {
             addprice : window.addons.addprice,
             type : window.addons.type,
             races_id : window.addons.races_id,
+            id : window.addons.id,
         }
 
         /* Quill module */
@@ -77,7 +78,7 @@ export default class EditAddonForm extends Component {
         data.append('races_id', races_id)
         data.append('id', id)
 
-        axios.post('/admin/addon/edit',data).then((res) => {
+        axios.post('/admin/addons/edit',data).then((res) => {
             if(res.data.success){
                 location.href = location.origin + '/admin/addons/edit/'+res.data.id
                 alert('Addon updated')
@@ -124,15 +125,15 @@ export default class EditAddonForm extends Component {
                                       <Tabs defaultActiveKey="1" type="card">
                                           <TabPane tab="En" key="1">
                                               <label htmlFor="addtitle_en">Addon Title</label>
-                                              <input onChange={this.handleInputChange} name="title_en" value={this.state.add_en} className="form-control" type="text" id="addtitle_en" required/>
+                                              <input onChange={this.handleInputChange} name="add_en" value={this.state.add_en} className="form-control" type="text" id="addtitle_en" required/>
                                           </TabPane>
                                           <TabPane tab="Ms" key="2">
                                               <label htmlFor="addtitle_ms">Addon Title</label>
-                                              <input onChange={this.handleInputChange} name="title_ms" value={this.state.add_ms} className="form-control" type="text" id="addtitle_ms"/>
+                                              <input onChange={this.handleInputChange} name="add_ms" value={this.state.add_ms} className="form-control" type="text" id="addtitle_ms"/>
                                           </TabPane>
                                           <TabPane tab="Zh" key="3">
                                               <label htmlFor="addtitle_zh">Addon Title</label>
-                                              <input onChange={this.handleInputChange} name="title_zh" value={this.state.add_zh} className="form-control" type="text" id="addtitle_zh"/>
+                                              <input onChange={this.handleInputChange} name="add_zh" value={this.state.add_zh} className="form-control" type="text" id="addtitle_zh"/>
                                           </TabPane>
                                         </Tabs>
                                     </div>
