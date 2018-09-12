@@ -6,7 +6,7 @@
   <div class="container">
 
     <center>
-    <section>
+    <section class="mb-5">
       <img src=" <?php echo asset('img/races/' . $race->header) ?>" alt="{{ $race->title_en }}">
 
       <ul id="countdown-timer">
@@ -227,7 +227,14 @@
                 if($race->price != 0 && app()->getLocale() == 'zh')
                   echo '<h3>RM ' .number_format($race->price, 2). '</h3>'; ?>
 
-          <button type="button" class="race-register-btn"><a href="#">{{__("Register")}}</a></button>
+
+        <?php
+            date_default_timezone_set("Asia/Kuala_Lumpur");
+
+            if(date("Y-m-d H:i a") < $race->dead_from)
+             echo '<button type="button" class="race-register-btn"><a href="#">';
+             echo __("Register");
+             echo '</a></button>'; ?>
 
           <?php if($race->price != 0)
                   echo '<h6>Finisher’s Award</h6>' .
