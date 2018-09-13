@@ -34,7 +34,7 @@ class EditProfileTabs extends Component{
         </TabPane>
         <TabPane tab="Address" key="2">Content of Tab Pane 2</TabPane>
         <TabPane tab="Password" key="3">Content of Tab Pane 3</TabPane>
-        <TabPane tab="My Apps" key="4">
+        <TabPane tab="Stava" key="4">
           <MyApp token={this.state.token} stravaDisconnect={this.stravaDisconnect}/>
         </TabPane>
       </Tabs>

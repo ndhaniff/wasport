@@ -19,3 +19,4 @@ require('./components/races/EditRaceForm');
 require('./components/addons/CreateAddonForm');
 require('./components/addons/EditAddonForm');
 require('./components/user/UserDashboard');
+require('./components/user/UserProfile');

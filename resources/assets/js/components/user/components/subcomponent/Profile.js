@@ -2,6 +2,7 @@ import React from 'react';
 import { Form, Input, DatePicker, Select, Button, Upload, Avatar } from 'antd';
 import TextArea from 'antd/lib/input/TextArea';
 import moment from 'moment';
+import {NotificationContainer, NotificationManager} from 'react-notifications';
 
 const FormItem = Form.Item;
 const Option = Select.Option;
@@ -9,13 +10,14 @@ const Option = Select.Option;
 class Profile extends React.Component{
   state = {
     confirmDirty: false,
+    id: window.user.id,
     email: window.email,
     name: window.name,
     firstname : window.firstname,
     lastname : window.lastname,
     motto : window.motto,
     gender : window.gender,
-    phone : window.phone,
+    phone : window.phone.substring(2),
     birthday : window.birthday,
     loading : false
   }
@@ -25,6 +27,7 @@ class Profile extends React.Component{
     this.props.form.validateFieldsAndScroll((err, data) => {
       if (!err) {
        let profile = {
+        id : window.user.id,
         name : data.displayname,
         firstname : data.firstname,
         lastname : data.lastname,
@@ -34,9 +37,13 @@ class Profile extends React.Component{
         birthday : data.birthday.format("MM-DD-YYYY")
        }
 
-       axios.post('/user/updateProfile',profile)
-       .then((res) => {
-         console.log(res)
+       axios.post('/user/updateProfile',profile).then((res) => {
+         if(res.data.success){
+             location.href = location.origin + '/dashboard'
+             alert('Profile updated')
+         } else {
+             alert('something wrong')
+         }
        })
       }
     });
@@ -203,7 +210,7 @@ class Profile extends React.Component{
               }],
               initialValue : this.state.email
             })(
-              
+
               <Input disabled={true}/>
             )}
           </FormItem>
@@ -222,7 +229,7 @@ class Profile extends React.Component{
             {getFieldDecorator('phone', {
               rules: [
                 { required: true, message: 'Please input your phone number!' },
-                { min: 10, message: 'Phone number must be at least 11 including prefix' },
+                { min: 9, message: 'Phone number must be at least 11 including prefix' },
                 { max: 11, message: 'This is not valid phone number' },
               ],
               initialValue: this.state.phone != null ? this.state.phone : ""
@@ -243,8 +250,8 @@ class Profile extends React.Component{
               placeholder="Select your gender"
               onChange={this.handleSelectChange}
             >
-              <Option value="male">male</Option>
-              <Option value="female">female</Option>
+              <Option value="male">Male</Option>
+              <Option value="female">Female</Option>
             </Select>
           )}
         </FormItem>
@@ -261,7 +268,7 @@ class Profile extends React.Component{
           )}
         </FormItem>
         <FormItem {...formItemLayoutWithOutLabel}>
-          <Button type="primary" htmlType="submit">Update</Button>
+          <Button type="primary" htmlType="submit">Update Profile</Button>
         </FormItem>
       </Form>
     )

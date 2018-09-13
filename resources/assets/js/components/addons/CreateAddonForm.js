@@ -164,7 +164,7 @@ export default class CreateAddonForm extends Component {
                                             <label>Race Title</label>
                                             <select value={this.state.races_id} onChange={this.handleRaceChange} style={{'display': 'block'}}>
                                               <option disabled selected value=""> -- select an option -- </option>
-                                                {this.createSelectItems()}
+                                              {this.createSelectItems()}
                                             </select>
                                           </div>
                                         </div>

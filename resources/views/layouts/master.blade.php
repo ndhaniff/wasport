@@ -96,6 +96,9 @@
                     {{ Auth::user()->name }} <span class="caret"></span>
                 </a>
                 <div class="w-50 dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/dashboard">
+                      {{ __('Profile') }}</a>
+
                     <a class="dropdown-item" href="{{ route('logout') }}"
                         onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">

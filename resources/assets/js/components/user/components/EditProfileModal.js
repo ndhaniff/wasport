@@ -1,4 +1,3 @@
-
 import React, {Component} from 'react';
 import {Button, Modal } from 'antd'
 import EditProfileTabs from './EditProfileTabs'
@@ -29,16 +28,16 @@ class EditProfileModal extends Component {
 
   render(){
     return (
-      <div>
+      <div className="user-edit">
         <Button onClick={this.showModal}>Edit Profile</Button>
+
         <Modal
         visible={this.state.visible}
         onOk={this.handleOk}
         onCancel={this.handleCancel}
-        footer={null}
-      >
+        footer={null} >
         <EditProfileTabs/>
-      </Modal>
+        </Modal>
       </div>
     )
   }

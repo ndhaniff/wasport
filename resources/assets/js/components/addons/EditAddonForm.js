@@ -165,9 +165,8 @@ export default class EditAddonForm extends Component {
                                     <div className="col-sm-3">
                                         <div className="form-group">
                                             <label>Race Title</label>
-                                            <select value={this.state.races_id} onChange={this.handleRaceChange} style={{'display': 'block'}}>
-                                              <option disabled selected value=""> -- select an option -- </option>
-                                                {this.createSelectItems()}
+                                            <select value={this.state.races_id} onChange={this.handleRaceChange} placeholder="Select race" style={{'display': 'block'}}>
+                                              {this.createSelectItems()}
                                             </select>
                                         </div>
                                     </div>

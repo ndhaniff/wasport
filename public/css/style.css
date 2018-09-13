@@ -1,4 +1,3 @@
-
 html { overflow-x: hidden; }
 
 body {
@@ -356,7 +355,7 @@ h2 { font-family: 'SourceSansPro-Semibold'; }
 }
 
 /*
-Race list
+RACE LIST
 */
 .raceslisting a:hover { text-decoration: none; }
 
@@ -545,6 +544,38 @@ HOW IT WORKS
 
 #howitworks h3 { font-family: 'SourceSansPro-Semibold'; }
 
+/*
+USER DASHBOARD
+*/
+.user-profile-block {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.userprofile-name {
+  font-family: 'SourceSansPro-Semibold';
+  font-size: 25px;
+}
+
+.userprofile-motto,
+.userprofile-id { font-size: 15px; }
+
+.userprofile-motto { color: #df2e3c; }
+
+.userprofile-id { color: #000; }
+
+.user-edit { margin-top: 10px; }
+
+svg:not(:root) { display: none; }
+
+.anticon-check-circle:before,
+.anticon-close:before, .anticon-cross:before,
+.ant-calendar-picker-icon:after,
+.anticon-close-circle:before, .anticon-cross-circle:before { display: none; }
+
+/*
+RESPONSIVE
+*/
 @media screen and (max-width: 1024px) {
   #navbar { display: none !important;}
 
@@ -573,7 +604,7 @@ HOW IT WORKS
     margin: 6px 0;
   }
 
-  .owl-theme .owl-controls { margin-top: -20px; }
+  .owl-theme .owl-controls { margin-top: -27px; }
 
   #homebanner { height: 22vh; }
 
@@ -611,6 +642,11 @@ HOW IT WORKS
   #logo img { left: 0; }
 
   #homebanner { height: 21vh; }
+
+  .owl-theme .owl-controls .owl-page span {
+    width: 45px;
+    height: 3px;
+  }
 
   .home-join-desktop { display: none; }
 
@@ -666,13 +702,15 @@ HOW IT WORKS
     padding: 5px 20px;
   }
 
+  .howitworks h2 { padding-top: 25px; }
+
   .p-5 { padding: 0 !important; }
 }
 
 @media screen and (max-width: 375px) {
   #homebanner { height: 13vh; }
 
-  #home-signup-section { height: 23vh; }
+  #home-signup-section { height: 20%; }
 }
 
 @media screen and (max-width: 320px) {

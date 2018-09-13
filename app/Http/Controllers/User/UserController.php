@@ -5,9 +5,11 @@ namespace App\Http\Controllers\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
+use Laracasts\Flash\Flash;
 use App\Http\Controllers\API\StravaController;
-
+use App\Model\User;
 use Auth;
+use DB;
 
 class UserController extends Controller
 {
@@ -23,7 +25,7 @@ class UserController extends Controller
       return view('auth.login');
     }
 
-    public function dashboard(request $request){
+    public function dashboard(Request $request){
 
       $user = Auth::user();
       $strava = new StravaController();
@@ -43,15 +45,33 @@ class UserController extends Controller
     }
 
     public function updateProfile(Request $request){
-      $request->get('name');
-      $request->get('firstname');
-      $request->get('lastname');
-      $request->get('motto');
-      $request->get('gender');
-      $request->get('phone');
-      $request->get('birthday');
 
-      dd($request);
+      $id = $request->get('id');
+
+      $user = User::find($id);
+      $user->name = $request->get('name');
+      $user->firstname = $request->get('firstname');
+      $user->lastname = $request->get('lastname');
+      $user->motto = $request->get('motto');
+      $user->gender = $request->get('gender');
+      $user->phone = $request->get('phone');
+      $user->birthday = $request->get('birthday');
+
+      //handle profile img
+      if($request->hasFile('profileimg')){
+          $profileimg = $request->file('profileimg');
+          $filenameWithExt = $profile->getClientOriginalName();
+          $filename =  str_replace(' ', '_', pathinfo($filenameWithExt, PATHINFO_FILENAME ));
+          $ext = $profile->getClientOriginalExtension();
+          $filenameToStore = $filename."_".time().".".$ext;
+          $path = $profile->storeAs('public/uploaded/users', $filenameToStore);
+      }
+
+      $race->header = $filenameToStore;
+
+      $user->save();
+
+      return response()->json(['success' => true], 200 );
     }
 
     public function handleProfileImg(Request $request){

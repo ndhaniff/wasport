@@ -126,7 +126,8 @@ class AdminAddonsController extends Controller
           'id' => $request->get('id')
       ];
 
-      $addons = new Addon();
+
+      $addons = Addon::find($formdata['id']);
       $addons->add_en = $formdata['add_en'];
       $addons->add_ms = $formdata['add_ms'];
       $addons->add_zh = $formdata['add_zh'];

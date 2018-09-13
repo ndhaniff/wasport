@@ -95,7 +95,7 @@ class UserDashboard extends Component{
               <div className="col-sm-10">
                 <div>Stats</div>
                 <hr />
-                <Stats 
+                <Stats
                   distance={this.state.distance}
                   pace={this.state.pace}
                   noofruns={this.state.no_of_runs}
