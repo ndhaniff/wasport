@@ -238,7 +238,7 @@ export default class CreateRaceForm extends Component {
                                     <div className="form-group">
                                         <Tabs defaultActiveKey="1" type="card">
                                             <TabPane tab="En" key="1">
-                                                <label htmlFor="racetitle_en">Race Title</label>
+                                                <label htmlFor="racetitle_en">Race Title<span className="required-field">*</span></label>
                                                 <input onChange={this.handleInputChange} name="title_en" className="form-control" type="text" id="racetitle_en" required/>
                                             </TabPane>
                                             <TabPane tab="Ms" key="2">
@@ -254,7 +254,7 @@ export default class CreateRaceForm extends Component {
                                     <div className="form-row">
                                     <div className="col-sm-6">
                                         <div className="form-group">
-                                        <label htmlFor="price">Race Datetime</label>
+                                        <label htmlFor="price">Race Datetime<span className="required-field">*</span></label>
                                         <div className="form-row">
                                             <div className="col-sm-5">
                                             <Datetime isValidDate={ dateFrom } onChange={this.handleRaceDatetimeFrom}/>
@@ -272,7 +272,7 @@ export default class CreateRaceForm extends Component {
                                     </div>
                                     <div className="col-sm-6">
                                         <div className="form-group">
-                                        <label htmlFor="price">Registration Deadline</label>
+                                        <label htmlFor="price">Registration Deadline<span className="required-field">*</span></label>
                                          <div className="form-row">
                                             <div className="col-sm-5">
                                             <Datetime isValidDate={ deadFrom } onChange={this.handleRaceDeadlineFrom}/>
@@ -300,7 +300,7 @@ export default class CreateRaceForm extends Component {
                                     <div className="form-row">
                                       <div className="col-sm-3">
                                         <div className="form-group">
-                                            <label>Price</label>
+                                            <label>Price<span className="required-field">*</span></label>
                                             <input onChange={this.handleInputChange} name="price" className="form-control" type="text" />
                                         </div>
                                       </div>
@@ -320,7 +320,7 @@ export default class CreateRaceForm extends Component {
                                     <div className="form-group">
                                     <Tabs defaultActiveKey="1" type="card">
                                         <TabPane tab="En" key="1">
-                                            <label htmlFor="about">About</label>
+                                            <label htmlFor="about">About<span className="required-field">*</span></label>
                                             <ReactQuill style={{'minHeight':'500px'}} modules={this.modules} theme="snow"  value={this.state.about_en} onChange={this.handleAboutEnChange} />
                                             <input type="hidden" name="about_en" value={this.state.about_en}/>
                                         </TabPane>
@@ -340,7 +340,7 @@ export default class CreateRaceForm extends Component {
                                     <div className="form-group">
                                     <Tabs defaultActiveKey="1" type="card">
                                         <TabPane tab="En" key="1">
-                                            <label htmlFor="medals">Medals</label>
+                                            <label htmlFor="medals">Medals<span className="required-field">*</span></label>
                                             <ReactQuill style={{'minHeight':'500px'}} modules={this.modules} theme="snow"  value={this.state.medals_en} onChange={this.handleMedalsEnChange} />
                                             <input type="hidden" name="medals_en" value={this.state.medals_en}/>
                                         </TabPane>
@@ -360,7 +360,7 @@ export default class CreateRaceForm extends Component {
                                     <div className="form-group">
                                     <Tabs defaultActiveKey="1" type="card">
                                         <TabPane tab="En" key="1">
-                                            <label htmlFor="about">Awards</label>
+                                            <label htmlFor="about">Awards<span className="required-field">*</span></label>
                                             <ReactQuill style={{'minHeight':'500px'}} modules={this.modules} theme="snow"  value={this.state.awards_en} onChange={this.handleAwardsEnChange} />
                                             <input type="hidden" name="awards_en" value={this.state.awards_en}/>
                                         </TabPane>

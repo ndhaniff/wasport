@@ -105,7 +105,7 @@
         <a href="racedetails/{{ $new->id }}">
           <div class="race-box">
             <div class="race-img">
-              <img src=" <?php echo asset('img/races/' . $new->header) ?>" alt="{{ $new->title_en }}">
+              <img src=" <?php echo asset('storage/uploaded/races/' . $new->header) ?>" alt="{{ $new->title_en }}">
             </div>
 
             <div class="race-caption">
@@ -140,7 +140,7 @@
         <a href="racedetails/{{ $new->id }}">
           <div class="race-box">
             <div class="race-img">
-              <img src=" <?php echo asset('img/races/' . $old->header) ?>" alt="{{ $old->title_en }}">
+              <img src=" <?php echo asset('storage/uploaded/races/' . $old->header) ?>" alt="{{ $old->title_en }}">
             </div>
 
             <div class="race-caption">

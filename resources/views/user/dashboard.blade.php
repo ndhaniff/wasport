@@ -6,6 +6,15 @@ Dashboard | WaSportsrun
 
 @section('content')
 
+<style>
+svg:not(:root) { display: none; }
+
+.anticon-check-circle:before,
+.anticon-close:before, .anticon-cross:before,
+.ant-calendar-picker-icon:after,
+.anticon-close-circle:before, .anticon-cross-circle:before { display: none; }
+</style>
+
 <script>
 var email = "{{$user->email}}"
 var name = "{{$user->name}}"

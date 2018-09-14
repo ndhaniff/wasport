@@ -48,7 +48,7 @@ class AdminRacesController extends Controller
     {
         //validate request server side
         $request->validate([
-            'title_en' => 'required|string',
+            /*'title_en' => 'required|string',
             'about_en' => 'required|string',
             'awards_en' => 'required|string',
             'RaceDateFrom' => 'required|string',
@@ -56,7 +56,7 @@ class AdminRacesController extends Controller
             'RaceDeadlineFrom' => 'required|string',
             'RaceDeadlineTo' => 'required|string',
             'medals_en' => 'required|string',
-            'price' => 'required|string',
+            'price' => 'required|string',*/
         ]);
 
         $formdata = [
@@ -104,15 +104,15 @@ class AdminRacesController extends Controller
 
         //handle header img
         if($request->hasFile('headerImg')){
-            $headerimg = $request->file('headerImg');
-            $filenameWithExt = $headerimg->getClientOriginalName();
-            $filename =  str_replace(' ', '_', pathinfo($filenameWithExt, PATHINFO_FILENAME ));
-            $ext = $headerimg->getClientOriginalExtension();
-            $filenameToStore = $filename."_".time().".".$ext;
-            $path = $headerimg->storeAs('public/uploaded', $filenameToStore);
-        } else {
-            $filenameToStore = 'noimage.jpg';
-        }
+             $headerimg = $request->file('headerImg');
+             $filenameWithExt = $headerimg->getClientOriginalName();
+             $filename =  str_replace(' ', '_', pathinfo($filenameWithExt, PATHINFO_FILENAME ));
+             $ext = $headerimg->getClientOriginalExtension();
+             $filenameToStore = $filename."_".time().".".$ext;
+             $path = $headerimg->storeAs('public/uploaded/races/', $filenameToStore);
+         } else {
+             $filenameToStore = 'noimage.jpg';
+         }
         $race->header = $filenameToStore;
         $race->save();
 
@@ -141,8 +141,8 @@ class AdminRacesController extends Controller
             'RaceDateTo' => 'required|string',
             'RaceDeadlineFrom' => 'required|string',
             'RaceDeadlineTo' => 'required|string',
-            'awards_en' => 'required|string',
             'price' => 'required|string',
+            'medals_en' => 'required|string',
         ]);
 
         $formdata = [
@@ -191,16 +191,15 @@ class AdminRacesController extends Controller
 
         //handle header img
         if($request->hasFile('headerImg')){
-            $headerimg = $request->file('headerImg');
-            $filenameWithExt = $headerimg->getClientOriginalName();
-            $filename =  str_replace(' ', '_', pathinfo($filenameWithExt, PATHINFO_FILENAME ));
-            $ext = $headerimg->getClientOriginalExtension();
-            $filenameToStore = $filename."_".time().".".$ext;
-            $path = $headerimg->storeAs('public/uploaded', $filenameToStore);
-        } else {
-            $filenameToStore = 'noimage.jpg';
-        }
-
+             $headerimg = $request->file('headerImg');
+             $filenameWithExt = $headerimg->getClientOriginalName();
+             $filename =  str_replace(' ', '_', pathinfo($filenameWithExt, PATHINFO_FILENAME ));
+             $ext = $headerimg->getClientOriginalExtension();
+             $filenameToStore = $filename."_".time().".".$ext;
+             $path = $headerimg->storeAs('public/uploaded/races/', $filenameToStore);
+         } else {
+             $filenameToStore = 'noimage.jpg';
+         }
         $race->header = $filenameToStore;
         $race->save();
 
