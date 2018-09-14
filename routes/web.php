@@ -64,3 +64,5 @@ Route::post('/strava/disconnect','API\StravaController@disconnect')->name('strav
 //User profile
 Route::post('/user/upload', 'User\UserController@handleProfileImg' )->name('user.profileImg');
 Route::post('/user/updateProfile', 'User\UserController@updateProfile' )->name('user.updateProfile');
+Route::post('/user/updateAddress', 'User\UserController@updateAddress' )->name('user.updateAddress');
+Route::post('/user/updatePassword', 'User\UserController@updatePassword' )->name('user.updatePassword');

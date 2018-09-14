@@ -16,7 +16,7 @@ class Profile extends React.Component{
     lastname : window.lastname,
     motto : window.motto,
     gender : window.gender,
-    phone : window.phone.substring(2),
+    phone : window.phone,
     birthday : window.birthday,
     loading : false,
   }
@@ -231,7 +231,7 @@ class Profile extends React.Component{
                 { min: 9, message: 'Phone number must be at least 11 including prefix' },
                 { max: 11, message: 'This is not valid phone number' },
               ],
-              initialValue: this.state.phone != null ? this.state.phone : ""
+              initialValue: this.state.phone != null ? this.state.phone.substring(2) : ""
             })(
               <Input addonBefore={prefixSelector} style={{ width: '100%' }} />
           )}

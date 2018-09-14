@@ -78,4 +78,37 @@ class UserController extends Controller
 
       return response()->json(['success' => true], 200 );
     }
+
+    public function updateAddress(Request $request){
+
+      $id = $request->get('id');
+
+      $user = User::find($id);
+      $user->add_fl = $request->get('add_fl');
+      $user->add_sl = $request->get('add_sl');
+      $user->city = $request->get('city');
+      $user->state = $request->get('state');
+      $user->postal = $request->get('postal');
+
+      $user->save();
+
+      return response()->json(['success' => true], 200 );
+    }
+
+    public function updatePassword(Request $request){
+
+      $id = $request->get('id');
+      $newP = $request->get('new_password');
+      $confirmP = $request->get('confirm_password');
+
+      if( $newP == $confirmP) {
+        $user = User::find($id);
+        $user->password = password_hash($newP, PASSWORD_DEFAULT);
+
+        $user->save();
+
+        return response()->json(['success' => true], 200 );
+      } else
+          return response()->json(['success' => false], 200 );
+    }
 }

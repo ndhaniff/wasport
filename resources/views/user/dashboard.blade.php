@@ -86,6 +86,11 @@ var user = {
       var gender = "{{$user->gender}}"
       var phone = "{{$user->phone}}"
       var birthday = "{{$user->birthday}}"
+      var add_fl = "{{$user->add_fl}}"
+      var add_sl = "{{$user->add_sl}}"
+      var city = "{{$user->city}}"
+      var state = "{{$user->state}}"
+      var postal = "{{$user->postal}}"
 
     if(localStorage.getItem("strava_token") === null){
       localStorage.setItem("strava_token", "{{$user->strava_access_token}}")

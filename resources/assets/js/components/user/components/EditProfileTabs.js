@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import {Tabs,Button, Divider } from 'antd'
 import Profile from './subcomponent/Profile'
+import Address from './subcomponent/Address'
+import Password from './subcomponent/Password'
 
 const TabPane = Tabs.TabPane;
 
@@ -32,8 +34,12 @@ class EditProfileTabs extends Component{
         <TabPane tab="Profile" key="1">
           <Profile />
         </TabPane>
-        <TabPane tab="Address" key="2">Content of Tab Pane 2</TabPane>
-        <TabPane tab="Password" key="3">Content of Tab Pane 3</TabPane>
+        <TabPane tab="Address" key="2">
+          <Address />
+        </TabPane>
+        <TabPane tab="Password" key="3">
+          <Password />
+        </TabPane>
         <TabPane tab="Stava" key="4">
           <MyApp token={this.state.token} stravaDisconnect={this.stravaDisconnect}/>
         </TabPane>
@@ -58,6 +64,5 @@ const MyApp = (props) => {
     )
   }
 }
-
 
 export default EditProfileTabs
