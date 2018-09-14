@@ -2,7 +2,6 @@ import React from 'react';
 import { Form, Input, DatePicker, Select, Button, Upload, Avatar } from 'antd';
 import TextArea from 'antd/lib/input/TextArea';
 import moment from 'moment';
-import {NotificationContainer, NotificationManager} from 'react-notifications';
 
 const FormItem = Form.Item;
 const Option = Select.Option;
@@ -19,7 +18,7 @@ class Profile extends React.Component{
     gender : window.gender,
     phone : window.phone.substring(2),
     birthday : window.birthday,
-    loading : false
+    loading : false,
   }
 
   handleSubmit = (e) => {
@@ -34,7 +33,7 @@ class Profile extends React.Component{
         motto : data.motto,
         gender : data.gender,
         phone : data.prefix + data.phone,
-        birthday : data.birthday.format("MM-DD-YYYY")
+        birthday : data.birthday.format("MM-DD-YYYY"),
        }
 
        axios.post('/user/updateProfile',profile).then((res) => {
@@ -57,7 +56,6 @@ class Profile extends React.Component{
     return e && e.fileList;
   }
 
-
   handleSelectChange = (value) => {
 
   }
@@ -70,14 +68,15 @@ class Profile extends React.Component{
 
   handleUploadChange = (info) => {
     let file = info.file;
+
     if (file.status === 'uploading') {
       this.setState({
         loading: true
       })
     }
     if (file.status === 'done') {
-      this.getBase64(info.file.originFileObj, avatarPreview => this.setState({
-        avatarPreview,
+      this.getBase64(info.file.originFileObj, profileimgPreview => this.setState({
+        profileimgPreview,
         loading: false,
       }))
     }
@@ -122,8 +121,8 @@ class Profile extends React.Component{
             getValueFromEvent: this.normFile,
           })(
             <React.Fragment>
-              <Avatar style={{margin : '10px'}} src={this.state.avatarPreview} icon={this.state.loading ? 'loading' : 'user'} size={80} />
-              <Upload name="avatar" action="/user/upload" onChange={this.handleUploadChange} showUploadList={false} listType="picture">
+              <Avatar style={{margin : '10px'}} src={this.state.profileimgPreview} icon={this.state.loading ? 'loading' : 'user'} size={80} />
+              <Upload name="profileimg" action="/user/upload" onChange={this.handleUploadChange} showUploadList={false} listType="picture">
                 <Button>
                    Upload
                 </Button>

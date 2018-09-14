@@ -34,7 +34,7 @@ class RacesController extends Controller
         ->first();
 
       $addons = DB::table('addons')
-        ->where('id', '=', $id)
+        ->where('races_id', '=', $id)
         ->get();
 
       return view('pages.racedetails', ['race' => $race, 'addons' => $addons]);

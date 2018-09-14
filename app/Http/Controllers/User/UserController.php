@@ -57,24 +57,25 @@ class UserController extends Controller
       $user->phone = $request->get('phone');
       $user->birthday = $request->get('birthday');
 
-      //handle profile img
-      if($request->hasFile('profileimg')){
-          $profileimg = $request->file('profileimg');
-          $filenameWithExt = $profile->getClientOriginalName();
-          $filename =  str_replace(' ', '_', pathinfo($filenameWithExt, PATHINFO_FILENAME ));
-          $ext = $profile->getClientOriginalExtension();
-          $filenameToStore = $filename."_".time().".".$ext;
-          $path = $profile->storeAs('public/uploaded/users', $filenameToStore);
-      }
-
-      $race->header = $filenameToStore;
-
       $user->save();
 
       return response()->json(['success' => true], 200 );
     }
 
     public function handleProfileImg(Request $request){
-      dd($request->file('avatar'));
+      dd($request->file('profileimg'));
+
+      $id = $request->get('id');
+      $user = User::find($id);
+      $profileimg = $request->file('profileimg');
+      $filenameWithExt = $profileimg->getClientOriginalName();
+      $filename =  str_replace(' ', '_', pathinfo($filenameWithExt, PATHINFO_FILENAME ));
+      $ext = $profileimg->getClientOriginalExtension();
+      $filenameToStore = $filename."_".time().".".$ext;
+      $path = $profileimg->storeAs('public/uploaded/users', $filenameToStore);
+      $user->profileimg = $filenameToStore;
+      $user->save();
+
+      return response()->json(['success' => true], 200 );
     }
 }

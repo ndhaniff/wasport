@@ -282,7 +282,7 @@ export default class EditRaceForm extends Component {
                                             to
                                             </div>
                                             <div className="col-sm-5">
-                                            <Datetime isValidDate={ deadFrom } value={this.state.RaceDeadlineFrom} onChange={this.handleRaceDeadlineTo}/>
+                                            <Datetime isValidDate={ deadFrom } value={this.state.RaceDeadlineTo} onChange={this.handleRaceDeadlineTo}/>
                                             </div>
                                          </div>
                                         </div>
