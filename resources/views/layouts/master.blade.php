@@ -21,6 +21,7 @@
 		@yield('script')
     </head>
     <body>
+
       <div id="navbar" class="d-flex flex-column flex-md-row align-items-center bg-dark">
         <h1 id="logo" class="m-0"><a href="{{url('/')}}"><img src="{{asset('img/wasport_logo.png')}}" alt="" id="wasport-logp"></a></h1>
         <div>
@@ -76,7 +77,7 @@
                         </div>
                         <div class="form-group mb-0">
                                 <button class="btn btn-primary" type="submit">{{__("auth.login.regular")}}</button>
-                                <button class="btn loginFb btn-secondary">{{__("auth.login.withfb")}}</button><br>
+                                <a href="{{ url('/auth/facebook') }}" class="btn loginFb btn-secondary">Login with FB</a><br>
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
                                 {{ __('Forgot Your Password?') }}
                                 </a>

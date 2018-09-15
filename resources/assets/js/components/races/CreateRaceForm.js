@@ -5,7 +5,9 @@ import Datetime from 'react-datetime';
 import Dropzone from 'react-dropzone'
 import ImageResize from 'quill-image-resize-module';
 import { Tabs } from 'antd';
+import withReactContent from 'sweetalert2-react-content';
 
+const MySwal = withReactContent(Swal);
 const TabPane = Tabs.TabPane;
 
 Quill.register("modules/imageResize", ImageResize);
@@ -102,8 +104,22 @@ export default class CreateRaceForm extends Component {
 
         axios.post('/admin/races/create',data).then((res) => {
             if(res.data.success){
-                location.href = location.origin + '/admin/races/edit/'+res.data.id
-                alert('Race added')
+                /*location.href = location.origin + '/admin/races/edit/'+res.data.id
+                alert('Race added')*/
+
+                MySwal.fire({
+                  toast: true,
+                  position: 'top-end',
+                  showConfirmButton: false,
+                  timer: 3000,
+                  type: 'success',
+                  title: 'Race added'
+                })
+
+                window.setTimeout(function(){
+                  location.href = location.origin + '/admin/races/edit/'+res.data.id
+                } ,3000);
+
             } else {
                 alert('something wrong')
             }

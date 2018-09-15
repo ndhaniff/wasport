@@ -2,7 +2,10 @@ import React from 'react';
 import { Form, Input, DatePicker, Select, Button, Upload, Avatar } from 'antd';
 import TextArea from 'antd/lib/input/TextArea';
 import moment from 'moment';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 
+const MySwal = withReactContent(Swal);
 const FormItem = Form.Item;
 const Option = Select.Option;
 
@@ -32,8 +35,22 @@ class Address extends React.Component{
 
        axios.post('/user/updateAddress',address).then((res) => {
          if(res.data.success){
-             location.href = location.origin + '/dashboard'
-             alert('Address updated')
+             /*location.href = location.origin + '/dashboard'
+             alert('Address updated')*/
+
+             MySwal.fire({
+               toast: true,
+               position: 'top-end',
+               showConfirmButton: false,
+               timer: 3000,
+               type: 'success',
+               title: 'Address updated'
+             })
+
+             window.setTimeout(function(){
+               location.reload();
+             } ,3000);
+
          } else {
              alert('something wrong')
          }

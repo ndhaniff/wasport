@@ -2,7 +2,10 @@ import React from 'react';
 import { Form, Input, DatePicker, Select, Button, Upload, Avatar } from 'antd';
 import TextArea from 'antd/lib/input/TextArea';
 import moment from 'moment';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 
+const MySwal = withReactContent(Swal);
 const FormItem = Form.Item;
 const Option = Select.Option;
 
@@ -38,9 +41,23 @@ class Profile extends React.Component{
 
        axios.post('/user/updateProfile',profile).then((res) => {
          if(res.data.success){
-             location.href = location.origin + '/dashboard'
-             alert('Profile updated')
-         } else {
+           /*alert('Profile updated')
+           location.href = location.origin + '/dashboard'*/
+
+          MySwal.fire({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            type: 'success',
+            title: 'Profile updated'
+          })
+
+          window.setTimeout(function(){
+            location.reload();
+          } ,3000);
+
+        } else {
              alert('something wrong')
          }
        })

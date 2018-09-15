@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
+
 <div class="container p-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -57,9 +58,9 @@
                                     {{ __('Login') }}
                                 </button>
 
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    {{ __('Forgot Your Password?') }}
-                                </a>
+                                <!--<a href="{{ url('/auth/facebook') }}" class="btn loginFb btn-secondary">Login with FB</a>-->
+
+                                <div id="status"></div>
                             </div>
                         </div>
                     </form>

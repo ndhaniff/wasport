@@ -70,6 +70,8 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>
+
+                                <!--<a href="{{ url('/auth/facebook') }}" class="btn loginFb btn-secondary">Login with FB</a>-->
                             </div>
                         </div>
                     </form>

@@ -66,3 +66,7 @@ Route::post('/user/upload', 'User\UserController@handleProfileImg' )->name('user
 Route::post('/user/updateProfile', 'User\UserController@updateProfile' )->name('user.updateProfile');
 Route::post('/user/updateAddress', 'User\UserController@updateAddress' )->name('user.updateAddress');
 Route::post('/user/updatePassword', 'User\UserController@updatePassword' )->name('user.updatePassword');
+
+// OAuth Routes
+Route::get('auth/{provider}', 'Auth\LoginController@redirectToProvider');
+Route::get('auth/{provider}/callback', 'Auth\LoginController@handleProviderCallback');

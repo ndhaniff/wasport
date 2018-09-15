@@ -2,7 +2,10 @@ import React from 'react';
 import { Form, Input, DatePicker, Select, Button, Upload, Avatar } from 'antd';
 import TextArea from 'antd/lib/input/TextArea';
 import moment from 'moment';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 
+const MySwal = withReactContent(Swal);
 const FormItem = Form.Item;
 const Option = Select.Option;
 
@@ -25,12 +28,36 @@ class Password extends React.Component{
           }
 
           axios.post('/user/updatePassword',pass).then((res) => {
-            console.log(pass)
+            //console.log(pass)
             if(res.data.success){
-                location.href = location.origin + '/dashboard'
-                alert('Password updated')
+                /*location.href = location.origin + '/dashboard'
+                alert('Password updated')*/
+
+                MySwal.fire({
+                  toast: true,
+                  position: 'top-end',
+                  showConfirmButton: false,
+                  timer: 3000,
+                  type: 'success',
+                  title: 'Password updated'
+                })
+
+                window.setTimeout(function(){
+                  location.reload();
+                } ,3000);
+
             } else {
-                alert('Password does not match')
+                //alert('Password does not match')
+
+                MySwal.fire({
+                  toast: true,
+                  position: 'top-end',
+                  showConfirmButton: false,
+                  timer: 3000,
+                  type: 'error',
+                  title: 'Password does not match'
+                })
+
             }
           })
         }

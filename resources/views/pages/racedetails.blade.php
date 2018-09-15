@@ -17,7 +17,13 @@
         <li><span id="seconds"></span>secs</li>
       </ul>
 
-      <h3 id="closed">Registration closed</h3>
+      <ul id="countdown-closed">
+        <li><span id="days"></span>0 days</li>
+        <li><span id="hours"></span>0 hours</li>
+        <li><span id="minutes"></span>0 mins</li>
+        <li><span id="seconds"></span>0 secs</li>
+      </ul>
+
     </section>
 
     <h1 id="date"></h1>
@@ -177,22 +183,26 @@
               foreach($addons as $addon) {
                 if(app()->getLocale() == 'en') {
                   echo '<b>';
-                  echo $i+1 .'.' .$addon->add_en. ' - RM' .number_format($addon->addprice, 2);
+                  echo $i+1 .'. ' .$addon->add_en. ' - RM' .number_format($addon->addprice, 2);
                   echo '</b>';
                   echo $addon->desc_en;
+                  echo '<br/>';
                 }
                 if(app()->getLocale() == 'ms') {
                   echo '<b>';
-                  echo $i+1 .'.' .$addon->add_ms. ' - RM' .number_format($addon->addprice, 2);
+                  echo $i+1 .'. ' .$addon->add_ms. ' - RM' .number_format($addon->addprice, 2);
                   echo '</b>';
                   echo $addon->desc_ms;
+                  echo '<br/>';
                 }
                 if(app()->getLocale() == 'zh') {
                   echo '<b>';
-                  echo $i+1 .'.' .$addon->add_zh. ' - RM' .number_format($addon->addprice, 2);
+                  echo $i+1 .'. ' .$addon->add_zh. ' - RM' .number_format($addon->addprice, 2);
                   echo '</b>';
                   echo $addon->desc_zh;
+                  echo '<br/>';
                 }
+                $i++;
               }
               echo '</div>';
               echo '<hr>';
@@ -231,15 +241,19 @@
         <?php
             date_default_timezone_set("Asia/Kuala_Lumpur");
 
-            if(date("Y-m-d H:i a") < $race->dead_from)
-             echo '<button type="button" class="race-register-btn"><a href="#">';
-             echo __("Register");
-             echo '</a></button>'; ?>
+            if(date("Y-m-d H:i a") < $race->dead_from) {
+              echo '<button type="button" class="race-register-btn"><a href="#">';
+              echo __("Register");
+              echo '</a></button>';
+            } else {
+              echo '<button type="button" class="race-register-btn" disabled>Registration closed</button>';
+            }
 
-          <?php if($race->price != 0)
-                  echo '<h6>Finisher’s Award</h6>' .
-                        '<p><img src="' .asset('img/register-1.png'). '">&ensp;Finisher\'s Medal</p>' .
-                        '<p><img src="' .asset('img/register-2.png'). '">&ensp;Finisher\'s Certificate</p>'; ?>
+            if($race->price != 0)
+              echo '<h6>Finisher’s Award</h6>' .
+              '<p><img src="' .asset('img/register-1.png'). '">&ensp;Finisher\'s Medal</p>' .
+              '<p><img src="' .asset('img/register-2.png'). '">&ensp;Finisher\'s Certificate</p>'; ?>
+
         </div>
       </div>
     </div>
@@ -267,7 +281,7 @@ let countDown = new Date('{{ $race->dead_from }}').getTime(),
 
     } else {
       document.getElementById("countdown-timer").style.display = "none";
-      document.getElementById("closed").style.display = "block";
+      document.getElementById("countdown-closed").style.display = "block";
     }
 
 

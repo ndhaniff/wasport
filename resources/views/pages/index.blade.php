@@ -12,6 +12,12 @@
   <img src="{{asset('img/wasport-banner.jpg')}}" alt="">
 </header>-->
 
+<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+</fb:login-button>
+
+<div id="status">
+</div>
+
 <header>
   <div id="carousel" class="owl-carousel owl-theme">
     <div class="item">

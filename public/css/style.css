@@ -418,20 +418,22 @@ RACE DETAILS
 .displayrace img { max-width: 100%; }
 
 #countdown-timer,
-#closed { font-family: 'SourceSansPro-Semibold'; }
+#countdown-closed { font-family: 'SourceSansPro-Semibold'; }
 
-#countdown-timer li {
+#countdown-timer li,
+#countdown-closed li {
   display: inline-block;
   font-size: 22px;
   list-style-type: none;
   padding: 1em;
 }
 
-#countdown-timer li span {
+#countdown-timer li span,
+#countdown-closed li span {
   font-size: 22px;
 }
 
-#closed { display: none; }
+#countdown-closed { display: none; }
 
 .race-details { text-align: left; }
 

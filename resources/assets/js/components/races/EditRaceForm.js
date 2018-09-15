@@ -6,7 +6,9 @@ import Dropzone from 'react-dropzone';
 import Parser from 'html-react-parser';
 import ImageResize from 'quill-image-resize-module';
 import { Tabs } from 'antd';
+import withReactContent from 'sweetalert2-react-content';
 
+const MySwal = withReactContent(Swal);
 const TabPane = Tabs.TabPane;
 
 Quill.register("modules/imageResize", ImageResize);
@@ -105,8 +107,22 @@ export default class EditRaceForm extends Component {
 
         axios.post('/admin/races/edit',data).then((res) => {
             if(res.data.success){
-                location.href = location.origin + '/admin/races/edit/'+res.data.id
-                alert('Race updated')
+                /*location.href = location.origin + '/admin/races/edit/'+res.data.id
+                alert('Race updated')*/
+
+                MySwal.fire({
+                  toast: true,
+                  position: 'top-end',
+                  showConfirmButton: false,
+                  timer: 3000,
+                  type: 'success',
+                  title: 'Race updated'
+                })
+
+                window.setTimeout(function(){
+                  location.href = location.origin + '/admin/races/edit/'+res.data.id
+                } ,3000);
+
             } else {
                 alert('something wrong')
             }
