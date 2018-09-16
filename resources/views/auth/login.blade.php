@@ -48,9 +48,11 @@
                                     <label class="form-check-label" for="remember">
                                         {{ __('Remember Me') }}
                                     </label>
+
                                 </div>
                             </div>
                         </div>
+
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
@@ -58,11 +60,18 @@
                                     {{ __('Login') }}
                                 </button>
 
-                                <!--<a href="{{ url('/auth/facebook') }}" class="btn loginFb btn-secondary">Login with FB</a>-->
-
-                                <div id="status"></div>
+                                <a href="{{ url('/auth/facebook') }}" class="btn loginFb btn-secondary">Login with FB</a>
                             </div>
                         </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-6 offset-md-4">
+                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                  {{ __('Forgot Your Password?') }}
+                                </a>
+                            </div>
+                        </div>
+
                     </form>
                 </div>
             </div>

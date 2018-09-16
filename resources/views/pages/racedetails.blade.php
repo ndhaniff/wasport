@@ -7,7 +7,7 @@
 
     <center>
     <section class="mb-5">
-      <img src=" <?php echo asset('storage/uploaded/races/' . $race->header) ?>" alt="{{ $race->title_en }}">
+      <img src="<?php echo asset('storage/uploaded/races/' . $race->header) ?>" alt="{{ $race->title_en }}">
 
       <ul id="countdown-timer">
         <li>Hurry! Registration closed in | </li>

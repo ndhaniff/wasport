@@ -10,6 +10,13 @@ const FormItem = Form.Item;
 const Option = Select.Option;
 
 class Profile extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      profileimgPreview: window.profileimg
+    };
+  }
+
   state = {
     confirmDirty: false,
     id: window.user.id,
@@ -83,8 +90,34 @@ class Profile extends React.Component{
     reader.readAsDataURL(img);
   }
 
+  handleProfileImg = (img) => {
+
+    let imgdata = new FormData;
+
+    imgdata.append('id', window.user.id)
+    imgdata.append('profileimg', img)
+
+    axios.post('/user/uploadImage',imgdata).then((res) => {
+        if(res.data.success){
+            MySwal.fire({
+              toast: true,
+              position: 'top-end',
+              showConfirmButton: false,
+              timer: 3000,
+              type: 'success',
+              title: 'Profile image updated'
+            })
+
+        } else {
+            alert('something wrong')
+        }
+    })
+
+  }
+
   handleUploadChange = (info) => {
     let file = info.file;
+    let fileObj = info.file.originFileObj;
 
     if (file.status === 'uploading') {
       this.setState({
@@ -96,6 +129,8 @@ class Profile extends React.Component{
         profileimgPreview,
         loading: false,
       }))
+
+      this.handleProfileImg(fileObj);
     }
   }
 

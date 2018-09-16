@@ -13,6 +13,7 @@ class UserProfile extends Component{
       id : window.user.id,
       name: window.user.name,
       motto: window.user.motto,
+      profileimg : window.user.profileimg
     }
   }
 
@@ -22,13 +23,20 @@ class UserProfile extends Component{
     return this.state.motto;
   }
 
+  renderAvatar(){
+    var path = window.location.origin + '/storage/uploaded/users/' + this.state.profileimg
+    if(this.state.profileimg == '')
+      return <Avatar size={125} icon='user'/>
+    return <Avatar size={125} icon='user' src={path}/>
+  }
+
   render(){
     return(
       <div>
 
           <div className="row">
             <div className="col-sm-2">
-              <Avatar size={125} icon="user" />
+              {this.renderAvatar()}
             </div>
 
             <div className="col-sm-10">

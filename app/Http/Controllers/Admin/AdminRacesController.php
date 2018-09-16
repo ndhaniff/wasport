@@ -48,7 +48,7 @@ class AdminRacesController extends Controller
     {
         //validate request server side
         $request->validate([
-            /*'title_en' => 'required|string',
+            'title_en' => 'required|string',
             'about_en' => 'required|string',
             'awards_en' => 'required|string',
             'RaceDateFrom' => 'required|string',
@@ -56,7 +56,7 @@ class AdminRacesController extends Controller
             'RaceDeadlineFrom' => 'required|string',
             'RaceDeadlineTo' => 'required|string',
             'medals_en' => 'required|string',
-            'price' => 'required|string',*/
+            'price' => 'required|string',
         ]);
 
         $formdata = [
@@ -233,7 +233,6 @@ class AdminRacesController extends Controller
       */
     public function destroy($id)
     {
-
         $race = Race::find($id);
         if($race->count()  > 0){
             $race->delete();

@@ -6,6 +6,7 @@ import Dropzone from 'react-dropzone';
 import Parser from 'html-react-parser';
 import ImageResize from 'quill-image-resize-module';
 import { Tabs } from 'antd';
+import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 
 const MySwal = withReactContent(Swal);

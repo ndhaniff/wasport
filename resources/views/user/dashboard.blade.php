@@ -80,17 +80,25 @@ var user = {
 @if($user->motto)
 @section('script')
   <script>
-      var firstname = "{{$user->firstname}}"
-      var lastname = "{{$user->lastname}}"
-      var motto = "{{$user->motto}}"
-      var gender = "{{$user->gender}}"
-      var phone = "{{$user->phone}}"
-      var birthday = "{{$user->birthday}}"
-      var add_fl = "{{$user->add_fl}}"
-      var add_sl = "{{$user->add_sl}}"
-      var city = "{{$user->city}}"
-      var state = "{{$user->state}}"
-      var postal = "{{$user->postal}}"
+    var profileimg
+    var profileimgTemp = "{{$user->profileimg}}"
+
+    var firstname = "{{$user->firstname}}"
+    var lastname = "{{$user->lastname}}"
+    var motto = "{{$user->motto}}"
+    var gender = "{{$user->gender}}"
+    var phone = "{{$user->phone}}"
+    var birthday = "{{$user->birthday}}"
+    var add_fl = "{{$user->add_fl}}"
+    var add_sl = "{{$user->add_sl}}"
+    var city = "{{$user->city}}"
+    var state = "{{$user->state}}"
+    var postal = "{{$user->postal}}"
+
+    if(profileimgTemp != "")
+      profileimg = window.location.origin + '/storage/uploaded/users/' + "{{$user->profileimg}}"
+    else
+      profileimg = "{{$user->profileimg}}"
 
     if(localStorage.getItem("strava_token") === null){
       localStorage.setItem("strava_token", "{{$user->strava_access_token}}")

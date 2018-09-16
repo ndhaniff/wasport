@@ -6,6 +6,7 @@ import Dropzone from 'react-dropzone'
 import ImageResize from 'quill-image-resize-module';
 import { Tabs } from 'antd';
 import withReactContent from 'sweetalert2-react-content';
+import Swal from 'sweetalert2';
 
 const MySwal = withReactContent(Swal);
 const TabPane = Tabs.TabPane;

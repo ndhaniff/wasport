@@ -56,7 +56,6 @@ class UserController extends Controller
       $user->gender = $request->get('gender');
       $user->phone = $request->get('phone');
       $user->birthday = $request->get('birthday');
-
       $user->save();
 
       return response()->json(['success' => true], 200 );
@@ -64,11 +63,14 @@ class UserController extends Controller
 
     public function handleProfileImg(Request $request){
       dd($request->file('profileimg'));
+    }
+
+    public function uploadProfileImg(Request $request){
 
       $id = $request->get('id');
       $user = User::find($id);
       $profileimg = $request->file('profileimg');
-      $filenameWithExt = $profileimg->getClientOriginalName();
+      $filenameWithExt = $user->id;
       $filename =  str_replace(' ', '_', pathinfo($filenameWithExt, PATHINFO_FILENAME ));
       $ext = $profileimg->getClientOriginalExtension();
       $filenameToStore = $filename."_".time().".".$ext;
