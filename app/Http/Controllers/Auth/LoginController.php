@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\Http\Controllers\Auth\Request;
 use Auth;
 use Socialite;
 use App\User;
@@ -88,4 +89,5 @@ class LoginController extends Controller
             'provider_id' => $user->id
         ]);
     }
+
 }

@@ -15,7 +15,7 @@
                 confirmButtonText: "OK",
                 toast: true,
                 position: 'top-end',
-                showConfirmButton: false,
+                showConfirmButton: true,
               });
               </script>
               @endif
