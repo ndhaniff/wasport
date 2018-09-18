@@ -49,7 +49,6 @@ class UserProfile extends Component{
           </div>
 
       </div>
-
     )
   }
 

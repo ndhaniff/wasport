@@ -20,3 +20,4 @@ require('./components/addons/CreateAddonForm');
 require('./components/addons/EditAddonForm');
 require('./components/user/UserDashboard');
 require('./components/user/UserProfile');
+require('./components/user/UserStrava');

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Session;
 use Laracasts\Flash\Flash;
 use App\Http\Controllers\API\StravaController;
 use App\Model\User;
+use App\Model\Race;
 use Auth;
 use DB;
 
@@ -41,7 +42,16 @@ class UserController extends Controller
         $user->save();
       }
 
-      return view('user.dashboard')->with('user',$user);
+      $date = date('Y-m-d');
+
+      $races = DB::table('races')
+        ->where('dead_from', '>', $date)
+        ->orderBy('date_from')
+        ->limit(5)
+        ->get();
+
+      //return view('user.dashboard')->with('user',$user);
+      return view('user.dashboard', ['user' => $user, 'races' => $races]);
     }
 
     public function updateProfile(Request $request){

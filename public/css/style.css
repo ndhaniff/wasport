@@ -551,9 +551,13 @@ HOW IT WORKS
 /*
 USER DASHBOARD
 */
-.user-profile-block {
+.user-profile-block,
+.user-strava-block,
+.user-medal,
+.user-history,
+.user-current {
     width: 80%;
-    margin: 0 auto;
+    margin: 0 auto 3.5rem auto;
 }
 
 .userprofile-name {
@@ -569,6 +573,76 @@ USER DASHBOARD
 .userprofile-id { color: #000; }
 
 .user-edit { margin-top: 10px; }
+
+.user-medal .row,
+.user-history .row,
+.user-current .row {
+  font-family: 'SourceSansPro-Semibold';
+  margin-top: 2.5rem;
+}
+
+.user-strava-block #border-right { border-right: 1px solid #e7eced; }
+
+#user-strava h6 {
+  font-family: 'SourceSansPro-Semibold';
+  font-size: 20px;
+  margin: 0;
+}
+
+.userdash #view-all { float: right; }
+
+.userdash #view-all a { color: #df2e3c; }
+
+.userdash #view-all a:focus { text-decoration: none; }
+
+#user-medal-frame {
+  background-color: #5e6265;
+  border: solid 3vmin #393838;
+  border-bottom-color: #282726;
+  border-left-color: #393838;
+  border-radius: 2px;
+  border-right-color: #393838;
+  border-top-color: #282726;
+  box-shadow: 0 0 5px 0 rgba(0,0,0,.25) inset, 0 5px 10px 5px rgba(0,0,0,.25);
+  box-sizing: border-box;
+  display: inline-block;
+  margin: 25px auto;
+  height: 350px;
+  width: 100%;
+  padding: 4vmin;
+  position: relative;
+  text-align: center;
+}
+
+#user-medal-frame:before {
+  border-radius:2px;
+  bottom:-2vmin;
+  box-shadow:0 2px 5px 0 rgba(0,0,0,.25) inset;
+  content:"";
+  left:-2vmin;
+  position:absolute;
+  right:-2vmin;
+  top:-2vmin;
+}
+
+#user-medal-frame:after {
+  border-radius:2px;
+  bottom:-2.5vmin;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.25);
+  content:"";
+  left:-2.5vmin;
+  position:absolute;
+  right:-2.5vmin;
+  top:-2.5vmin;
+}
+
+#user-medal-frame img {
+  width: 100%;
+}
+
+#user-medal-frame .row { margin-top: 0; }
+
+#user-history { margin: 12rem auto; }
 
 /*
 RESPONSIVE
