@@ -6,6 +6,20 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
+              @if(session('status'))
+              <script>
+              swal({
+                title: "Successfully Register",
+                text: "We had send you an email to activate your account.",
+                type: "success",
+                confirmButtonText: "OK",
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+              });
+              </script>
+              @endif
+
                 <div class="card-header">{{ __('Login') }}</div>
 
                 <div class="card-body">

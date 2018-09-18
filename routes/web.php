@@ -61,6 +61,9 @@ Route::get('/strava/getAuthToken','API\StravaController@getAuthToken')->name('st
 Route::post('/strava/getStats','API\StravaController@getStats')->name('strava.getStats');
 Route::post('/strava/disconnect','API\StravaController@disconnect')->name('strava.disconnect');
 
+Route::get('verifyEmailFirst', 'Auth\RegisterController@verifyEmailFirst')->name('verifyEmailFirst');
+Route::get('verify/{email}/{verifyToken}', 'Auth\RegisterController@verifyEmailDone')->name('verifyEmailDone');
+
 //User profile
 Route::post('/user/upload', 'User\UserController@handleProfileImg' )->name('user.profileImg');
 Route::post('/user/uploadImage', 'User\UserController@uploadProfileImg' )->name('user.uploadImg');

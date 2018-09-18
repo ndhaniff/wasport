@@ -7,6 +7,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Str;
+use Mail;
+use App\Mail\VerifyEmail;
+use Session;
+use Softon\SweetAlert\Facades\SWAL;
 
 class RegisterController extends Controller
 {
@@ -63,10 +68,39 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        Session::flash('status');
+
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'verifyToken' =>  Str::random(40),
         ]);
+
+        $thisUser = User::findOrFail($user->id);
+        $this->sendEmail($thisUser);
+
+        return $user;
+    }
+
+    public function sendEmail($thisUser)
+    {
+      Mail::to($thisUser['email'])->send(new verifyEmail($thisUser));
+    }
+
+    public function verifyEmailFirst()
+    {
+      return view('email.verifyEmailFirst');
+    }
+
+    public function verifyEmailDone($email, $verifyToken)
+    {
+      $user = User::where(['email'=>$email, 'verifyToken'=>$verifyToken])->first();
+
+      if($user) {
+        User::where(['email'=>$email, 'verifyToken'=>$verifyToken])->update(['status'=>'1', 'verifyToken'=>NULL]);
+      } else {
+        return 'user not found';
+      }
     }
 }
