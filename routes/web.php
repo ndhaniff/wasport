@@ -40,6 +40,7 @@ Route::group(['prefix' =>'admin'],function()
   });
   //Races
   Route::get('/races','Admin\AdminRacesController@index')->name('admin.races');
+  Route::get('/races/search', 'Admin\AdminRacesController@search')->name('admin.races.search');
   Route::delete('/races/{id}','Admin\AdminRacesController@destroy')->name('admin.races.destroy');
   Route::get('/races/create','Admin\AdminRacesController@create')->name('admin.races.create');
   Route::post('/races/create','Admin\AdminRacesController@store')->name('admin.races.submit');
@@ -48,12 +49,24 @@ Route::group(['prefix' =>'admin'],function()
   Route::post('/races/edit/{id}','Admin\AdminRacesController@duplicate')->name('admin.races.edit.dupe');
   //Addons
   Route::get('/addons','Admin\AdminAddonsController@index')->name('admin.addons');
+  Route::get('/addons/search', 'Admin\AdminAddonsController@search')->name('admin.addons.search');
+  Route::get('/addons/searchRace', 'Admin\AdminAddonsController@searchRace')->name('admin.addons.searchRace');
   Route::delete('/addons/{id}','Admin\AdminAddonsController@destroy')->name('admin.addons.destroy');
   Route::get('/addons/create','Admin\AdminAddonsController@create')->name('admin.addons.create');
   Route::post('/addons/create','Admin\AdminAddonsController@store')->name('admin.addons.submit');
   Route::get('/addons/edit/{id}','Admin\AdminAddonsController@editForm')->name('admin.addons.edit');
   Route::post('/addons/edit','Admin\AdminAddonsController@edit')->name('admin.addons.edit.submit');
   Route::post('/addons/edit/{id}','Admin\AdminAddonsController@duplicate')->name('admin.addons.edit.dupe');
+  //Users
+  Route::get('/users','Admin\AdminUsersController@index')->name('admin.users');
+  Route::delete('/users/{id}','Admin\AdminUsersController@destroy')->name('admin.users.destroy');
+  Route::get('/users/create','Admin\AdminUsersController@create')->name('admin.users.create');
+  Route::post('/users/create','Admin\AdminUsersController@store')->name('admin.users.submit');
+  Route::get('/users/edit/{id}','Admin\AdminUsersController@editForm')->name('admin.users.edit');
+  Route::post('/users/edit','Admin\AdminUsersController@edit')->name('admin.users.edit.submit');
+  Route::post('/users/edit/{id}','Admin\AdminUsersController@duplicate')->name('admin.users.edit.dupe');
+  //
+  //
 });
 
 //Strava

@@ -9,14 +9,37 @@ Admin | Races
 @section('dashboard-content')
 
 <div class="p-3">
-  <h1>All Races</h1>
+
+  <div class="float-right">
+      <a href="{{route('admin.races.create')}}" class="btn btn-primary">Add New</a>
+  </div>
+
+  <h1 style="font-size: 2.2rem">Races</h1>
+
+  <hr />
+
+  <div class="row">
+    <div class="col-sm-4">
+      <form action="{{route('admin.races.search')}}" method="get">
+        <div class="input-group">
+          <input type="search" name="search" class="form-control" placeholder="Search race title">
+          <span class="input-group-prepend">
+            <button type="submit" class="btn btn-primary">Search</button>
+          </span>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <br />
+
   <table class="table table-bordered">
   <thead>
     <tr>
       <th scope="col">id</th>
-      <th scope="col">Race Title</th>
-      <th scope="col">Registration Date From</th>
-      <th scope="col">Registration Date To</th>
+      <th scope="col">@sortablelink('title_en', 'Title')</th>
+      <th scope="col">@sortablelink('date_from', 'Registration Date From')</th>
+      <th scope="col">@sortablelink('date_to', 'Registration Date To')</th>
       <th scope="col"></th>
     </tr>
   </thead>
@@ -45,6 +68,9 @@ Admin | Races
     @endforeach
   </tbody>
 </table>
+
+{{ $races->links() }}
+
 </div>
 
 @endsection

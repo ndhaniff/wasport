@@ -23,5 +23,16 @@
             <li class=""><a href="{{route('admin.addons.create')}}">Add New Addons</a></li>
           </div>
       @endif
-      <li><a href="#"><i class="fa fa-user-circle-o"></i> User</a></li>
+
+      @if(is_array($active ))
+        <li class="{{($active['parent'] == 'users') ? 'active' : ''}}"><a href="{{route('admin.users')}}"><i class="fa fa-user-circle-o"></i> Users</a></li>
+          <div class="children">
+            <li class="{{($active['child'] == 'create') ? 'active' : ''}}"><a href="{{route('admin.addons.create')}}">Add New Users</a></li>
+          </div>
+      @else
+        <li class=""><a href="{{route('admin.users')}}"><i class="fa fa-user-circle-o"></i> Users</a></li>
+          <div class="children">
+            <li class=""><a href="{{route('admin.users.create')}}">Add New Users</a></li>
+          </div>
+      @endif
 </aside>

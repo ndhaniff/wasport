@@ -2,8 +2,10 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Model\Race;
+use Kyslik\ColumnSortable\Sortable;
 
 class AdminRacesController extends Controller
 {
@@ -24,8 +26,21 @@ class AdminRacesController extends Controller
      */
     public function index()
     {
-      $races = Race::all();
-      return view('auth.admin.races.index')->with('races',$races);
+      //$races = DB::table('races')->sortable()->paginate(10);
+
+      //return view('auth.admin.races.index', ['races' => $races]);
+
+        $races = Race::sortable()->paginate(10);
+
+        return view('auth.admin.races.index',compact('races'));
+    }
+
+    public function search(Request $request)
+    {
+      $search = $request->get('search');
+      $races = Race::sortable()->where('title_en', 'like', '%' .$search. '%')->paginate(10);
+
+      return view('auth.admin.races.index', ['races' => $races]);
     }
 
     /**

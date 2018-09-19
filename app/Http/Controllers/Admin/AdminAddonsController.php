@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Model\Addon;
 use App\Model\Race;
-use DB;
+use Kyslik\ColumnSortable\Sortable;
 
 class AdminAddonsController extends Controller
 {
@@ -30,10 +31,36 @@ class AdminAddonsController extends Controller
     {
       //$addons = DB::table('addons')->join('races', 'races.id', '=', 'races_id')->get();
 
-      $addons = DB::table('addons')->get();
-      $races = DB::table('races')->get();
+      //$addons = DB::table('addons')->Sortable()->paginate(10);
+      //$races = DB::table('races')->get();
 
-      return view('auth.admin.addons.index', ['addons' => $addons, 'races' => $races]);
+      //return view('auth.admin.addons.index', ['addons' => $addons, 'races' => $races]);
+
+      $addons = Addon::sortable()->paginate(10);
+      $races = Race::sortable()->get();
+      $alladdons = Addon::sortable()->get();
+
+      return view('auth.admin.addons.index',compact('addons', 'races', 'alladdons'));
+    }
+
+    public function search(Request $request)
+    {
+      $search = $request->get('search');
+      $addons = Addon::sortable()->where('add_en', 'like', '%' .$search. '%')->paginate(10);
+      $races = DB::table('races')->get();
+      $alladdons = Addon::sortable()->get();
+
+      return view('auth.admin.addons.index',compact('addons', 'races', 'alladdons'));
+    }
+
+    public function searchRace(Request $request)
+    {
+      $raceitem = $request->get('raceitem');
+      $addons = DB::table('addons')->where('races_id', 'like', $raceitem)->paginate(10);
+      $races = DB::table('races')->get();
+      $alladdons = Addon::sortable()->get();
+
+      return view('auth.admin.addons.index',compact('addons', 'races', 'alladdons'));
     }
 
     /**
