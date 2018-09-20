@@ -38,7 +38,7 @@
               if(app()->getLocale() == 'zh')
                 echo '<h2>' .$race->title_zh. '</h2>'; ?>
 
-        <?php $dateF = DateTime::createFromFormat('Y-m-d H:i a', $race->date_from);
+        <?php /*$dateF = DateTime::createFromFormat('Y-m-d H:i a', $race->date_from);
 
               $dateT = DateTime::createFromFormat('Y-m-d H:i a', $race->date_to);
 
@@ -46,7 +46,9 @@
 
               $formatdateT = $dateT->format('d M Y (H:ia)');
 
-              echo '<h5>' .$formatdateF.' GMT +08 - '.$formatdateT.' GMT +08</h5>' ?>
+              echo '<h5>' .$formatdateF.' GMT +08 - '.$formatdateT.' GMT +08</h5>'*/
+
+              echo '<h5>' .$race->date_from).' GMT +08 - '.$race->date_to.' GMT +08</h5>'; ?>
         <hr>
 
         <div class="details-block">
@@ -70,11 +72,13 @@
 
           <h6>Registration Deadline</h6>
 
-          <?php $deadF = DateTime::createFromFormat('Y-m-d H:i a', $race->dead_from);
+          <?php /*$deadF = DateTime::createFromFormat('Y-m-d H:i a', $race->dead_from);
 
                 $formatdeadF = $deadF->format('d M Y (H:ia)');
 
-                echo '<p>' .$formatdeadF. ' GMT +08  or while slots last</p>' ?>
+                echo '<p>' .$formatdeadF. ' GMT +08  or while slots last</p>'*/
+
+                echo '<p>' .$race->dead_from. ' GMT +08  or while slots last</p>'; ?>
 
           <h6>Category</h6>
           <p>{{ $race->category }}</p>
@@ -122,11 +126,12 @@
           <h6>Rules</h6>
 
           <ul>
-            <?php $deadF = DateTime::createFromFormat('Y-m-d H:i a', $race->dead_from);
+            <?php /*$deadF = DateTime::createFromFormat('Y-m-d H:i a', $race->dead_from);
 
                   $formatdeadF = $deadF->format('d M Y, D (H:ia)');
 
-                  echo '<li>Last submission by ' .$formatdeadF. ' GMT +08</li>' ?>
+                  echo '<li>Last submission by ' .$formatdeadF. ' GMT +08</li>'*/
+                  echo '<li>Last submission by ' .$race->dead_from. ' GMT +08</li>'; ?>
             <li>“No completion, no medal” policy; This race is based on honour system, Wasport will do periodic checks on the submissions. Treat yourself, don’t cheat yourself.</li>
             <li>Change of category, refund and/or transfer of bib is not allowed.</li>
             <li>Pedometers are not allowed.</li>
@@ -241,7 +246,7 @@
         <?php
             date_default_timezone_set("Asia/Kuala_Lumpur");
 
-            if(date("Y-m-d H:i a") < $race->dead_from) {
+            if(date("d M Y (H:i a)") < $race->dead_from) {
               echo '<button type="button" class="race-register-btn"><a href="#">';
               echo __("Register");
               echo '</a></button>';

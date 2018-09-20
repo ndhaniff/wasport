@@ -121,7 +121,7 @@ var user = {
                   <hr>
 
                   <div class="raceslisting-date">
-                    <?php $dateF = DateTime::createFromFormat('Y-m-d H:i a', $race->date_from);
+                    <?php /*$dateF = DateTime::createFromFormat('Y-m-d H:i a', $race->date_from);
 
                           $dateT = DateTime::createFromFormat('Y-m-d H:i a', $race->date_to);
 
@@ -129,7 +129,9 @@ var user = {
 
                           $formatdateT = $dateT->format('d M Y (H:ia)');
 
-                          echo $formatdateF . ' GMT +08' . '<br>-<br>' . $formatdateT . ' GMT +08' ?>
+                          echo $formatdateF . ' GMT +08' . '<br>-<br>' . $formatdateT . ' GMT +08'*/
+
+                          echo $race->date_from. ' GMT +08' . '<br>-<br>' .$race->date_to. ' GMT +08'; ?>
                   </div>
 
                 </div>

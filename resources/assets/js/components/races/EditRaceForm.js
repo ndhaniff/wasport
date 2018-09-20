@@ -35,7 +35,7 @@ export default class EditRaceForm extends Component {
             category : window.race.category,
             engrave : window.race.engrave,
             RaceDateFrom: new Date(window.race.date_from),
-            RaceDateTo:new Date(window.race.dead_to),
+            RaceDateTo:new Date(window.race.date_to),
             RaceDeadlineFrom:new Date(window.race.dead_from),
             RaceDeadlineTo:new Date(window.race.dead_to),
             headerImg : [{preview : window.race.header}],
@@ -168,25 +168,25 @@ export default class EditRaceForm extends Component {
 
     handleRaceDatetimeFrom(date){
         this.setState({
-            RaceDateFrom: date.format("YYYY-MM-DD HH:mm a")
+            RaceDateFrom: date.format("DD MMM YYYY (HH:mm a)")
         })
     }
 
     handleRaceDatetimeTo(date){
         this.setState({
-            RaceDateTo: date.format("YYYY-MM-DD HH:mm a")
+            RaceDateTo: date.format("DD MMM YYYY (HH:mm a)")
         })
     }
 
     handleRaceDeadlineFrom(date){
         this.setState({
-            RaceDeadlineFrom: date.format("YYYY-MM-DD HH:mm a")
+            RaceDeadlineFrom: date.format("DD MMM YYYY (HH:mm a)")
         })
     }
 
     handleRaceDeadlineTo(date){
         this.setState({
-            RaceDeadlineTo: date.format("YYYY-MM-DD HH:mm:ss a")
+            RaceDeadlineTo: date.format("DD MMM YYYY (HH:mm a)")
         })
     }
 
@@ -277,13 +277,13 @@ export default class EditRaceForm extends Component {
                                         <label htmlFor="price">Race Datetime<span className="required-field">*</span></label>
                                         <div className="form-row">
                                             <div className="col-sm-5">
-                                            <Datetime isValidDate={ dateFrom } value={this.state.RaceDateFrom} onChange={this.handleRaceDatetimeFrom}/>
+                                            <Datetime isValidDate={ dateFrom } value={this.state.RaceDateFrom} onChange={this.handleRaceDatetimeFrom} dateFormat="DD MMM YYYY" timeFormat="(HH:mm a)"/>
                                             </div>
                                             <div className="col-sm-1">
                                             to
                                             </div>
                                             <div className="col-sm-5">
-                                            <Datetime isValidDate={ dateFrom } value={this.state.RaceDateTo} onChange={this.handleRaceDatetimeTo}/>
+                                            <Datetime isValidDate={ dateFrom } value={this.state.RaceDateTo} onChange={this.handleRaceDatetimeTo} dateFormat="DD MMM YYYY" timeFormat="(HH:mm a)"/>
                                             </div>
                                          </div>
                                         </div>
@@ -293,13 +293,13 @@ export default class EditRaceForm extends Component {
                                         <label htmlFor="price">Registration Deadline<span className="required-field">*</span></label>
                                          <div className="form-row">
                                             <div className="col-sm-5">
-                                            <Datetime isValidDate={ deadFrom } value={this.state.RaceDeadlineFrom} onChange={this.handleRaceDeadlineFrom}/>
+                                            <Datetime isValidDate={ deadFrom } value={this.state.RaceDeadlineFrom} onChange={this.handleRaceDeadlineFrom} dateFormat="DD MMM YYYY" timeFormat="(HH:mm a)"/>
                                             </div>
                                             <div className="col-sm-1">
                                             to
                                             </div>
                                             <div className="col-sm-5">
-                                            <Datetime isValidDate={ deadFrom } value={this.state.RaceDeadlineTo} onChange={this.handleRaceDeadlineTo}/>
+                                            <Datetime isValidDate={ deadFrom } value={this.state.RaceDeadlineTo} onChange={this.handleRaceDeadlineTo} dateFormat="DD MMM YYYY" timeFormat="(HH:mm a)"/>
                                             </div>
                                          </div>
                                         </div>

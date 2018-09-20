@@ -10,6 +10,7 @@ import Swal from 'sweetalert2';
 
 const MySwal = withReactContent(Swal);
 const TabPane = Tabs.TabPane;
+const MS_PER_MINUTE = 60000;
 
 Quill.register("modules/imageResize", ImageResize);
 
@@ -165,25 +166,25 @@ export default class CreateRaceForm extends Component {
 
     handleRaceDatetimeFrom(date){
         this.setState({
-            RaceDateFrom: date.format("YYYY-MM-DD HH:mm a")
+            RaceDateFrom: date.format("DD MMM YYYY (HH:mm a)")
         })
     }
 
     handleRaceDatetimeTo(date){
         this.setState({
-            RaceDateTo: date.format("YYYY-MM-DD HH:mm a")
+            RaceDateTo: date.format("DD MMM YYYY (HH:mm a)")
         })
     }
 
     handleRaceDeadlineFrom(date){
         this.setState({
-            RaceDeadlineFrom: date.format("YYYY-MM-DD HH:mm a")
+            RaceDeadlineFrom: date.format("DD MMM YYYY (HH:mm a)")
         })
     }
 
     handleRaceDeadlineTo(date){
         this.setState({
-            RaceDeadlineTo: date.format("YYYY-MM-DD HH:mm:ss a")
+            RaceDeadlineTo: date.format("DD MMM YYYY (HH:mm a)")
         })
     }
 
@@ -274,14 +275,14 @@ export default class CreateRaceForm extends Component {
                                         <label htmlFor="price">Race Datetime<span className="required-field">*</span></label>
                                         <div className="form-row">
                                             <div className="col-sm-5">
-                                            <Datetime isValidDate={ dateFrom } onChange={this.handleRaceDatetimeFrom}/>
+                                            <Datetime isValidDate={ dateFrom } onChange={this.handleRaceDatetimeFrom} dateFormat="DD MMM YYYY" timeFormat="(HH:mm a)"/>
                                             <input type="hidden" name="about" value={this.state.RaceDateFrom}/>
                                             </div>
                                             <div className="col-sm-1">
                                             to
                                             </div>
                                             <div className="col-sm-5">
-                                            <Datetime isValidDate={ dateFrom } onChange={this.handleRaceDatetimeTo}/>
+                                            <Datetime isValidDate={ dateTo } onChange={this.handleRaceDatetimeTo} dateFormat="DD MMM YYYY" timeFormat="(HH:mm a)"/>
                                             <input type="hidden" name="about" value={this.state.RaceDateTo}/>
                                             </div>
                                          </div>
@@ -292,14 +293,14 @@ export default class CreateRaceForm extends Component {
                                         <label htmlFor="price">Registration Deadline<span className="required-field">*</span></label>
                                          <div className="form-row">
                                             <div className="col-sm-5">
-                                            <Datetime isValidDate={ deadFrom } onChange={this.handleRaceDeadlineFrom}/>
+                                            <Datetime isValidDate={ deadFrom } onChange={this.handleRaceDeadlineFrom} dateFormat="DD MMM YYYY" timeFormat="(HH:mm a)"/>
                                             <input type="hidden" name="about" value={this.state.RaceDeadlineFrom}/>
                                             </div>
                                             <div className="col-sm-1">
                                             to
                                             </div>
                                             <div className="col-sm-5">
-                                            <Datetime isValidDate={ deadFrom } onChange={this.handleRaceDeadlineTo}/>
+                                            <Datetime isValidDate={ deadFrom } onChange={this.handleRaceDeadlineTo} dateFormat="DD MMM YYYY" timeFormat="(HH:mm a)"/>
                                             <input type="hidden" name="about" value={this.state.RaceDeadlineTo}/>
                                             </div>
                                          </div>
