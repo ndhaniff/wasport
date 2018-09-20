@@ -59,6 +59,7 @@ Route::group(['prefix' =>'admin'],function()
   Route::post('/addons/edit/{id}','Admin\AdminAddonsController@duplicate')->name('admin.addons.edit.dupe');
   //Users
   Route::get('/users','Admin\AdminUsersController@index')->name('admin.users');
+  Route::get('/users/search', 'Admin\AdminUsersController@search')->name('admin.users.search');
   Route::delete('/users/{id}','Admin\AdminUsersController@destroy')->name('admin.users.destroy');
   Route::get('/users/create','Admin\AdminUsersController@create')->name('admin.users.create');
   Route::post('/users/create','Admin\AdminUsersController@store')->name('admin.users.submit');
