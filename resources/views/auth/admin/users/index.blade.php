@@ -65,11 +65,11 @@ Admin | Users
       <td>{{$user->lastname}}</td>
       <td>
       <div class="btn-group " role="group" aria-label="Basic example">
-        <a href="{{route('admin.users.edit',['id'=>$user->user_id])}}"><button type="button" class="btn btn-info"><i class="fas fa-edit"></i></button></a>
+        <a href="{{route('admin.users.edit',['id'=>$user->user_id])}}"><button type="button" class="btn btn-info"><i class="far fa-edit"></i></button></a>
         <form method="POST" action="{{route('admin.users.destroy',['id' => $user->user_id ])}}">
           @method('DELETE')
           @csrf
-          <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+          <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
         </form>
         <!--<form method="POST" action="{{route('admin.users.edit.dupe',['id' => $user->id ])}}">
           @csrf
