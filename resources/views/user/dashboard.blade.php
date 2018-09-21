@@ -104,7 +104,7 @@ var user = {
         <div class="row">
           @foreach ($races as $race)
           <div class="col-sm-12 col-md-4">
-            <a href="racedetails/{{ $race->id }}">
+            <a href="racedetails/{{ $race->rid }}">
               <div class="race-box">
                 <div class="race-img">
                   <img src="<?php echo asset('storage/uploaded/races/' . $race->header) ?>" alt="{{ $race->title_en }}">

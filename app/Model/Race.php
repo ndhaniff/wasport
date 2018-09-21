@@ -4,6 +4,8 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 use Kyslik\ColumnSortable\Sortable;
+use App\Model\Addon;
+use App\Model\Medal;
 
 class Race extends Model
 {
@@ -15,6 +17,11 @@ class Race extends Model
 
     public function addons()
     {
-      return $this->hasMany(Addons::class);
+      return $this->hasMany(Addon::class);
+    }
+
+    public function medals()
+    {
+      return $this->hasMany(Medal::class);
     }
 }

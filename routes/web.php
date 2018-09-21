@@ -50,7 +50,7 @@ Route::group(['prefix' =>'admin'],function()
   //Addons
   Route::get('/addons','Admin\AdminAddonsController@index')->name('admin.addons');
   Route::get('/addons/search', 'Admin\AdminAddonsController@search')->name('admin.addons.search');
-  Route::get('/addons/searchRace', 'Admin\AdminAddonsController@searchRace')->name('admin.addons.searchRace');
+  Route::get('/addons/filter', 'Admin\AdminAddonsController@filter')->name('admin.addons.filter');
   Route::delete('/addons/{aid}','Admin\AdminAddonsController@destroy')->name('admin.addons.destroy');
   Route::get('/addons/create','Admin\AdminAddonsController@create')->name('admin.addons.create');
   Route::post('/addons/create','Admin\AdminAddonsController@store')->name('admin.addons.submit');
@@ -66,8 +66,19 @@ Route::group(['prefix' =>'admin'],function()
   Route::get('/users/edit/{id}','Admin\AdminUsersController@editForm')->name('admin.users.edit');
   Route::post('/users/edit','Admin\AdminUsersController@edit')->name('admin.users.edit.submit');
   Route::post('/users/edit/{id}','Admin\AdminUsersController@duplicate')->name('admin.users.edit.dupe');
-  //
-  //
+  //Medals
+  Route::get('/medals','Admin\AdminMedalsController@index')->name('admin.medals');
+  Route::get('/medals/search', 'Admin\AdminMedalsController@search')->name('admin.medals.search');
+  Route::get('/medals/filter', 'Admin\AdminMedalsController@filter')->name('admin.medals.filter');
+  Route::delete('/medals/{mid}','Admin\AdminMedalsController@destroy')->name('admin.medals.destroy');
+  Route::get('/medals/create','Admin\AdminMedalsController@create')->name('admin.medals.create');
+  Route::post('/medals/create','Admin\AdminMedalsController@store')->name('admin.medals.submit');
+  Route::get('/medals/edit/{mid}','Admin\AdminMedalsController@editForm')->name('admin.medals.edit');
+  Route::post('/medals/edit','Admin\AdminMedalsController@edit')->name('admin.medals.edit.submit');
+  Route::post('/medals/edit/{mid}','Admin\AdminMedalsController@duplicate')->name('admin.medals.edit.dupe');
+  //History
+  //review
+  //shipment
 });
 
 //Strava

@@ -1,6 +1,6 @@
 @extends('auth.admin.dashboard', ['active' => ['parent' => 'addons', 'child' => 'create']])
 @section('title')
-Admin | Create Addons
+Admin | Edit Addons
 @endsection
 @section('meta')
 <link rel="stylesheet" href="//cdn.quilljs.com/1.2.6/quill.snow.css">

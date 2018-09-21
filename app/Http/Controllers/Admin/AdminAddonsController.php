@@ -53,7 +53,7 @@ class AdminAddonsController extends Controller
       return view('auth.admin.addons.index',compact('addons', 'races', 'alladdons'));
     }
 
-    public function searchRace(Request $request)
+    public function filter(Request $request)
     {
       $raceitem = $request->get('raceitem');
       $addons = DB::table('addons')->where('races_id', 'like', $raceitem)->paginate(10);

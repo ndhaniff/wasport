@@ -58,7 +58,7 @@ Admin | Users
     <?php $i++ ?>
     <tr>
       <th scope="row">{{$i}}</th>
-      <th scope>{{$user->user_id}}</th>
+      <th scope>{{$user->id}}</th>
       <td>{{$user->name}}</td>
       <td>{{$user->email}}</td>
       <td>{{$user->firstname}}</td>

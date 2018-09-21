@@ -26,13 +26,13 @@
 
       @if(is_array($active ))
         <li class="{{($active['parent'] == 'users') ? 'active' : ''}}"><a href="{{route('admin.users')}}"><i class="fas fa-user"></i> Users</a></li>
-          <!--<div class="children">
-            <li class="{{($active['child'] == 'create') ? 'active' : ''}}"><a href="{{route('admin.users.create')}}">Add New Users</a></li>
-          </div>-->
       @else
         <li class=""><a href="{{route('admin.users')}}"><i class="fas fa-user"></i> Users</a></li>
-          <!--<div class="children">
-            <li class=""><a href="{{route('admin.users.create')}}">Add New Users</a></li>
-          </div>-->
+      @endif
+
+      @if(is_array($active ))
+        <li class="{{($active['parent'] == 'medals') ? 'active' : ''}}"><a href="{{route('admin.medals')}}"><i class="fas fa-medal"></i> Medals</a></li>
+      @else
+        <li class=""><a href="{{route('admin.medals')}}"><i class="fas fa-medal"></i> Medals</a></li>
       @endif
 </aside>

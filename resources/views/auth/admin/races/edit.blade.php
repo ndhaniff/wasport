@@ -1,6 +1,6 @@
 @extends('auth.admin.dashboard', ['active' => ['parent' => 'races', 'child' => 'create']])
 @section('title')
-Admin | Create Race
+Admin | Edit Race
 @endsection
 @section('meta')
 <link rel="stylesheet" href="//cdn.quilljs.com/1.2.6/quill.snow.css">

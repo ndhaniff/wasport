@@ -205,7 +205,7 @@ export default class EditRaceForm extends Component {
 
     render() {
         if(this.state.headerImg.length != 0){
-            var previewImg =  <div className="mb-2 text-center"><button onClick={this.removePreview} className="btn btn-danger float-right">X</button><br/><img height="300px" src= {this.state.headerImg[0].preview} alt=""/></div>
+            var previewImg =  <div className="mb-2 text-center"><button onClick={this.removePreview} className="btn btn-danger float-right">X</button><br/><img height="300px" src= {(this.state.headerImg[0].preview).replace('uploaded', 'uploaded/races')} alt=""/></div>
         } else {
             var previewImg =  <img src="" alt=""/>
         }

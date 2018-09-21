@@ -36,7 +36,7 @@ Admin | Races
   <table class="table table-bordered">
   <thead>
     <tr>
-      <th scope="col">ID</th>
+      <th scope="col">No.</th>
       <th scope="col">@sortablelink('title_en', 'Title')</th>
       <th scope="col">@sortablelink('date_from', 'Registration Date From')</th>
       <th scope="col">@sortablelink('date_to', 'Registration Date To')</th>
@@ -44,9 +44,10 @@ Admin | Races
     </tr>
   </thead>
   <tbody>
+    <?php $i= 0; ?>
     @foreach($races as $race)
     <tr>
-      <th scope="row">{{$race->rid}}</th>
+      <th scope="row">{{$i+1}}</th>
       <td>{{$race->title_en}}</td>
       <td>{{$race->date_from}}</td>
       <td>{{$race->date_to}}</td>
@@ -65,6 +66,7 @@ Admin | Races
       </div>
       </td>
     </tr>
+    <?php $i++ ?>
     @endforeach
   </tbody>
 </table>

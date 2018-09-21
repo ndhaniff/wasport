@@ -30,7 +30,7 @@ Admin | Addons
     </div>
 
     <div class="col-sm-4">
-      <form action="{{route('admin.addons.searchRace')}}" method="get">
+      <form action="{{route('admin.addons.filter')}}" method="get">
         <div class="input-group">
           <select name="raceitem">
             <option value=”” disabled selected>Filter race</option>
