@@ -64,7 +64,7 @@ export default class CreateAddonForm extends Component {
     handleSubmit(e){
         e.preventDefault()
 
-        let {add_en,add_ms,add_zh,desc_en,desc_ms,desc_zh,addprice,type,races_id,id} = this.state
+        let {add_en,add_ms,add_zh,desc_en,desc_ms,desc_zh,addprice,type,races_id,aid} = this.state
 
         let data = new FormData;
 
@@ -93,7 +93,7 @@ export default class CreateAddonForm extends Component {
                 })
 
                 window.setTimeout(function(){
-                  location.href = location.origin + '/admin/addons/edit/'+res.data.id
+                  location.href = location.origin + '/admin/addons/edit/'+res.data.aid
                 } ,3000);
 
             } else {
@@ -138,7 +138,7 @@ export default class CreateAddonForm extends Component {
                                     <div className="form-group">
                                         <Tabs defaultActiveKey="1" type="card">
                                             <TabPane tab="En" key="1">
-                                                <label htmlFor="addtitle_en">Addon Title</label>
+                                                <label htmlFor="addtitle_en">Addon Title<span className="required-field">*</span></label>
                                                 <input onChange={this.handleInputChange} name="add_en" className="form-control" type="text" id="addtitle_en" required/>
                                             </TabPane>
                                             <TabPane tab="Ms" key="2">
@@ -167,7 +167,7 @@ export default class CreateAddonForm extends Component {
                                       <div className="form-row">
                                         <div className="col-sm-3">
                                           <div className="form-group">
-                                            <label>Price</label>
+                                            <label>Price<span className="required-field">*</span></label>
                                             <input onChange={this.handleInputChange} name="addprice" className="form-control" type="text" />
                                           </div>
                                         </div>
@@ -191,7 +191,7 @@ export default class CreateAddonForm extends Component {
                                     <div className="form-group">
                                     <Tabs defaultActiveKey="1" type="card">
                                         <TabPane tab="En" key="1">
-                                            <label htmlFor="desc">Description</label>
+                                            <label htmlFor="desc">Description<span className="required-field">*</span></label>
                                             <ReactQuill style={{'minHeight':'500px'}} modules={this.modules} theme="snow"  value={this.state.desc_en} onChange={this.handleDescEnChange} />
                                             <input type="hidden" name="desc_en" value={this.state.desc_en}/>
                                         </TabPane>

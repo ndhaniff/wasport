@@ -35,11 +35,11 @@ export default class EditRaceForm extends Component {
             category : window.race.category,
             engrave : window.race.engrave,
             RaceDateFrom: new Date(window.race.date_from),
-            RaceDateTo:new Date(window.race.date_to),
+            RaceDateTo: new Date(window.race.date_to),
             RaceDeadlineFrom:new Date(window.race.dead_from),
             RaceDeadlineTo:new Date(window.race.dead_to),
             headerImg : [{preview : window.race.header}],
-            id : window.race.id,
+            rid : window.race.rid,
             toggleDrop: false,
         }
 
@@ -80,7 +80,7 @@ export default class EditRaceForm extends Component {
     handleSubmit(e){
         e.preventDefault()
 
-        let {about_en,about_ms,about_zh,awards_en,awards_ms,awards_zh,medals_en,medals_ms,medals_zh,title_en,title_ms,title_zh,price,category,engrave,RaceDateFrom,RaceDateTo,RaceDeadlineFrom,RaceDeadlineTo,headerImg,id} = this.state
+        let {about_en,about_ms,about_zh,awards_en,awards_ms,awards_zh,medals_en,medals_ms,medals_zh,title_en,title_ms,title_zh,price,category,engrave,RaceDateFrom,RaceDateTo,RaceDeadlineFrom,RaceDeadlineTo,headerImg,rid} = this.state
 
         let data = new FormData;
 
@@ -99,12 +99,13 @@ export default class EditRaceForm extends Component {
         data.append('price', price)
         data.append('category', category)
         data.append('engrave', engrave)
-        data.append('RaceDateFrom', RaceDateFrom)
-        data.append('RaceDateTo', RaceDateTo)
-        data.append('RaceDeadlineFrom', RaceDeadlineFrom)
-        data.append('RaceDeadlineTo', RaceDeadlineTo)
+
+        data.append('RaceDateFrom', Datetime.moment(RaceDateFrom).format('DD MMM YYYY (HH:mm a)'))
+        data.append('RaceDateTo', Datetime.moment(RaceDateTo).format('DD MMM YYYY (HH:mm a)'))
+        data.append('RaceDeadlineFrom', Datetime.moment(RaceDeadlineFrom).format('DD MMM YYYY (HH:mm a)'))
+        data.append('RaceDeadlineTo', Datetime.moment(RaceDeadlineTo).format('DD MMM YYYY (HH:mm a)'))
         data.append('headerImg', headerImg[0])
-        data.append('id', id)
+        data.append('rid', rid)
 
         axios.post('/admin/races/edit',data).then((res) => {
             if(res.data.success){
@@ -121,7 +122,7 @@ export default class EditRaceForm extends Component {
                 })
 
                 window.setTimeout(function(){
-                  location.href = location.origin + '/admin/races/edit/'+res.data.id
+                  location.href = location.origin + '/admin/races/edit/'+res.data.rid
                 } ,3000);
 
             } else {
@@ -317,7 +318,7 @@ export default class EditRaceForm extends Component {
                                     <div className="col-sm-3">
                                         <div className="form-group">
                                             <label>Price<span className="required-field">*</span></label>
-                                            <input onChange={this.handleInputChange} value={this.state.price} name="price" className="form-control" type="text" />
+                                            <input onChange={this.handleInputChange} value={this.state.price} name="price" className="form-control" type="text" required/>
                                         </div>
                                     </div>
                                     </div>
@@ -326,7 +327,6 @@ export default class EditRaceForm extends Component {
                                         <div className="form-group">
                                         <label>Engrave</label>
                                         <select value={this.state.engrave} onChange={this.handleEngraveChange} style={{'display': 'block'}}>
-                                          <option disabled value=""> -- select an option -- </option>
                                           <option value="no">No</option>
                                           <option value="yes">Yes</option>
                                         </select>
@@ -337,7 +337,7 @@ export default class EditRaceForm extends Component {
                                     <Tabs defaultActiveKey="1" type="card">
                                         <TabPane tab="En" key="1">
                                             <label htmlFor="about">About<span className="required-field">*</span></label>
-                                            <ReactQuill style={{'minHeight':'500px'}} modules={this.modules} theme="snow"  value={this.state.about_en} onChange={this.handleAboutEnChange} />
+                                            <ReactQuill style={{'minHeight':'500px'}} modules={this.modules} theme="snow"  value={this.state.about_en} onChange={this.handleAboutEnChange} required/>
                                             <input type="hidden" name="about_en" value={this.state.about_en}/>
                                         </TabPane>
                                         <TabPane tab="Ms" key="2">
@@ -356,7 +356,7 @@ export default class EditRaceForm extends Component {
                                     <Tabs defaultActiveKey="1" type="card">
                                         <TabPane tab="En" key="1">
                                             <label htmlFor="medals">Medals<span className="required-field">*</span></label>
-                                            <ReactQuill style={{'minHeight':'500px'}} modules={this.modules} theme="snow"  value={this.state.medals_en} onChange={this.handleMedalsEnChange} />
+                                            <ReactQuill style={{'minHeight':'500px'}} modules={this.modules} theme="snow"  value={this.state.medals_en} onChange={this.handleMedalsEnChange} required/>
                                             <input type="hidden" name="medals_en" value={this.state.medals_en}/>
                                         </TabPane>
                                         <TabPane tab="Ms" key="2">
@@ -375,7 +375,7 @@ export default class EditRaceForm extends Component {
                                     <Tabs defaultActiveKey="1" type="card">
                                         <TabPane tab="En" key="1">
                                             <label htmlFor="about">Awards<span className="required-field">*</span></label>
-                                            <ReactQuill style={{'minHeight':'500px'}} modules={this.modules} theme="snow"  value={this.state.awards_en} onChange={this.handleAwardsEnChange} />
+                                            <ReactQuill style={{'minHeight':'500px'}} modules={this.modules} theme="snow"  value={this.state.awards_en} onChange={this.handleAwardsEnChange} required/>
                                             <input type="hidden" name="awards_en" value={this.state.awards_en}/>
                                         </TabPane>
                                         <TabPane tab="Ms" key="2">

@@ -131,11 +131,11 @@ class AdminRacesController extends Controller
         $race->header = $filenameToStore;
         $race->save();
 
-        return response()->json(['success' => true, 'id' => $race->id ], 200 );
+        return response()->json(['success' => true, 'rid' => $race->rid ], 200 );
     }
 
-    public function editForm($id){
-        $race = Race::where('id','=', $id)->first();
+    public function editForm($rid){
+        $race = Race::where('rid','=', $rid)->first();
         return view('auth.admin.races.edit')->with('race',$race);
     }
 
@@ -180,10 +180,10 @@ class AdminRacesController extends Controller
             'price' => $request->get('price'),
             'category' => $request->get('category'),
             'engrave' => $request->get('engrave'),
-            'id' => $request->get('id')
+            'rid' => $request->get('rid')
         ];
 
-        $race = Race::find($formdata['id']);
+        $race = Race::find($formdata['rid']);
         $race->title_en = $formdata['title_en'];
         $race->title_ms = $formdata['title_ms'];
         $race->title_zh = $formdata['title_zh'];
@@ -218,20 +218,20 @@ class AdminRacesController extends Controller
         $race->header = $filenameToStore;
         $race->save();
 
-        return response()->json(['success' => true, 'id' => $race->id ], 200 );
+        return response()->json(['success' => true, 'rid' => $race->rid ], 200 );
     }
 
     /**
      * Duplicate Race
      *
-     * @param [int] $id
+     * @param [int] $rid
      * @return void
      */
-    public function duplicate($id)
+    public function duplicate($rid)
     {
-        $race = Race::find($id);
+        $race = Race::find($rid);
         if($race->count()  > 0){
-            $race = Race::find($id);
+            $race = Race::find($rid);
             $newRace = $race->replicate();
             $newRace->save();
             return redirect()->back();
@@ -243,12 +243,12 @@ class AdminRacesController extends Controller
      /**
       * Delete Race
       *
-      * @param [int] $id
+      * @param [int] $rid
       * @return void
       */
-    public function destroy($id)
+    public function destroy($rid)
     {
-        $race = Race::find($id);
+        $race = Race::find($rid);
         if($race->count()  > 0){
             $race->delete();
             return redirect()->back();

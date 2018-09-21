@@ -48,7 +48,7 @@
 
               echo '<h5>' .$formatdateF.' GMT +08 - '.$formatdateT.' GMT +08</h5>'*/
 
-              echo '<h5>' .$race->date_from).' GMT +08 - '.$race->date_to.' GMT +08</h5>'; ?>
+              echo '<h5>' .$race->date_from.' GMT +08 - '.$race->date_to.' GMT +08</h5>'; ?>
         <hr>
 
         <div class="details-block">

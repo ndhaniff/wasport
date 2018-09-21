@@ -7,7 +7,7 @@ Admin | Create Race
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/react-datetime/2.15.0/css/react-datetime.min.css">
 <script>
 var race = {
-  id: "{{$race->id}}",
+  rid: "{{$race->rid}}",
   title_en : "{{$race->title_en}}",
   title_ms : "{{$race->title_ms}}",
   title_zh : "{{$race->title_zh}}",

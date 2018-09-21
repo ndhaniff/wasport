@@ -18,7 +18,7 @@ Route::group([
 {
 	Route::get('/', 'Pages\HomeController@index')->name('home');
   Route::get('/races', 'Pages\RacesController@index')->name('races');
-  Route::get('/racedetails/{id}', 'Pages\RacesController@details')->name('racedetails');
+  Route::get('/racedetails/{rid}', 'Pages\RacesController@details')->name('racedetails');
   Route::get('/howitworks', 'Pages\HomeController@howitworks')->name('howitworks');
   //user
   Route::get('/dashboard', 'User\UserController@dashboard' )->name('user.dashboard');
@@ -41,22 +41,22 @@ Route::group(['prefix' =>'admin'],function()
   //Races
   Route::get('/races','Admin\AdminRacesController@index')->name('admin.races');
   Route::get('/races/search', 'Admin\AdminRacesController@search')->name('admin.races.search');
-  Route::delete('/races/{id}','Admin\AdminRacesController@destroy')->name('admin.races.destroy');
   Route::get('/races/create','Admin\AdminRacesController@create')->name('admin.races.create');
   Route::post('/races/create','Admin\AdminRacesController@store')->name('admin.races.submit');
-  Route::get('/races/edit/{id}','Admin\AdminRacesController@editForm')->name('admin.races.edit');
+  Route::get('/races/edit/{rid}','Admin\AdminRacesController@editForm')->name('admin.races.edit');
   Route::post('/races/edit','Admin\AdminRacesController@edit')->name('admin.races.edit.submit');
-  Route::post('/races/edit/{id}','Admin\AdminRacesController@duplicate')->name('admin.races.edit.dupe');
+  Route::delete('/races/{rid}','Admin\AdminRacesController@destroy')->name('admin.races.destroy');
+  Route::post('/races/edit/{rid}','Admin\AdminRacesController@duplicate')->name('admin.races.edit.dupe');
   //Addons
   Route::get('/addons','Admin\AdminAddonsController@index')->name('admin.addons');
   Route::get('/addons/search', 'Admin\AdminAddonsController@search')->name('admin.addons.search');
   Route::get('/addons/searchRace', 'Admin\AdminAddonsController@searchRace')->name('admin.addons.searchRace');
-  Route::delete('/addons/{id}','Admin\AdminAddonsController@destroy')->name('admin.addons.destroy');
+  Route::delete('/addons/{aid}','Admin\AdminAddonsController@destroy')->name('admin.addons.destroy');
   Route::get('/addons/create','Admin\AdminAddonsController@create')->name('admin.addons.create');
   Route::post('/addons/create','Admin\AdminAddonsController@store')->name('admin.addons.submit');
-  Route::get('/addons/edit/{id}','Admin\AdminAddonsController@editForm')->name('admin.addons.edit');
+  Route::get('/addons/edit/{aid}','Admin\AdminAddonsController@editForm')->name('admin.addons.edit');
   Route::post('/addons/edit','Admin\AdminAddonsController@edit')->name('admin.addons.edit.submit');
-  Route::post('/addons/edit/{id}','Admin\AdminAddonsController@duplicate')->name('admin.addons.edit.dupe');
+  Route::post('/addons/edit/{aid}','Admin\AdminAddonsController@duplicate')->name('admin.addons.edit.dupe');
   //Users
   Route::get('/users','Admin\AdminUsersController@index')->name('admin.users');
   Route::get('/users/search', 'Admin\AdminUsersController@search')->name('admin.users.search');

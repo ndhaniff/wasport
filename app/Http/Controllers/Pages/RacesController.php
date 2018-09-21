@@ -27,14 +27,14 @@ class RacesController extends Controller
         return view('pages.races', ['new' => $new, 'old' => $old]);
     }
 
-    public function details($id) {
+    public function details($rid) {
 
       $race = DB::table('races')
-        ->where('id', '=', $id)
+        ->where('rid', '=', $rid)
         ->first();
 
       $addons = DB::table('addons')
-        ->where('races_id', '=', $id)
+        ->where('races_id', '=', $rid)
         ->get();
 
       return view('pages.racedetails', ['race' => $race, 'addons' => $addons]);

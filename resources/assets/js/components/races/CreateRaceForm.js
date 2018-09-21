@@ -119,7 +119,7 @@ export default class CreateRaceForm extends Component {
                 })
 
                 window.setTimeout(function(){
-                  location.href = location.origin + '/admin/races/edit/'+res.data.id
+                  location.href = location.origin + '/admin/races/edit/'+res.data.rid
                 } ,3000);
 
             } else {
@@ -319,7 +319,7 @@ export default class CreateRaceForm extends Component {
                                       <div className="col-sm-3">
                                         <div className="form-group">
                                             <label>Price<span className="required-field">*</span></label>
-                                            <input onChange={this.handleInputChange} name="price" className="form-control" type="text" />
+                                            <input onChange={this.handleInputChange} name="price" className="form-control" type="text" required/>
                                         </div>
                                       </div>
                                     </div>
@@ -328,8 +328,7 @@ export default class CreateRaceForm extends Component {
                                         <div className="form-group">
                                           <label>Engrave</label>
                                           <select value={this.state.engrave} onChange={this.handleEngraveChange} style={{'display': 'block'}}>
-                                            <option disabled selected value=""> -- select an option -- </option>
-                                            <option value="no">No</option>
+                                            <option selected value="no">No</option>
                                             <option value="yes">Yes</option>
                                           </select>
                                         </div>
@@ -340,7 +339,7 @@ export default class CreateRaceForm extends Component {
                                         <TabPane tab="En" key="1">
                                             <label htmlFor="about">About<span className="required-field">*</span></label>
                                             <ReactQuill style={{'minHeight':'500px'}} modules={this.modules} theme="snow"  value={this.state.about_en} onChange={this.handleAboutEnChange} />
-                                            <input type="hidden" name="about_en" value={this.state.about_en}/>
+                                            <input type="hidden" name="about_en" value={this.state.about_en} required/>
                                         </TabPane>
                                         <TabPane tab="Ms" key="2">
                                             <label htmlFor="about">About</label>
@@ -360,7 +359,7 @@ export default class CreateRaceForm extends Component {
                                         <TabPane tab="En" key="1">
                                             <label htmlFor="medals">Medals<span className="required-field">*</span></label>
                                             <ReactQuill style={{'minHeight':'500px'}} modules={this.modules} theme="snow"  value={this.state.medals_en} onChange={this.handleMedalsEnChange} />
-                                            <input type="hidden" name="medals_en" value={this.state.medals_en}/>
+                                            <input type="hidden" name="medals_en" value={this.state.medals_en} required/>
                                         </TabPane>
                                         <TabPane tab="Ms" key="2">
                                             <label htmlFor="medals">Medals</label>
@@ -380,7 +379,7 @@ export default class CreateRaceForm extends Component {
                                         <TabPane tab="En" key="1">
                                             <label htmlFor="about">Awards<span className="required-field">*</span></label>
                                             <ReactQuill style={{'minHeight':'500px'}} modules={this.modules} theme="snow"  value={this.state.awards_en} onChange={this.handleAwardsEnChange} />
-                                            <input type="hidden" name="awards_en" value={this.state.awards_en}/>
+                                            <input type="hidden" name="awards_en" value={this.state.awards_en} required/>
                                         </TabPane>
                                         <TabPane tab="Ms" key="2">
                                             <label htmlFor="about">Awards</label>

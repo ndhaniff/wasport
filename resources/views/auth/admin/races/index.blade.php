@@ -36,7 +36,7 @@ Admin | Races
   <table class="table table-bordered">
   <thead>
     <tr>
-      <th scope="col">id</th>
+      <th scope="col">ID</th>
       <th scope="col">@sortablelink('title_en', 'Title')</th>
       <th scope="col">@sortablelink('date_from', 'Registration Date From')</th>
       <th scope="col">@sortablelink('date_to', 'Registration Date To')</th>
@@ -46,22 +46,22 @@ Admin | Races
   <tbody>
     @foreach($races as $race)
     <tr>
-      <th scope="row">{{$race->id}}</th>
+      <th scope="row">{{$race->rid}}</th>
       <td>{{$race->title_en}}</td>
       <td>{{$race->date_from}}</td>
       <td>{{$race->date_to}}</td>
       <td>
       <div class="btn-group " role="group" aria-label="Basic example">
-        <a href="{{route('admin.races.edit',['id'=>$race->id])}}"><button type="button" class="btn btn-info"><i class="far fa-edit"></i></button></a>
-        <form method="POST" action="{{route('admin.races.destroy',['id' => $race->id ])}}">
+        <a href="{{route('admin.races.edit',['rid'=>$race->rid])}}"><button type="button" class="btn btn-info"><i class="far fa-edit"></i></button></a>
+        <form method="POST" action="{{route('admin.races.destroy',['rid' => $race->rid ])}}">
           @method('DELETE')
           @csrf
           <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
         </form>
-        <form method="POST" action="{{route('admin.races.edit.dupe',['id' => $race->id ])}}">
+        <!--<form method="POST" action="{{route('admin.races.edit.dupe',['rid' => $race->rid ])}}">
           @csrf
           <button type="submit" class="btn btn-primary"><i class="fas fa-copy"></i></button>
-        </form>
+        </form>-->
       </div>
       </td>
     </tr>

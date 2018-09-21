@@ -108,7 +108,7 @@
       <div class="col-sm-12 col-md-4">
         <h2>{{__("NEW RACE")}}</h2>
 
-        <a href="racedetails/{{ $new->id }}">
+        <a href="racedetails/{{ $new->rid }}">
           <div class="race-box">
             <div class="race-img">
               <img src=" <?php echo asset('storage/uploaded/races/' . $new->header) ?>" alt="{{ $new->title_en }}">
@@ -134,7 +134,7 @@
                       $formatdateT = $dateT->format('d M Y (H:ia)');
 
                       echo $formatdateF . ' GMT +08' . '<br>-<br>' . $formatdateT . ' GMT +08'*/
-                      echo $new->date_from. ' GMT +08' . '<br>-<br>' .$new->date_to). ' GMT +08'; ?>
+                      echo $new->date_from. ' GMT +08' . '<br>-<br>' .$new->date_to. ' GMT +08'; ?>
               </div>
             </div>
           </div>
@@ -144,7 +144,7 @@
       <div class="col-sm-12 col-md-4">
         <h2>{{__("PAST RACE")}}</h2>
 
-        <a href="racedetails/{{ $new->id }}">
+        <a href="racedetails/{{ $new->rid }}">
           <div class="race-box">
             <div class="race-img">
               <img src=" <?php echo asset('storage/uploaded/races/' . $old->header) ?>" alt="{{ $old->title_en }}">
@@ -161,7 +161,7 @@
               <hr>
 
               <div class="raceslisting-date">
-                <?php $dateF = DateTime::createFromFormat('Y-m-d H:i a', $old->date_from);
+                <?php /*$dateF = DateTime::createFromFormat('Y-m-d H:i a', $old->date_from);
 
                       $dateT = DateTime::createFromFormat('Y-m-d H:i a', $old->date_to);
 
@@ -169,7 +169,8 @@
 
                       $formatdateT = $dateT->format('d M Y (H:ia)');
 
-                      echo $formatdateF . ' GMT +08' . '<br>-<br>' . $formatdateT . ' GMT +08' ?>
+                      echo $formatdateF . ' GMT +08' . '<br>-<br>' . $formatdateT . ' GMT +08'*/
+                      echo $old->date_from. ' GMT +08' . '<br>-<br>' .$old->date_to. ' GMT +08'; ?>
               </div>
             </div>
           </div>

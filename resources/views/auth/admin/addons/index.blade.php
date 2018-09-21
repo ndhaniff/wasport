@@ -10,7 +10,7 @@ Admin | Addons
 <?php $i=1 ?>
 <div class="p-3">
   <div class="float-right">
-      <a href="{{url('laravel-crud-search-sort/create')}}" class="btn btn-primary">Add New</a>
+      <a href="{{route('admin.addons.create')}}" class="btn btn-primary">Add New</a>
   </div>
 
   <h1 style="font-size: 2.2rem">Addons</h1>
@@ -33,16 +33,16 @@ Admin | Addons
       <form action="{{route('admin.addons.searchRace')}}" method="get">
         <div class="input-group">
           <select name="raceitem">
-            <option value=”” disabled selected>Search race</option>
+            <option value=”” disabled selected>Filter race</option>
             @foreach($alladdons as $alladdon)
               <?php foreach($races as $race) {
-                if($alladdon->races_id == $race->id)
+                if($alladdon->races_id == $race->rid)
                   echo "<option value='" .$alladdon->races_id. "'>" .$race->title_en. "</option>";
                 } ?>
             @endforeach
           </select>
           <span class="input-group-prepend">
-            <button type="submit" class="btn btn-primary">Search</button>
+            <button type="submit" class="btn btn-primary">Filter</button>
           </span>
         </div>
       </form>
@@ -68,21 +68,21 @@ Admin | Addons
       <td>{{$addon->add_en}}</td>
       <td>{{$addon->type}}</td>
       <td><?php foreach($races as $race) {
-          if($addon->races_id == $race->id)
+          if($addon->races_id == $race->rid)
             echo $race->title_en;
         } ?></td>
       <td>
       <div class="btn-group " role="group" aria-label="Basic example">
-        <a href="{{route('admin.addons.edit',['id'=>$addon->id])}}"><button type="button" class="btn btn-info"><i class="far fa-edit"></i></button></a>
-        <form method="POST" action="{{route('admin.addons.destroy',['id' => $addon->id ])}}">
+        <a href="{{route('admin.addons.edit',['aid'=>$addon->aid])}}"><button type="button" class="btn btn-info"><i class="far fa-edit"></i></button></a>
+        <form method="POST" action="{{route('admin.addons.destroy',['aid' => $addon->aid ])}}">
           @method('DELETE')
           @csrf
           <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
         </form>
-        <form method="POST" action="{{route('admin.addons.edit.dupe',['id' => $addon->id ])}}">
+        <!--<form method="POST" action="{{route('admin.addons.edit.dupe',['aid' => $addon->aid ])}}">
           @csrf
           <button type="submit" class="btn btn-primary"><i class="fas fa-copy"></i></button>
-        </form>
+        </form>-->
       </div>
       </td>
     </tr>

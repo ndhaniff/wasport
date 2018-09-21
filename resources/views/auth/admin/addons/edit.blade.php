@@ -9,7 +9,7 @@ Admin | Create Addons
 <?php $race_arr = array();
 
       foreach($races as $race) {
-        $race_arr[] = array('rid' => $race->id, 'title'=> $race->title_en);
+        $race_arr[] = array('rid' => $race->rid, 'title'=> $race->title_en);
       }
 
       $race_json = json_encode($race_arr); ?>
@@ -18,7 +18,7 @@ Admin | Create Addons
 var races = JSON.parse('<?= $race_json; ?>');
 
 var addons = {
-  id: "{{$addons->id}}",
+  aid: "{{$addons->aid}}",
   add_en : "{{$addons->add_en}}",
   add_ms : "{{$addons->add_ms}}",
   add_zh : "{{$addons->add_zh}}",

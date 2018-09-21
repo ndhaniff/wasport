@@ -28,7 +28,7 @@ export default class EditAddonForm extends Component {
             addprice : window.addons.addprice,
             type : window.addons.type,
             races_id : window.addons.races_id,
-            id : window.addons.id,
+            aid : window.addons.aid,
         }
 
         /* Quill module */
@@ -66,7 +66,7 @@ export default class EditAddonForm extends Component {
     handleSubmit(e){
         e.preventDefault()
 
-        let {add_en,add_ms,add_zh,desc_en,desc_ms,desc_zh,addprice,type,races_id,id} = this.state
+        let {add_en,add_ms,add_zh,desc_en,desc_ms,desc_zh,addprice,type,races_id,aid} = this.state
 
         let data = new FormData;
 
@@ -79,7 +79,7 @@ export default class EditAddonForm extends Component {
         data.append('addprice', addprice)
         data.append('type', type)
         data.append('races_id', races_id)
-        data.append('id', id)
+        data.append('aid', aid)
 
         axios.post('/admin/addons/edit',data).then((res) => {
             if(res.data.success){
@@ -96,7 +96,7 @@ export default class EditAddonForm extends Component {
                 })
 
                 window.setTimeout(function(){
-                  location.href = location.origin + '/admin/addons/edit/'+res.data.id
+                  location.href = location.origin + '/admin/addons/edit/'+res.data.aid
                 } ,3000);
 
             } else {
@@ -141,7 +141,7 @@ export default class EditAddonForm extends Component {
                                     <div className="form-group">
                                       <Tabs defaultActiveKey="1" type="card">
                                           <TabPane tab="En" key="1">
-                                              <label htmlFor="addtitle_en">Addon Title</label>
+                                              <label htmlFor="addtitle_en">Addon Title <span className="required-field">*</span></label>
                                               <input onChange={this.handleInputChange} name="add_en" value={this.state.add_en} className="form-control" type="text" id="addtitle_en" required/>
                                           </TabPane>
                                           <TabPane tab="Ms" key="2">
@@ -170,7 +170,7 @@ export default class EditAddonForm extends Component {
                                     <div className="form-row">
                                     <div className="col-sm-3">
                                         <div className="form-group">
-                                            <label>Price</label>
+                                            <label>Price <span className="required-field">*</span></label>
                                             <input onChange={this.handleInputChange} value={this.state.addprice} name="addprice" className="form-control" type="text" />
                                         </div>
                                     </div>
@@ -193,7 +193,7 @@ export default class EditAddonForm extends Component {
                                     <div className="form-group">
                                     <Tabs defaultActiveKey="1" type="card">
                                         <TabPane tab="En" key="1">
-                                            <label htmlFor="desc">Description</label>
+                                            <label htmlFor="desc">Description <span className="required-field">*</span></label>
                                             <ReactQuill style={{'minHeight':'500px'}} modules={this.modules} theme="snow"  value={this.state.desc_en} onChange={this.handleDescEnChange} />
                                             <input type="hidden" name="desc_en" value={this.state.desc_en}/>
                                         </TabPane>

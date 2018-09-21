@@ -115,11 +115,11 @@ class AdminAddonsController extends Controller
 
         $addons->save();
 
-        return response()->json(['success' => true, 'id' => $addons->id ], 200 );
+        return response()->json(['success' => true, 'aid' => $addons->aid ], 200 );
     }
 
-    public function editForm($id){
-        $addons = DB::table('addons')->where('id','=', $id)->first();
+    public function editForm($aid){
+        $addons = DB::table('addons')->where('aid','=', $aid)->first();
         $races = DB::table('races')->get();
 
         return view('auth.admin.addons.edit', ['addons' => $addons, 'races' => $races]);
@@ -150,11 +150,11 @@ class AdminAddonsController extends Controller
           'addprice' => $request->get('addprice'),
           'type' => $request->get('type'),
           'races_id' => $request->get('races_id'),
-          'id' => $request->get('id')
+          'aid' => $request->get('aid')
       ];
 
 
-      $addons = Addon::find($formdata['id']);
+      $addons = Addon::find($formdata['aid']);
       $addons->add_en = $formdata['add_en'];
       $addons->add_ms = $formdata['add_ms'];
       $addons->add_zh = $formdata['add_zh'];
@@ -167,7 +167,7 @@ class AdminAddonsController extends Controller
 
       $addons->save();
 
-      return response()->json(['success' => true, 'id' => $addons->id ], 200 );
+      return response()->json(['success' => true, 'aid' => $addons->aid ], 200 );
     }
 
     /**
@@ -176,11 +176,11 @@ class AdminAddonsController extends Controller
      * @param [int] $id
      * @return void
      */
-    public function duplicate($id)
+    public function duplicate($aid)
     {
-        $addons = Addon::find($id);
+        $addons = Addon::find($aid);
         if($addons->count()  > 0){
-            $addons = Addon::find($id);
+            $addons = Addon::find($aid);
             $newAddons = $addons->replicate();
             $newAddons->save();
             return redirect()->back();
@@ -195,9 +195,9 @@ class AdminAddonsController extends Controller
       * @param [int] $id
       * @return void
       */
-    public function destroy($id)
+    public function destroy($aid)
     {
-        $addons = Addon::find($id);
+        $addons = Addon::find($aid);
         if($addons->count()  > 0){
             $addons->delete();
             return redirect()->back();

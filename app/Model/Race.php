@@ -11,6 +11,8 @@ class Race extends Model
 
     public $sortable = ['title_en', 'date_from', 'date_to'];
 
+    protected $primaryKey = 'rid';
+
     public function addons()
     {
       return $this->hasMany(Addons::class);

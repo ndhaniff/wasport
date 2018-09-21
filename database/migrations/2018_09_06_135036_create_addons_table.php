@@ -14,7 +14,7 @@ class CreateAddonsTable extends Migration
     public function up()
     {
         Schema::create('addons', function (Blueprint $table) {
-          $table->increments('id');
+          $table->increments('aid');
           $table->string('add_en');
           $table->string('add_ms')->nullable();
           $table->string('add_zh')->nullable();
@@ -24,7 +24,7 @@ class CreateAddonsTable extends Migration
           $table->string('addprice');
           $table->string('type')->nullable();
           $table->integer('races_id')->unsigned();
-          $table->foreign('races_id')->references('id')->on('races')->onDelete('cascade')->onUpdate('cascade');
+          $table->foreign('races_id')->references('rid')->on('races')->onDelete('cascade')->onUpdate('cascade');
           $table->timestamps();
         });
     }

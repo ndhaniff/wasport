@@ -36,7 +36,7 @@
       <div class="row">
         @foreach ($new as $newrace)
         <div class="col-sm-12 col-md-4">
-          <a href="racedetails/{{ $newrace->id }}">
+          <a href="racedetails/{{ $newrace->rid }}">
             <div class="race-box">
               <div class="race-img">
                 <img src=" <?php echo asset('storage/uploaded/races/' . $newrace->header) ?>" alt="{{ $newrace->title_en }}">
@@ -79,7 +79,7 @@
       <div class="row">
         @foreach ($old as $oldrace)
         <div class="col-sm-12 col-md-4">
-          <a href="racedetails/{{ $oldrace->id }}">
+          <a href="racedetails/{{ $oldrace->rid }}">
             <div class="race-box">
               <div class="race-img">
                 <img src=" <?php echo asset('storage/uploaded/races/' . $oldrace->header) ?>" alt="{{ $newrace->title_en }}">

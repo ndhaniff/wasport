@@ -12,6 +12,8 @@ class Addon extends Model
 
   public $sortable = ['add_en'];
 
+  protected $primaryKey = 'aid';
+
   public function race()
   {
     return $this->belongsTo(Race::class);
