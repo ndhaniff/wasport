@@ -9,6 +9,7 @@ use Laracasts\Flash\Flash;
 use App\Http\Controllers\API\StravaController;
 use App\Model\User;
 use App\Model\Race;
+use App\Model\Medal;
 use Auth;
 use DB;
 
@@ -50,8 +51,12 @@ class UserController extends Controller
         ->limit(5)
         ->get();
 
+      $medals = DB::table('medals')
+        ->limit(3)
+        ->get();
+
       //return view('user.dashboard')->with('user',$user);
-      return view('user.dashboard', ['user' => $user, 'races' => $races]);
+      return view('user.dashboard', ['user' => $user, 'races' => $races, 'medals' => $medals]);
     }
 
     public function updateProfile(Request $request){

@@ -126,7 +126,7 @@ class AdminRacesController extends Controller
              $filenameToStore = $filename."_".time().".".$ext;
              $path = $headerimg->storeAs('public/uploaded/races/', $filenameToStore);
          } else {
-             $filenameToStore = 'noimage.jpg';
+             $filenameToStore = 'noimage.png';
          }
         $race->header = $filenameToStore;
         $race->save();
@@ -213,7 +213,7 @@ class AdminRacesController extends Controller
              $filenameToStore = $filename."_".time().".".$ext;
              $path = $headerimg->storeAs('public/uploaded/races/', $filenameToStore);
          } else {
-             $filenameToStore = 'noimage.jpg';
+             $filenameToStore = 'noimage.png';
          }
         $race->header = $filenameToStore;
         $race->save();

@@ -90,24 +90,72 @@ class AdminMedalsController extends Controller
             'races_id' => $request->get('races_id'),
         ];
 
-        $medals = new Medal();
-        $medals->name = $formdata['name'];
-        $medals->medal_grey = $formdata['medal_grey'];
-        $medals->medal_color = $formdata['medal_color'];
-        $medals->cert = $formdata['cert'];
-        $medals->bib = $formdata['bib'];
-        $medals->races_id = $formdata['races_id'];
+        $medal = new Medal();
+        $medal->name = $formdata['name'];
+        $medal->races_id = $formdata['races_id'];
 
-        $medals->save();
+        //handle grey medal
+        if($request->hasFile('medal_grey')){
+             $medal_grey = $request->file('medal_grey');
+             $filenameWithExt = $medal_grey->getClientOriginalName();
+             $filename =  str_replace(' ', '_', pathinfo($filenameWithExt, PATHINFO_FILENAME ));
+             $ext = $medal_grey->getClientOriginalExtension();
+             $filenameToStore = $filename."_".time().".".$ext;
+             $path = $medal_grey->storeAs('public/uploaded/medals/grey/', $filenameToStore);
+         } else {
+             $filenameToStore = 'noimage.png';
+         }
+        $medal->medal_grey = $filenameToStore;
 
-        return response()->json(['success' => true, 'mid' => $medals->mid ], 200 );
+        //handle color medal
+        if($request->hasFile('medal_color')){
+             $medal_color = $request->file('medal_color');
+             $filenameWithExt = $medal_color->getClientOriginalName();
+             $filename =  str_replace(' ', '_', pathinfo($filenameWithExt, PATHINFO_FILENAME ));
+             $ext = $medal_color->getClientOriginalExtension();
+             $filenameToStore = $filename."_".time().".".$ext;
+             $path = $medal_color->storeAs('public/uploaded/medals/color/', $filenameToStore);
+         } else {
+             $filenameToStore = 'noimage.png';
+         }
+        $medal->medal_color = $filenameToStore;
+
+        //handle cert
+        if($request->hasFile('cert')){
+             $cert = $request->file('cert');
+             $filenameWithExt = $cert->getClientOriginalName();
+             $filename =  str_replace(' ', '_', pathinfo($filenameWithExt, PATHINFO_FILENAME ));
+             $ext = $medal_color->getClientOriginalExtension();
+             $filenameToStore = $filename."_".time().".".$ext;
+             $path = $cert->storeAs('public/uploaded/cert/', $filenameToStore);
+         } else {
+             $filenameToStore = 'noimage.png';
+         }
+        $medal->cert = $filenameToStore;
+
+        //handle bib
+        if($request->hasFile('bib')){
+             $bib = $request->file('bib');
+             $filenameWithExt = $bib->getClientOriginalName();
+             $filename =  str_replace(' ', '_', pathinfo($filenameWithExt, PATHINFO_FILENAME ));
+             $ext = $bib->getClientOriginalExtension();
+             $filenameToStore = $filename."_".time().".".$ext;
+             $path = $bib->storeAs('public/uploaded/bib/', $filenameToStore);
+         } else {
+             $filenameToStore = 'noimage.png';
+         }
+        $medal->bib = $filenameToStore;
+
+        $medal->save();
+
+        return response()->json(['success' => true, 'mid' => $medal->mid ], 200 );
     }
 
     public function editForm($mid){
-        $medals = DB::table('medals')->where('mid','=', $mid)->first();
+        $medal = DB::table('medals')->where('mid','=', $mid)->first();
         $races = DB::table('races')->get();
 
-        return view('auth.admin.medals.edit', ['medals' => $medals, 'races' => $races]);
+        return view('auth.admin.medals.edit', ['medal' => $medal, 'races' => $races]);
     }
 
     /**
@@ -133,17 +181,69 @@ class AdminMedalsController extends Controller
       ];
 
 
-      $medals = Medal::find($formdata['mid']);
-      $medals->name = $formdata['name'];
-      $medals->medal_grey = $formdata['medal_grey'];
-      $medals->medal_color = $formdata['medal_color'];
-      $medals->cert = $formdata['cert'];
-      $medals->bib = $formdata['bib'];
-      $medals->races_id = $formdata['races_id'];
+      $medal = Medal::find($formdata['mid']);
+      $medal->name = $formdata['name'];
+      $medal->medal_grey = $formdata['medal_grey'];
+      $medal->medal_color = $formdata['medal_color'];
+      $medal->cert = $formdata['cert'];
+      $medal->bib = $formdata['bib'];
+      $medal->races_id = $formdata['races_id'];
 
-      $medals->save();
+      //handle grey medal
+      if($request->hasFile('medal_grey')){
+           $medal_grey = $request->file('medal_grey');
+           $filenameWithExt = $medal_grey->getClientOriginalName();
+           $filename =  str_replace(' ', '_', pathinfo($filenameWithExt, PATHINFO_FILENAME ));
+           $ext = $medal_grey->getClientOriginalExtension();
+           $filenameToStore = $filename."_".time().".".$ext;
+           $path = $medal_grey->storeAs('public/uploaded/medals/grey/', $filenameToStore);
+       } else {
+           $filenameToStore = 'noimage.png';
+       }
+      $medal->medal_grey = $filenameToStore;
 
-      return response()->json(['success' => true, 'mid' => $medals->mid ], 200 );
+      //handle color medal
+      if($request->hasFile('medal_color')){
+           $medal_color = $request->file('medal_color');
+           $filenameWithExt = $medal_color->getClientOriginalName();
+           $filename =  str_replace(' ', '_', pathinfo($filenameWithExt, PATHINFO_FILENAME ));
+           $ext = $medal_color->getClientOriginalExtension();
+           $filenameToStore = $filename."_".time().".".$ext;
+           $path = $medal_color->storeAs('public/uploaded/medals/color/', $filenameToStore);
+       } else {
+           $filenameToStore = 'noimage.png';
+       }
+      $medal->medal_color = $filenameToStore;
+
+      //handle cert
+      if($request->hasFile('cert')){
+           $cert = $request->file('cert');
+           $filenameWithExt = $cert->getClientOriginalName();
+           $filename =  str_replace(' ', '_', pathinfo($filenameWithExt, PATHINFO_FILENAME ));
+           $ext = $medal_color->getClientOriginalExtension();
+           $filenameToStore = $filename."_".time().".".$ext;
+           $path = $cert->storeAs('public/uploaded/cert/', $filenameToStore);
+       } else {
+           $filenameToStore = 'noimage.png';
+       }
+      $medal->cert = $filenameToStore;
+
+      //handle bib
+      if($request->hasFile('bib')){
+           $bib = $request->file('bib');
+           $filenameWithExt = $bib->getClientOriginalName();
+           $filename =  str_replace(' ', '_', pathinfo($filenameWithExt, PATHINFO_FILENAME ));
+           $ext = $bib->getClientOriginalExtension();
+           $filenameToStore = $filename."_".time().".".$ext;
+           $path = $bib->storeAs('public/uploaded/bib/', $filenameToStore);
+       } else {
+           $filenameToStore = 'noimage.png';
+       }
+      $medal->bib = $filenameToStore;
+
+      $medal->save();
+
+      return response()->json(['success' => true, 'mid' => $medal->mid ], 200 );
     }
 
      /**
@@ -154,12 +254,12 @@ class AdminMedalsController extends Controller
       */
     public function destroy($mid)
     {
-        $medals = Medal::find($mid);
-        if($medals->count()  > 0){
-            $medals->delete();
+        $medal = Medal::find($mid);
+        if($medal->count()  > 0){
+            $medal->delete();
             return redirect()->back();
         } else {
-            return response()->json(['success' => false, 'msg' => 'addon not found' ], 200 );
+            return response()->json(['success' => false, 'msg' => 'medal not found' ], 200 );
         }
     }
 }

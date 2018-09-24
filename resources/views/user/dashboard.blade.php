@@ -56,15 +56,11 @@ var user = {
 
         <div id="user-medal-frame">
           <div class="row">
+            @foreach ($medals as $medal)
             <div class="col-md-4">
-              <img src="https://virtual-race-submissions.s3-ap-southeast-1.amazonaws.com/images/MEDAL-WALL-BW-png-clt29082018-93752" alt="">
+              <img src="<?php echo asset('storage/uploaded/medals/grey/' . $medal->medal_grey) ?>" alt="">
             </div>
-            <div class="col-md-4">
-              <img src="https://virtual-race-submissions.s3-ap-southeast-1.amazonaws.com/images/MEDAL-WALL-BW-png-clt29082018-93752" alt="">
-            </div>
-            <div class="col-md-4">
-              <img src="https://virtual-race-submissions.s3-ap-southeast-1.amazonaws.com/images/MEDAL-WALL-BW-png-clt29082018-93752" alt="">
-            </div>
+            @endforeach
           </div>
         </div>
       </div>
@@ -121,17 +117,7 @@ var user = {
                   <hr>
 
                   <div class="raceslisting-date">
-                    <?php /*$dateF = DateTime::createFromFormat('Y-m-d H:i a', $race->date_from);
-
-                          $dateT = DateTime::createFromFormat('Y-m-d H:i a', $race->date_to);
-
-                          $formatdateF = $dateF->format('d M Y (H:ia)');
-
-                          $formatdateT = $dateT->format('d M Y (H:ia)');
-
-                          echo $formatdateF . ' GMT +08' . '<br>-<br>' . $formatdateT . ' GMT +08'*/
-
-                          echo $race->date_from. ' GMT +08' . '<br>-<br>' .$race->date_to. ' GMT +08'; ?>
+                    <?php echo $race->date_from. ' GMT +08' . '<br>-<br>' .$race->date_to. ' GMT +08'; ?>
                   </div>
 
                 </div>
