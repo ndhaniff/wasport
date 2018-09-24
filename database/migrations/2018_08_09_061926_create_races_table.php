@@ -16,8 +16,8 @@ class CreateRacesTable extends Migration
         Schema::create('races', function (Blueprint $table) {
             $table->increments('rid');
             $table->string('title_en');
-            $table->string('title_ms');
-            $table->string('title_zh');
+            $table->string('title_ms')->nullable();
+            $table->string('title_zh')->nullable();
             $table->string('date_from')->nullable();
             $table->string('date_to')->nullable();
             $table->string('dead_from')->nullable();

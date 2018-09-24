@@ -276,14 +276,14 @@ export default class CreateRaceForm extends Component {
                                         <div className="form-row">
                                             <div className="col-sm-5">
                                             <Datetime isValidDate={ dateFrom } onChange={this.handleRaceDatetimeFrom} dateFormat="DD MMM YYYY" timeFormat="(HH:mm a)"/>
-                                            <input type="hidden" name="about" value={this.state.RaceDateFrom}/>
+                                            <input type="hidden" name="RaceDateFrom" value={this.state.RaceDateFrom}/>
                                             </div>
                                             <div className="col-sm-1">
                                             to
                                             </div>
                                             <div className="col-sm-5">
-                                            <Datetime isValidDate={ dateTo } onChange={this.handleRaceDatetimeTo} dateFormat="DD MMM YYYY" timeFormat="(HH:mm a)"/>
-                                            <input type="hidden" name="about" value={this.state.RaceDateTo}/>
+                                            <Datetime isValidDate={ dateTo } onChange={this.handleRaceDatetimeTo} defaultTime="{23:59}" dateFormat="DD MMM YYYY" timeFormat="(HH:mm a)"/>
+                                            <input type="hidden" name="RaceDateTo" value={this.state.RaceDateTo}/>
                                             </div>
                                          </div>
                                         </div>
@@ -294,14 +294,14 @@ export default class CreateRaceForm extends Component {
                                          <div className="form-row">
                                             <div className="col-sm-5">
                                             <Datetime isValidDate={ deadFrom } onChange={this.handleRaceDeadlineFrom} dateFormat="DD MMM YYYY" timeFormat="(HH:mm a)"/>
-                                            <input type="hidden" name="about" value={this.state.RaceDeadlineFrom}/>
+                                            <input type="hidden" name="RaceDeadlineFrom" value={this.state.RaceDeadlineFrom}/>
                                             </div>
                                             <div className="col-sm-1">
                                             to
                                             </div>
                                             <div className="col-sm-5">
                                             <Datetime isValidDate={ deadFrom } onChange={this.handleRaceDeadlineTo} dateFormat="DD MMM YYYY" timeFormat="(HH:mm a)"/>
-                                            <input type="hidden" name="about" value={this.state.RaceDeadlineTo}/>
+                                            <input type="hidden" name="RaceDeadlineTo" value={this.state.RaceDeadlineTo}/>
                                             </div>
                                          </div>
                                         </div>

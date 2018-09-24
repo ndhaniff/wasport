@@ -99,7 +99,6 @@ export default class EditRaceForm extends Component {
         data.append('price', price)
         data.append('category', category)
         data.append('engrave', engrave)
-
         data.append('RaceDateFrom', Datetime.moment(RaceDateFrom).format('DD MMM YYYY (HH:mm a)'))
         data.append('RaceDateTo', Datetime.moment(RaceDateTo).format('DD MMM YYYY (HH:mm a)'))
         data.append('RaceDeadlineFrom', Datetime.moment(RaceDeadlineFrom).format('DD MMM YYYY (HH:mm a)'))
@@ -220,8 +219,7 @@ export default class EditRaceForm extends Component {
             accept="image/jpeg, image/png"
             onDrop={this.onDrop}
             multiple={false}
-            name="headerimg"
-        >
+            name="headerImg">
             <div className="text-center">
             <p>Try dropping some files here, or click to select files to upload.</p>
             <p>Only *.jpeg and *.png images will be accepted</p>
