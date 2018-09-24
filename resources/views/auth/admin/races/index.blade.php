@@ -49,8 +49,8 @@ Admin | Races
     <tr>
       <th scope="row">{{$i+1}}</th>
       <td>{{$race->title_en}}</td>
-      <td>{{$race->date_from}}</td>
-      <td>{{$race->date_to}}</td>
+      <td><?= DateTime::createFromFormat('Y-m-d', $race->date_from)->format('d M Y'); ?></td>
+      <td><?= DateTime::createFromFormat('Y-m-d', $race->date_to)->format('d M Y'); ?></td>
       <td>
       <div class="btn-group " role="group" aria-label="Basic example">
         <a href="{{route('admin.races.edit',['rid'=>$race->rid])}}"><button type="button" class="btn btn-info"><i class="far fa-edit"></i></button></a>

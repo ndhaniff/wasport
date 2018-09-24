@@ -57,7 +57,7 @@
 
                         $dateT = DateTime::createFromFormat('Y-m-d', $newrace->date_to)->format('d M Y');
 
-                        echo $dateF. ' (' .$newrace->time_from. ') GMT +08' . '<br>-<br>' .$dateT. '(' .$newrace->time_to. ') GMT +08'; ?>
+                        echo $dateF. ' (' .$newrace->time_from. ') GMT +08' . '<br>-<br>' .$dateT. ' (' .$newrace->time_to. ') GMT +08'; ?>
                 </div>
 
               </div>
@@ -95,7 +95,7 @@
 
                         $dateT = DateTime::createFromFormat('Y-m-d', $oldrace->date_to)->format('d M Y');
 
-                        echo $dateF. ' (' .$oldrace->time_from. ') GMT +08' . '<br>-<br>' .$dateT. '(' .$oldrace->time_to. ') GMT +08'; ?>
+                        echo $dateF. ' (' .$oldrace->time_from. ') GMT +08' . '<br>-<br>' .$dateT. ' (' .$oldrace->time_to. ') GMT +08'; ?>
 
                 </div>
 
