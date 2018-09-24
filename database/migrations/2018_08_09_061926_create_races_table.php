@@ -22,6 +22,10 @@ class CreateRacesTable extends Migration
             $table->string('date_to')->nullable();
             $table->string('dead_from')->nullable();
             $table->string('dead_to')->nullable();
+            $table->string('time_from')->nullable();
+            $table->string('time_to')->nullable();
+            $table->string('deadtime_from')->nullable();
+            $table->string('deadtime_to')->nullable();
             $table->string('price')->nullable();
             $table->longText('about_en')->nullable();
             $table->longText('about_ms')->nullable();

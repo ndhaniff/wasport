@@ -88,6 +88,10 @@ class AdminRacesController extends Controller
             'RaceDateTo' => $request->get('RaceDateTo'),
             'RaceDeadlineFrom' => $request->get('RaceDeadlineFrom'),
             'RaceDeadlineTo' => $request->get('RaceDeadlineTo'),
+            'time_from' => $request->get('time_from'),
+            'time_to' => $request->get('time_to'),
+            'deadtime_from' => $request->get('deadtime_from'),
+            'deadtime_to' => $request->get('deadtime_to'),
             'medals_en' => $request->get('medals_en'),
             'medals_ms' => $request->get('medals_ms'),
             'medals_zh' => $request->get('medals_zh'),
@@ -104,6 +108,10 @@ class AdminRacesController extends Controller
         $race->date_to = $formdata['RaceDateTo'];
         $race->dead_from = $formdata['RaceDeadlineFrom'];
         $race->dead_to = $formdata['RaceDeadlineTo'];
+        $race->time_from = $formdata['time_from'];
+        $race->time_to = $formdata['time_to'];
+        $race->deadtime_from = $formdata['deadtime_from'];
+        $race->deadtime_to = $formdata['deadtime_to'];
         $race->medals_en = $formdata['medals_en'];
         $race->medals_ms = $formdata['medals_ms'];
         $race->medals_zh = $formdata['medals_zh'];
@@ -174,6 +182,10 @@ class AdminRacesController extends Controller
             'RaceDateTo' => $request->get('RaceDateTo'),
             'RaceDeadlineFrom' => $request->get('RaceDeadlineFrom'),
             'RaceDeadlineTo' => $request->get('RaceDeadlineTo'),
+            'time_from' => $request->get('time_from'),
+            'time_to' => $request->get('time_to'),
+            'deadtime_from' => $request->get('deadtime_from'),
+            'deadtime_to' => $request->get('deadtime_to'),
             'medals_en' => $request->get('medals_en'),
             'medals_ms' => $request->get('medals_ms'),
             'medals_zh' => $request->get('medals_zh'),
@@ -191,6 +203,10 @@ class AdminRacesController extends Controller
         $race->date_to = $formdata['RaceDateTo'];
         $race->dead_from = $formdata['RaceDeadlineFrom'];
         $race->dead_to = $formdata['RaceDeadlineTo'];
+        $race->time_from = $formdata['time_from'];
+        $race->time_to = $formdata['time_to'];
+        $race->deadtime_from = $formdata['deadtime_from'];
+        $race->deadtime_to = $formdata['deadtime_to'];
         $race->medals_en = $formdata['medals_en'];
         $race->medals_ms = $formdata['medals_ms'];
         $race->medals_zh = $formdata['medals_zh'];

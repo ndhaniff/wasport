@@ -53,16 +53,11 @@
                 <hr>
 
                 <div class="raceslisting-date">
-                  <?php /*$dateF = DateTime::createFromFormat('Y-m-d H:i a', $newrace->date_from);
+                  <?php $dateF = DateTime::createFromFormat('Y-m-d', $newrace->date_from)->format('d M Y');
 
-                        $dateT = DateTime::createFromFormat('Y-m-d H:i a', $newrace->date_to);
+                        $dateT = DateTime::createFromFormat('Y-m-d', $newrace->date_to)->format('d M Y');
 
-                        $formatdateF = $dateF->format('d M Y (H:ia)');
-
-                        $formatdateT = $dateT->format('d M Y (H:ia)');
-
-                        echo $formatdateF . ' GMT +08' . '<br>-<br>' . $formatdateT . ' GMT +08'*/
-                        echo $newrace->date_from. ' GMT +08' . '<br>-<br>' .$newrace->date_to. ' GMT +08'; ?>
+                        echo $dateF. ' (' .$newrace->time_from. ') GMT +08' . '<br>-<br>' .$dateT. '(' .$newrace->time_to. ') GMT +08'; ?>
                 </div>
 
               </div>
@@ -96,17 +91,11 @@
                 <hr>
 
                 <div class="raceslisting-date">
-                  <?php /*$dateF = DateTime::createFromFormat('Y-m-d H:i a', $oldrace->date_from);
+                  <?php $dateF = DateTime::createFromFormat('Y-m-d', $oldrace->date_from)->format('d M Y');
 
-                        $dateT = DateTime::createFromFormat('Y-m-d H:i a', $oldrace->date_to);
+                        $dateT = DateTime::createFromFormat('Y-m-d', $oldrace->date_to)->format('d M Y');
 
-                        $formatdateF = $dateF->format('d M Y (H:ia)');
-
-                        $formatdateT = $dateT->format('d M Y (H:ia)');
-
-                        echo $formatdateF . ' GMT +08' . '<br>-<br>' . $formatdateT . ' GMT +08'*/
-
-                        echo $newrace->date_from. ' GMT +08' . '<br>-<br>' .$newrace->date_to. ' GMT +08'; ?>
+                        echo $dateF. ' (' .$oldrace->time_from. ') GMT +08' . '<br>-<br>' .$dateT. '(' .$oldrace->time_to. ') GMT +08'; ?>
 
                 </div>
 

@@ -27,6 +27,10 @@ var race = {
   date_from : "{{$race->date_from}}",
   dead_to : "{{$race->dead_to}}",
   dead_from : "{{$race->dead_from}}",
+  time_to : "{{$race->time_to}}",
+  time_from : "{{$race->time_from}}",
+  deadtime_to : "{{$race->deadtime_to}}",
+  deadtime_from : "{{$race->deadtime_from}}",
   header : "{{asset('storage/uploaded/races/'.$race->header)}}",
 }
 </script>

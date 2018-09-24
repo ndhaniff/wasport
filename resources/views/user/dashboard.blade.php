@@ -117,7 +117,7 @@ var user = {
                   <hr>
 
                   <div class="raceslisting-date">
-                    <?php echo $race->date_from. ' GMT +08' . '<br>-<br>' .$race->date_to. ' GMT +08'; ?>
+                    <?php echo $race->date_from. ' (' .$race->time_from. ') GMT +08' . '<br>-<br>' .$dateT. '(' .$race->time_to. ') GMT +08'; ?>
                   </div>
 
                 </div>

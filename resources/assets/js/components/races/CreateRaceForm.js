@@ -38,6 +38,10 @@ export default class CreateRaceForm extends Component {
             RaceDateTo: '',
             RaceDeadlineFrom: '',
             RaceDeadlineTo: '',
+            time_from: '',
+            time_to: '',
+            deadtime_from: '',
+            deadtime_to: '',
             headerImg : [],
             toggleDrop: true,
         }
@@ -73,13 +77,17 @@ export default class CreateRaceForm extends Component {
         this.handleRaceDatetimeTo = this.handleRaceDatetimeTo.bind(this)
         this.handleRaceDeadlineFrom = this.handleRaceDeadlineFrom.bind(this)
         this.handleRaceDeadlineTo = this.handleRaceDeadlineTo.bind(this)
+        this.handleTimeFrom = this.handleTimeFrom.bind(this)
+        this.handleTimeTo = this.handleTimeTo.bind(this)
+        this.handleDeadTimeFrom = this.handleDeadTimeFrom.bind(this)
+        this.handleDeadTimeTo = this.handleDeadTimeTo.bind(this)
         this.handleEngraveChange = this.handleEngraveChange.bind(this)
     }
 
     handleSubmit(e){
         e.preventDefault()
 
-        let {about_en,about_ms,about_zh,awards_en,awards_ms,awards_zh,title_en,title_ms,title_zh,medals_en,medals_ms,medals_zh,price,category,engrave,RaceDateFrom,RaceDateTo,RaceDeadlineFrom,RaceDeadlineTo,headerImg} = this.state
+        let {about_en,about_ms,about_zh,awards_en,awards_ms,awards_zh,title_en,title_ms,title_zh,medals_en,medals_ms,medals_zh,price,category,engrave,RaceDateFrom,RaceDateTo,RaceDeadlineFrom,RaceDeadlineTo,time_from,time_to,deadtime_from,deadtime_to,headerImg} = this.state
 
         let data = new FormData;
 
@@ -102,6 +110,10 @@ export default class CreateRaceForm extends Component {
         data.append('RaceDateTo', RaceDateTo)
         data.append('RaceDeadlineFrom', RaceDeadlineFrom)
         data.append('RaceDeadlineTo', RaceDeadlineTo)
+        data.append('time_from', time_from)
+        data.append('time_to', time_to)
+        data.append('deadtime_from', deadtime_from)
+        data.append('deadtime_to', deadtime_to)
         data.append('headerImg', headerImg[0])
 
         axios.post('/admin/races/create',data).then((res) => {
@@ -166,26 +178,50 @@ export default class CreateRaceForm extends Component {
 
     handleRaceDatetimeFrom(date){
         this.setState({
-            RaceDateFrom: date.format("DD MMM YYYY (HH:mm a)")
+            RaceDateFrom: date.format('YYYY-MM-DD')
         })
     }
 
     handleRaceDatetimeTo(date){
         this.setState({
-            RaceDateTo: date.format("DD MMM YYYY (HH:mm a)")
+            RaceDateTo: date.format('YYYY-MM-DD')
         })
     }
 
     handleRaceDeadlineFrom(date){
         this.setState({
-            RaceDeadlineFrom: date.format("DD MMM YYYY (HH:mm a)")
+            RaceDeadlineFrom: date.format('YYYY-MM-DD')
         })
     }
 
     handleRaceDeadlineTo(date){
         this.setState({
-            RaceDeadlineTo: date.format("DD MMM YYYY (HH:mm a)")
+            RaceDeadlineTo: date.format('YYYY-MM-DD')
         })
+    }
+
+    handleTimeFrom(date) {
+      this.setState({
+          time_from: date.format('HH:mm a')
+      })
+    }
+
+    handleTimeTo(date) {
+      this.setState({
+          time_to: date.format('HH:mm a')
+      })
+    }
+
+    handleDeadTimeFrom(date) {
+      this.setState({
+          deadtime_from: date.format('HH:mm a')
+      })
+    }
+
+    handleDeadTimeTo(date) {
+      this.setState({
+          deadtime_to: date.format('HH:mm a')
+      })
     }
 
     handleEngraveChange(event) {
@@ -239,6 +275,7 @@ export default class CreateRaceForm extends Component {
             return current.isBefore( this.state.RaceDateFrom );
         }
 
+
         return (
 
             <div className="wrapper p-1">
@@ -271,37 +308,53 @@ export default class CreateRaceForm extends Component {
                                     </div>
                                     <div className="form-row">
                                     <div className="col-sm-6">
-                                        <div className="form-group">
+                                      <div className="form-group">
                                         <label htmlFor="price">Race Datetime<span className="required-field">*</span></label>
                                         <div className="form-row">
-                                            <div className="col-sm-5">
-                                            <Datetime isValidDate={ dateFrom } onChange={this.handleRaceDatetimeFrom} dateFormat="DD MMM YYYY" timeFormat="(HH:mm a)"/>
+                                          <div className="col-sm-3">
+                                            <Datetime isValidDate={ dateFrom } onChange={this.handleRaceDatetimeFrom} timeFormat={false}/>
                                             <input type="hidden" name="RaceDateFrom" value={this.state.RaceDateFrom}/>
-                                            </div>
-                                            <div className="col-sm-1">
+                                          </div>
+                                          <div className="col-sm-2">
+                                            <Datetime timeFormat="HH:mm a" onChange={this.handleTimeFrom} showTimeSelect dateFormat={false} />
+                                            <input type="hidden" name="time_from" value={this.state.time_from}/>
+                                          </div>
+                                          <div className="col-sm-1">
                                             to
-                                            </div>
-                                            <div className="col-sm-5">
-                                            <Datetime isValidDate={ dateTo } onChange={this.handleRaceDatetimeTo} defaultTime="{23:59}" dateFormat="DD MMM YYYY" timeFormat="(HH:mm a)"/>
+                                          </div>
+                                          <div className="col-sm-3">
+                                            <Datetime isValidDate={ dateTo } onChange={this.handleRaceDatetimeTo} timeFormat={false}/>
                                             <input type="hidden" name="RaceDateTo" value={this.state.RaceDateTo}/>
-                                            </div>
+                                          </div>
+                                          <div className="col-sm-2">
+                                            <Datetime timeFormat="HH:mm a" onChange={this.handleTimeTo} showTimeSelect dateFormat={false} />
+                                            <input type="hidden" name="time_to" value={this.state.time_to}/>
+                                          </div>
                                          </div>
                                         </div>
                                     </div>
                                     <div className="col-sm-6">
-                                        <div className="form-group">
+                                      <div className="form-group">
                                         <label htmlFor="price">Registration Deadline<span className="required-field">*</span></label>
-                                         <div className="form-row">
-                                            <div className="col-sm-5">
-                                            <Datetime isValidDate={ deadFrom } onChange={this.handleRaceDeadlineFrom} dateFormat="DD MMM YYYY" timeFormat="(HH:mm a)"/>
-                                            <input type="hidden" name="RaceDeadlineFrom" value={this.state.RaceDeadlineFrom}/>
+                                          <div className="form-row">
+                                            <div className="col-sm-3">
+                                              <Datetime isValidDate={ deadFrom } onChange={this.handleRaceDeadlineFrom} timeFormat={false}/>
+                                              <input type="hidden" name="RaceDeadlineFrom" value={this.state.RaceDeadlineFrom}/>
+                                            </div>
+                                            <div className="col-sm-2">
+                                              <Datetime timeFormat="HH:mm a" onChange={this.handleDeadTimeFrom} showTimeSelect dateFormat={false} />
+                                              <input type="hidden" name="deadtime_from" value={this.state.deadtime_from}/>
                                             </div>
                                             <div className="col-sm-1">
-                                            to
+                                              to
                                             </div>
-                                            <div className="col-sm-5">
-                                            <Datetime isValidDate={ deadFrom } onChange={this.handleRaceDeadlineTo} dateFormat="DD MMM YYYY" timeFormat="(HH:mm a)"/>
+                                            <div className="col-sm-3">
+                                            <Datetime isValidDate={ deadFrom } onChange={this.handleRaceDeadlineTo} timeFormat={false}/>
                                             <input type="hidden" name="RaceDeadlineTo" value={this.state.RaceDeadlineTo}/>
+                                            </div>
+                                            <div className="col-sm-2">
+                                              <Datetime timeFormat="HH:mm a" onChange={this.handleDeadTimeTo} dateFormat={false} />
+                                              <input type="hidden" name="deadtime_to" value={this.state.deadtime_to}/>
                                             </div>
                                          </div>
                                         </div>

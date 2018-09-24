@@ -7,6 +7,9 @@ body {
 
 .required-field { color: red; }
 
+a:active,
+a:focus { text-decoration: none; }
+
 #scroll {
     position:fixed;
     right:10px;

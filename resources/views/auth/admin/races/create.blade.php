@@ -12,5 +12,4 @@ Admin | Create Race
   <h1>Add New Race</h1>
   <div id="createraceform"></div>
 </div>
-
 @endsection

@@ -125,16 +125,11 @@
               <hr>
 
               <div class="raceslisting-date">
-                <?php /*$dateF = DateTime::createFromFormat('Y-m-d H:i a', $new->date_from);
+                <?php $dateF = DateTime::createFromFormat('Y-m-d', $new->date_from)->format('d M Y');
 
-                      $dateT = DateTime::createFromFormat('Y-m-d H:i a', $new->date_to);
+                      $dateT = DateTime::createFromFormat('Y-m-d', $new->date_to)->format('d M Y');
 
-                      $formatdateF = $dateF->format('d M Y (H:ia)');
-
-                      $formatdateT = $dateT->format('d M Y (H:ia)');
-
-                      echo $formatdateF . ' GMT +08' . '<br>-<br>' . $formatdateT . ' GMT +08'*/
-                      echo $new->date_from. ' GMT +08' . '<br>-<br>' .$new->date_to. ' GMT +08'; ?>
+                      echo $dateF. ' (' .$new->time_from. ') GMT +08' . '<br>-<br>' .$dateT. '(' .$new->time_to. ') GMT +08'; ?>
               </div>
             </div>
           </div>
@@ -161,16 +156,11 @@
               <hr>
 
               <div class="raceslisting-date">
-                <?php /*$dateF = DateTime::createFromFormat('Y-m-d H:i a', $old->date_from);
+                <?php $dateF = DateTime::createFromFormat('Y-m-d', $old->date_from)->format('d M Y');
 
-                      $dateT = DateTime::createFromFormat('Y-m-d H:i a', $old->date_to);
+                      $dateT = DateTime::createFromFormat('Y-m-d', $old->date_to)->format('d M Y');
 
-                      $formatdateF = $dateF->format('d M Y (H:ia)');
-
-                      $formatdateT = $dateT->format('d M Y (H:ia)');
-
-                      echo $formatdateF . ' GMT +08' . '<br>-<br>' . $formatdateT . ' GMT +08'*/
-                      echo $old->date_from. ' GMT +08' . '<br>-<br>' .$old->date_to. ' GMT +08'; ?>
+                      echo $dateF. ' (' .$old->time_from. ') GMT +08' . '<br>-<br>' .$dateT. '(' .$old->time_to. ') GMT +08'; ?>
               </div>
             </div>
           </div>

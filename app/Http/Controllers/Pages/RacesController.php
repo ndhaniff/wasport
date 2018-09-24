@@ -15,13 +15,13 @@ class RacesController extends Controller
         $date = date('Y-m-d');
 
         $new = DB::table('races')
-          ->where('date_from', '>', $date)
-          ->orderBy('date_from')
+          ->where('date_to', '>', $date)
+          ->orderBy('date_to')
           ->get();
 
         $old = DB::table('races')
-          ->where('date_from', '<', $date)
-          ->orderBy('date_from', 'DESC')
+          ->where('date_to', '<', $date)
+          ->orderBy('date_to', 'DESC')
           ->get();
 
         return view('pages.races', ['new' => $new, 'old' => $old]);
