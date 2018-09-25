@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import { Avatar, Tabs } from 'antd';
 import EditProfileModal from './components/EditProfileModal';
 import axios from 'axios';

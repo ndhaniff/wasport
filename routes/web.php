@@ -20,6 +20,7 @@ Route::group([
   Route::get('/races', 'Pages\RacesController@index')->name('races');
   Route::get('/racedetails/{rid}', 'Pages\RacesController@details')->name('racedetails');
   Route::get('/howitworks', 'Pages\HomeController@howitworks')->name('howitworks');
+  Route::get('/privacypolicy', 'Pages\HomeController@privacypolicy')->name('privacypolicy');
   //user
   Route::get('/dashboard', 'User\UserController@dashboard' )->name('user.dashboard');
 
@@ -95,6 +96,7 @@ Route::post('/user/uploadImage', 'User\UserController@uploadProfileImg' )->name(
 Route::post('/user/updateProfile', 'User\UserController@updateProfile' )->name('user.updateProfile');
 Route::post('/user/updateAddress', 'User\UserController@updateAddress' )->name('user.updateAddress');
 Route::post('/user/updatePassword', 'User\UserController@updatePassword' )->name('user.updatePassword');
+Route::get('/user/viewMedals', 'User\UserController@viewMedals' )->name('user.viewMedals');
 
 // OAuth Routes
 Route::get('auth/{provider}', 'Auth\LoginController@redirectToProvider');

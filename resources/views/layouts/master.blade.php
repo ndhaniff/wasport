@@ -188,6 +188,7 @@
               <p><a href="#">{{__("About Us")}}</a></p>
               <p><a href="#">{{__("Contact")}}</a></p>
               <p><a href="#">{{__("Life Sharing")}}</a></p>
+              <p><a href="/privacypolicy">{{__("Privacy Policy")}}</a></p>
             </div>
             <div class="col-sm-12 col-md-2">
               <h5><a href="\races">{{__("Event")}}</a></h5>
@@ -214,6 +215,7 @@
       </footer>
 
       <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.2/owl.carousel.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
       <script type="text/javascript">
         $(document).ready(function() {

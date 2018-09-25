@@ -49,7 +49,7 @@ var user = {
             <h3>My Medals</h3>
           </div>
           <div class="col-md-6">
-            <span id="view-all"><a href="#">View All</a></span>
+            <span id="view-all"><a href="/user/viewMedals">View All</a></span>
           </div>
         </div>
 
@@ -117,7 +117,10 @@ var user = {
                   <hr>
 
                   <div class="raceslisting-date">
-                    <?php echo $race->date_from. ' (' .$race->time_from. ') GMT +08' . '<br>-<br>' .$dateT. '(' .$race->time_to. ') GMT +08'; ?>
+                    <?php $dateF = DateTime::createFromFormat('Y-m-d', $race->date_from)->format('d M Y');
+                          $dateT = DateTime::createFromFormat('Y-m-d', $race->date_to)->format('d M Y');
+
+                          echo $dateF. ' (' .$race->time_from. ') GMT +08' . '<br>-<br>' .$dateT. '(' .$race->time_to. ') GMT +08'; ?>
                   </div>
 
                 </div>

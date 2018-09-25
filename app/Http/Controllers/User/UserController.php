@@ -48,7 +48,7 @@ class UserController extends Controller
       $races = DB::table('races')
         ->where('dead_from', '>', $date)
         ->orderBy('date_from')
-        ->limit(5)
+        ->limit(3)
         ->get();
 
       $medals = DB::table('medals')
@@ -127,5 +127,14 @@ class UserController extends Controller
         return response()->json(['success' => true], 200 );
       } else
           return response()->json(['success' => false], 200 );
+    }
+
+    public function viewMedals() {
+
+      $medals = DB::table('medals')
+                ->join('races', 'medals.races_id', '=', 'races.rid')
+                ->get();
+
+      return view('user.medals', ['medals' => $medals]);
     }
 }

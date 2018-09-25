@@ -27,7 +27,10 @@ class HomeController extends Controller
     }
 
     public function howitworks(){
-
         return view('pages.howitworks');
+    }
+
+    public function privacypolicy(){
+        return view('pages.privacypolicy');
     }
 }

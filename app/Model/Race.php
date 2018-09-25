@@ -22,6 +22,6 @@ class Race extends Model
 
     public function medals()
     {
-      return $this->hasMany(Medal::class);
+      return $this->hasOne(Medal::class);
     }
 }
