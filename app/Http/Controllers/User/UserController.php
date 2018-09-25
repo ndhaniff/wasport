@@ -51,9 +51,10 @@ class UserController extends Controller
         ->limit(3)
         ->get();
 
-      $medals = DB::table('medals')
-        ->limit(3)
-        ->get();
+        $medals = DB::table('medals')
+                  ->join('races', 'medals.races_id', '=', 'races.rid')
+                  ->limit(3)
+                  ->get();
 
       //return view('user.dashboard')->with('user',$user);
       return view('user.dashboard', ['user' => $user, 'races' => $races, 'medals' => $medals]);

@@ -240,9 +240,9 @@
             $cur = date('Y-m-d H:i a');
 
             if($cur < $deadline) {
-              echo '<button type="button" class="race-register-btn"><a href="#">';
+              echo '<a href="#" class="race-register-btn">';
               echo __("Register");
-              echo '</a></button>';
+              echo '</a>';
             } else {
               echo '<button type="button" class="race-register-btn" disabled>Registration closed</button>';
             }

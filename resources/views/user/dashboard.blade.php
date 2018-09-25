@@ -56,10 +56,31 @@ var user = {
 
         <div id="user-medal-frame">
           <div class="row">
-            @foreach ($medals as $medal)
+            @foreach($medals as $medal)
             <div class="col-md-4">
-              <img src="<?php echo asset('storage/uploaded/medals/grey/' . $medal->medal_grey) ?>" alt="">
+              <a id="medal-modal" data-toggle="modal" data-target="#medalViewer-{{$medal->mid}}" data-id="{{$medal->mid}}">
+                <img src="<?= asset('storage/uploaded/medals/grey/' . $medal->medal_grey) ?>" alt="{{$medal->title_en}}">
+              </a>
             </div>
+
+            <!-- The Modal -->
+            <div class="modal hide fade" id="medalViewer-{{$medal->mid}}" tabindex="-1" role="document" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+
+                  <!-- Modal body -->
+                  <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+                    <img src="<?= asset('storage/uploaded/medals/grey/' . $medal->medal_grey) ?>" alt="{{$medal->title_en}}" id="modal-img"> <br>
+
+                    <h3>{{$medal->title_en}}</h3>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
             @endforeach
           </div>
         </div>
@@ -140,10 +161,9 @@ var user = {
 @if($user->strava_access_token)
   @section('script')
   <script>
-      localStorage.setItem("strava_token", "{{$user->strava_access_token}}")
-      localStorage.setItem("strava_id", "{{$user->strava_id}}")
-      var token = localStorage.getItem("strava_token")
-      var strava_id = localStorage.getItem("strava_id")
+    document.getElementById("medal-modal").addEventListener("click", function(event){
+      return false;
+    });
   </script>
   @endsection
 @endif

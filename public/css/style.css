@@ -252,7 +252,9 @@ h2 { font-family: 'SourceSansPro-Semibold'; }
   font-family: 'SourceSansPro-Regular';
 }
 
-.howitworks h2 {
+.howitworks h2,
+.howitoperate h2,
+.related-cooperation h2 {
   margin-bottom: 25px;
 }
 
@@ -527,6 +529,8 @@ RACE DETAILS
 }
 
 .race-register-btn {
+  text-align: center;
+  display: block;
   border: none;
   color: #fff;
   background-color: #e93537;
@@ -535,23 +539,50 @@ RACE DETAILS
   border-radius: 5px;
 }
 
-.race-register-btn a {
+.race-register-btn a,
+.race-register-btn:hover {
   color: #fff;
   text-decoration: none;
   font-family: 'SourceSansPro-Semibold';
 }
 
 /*
+ABOUT US
+*/
+#aboutus h4,
+#aboutus p {
+  width: 60%;
+  margin: 0 auto 3rem auto;
+}
+
+/*
+GUIDE
+*/
+.guide-steps {
+  width: 45%;
+  margin: 0 auto 3rem auto;
+}
+
+/*
 HOW IT WORKS
 */
-#howitworks {
+#howitworks,
+#howitoperate {
   margin: 5rem 0;
   text-align: center;
 }
 
 #howitworks img { margin-bottom: 1rem; }
 
-#howitworks h3 { font-family: 'SourceSansPro-Semibold'; }
+#howitworks h3,
+#howitoperate h3 { font-family: 'SourceSansPro-Semibold'; }
+
+/*
+RELATED COOPERATION
+*/
+.related-desc { margin-bottom: 3.5rem; }
+
+.related h5 { font-weight: bold; }
 
 /*
 USER DASHBOARD
@@ -649,6 +680,12 @@ USER DASHBOARD
 #user-medal-frame .row { margin-top: 0; }
 
 #user-history { margin: 12rem auto; }
+
+.user-medal #modal-img { width: 60%; }
+
+body.modal-open {
+    overflow: visible;
+}
 
 /*
 MEDALS
@@ -757,7 +794,15 @@ RESPONSIVE
     width: 12rem;
   }
 
+  #aboutus h4,
+  #aboutus p {
+    width: 85%;
+    margin: 0 auto 2.5rem auto;
+  }
+
   #raceslisting-datebr { display: none; }
+
+  .guide-steps { width: 75%; }
 
   #howitworks p { margin-bottom: 3.5rem; }
 }
@@ -798,7 +843,17 @@ RESPONSIVE
     padding: 5px 20px;
   }
 
-  .howitworks h2 { padding-top: 25px; }
+  #aboutus h4,
+  #aboutus p {
+    width: 100%;
+    margin: 0 auto 1.8rem auto;
+  }
+
+  .guide-steps { width: 100%; }
+
+  .howitworks h2,
+  .howitoperate h2,
+  .related-cooperation h2 { padding-top: 0; }
 
   .p-5 { padding: 0 !important; }
 }

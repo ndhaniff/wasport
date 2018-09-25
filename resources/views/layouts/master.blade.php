@@ -14,6 +14,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.26.29/sweetalert2.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.26.29/sweetalert2.min.js"></script>
 
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.2/owl.carousel.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.2/owl.theme.css">
@@ -120,7 +121,7 @@
         </nav>
         <nav id="menu" class=" p-2">
             <a class="p-2 text-light" href="/">{{__("HOME")}}</a> |
-            <a class="p-2 text-light" href="#">{{__("GUIDE")}}</a> |
+            <a class="p-2 text-light" href="/guide">{{__("GUIDE")}}</a> |
             <a class="p-2 text-light" href="/races">{{__("EVENT")}}</a> |
             <a class="p-2 text-light" href="#">{{__("OFFLINE EVENT")}}</a> |
             <a class="p-2 text-light" href="/howitworks">{{__("HOW IT WORKS")}}</a>
@@ -142,7 +143,7 @@
             <div class="collapse navbar-collapse" id="myNavbar">
               <ul class="nav navbar-nav">
                 <li><a href="/">{{__("HOME")}}</a></li>
-                <li><a href="#">{{__("GUIDE")}}</a></li>
+                <li><a href="/guide">{{__("GUIDE")}}</a></li>
                 <li><a href="/races">{{__("EVENT")}}</a></li>
                 <li><a href="#">{{__("OFFLINE EVENT")}}</a></li>
                 <li><a href="/howitworks">{{__("HOW IT WORKS")}}</a></li>
@@ -185,9 +186,8 @@
             <div class="col-sm-12 col-md-2">
               <h5>{{__("Company")}}</h5>
               <hr id="footer-title-hr">
-              <p><a href="#">{{__("About Us")}}</a></p>
-              <p><a href="#">{{__("Contact")}}</a></p>
-              <p><a href="#">{{__("Life Sharing")}}</a></p>
+              <p><a href="/aboutus">{{__("About Us")}}</a></p>
+              <p><a href="">{{__("Contact")}}</a></p>
               <p><a href="/privacypolicy">{{__("Privacy Policy")}}</a></p>
             </div>
             <div class="col-sm-12 col-md-2">
@@ -199,7 +199,7 @@
             <div class="col-sm-12 col-md-4">
               <h5>{{__("Get In Touch")}}</h5>
               <hr id="footer-title-hr">
-              <p>{{__("To work with WaSport, please click")}} <a href="#">{{__("HERE")}}</a><br id="footer-br"/>
+              <p>{{__("To work with WaSport, please click")}} <a href="\relatedcooperation">{{__("HERE")}}</a><br id="footer-br"/>
               {{__("or send email to")}} info@wasport.com.my</p>
             </div>
           </div>
@@ -240,6 +240,10 @@
           $('#scroll').click(function(){
             $("html, body").animate({ scrollTop: 0 }, 600);
             return false;
+          });
+
+          $('#medal-modal').on('click', function (e) {
+            e.preventDefault();
           });
         });
       </script>

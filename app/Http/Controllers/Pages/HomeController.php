@@ -26,11 +26,23 @@ class HomeController extends Controller
         return view('pages.index', ['new' => $new, 'old' => $old]);
     }
 
+    public function aboutus(){
+      return view('pages.aboutus');
+    }
+
+    public function guide(){
+      return view('pages.guide');
+    }
+
     public function howitworks(){
-        return view('pages.howitworks');
+      return view('pages.howitworks');
     }
 
     public function privacypolicy(){
-        return view('pages.privacypolicy');
+      return view('pages.privacypolicy');
+    }
+
+    public function relatedCooperation(){
+      return view('pages.relatedcooperation');
     }
 }
