@@ -71,13 +71,63 @@ Admin | Medals
         } ?></td>
       <td>
       <div class="btn-group " role="group" aria-label="Basic example">
-        <a href="{{route('admin.medals.edit',['mid'=>$medal->mid])}}"><button type="button" class="btn btn-info"><i class="far fa-edit"></i></button></a>
+        <a data-toggle="modal" data-target="#medalViewer-{{$medal->mid}}" data-id="{{$medal->mid}}">
+          <button type="button" class="btn btn-success"><i class="far fa-eye"></i></button>
+        </a>
+        <a href="{{route('admin.medals.edit',['mid'=>$medal->mid])}}">
+          <button type="button" class="btn btn-info"><i class="far fa-edit"></i></button>
+        </a>
         <form method="POST" action="{{route('admin.medals.destroy',['aid' => $medal->mid ])}}">
           @method('DELETE')
           @csrf
-          <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+          <button onclick="return confirm('Are you sure?')" type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
         </form>
       </div>
+
+      <!-- The Modal -->
+      <div class="modal fade" id="medalViewer-{{$medal->mid}}">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+
+            <!-- Modal body -->
+            <div class="modal-body">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+              <table class="admin-modal-table">
+                <tr>
+                  <th>Name</th>
+                  <td>{{$medal->name}}</td>
+                </tr>
+                <tr>
+                  <th>Grey Medal</th>
+                  <td><?php echo ($medal->medal_grey != 'noimage.png') ? 'uploaded' : '-'; ?></td>
+                </tr>
+                <tr>
+                  <th>Color Medal</th>
+                  <td><?php echo ($medal->medal_color != 'noimage.png') ? 'uploaded' : '-'; ?></td>
+                </tr>
+                <tr>
+                  <th>Bib</th>
+                  <td><?php echo ($medal->bib != 'noimage.png') ? 'uploaded' : '-'; ?></td>
+                </tr>
+                <tr>
+                  <th>Certificate</th>
+                  <td><?php echo ($medal->cert != 'noimage.png') ? 'uploaded' : '-'; ?></td>
+                </tr>
+                <tr>
+                  <th>Races</th>
+                  <td><?php foreach($races as $race) {
+                      if($medal->races_id == $race->rid)
+                        echo $race->title_en;
+                    } ?></td>
+                </tr>
+              </table>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
       </td>
     </tr>
     @endforeach

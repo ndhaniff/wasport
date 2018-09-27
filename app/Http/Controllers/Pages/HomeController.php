@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Pages;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Model\Race;
+use App\Model\User;
+use App\Model\Contact;
 use DB;
 
 class HomeController extends Controller
@@ -45,4 +48,5 @@ class HomeController extends Controller
     public function relatedCooperation(){
       return view('pages.relatedcooperation');
     }
+
 }

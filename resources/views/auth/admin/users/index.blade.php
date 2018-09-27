@@ -65,17 +65,80 @@ Admin | Users
       <td>{{$user->lastname}}</td>
       <td>
       <div class="btn-group " role="group" aria-label="Basic example">
-        <a href="{{route('admin.users.edit',['id'=>$user->user_id])}}"><button type="button" class="btn btn-info"><i class="far fa-edit"></i></button></a>
+        <a data-toggle="modal" data-target="#userViewer-{{$user->id}}" data-id="{{$user->id}}">
+          <button type="button" class="btn btn-success"><i class="far fa-eye"></i></button>
+        </a>
+        <a href="{{route('admin.users.edit',['id'=>$user->user_id])}}">
+          <button type="button" class="btn btn-info"><i class="far fa-edit"></i></button>
+        </a>
         <form method="POST" action="{{route('admin.users.destroy',['id' => $user->user_id ])}}">
           @method('DELETE')
           @csrf
-          <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+          <button onclick="return confirm('Are you sure?')" type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
         </form>
         <!--<form method="POST" action="{{route('admin.users.edit.dupe',['id' => $user->id ])}}">
           @csrf
           <button type="submit" class="btn btn-primary"><i class="fas fa-copy"></i></button>
         </form>-->
       </div>
+
+      <!-- The Modal -->
+      <div class="modal fade" id="userViewer-{{$user->id}}">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+
+            <!-- Modal body -->
+            <div class="modal-body">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+              <table class="admin-modal-table">
+                <tr>
+                  <th>User ID</th>
+                  <td>{{$user->id}}</td>
+                </tr>
+                <tr>
+                  <th>Name</th>
+                  <td>{{$user->name}}</td>
+                </tr>
+                <tr>
+                  <th>Email</th>
+                  <td>{{$user->email}}</td>
+                </tr>
+                <tr>
+                  <th>First Name</th>
+                  <td><?php echo ($user->firstname) ? $user->firstname : '-'; ?></td>
+                </tr>
+                <tr>
+                  <th>Last Name</th>
+                  <td><?php echo ($user->lastname) ? $user->firstname : '-'; ?></td>
+                </tr>
+                <tr>
+                  <th>Phone</th>
+                  <td><?php echo ($user->phone) ? $user->phone : '-'; ?></td>
+                </tr>
+                <tr>
+                  <th>Address</th>
+                  <td><?php echo ($user->add_fl) ? $user->add_fl. '<br>' .$user->add_sl.'<br>' .$user->city. '<br>' .$user->postal. '<br>'. $user->state : '-'; ?></td>
+                </tr>
+                <tr>
+                  <th>Gender</th>
+                  <td><?php echo ($user->gender) ? $user->gender : '-'; ?></td>
+                </tr>
+                <tr>
+                  <th>Motto</th>
+                  <td><?php echo ($user->motto) ? $user->motto : '-'; ?></td>
+                </tr>
+                <tr>
+                  <th>Status</th>
+                  <td><?php echo ($user->status == 0) ? 'Open' : 'Blocked'; ?></td>
+                </tr>
+              </table>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
       </td>
     </tr>
     @endforeach

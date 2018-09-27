@@ -585,6 +585,30 @@ RELATED COOPERATION
 .related h5 { font-weight: bold; }
 
 /*
+CONTACT US
+*/
+#contactus { padding-top: 3.5rem; }
+
+#contactus h2,
+#contactus p { text-align: center; }
+
+#contactform-en,
+#contactform-ms,
+#contactform-zh {
+  margin: 3rem auto 0 auto;
+  width: 50%;
+}
+
+.contactus-radio {
+  width: 48%;
+  padding-left: 3.5rem;
+}
+
+.contactus-radiogroup {
+
+}
+
+/*
 USER DASHBOARD
 */
 .user-profile-block,
@@ -705,6 +729,25 @@ MEDALS
 }
 
 .medaldash #modal-img { width: 60%; }
+
+/*
+ADMIN
+*/
+.admin-modal-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-modal-table td,
+.admin-modal-table th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+.admin-modal-table tr:nth-child(even) {
+    background-color: #dddddd;
+}
 
 /*
 RESPONSIVE

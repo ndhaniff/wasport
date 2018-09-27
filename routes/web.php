@@ -24,6 +24,7 @@ Route::group([
   Route::get('/howitworks', 'Pages\HomeController@howitworks')->name('howitworks');
   Route::get('/privacypolicy', 'Pages\HomeController@privacypolicy')->name('privacypolicy');
   Route::get('/relatedcooperation', 'Pages\HomeController@relatedCooperation')->name('relatedcooperation');
+
   //user
   Route::get('/dashboard', 'User\UserController@dashboard' )->name('user.dashboard');
 
@@ -83,6 +84,11 @@ Route::group(['prefix' =>'admin'],function()
   //History
   //review
   //shipment
+  //Contacts
+  Route::get('/contacts','Admin\AdminContactsController@index')->name('admin.contacts');
+  Route::get('/contacts/search', 'Admin\AdminContactsController@search')->name('admin.contacts.search');
+  Route::get('/contacts/filter', 'Admin\AdminContactsController@filter')->name('admin.contacts.filter');
+  Route::delete('/contacts/{cid}','Admin\AdminContactsController@destroy')->name('admin.contacts.destroy');
 });
 
 //Strava

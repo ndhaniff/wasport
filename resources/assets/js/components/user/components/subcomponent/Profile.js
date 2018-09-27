@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Form, Input, DatePicker, Select, Button, Upload, Avatar } from 'antd';
 import TextArea from 'antd/lib/input/TextArea';
 import moment from 'moment';
@@ -13,7 +13,9 @@ class Profile extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      profileimgPreview: window.profileimg
+      profileimgPreview: window.profileimg,
+      email: window.email,
+      name: window.name,
     };
   }
 
