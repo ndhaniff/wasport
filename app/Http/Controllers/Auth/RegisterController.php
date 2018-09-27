@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Str;
 use Mail;
-use App\Mail\VerifyEmail;
+use App\Mail\verifyEmail;
 use Session;
 use Softon\SweetAlert\Facades\SWAL;
 
