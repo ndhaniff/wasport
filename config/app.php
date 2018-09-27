@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'https://wasportsrun.com'),
+    'url' => env('APP_URL', 'http://wasportsrun.com'),
 
     /*
     |--------------------------------------------------------------------------
