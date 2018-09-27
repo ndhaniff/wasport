@@ -25,6 +25,8 @@ Route::group([
   Route::get('/privacypolicy', 'Pages\HomeController@privacypolicy')->name('privacypolicy');
   Route::get('/relatedcooperation', 'Pages\HomeController@relatedCooperation')->name('relatedcooperation');
 
+  Route::get('/contactus', 'Pages\ContactController@contactus')->name('contactus');
+
   //user
   Route::get('/dashboard', 'User\UserController@dashboard' )->name('user.dashboard');
 
@@ -91,13 +93,14 @@ Route::group(['prefix' =>'admin'],function()
   Route::delete('/contacts/{cid}','Admin\AdminContactsController@destroy')->name('admin.contacts.destroy');
 });
 
+//Verify Email
+Route::get('verifyEmailFirst', 'Auth\RegisterController@verifyEmailFirst')->name('verifyEmailFirst');
+Route::get('verify/{email}/{verifyToken}', 'Auth\RegisterController@verifyEmailDone')->name('verifyEmailDone');
+
 //Strava
 Route::get('/strava/getAuthToken','API\StravaController@getAuthToken')->name('strava.getToken');
 Route::post('/strava/getStats','API\StravaController@getStats')->name('strava.getStats');
 Route::post('/strava/disconnect','API\StravaController@disconnect')->name('strava.disconnect');
-
-Route::get('verifyEmailFirst', 'Auth\RegisterController@verifyEmailFirst')->name('verifyEmailFirst');
-Route::get('verify/{email}/{verifyToken}', 'Auth\RegisterController@verifyEmailDone')->name('verifyEmailDone');
 
 //User profile
 Route::post('/user/upload', 'User\UserController@handleProfileImg' )->name('user.profileImg');
@@ -106,6 +109,9 @@ Route::post('/user/updateProfile', 'User\UserController@updateProfile' )->name('
 Route::post('/user/updateAddress', 'User\UserController@updateAddress' )->name('user.updateAddress');
 Route::post('/user/updatePassword', 'User\UserController@updatePassword' )->name('user.updatePassword');
 Route::get('/user/viewMedals', 'User\UserController@viewMedals' )->name('user.viewMedals');
+
+//Contact Us
+Route::post('/submitcontact', 'Pages\ContactController@submitContact')->name('submitcontact');
 
 // OAuth Routes
 Route::get('auth/{provider}', 'Auth\LoginController@redirectToProvider');

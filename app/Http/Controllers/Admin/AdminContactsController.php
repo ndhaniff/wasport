@@ -46,9 +46,9 @@ class AdminContactsController extends Controller
 
     public function filter(Request $request)
     {
-      $categoryitem= $request->get('category');
+      $categoryitem= $request->get('categoryitem');
       $contacts = DB::table('contacts')->where('category', 'like', $categoryitem)->paginate(10);
-      $allcontacts = Addon::sortable()->get();
+      $allcontacts = Contact::sortable()->get();
 
       return view('auth.admin.contacts.index',compact('contacts', 'allcontacts'));
     }

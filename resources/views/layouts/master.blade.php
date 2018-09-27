@@ -187,7 +187,7 @@
               <h5>{{__("Company")}}</h5>
               <hr id="footer-title-hr">
               <p><a href="/aboutus">{{__("About Us")}}</a></p>
-              <p><a href="#">{{__("Contact")}}</a></p>
+              <p><a href="/contactus">{{__("Contact")}}</a></p>
               <p><a href="/privacypolicy">{{__("Privacy Policy")}}</a></p>
             </div>
             <div class="col-sm-12 col-md-2">

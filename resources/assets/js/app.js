@@ -25,3 +25,6 @@ require('./components/medals/EditMedalForm');
 require('./components/user/UserDashboard');
 require('./components/user/UserProfile');
 require('./components/user/UserStrava');
+require('./components/contact/ContactFormEn');
+require('./components/contact/ContactFormMs');
+require('./components/contact/ContactFormZh');
