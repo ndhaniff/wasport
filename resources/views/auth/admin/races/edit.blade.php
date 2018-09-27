@@ -6,6 +6,7 @@ Admin | Edit Race
 <link rel="stylesheet" href="//cdn.quilljs.com/1.2.6/quill.snow.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/react-datetime/2.15.0/css/react-datetime.min.css">
 <script>
+
 var race = {
   rid: "{{$race->rid}}",
   title_en : "{{$race->title_en}}",
@@ -31,7 +32,7 @@ var race = {
   time_from : "{{$race->time_from}}",
   deadtime_to : "{{$race->deadtime_to}}",
   deadtime_from : "{{$race->deadtime_from}}",
-  header : "{{asset('storage/uploaded/races/'.$race->header)}}",
+  header : ("{{$race->header}}" == 'noimage.png') ? "{{asset('img/noimage.png')}}" : "{{asset('storage/uploaded/races/'.$race->header)}}",
 }
 </script>
 @endsection

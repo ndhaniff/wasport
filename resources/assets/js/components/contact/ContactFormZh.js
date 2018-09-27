@@ -39,10 +39,10 @@ class ContactFormZh extends React.Component{
           MySwal.fire({
             toast: true,
             position: 'top-end',
-            showConfirmButton: false,
+            showConfirmButton: true,
             timer: 3000,
             type: 'success',
-            title: 'Contact sent'
+            title: 'Sent. We will get to you as soon as possible'
           })
 
           window.setTimeout(function(){
