@@ -1,4 +1,8 @@
-<table>
+<style>
+  th, td { padding: 15px; }
+</style>
+
+<table border="1" style="border-collapse: collapse">
   <tr>
     <th>Name</th>
     <td>{{$contact->name}}</td>
