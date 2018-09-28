@@ -138,4 +138,5 @@ class UserController extends Controller
 
       return view('user.medals', ['medals' => $medals]);
     }
+    
 }

@@ -157,36 +157,28 @@ export default class EditAddonForm extends Component {
 
                                     <div className="form-group">
                                     <div className="form-row">
-                                      <div className="col-sm-3">
+                                      <div className="col-sm-12 col-md-4">
                                         <div className="form-group">
-                                            <label>Type (Seperate with ',')</label>
+                                            <label>Type (seperate with ',')</label>
                                             <input onChange={this.handleInputChange} value={this.state.type} name="type" className="form-control" type="text" />
                                         </div>
                                       </div>
-                                    </div>
-                                    </div>
 
-                                    <div className="form-group">
-                                    <div className="form-row">
-                                    <div className="col-sm-3">
-                                        <div className="form-group">
-                                            <label>Price <span className="required-field">*</span></label>
-                                            <input onChange={this.handleInputChange} value={this.state.addprice} name="addprice" className="form-control" type="text" />
-                                        </div>
-                                    </div>
-                                    </div>
-                                    </div>
+                                      <div className="col-sm-12 col-md-4">
+                                          <div className="form-group">
+                                              <label>Price <span className="required-field">*</span></label>
+                                              <input onChange={this.handleInputChange} value={this.state.addprice} name="addprice" className="form-control" type="text" />
+                                          </div>
+                                      </div>
 
-                                    <div className="form-group">
-                                    <div className="form-row">
-                                    <div className="col-sm-3">
-                                        <div className="form-group">
-                                            <label>Race Title</label>
-                                            <select value={this.state.races_id} onChange={this.handleRaceChange} placeholder="Select race" style={{'display': 'block'}}>
-                                              {this.createSelectItems()}
-                                            </select>
-                                        </div>
-                                    </div>
+                                      <div className="col-sm-12 col-md-4">
+                                          <div className="form-group">
+                                              <label>Race Title</label>
+                                              <select value={this.state.races_id} onChange={this.handleRaceChange} placeholder="Select race" style={{'display': 'block'}} className="form-select">
+                                                {this.createSelectItems()}
+                                              </select>
+                                          </div>
+                                      </div>
                                     </div>
                                     </div>
 

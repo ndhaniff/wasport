@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use App\Http\Controllers\Auth\Request;
+//use App\Http\Controllers\Auth\Request;
+use Illuminate\Http\Request;
 use Auth;
 use Socialite;
 use App\User;
@@ -41,6 +42,24 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
         $this->redirectTo = route('user.dashboard');
     }
+
+    /**
+     * Get the needed authorization credentials from the request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return array
+     */
+    protected function credentials(Request $request)
+    {
+        //return $request->only($this->username(), 'password');
+
+        //return ['email' => $this->username(), 'password' => $request->password, 'status' => '0'];
+
+        $credentials = $request->only($this->username(), 'password');
+
+        return array_add($credentials, 'status', 0);
+    }
+
 
     /**
      * Redirect the user to the OAuth Provider.

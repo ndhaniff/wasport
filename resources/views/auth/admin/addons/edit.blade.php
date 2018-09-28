@@ -14,6 +14,7 @@ Admin | Edit Addons
 
       $race_json = json_encode($race_arr); ?>
 
+
 <script>
 var races = JSON.parse('<?= $race_json; ?>');
 

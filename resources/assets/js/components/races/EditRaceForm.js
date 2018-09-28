@@ -307,45 +307,45 @@ export default class EditRaceForm extends Component {
                                         </Tabs>
                                     </div>
                                     <div className="form-row">
-                                    <div className="col-sm-6">
+                                    <div className="col-sm-12 col-md-6">
                                         <div className="form-group">
                                         <label htmlFor="price">Race Datetime<span className="required-field">*</span></label>
                                         <div className="form-row">
-                                          <div className="col-sm-3">
+                                          <div className="col-sm-8 col-md-3">
                                             <Datetime isValidDate={ dateFrom } value={this.state.RaceDateFrom} onChange={this.handleRaceDatetimeFrom} timeFormat={false}/>
                                           </div>
-                                          <div className="col-sm-2">
+                                          <div className="col-sm-4 col-md-2">
                                             <Datetime value={this.state.time_from} onChange={this.handleTimeFrom} showTimeSelect dateFormat={false} />
                                           </div>
-                                          <div className="col-sm-1">
+                                          <div className="col-sm-12 col-md-1">
                                             to
                                           </div>
-                                          <div className="col-sm-3">
+                                          <div className="col-sm-8 col-md-3">
                                             <Datetime isValidDate={ dateFrom } value={this.state.RaceDateTo} onChange={this.handleRaceDatetimeTo} timeFormat={false}/>
                                           </div>
-                                          <div className="col-sm-2">
+                                          <div className="col-sm-4 col-md-2">
                                             <Datetime value={this.state.time_to} onChange={this.handleTimeTo} showTimeSelect dateFormat={false} />
                                           </div>
                                          </div>
                                         </div>
                                     </div>
-                                    <div className="col-sm-6">
+                                    <div className="col-sm-12 col-md-6">
                                         <div className="form-group">
                                         <label htmlFor="price">Registration Deadline<span className="required-field">*</span></label>
                                          <div className="form-row">
-                                          <div className="col-sm-3">
+                                          <div className="col-sm-8 col-md-3">
                                             <Datetime isValidDate={ deadFrom } value={this.state.RaceDeadlineFrom} onChange={this.handleRaceDeadlineFrom} timeFormat={false}/>
                                           </div>
-                                          <div className="col-sm-2">
+                                          <div className="col-sm-4 col-md-2">
                                             <Datetime value={this.state.deadtime_from} onChange={this.handleDeadTimeFrom} showTimeSelect dateFormat={false} />
                                           </div>
-                                          <div className="col-sm-1">
+                                          <div className="col-sm-12 col-md-1">
                                             to
                                           </div>
-                                          <div className="col-sm-3">
+                                          <div className="col-sm-8 col-md-3">
                                             <Datetime isValidDate={ deadFrom } value={this.state.RaceDeadlineTo} onChange={this.handleRaceDeadlineTo} timeFormat={false}/>
                                           </div>
-                                          <div className="col-sm-2">
+                                          <div className="col-sm-4 col-md-2">
                                             <Datetime value={this.state.deadtime_to} onChange={this.handleDeadTimeTo} dateFormat={false} />
                                           </div>
                                          </div>
@@ -353,32 +353,31 @@ export default class EditRaceForm extends Component {
                                     </div>
                                     </div>
                                     <div className="form-row">
-                                      <div className="col-sm-3">
+                                      <div className="col-sm-12 col-md-4">
                                         <div className="form-group">
                                             <label>Category (Seperate with ',')</label>
                                             <input onChange={this.handleInputChange} name="category" className="form-control" type="text" />
                                         </div>
                                       </div>
+
+                                      <div className="col-sm-12 col-md-4">
+                                          <div className="form-group">
+                                              <label>Price<span className="required-field">*</span></label>
+                                              <input onChange={this.handleInputChange} value={this.state.price} name="price" className="form-control" type="text" required/>
+                                          </div>
+                                      </div>
+
+                                      <div className="col-sm-12 col-md-4">
+                                          <div className="form-group">
+                                          <label>Engrave</label>
+                                          <select value={this.state.engrave} onChange={this.handleEngraveChange} style={{'display': 'block'}} className="form-select">
+                                            <option value="no">No</option>
+                                            <option value="yes">Yes</option>
+                                          </select>
+                                          </div>
+                                      </div>
                                     </div>
-                                    <div className="form-row">
-                                    <div className="col-sm-3">
-                                        <div className="form-group">
-                                            <label>Price<span className="required-field">*</span></label>
-                                            <input onChange={this.handleInputChange} value={this.state.price} name="price" className="form-control" type="text" required/>
-                                        </div>
-                                    </div>
-                                    </div>
-                                    <div className="form-row">
-                                    <div className="col-sm-2">
-                                        <div className="form-group">
-                                        <label>Engrave</label>
-                                        <select value={this.state.engrave} onChange={this.handleEngraveChange} style={{'display': 'block'}}>
-                                          <option value="no">No</option>
-                                          <option value="yes">Yes</option>
-                                        </select>
-                                        </div>
-                                    </div>
-                                    </div>
+
                                     <div className="form-group">
                                     <Tabs defaultActiveKey="1" type="card">
                                         <TabPane tab="En" key="1">

@@ -254,13 +254,26 @@ export default class EditMedalForm extends Component {
                             <div className="card-body">
                                 <form onSubmit={this.handleSubmit}>
                                   <div className="form-row">
-                                    <div className="col-sm-3">
+                                    <div className="col-sm-12 col-md-3">
                                       <div className="form-group">
                                         <label>Name<span className="required-field">*</span></label>
                                         <input onChange={this.handleInputChange} value={this.state.name} name="name" className="form-control" type="text" required/>
                                       </div>
                                     </div>
+
+                                    <div className="col-sm-12 col-md-4">
+                                      <div className="form-group">
+                                        <label>Race Title<span className="required-field">*</span></label>
+                                        <select value={this.state.races_id} onChange={this.handleRaceChange} style={{'display': 'block'}} className="form-select">
+                                          <option disabled selected value=""> -- select an option -- </option>
+                                          {this.createSelectItems()}
+                                        </select>
+                                      </div>
+                                    </div>
+
                                   </div>
+
+                                  <br />
 
                                   <div className="form-group">
                                       <Tabs defaultActiveKey="1" type="card">
@@ -292,22 +305,6 @@ export default class EditMedalForm extends Component {
                                     <label>Bib</label>
                                     {previewImg_bib}
                                     {dropzone_bib}
-                                  </div>
-
-                                  <br/>
-
-                                  <div className="form-group">
-                                    <div className="form-row">
-                                      <div className="col-sm-3">
-                                        <div className="form-group">
-                                          <label>Race Title</label>
-                                          <select value={this.state.races_id} onChange={this.handleRaceChange} style={{'display': 'block'}}>
-                                            <option disabled selected value=""> -- select an option -- </option>
-                                            {this.createSelectItems()}
-                                          </select>
-                                        </div>
-                                      </div>
-                                    </div>
                                   </div>
 
                                   <br/>

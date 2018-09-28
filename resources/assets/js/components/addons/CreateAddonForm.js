@@ -124,7 +124,7 @@ export default class CreateAddonForm extends Component {
 
     render() {
 
-        return (
+      return (
 
             <div className="wrapper p-1">
                 <div className="row">
@@ -154,32 +154,24 @@ export default class CreateAddonForm extends Component {
 
                                     <div className="form-group">
                                       <div className="form-row">
-                                        <div className="col-sm-3">
+                                        <div className="col-sm-12 col-md-4">
                                           <div className="form-group">
-                                            <label>Type (Seperate with ',')</label>
+                                            <label>Type <span>(seperate with ',')</span></label>
                                             <input onChange={this.handleInputChange} name="type" className="form-control" type="text" />
                                           </div>
                                         </div>
-                                      </div>
-                                    </div>
 
-                                    <div className="form-group">
-                                      <div className="form-row">
-                                        <div className="col-sm-3">
+                                        <div className="col-sm-12 col-md-4">
                                           <div className="form-group">
                                             <label>Price<span className="required-field">*</span></label>
                                             <input onChange={this.handleInputChange} name="addprice" className="form-control" type="text" />
                                           </div>
                                         </div>
-                                      </div>
-                                    </div>
 
-                                    <div className="form-group">
-                                      <div className="form-row">
-                                        <div className="col-sm-3">
+                                        <div className="col-sm-12 col-md-4">
                                           <div className="form-group">
                                             <label>Race Title</label>
-                                            <select value={this.state.races_id} onChange={this.handleRaceChange} style={{'display': 'block'}}>
+                                            <select value={this.state.races_id} onChange={this.handleRaceChange} style={{'display': 'block'}} className="form-select">
                                               <option disabled selected value=""> -- select an option -- </option>
                                               {this.createSelectItems()}
                                             </select>

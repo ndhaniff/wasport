@@ -68,11 +68,15 @@ Route::group(['prefix' =>'admin'],function()
   Route::get('/users','Admin\AdminUsersController@index')->name('admin.users');
   Route::get('/users/search', 'Admin\AdminUsersController@search')->name('admin.users.search');
   Route::delete('/users/{id}','Admin\AdminUsersController@destroy')->name('admin.users.destroy');
+  Route::post('/users/block/{id}', 'Admin\AdminUsersController@block')->name('admin.users.block');
+  Route::post('/users/unblock/{id}', 'Admin\AdminUsersController@unblock')->name('admin.users.unblock');
   Route::get('/users/create','Admin\AdminUsersController@create')->name('admin.users.create');
   Route::post('/users/create','Admin\AdminUsersController@store')->name('admin.users.submit');
   Route::get('/users/edit/{id}','Admin\AdminUsersController@editForm')->name('admin.users.edit');
   Route::post('/users/edit','Admin\AdminUsersController@edit')->name('admin.users.edit.submit');
   Route::post('/users/edit/{id}','Admin\AdminUsersController@duplicate')->name('admin.users.edit.dupe');
+  Route::get('/users/reset/{id}','Admin\AdminUsersController@resetForm')->name('admin.users.reset');
+  Route::post('/users/reset','Admin\AdminUsersController@reset')->name('admin.users.reset.submit');
   //Medals
   Route::get('/medals','Admin\AdminMedalsController@index')->name('admin.medals');
   Route::get('/medals/search', 'Admin\AdminMedalsController@search')->name('admin.medals.search');

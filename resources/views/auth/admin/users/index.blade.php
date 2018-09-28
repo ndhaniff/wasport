@@ -10,9 +10,9 @@ Admin | Users
 
 <div class="p-3">
 
-  <div class="float-right">
+  <!--<div class="float-right">
       <a href="{{route('admin.users.create')}}" class="btn btn-primary">Add New</a>
-  </div>
+  </div>-->
 
   <h1 style="font-size: 2.2rem">Users</h1>
 
@@ -68,15 +68,29 @@ Admin | Users
         <a data-toggle="modal" data-target="#userViewer-{{$user->id}}" data-id="{{$user->id}}">
           <button type="button" class="btn btn-success"><i class="far fa-eye"></i></button>
         </a>
-        <a href="{{route('admin.users.edit',['id'=>$user->user_id])}}">
+        <a href="{{route('admin.users.edit',['id'=>$user->id])}}">
           <button type="button" class="btn btn-info"><i class="far fa-edit"></i></button>
         </a>
-        <form method="POST" action="{{route('admin.users.destroy',['id' => $user->user_id ])}}">
+        <?php if($user->status == 0) { ?>
+          <form method="POST" action="{{route('admin.users.unblock',['id'=>$user->id])}}">
+            @csrf
+            <button type="submit" class="btn btn-primary"><i class="fas fa-lock-open"></i></button>
+          </form>
+        <?php } else { ?>
+          <form method="POST" action="{{route('admin.users.block',['id'=>$user->id])}}">
+            @csrf
+            <button type="submit" class="btn btn-primary"><i class="fas fa-lock"></i></button>
+          </form>
+        <?php } ?>
+        <a href="{{route('admin.users.reset',['id'=>$user->id])}}">
+          <button type="button" class="btn btn-warning"><i class="fas fa-key"></i></button>
+        </a>
+        <!--<form method="POST" action="{{route('admin.users.destroy',['id' => $user->user_id ])}}">
           @method('DELETE')
           @csrf
           <button onclick="return confirm('Are you sure?')" type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
         </form>
-        <!--<form method="POST" action="{{route('admin.users.edit.dupe',['id' => $user->id ])}}">
+        <form method="POST" action="{{route('admin.users.edit.dupe',['id' => $user->id ])}}">
           @csrf
           <button type="submit" class="btn btn-primary"><i class="fas fa-copy"></i></button>
         </form>-->
@@ -129,8 +143,13 @@ Admin | Users
                   <td><?php echo ($user->motto) ? $user->motto : '-'; ?></td>
                 </tr>
                 <tr>
-                  <th>Status</th>
-                  <td><?php echo ($user->status == 0) ? 'Open' : 'Blocked'; ?></td>
+                  <th>Blocked?</th>
+                  <td><?php echo ($user->status == 0) ? 'No' : 'Yes'; ?></td>
+                </tr>
+                <tr>
+                  <th>Member since</th>
+                  <?php $date = DateTime::createFromFormat('Y-m-d H:i:s', $user->created_at)->format('d M Y');
+                        echo '<td>' .$date. '</td>'?>
                 </tr>
               </table>
 
