@@ -28,3 +28,4 @@ require('./components/user/UserStrava');
 require('./components/contact/ContactFormEn');
 require('./components/contact/ContactFormMs');
 require('./components/contact/ContactFormZh');
+require('./components/registerrace/RegisterRaceFormEn');

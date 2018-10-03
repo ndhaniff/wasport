@@ -12,6 +12,7 @@ import withReactContent from 'sweetalert2-react-content';
 const MySwal = withReactContent(Swal);
 const TabPane = Tabs.TabPane;
 
+
 Quill.register("modules/imageResize", ImageResize);
 
 export default class EditRaceForm extends Component {
@@ -34,10 +35,10 @@ export default class EditRaceForm extends Component {
             price : window.race.price,
             category : window.race.category,
             engrave : window.race.engrave,
-            RaceDateFrom: new Date(window.race.date_from),
-            RaceDateTo: new Date(window.race.date_to),
-            RaceDeadlineFrom:new Date(window.race.dead_from),
-            RaceDeadlineTo:new Date(window.race.dead_to),
+            RaceDateFrom: window.race.date_from,
+            RaceDateTo: window.race.date_to,
+            RaceDeadlineFrom: window.race.dead_from,
+            RaceDeadlineTo: window.race.dead_to,
             time_from: window.race.time_from,
             time_to: window.race.time_to,
             deadtime_from: window.race.deadtime_from,
@@ -52,6 +53,7 @@ export default class EditRaceForm extends Component {
             toolbar: [
                 [{ 'header': [1, 2, false] }],
                 ['bold', 'italic', 'underline','strike', 'blockquote'],
+                [{'align': null}, {'align': 'center'}, {'align': 'right'}, {'align': 'justify'}],
                 [{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
                 [{ 'color': [] }, { 'background': [] }],
                 ['link', 'image'],
@@ -118,28 +120,85 @@ export default class EditRaceForm extends Component {
         data.append('headerImg', headerImg[0])
         data.append('rid', rid)
 
-        axios.post('/admin/races/edit',data).then((res) => {
-            if(res.data.success){
-                /*location.href = location.origin + '/admin/races/edit/'+res.data.id
-                alert('Race updated')*/
+        let message = [];
+        let messageF = '';
 
-                MySwal.fire({
-                  toast: true,
-                  position: 'top-end',
-                  showConfirmButton: false,
-                  timer: 3000,
-                  type: 'success',
-                  title: 'Race updated'
-                })
+        if(headerImg[0].preview.includes("noimage.png")) { message.push('Banner') }
+        if(title_ms === '') { message.push('Title(MS)') }
+        if(title_zh === '') { message.push('Title(ZH)') }
+        if(about_ms.length == 0) { message.push('About(MS)') }
+        if(about_zh.length == 0) { message.push('About(ZH)') }
+        if(medals_ms.length == 0) { message.push('Medal(MS)') }
+        if(medals_zh.length == 0) { message.push('Medal(ZH)') }
+        if(category === '') { message.push('Category') }
 
-                window.setTimeout(function(){
-                  location.href = location.origin + '/admin/races/edit/'+res.data.rid
-                } ,3000);
+        messageF = message.join(', ')
 
-            } else {
-                alert('something wrong')
+        if(message.length != 0) {
+
+          MySwal.fire({
+            title: 'These fields are empty',
+            text: messageF,
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Update race anyway',
+            cancelButtonText: 'Cancel',
+            cancelButtonColor: '#d33'
+          }).then((result) => {
+            if (result.value) {
+
+              axios.post('/admin/races/edit',data).then((res) => {
+                  if(res.data.success){
+                      /*location.href = location.origin + '/admin/races/edit/'+res.data.id
+                      alert('Race updated')*/
+
+                      MySwal.fire({
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        type: 'success',
+                        title: 'Race updated'
+                      })
+
+                      window.setTimeout(function(){
+                        location.href = location.origin + '/admin/races/edit/'+res.data.rid
+                      } ,3000);
+
+                  } else {
+                      alert('something wrong')
+                  }
+              })
+
             }
-        })
+          })
+
+        } else {
+
+          axios.post('/admin/races/edit',data).then((res) => {
+              if(res.data.success){
+                  /*location.href = location.origin + '/admin/races/edit/'+res.data.id
+                  alert('Race updated')*/
+
+                  MySwal.fire({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    type: 'success',
+                    title: 'Race updated'
+                  })
+
+                  window.setTimeout(function(){
+                    location.href = location.origin + '/admin/races/edit/'+res.data.rid
+                  } ,3000);
+
+              } else {
+                  alert('something wrong')
+              }
+          })
+
+        }
+
     }
 
     handleAboutEnChange(data){

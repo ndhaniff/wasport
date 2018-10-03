@@ -30,7 +30,9 @@ class AdminRacesController extends Controller
 
       //return view('auth.admin.races.index', ['races' => $races]);
 
-        $races = Race::sortable()->paginate(10);
+        $races = Race::sortable()
+                  ->orderBy('date_from', 'DESC')
+                  ->paginate(10);
 
         return view('auth.admin.races.index',compact('races'));
     }

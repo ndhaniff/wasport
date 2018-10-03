@@ -70,26 +70,77 @@ export default class EditMedalForm extends Component {
         data.append('races_id', races_id)
         data.append('mid', mid)
 
-        axios.post('/admin/medals/edit',data).then((res) => {
-            if(res.data.success){
+        let message = [];
+        let messageF = '';
 
-                MySwal.fire({
-                  toast: true,
-                  position: 'top-end',
-                  showConfirmButton: false,
-                  timer: 3000,
-                  type: 'success',
-                  title: 'Medal updated'
-                })
+        if(medal_grey[0].preview.includes("noimage.png")) { message.push('Grey Medal') }
+        if(medal_color[0].preview.includes("noimage.png")) { message.push('Color Medal') }
+        if(cert[0].preview.includes("noimage.png")) { message.push('Cert') }
+        if(bib[0].preview.includes("noimage.png")) { message.push('Bib') }
+        if(races_id == '') { message.push('Races') }
 
-                window.setTimeout(function(){
-                  location.href = location.origin + '/admin/medals/edit/'+res.data.mid
-                } ,3000);
+        messageF = message.join(', ')
 
-            } else {
-                alert('something wrong')
+        if(message.length != 0) {
+
+          MySwal.fire({
+            title: 'These fields are empty',
+            text: messageF,
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Update medal anyway',
+            cancelButtonText: 'Cancel',
+            cancelButtonColor: '#d33'
+          }).then((result) => {
+            if (result.value) {
+
+              axios.post('/admin/medals/edit',data).then((res) => {
+                  if(res.data.success){
+
+                      MySwal.fire({
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        type: 'success',
+                        title: 'Medal updated'
+                      })
+
+                      window.setTimeout(function(){
+                        location.href = location.origin + '/admin/medals/edit/'+res.data.mid
+                      } ,3000);
+
+                  } else {
+                      alert('something wrong')
+                  }
+              })
+
             }
-        })
+          })
+
+        } else {
+
+          axios.post('/admin/medals/edit',data).then((res) => {
+              if(res.data.success){
+
+                  MySwal.fire({
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    type: 'success',
+                    title: 'Medal updated'
+                  })
+
+                  window.setTimeout(function(){
+                    location.href = location.origin + '/admin/medals/edit/'+res.data.mid
+                  } ,3000);
+
+              } else {
+                  alert('something wrong')
+              }
+          })
+
+        }
+
     }
 
     handleInputChange({target: {value,name}}){
@@ -263,7 +314,7 @@ export default class EditMedalForm extends Component {
 
                                     <div className="col-sm-12 col-md-4">
                                       <div className="form-group">
-                                        <label>Race Title<span className="required-field">*</span></label>
+                                        <label>Race Title</label>
                                         <select value={this.state.races_id} onChange={this.handleRaceChange} style={{'display': 'block'}} className="form-select">
                                           <option disabled selected value=""> -- select an option -- </option>
                                           {this.createSelectItems()}

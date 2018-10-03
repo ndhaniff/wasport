@@ -24,7 +24,7 @@
           <a href="racedetails/{{ $newrace->rid }}">
             <div class="race-box">
               <div class="race-img">
-                <img src=" <?php echo asset('storage/uploaded/races/' . $newrace->header) ?>" alt="{{ $newrace->title_en }}">
+                <img src="<?php echo asset('storage/uploaded/races/' . $newrace->header) ?>" alt="{{ $newrace->title_en }}">
               </div>
 
               <div class="race-caption">

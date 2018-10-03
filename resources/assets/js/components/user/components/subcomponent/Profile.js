@@ -10,17 +10,11 @@ const FormItem = Form.Item;
 const Option = Select.Option;
 
 class Profile extends React.Component{
-  constructor(props){
-    super(props);
-    this.state = {
-      profileimgPreview: window.profileimg,
-      email: window.email,
-      name: window.name,
-    };
-  }
-
   state = {
     confirmDirty: false,
+    profileimgPreview: window.profileimg,
+    email: window.email,
+    name: window.name,
     id: window.user.id,
     email: window.email,
     name: window.name,
@@ -37,6 +31,8 @@ class Profile extends React.Component{
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, data) => {
       if (!err) {
+
+
        let profile = {
         id : window.user.id,
         name : data.displayname,
@@ -45,7 +41,7 @@ class Profile extends React.Component{
         motto : data.motto,
         gender : data.gender,
         phone : data.prefix + data.phone,
-        birthday : data.birthday.format("MM-DD-YYYY"),
+        birthday : data.birthday.format('MM-DD-YYYY'),
        }
 
        axios.post('/user/updateProfile',profile).then((res) => {
@@ -281,7 +277,7 @@ class Profile extends React.Component{
           >
             {getFieldDecorator('phone', {
               rules: [
-                { required: true, message: 'Please input your phone number!' },
+                { message: 'Please input your phone number!' },
                 { min: 9, message: 'Phone number must be at least 11 including prefix' },
                 { max: 11, message: 'This is not valid phone number' },
               ],
@@ -296,7 +292,7 @@ class Profile extends React.Component{
           hasFeedback
         >
           {getFieldDecorator('gender', {
-            rules: [{ required: true, message: 'Please select your gender!' }],
+            rules: [{ message: 'Please select your gender!' }],
             initialValue: this.state.gender != null ? this.state.gender : ""
           })(
             <Select
@@ -314,7 +310,7 @@ class Profile extends React.Component{
           hasFeedback
         >
           {getFieldDecorator('birthday', {
-            rules: [{ type: 'object', required: true, message: 'Please select time!' }],
+            rules: [{ type: 'object', message: 'Please select date!' }],
             initialValue: this.state.birthday != null ?  moment("12-25-1995", "MM-DD-YYYY") : ""
           })(
             <DatePicker />

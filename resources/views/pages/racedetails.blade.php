@@ -240,7 +240,7 @@
             $cur = date('Y-m-d H:i a');
 
             if($cur < $deadline) {
-              echo '<a href="#" class="race-register-btn">';
+              echo '<a href="/registerrace/' .$race->rid. '" class="race-register-btn">';
               echo __("Register");
               echo '</a>';
             } else {
@@ -259,13 +259,16 @@
   </div>
 </div>
 
+<?php $theDate = $race->dead_to . ' ' . $race->deadtime_to;
+      $countDate = DateTime::createFromFormat('Y-m-d H:i a', $theDate)->format('M j, Y H:i:s'); ?>
+
 <script type="text/javascript">
 const second = 1000,
     minute = second * 60,
     hour = minute * 60,
     day = hour * 24;
 
-let countDown = new Date('{{ $race->dead_from }}').getTime(),
+let countDown = new Date('{{ $countDate }}').getTime(),
   x = setInterval(function() {
 
     let now = new Date().getTime(),

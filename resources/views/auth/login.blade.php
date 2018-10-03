@@ -9,13 +9,13 @@
               @if(session('status'))
               <script>
               swal({
-                title: "Successfully Register",
-                text: "We had send you an email to activate your account.",
+                title: "Thank you for joining WaSports",
+                text: "We had send you an email to activate your account. Please activate your account to login.",
                 type: "success",
-                confirmButtonText: "OK",
-                toast: true,
-                position: 'top-end',
+                confirmButtonText: "Click here to login",
                 showConfirmButton: true,
+                confirmButtonColor: '#d33'
+                position: 'center',
               });
               </script>
               @endif

@@ -21,6 +21,7 @@ class CreateAddonsTable extends Migration
           $table->longText('desc_en');
           $table->longText('desc_ms')->nullable();
           $table->longText('desc_zh')->nullable();
+          $table->longText('desc_img')->nullable();
           $table->string('addprice');
           $table->string('type')->nullable();
           $table->integer('races_id')->unsigned();

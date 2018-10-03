@@ -38,8 +38,8 @@ Admin | Races
     <tr>
       <th scope="col">No.</th>
       <th scope="col">@sortablelink('title_en', 'Title')</th>
-      <th scope="col">@sortablelink('date_from', 'Registration Date From')</th>
-      <th scope="col">@sortablelink('date_to', 'Registration Date To')</th>
+      <th scope="col">@sortablelink('date_from', 'Race Date From')</th>
+      <th scope="col">@sortablelink('date_to', 'Race Date To')</th>
       <th scope="col"></th>
     </tr>
   </thead>

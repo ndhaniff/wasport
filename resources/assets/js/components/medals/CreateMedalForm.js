@@ -68,26 +68,78 @@ export default class CreateMedalForm extends Component {
         data.append('bib', bib[0])
         data.append('races_id', races_id)
 
-        axios.post('/admin/medals/create',data).then((res) => {
-            if(res.data.success){
+        let message = [];
+        let messageF = '';
 
-                MySwal.fire({
-                  toast: true,
-                  position: 'top-end',
-                  showConfirmButton: false,
-                  timer: 3000,
-                  type: 'success',
-                  title: 'Medal added'
-                })
+        if(typeof medal_grey[0] == 'undefined') { message.push('Grey Medal') }
+        if(typeof medal_color[0] == 'undefined') { message.push('Color Medal') }
+        if(typeof cert[0] == 'undefined') { message.push('Cert') }
+        if(typeof bib[0] == 'undefined') { message.push('Bib') }
+        if(races_id == '') { message.push('Races') }
 
-                window.setTimeout(function(){
-                  location.href = location.origin + '/admin/medals/edit/'+res.data.mid
-                } ,3000);
+        messageF = message.join(', ')
 
-            } else {
-                alert('something wrong')
+        if(message.length != 0) {
+
+          MySwal.fire({
+            title: 'These fields are empty',
+            text: messageF,
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Create medal anyway',
+            cancelButtonText: 'Cancel',
+            cancelButtonColor: '#d33'
+          }).then((result) => {
+            if (result.value) {
+
+              axios.post('/admin/medals/create',data).then((res) => {
+                  if(res.data.success){
+
+                      MySwal.fire({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        type: 'success',
+                        title: 'Medal added'
+                      })
+
+                      window.setTimeout(function(){
+                        location.href = location.origin + '/admin/medals/edit/'+res.data.mid
+                      } ,3000);
+
+                  } else {
+                      alert('something wrong')
+                  }
+              })
+
             }
-        })
+          })
+
+        } else {
+
+          axios.post('/admin/medals/create',data).then((res) => {
+              if(res.data.success){
+
+                  MySwal.fire({
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    type: 'success',
+                    title: 'Medal added'
+                  })
+
+                  window.setTimeout(function(){
+                    location.href = location.origin + '/admin/medals/edit/'+res.data.mid
+                  } ,3000);
+
+              } else {
+                  alert('something wrong')
+              }
+          })
+
+        }
+
     }
 
     handleInputChange({target: {value,name}}){

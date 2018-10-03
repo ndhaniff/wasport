@@ -70,8 +70,14 @@ class UserController extends Controller
       $user->lastname = $request->get('lastname');
       $user->motto = $request->get('motto');
       $user->gender = $request->get('gender');
-      $user->phone = $request->get('phone');
       $user->birthday = $request->get('birthday');
+
+      if($request->get('phone') === '60') {
+        $user->phone = null;
+      } else {
+        $user->phone = $request->get('phone');
+      }
+
       $user->save();
 
       return response()->json(['success' => true], 200 );
@@ -138,5 +144,5 @@ class UserController extends Controller
 
       return view('user.medals', ['medals' => $medals]);
     }
-    
+
 }

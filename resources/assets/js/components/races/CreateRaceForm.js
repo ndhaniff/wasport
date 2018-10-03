@@ -10,7 +10,6 @@ import Swal from 'sweetalert2';
 
 const MySwal = withReactContent(Swal);
 const TabPane = Tabs.TabPane;
-const MS_PER_MINUTE = 60000;
 
 Quill.register("modules/imageResize", ImageResize);
 
@@ -51,9 +50,10 @@ export default class CreateRaceForm extends Component {
             toolbar: [
                 [{ 'header': [1, 2, false] }],
                 ['bold', 'italic', 'underline','strike', 'blockquote'],
+                [{'align': null}, {'align': 'center'}, {'align': 'right'}, {'align': 'justify'}],
                 [{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
                 [{ 'color': [] }, { 'background': [] }],
-                ['link', 'image'],
+                ['link'],
                 ['clean']
             ],
             imageResize: {
@@ -91,6 +91,11 @@ export default class CreateRaceForm extends Component {
 
         let data = new FormData;
 
+        if(time_from === '') { time_from = '00:00 am' }
+        if(time_to === '') { time_to = '00:00 am' }
+        if(deadtime_from === '') { deadtime_from = '00:00 am' }
+        if(deadtime_to === '') { deadtime_to = '00:00 am' }
+
         data.append('about_en', about_en)
         data.append('about_ms', about_ms)
         data.append('about_zh', about_zh)
@@ -116,28 +121,85 @@ export default class CreateRaceForm extends Component {
         data.append('deadtime_to', deadtime_to)
         data.append('headerImg', headerImg[0])
 
-        axios.post('/admin/races/create',data).then((res) => {
-            if(res.data.success){
-                /*location.href = location.origin + '/admin/races/edit/'+res.data.id
-                alert('Race added')*/
+        let message = [];
+        let messageF = '';
 
-                MySwal.fire({
-                  toast: true,
-                  position: 'top-end',
-                  showConfirmButton: false,
-                  timer: 3000,
-                  type: 'success',
-                  title: 'Race added'
-                })
+        if(typeof headerImg[0] == 'undefined') { message.push('Banner') }
+        if(title_ms === '') { message.push('Title(MS)') }
+        if(title_zh === '') { message.push('Title(ZH)') }
+        if(about_ms.length == 0) { message.push('About(MS)') }
+        if(about_zh.length == 0) { message.push('About(ZH)') }
+        if(medals_ms.length == 0) { message.push('Medal(MS)') }
+        if(medals_zh.length == 0) { message.push('Medal(ZH)') }
+        if(category === '') { message.push('Category') }
 
-                window.setTimeout(function(){
-                  location.href = location.origin + '/admin/races/edit/'+res.data.rid
-                } ,3000);
+        messageF = message.join(', ')
 
-            } else {
-                alert('something wrong')
+        if(message.length != 0) {
+
+          MySwal.fire({
+            title: 'These fields are empty',
+            text: messageF,
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Create race anyway',
+            cancelButtonText: 'Cancel',
+            cancelButtonColor: '#d33'
+          }).then((result) => {
+            if (result.value) {
+
+              axios.post('/admin/races/create',data).then((res) => {
+                  if(res.data.success){
+                      /*location.href = location.origin + '/admin/races/edit/'+res.data.id
+                      alert('Race added')*/
+
+                      MySwal.fire({
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        type: 'success',
+                        title: 'Race added'
+                      })
+
+                      window.setTimeout(function(){
+                        location.href = location.origin + '/admin/races/edit/'+res.data.rid
+                      } ,3000);
+
+                  } else {
+                      alert('something wrong')
+                  }
+              })
+
             }
-        })
+          })
+
+        } else {
+
+          axios.post('/admin/races/create',data).then((res) => {
+              if(res.data.success){
+                  /*location.href = location.origin + '/admin/races/edit/'+res.data.id
+                  alert('Race added')*/
+
+                  MySwal.fire({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    type: 'success',
+                    title: 'Race added'
+                  })
+
+                  window.setTimeout(function(){
+                    location.href = location.origin + '/admin/races/edit/'+res.data.rid
+                  } ,3000);
+
+              } else {
+                  alert('something wrong')
+              }
+          })
+
+        }
+
     }
 
     handleAboutEnChange(data){
@@ -252,7 +314,7 @@ export default class CreateRaceForm extends Component {
                 "padding": "5%",}}
             accept="image/jpeg, image/png"
             onDrop={this.onDrop}
-            multiple={false}
+            multiple={true}
             name="headerimg"
         >
             <div className="text-center">
@@ -316,7 +378,7 @@ export default class CreateRaceForm extends Component {
                                             <input type="hidden" name="RaceDateFrom" value={this.state.RaceDateFrom}/>
                                           </div>
                                           <div className="col-sm-4 col-md-2">
-                                            <Datetime timeFormat="HH:mm a" onChange={this.handleTimeFrom} showTimeSelect dateFormat={false} />
+                                            <Datetime timeFormat="HH:mm a" defaultValue={'00:00 am'} onChange={this.handleTimeFrom} showTimeSelect dateFormat={false} />
                                             <input type="hidden" name="time_from" value={this.state.time_from}/>
                                           </div>
                                           <div className="col-sm-12 col-md-1">
@@ -327,7 +389,7 @@ export default class CreateRaceForm extends Component {
                                             <input type="hidden" name="RaceDateTo" value={this.state.RaceDateTo}/>
                                           </div>
                                           <div className="col-sm-4 col-md-2">
-                                            <Datetime timeFormat="HH:mm a" onChange={this.handleTimeTo} showTimeSelect dateFormat={false} />
+                                            <Datetime timeFormat="HH:mm a" defaultValue={'00:00 am'} onChange={this.handleTimeTo} showTimeSelect dateFormat={false} />
                                             <input type="hidden" name="time_to" value={this.state.time_to}/>
                                           </div>
                                          </div>
@@ -342,7 +404,7 @@ export default class CreateRaceForm extends Component {
                                               <input type="hidden" name="RaceDeadlineFrom" value={this.state.RaceDeadlineFrom}/>
                                             </div>
                                             <div className="col-sm-4 col-md-2">
-                                              <Datetime timeFormat="HH:mm a" onChange={this.handleDeadTimeFrom} showTimeSelect dateFormat={false} />
+                                              <Datetime timeFormat="HH:mm a" defaultValue={'00:00 am'} onChange={this.handleDeadTimeFrom} showTimeSelect dateFormat={false} />
                                               <input type="hidden" name="deadtime_from" value={this.state.deadtime_from}/>
                                             </div>
                                             <div className="col-sm-12 col-md-1">
@@ -353,7 +415,7 @@ export default class CreateRaceForm extends Component {
                                             <input type="hidden" name="RaceDeadlineTo" value={this.state.RaceDeadlineTo}/>
                                             </div>
                                             <div className="col-sm-4 col-md-2">
-                                              <Datetime timeFormat="HH:mm a" onChange={this.handleDeadTimeTo} dateFormat={false} />
+                                              <Datetime timeFormat="HH:mm a" defaultValue={'00:00 am'} onChange={this.handleDeadTimeTo} dateFormat={false} />
                                               <input type="hidden" name="deadtime_to" value={this.state.deadtime_to}/>
                                             </div>
                                          </div>

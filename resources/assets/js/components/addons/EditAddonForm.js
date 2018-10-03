@@ -36,6 +36,7 @@ export default class EditAddonForm extends Component {
             toolbar: [
                 [{ 'header': [1, 2, false] }],
                 ['bold', 'italic', 'underline','strike', 'blockquote'],
+                [{'align': null}, {'align': 'center'}, {'align': 'right'}, {'align': 'justify'}],
                 [{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
                 [{ 'color': [] }, { 'background': [] }],
                 ['link', 'image'],
@@ -81,28 +82,81 @@ export default class EditAddonForm extends Component {
         data.append('races_id', races_id)
         data.append('aid', aid)
 
-        axios.post('/admin/addons/edit',data).then((res) => {
-            if(res.data.success){
-                /*location.href = location.origin + '/admin/addons/edit/'+res.data.id
-                alert('Addon updated')*/
+        let message = [];
+        let messageF = '';
 
-                MySwal.fire({
-                  toast: true,
-                  position: 'top-end',
-                  showConfirmButton: false,
-                  timer: 3000,
-                  type: 'success',
-                  title: 'Addon updated'
-                })
+        if(add_ms === '') { message.push('Title(MS)') }
+        if(add_zh === '') { message.push('Title(ZH)') }
+        if(desc_ms.length == 0) { message.push('Description(MS)') }
+        if(desc_zh.length == 0) { message.push('Description(ZH)') }
+        if(type === '') { message.push('Type') }
 
-                window.setTimeout(function(){
-                  location.href = location.origin + '/admin/addons/edit/'+res.data.aid
-                } ,3000);
+        messageF = message.join(', ')
 
-            } else {
-                alert('something wrong')
+        if(message.length != 0) {
+
+          MySwal.fire({
+            title: 'These fields are empty',
+            text: messageF,
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Update addon anyway',
+            cancelButtonText: 'Cancel',
+            cancelButtonColor: '#d33'
+          }).then((result) => {
+            if (result.value) {
+
+              axios.post('/admin/addons/edit',data).then((res) => {
+                  if(res.data.success){
+                      /*location.href = location.origin + '/admin/addons/edit/'+res.data.id
+                      alert('Addon updated')*/
+
+                      MySwal.fire({
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        type: 'success',
+                        title: 'Addon updated'
+                      })
+
+                      window.setTimeout(function(){
+                        location.href = location.origin + '/admin/addons/edit/'+res.data.aid
+                      } ,3000);
+
+                  } else {
+                      alert('something wrong')
+                  }
+              })
+
             }
-        })
+          })
+
+        } else {
+
+          axios.post('/admin/addons/edit',data).then((res) => {
+              if(res.data.success){
+                  /*location.href = location.origin + '/admin/addons/edit/'+res.data.id
+                  alert('Addon updated')*/
+
+                  MySwal.fire({
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    type: 'success',
+                    title: 'Addon updated'
+                  })
+
+                  window.setTimeout(function(){
+                    location.href = location.origin + '/admin/addons/edit/'+res.data.aid
+                  } ,3000);
+
+              } else {
+                  alert('something wrong')
+              }
+          })
+
+        }
+
     }
 
     handleDescEnChange(data){

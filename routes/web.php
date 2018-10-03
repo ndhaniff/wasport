@@ -24,8 +24,8 @@ Route::group([
   Route::get('/howitworks', 'Pages\HomeController@howitworks')->name('howitworks');
   Route::get('/privacypolicy', 'Pages\HomeController@privacypolicy')->name('privacypolicy');
   Route::get('/relatedcooperation', 'Pages\HomeController@relatedCooperation')->name('relatedcooperation');
-
   Route::get('/contactus', 'Pages\ContactController@contactus')->name('contactus');
+  Route::get('/registerrace/{rid}', 'Pages\RacesController@registerRace')->name('registerrace');
 
   //user
   Route::get('/dashboard', 'User\UserController@dashboard' )->name('user.dashboard');
@@ -87,9 +87,12 @@ Route::group(['prefix' =>'admin'],function()
   Route::get('/medals/edit/{mid}','Admin\AdminMedalsController@editForm')->name('admin.medals.edit');
   Route::post('/medals/edit','Admin\AdminMedalsController@edit')->name('admin.medals.edit.submit');
   Route::post('/medals/edit/{mid}','Admin\AdminMedalsController@duplicate')->name('admin.medals.edit.dupe');
-  //History
-  //review
-  //shipment
+  //Orders
+  Route::get('/orders','Admin\AdminOrdersController@index')->name('admin.orders');
+  Route::get('/orders/search', 'Admin\AdminOrdersController@search')->name('admin.orders.search');
+  Route::get('/orders/filter', 'Admin\AdminOrdersController@filter')->name('admin.orders.filter');
+  Route::get('/orders/edit/{mid}','Admin\AdminOrdersController@editForm')->name('admin.orders.edit');
+  Route::post('/orders/edit','Admin\AdminOrdersController@edit')->name('admin.orders.edit.submit');
   //Contacts
   Route::get('/contacts','Admin\AdminContactsController@index')->name('admin.contacts');
   Route::get('/contacts/search', 'Admin\AdminContactsController@search')->name('admin.contacts.search');

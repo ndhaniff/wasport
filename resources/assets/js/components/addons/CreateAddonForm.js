@@ -4,7 +4,7 @@ import ReactQuill, {Quill} from 'react-quill';
 import Datetime from 'react-datetime';
 import Dropzone from 'react-dropzone'
 import ImageResize from 'quill-image-resize-module';
-import { Tabs } from 'antd';
+import { Tabs, Upload, Icon, Modal } from 'antd';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 
@@ -34,6 +34,7 @@ export default class CreateAddonForm extends Component {
             toolbar: [
                 [{ 'header': [1, 2, false] }],
                 ['bold', 'italic', 'underline','strike', 'blockquote'],
+                [{'align': null}, {'align': 'center'}, {'align': 'right'}, {'align': 'justify'}],
                 [{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
                 [{ 'color': [] }, { 'background': [] }],
                 ['link', 'image'],
@@ -78,28 +79,81 @@ export default class CreateAddonForm extends Component {
         data.append('type', type)
         data.append('races_id', races_id)
 
-        axios.post('/admin/addons/create',data).then((res) => {
-            if(res.data.success){
-                /*location.href = location.origin + '/admin/addons/edit/'+res.data.id
-                alert('Addon added')*/
+        let message = [];
+        let messageF = '';
 
-                MySwal.fire({
-                  toast: true,
-                  position: 'top-end',
-                  showConfirmButton: false,
-                  timer: 3000,
-                  type: 'success',
-                  title: 'Addon added'
-                })
+        if(add_ms === '') { message.push('Title(MS)') }
+        if(add_zh === '') { message.push('Title(ZH)') }
+        if(desc_ms.length == 0) { message.push('Description(MS)') }
+        if(desc_zh.length == 0) { message.push('Description(ZH)') }
+        if(type === '') { message.push('Type') }
 
-                window.setTimeout(function(){
-                  location.href = location.origin + '/admin/addons/edit/'+res.data.aid
-                } ,3000);
+        messageF = message.join(', ')
 
-            } else {
-                alert('something wrong')
+        if(message.length != 0) {
+
+          MySwal.fire({
+            title: 'These fields are empty',
+            text: messageF,
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Create addon anyway',
+            cancelButtonText: 'Cancel',
+            cancelButtonColor: '#d33'
+          }).then((result) => {
+            if (result.value) {
+
+              axios.post('/admin/addons/create',data).then((res) => {
+                  if(res.data.success){
+                      /*location.href = location.origin + '/admin/addons/edit/'+res.data.id
+                      alert('Addon added')*/
+
+                      MySwal.fire({
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        type: 'success',
+                        title: 'Addon added'
+                      })
+
+                      window.setTimeout(function(){
+                        location.href = location.origin + '/admin/addons/edit/'+res.data.aid
+                      } ,3000);
+
+                  } else {
+                      alert('something wrong')
+                  }
+              })
+
             }
-        })
+          })
+
+        } else {
+
+          axios.post('/admin/addons/create',data).then((res) => {
+              if(res.data.success){
+                  /*location.href = location.origin + '/admin/addons/edit/'+res.data.id
+                  alert('Addon added')*/
+
+                  MySwal.fire({
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    type: 'success',
+                    title: 'Addon added'
+                  })
+
+                  window.setTimeout(function(){
+                    location.href = location.origin + '/admin/addons/edit/'+res.data.aid
+                  } ,3000);
+
+              } else {
+                  alert('something wrong')
+              }
+          })
+
+        }
+
     }
 
     handleDescEnChange(data){
@@ -121,6 +175,8 @@ export default class CreateAddonForm extends Component {
     handleRaceChange(event) {
       this.setState({races_id: event.target.value});
     }
+
+    handleChange = ({ fileList }) => this.setState({ fileList })
 
     render() {
 
@@ -170,7 +226,7 @@ export default class CreateAddonForm extends Component {
 
                                         <div className="col-sm-12 col-md-4">
                                           <div className="form-group">
-                                            <label>Race Title</label>
+                                            <label>Race Title<span className="required-field">*</span></label>
                                             <select value={this.state.races_id} onChange={this.handleRaceChange} style={{'display': 'block'}} className="form-select">
                                               <option disabled selected value=""> -- select an option -- </option>
                                               {this.createSelectItems()}
