@@ -112,22 +112,71 @@ class AdminAddonsController extends Controller
         $addons->type = $formdata['type'];
         $addons->races_id = $formdata['races_id'];
 
-        $descimgs = $request->get('descimg');
+        //handle descimg 1
+        if($request->hasFile('descimg_1')){
+             $descimg_1 = $request->file('descimg_1');
+             $filenameWithExt = $descimg_1->getClientOriginalName();
+             $filename =  str_replace(' ', '_', pathinfo($filenameWithExt, PATHINFO_FILENAME ));
+             $ext = $descimg_1->getClientOriginalExtension();
+             $filenameToStore = $filename."_".time().".".$ext;
+             $path = $descimg_1->storeAs('public/uploaded/addons/', $filenameToStore);
+             $addons->descimg_1 = $filenameToStore;
+        }
 
-        /*handle descimg
-        if(!empty($descimgs)) {
-          foreach($descimgs as $descimg) {
-            $desc_img = $descimg['file'];
-            $filenameWithExt = $desc_img->getClientOriginalName();
-            $filename =  str_replace(' ', '_', pathinfo($filenameWithExt, PATHINFO_FILENAME ));
-            $ext = $desc_img->getClientOriginalExtension();
-            $filenameToStore = $filename."_".time().".".$ext;
-            $path = $desc_img->storeAs('public/uploaded/addons/', $filenameToStore);
-            $alladdonimg .= $filenameToStore;
-          }
-         }
+        //handle descimg 2
+        if($request->hasFile('descimg_2')){
+             $descimg_2 = $request->file('descimg_2');
+             $filenameWithExt = $descimg_1->getClientOriginalName();
+             $filename =  str_replace(' ', '_', pathinfo($filenameWithExt, PATHINFO_FILENAME ));
+             $ext = $descimg_2->getClientOriginalExtension();
+             $filenameToStore = $filename."_".time().".".$ext;
+             $path = $descimg_2->storeAs('public/uploaded/addons/', $filenameToStore);
+             $addons->descimg_2 = $filenameToStore;
+        }
 
-        $addons->desc_img = $alladdonimg;*/
+        //handle descimg 3
+        if($request->hasFile('descimg_3')){
+             $descimg_3 = $request->file('descimg_3');
+             $filenameWithExt = $descimg_3->getClientOriginalName();
+             $filename =  str_replace(' ', '_', pathinfo($filenameWithExt, PATHINFO_FILENAME ));
+             $ext = $descimg_3->getClientOriginalExtension();
+             $filenameToStore = $filename."_".time().".".$ext;
+             $path = $descimg_3->storeAs('public/uploaded/addons/', $filenameToStore);
+             $addons->descimg_3 = $filenameToStore;
+        }
+
+        //handle descimg 4
+        if($request->hasFile('descimg_4')){
+             $descimg_4 = $request->file('descimg_4');
+             $filenameWithExt = $descimg_4->getClientOriginalName();
+             $filename =  str_replace(' ', '_', pathinfo($filenameWithExt, PATHINFO_FILENAME ));
+             $ext = $descimg_4->getClientOriginalExtension();
+             $filenameToStore = $filename."_".time().".".$ext;
+             $path = $descimg_4->storeAs('public/uploaded/addons/', $filenameToStore);
+             $addons->descimg_4 = $filenameToStore;
+        }
+
+        //handle descimg 5
+        if($request->hasFile('descimg_5')){
+             $descimg_5 = $request->file('descimg_5');
+             $filenameWithExt = $descimg_5->getClientOriginalName();
+             $filename =  str_replace(' ', '_', pathinfo($filenameWithExt, PATHINFO_FILENAME ));
+             $ext = $descimg_5->getClientOriginalExtension();
+             $filenameToStore = $filename."_".time().".".$ext;
+             $path = $descimg_5->storeAs('public/uploaded/addons/', $filenameToStore);
+             $addons->descimg_5 = $filenameToStore;
+        }
+
+        //handle descimg 6
+        if($request->hasFile('descimg_6')){
+             $descimg_6 = $request->file('descimg_6');
+             $filenameWithExt = $descimg_6->getClientOriginalName();
+             $filename =  str_replace(' ', '_', pathinfo($filenameWithExt, PATHINFO_FILENAME ));
+             $ext = $descimg_6->getClientOriginalExtension();
+             $filenameToStore = $filename."_".time().".".$ext;
+             $path = $descimg_6->storeAs('public/uploaded/addons/', $filenameToStore);
+             $addons->descimg_6 = $filenameToStore;
+        }
 
         $addons->save();
 
@@ -179,6 +228,72 @@ class AdminAddonsController extends Controller
       $addons->addprice = $formdata['addprice'];
       $addons->type = $formdata['type'];
       $addons->races_id = $formdata['races_id'];
+
+      //handle descimg 1
+      if($request->hasFile('descimg_1')){
+           $descimg_1 = $request->file('descimg_1');
+           $filenameWithExt = $descimg_1->getClientOriginalName();
+           $filename =  str_replace(' ', '_', pathinfo($filenameWithExt, PATHINFO_FILENAME ));
+           $ext = $descimg_1->getClientOriginalExtension();
+           $filenameToStore = $filename."_".time().".".$ext;
+           $path = $descimg_1->storeAs('public/uploaded/addons/', $filenameToStore);
+           $addons->descimg_1 = $filenameToStore;
+      }
+
+      //handle descimg 2
+      if($request->hasFile('descimg_2')){
+           $descimg_2 = $request->file('descimg_2');
+           $filenameWithExt = $descimg_1->getClientOriginalName();
+           $filename =  str_replace(' ', '_', pathinfo($filenameWithExt, PATHINFO_FILENAME ));
+           $ext = $descimg_2->getClientOriginalExtension();
+           $filenameToStore = $filename."_".time().".".$ext;
+           $path = $descimg_2->storeAs('public/uploaded/addons/', $filenameToStore);
+           $addons->descimg_2 = $filenameToStore;
+      }
+
+      //handle descimg 3
+      if($request->hasFile('descimg_3')){
+           $descimg_3 = $request->file('descimg_3');
+           $filenameWithExt = $descimg_3->getClientOriginalName();
+           $filename =  str_replace(' ', '_', pathinfo($filenameWithExt, PATHINFO_FILENAME ));
+           $ext = $descimg_3->getClientOriginalExtension();
+           $filenameToStore = $filename."_".time().".".$ext;
+           $path = $descimg_3->storeAs('public/uploaded/addons/', $filenameToStore);
+           $addons->descimg_3 = $filenameToStore;
+      }
+
+      //handle descimg 4
+      if($request->hasFile('descimg_4')){
+           $descimg_4 = $request->file('descimg_4');
+           $filenameWithExt = $descimg_4->getClientOriginalName();
+           $filename =  str_replace(' ', '_', pathinfo($filenameWithExt, PATHINFO_FILENAME ));
+           $ext = $descimg_4->getClientOriginalExtension();
+           $filenameToStore = $filename."_".time().".".$ext;
+           $path = $descimg_4->storeAs('public/uploaded/addons/', $filenameToStore);
+           $addons->descimg_4 = $filenameToStore;
+      }
+
+      //handle descimg 5
+      if($request->hasFile('descimg_5')){
+           $descimg_5 = $request->file('descimg_5');
+           $filenameWithExt = $descimg_5->getClientOriginalName();
+           $filename =  str_replace(' ', '_', pathinfo($filenameWithExt, PATHINFO_FILENAME ));
+           $ext = $descimg_5->getClientOriginalExtension();
+           $filenameToStore = $filename."_".time().".".$ext;
+           $path = $descimg_5->storeAs('public/uploaded/addons/', $filenameToStore);
+           $addons->descimg_5 = $filenameToStore;
+      }
+
+      //handle descimg 6
+      if($request->hasFile('descimg_6')){
+           $descimg_6 = $request->file('descimg_6');
+           $filenameWithExt = $descimg_6->getClientOriginalName();
+           $filename =  str_replace(' ', '_', pathinfo($filenameWithExt, PATHINFO_FILENAME ));
+           $ext = $descimg_6->getClientOriginalExtension();
+           $filenameToStore = $filename."_".time().".".$ext;
+           $path = $descimg_6->storeAs('public/uploaded/addons/', $filenameToStore);
+           $addons->descimg_6 = $filenameToStore;
+      }
 
       $addons->save();
 

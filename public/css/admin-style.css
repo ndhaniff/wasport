@@ -26,3 +26,9 @@ label, option {
 .admin-modal-table tr:nth-child(even) {
     background-color: #dddddd;
 }
+
+.fit-image{
+width: 100%;
+object-fit: cover;
+height: 300px; /* only if you want fixed height */
+}

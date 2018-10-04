@@ -21,10 +21,10 @@ export default class EditMedalForm extends Component {
         this.state = {
             name : window.medal.name,
             races_id : window.medal.races_id,
-            medal_grey : [{preview_medalGrey : window.medal.medal_grey}],
-            medal_color : [{preview_medalColor : window.medal.medal_color}],
-            bib : [{preview_bib : window.medal.bib}],
-            cert : [{preview_cert : window.medal.cert}],
+            medal_grey : [{preview : window.medal.medal_grey}],
+            medal_color : [{preview : window.medal.medal_color}],
+            bib : [{preview : window.medal.bib}],
+            cert : [{preview : window.medal.cert}],
             mid : window.medal.mid,
             toggleDrop_medalGrey: false,
             toggleDrop_medalColor: false,
@@ -188,7 +188,7 @@ export default class EditMedalForm extends Component {
     render() {
       //Grey Medal
       if(this.state.medal_grey.length != 0){
-          var previewImg_medalGrey =  <div className="mb-2 text-center"><button onClick={this.removePreview_medalGrey} className="btn btn-danger float-right">X</button><br/><img height="300px" src={this.state.medal_grey[0].preview_medalGrey} alt=""/></div>
+          var previewImg_medalGrey =  <div className="mb-2 text-center"><button onClick={this.removePreview_medalGrey} className="btn btn-danger float-right">X</button><br/><img height="300px" src={this.state.medal_grey[0].preview} alt=""/></div>
       } else {
           var previewImg_medalGrey =  <img src="" alt=""/>
       }
@@ -215,7 +215,7 @@ export default class EditMedalForm extends Component {
 
         //Color Medal
         if(this.state.medal_color.length != 0){
-            var previewImg_medalColor =  <div className="mb-2 text-center"><button onClick={this.removePreview_medalColor} className="btn btn-danger float-right">X</button><br/><img height="300px" src={this.state.medal_color[0].preview_medalColor} alt=""/></div>
+            var previewImg_medalColor =  <div className="mb-2 text-center"><button onClick={this.removePreview_medalColor} className="btn btn-danger float-right">X</button><br/><img height="300px" src={this.state.medal_color[0].preview} alt=""/></div>
         } else {
             var previewImg_medalColor =  <img src="" alt=""/>
         }
@@ -242,7 +242,7 @@ export default class EditMedalForm extends Component {
 
           //Cert
           if(this.state.cert.length != 0){
-              var previewImg_cert =  <div className="mb-2 text-center"><button onClick={this.removePreview_cert} className="btn btn-danger float-right">X</button><br/><img height="300px" src={this.state.cert[0].preview_cert} alt=""/></div>
+              var previewImg_cert =  <div className="mb-2 text-center"><button onClick={this.removePreview_cert} className="btn btn-danger float-right">X</button><br/><img height="300px" src={this.state.cert[0].preview} alt=""/></div>
           } else {
               var previewImg_cert =  <img src="" alt="No image"/>
           }
@@ -269,7 +269,7 @@ export default class EditMedalForm extends Component {
 
           //bib
           if(this.state.bib.length != 0){
-              var previewImg_bib =  <div className="mb-2 text-center"><button onClick={this.removePreview_bib} className="btn btn-danger float-right">X</button><br/><img height="300px" src={this.state.bib[0].preview_bib} alt=""/></div>
+              var previewImg_bib =  <div className="mb-2 text-center"><button onClick={this.removePreview_bib} className="btn btn-danger float-right">X</button><br/><img height="300px" src={this.state.bib[0].preview} alt=""/></div>
           } else {
               var previewImg_bib =  <img src="" alt=""/>
           }

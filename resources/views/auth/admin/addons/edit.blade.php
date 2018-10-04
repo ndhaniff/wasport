@@ -29,6 +29,12 @@ var addons = {
   desc_zh : "{{$addons->desc_zh}}",
   type : "{{$addons->type}}",
   races_id : "{{$addons->races_id}}",
+  descimg_1 : ("{{$addons->descimg_1}}" == '') ? "{{asset('img/noimage.png')}}" : "{{asset('storage/uploaded/addons/'.$addons->descimg_1)}}",
+  descimg_2 : ("{{$addons->descimg_2}}" == '') ? "{{asset('img/noimage.png')}}" : "{{asset('storage/uploaded/addons/'.$addons->descimg_2)}}",
+  descimg_3 : ("{{$addons->descimg_3}}" == '') ? "{{asset('img/noimage.png')}}" : "{{asset('storage/uploaded/addons/'.$addons->descimg_3)}}",
+  descimg_4 : ("{{$addons->descimg_4}}" == '') ? "{{asset('img/noimage.png')}}" : "{{asset('storage/uploaded/addons/'.$addons->descimg_4)}}",
+  descimg_5 : ("{{$addons->descimg_5}}" == '') ? "{{asset('img/noimage.png')}}" : "{{asset('storage/uploaded/addons/'.$addons->descimg_5)}}",
+  descimg_6 : ("{{$addons->descimg_6}}" == '') ? "{{asset('img/noimage.png')}}" : "{{asset('storage/uploaded/addons/'.$addons->descimg_6)}}",
 }
 </script>
 @endsection
