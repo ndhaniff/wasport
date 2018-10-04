@@ -86,8 +86,7 @@ class AdminAddonsController extends Controller
         //validate request server side
         $request->validate([
             'add_en' => 'required|string',
-            'desc_en' => 'required|string',
-            'addprice' => 'required|string',
+            'addprice' => 'required',
         ]);
 
         $formdata = [
@@ -113,6 +112,23 @@ class AdminAddonsController extends Controller
         $addons->type = $formdata['type'];
         $addons->races_id = $formdata['races_id'];
 
+        $descimgs = $request->get('descimg');
+
+        /*handle descimg
+        if(!empty($descimgs)) {
+          foreach($descimgs as $descimg) {
+            $desc_img = $descimg['file'];
+            $filenameWithExt = $desc_img->getClientOriginalName();
+            $filename =  str_replace(' ', '_', pathinfo($filenameWithExt, PATHINFO_FILENAME ));
+            $ext = $desc_img->getClientOriginalExtension();
+            $filenameToStore = $filename."_".time().".".$ext;
+            $path = $desc_img->storeAs('public/uploaded/addons/', $filenameToStore);
+            $alladdonimg .= $filenameToStore;
+          }
+         }
+
+        $addons->desc_img = $alladdonimg;*/
+
         $addons->save();
 
         return response()->json(['success' => true, 'aid' => $addons->aid ], 200 );
@@ -136,7 +152,6 @@ class AdminAddonsController extends Controller
       //validate request server side
       $request->validate([
           'add_en' => 'required|string',
-          'desc_en' => 'required|string',
           'addprice' => 'required|string',
       ]);
 

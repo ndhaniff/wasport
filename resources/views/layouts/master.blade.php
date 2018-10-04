@@ -189,6 +189,7 @@
               <p><a href="/aboutus">{{__("About Us")}}</a></p>
               <p><a href="/contactus">{{__("Contact")}}</a></p>
               <p><a href="/privacypolicy">{{__("Privacy Policy")}}</a></p>
+              <p><a href="/termsandconditions">{{__("Terms and Conditions")}}</a></p>
             </div>
             <div class="col-sm-12 col-md-2">
               <h5><a href="\races">{{__("Event")}}</a></h5>

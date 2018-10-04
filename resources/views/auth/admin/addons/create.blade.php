@@ -6,6 +6,12 @@ Admin | Create Addons
 <link rel="stylesheet" href="//cdn.quilljs.com/1.2.6/quill.snow.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/react-datetime/2.15.0/css/react-datetime.min.css">
 
+<style>
+.anticon-plus:before,
+.anticon-delete:before,
+.anticon-eye-o:before { display: none; }
+</style>
+
 <?php $race_arr = array();
 
       foreach($races as $race) {

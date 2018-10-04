@@ -18,7 +18,7 @@ class CreateAddonsTable extends Migration
           $table->string('add_en');
           $table->string('add_ms')->nullable();
           $table->string('add_zh')->nullable();
-          $table->longText('desc_en');
+          $table->longText('desc_en')->nullable();
           $table->longText('desc_ms')->nullable();
           $table->longText('desc_zh')->nullable();
           $table->longText('desc_img')->nullable();

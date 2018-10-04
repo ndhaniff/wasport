@@ -23,6 +23,7 @@ Route::group([
   Route::get('/guide', 'Pages\HomeController@guide')->name('guide');
   Route::get('/howitworks', 'Pages\HomeController@howitworks')->name('howitworks');
   Route::get('/privacypolicy', 'Pages\HomeController@privacypolicy')->name('privacypolicy');
+  Route::get('/termsandconditions', 'Pages\HomeController@termsandconditions')->name('termsandconditions');
   Route::get('/relatedcooperation', 'Pages\HomeController@relatedCooperation')->name('relatedcooperation');
   Route::get('/contactus', 'Pages\ContactController@contactus')->name('contactus');
   Route::get('/registerrace/{rid}', 'Pages\RacesController@registerRace')->name('registerrace');

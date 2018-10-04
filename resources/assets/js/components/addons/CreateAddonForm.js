@@ -4,7 +4,7 @@ import ReactQuill, {Quill} from 'react-quill';
 import Datetime from 'react-datetime';
 import Dropzone from 'react-dropzone'
 import ImageResize from 'quill-image-resize-module';
-import { Tabs, Upload, Icon, Modal } from 'antd';
+import { Tabs } from 'antd';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 
@@ -34,7 +34,6 @@ export default class CreateAddonForm extends Component {
             toolbar: [
                 [{ 'header': [1, 2, false] }],
                 ['bold', 'italic', 'underline','strike', 'blockquote'],
-                [{'align': null}, {'align': 'center'}, {'align': 'right'}, {'align': 'justify'}],
                 [{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
                 [{ 'color': [] }, { 'background': [] }],
                 ['link', 'image'],
@@ -84,6 +83,7 @@ export default class CreateAddonForm extends Component {
 
         if(add_ms === '') { message.push('Title(MS)') }
         if(add_zh === '') { message.push('Title(ZH)') }
+        if(desc_en.length == 0) { message.push('Description(EN)') }
         if(desc_ms.length == 0) { message.push('Description(MS)') }
         if(desc_zh.length == 0) { message.push('Description(ZH)') }
         if(type === '') { message.push('Type') }
@@ -124,7 +124,6 @@ export default class CreateAddonForm extends Component {
                       alert('something wrong')
                   }
               })
-
             }
           })
 
@@ -151,9 +150,7 @@ export default class CreateAddonForm extends Component {
                   alert('something wrong')
               }
           })
-
         }
-
     }
 
     handleDescEnChange(data){
@@ -176,92 +173,91 @@ export default class CreateAddonForm extends Component {
       this.setState({races_id: event.target.value});
     }
 
-    handleChange = ({ fileList }) => this.setState({ fileList })
-
     render() {
 
-      return (
+        return (
 
-            <div className="wrapper p-1">
-                <div className="row">
-                    <div className="col-md-12">
-                        <div className="card">
-                            <div className="card-header">Create Addon</div>
+          <div className="wrapper p-1">
+              <div className="row">
+                  <div className="col-md-12">
+                      <div className="card">
+                          <div className="card-header">Create Addon</div>
 
-                            <div className="card-body">
-                                <form onSubmit={this.handleSubmit}>
+                          <div className="card-body">
+                              <form onSubmit={this.handleSubmit}>
 
-                                    <div className="form-group">
-                                        <Tabs defaultActiveKey="1" type="card">
-                                            <TabPane tab="En" key="1">
-                                                <label htmlFor="addtitle_en">Addon Title<span className="required-field">*</span></label>
-                                                <input onChange={this.handleInputChange} name="add_en" className="form-control" type="text" id="addtitle_en" required/>
-                                            </TabPane>
-                                            <TabPane tab="Ms" key="2">
-                                                <label htmlFor="addtitle_ms">Addon Title</label>
-                                                <input onChange={this.handleInputChange} name="add_ms" className="form-control" type="text" id="addtitle_ms"/>
-                                            </TabPane>
-                                            <TabPane tab="Zh" key="3">
-                                                <label htmlFor="addtitle_zh">Addon Title</label>
-                                                <input onChange={this.handleInputChange} name="add_zh" className="form-control" type="text" id="addtitle_zh" />
-                                            </TabPane>
-                                        </Tabs>
-                                    </div>
+                                  <div className="form-group">
+                                      <Tabs defaultActiveKey="1" type="card">
+                                          <TabPane tab="En" key="1">
+                                              <label htmlFor="addtitle_en">Addon Title<span className="required-field">*</span></label>
+                                              <input onChange={this.handleInputChange} name="add_en" className="form-control" type="text" id="addtitle_en" required/>
+                                          </TabPane>
+                                          <TabPane tab="Ms" key="2">
+                                              <label htmlFor="addtitle_ms">Addon Title</label>
+                                              <input onChange={this.handleInputChange} name="add_ms" className="form-control" type="text" id="addtitle_ms"/>
+                                          </TabPane>
+                                          <TabPane tab="Zh" key="3">
+                                              <label htmlFor="addtitle_zh">Addon Title</label>
+                                              <input onChange={this.handleInputChange} name="add_zh" className="form-control" type="text" id="addtitle_zh" />
+                                          </TabPane>
+                                      </Tabs>
+                                  </div>
 
-                                    <div className="form-group">
-                                      <div className="form-row">
-                                        <div className="col-sm-12 col-md-4">
-                                          <div className="form-group">
-                                            <label>Type <span>(seperate with ',')</span></label>
-                                            <input onChange={this.handleInputChange} name="type" className="form-control" type="text" />
-                                          </div>
+                                  <div className="form-group">
+                                    <div className="form-row">
+                                      <div className="col-sm-12 col-md-4">
+                                        <div className="form-group">
+                                          <label>Type <span>(seperate with ',')</span></label>
+                                          <input onChange={this.handleInputChange} name="type" className="form-control" type="text" />
                                         </div>
+                                      </div>
 
-                                        <div className="col-sm-12 col-md-4">
-                                          <div className="form-group">
-                                            <label>Price<span className="required-field">*</span></label>
-                                            <input onChange={this.handleInputChange} name="addprice" className="form-control" type="text" />
-                                          </div>
+                                      <div className="col-sm-12 col-md-4">
+                                        <div className="form-group">
+                                          <label>Price<span className="required-field">*</span></label>
+                                          <input onChange={this.handleInputChange} name="addprice" className="form-control" type="text" required/>
                                         </div>
+                                      </div>
 
-                                        <div className="col-sm-12 col-md-4">
-                                          <div className="form-group">
-                                            <label>Race Title<span className="required-field">*</span></label>
-                                            <select value={this.state.races_id} onChange={this.handleRaceChange} style={{'display': 'block'}} className="form-select">
-                                              <option disabled selected value=""> -- select an option -- </option>
-                                              {this.createSelectItems()}
-                                            </select>
-                                          </div>
+                                      <div className="col-sm-12 col-md-4">
+                                        <div className="form-group">
+                                          <label>Race Title<span className="required-field">*</span></label>
+                                          <select value={this.state.races_id} onChange={this.handleRaceChange} style={{'display': 'block'}} className="form-select" required>
+                                            <option disabled value=""> -- select an option -- </option>
+                                            {this.createSelectItems()}
+                                          </select>
                                         </div>
                                       </div>
                                     </div>
+                                  </div>
 
-                                    <div className="form-group">
-                                    <Tabs defaultActiveKey="1" type="card">
-                                        <TabPane tab="En" key="1">
-                                            <label htmlFor="desc">Description<span className="required-field">*</span></label>
-                                            <ReactQuill style={{'minHeight':'500px'}} modules={this.modules} theme="snow"  value={this.state.desc_en} onChange={this.handleDescEnChange} />
-                                            <input type="hidden" name="desc_en" value={this.state.desc_en}/>
-                                        </TabPane>
-                                        <TabPane tab="Ms" key="2">
-                                            <label htmlFor="desc">Description</label>
-                                            <ReactQuill style={{'minHeight':'500px'}} modules={this.modules} theme="snow"  value={this.state.desc_ms} onChange={this.handleDescMsChange} />
-                                            <input type="hidden" name="desc_ms" value={this.state.desc_ms}/>
-                                        </TabPane>
-                                        <TabPane tab="Zh" key="3">
-                                            <label htmlFor="desc">Description</label>
-                                            <ReactQuill style={{'minHeight':'500px'}} modules={this.modules} theme="snow"  value={this.state.desc_zh} onChange={this.handleDescZhChange} />
-                                            <input type="hidden" name="desc_zh" value={this.state.desc_zh}/>
-                                        </TabPane>
-                                    </Tabs>
-                                    </div><br/><br/>
-                                    <button className="btn btn-primary" type="submit">Submit</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                                  <div className="form-group">
+                                  <Tabs defaultActiveKey="1" type="card">
+                                      <TabPane tab="En" key="1">
+                                          <label htmlFor="desc">Description<span className="required-field">*</span></label>
+                                          <ReactQuill style={{'minHeight':'500px'}} modules={this.modules} theme="snow"  value={this.state.desc_en} onChange={this.handleDescEnChange} />
+                                          <input type="hidden" name="desc_en" value={this.state.desc_en}/>
+                                      </TabPane>
+                                      <TabPane tab="Ms" key="2">
+                                          <label htmlFor="desc">Description</label>
+                                          <ReactQuill style={{'minHeight':'500px'}} modules={this.modules} theme="snow"  value={this.state.desc_ms} onChange={this.handleDescMsChange} />
+                                          <input type="hidden" name="desc_ms" value={this.state.desc_ms}/>
+                                      </TabPane>
+                                      <TabPane tab="Zh" key="3">
+                                          <label htmlFor="desc">Description</label>
+                                          <ReactQuill style={{'minHeight':'500px'}} modules={this.modules} theme="snow"  value={this.state.desc_zh} onChange={this.handleDescZhChange} />
+                                          <input type="hidden" name="desc_zh" value={this.state.desc_zh}/>
+                                      </TabPane>
+
+                                  </Tabs>
+                                  </div><br/><br/>
+                                  <button className="btn btn-primary" type="submit">Submit</button>
+                              </form>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
         );
     }
 }

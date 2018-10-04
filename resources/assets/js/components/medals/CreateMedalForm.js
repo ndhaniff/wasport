@@ -57,7 +57,7 @@ export default class CreateMedalForm extends Component {
     handleSubmit(e){
         e.preventDefault()
 
-        let {name, medal_grey, medal_color, cert, bib, races_id, mid} = this.state
+        let {name,medal_grey,medal_color,cert,bib,races_id,mid} = this.state
 
         let data = new FormData;
 
@@ -96,7 +96,6 @@ export default class CreateMedalForm extends Component {
                   if(res.data.success){
 
                       MySwal.fire({
-                        toast: true,
                         position: 'top-end',
                         showConfirmButton: false,
                         timer: 3000,

@@ -39,7 +39,7 @@ export default class EditAddonForm extends Component {
                 [{'align': null}, {'align': 'center'}, {'align': 'right'}, {'align': 'justify'}],
                 [{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
                 [{ 'color': [] }, { 'background': [] }],
-                ['link', 'image'],
+                ['link'],
                 ['clean']
             ],
             imageResize: {
@@ -87,6 +87,7 @@ export default class EditAddonForm extends Component {
 
         if(add_ms === '') { message.push('Title(MS)') }
         if(add_zh === '') { message.push('Title(ZH)') }
+        if(desc_en.length == 0) { message.push('Description(EN)') }
         if(desc_ms.length == 0) { message.push('Description(MS)') }
         if(desc_zh.length == 0) { message.push('Description(ZH)') }
         if(type === '') { message.push('Type') }

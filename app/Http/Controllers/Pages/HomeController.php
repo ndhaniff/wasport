@@ -49,4 +49,8 @@ class HomeController extends Controller
       return view('pages.relatedcooperation');
     }
 
+    public function termsandconditions(){
+      return view('pages.termsandconditions');
+    }
+
 }

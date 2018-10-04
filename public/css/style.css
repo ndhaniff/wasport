@@ -790,25 +790,6 @@ MEDALS
 .medaldash #modal-img { width: 60%; }
 
 /*
-ADMIN
-*/
-.admin-modal-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.admin-modal-table td,
-.admin-modal-table th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-}
-
-.admin-modal-table tr:nth-child(even) {
-    background-color: #dddddd;
-}
-
-/*
 RESPONSIVE
 */
 @media screen and (max-width: 1024px) {
