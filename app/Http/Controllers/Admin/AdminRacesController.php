@@ -135,10 +135,8 @@ class AdminRacesController extends Controller
              $ext = $headerimg->getClientOriginalExtension();
              $filenameToStore = $filename."_".time().".".$ext;
              $path = $headerimg->storeAs('public/uploaded/races/', $filenameToStore);
-         } else {
-             $filenameToStore = 'noimage.png';
+             $race->header = $filenameToStore;
          }
-        $race->header = $filenameToStore;
 
         //handle awardimg 1
         if($request->hasFile('awardimg_1')){

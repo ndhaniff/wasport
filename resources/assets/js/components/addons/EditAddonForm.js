@@ -29,18 +29,18 @@ export default class EditAddonForm extends Component {
             type : window.addons.type,
             races_id : window.addons.races_id,
             aid : window.addons.aid,
-            descimg_1 : [{preview : window.addons.descimg_1}],
-            descimg_2 : [{preview : window.addons.descimg_2}],
-            descimg_3 : [{preview : window.addons.descimg_3}],
-            descimg_4 : [{preview : window.addons.descimg_4}],
-            descimg_5 : [{preview : window.addons.descimg_5}],
-            descimg_6 : [{preview : window.addons.descimg_6}],
-            toggleDrop_descimg_1: false,
-            toggleDrop_descimg_2: false,
-            toggleDrop_descimg_3: false,
-            toggleDrop_descimg_4: false,
-            toggleDrop_descimg_5: false,
-            toggleDrop_descimg_6: false,
+            descimg_1 : window.addons.descimg_1,
+            descimg_2 : window.addons.descimg_2,
+            descimg_3 : window.addons.descimg_3,
+            descimg_4 : window.addons.descimg_4,
+            descimg_5 : window.addons.descimg_5,
+            descimg_6 : window.addons.descimg_6,
+            toggleDrop_descimg_1: window.addons.toggleDrop_descimg_1,
+            toggleDrop_descimg_2: window.addons.toggleDrop_descimg_2,
+            toggleDrop_descimg_3: window.addons.toggleDrop_descimg_3,
+            toggleDrop_descimg_4: window.addons.toggleDrop_descimg_4,
+            toggleDrop_descimg_5: window.addons.toggleDrop_descimg_5,
+            toggleDrop_descimg_6: window.addons.toggleDrop_descimg_6,
         }
 
         /* Quill module */
@@ -116,7 +116,7 @@ export default class EditAddonForm extends Component {
 
         let message = [];
         let messageF = '';
-        let descimg = [];
+        let desc_img = [];
 
         if(add_ms === '') { message.push('Title(MS)') }
         if(add_zh === '') { message.push('Title(ZH)') }

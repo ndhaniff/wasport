@@ -534,10 +534,7 @@ export default class CreateRaceForm extends Component {
         if(this.state.toggleDrop_awardimg_1){
             var dropzone_awardimg_1 =
               <Dropzone
-                style={{
-                "width": "100%",
-                "border": "1px dashed",
-                "padding": "5%",}}
+                className="dropzone-style"
                 accept="image/jpeg, image/png"
                 onDrop={this.onDrop_awardimg_1}
                 multiple={false}
@@ -557,11 +554,8 @@ export default class CreateRaceForm extends Component {
         if(this.state.toggleDrop_awardimg_2){
             var dropzone_awardimg_2 =
               <Dropzone
-                style={{
-                "width": "100%",
-                "border": "1px dashed",
-                "padding": "5%",
-                "display": this.state.show_awardimg_2 ? 'block' : 'none'}}
+                className="dropzone-style"
+                style={{"display": this.state.show_awardimg_2 ? 'block' : 'none'}}
                 accept="image/jpeg, image/png"
                 onDrop={this.onDrop_awardimg_2}
                 multiple={false}
@@ -581,11 +575,8 @@ export default class CreateRaceForm extends Component {
           if(this.state.toggleDrop_awardimg_3){
               var dropzone_awardimg_3 =
                 <Dropzone
-                  style={{
-                  "width": "100%",
-                  "border": "1px dashed",
-                  "padding": "5%",
-                  "display": this.state.show_awardimg_3 ? 'block' : 'none'}}
+                  className="dropzone-style"
+                  style={{"display": this.state.show_awardimg_3 ? 'block' : 'none'}}
                   accept="image/jpeg, image/png"
                   onDrop={this.onDrop_awardimg_3}
                   multiple={false}
@@ -605,11 +596,8 @@ export default class CreateRaceForm extends Component {
           if(this.state.toggleDrop_awardimg_4){
               var dropzone_awardimg_4 =
                 <Dropzone
-                  style={{
-                  "width": "100%",
-                  "border": "1px dashed",
-                  "padding": "5%",
-                  "display": this.state.show_awardimg_4 ? 'block' : 'none'}}
+                  className="dropzone-style"
+                  style={{"display": this.state.show_awardimg_4 ? 'block' : 'none'}}
                   accept="image/jpeg, image/png"
                   onDrop={this.onDrop_awardimg_4}
                   multiple={false}
@@ -629,11 +617,8 @@ export default class CreateRaceForm extends Component {
           if(this.state.toggleDrop_awardimg_5){
               var dropzone_awardimg_5 =
                 <Dropzone
-                  style={{
-                  "width": "100%",
-                  "border": "1px dashed",
-                  "padding": "5%",
-                  "display": this.state.show_awardimg_5 ? 'block' : 'none'}}
+                  className="dropzone-style"
+                  style={{"display": this.state.show_awardimg_5 ? 'block' : 'none'}}
                   accept="image/jpeg, image/png"
                   onDrop={this.onDrop_awardimg_5}
                   multiple={false}
@@ -653,11 +638,8 @@ export default class CreateRaceForm extends Component {
           if(this.state.toggleDrop_awardimg_6){
               var dropzone_awardimg_6 =
                 <Dropzone
-                  style={{
-                  "width": "100%",
-                  "border": "1px dashed",
-                  "padding": "5%",
-                  "display": this.state.show_awardimg_6 ? 'block' : 'none'}}
+                  className="dropzone-style"
+                  style={{"display": this.state.show_awardimg_6 ? 'block' : 'none'}}
                   accept="image/jpeg, image/png"
                   onDrop={this.onDrop_awardimg_6}
                   multiple={false}
@@ -677,10 +659,7 @@ export default class CreateRaceForm extends Component {
           if(this.state.toggleDrop_medalimg_1){
               var dropzone_medalimg_1 =
                 <Dropzone
-                  style={{
-                  "width": "100%",
-                  "border": "1px dashed",
-                  "padding": "5%",}}
+                  className="dropzone-style"
                   accept="image/jpeg, image/png"
                   onDrop={this.onDrop_medalimg_1}
                   multiple={false}
@@ -700,11 +679,8 @@ export default class CreateRaceForm extends Component {
           if(this.state.toggleDrop_medalimg_2){
               var dropzone_medalimg_2 =
                 <Dropzone
-                  style={{
-                  "width": "100%",
-                  "border": "1px dashed",
-                  "padding": "5%",
-                  "display": this.state.show_medalimg_2 ? 'block' : 'none'}}
+                  className="dropzone-style"
+                  style={{"display": this.state.show_medalimg_2 ? 'block' : 'none'}}
                   accept="image/jpeg, image/png"
                   onDrop={this.onDrop_medalimg_2}
                   multiple={false}
@@ -724,11 +700,8 @@ export default class CreateRaceForm extends Component {
           if(this.state.toggleDrop_medalimg_3){
               var dropzone_medalimg_3 =
                 <Dropzone
-                  style={{
-                  "width": "100%",
-                  "border": "1px dashed",
-                  "padding": "5%",
-                  "display": this.state.show_medalimg_3 ? 'block' : 'none'}}
+                  className="dropzone-style"
+                  style={{"display": this.state.show_medalimg_3 ? 'block' : 'none'}}
                   accept="image/jpeg, image/png"
                   onDrop={this.onDrop_medalimg_3}
                   multiple={false}
@@ -748,11 +721,8 @@ export default class CreateRaceForm extends Component {
           if(this.state.toggleDrop_medalimg_4){
               var dropzone_medalimg_4 =
                 <Dropzone
-                  style={{
-                  "width": "100%",
-                  "border": "1px dashed",
-                  "padding": "5%",
-                  "display": this.state.show_medalimg_4 ? 'block' : 'none'}}
+                  className="dropzone-style"
+                  style={{"display": this.state.show_medalimg_4 ? 'block' : 'none'}}
                   accept="image/jpeg, image/png"
                   onDrop={this.onDrop_medalimg_4}
                   multiple={false}
@@ -770,13 +740,10 @@ export default class CreateRaceForm extends Component {
           } else { var previewImg_medalimg_5 =  <img src="" alt=""/> }
 
           if(this.state.toggleDrop_medalimg_5){
-              var dropzone_amedalmg_5 =
+              var dropzone_medalimg_5 =
                 <Dropzone
-                  style={{
-                  "width": "100%",
-                  "border": "1px dashed",
-                  "padding": "5%",
-                  "display": this.state.show_awardimg_5 ? 'block' : 'none'}}
+                  className="dropzone-style"
+                  style={{"display": this.state.show_awardimg_5 ? 'block' : 'none'}}
                   accept="image/jpeg, image/png"
                   onDrop={this.onDrop_medalimg_5}
                   multiple={false}
@@ -796,11 +763,8 @@ export default class CreateRaceForm extends Component {
           if(this.state.toggleDrop_medalimg_6){
               var dropzone_medalimg_6 =
                 <Dropzone
-                  style={{
-                  "width": "100%",
-                  "border": "1px dashed",
-                  "padding": "5%",
-                  "display": this.state.show_medalimg_6 ? 'block' : 'none'}}
+                  className="dropzone-style"
+                  style={{"display": this.state.show_medalimg_6 ? 'block' : 'none'}}
                   accept="image/jpeg, image/png"
                   onDrop={this.onDrop_medalimg_6}
                   multiple={false}

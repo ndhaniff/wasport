@@ -43,33 +43,33 @@ export default class EditRaceForm extends Component {
             time_to: window.race.time_to,
             deadtime_from: window.race.deadtime_from,
             deadtime_to: window.race.deadtime_to,
-            headerImg : [{preview : window.race.header}],
+            headerImg : window.race.header,
             rid : window.race.rid,
-            toggleDrop: false,
-            awardimg_1 : [{preview : window.race.awardimg_1}],
-            awardimg_2 : [{preview : window.race.awardimg_2}],
-            awardimg_3 : [{preview : window.race.awardimg_3}],
-            awardimg_4 : [{preview : window.race.awardimg_4}],
-            awardimg_5 : [{preview : window.race.awardimg_5}],
-            awardimg_6 : [{preview : window.race.awardimg_6}],
-            toggleDrop_awardimg_1: false,
-            toggleDrop_awardimg_2: false,
-            toggleDrop_awardimg_3: false,
-            toggleDrop_awardimg_4: false,
-            toggleDrop_awardimg_5: false,
-            toggleDrop_awardimg_6: false,
-            medalimg_1 : [{preview : window.race.medalimg_1}],
-            medalimg_2 : [{preview : window.race.medalimg_2}],
-            medalimg_3 : [{preview : window.race.medalimg_3}],
-            medalimg_4 : [{preview : window.race.medalimg_4}],
-            medalimg_5 : [{preview : window.race.medalimg_5}],
-            medalimg_6 : [{preview : window.race.medalimg_6}],
-            toggleDrop_medalimg_1: false,
-            toggleDrop_medalimg_2: false,
-            toggleDrop_medalimg_3: false,
-            toggleDrop_medalimg_4: false,
-            toggleDrop_medalimg_5: false,
-            toggleDrop_medalimg_6: false,
+            toggleDrop: window.race.toggleDrop,
+            awardimg_1 : window.race.awardimg_1,
+            awardimg_2 : window.race.awardimg_2,
+            awardimg_3 : window.race.awardimg_3,
+            awardimg_4 : window.race.awardimg_4,
+            awardimg_5 : window.race.awardimg_5,
+            awardimg_6 : window.race.awardimg_6,
+            toggleDrop_awardimg_1: window.race.toggleDrop_awardimg_1,
+            toggleDrop_awardimg_2: window.race.toggleDrop_awardimg_2,
+            toggleDrop_awardimg_3: window.race.toggleDrop_awardimg_3,
+            toggleDrop_awardimg_4: window.race.toggleDrop_awardimg_4,
+            toggleDrop_awardimg_5: window.race.toggleDrop_awardimg_5,
+            toggleDrop_awardimg_6: window.race.toggleDrop_awardimg_6,
+            medalimg_1 : window.race.medalimg_1,
+            medalimg_2 : window.race.medalimg_2,
+            medalimg_3 : window.race.medalimg_3,
+            medalimg_4 : window.race.medalimg_4,
+            medalimg_5 : window.race.medalimg_5,
+            medalimg_6 : window.race.medalimg_6,
+            toggleDrop_medalimg_1: window.race.toggleDrop_medalimg_1,
+            toggleDrop_medalimg_2: window.race.toggleDrop_medalimg_2,
+            toggleDrop_medalimg_3: window.race.toggleDrop_medalimg_3,
+            toggleDrop_medalimg_4: window.race.toggleDrop_medalimg_4,
+            toggleDrop_medalimg_5: window.race.toggleDrop_medalimg_5,
+            toggleDrop_medalimg_6: window.race.toggleDrop_medalimg_6,
         }
 
         /* Quill module */
@@ -189,7 +189,7 @@ export default class EditRaceForm extends Component {
         let award_img = [];
         let medal_img = [];
 
-        if(headerImg[0].preview.includes("noimage.png")) { message.push('Banner') }
+        if(typeof headerImg[0] != 'undefined') { message.push('Banner') }
         if(title_ms === '') { message.push('Title(MS)') }
         if(title_zh === '') { message.push('Title(ZH)') }
         if(about_ms.length == 0) { message.push('About(MS)') }
@@ -525,10 +525,7 @@ export default class EditRaceForm extends Component {
         if(this.state.toggleDrop_awardimg_1){
             var dropzone_awardimg_1 =
               <Dropzone
-                style={{
-                "width": "100%",
-                "border": "1px dashed",
-                "padding": "5%",}}
+                className="dropzone-style"
                 accept="image/jpeg, image/png"
                 onDrop={this.onDrop_awardimg_1}
                 multiple={false}
@@ -548,10 +545,7 @@ export default class EditRaceForm extends Component {
         if(this.state.toggleDrop_awardimg_2){
             var dropzone_awardimg_2 =
               <Dropzone
-                style={{
-                "width": "100%",
-                "border": "1px dashed",
-                "padding": "5%",}}
+                className="dropzone-style"
                 accept="image/jpeg, image/png"
                 onDrop={this.onDrop_awardimg_2}
                 multiple={false}
@@ -571,10 +565,7 @@ export default class EditRaceForm extends Component {
           if(this.state.toggleDrop_awardimg_3){
               var dropzone_awardimg_3 =
                 <Dropzone
-                  style={{
-                  "width": "100%",
-                  "border": "1px dashed",
-                  "padding": "5%",}}
+                  className="dropzone-style"
                   accept="image/jpeg, image/png"
                   onDrop={this.onDrop_awardimg_3}
                   multiple={false}
@@ -594,10 +585,7 @@ export default class EditRaceForm extends Component {
           if(this.state.toggleDrop_awardimg_4){
               var dropzone_awardimg_4 =
                 <Dropzone
-                  style={{
-                  "width": "100%",
-                  "border": "1px dashed",
-                  "padding": "5%",}}
+                  className="dropzone-style"
                   accept="image/jpeg, image/png"
                   onDrop={this.onDrop_awardimg_4}
                   multiple={false}
@@ -617,10 +605,7 @@ export default class EditRaceForm extends Component {
           if(this.state.toggleDrop_awardimg_5){
               var dropzone_awardimg_5 =
                 <Dropzone
-                  style={{
-                  "width": "100%",
-                  "border": "1px dashed",
-                  "padding": "5%",}}
+                  className="dropzone-style"
                   accept="image/jpeg, image/png"
                   onDrop={this.onDrop_awardimg_5}
                   multiple={false}
@@ -640,10 +625,7 @@ export default class EditRaceForm extends Component {
           if(this.state.toggleDrop_awardimg_6){
               var dropzone_awardimg_6 =
                 <Dropzone
-                  style={{
-                  "width": "100%",
-                  "border": "1px dashed",
-                  "padding": "5%",}}
+                  className="dropzone-style"
                   accept="image/jpeg, image/png"
                   onDrop={this.onDrop_awardimg_6}
                   multiple={false}
@@ -663,10 +645,7 @@ export default class EditRaceForm extends Component {
           if(this.state.toggleDrop_medalimg_1){
               var dropzone_medalimg_1 =
                 <Dropzone
-                  style={{
-                  "width": "100%",
-                  "border": "1px dashed",
-                  "padding": "5%",}}
+                  className="dropzone-style"
                   accept="image/jpeg, image/png"
                   onDrop={this.onDrop_medalimg_1}
                   multiple={false}
@@ -686,10 +665,7 @@ export default class EditRaceForm extends Component {
           if(this.state.toggleDrop_medalimg_2){
               var dropzone_medalimg_2 =
                 <Dropzone
-                  style={{
-                  "width": "100%",
-                  "border": "1px dashed",
-                  "padding": "5%",}}
+                  className="dropzone-style"
                   accept="image/jpeg, image/png"
                   onDrop={this.onDrop_medalimg_2}
                   multiple={false}
@@ -709,10 +685,7 @@ export default class EditRaceForm extends Component {
           if(this.state.toggleDrop_medalimg_3){
               var dropzone_medalimg_3 =
                 <Dropzone
-                  style={{
-                  "width": "100%",
-                  "border": "1px dashed",
-                  "padding": "5%",}}
+                  className="dropzone-style"
                   accept="image/jpeg, image/png"
                   onDrop={this.onDrop_medalimg_3}
                   multiple={false}
@@ -727,15 +700,12 @@ export default class EditRaceForm extends Component {
           //medalimg 4
           if(this.state.medalimg_4.length != 0){
               var previewImg_medalimg_4 =  <div className="mb-2 text-center"><button onClick={this.removePreview_medalimg_4} className="btn btn-danger float-right">X</button><br/><img className="fit-image" src={this.state.medalimg_4[0].preview} alt=""/></div>
-          } else { var previewImg_medalimg_34=  <img src="" alt=""/> }
+          } else { var previewImg_medalimg_4=  <img src="" alt=""/> }
 
           if(this.state.toggleDrop_medalimg_4){
               var dropzone_medalimg_4 =
                 <Dropzone
-                  style={{
-                  "width": "100%",
-                  "border": "1px dashed",
-                  "padding": "5%",}}
+                  className="dropzone-style"
                   accept="image/jpeg, image/png"
                   onDrop={this.onDrop_medalimg_4}
                   multiple={false}
@@ -753,12 +723,9 @@ export default class EditRaceForm extends Component {
           } else { var previewImg_medalimg_5 =  <img src="" alt=""/> }
 
           if(this.state.toggleDrop_medalimg_5){
-              var dropzone_amedalmg_5 =
+              var dropzone_medalimg_5 =
                 <Dropzone
-                  style={{
-                  "width": "100%",
-                  "border": "1px dashed",
-                  "padding": "5%",}}
+                  className="dropzone-style"
                   accept="image/jpeg, image/png"
                   onDrop={this.onDrop_medalimg_5}
                   multiple={false}
@@ -778,10 +745,7 @@ export default class EditRaceForm extends Component {
           if(this.state.toggleDrop_medalimg_6){
               var dropzone_medalimg_6 =
                 <Dropzone
-                  style={{
-                  "width": "100%",
-                  "border": "1px dashed",
-                  "padding": "5%",}}
+                  className="dropzone-style"
                   accept="image/jpeg, image/png"
                   onDrop={this.onDrop_medalimg_6}
                   multiple={false}

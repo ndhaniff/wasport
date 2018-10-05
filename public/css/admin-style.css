@@ -28,7 +28,15 @@ label, option {
 }
 
 .fit-image{
-width: 100%;
-object-fit: cover;
-height: 300px; /* only if you want fixed height */
+  width: 100%;
+  object-fit: cover;
+  height: 300px; /* only if you want fixed height */
+}
+
+.dropzone-style {
+  height: 300px;
+  width: 100%;
+  border: 1px dashed;
+  padding: 7rem 0;
+  margin: 1rem 0;
 }
