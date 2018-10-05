@@ -21,15 +21,15 @@ export default class EditMedalForm extends Component {
         this.state = {
             name : window.medal.name,
             races_id : window.medal.races_id,
-            medal_grey : [{preview : window.medal.medal_grey}],
-            medal_color : [{preview : window.medal.medal_color}],
-            bib : [{preview : window.medal.bib}],
-            cert : [{preview : window.medal.cert}],
+            medal_grey : window.medal.medal_grey,
+            medal_color : window.medal.medal_color,
+            bib : window.medal.bib,
+            cert : window.medal.cert,
             mid : window.medal.mid,
-            toggleDrop_medalGrey: false,
-            toggleDrop_medalColor: false,
-            toggleDrop_cert : false,
-            toggleDrop_bib : false,
+            toggleDrop_medalGrey: window.medal.toggleDrop_medalGrey,
+            toggleDrop_medalColor: window.medal.toggleDrop_medalColor,
+            toggleDrop_cert : window.medal.toggleDrop_cert,
+            toggleDrop_bib : window.medal.toggleDrop_bib,
         }
 
         this.onDrop_medalGrey = this.onDrop_medalGrey.bind(this)
@@ -73,10 +73,10 @@ export default class EditMedalForm extends Component {
         let message = [];
         let messageF = '';
 
-        if(medal_grey[0].preview.includes("noimage.png")) { message.push('Grey Medal') }
-        if(medal_color[0].preview.includes("noimage.png")) { message.push('Color Medal') }
-        if(cert[0].preview.includes("noimage.png")) { message.push('Cert') }
-        if(bib[0].preview.includes("noimage.png")) { message.push('Bib') }
+        if(typeof medal_grey[0] != 'undefined') { message.push('Grey Medal') }
+        if(typeof medal_color[0] != 'undefined') { message.push('Color Medal') }
+        if(typeof cert[0] != 'undefined') { message.push('Cert') }
+        if(typeof bib[0] != 'undefined') { message.push('Bib') }
         if(races_id == '') { message.push('Races') }
 
         messageF = message.join(', ')
@@ -189,9 +189,7 @@ export default class EditMedalForm extends Component {
       //Grey Medal
       if(this.state.medal_grey.length != 0){
           var previewImg_medalGrey =  <div className="mb-2 text-center"><button onClick={this.removePreview_medalGrey} className="btn btn-danger float-right">X</button><br/><img height="300px" src={this.state.medal_grey[0].preview} alt=""/></div>
-      } else {
-          var previewImg_medalGrey =  <img src="" alt=""/>
-      }
+      } else { var previewImg_medalGrey =  <img src="" alt=""/> }
 
       if(this.state.toggleDrop_medalGrey){
           var dropzone_medalGrey =
@@ -209,16 +207,12 @@ export default class EditMedalForm extends Component {
               <p>Only *.jpeg and *.png images will be accepted</p>
             </div>
             </Dropzone>
-        } else {
-          var dropzone_medalGrey = ""
-        }
+        } else { var dropzone_medalGrey = "" }
 
         //Color Medal
         if(this.state.medal_color.length != 0){
             var previewImg_medalColor =  <div className="mb-2 text-center"><button onClick={this.removePreview_medalColor} className="btn btn-danger float-right">X</button><br/><img height="300px" src={this.state.medal_color[0].preview} alt=""/></div>
-        } else {
-            var previewImg_medalColor =  <img src="" alt=""/>
-        }
+        } else { var previewImg_medalColor =  <img src="" alt=""/> }
 
         if(this.state.toggleDrop_medalColor){
             var dropzone_medalColor =
@@ -236,16 +230,12 @@ export default class EditMedalForm extends Component {
                 <p>Only *.jpeg and *.png images will be accepted</p>
               </div>
               </Dropzone>
-          } else {
-            var dropzone_medalColor = ""
-          }
+          } else { var dropzone_medalColor = "" }
 
           //Cert
           if(this.state.cert.length != 0){
               var previewImg_cert =  <div className="mb-2 text-center"><button onClick={this.removePreview_cert} className="btn btn-danger float-right">X</button><br/><img height="300px" src={this.state.cert[0].preview} alt=""/></div>
-          } else {
-              var previewImg_cert =  <img src="" alt="No image"/>
-          }
+          } else { var previewImg_cert =  <img src="" alt=""/> }
 
           if(this.state.toggleDrop_cert){
               var dropzone_cert =
@@ -263,9 +253,7 @@ export default class EditMedalForm extends Component {
                   <p>Only *.jpeg and *.png images will be accepted</p>
                 </div>
                 </Dropzone>
-            } else {
-              var dropzone_cert = ""
-            }
+            } else { var dropzone_cert = "" }
 
           //bib
           if(this.state.bib.length != 0){
@@ -290,9 +278,7 @@ export default class EditMedalForm extends Component {
                   <p>Only *.jpeg and *.png images will be accepted</p>
                 </div>
                 </Dropzone>
-            } else {
-              var dropzone_bib = ""
-            }
+            } else { var dropzone_bib = "" }
 
         return (
 

@@ -15,8 +15,8 @@ class MedalsTableSeeder extends Seeder
         'name' => 'Medal 1',
         'medal_grey' => 'medal_1.png',
         'medal_color' => 'medal_2.png',
-        'cert' => 'noimage.png',
-        'bib' => 'noimage.png',
+        'cert' => '',
+        'bib' => '',
         'races_id' => 1,
       ]);
 
@@ -24,8 +24,8 @@ class MedalsTableSeeder extends Seeder
         'name' => 'Medal 2',
         'medal_grey' => 'medal_3.png',
         'medal_color' => 'medal_4.png',
-        'cert' => 'noimage.png',
-        'bib' => 'noimage.png',
+        'cert' => '',
+        'bib' => '',
         'races_id' => 2,
       ]);
 
@@ -33,8 +33,8 @@ class MedalsTableSeeder extends Seeder
         'name' => 'Medal 3',
         'medal_grey' => 'medal_5.png',
         'medal_color' => 'medal_6.png',
-        'cert' => 'noimage.png',
-        'bib' => 'noimage.png',
+        'cert' => '',
+        'bib' => '',
         'races_id' => 3,
       ]);
     }

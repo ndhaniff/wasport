@@ -102,10 +102,8 @@ class AdminMedalsController extends Controller
              $ext = $medal_grey->getClientOriginalExtension();
              $filenameToStore = $filename."_".time().".".$ext;
              $path = $medal_grey->storeAs('public/uploaded/medals/grey/', $filenameToStore);
-         } else {
-             $filenameToStore = 'noimage.png';
+             $medal->medal_grey = $filenameToStore;
          }
-        $medal->medal_grey = $filenameToStore;
 
         //handle color medal
         if($request->hasFile('medal_color')){
@@ -115,10 +113,8 @@ class AdminMedalsController extends Controller
              $ext = $medal_color->getClientOriginalExtension();
              $filenameToStore = $filename."_".time().".".$ext;
              $path = $medal_color->storeAs('public/uploaded/medals/color/', $filenameToStore);
-         } else {
-             $filenameToStore = 'noimage.png';
+             $medal->medal_color = $filenameToStore;
          }
-        $medal->medal_color = $filenameToStore;
 
         //handle cert
         if($request->hasFile('cert')){
@@ -128,10 +124,8 @@ class AdminMedalsController extends Controller
              $ext = $medal_color->getClientOriginalExtension();
              $filenameToStore = $filename."_".time().".".$ext;
              $path = $cert->storeAs('public/uploaded/cert/', $filenameToStore);
-         } else {
-             $filenameToStore = 'noimage.png';
+             $medal->cert = $filenameToStore;
          }
-        $medal->cert = $filenameToStore;
 
         //handle bib
         if($request->hasFile('bib')){
@@ -141,10 +135,8 @@ class AdminMedalsController extends Controller
              $ext = $bib->getClientOriginalExtension();
              $filenameToStore = $filename."_".time().".".$ext;
              $path = $bib->storeAs('public/uploaded/bib/', $filenameToStore);
-         } else {
-             $filenameToStore = 'noimage.png';
+             $medal->bib = $filenameToStore;
          }
-        $medal->bib = $filenameToStore;
 
         $medal->save();
 

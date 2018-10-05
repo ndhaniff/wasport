@@ -187,9 +187,7 @@ export default class CreateMedalForm extends Component {
         //Grey Medal
         if(this.state.medal_grey.length != 0){
             var previewImg_medalGrey =  <div className="mb-2 text-center"><button onClick={this.removePreview_medalGrey} className="btn btn-danger float-right">X</button><br/><img height="300px" src={this.state.medal_grey[0].preview} alt=""/></div>
-        } else {
-            var previewImg_medalGrey =  <img src="" alt=""/>
-        }
+        } else { var previewImg_medalGrey =  <img src="" alt=""/> }
 
         if(this.state.toggleDrop_medalGrey){
             var dropzone_medalGrey =
@@ -207,16 +205,12 @@ export default class CreateMedalForm extends Component {
                 <p>Only *.jpeg and *.png images will be accepted</p>
               </div>
               </Dropzone>
-          } else {
-            var dropzone_medalGrey = ""
-          }
+          } else { var dropzone_medalGrey = "" }
 
           //Color Medal
           if(this.state.medal_color.length != 0){
               var previewImg_medalColor =  <div className="mb-2 text-center"><button onClick={this.removePreview_medalColor} className="btn btn-danger float-right">X</button><br/><img height="300px" src={this.state.medal_color[0].preview} alt=""/></div>
-          } else {
-              var previewImg_medalColor =  <img src="" alt=""/>
-          }
+          } else { var previewImg_medalColor =  <img src="" alt=""/> }
 
           if(this.state.toggleDrop_medalColor){
               var dropzone_medalColor =
@@ -234,16 +228,12 @@ export default class CreateMedalForm extends Component {
                   <p>Only *.jpeg and *.png images will be accepted</p>
                 </div>
                 </Dropzone>
-            } else {
-              var dropzone_medalColor = ""
-            }
+            } else { var dropzone_medalColor = "" }
 
             //Cert
             if(this.state.cert.length != 0){
                 var previewImg_cert =  <div className="mb-2 text-center"><button onClick={this.removePreview_cert} className="btn btn-danger float-right">X</button><br/><img height="300px" src={this.state.cert[0].preview} alt=""/></div>
-            } else {
-                var previewImg_cert =  <img src="" alt=""/>
-            }
+            } else { var previewImg_cert =  <img src="" alt=""/> }
 
             if(this.state.toggleDrop_cert){
                 var dropzone_cert =
@@ -261,16 +251,12 @@ export default class CreateMedalForm extends Component {
                     <p>Only *.jpeg and *.png images will be accepted</p>
                   </div>
                   </Dropzone>
-              } else {
-                var dropzone_cert = ""
-              }
+              } else { var dropzone_cert = "" }
 
             //bib
             if(this.state.bib.length != 0){
                 var previewImg_bib =  <div className="mb-2 text-center"><button onClick={this.removePreview_bib} className="btn btn-danger float-right">X</button><br/><img height="300px" src={this.state.bib[0].preview} alt=""/></div>
-            } else {
-                var previewImg_bib =  <img src="" alt=""/>
-            }
+            } else { var previewImg_bib =  <img src="" alt=""/> }
 
             if(this.state.toggleDrop_bib){
                 var dropzone_bib =
@@ -288,9 +274,7 @@ export default class CreateMedalForm extends Component {
                     <p>Only *.jpeg and *.png images will be accepted</p>
                   </div>
                   </Dropzone>
-              } else {
-                var dropzone_bib = ""
-              }
+              } else { var dropzone_bib = "" }
 
 
         return (
