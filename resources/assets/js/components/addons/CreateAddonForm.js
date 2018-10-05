@@ -125,7 +125,7 @@ export default class CreateAddonForm extends Component {
         if(desc_ms.length == 0) { message.push('Description(MS)') }
         if(desc_zh.length == 0) { message.push('Description(ZH)') }
         if(type === '') { message.push('Type') }
-        
+
         if(typeof descimg_1[0] != 'undefined') { desc_img.push(descimg_1[0])}
         if(typeof descimg_2[0] != 'undefined') { desc_img.push(descimg_2[0])}
         if(typeof descimg_3[0] != 'undefined') { desc_img.push(descimg_3[0])}
@@ -277,10 +277,7 @@ export default class CreateAddonForm extends Component {
       if(this.state.toggleDrop_descimg_1){
           var dropzone_descimg_1 =
             <Dropzone
-              style={{
-              "width": "100%",
-              "border": "1px dashed",
-              "padding": "5%",}}
+              className="dropzone-style"
               accept="image/jpeg, image/png"
               onDrop={this.onDrop_descimg_1}
               multiple={false}
@@ -300,11 +297,8 @@ export default class CreateAddonForm extends Component {
       if(this.state.toggleDrop_descimg_2){
           var dropzone_descimg_2 =
             <Dropzone
-              style={{
-              "width": "100%",
-              "border": "1px dashed",
-              "padding": "5%",
-              "display": this.state.show_descimg_2 ? 'block' : 'none'}}
+              className="dropzone-style"
+              style={{"display": this.state.show_descimg_2 ? 'block' : 'none'}}
               accept="image/jpeg, image/png"
               onDrop={this.onDrop_descimg_2}
               multiple={false}
@@ -324,11 +318,8 @@ export default class CreateAddonForm extends Component {
         if(this.state.toggleDrop_descimg_3){
             var dropzone_descimg_3 =
               <Dropzone
-                style={{
-                "width": "100%",
-                "border": "1px dashed",
-                "padding": "5%",
-                "display": this.state.show_descimg_3 ? 'block' : 'none'}}
+                className="dropzone-style"
+                style={{"display": this.state.show_descimg_3 ? 'block' : 'none'}}
                 accept="image/jpeg, image/png"
                 onDrop={this.onDrop_descimg_3}
                 multiple={false}
@@ -348,11 +339,8 @@ export default class CreateAddonForm extends Component {
         if(this.state.toggleDrop_descimg_4){
             var dropzone_descimg_4 =
               <Dropzone
-                style={{
-                "width": "100%",
-                "border": "1px dashed",
-                "padding": "5%",
-                "display": this.state.show_descimg_4 ? 'block' : 'none'}}
+                className="dropzone-style"
+                style={{"display": this.state.show_descimg_4 ? 'block' : 'none'}}
                 accept="image/jpeg, image/png"
                 onDrop={this.onDrop_descimg_4}
                 multiple={false}
@@ -372,11 +360,8 @@ export default class CreateAddonForm extends Component {
         if(this.state.toggleDrop_descimg_5){
             var dropzone_descimg_5 =
               <Dropzone
-                style={{
-                "width": "100%",
-                "border": "1px dashed",
-                "padding": "5%",
-                "display": this.state.show_descimg_5 ? 'block' : 'none'}}
+                className="dropzone-style"
+                style={{"display": this.state.show_descimg_5 ? 'block' : 'none'}}
                 accept="image/jpeg, image/png"
                 onDrop={this.onDrop_descimg_5}
                 multiple={false}
@@ -396,11 +381,8 @@ export default class CreateAddonForm extends Component {
         if(this.state.toggleDrop_descimg_6){
             var dropzone_descimg_6 =
               <Dropzone
-                style={{
-                "width": "100%",
-                "border": "1px dashed",
-                "padding": "5%",
-                "display": this.state.show_descimg_6 ? 'block' : 'none'}}
+                className="dropzone-style"
+                style={{"display": this.state.show_descimg_6 ? 'block' : 'none'}}
                 accept="image/jpeg, image/png"
                 onDrop={this.onDrop_descimg_6}
                 multiple={false}

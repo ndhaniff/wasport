@@ -18,6 +18,20 @@ Admin | Edit Addons
 <script>
 var races = JSON.parse('<?= $race_json; ?>');
 
+var descimg_1 = '[{"preview" : "{{asset("storage/uploaded/addons/".$addons->descimg_1)}}"}]';
+var descimg_2 = '[{"preview" : "{{asset("storage/uploaded/addons/".$addons->descimg_2)}}"}]';
+var descimg_3 = '[{"preview" : "{{asset("storage/uploaded/addons/".$addons->descimg_3)}}"}]';
+var descimg_4 = '[{"preview" : "{{asset("storage/uploaded/addons/".$addons->descimg_4)}}"}]';
+var descimg_5 = '[{"preview" : "{{asset("storage/uploaded/addons/".$addons->descimg_5)}}"}]';
+var descimg_6 = '[{"preview" : "{{asset("storage/uploaded/addons/".$addons->descimg_6)}}"}]';
+
+var desc_img_1 = JSON.parse(descimg_1);
+var desc_img_2 = JSON.parse(descimg_2);
+var desc_img_3 = JSON.parse(descimg_3);
+var desc_img_4 = JSON.parse(descimg_4);
+var desc_img_5 = JSON.parse(descimg_5);
+var desc_img_6 = JSON.parse(descimg_6);
+
 var addons = {
   aid: "{{$addons->aid}}",
   add_en : "{{$addons->add_en}}",
@@ -29,12 +43,12 @@ var addons = {
   desc_zh : "{{$addons->desc_zh}}",
   type : "{{$addons->type}}",
   races_id : "{{$addons->races_id}}",
-  descimg_1 : ("{{$addons->descimg_1}}" == '') ? "" : "preview : {{asset('storage/uploaded/addons/'.$addons->descimg_1)}}",
-  descimg_2 : ("{{$addons->descimg_2}}" == '') ? "" : "preview : {{asset('storage/uploaded/addons/'.$addons->descimg_2)}}",
-  descimg_3 : ("{{$addons->descimg_3}}" == '') ? "" : "preview : {{asset('storage/uploaded/addons/'.$addons->descimg_3)}}",
-  descimg_4 : ("{{$addons->descimg_4}}" == '') ? "" : "preview : {{asset('storage/uploaded/addons/'.$addons->descimg_4)}}",
-  descimg_5 : ("{{$addons->descimg_5}}" == '') ? "" : "preview : {{asset('storage/uploaded/addons/'.$addons->descimg_5)}}",
-  descimg_6 : ("{{$addons->descimg_6}}" == '') ? "" : "preview : {{asset('storage/uploaded/addons/'.$addons->descimg_6)}}",
+  descimg_1 : ("{{$addons->descimg_1}}" == '') ? "" : desc_img_1,
+  descimg_2 : ("{{$addons->descimg_2}}" == '') ? "" : desc_img_2,
+  descimg_3 : ("{{$addons->descimg_3}}" == '') ? "" : desc_img_3,
+  descimg_4 : ("{{$addons->descimg_4}}" == '') ? "" : desc_img_4,
+  descimg_5 : ("{{$addons->descimg_5}}" == '') ? "" : desc_img_5,
+  descimg_6 : ("{{$addons->descimg_6}}" == '') ? "" : desc_img_6,
   toggleDrop_descimg_1 : ("{{$addons->descimg_1}}" == '') ? true : false,
   toggleDrop_descimg_2 : ("{{$addons->descimg_2}}" == '') ? true : false,
   toggleDrop_descimg_3 : ("{{$addons->descimg_3}}" == '') ? true : false,
