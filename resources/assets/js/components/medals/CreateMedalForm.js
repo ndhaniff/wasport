@@ -313,9 +313,9 @@ export default class CreateMedalForm extends Component {
 
                                       <div className="col-sm-12 col-md-4">
                                         <div className="form-group">
-                                          <label>Race Title</label>
-                                          <select value={this.state.races_id} onChange={this.handleRaceChange} style={{'display': 'block'}} className="form-select">
-                                            <option disabled selected value=""> -- select an option -- </option>
+                                          <label>Race Title<span className="required-field">*</span></label>
+                                          <select value={this.state.races_id} onChange={this.handleRaceChange} style={{'display': 'block'}} className="form-select" required>
+                                            <option disabled value=""> -- select an option -- </option>
                                             {this.createSelectItems()}
                                           </select>
                                         </div>
