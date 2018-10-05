@@ -70,8 +70,10 @@
 
                 echo '<p>' .$deadF. ' (' .$race->deadtime_from. ') GMT +08  or while slots last</p>' ?>
 
-          <h6>Category</h6>
-          <p>{{ $race->category }}</p>
+          <?php if($race->category) {
+                  echo '<h6>Category</6>';
+                  echo $race->category;
+          } ?>
 
           <h6>Cut Off Time</h6>
           <p>No cut off time</p>
@@ -87,6 +89,21 @@
                   echo htmlspecialchars_decode($race->about_ms);
                 if(app()->getLocale() == 'zh')
                   echo htmlspecialchars_decode($race->about_zh); ?>
+
+          <br />
+
+          <?php if($race->medalimg_1 != '')
+                  echo "<img src='" .asset('storage/uploaded/medals/' . $race->medalimg_1). "' alt='" .$race->title_en. "'><br /><br />";
+                if($race->medalimg_2 != '')
+                  echo "<img src='" .asset('storage/uploaded/medals/' . $race->medalimg_2). "' alt='" .$race->title_en. "'><br /><br />";
+                if($race->medalimg_3 != '')
+                  echo "<img src='" .asset('storage/uploaded/medals/' . $race->medalimg_3). "' alt='" .$race->title_en. "'><br /><br />";
+                if($race->medalimg_4 != '')
+                  echo "<img src='" .asset('storage/uploaded/medals/' . $race->medalimg_4). "' alt='" .$race->title_en. "'><br /><br />";
+                if($race->medalimg_5 != '')
+                  echo "<img src='" .asset('storage/uploaded/medals/' . $race->medalimg_5). "' alt='" .$race->title_en. "'><br /><br />";
+                if($race->medalimg_6 != '')
+                  echo "<img src='" .asset('storage/uploaded/medals/' . $race->medalimg_6). "' alt='" .$race->title_en. "'><br /><br />"; ?>
 
           <br />
 
@@ -173,6 +190,20 @@
               $i=0;
 
               foreach($addons as $addon) {
+
+                if($addon->descimg_1 != '')
+                  echo "<img src='" .asset('storage/uploaded/addons/' . $addon->descimg_1). "' alt='" .$addon->add_en. "'><br /><br />";
+                if($addon->descimg_2 != '')
+                  echo "<img src='" .asset('storage/uploaded/addons/' . $addon->descimg_2). "' alt='" .$addon->add_en. "'><br /><br />";
+                if($addon->descimg_3 != '')
+                  echo "<img src='" .asset('storage/uploaded/addons/' . $addon->descimg_3). "' alt='" .$addon->add_en. "'><br /><br />";
+                if($addon->descimg_4 != '')
+                  echo "<img src='" .asset('storage/uploaded/addons/' . $addon->descimg_4). "' alt='" .$addon->add_en. "'><br /><br />";
+                if($addon->descimg_5 != '')
+                  echo "<img src='" .asset('storage/uploaded/addons/' . $addon->descimg_5). "' alt='" .$addon->add_en. "'><br /><br />";
+                if($addon->descimg_6 != '')
+                  echo "<img src='" .asset('storage/uploaded/addons/' . $addon->descimg_6). "' alt='" .$addon->add_en. "'><br /><br />";
+
                 if(app()->getLocale() == 'en') {
                   echo '<b>';
                   echo $i+1 .'. ' .$addon->add_en. ' - RM' .number_format($addon->addprice, 2);
@@ -209,6 +240,21 @@
                     echo htmlspecialchars_decode($race->awards_ms);
                   if(app()->getLocale() == 'zh')
                     echo htmlspecialchars_decode($race->awards_zh); ?>
+
+            <br />
+
+            <?php if($race->awardimg_1 != '')
+                    echo "<img src='" .asset('storage/uploaded/awards/' . $race->awardimg_1). "' alt='" .$race->title_en. "'><br /><br />";
+                  if($race->awardimg_2 != '')
+                    echo "<img src='" .asset('storage/uploaded/awards/' . $race->awardimg_2). "' alt='" .$race->title_en. "'><br /><br />";
+                  if($race->awardimg_3 != '')
+                    echo "<img src='" .asset('storage/uploaded/awards/' . $race->awardimg_3). "' alt='" .$race->title_en. "'><br /><br />";
+                  if($race->awardimg_4 != '')
+                    echo "<img src='" .asset('storage/uploaded/awards/' . $race->awardimg_4). "' alt='" .$race->title_en. "'><br /><br />";
+                  if($race->awardimg_5 != '')
+                    echo "<img src='" .asset('storage/uploaded/awards/' . $race->awardimg_5). "' alt='" .$race->title_en. "'><br /><br />";
+                  if($race->awardimg_6 != '')
+                    echo "<img src='" .asset('storage/uploaded/awards/' . $race->awardimg_6). "' alt='" .$race->title_en. "'><br /><br />"; ?>
           </div>
         </div>
 
@@ -268,7 +314,7 @@ const second = 1000,
     hour = minute * 60,
     day = hour * 24;
 
-let countDown = new Date('{{ $countDate }}').getTime(),
+let countDown = new Date('<?= $countDate ?>').getTime(),
   x = setInterval(function() {
 
     let now = new Date().getTime(),
