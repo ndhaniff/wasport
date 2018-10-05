@@ -22,6 +22,8 @@ var medal_img4 = JSON.parse('[{"preview" : "{{asset("storage/uploaded/medals/".$
 var medal_img5 = JSON.parse('[{"preview" : "{{asset("storage/uploaded/medals/".$race->medalimg_5)}}"}]');
 var medal_img6 = JSON.parse('[{"preview" : "{{asset("storage/uploaded/medals/".$race->medalimg_6)}}"}]');
 
+var header_img = JSON.parse('[{"preview" : "{{asset("storage/uploaded/races/".$race->header)}}"}]');
+
 var race = {
   rid: "{{$race->rid}}",
   title_en : "{{$race->title_en}}",
@@ -47,7 +49,7 @@ var race = {
   time_from : "{{$race->time_from}}",
   deadtime_to : "{{$race->deadtime_to}}",
   deadtime_from : "{{$race->deadtime_from}}",
-  header : ("{{$race->header}}" == '') ? "" : "preview : {{asset('storage/uploaded/races/'.$race->header)}}",
+  header : ("{{$race->header}}" == '') ? "" : header_img,
   toggleDrop : ("{{$race->header}}" == '') ? true : false,
   awardimg_1 : ("{{$race->awardimg_1}}" == '') ? "" : award_img1,
   awardimg_2 : ("{{$race->awardimg_2}}" == '') ? "" : award_img2,

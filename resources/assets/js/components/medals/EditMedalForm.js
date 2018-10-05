@@ -248,7 +248,7 @@ export default class EditMedalForm extends Component {
                   onDrop={this.onDrop_cert}
                   multiple={false}
                   name="cert">
-                <div className="text-center">
+                <div className="text-center" id="form-text">
                   <p>Try dropping some files here, or click to select files to upload.</p>
                   <p>Only *.jpeg and *.png images will be accepted</p>
                 </div>
@@ -273,7 +273,7 @@ export default class EditMedalForm extends Component {
                   onDrop={this.onDrop_bib}
                   multiple={false}
                   name="cert">
-                <div className="text-center">
+                <div className="text-center" id="form-text">
                   <p>Try dropping some files here, or click to select files to upload.</p>
                   <p>Only *.jpeg and *.png images will be accepted</p>
                 </div>
@@ -286,7 +286,7 @@ export default class EditMedalForm extends Component {
                 <div className="row">
                     <div className="col-md-12">
                         <div className="card">
-                            <div className="card-header">Edit Race</div>
+                            <div className="card-header">Edit Medal</div>
 
                             <div className="card-body">
                                 <form onSubmit={this.handleSubmit}>

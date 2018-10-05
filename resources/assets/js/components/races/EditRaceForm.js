@@ -43,8 +43,8 @@ export default class EditRaceForm extends Component {
             time_to: window.race.time_to,
             deadtime_from: window.race.deadtime_from,
             deadtime_to: window.race.deadtime_to,
-            headerImg : window.race.header,
             rid : window.race.rid,
+            headerImg : window.race.header,
             toggleDrop: window.race.toggleDrop,
             awardimg_1 : window.race.awardimg_1,
             awardimg_2 : window.race.awardimg_2,
@@ -774,15 +774,15 @@ export default class EditRaceForm extends Component {
                                     <div className="form-group">
                                     <Tabs defaultActiveKey="1" type="card">
                                             <TabPane tab="En" key="1">
-                                                <label htmlFor="racetitle_en">Race Title<span className="required-field">*</span></label>
+                                                <label htmlFor="racetitle_en">Race Title (EN)<span className="required-field">*</span></label>
                                                 <input onChange={this.handleInputChange} name="title_en" value={this.state.title_en} className="form-control" type="text" id="racetitle_en" required/>
                                             </TabPane>
                                             <TabPane tab="Ms" key="2">
-                                                <label htmlFor="racetitle_ms">Race Title</label>
+                                                <label htmlFor="racetitle_ms">Race Title (MS)</label>
                                                 <input onChange={this.handleInputChange} name="title_ms" value={this.state.title_ms} className="form-control" type="text" id="racetitle_ms"/>
                                             </TabPane>
                                             <TabPane tab="Zh" key="3">
-                                                <label htmlFor="racetitle_zh">Race Title</label>
+                                                <label htmlFor="racetitle_zh">Race Title (ZH)</label>
                                                 <input onChange={this.handleInputChange} name="title_zh" value={this.state.title_zh} className="form-control" type="text" id="racetitle_zh"/>
                                             </TabPane>
                                         </Tabs>
@@ -862,17 +862,17 @@ export default class EditRaceForm extends Component {
                                     <div className="form-group">
                                     <Tabs defaultActiveKey="1" type="card">
                                         <TabPane tab="En" key="1">
-                                            <label htmlFor="about">About<span className="required-field">*</span></label>
+                                            <label htmlFor="about">About (EN)<span className="required-field">*</span></label>
                                             <ReactQuill style={{'minHeight':'500px'}} modules={this.modules} theme="snow"  value={this.state.about_en} onChange={this.handleAboutEnChange} required/>
                                             <input type="hidden" name="about_en" value={this.state.about_en}/>
                                         </TabPane>
                                         <TabPane tab="Ms" key="2">
-                                            <label htmlFor="about">About</label>
+                                            <label htmlFor="about">About (MS)</label>
                                             <ReactQuill style={{'minHeight':'500px'}} modules={this.modules} theme="snow"  value={this.state.about_ms} onChange={this.handleAboutMsChange} />
                                             <input type="hidden" name="about_ms" value={this.state.about_ms}/>
                                         </TabPane>
                                         <TabPane tab="Zh" key="3">
-                                            <label htmlFor="about">About</label>
+                                            <label htmlFor="about">About (ZH)</label>
                                             <ReactQuill style={{'minHeight':'500px'}} modules={this.modules} theme="snow"  value={this.state.about_zh} onChange={this.handleAboutZhChange} />
                                             <input type="hidden" name="about_zh" value={this.state.about_zh}/>
                                         </TabPane>
@@ -881,21 +881,21 @@ export default class EditRaceForm extends Component {
                                     <div className="form-group">
                                     <Tabs defaultActiveKey="1" type="card">
                                         <TabPane tab="En" key="1">
-                                            <label htmlFor="medals">Medals<span className="required-field">*</span></label>
+                                            <label htmlFor="medals">Medals (EN)<span className="required-field">*</span></label>
                                             <ReactQuill style={{'minHeight':'500px'}} modules={this.modules} theme="snow"  value={this.state.medals_en} onChange={this.handleMedalsEnChange} required/>
                                             <input type="hidden" name="medals_en" value={this.state.medals_en}/>
                                         </TabPane>
                                         <TabPane tab="Ms" key="2">
-                                            <label htmlFor="medals">Medals</label>
+                                            <label htmlFor="medals">Medals (MS)</label>
                                             <ReactQuill style={{'minHeight':'500px'}} modules={this.modules} theme="snow"  value={this.state.medals_ms} onChange={this.handleMedalsMsChange} />
                                             <input type="hidden" name="medals_ms" value={this.state.medals_ms}/>
                                         </TabPane>
                                         <TabPane tab="Zh" key="3">
-                                            <label htmlFor="medals">Medals</label>
+                                            <label htmlFor="medals">Medals (ZH)</label>
                                             <ReactQuill style={{'minHeight':'500px'}} modules={this.modules} theme="snow"  value={this.state.medals_zh} onChange={this.handleMedalsZhChange} />
                                             <input type="hidden" name="medals_zh" value={this.state.medals_zh}/>
                                         </TabPane>
-                                        <TabPane tab="Images" key="4">
+                                        <TabPane tab="Medal Images" key="4">
                                             <div className="row">
                                               <div className="col-sm-12 col-md-4">
                                                 {previewImg_medalimg_1}
@@ -930,21 +930,21 @@ export default class EditRaceForm extends Component {
                                     <div className="form-group">
                                     <Tabs defaultActiveKey="1" type="card">
                                         <TabPane tab="En" key="1">
-                                            <label htmlFor="about">Awards<span className="required-field">*</span></label>
+                                            <label htmlFor="about">Awards (EN)<span className="required-field">*</span></label>
                                             <ReactQuill style={{'minHeight':'500px'}} modules={this.modules} theme="snow"  value={this.state.awards_en} onChange={this.handleAwardsEnChange} required/>
                                             <input type="hidden" name="awards_en" value={this.state.awards_en}/>
                                         </TabPane>
                                         <TabPane tab="Ms" key="2">
-                                            <label htmlFor="about">Awards</label>
+                                            <label htmlFor="about">Awards (MS)</label>
                                             <ReactQuill style={{'minHeight':'500px'}} modules={this.modules} theme="snow"  value={this.state.awards_ms} onChange={this.handleAwardsMsChange} />
                                             <input type="hidden" name="awards_ms" value={this.state.awards_ms}/>
                                         </TabPane>
                                         <TabPane tab="Zh" key="3">
-                                            <label htmlFor="about">Awards</label>
+                                            <label htmlFor="about">Awards (ZH)</label>
                                             <ReactQuill style={{'minHeight':'500px'}} modules={this.modules} theme="snow"  value={this.state.awards_zh} onChange={this.handleAwardsZhChange} />
                                             <input type="hidden" name="awards_zh" value={this.state.awards_zh}/>
                                         </TabPane>
-                                        <TabPane tab="Images" key="4">
+                                        <TabPane tab="Award Images" key="4">=
                                             <div className="row">
                                               <div className="col-sm-12 col-md-4">
                                                 {previewImg_awardimg_1}

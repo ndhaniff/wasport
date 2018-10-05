@@ -223,7 +223,7 @@ export default class CreateMedalForm extends Component {
                   onDrop={this.onDrop_medalColor}
                   multiple={false}
                   name="medal_color">
-                <div className="text-center">
+                <div className="text-center" id="form-text">
                   <p>Try dropping some files here, or click to select files to upload.</p>
                   <p>Only *.jpeg and *.png images will be accepted</p>
                 </div>
@@ -246,7 +246,7 @@ export default class CreateMedalForm extends Component {
                     onDrop={this.onDrop_cert}
                     multiple={false}
                     name="cert">
-                  <div className="text-center">
+                  <div className="text-center" id="form-text">
                     <p>Try dropping some files here, or click to select files to upload.</p>
                     <p>Only *.jpeg and *.png images will be accepted</p>
                   </div>

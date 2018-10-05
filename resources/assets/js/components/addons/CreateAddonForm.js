@@ -409,15 +409,15 @@ export default class CreateAddonForm extends Component {
                                   <div className="form-group">
                                       <Tabs defaultActiveKey="1" type="card">
                                           <TabPane tab="En" key="1">
-                                              <label htmlFor="addtitle_en">Addon Title<span className="required-field">*</span></label>
+                                              <label htmlFor="addtitle_en">Addon Title (EN)<span className="required-field">*</span></label>
                                               <input onChange={this.handleInputChange} name="add_en" className="form-control" type="text" id="addtitle_en" required/>
                                           </TabPane>
                                           <TabPane tab="Ms" key="2">
-                                              <label htmlFor="addtitle_ms">Addon Title</label>
+                                              <label htmlFor="addtitle_ms">Addon Title (MS)</label>
                                               <input onChange={this.handleInputChange} name="add_ms" className="form-control" type="text" id="addtitle_ms"/>
                                           </TabPane>
                                           <TabPane tab="Zh" key="3">
-                                              <label htmlFor="addtitle_zh">Addon Title</label>
+                                              <label htmlFor="addtitle_zh">Addon Title (ZH)</label>
                                               <input onChange={this.handleInputChange} name="add_zh" className="form-control" type="text" id="addtitle_zh" />
                                           </TabPane>
                                       </Tabs>
@@ -454,17 +454,17 @@ export default class CreateAddonForm extends Component {
                                   <div className="form-group">
                                   <Tabs defaultActiveKey="1" type="card">
                                       <TabPane tab="En" key="1">
-                                          <label htmlFor="desc">Description<span className="required-field">*</span></label>
+                                          <label htmlFor="desc">Description (EN)<span className="required-field">*</span></label>
                                           <ReactQuill style={{'minHeight':'500px'}} modules={this.modules} theme="snow"  value={this.state.desc_en} onChange={this.handleDescEnChange} />
                                           <input type="hidden" name="desc_en" value={this.state.desc_en}/>
                                       </TabPane>
                                       <TabPane tab="Ms" key="2">
-                                          <label htmlFor="desc">Description</label>
+                                          <label htmlFor="desc">Description (MS)</label>
                                           <ReactQuill style={{'minHeight':'500px'}} modules={this.modules} theme="snow"  value={this.state.desc_ms} onChange={this.handleDescMsChange} />
                                           <input type="hidden" name="desc_ms" value={this.state.desc_ms}/>
                                       </TabPane>
                                       <TabPane tab="Zh" key="3">
-                                          <label htmlFor="desc">Description</label>
+                                          <label htmlFor="desc">Description (ZH)</label>
                                           <ReactQuill style={{'minHeight':'500px'}} modules={this.modules} theme="snow"  value={this.state.desc_zh} onChange={this.handleDescZhChange} />
                                           <input type="hidden" name="desc_zh" value={this.state.desc_zh}/>
                                       </TabPane>

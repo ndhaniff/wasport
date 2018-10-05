@@ -1,4 +1,5 @@
-form {
+form,
+#form-text {
   font-family: Chinese Quote,-apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif;
 }
 
@@ -38,5 +39,5 @@ label, option {
   width: 100%;
   border: 1px dashed;
   padding: 7rem 0;
-  margin: 1rem 0;
+  margin-bottom: 1rem;
 }
