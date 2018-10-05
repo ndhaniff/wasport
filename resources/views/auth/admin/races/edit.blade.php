@@ -33,6 +33,18 @@ var race = {
   deadtime_to : "{{$race->deadtime_to}}",
   deadtime_from : "{{$race->deadtime_from}}",
   header : ("{{$race->header}}" == 'noimage.png') ? "{{asset('img/noimage.png')}}" : "{{asset('storage/uploaded/races/'.$race->header)}}",
+  awardimg_1 : ("{{$race->awardimg_1}}" == '') ? "{{asset('img/noimage.png')}}" : "{{asset('storage/uploaded/awards/'.$race->awardimg_1)}}",
+  awardimg_2 : ("{{$race->awardimg_2}}" == '') ? "{{asset('img/noimage.png')}}" : "{{asset('storage/uploaded/awards/'.$race->awardimg_2)}}",
+  awardimg_3 : ("{{$race->awardimg_3}}" == '') ? "{{asset('img/noimage.png')}}" : "{{asset('storage/uploaded/awards/'.$race->awardimg_3)}}",
+  awardimg_4 : ("{{$race->awardimg_4}}" == '') ? "{{asset('img/noimage.png')}}" : "{{asset('storage/uploaded/awards/'.$race->awardimg_4)}}",
+  awardimg_5 : ("{{$race->awardimg_5}}" == '') ? "{{asset('img/noimage.png')}}" : "{{asset('storage/uploaded/awards/'.$race->awardimg_5)}}",
+  awardimg_6 : ("{{$race->awardimg_6}}" == '') ? "{{asset('img/noimage.png')}}" : "{{asset('storage/uploaded/awards/'.$race->awardimg_6)}}",
+  medalimg_1 : ("{{$race->medalimg_1}}" == '') ? "{{asset('img/noimage.png')}}" : "{{asset('storage/uploaded/medals/'.$race->medalimg_1)}}",
+  medalimg_2 : ("{{$race->medalimg_2}}" == '') ? "{{asset('img/noimage.png')}}" : "{{asset('storage/uploaded/medals/'.$race->medalimg_2)}}",
+  medalimg_3 : ("{{$race->medalimg_3}}" == '') ? "{{asset('img/noimage.png')}}" : "{{asset('storage/uploaded/medals/'.$race->medalimg_3)}}",
+  medalimg_4 : ("{{$race->medalimg_4}}" == '') ? "{{asset('img/noimage.png')}}" : "{{asset('storage/uploaded/medals/'.$race->medalimg_4)}}",
+  medalimg_5 : ("{{$race->medalimg_5}}" == '') ? "{{asset('img/noimage.png')}}" : "{{asset('storage/uploaded/medals/'.$race->medalimg_5)}}",
+  medalimg_6 : ("{{$race->medalimg_6}}" == '') ? "{{asset('img/noimage.png')}}" : "{{asset('storage/uploaded/medals/'.$race->medalimg_6)}}",
 }
 </script>
 @endsection

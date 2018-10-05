@@ -139,6 +139,139 @@ class AdminRacesController extends Controller
              $filenameToStore = 'noimage.png';
          }
         $race->header = $filenameToStore;
+
+        //handle awardimg 1
+        if($request->hasFile('awardimg_1')){
+             $awardimg_1 = $request->file('awardimg_1');
+             $filenameWithExt = $awardimg_1->getClientOriginalName();
+             $filename =  str_replace(' ', '_', pathinfo($filenameWithExt, PATHINFO_FILENAME ));
+             $ext = $awardimg_1->getClientOriginalExtension();
+             $filenameToStore = $filename."_".time().".".$ext;
+             $path = $awardimg_1->storeAs('public/uploaded/awards/', $filenameToStore);
+             $race->awardimg_1 = $filenameToStore;
+        }
+
+        //handle awardimg 2
+        if($request->hasFile('awardimg_2')){
+             $awardimg_2 = $request->file('awardimg_2');
+             $filenameWithExt = $awardimg_2->getClientOriginalName();
+             $filename =  str_replace(' ', '_', pathinfo($filenameWithExt, PATHINFO_FILENAME ));
+             $ext = $awardimg_2->getClientOriginalExtension();
+             $filenameToStore = $filename."_".time().".".$ext;
+             $path = $awardimg_2->storeAs('public/uploaded/awards/', $filenameToStore);
+             $race->awardimg_2 = $filenameToStore;
+        }
+
+        //handle awardimg 3
+        if($request->hasFile('awardimg_3')){
+             $awardimg_3 = $request->file('awardimg_3');
+             $filenameWithExt = $awardimg_3->getClientOriginalName();
+             $filename =  str_replace(' ', '_', pathinfo($filenameWithExt, PATHINFO_FILENAME ));
+             $ext = $awardimg_3->getClientOriginalExtension();
+             $filenameToStore = $filename."_".time().".".$ext;
+             $path = $awardimg_3->storeAs('public/uploaded/awards/', $filenameToStore);
+             $race->awardimg_3 = $filenameToStore;
+        }
+
+        //handle awardimg 4
+        if($request->hasFile('awardimg_4')){
+             $awardimg_4 = $request->file('awardimg_4');
+             $filenameWithExt = $awardimg_4->getClientOriginalName();
+             $filename =  str_replace(' ', '_', pathinfo($filenameWithExt, PATHINFO_FILENAME ));
+             $ext = $awardimg_4->getClientOriginalExtension();
+             $filenameToStore = $filename."_".time().".".$ext;
+             $path = $awardimg_4->storeAs('public/uploaded/awards/', $filenameToStore);
+             $race->awardimg_4 = $filenameToStore;
+        }
+
+        //handle awardimg 5
+        if($request->hasFile('awardimg_5')){
+             $awardimg_5 = $request->file('awardimg_5');
+             $filenameWithExt = $awardimg_5->getClientOriginalName();
+             $filename =  str_replace(' ', '_', pathinfo($filenameWithExt, PATHINFO_FILENAME ));
+             $ext = $awardimg_5->getClientOriginalExtension();
+             $filenameToStore = $filename."_".time().".".$ext;
+             $path = $awardimg_5->storeAs('public/uploaded/awards/', $filenameToStore);
+             $race->awardimg_5 = $filenameToStore;
+        }
+
+        //handle awardimg 6
+        if($request->hasFile('awardimg_6')){
+             $awardimg_6 = $request->file('awardimg_6');
+             $filenameWithExt = $awardimg_6->getClientOriginalName();
+             $filename =  str_replace(' ', '_', pathinfo($filenameWithExt, PATHINFO_FILENAME ));
+             $ext = $awardimg_6->getClientOriginalExtension();
+             $filenameToStore = $filename."_".time().".".$ext;
+             $path = $awardimg_6->storeAs('public/uploaded/awards/', $filenameToStore);
+             $race->awardimg_6 = $filenameToStore;
+        }
+
+        //handle medalimg 1
+        if($request->hasFile('medalimg_1')){
+             $medalimg_1 = $request->file('medalimg_1');
+             $filenameWithExt = $medalimg_1->getClientOriginalName();
+             $filename =  str_replace(' ', '_', pathinfo($filenameWithExt, PATHINFO_FILENAME ));
+             $ext = $medalimg_1->getClientOriginalExtension();
+             $filenameToStore = $filename."_".time().".".$ext;
+             $path = $medalimg_1->storeAs('public/uploaded/medals/', $filenameToStore);
+             $race->medalimg_1 = $filenameToStore;
+        }
+
+        //handle medalimg 2
+        if($request->hasFile('medalimg_2')){
+             $medalimg_2 = $request->file('medalimg_2');
+             $filenameWithExt = $medalimg_2->getClientOriginalName();
+             $filename =  str_replace(' ', '_', pathinfo($filenameWithExt, PATHINFO_FILENAME ));
+             $ext = $medalimg_2->getClientOriginalExtension();
+             $filenameToStore = $filename."_".time().".".$ext;
+             $path = $medalimg_2->storeAs('public/uploaded/medals/', $filenameToStore);
+             $race->medalimg_2 = $filenameToStore;
+        }
+
+        //handle medalimg 3
+        if($request->hasFile('medalimg_3')){
+             $medalimg_3 = $request->file('medalimg_3');
+             $filenameWithExt = $medalimg_3->getClientOriginalName();
+             $filename =  str_replace(' ', '_', pathinfo($filenameWithExt, PATHINFO_FILENAME ));
+             $ext = $medalimg_3->getClientOriginalExtension();
+             $filenameToStore = $filename."_".time().".".$ext;
+             $path = $medalimg_3->storeAs('public/uploaded/medals/', $filenameToStore);
+             $race->medalimg_3 = $filenameToStore;
+        }
+
+        //handle medalimg 4
+        if($request->hasFile('medalimg_4')){
+             $medalimg_4 = $request->file('medalimg_4');
+             $filenameWithExt = $medalimg_4->getClientOriginalName();
+             $filename =  str_replace(' ', '_', pathinfo($filenameWithExt, PATHINFO_FILENAME ));
+             $ext = $medalimg_4->getClientOriginalExtension();
+             $filenameToStore = $filename."_".time().".".$ext;
+             $path = $medalimg_4->storeAs('public/uploaded/medals/', $filenameToStore);
+             $race->medalimg_4 = $filenameToStore;
+        }
+
+        //handle medalimg 5
+        if($request->hasFile('medalimg_5')){
+             $medalimg_5 = $request->file('medalimg_5');
+             $filenameWithExt = $medalimg_5->getClientOriginalName();
+             $filename =  str_replace(' ', '_', pathinfo($filenameWithExt, PATHINFO_FILENAME ));
+             $ext = $medalimg_5->getClientOriginalExtension();
+             $filenameToStore = $filename."_".time().".".$ext;
+             $path = $medalimg_5->storeAs('public/uploaded/medals/', $filenameToStore);
+             $race->medalimg_15= $filenameToStore;
+        }
+
+        //handle medalimg 6
+        if($request->hasFile('medalimg_6')){
+             $medalimg_6 = $request->file('medalimg_6');
+             $filenameWithExt = $medalimg_6->getClientOriginalName();
+             $filename =  str_replace(' ', '_', pathinfo($filenameWithExt, PATHINFO_FILENAME ));
+             $ext = $medalimg_6->getClientOriginalExtension();
+             $filenameToStore = $filename."_".time().".".$ext;
+             $path = $medalimg_6->storeAs('public/uploaded/medals/', $filenameToStore);
+             $race->medalimg_6 = $filenameToStore;
+        }
+
         $race->save();
 
         return response()->json(['success' => true, 'rid' => $race->rid ], 200 );
@@ -231,6 +364,138 @@ class AdminRacesController extends Controller
              $filenameToStore = $filename."_".time().".".$ext;
              $path = $headerimg->storeAs('public/uploaded/races/', $filenameToStore);
              $race->header = $filenameToStore;
+         }
+
+         //handle awardimg 1
+         if($request->hasFile('awardimg_1')){
+              $awardimg_1 = $request->file('awardimg_1');
+              $filenameWithExt = $awardimg_1->getClientOriginalName();
+              $filename =  str_replace(' ', '_', pathinfo($filenameWithExt, PATHINFO_FILENAME ));
+              $ext = $awardimg_1->getClientOriginalExtension();
+              $filenameToStore = $filename."_".time().".".$ext;
+              $path = $awardimg_1->storeAs('public/uploaded/awards/', $filenameToStore);
+              $race->awardimg_1 = $filenameToStore;
+         }
+
+         //handle awardimg 2
+         if($request->hasFile('awardimg_2')){
+              $awardimg_2 = $request->file('awardimg_2');
+              $filenameWithExt = $awardimg_2->getClientOriginalName();
+              $filename =  str_replace(' ', '_', pathinfo($filenameWithExt, PATHINFO_FILENAME ));
+              $ext = $awardimg_2->getClientOriginalExtension();
+              $filenameToStore = $filename."_".time().".".$ext;
+              $path = $awardimg_2->storeAs('public/uploaded/awards/', $filenameToStore);
+              $race->awardimg_2 = $filenameToStore;
+         }
+
+         //handle awardimg 3
+         if($request->hasFile('awardimg_3')){
+              $awardimg_3 = $request->file('awardimg_3');
+              $filenameWithExt = $awardimg_3->getClientOriginalName();
+              $filename =  str_replace(' ', '_', pathinfo($filenameWithExt, PATHINFO_FILENAME ));
+              $ext = $awardimg_3->getClientOriginalExtension();
+              $filenameToStore = $filename."_".time().".".$ext;
+              $path = $awardimg_3->storeAs('public/uploaded/awards/', $filenameToStore);
+              $race->awardimg_3 = $filenameToStore;
+         }
+
+         //handle awardimg 4
+         if($request->hasFile('awardimg_4')){
+              $awardimg_4 = $request->file('awardimg_4');
+              $filenameWithExt = $awardimg_4->getClientOriginalName();
+              $filename =  str_replace(' ', '_', pathinfo($filenameWithExt, PATHINFO_FILENAME ));
+              $ext = $awardimg_4->getClientOriginalExtension();
+              $filenameToStore = $filename."_".time().".".$ext;
+              $path = $awardimg_4->storeAs('public/uploaded/awards/', $filenameToStore);
+              $race->awardimg_4 = $filenameToStore;
+         }
+
+         //handle awardimg 5
+         if($request->hasFile('awardimg_5')){
+              $awardimg_5 = $request->file('awardimg_5');
+              $filenameWithExt = $awardimg_5->getClientOriginalName();
+              $filename =  str_replace(' ', '_', pathinfo($filenameWithExt, PATHINFO_FILENAME ));
+              $ext = $awardimg_5->getClientOriginalExtension();
+              $filenameToStore = $filename."_".time().".".$ext;
+              $path = $awardimg_5->storeAs('public/uploaded/awards/', $filenameToStore);
+              $race->awardimg_5 = $filenameToStore;
+         }
+
+         //handle awardimg 6
+         if($request->hasFile('awardimg_6')){
+              $awardimg_6 = $request->file('awardimg_6');
+              $filenameWithExt = $awardimg_6->getClientOriginalName();
+              $filename =  str_replace(' ', '_', pathinfo($filenameWithExt, PATHINFO_FILENAME ));
+              $ext = $awardimg_6->getClientOriginalExtension();
+              $filenameToStore = $filename."_".time().".".$ext;
+              $path = $awardimg_6->storeAs('public/uploaded/awards/', $filenameToStore);
+              $race->awardimg_6 = $filenameToStore;
+         }
+
+         //handle medalimg 1
+         if($request->hasFile('medalimg_1')){
+              $medalimg_1 = $request->file('medalimg_1');
+              $filenameWithExt = $medalimg_1->getClientOriginalName();
+              $filename =  str_replace(' ', '_', pathinfo($filenameWithExt, PATHINFO_FILENAME ));
+              $ext = $medalimg_1->getClientOriginalExtension();
+              $filenameToStore = $filename."_".time().".".$ext;
+              $path = $medalimg_1->storeAs('public/uploaded/medals/', $filenameToStore);
+              $race->medalimg_1 = $filenameToStore;
+         }
+
+         //handle medalimg 2
+         if($request->hasFile('medalimg_2')){
+              $medalimg_2 = $request->file('medalimg_2');
+              $filenameWithExt = $medalimg_2->getClientOriginalName();
+              $filename =  str_replace(' ', '_', pathinfo($filenameWithExt, PATHINFO_FILENAME ));
+              $ext = $medalimg_2->getClientOriginalExtension();
+              $filenameToStore = $filename."_".time().".".$ext;
+              $path = $medalimg_2->storeAs('public/uploaded/medals/', $filenameToStore);
+              $race->medalimg_2 = $filenameToStore;
+         }
+
+         //handle medalimg 3
+         if($request->hasFile('medalimg_3')){
+              $medalimg_3 = $request->file('medalimg_3');
+              $filenameWithExt = $medalimg_3->getClientOriginalName();
+              $filename =  str_replace(' ', '_', pathinfo($filenameWithExt, PATHINFO_FILENAME ));
+              $ext = $medalimg_3->getClientOriginalExtension();
+              $filenameToStore = $filename."_".time().".".$ext;
+              $path = $medalimg_3->storeAs('public/uploaded/medals/', $filenameToStore);
+              $race->medalimg_3 = $filenameToStore;
+         }
+
+         //handle medalimg 4
+         if($request->hasFile('medalimg_4')){
+              $medalimg_4 = $request->file('medalimg_4');
+              $filenameWithExt = $medalimg_4->getClientOriginalName();
+              $filename =  str_replace(' ', '_', pathinfo($filenameWithExt, PATHINFO_FILENAME ));
+              $ext = $medalimg_4->getClientOriginalExtension();
+              $filenameToStore = $filename."_".time().".".$ext;
+              $path = $medalimg_4->storeAs('public/uploaded/medals/', $filenameToStore);
+              $race->medalimg_4 = $filenameToStore;
+         }
+
+         //handle medalimg 5
+         if($request->hasFile('medalimg_5')){
+              $medalimg_5 = $request->file('medalimg_5');
+              $filenameWithExt = $medalimg_5->getClientOriginalName();
+              $filename =  str_replace(' ', '_', pathinfo($filenameWithExt, PATHINFO_FILENAME ));
+              $ext = $medalimg_5->getClientOriginalExtension();
+              $filenameToStore = $filename."_".time().".".$ext;
+              $path = $medalimg_5->storeAs('public/uploaded/medals/', $filenameToStore);
+              $race->medalimg_15= $filenameToStore;
+         }
+
+         //handle medalimg 6
+         if($request->hasFile('medalimg_6')){
+              $medalimg_6 = $request->file('medalimg_6');
+              $filenameWithExt = $medalimg_6->getClientOriginalName();
+              $filename =  str_replace(' ', '_', pathinfo($filenameWithExt, PATHINFO_FILENAME ));
+              $ext = $medalimg_6->getClientOriginalExtension();
+              $filenameToStore = $filename."_".time().".".$ext;
+              $path = $medalimg_6->storeAs('public/uploaded/medals/', $filenameToStore);
+              $race->medalimg_6 = $filenameToStore;
          }
 
         $race->save();

@@ -36,6 +36,11 @@ export default class EditAddonForm extends Component {
             descimg_5 : [{preview : window.addons.descimg_5}],
             descimg_6 : [{preview : window.addons.descimg_6}],
             toggleDrop_descimg_1: false,
+            toggleDrop_descimg_2: false,
+            toggleDrop_descimg_3: false,
+            toggleDrop_descimg_4: false,
+            toggleDrop_descimg_5: false,
+            toggleDrop_descimg_6: false,
         }
 
         /* Quill module */

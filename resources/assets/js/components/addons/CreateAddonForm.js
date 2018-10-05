@@ -125,6 +125,7 @@ export default class CreateAddonForm extends Component {
         if(desc_ms.length == 0) { message.push('Description(MS)') }
         if(desc_zh.length == 0) { message.push('Description(ZH)') }
         if(type === '') { message.push('Type') }
+        
         if(typeof descimg_1[0] != 'undefined') { desc_img.push(descimg_1[0])}
         if(typeof descimg_2[0] != 'undefined') { desc_img.push(descimg_2[0])}
         if(typeof descimg_3[0] != 'undefined') { desc_img.push(descimg_3[0])}

@@ -46,6 +46,30 @@ export default class EditRaceForm extends Component {
             headerImg : [{preview : window.race.header}],
             rid : window.race.rid,
             toggleDrop: false,
+            awardimg_1 : [{preview : window.race.awardimg_1}],
+            awardimg_2 : [{preview : window.race.awardimg_2}],
+            awardimg_3 : [{preview : window.race.awardimg_3}],
+            awardimg_4 : [{preview : window.race.awardimg_4}],
+            awardimg_5 : [{preview : window.race.awardimg_5}],
+            awardimg_6 : [{preview : window.race.awardimg_6}],
+            toggleDrop_awardimg_1: false,
+            toggleDrop_awardimg_2: false,
+            toggleDrop_awardimg_3: false,
+            toggleDrop_awardimg_4: false,
+            toggleDrop_awardimg_5: false,
+            toggleDrop_awardimg_6: false,
+            medalimg_1 : [{preview : window.race.medalimg_1}],
+            medalimg_2 : [{preview : window.race.medalimg_2}],
+            medalimg_3 : [{preview : window.race.medalimg_3}],
+            medalimg_4 : [{preview : window.race.medalimg_4}],
+            medalimg_5 : [{preview : window.race.medalimg_5}],
+            medalimg_6 : [{preview : window.race.medalimg_6}],
+            toggleDrop_medalimg_1: false,
+            toggleDrop_medalimg_2: false,
+            toggleDrop_medalimg_3: false,
+            toggleDrop_medalimg_4: false,
+            toggleDrop_medalimg_5: false,
+            toggleDrop_medalimg_6: false,
         }
 
         /* Quill module */
@@ -56,7 +80,7 @@ export default class EditRaceForm extends Component {
                 [{'align': null}, {'align': 'center'}, {'align': 'right'}, {'align': 'justify'}],
                 [{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
                 [{ 'color': [] }, { 'background': [] }],
-                ['link', 'image'],
+                ['image'],
                 ['clean']
             ],
             imageResize: {
@@ -85,12 +109,40 @@ export default class EditRaceForm extends Component {
         this.handleDeadTimeFrom = this.handleDeadTimeFrom.bind(this)
         this.handleDeadTimeTo = this.handleDeadTimeTo.bind(this)
         this.handleEngraveChange = this.handleEngraveChange.bind(this)
+
+        this.onDrop_awardimg_1 = this.onDrop_awardimg_1.bind(this)
+        this.onDrop_awardimg_2 = this.onDrop_awardimg_2.bind(this)
+        this.onDrop_awardimg_3 = this.onDrop_awardimg_3.bind(this)
+        this.onDrop_awardimg_4 = this.onDrop_awardimg_4.bind(this)
+        this.onDrop_awardimg_5 = this.onDrop_awardimg_5.bind(this)
+        this.onDrop_awardimg_6 = this.onDrop_awardimg_6.bind(this)
+
+        this.removePreview_awardimg_1 = this.removePreview_awardimg_1.bind(this)
+        this.removePreview_awardimg_2 = this.removePreview_awardimg_2.bind(this)
+        this.removePreview_awardimg_3 = this.removePreview_awardimg_3.bind(this)
+        this.removePreview_awardimg_4 = this.removePreview_awardimg_4.bind(this)
+        this.removePreview_awardimg_5 = this.removePreview_awardimg_5.bind(this)
+        this.removePreview_awardimg_6 = this.removePreview_awardimg_6.bind(this)
+
+        this.onDrop_medalimg_1 = this.onDrop_medalimg_1.bind(this)
+        this.onDrop_medalimg_2 = this.onDrop_medalimg_2.bind(this)
+        this.onDrop_medalimg_3 = this.onDrop_medalimg_3.bind(this)
+        this.onDrop_medalimg_4 = this.onDrop_medalimg_4.bind(this)
+        this.onDrop_medalimg_5 = this.onDrop_medalimg_5.bind(this)
+        this.onDrop_medalimg_6 = this.onDrop_medalimg_6.bind(this)
+
+        this.removePreview_medalimg_1 = this.removePreview_medalimg_1.bind(this)
+        this.removePreview_medalimg_2 = this.removePreview_medalimg_2.bind(this)
+        this.removePreview_medalimg_3 = this.removePreview_medalimg_3.bind(this)
+        this.removePreview_medalimg_4 = this.removePreview_medalimg_4.bind(this)
+        this.removePreview_medalimg_5 = this.removePreview_medalimg_5.bind(this)
+        this.removePreview_medalimg_6 = this.removePreview_medalimg_6.bind(this)
     }
 
     handleSubmit(e){
         e.preventDefault()
 
-        let {about_en,about_ms,about_zh,awards_en,awards_ms,awards_zh,medals_en,medals_ms,medals_zh,title_en,title_ms,title_zh,price,category,engrave,RaceDateFrom,RaceDateTo,RaceDeadlineFrom,RaceDeadlineTo,time_from,time_to,deadtime_from,deadtime_to,headerImg,rid} = this.state
+        let {about_en,about_ms,about_zh,awards_en,awards_ms,awards_zh,medals_en,medals_ms,medals_zh,title_en,title_ms,title_zh,price,category,engrave,RaceDateFrom,RaceDateTo,RaceDeadlineFrom,RaceDeadlineTo,time_from,time_to,deadtime_from,deadtime_to,headerImg,awardimg_1,awardimg_2,awardimg_3,awardimg_4,awardimg_5,awardimg_6,medalimg_1,medalimg_2,medalimg_3,medalimg_4,medalimg_5,medalimg_6,rid} = this.state
 
         let data = new FormData;
 
@@ -118,10 +170,24 @@ export default class EditRaceForm extends Component {
         data.append('deadtime_from', deadtime_from)
         data.append('deadtime_to', deadtime_to)
         data.append('headerImg', headerImg[0])
+        data.append('awardimg_1', awardimg_1[0])
+        data.append('awardimg_2', awardimg_2[0])
+        data.append('awardimg_3', awardimg_3[0])
+        data.append('awardimg_4', awardimg_4[0])
+        data.append('awardimg_5', awardimg_5[0])
+        data.append('awardimg_6', awardimg_6[0])
+        data.append('medalimg_1', medalimg_1[0])
+        data.append('medalimg_2', medalimg_2[0])
+        data.append('medalimg_3', medalimg_3[0])
+        data.append('medalimg_4', medalimg_4[0])
+        data.append('medalimg_5', medalimg_5[0])
+        data.append('medalimg_6', medalimg_6[0])
         data.append('rid', rid)
 
         let message = [];
         let messageF = '';
+        let award_img = [];
+        let medal_img = [];
 
         if(headerImg[0].preview.includes("noimage.png")) { message.push('Banner') }
         if(title_ms === '') { message.push('Title(MS)') }
@@ -131,6 +197,22 @@ export default class EditRaceForm extends Component {
         if(medals_ms.length == 0) { message.push('Medal(MS)') }
         if(medals_zh.length == 0) { message.push('Medal(ZH)') }
         if(category === '') { message.push('Category') }
+
+        if(typeof awardimg_1[0] != 'undefined') { award_img.push(awardimg_1[0])}
+        if(typeof awardimg_2[0] != 'undefined') { award_img.push(awardimg_2[0])}
+        if(typeof awardimg_3[0] != 'undefined') { award_img.push(awardimg_3[0])}
+        if(typeof awardimg_4[0] != 'undefined') { award_img.push(awardimg_4[0])}
+        if(typeof awardimg_5[0] != 'undefined') { award_img.push(awardimg_5[0])}
+        if(typeof awardimg_6[0] != 'undefined') { award_img.push(awardimg_6[0])}
+        if(award_img.length == 0) {message.push('Award Image')}
+
+        if(typeof medalimg_1[0] != 'undefined') { medal_img.push(medalimg_1[0])}
+        if(typeof medalimg_2[0] != 'undefined') { medal_img.push(medalimg_2[0])}
+        if(typeof medalimg_3[0] != 'undefined') { medal_img.push(medalimg_3[0])}
+        if(typeof medalimg_4[0] != 'undefined') { medal_img.push(medalimg_4[0])}
+        if(typeof medalimg_5[0] != 'undefined') { medal_img.push(medalimg_5[0])}
+        if(typeof medalimg_6[0] != 'undefined') { medal_img.push(medalimg_6[0])}
+        if(medal_img.length == 0) {message.push('Medal Image')}
 
         messageF = message.join(', ')
 
@@ -297,6 +379,106 @@ export default class EditRaceForm extends Component {
         this.setState({headerImg : [],toggleDrop:true})
     }
 
+    onDrop_awardimg_1(acceptedFiles, rejectedFiles) {
+        this.setState({awardimg_1: acceptedFiles,toggleDrop_awardimg_1:false,show_awardimg_2:true})
+    }
+
+    onDrop_awardimg_2(acceptedFiles, rejectedFiles) {
+        this.setState({awardimg_2: acceptedFiles,toggleDrop_awardimg_2:false,show_awardimg_3:true})
+    }
+
+    onDrop_awardimg_3(acceptedFiles, rejectedFiles) {
+        this.setState({awardimg_3: acceptedFiles,toggleDrop_awardimg_3:false,show_awardimg_4:true})
+    }
+
+    onDrop_awardimg_4(acceptedFiles, rejectedFiles) {
+        this.setState({awardimg_4: acceptedFiles,toggleDrop_awardimg_4:false,show_awardimg_5:true})
+    }
+
+    onDrop_awardimg_5(acceptedFiles, rejectedFiles) {
+        this.setState({awardimg_5: acceptedFiles,toggleDrop_awardimg_5:false,show_awardimg_6:true})
+    }
+
+    onDrop_awardimg_6(acceptedFiles, rejectedFiles) {
+        this.setState({awardimg_6: acceptedFiles,toggleDrop_awardimg_6:false})
+    }
+
+    removePreview_awardimg_1(){
+        this.setState({awardimg_1: [],toggleDrop_awardimg_1:true})
+    }
+
+    removePreview_awardimg_2(){
+        this.setState({awardimg_2: [],toggleDrop_awardimg_2:true})
+    }
+
+    removePreview_awardimg_3(){
+        this.setState({awardimg_3: [],toggleDrop_awardimg_3:true})
+    }
+
+    removePreview_awardimg_4(){
+        this.setState({awardimg_4: [],toggleDrop_awardimg_4:true})
+    }
+
+    removePreview_awardimg_5(){
+        this.setState({awardimg_5: [],toggleDrop_awardimg_5:true})
+    }
+
+    removePreview_awardimg_6(){
+        this.setState({awardimg_6: [],toggleDrop_awardimg_6:true})
+    }
+
+    onDrop_medalimg_1(acceptedFiles, rejectedFiles) {
+        this.setState({medalimg_1: acceptedFiles,toggleDrop_medalimg_1:false})
+    }
+
+    onDrop_medalimg_2(acceptedFiles, rejectedFiles) {
+        this.setState({medalimg_2: acceptedFiles,toggleDrop_medalimg_2:false})
+    }
+
+    onDrop_medalimg_3(acceptedFiles, rejectedFiles) {
+        this.setState({medalimg_3: acceptedFiles,toggleDrop_medalimg_3:false})
+    }
+
+    onDrop_medalimg_4(acceptedFiles, rejectedFiles) {
+        this.setState({medalimg_4: acceptedFiles,toggleDrop_medalimg_4:false})
+    }
+
+    onDrop_medalimg_5(acceptedFiles, rejectedFiles) {
+        this.setState({medalimg_5: acceptedFiles,toggleDrop_medalimg_5:false})
+    }
+
+    onDrop_medalimg_6(acceptedFiles, rejectedFiles) {
+        this.setState({medalimg_6: acceptedFiles,toggleDrop_medalimg_6:false})
+    }
+
+    removePreview_medalimg_1(){
+        this.setState({medalimg_1: [],toggleDrop_medalimg_1:true})
+    }
+
+    removePreview_medalimg_1(){
+        this.setState({medalimg_1: [],toggleDrop_medalimg_1:true})
+    }
+
+    removePreview_medalimg_2(){
+        this.setState({medalimg_2: [],toggleDrop_medalimg_2:true})
+    }
+
+    removePreview_medalimg_3(){
+        this.setState({medalimg_3: [],toggleDrop_medalimg_3:true})
+    }
+
+    removePreview_medalimg_4(){
+        this.setState({medalimg_4: [],toggleDrop_medalimg_4:true})
+    }
+
+    removePreview_medalimg_5(){
+        this.setState({medalimg_5: [],toggleDrop_medalimg_5:true})
+    }
+
+    removePreview_medalimg_6(){
+        this.setState({medalimg_6: [],toggleDrop_medalimg_6:true})
+    }
+
     render() {
         if(this.state.headerImg.length != 0){
             var previewImg =  <div className="mb-2 text-center"><button onClick={this.removePreview} className="btn btn-danger float-right">X</button><br/><img height="300px" src= {(this.state.headerImg[0].preview)} alt=""/></div>
@@ -334,6 +516,282 @@ export default class EditRaceForm extends Component {
         var deadFrom = (current) => {
             return current.isBefore( this.state.RaceDateFrom );
         }
+
+        //awardimg 1
+        if(this.state.awardimg_1.length != 0){
+            var previewImg_awardimg_1 =  <div className="mb-2 text-center"><button onClick={this.removePreview_awardimg_1} className="btn btn-danger float-right">X</button><br/><img className="fit-image" src={this.state.awardimg_1[0].preview} alt=""/></div>
+        } else { var previewImg_awardimg_1 =  <img src="" alt=""/> }
+
+        if(this.state.toggleDrop_awardimg_1){
+            var dropzone_awardimg_1 =
+              <Dropzone
+                style={{
+                "width": "100%",
+                "border": "1px dashed",
+                "padding": "5%",}}
+                accept="image/jpeg, image/png"
+                onDrop={this.onDrop_awardimg_1}
+                multiple={false}
+                name="awardimg_1">
+              <div className="text-center">
+                <p>Try dropping some files here, or click to select files to upload.</p>
+                <p>Only *.jpeg and *.png images will be accepted</p>
+              </div>
+              </Dropzone>
+        } else { var dropzone_awardimg_1 = "" }
+
+        //awardimg 2
+        if(this.state.awardimg_2.length != 0){
+            var previewImg_awardimg_2 =  <div className="mb-2 text-center"><button onClick={this.removePreview_awardimg_2} className="btn btn-danger float-right">X</button><br/><img className="fit-image" src={this.state.awardimg_2[0].preview} alt=""/></div>
+        } else { var previewImg_awardimg_2 =  <img src="" alt=""/> }
+
+        if(this.state.toggleDrop_awardimg_2){
+            var dropzone_awardimg_2 =
+              <Dropzone
+                style={{
+                "width": "100%",
+                "border": "1px dashed",
+                "padding": "5%",}}
+                accept="image/jpeg, image/png"
+                onDrop={this.onDrop_awardimg_2}
+                multiple={false}
+                name="awardimg_2">
+              <div className="text-center">
+                <p>Try dropping some files here, or click to select files to upload.</p>
+                <p>Only *.jpeg and *.png images will be accepted</p>
+              </div>
+              </Dropzone>
+          } else { var dropzone_awardimg_2 = "" }
+
+          //awardimg 3
+          if(this.state.awardimg_3.length != 0){
+              var previewImg_awardimg_3 =  <div className="mb-2 text-center"><button onClick={this.removePreview_awardimg_3} className="btn btn-danger float-right">X</button><br/><img className="fit-image" src={this.state.awardimg_3[0].preview} alt=""/></div>
+          } else { var previewImg_awardimg_3 =  <img src="" alt=""/> }
+
+          if(this.state.toggleDrop_awardimg_3){
+              var dropzone_awardimg_3 =
+                <Dropzone
+                  style={{
+                  "width": "100%",
+                  "border": "1px dashed",
+                  "padding": "5%",}}
+                  accept="image/jpeg, image/png"
+                  onDrop={this.onDrop_awardimg_3}
+                  multiple={false}
+                  name="awardimg_3">
+                <div className="text-center">
+                  <p>Try dropping some files here, or click to select files to upload.</p>
+                  <p>Only *.jpeg and *.png images will be accepted</p>
+                </div>
+                </Dropzone>
+          } else { var dropzone_awardimg_3 = "" }
+
+          //awardimg 4
+          if(this.state.awardimg_4.length != 0){
+              var previewImg_awardimg_4 =  <div className="mb-2 text-center"><button onClick={this.removePreview_awardimg_4} className="btn btn-danger float-right">X</button><br/><img className="fit-image" src={this.state.awardimg_4[0].preview} alt=""/></div>
+          } else { var previewImg_awardimg_4 =  <img src="" alt=""/> }
+
+          if(this.state.toggleDrop_awardimg_4){
+              var dropzone_awardimg_4 =
+                <Dropzone
+                  style={{
+                  "width": "100%",
+                  "border": "1px dashed",
+                  "padding": "5%",}}
+                  accept="image/jpeg, image/png"
+                  onDrop={this.onDrop_awardimg_4}
+                  multiple={false}
+                  name="awardimg_4">
+                <div className="text-center">
+                  <p>Try dropping some files here, or click to select files to upload.</p>
+                  <p>Only *.jpeg and *.png images will be accepted</p>
+                </div>
+                </Dropzone>
+          } else { var dropzone_awardimg_4 = "" }
+
+          //awardimg 5
+          if(this.state.awardimg_5.length != 0){
+              var previewImg_awardimg_5 =  <div className="mb-2 text-center"><button onClick={this.removePreview_awardimg_5} className="btn btn-danger float-right">X</button><br/><img className="fit-image" src={this.state.awardimg_5[0].preview} alt=""/></div>
+          } else { var previewImg_awardimg_5 =  <img src="" alt=""/> }
+
+          if(this.state.toggleDrop_awardimg_5){
+              var dropzone_awardimg_5 =
+                <Dropzone
+                  style={{
+                  "width": "100%",
+                  "border": "1px dashed",
+                  "padding": "5%",}}
+                  accept="image/jpeg, image/png"
+                  onDrop={this.onDrop_awardimg_5}
+                  multiple={false}
+                  name="awardimg_5">
+                <div className="text-center">
+                  <p>Try dropping some files here, or click to select files to upload.</p>
+                  <p>Only *.jpeg and *.png images will be accepted</p>
+                </div>
+                </Dropzone>
+          } else { var dropzone_awardimg_5 = "" }
+
+          //awardimg 6
+          if(this.state.awardimg_6.length != 0){
+              var previewImg_awardimg_6 =  <div className="mb-2 text-center"><button onClick={this.removePreview_awardimg_6} className="btn btn-danger float-right">X</button><br/><img className="fit-image" src={this.state.awardimg_6[0].preview} alt=""/></div>
+          } else { var previewImg_awardimg_6 =  <img src="" alt=""/> }
+
+          if(this.state.toggleDrop_awardimg_6){
+              var dropzone_awardimg_6 =
+                <Dropzone
+                  style={{
+                  "width": "100%",
+                  "border": "1px dashed",
+                  "padding": "5%",}}
+                  accept="image/jpeg, image/png"
+                  onDrop={this.onDrop_awardimg_6}
+                  multiple={false}
+                  name="awardimg_6">
+                <div className="text-center">
+                  <p>Try dropping some files here, or click to select files to upload.</p>
+                  <p>Only *.jpeg and *.png images will be accepted</p>
+                </div>
+                </Dropzone>
+          } else { var dropzone_awardimg_6 = "" }
+
+          //medalimg 1
+          if(this.state.medalimg_1.length != 0){
+              var previewImg_medalimg_1 =  <div className="mb-2 text-center"><button onClick={this.removePreview_medalimg_1} className="btn btn-danger float-right">X</button><br/><img className="fit-image" src={this.state.medalimg_1[0].preview} alt=""/></div>
+          } else { var previewImg_medalimg_1 =  <img src="" alt=""/> }
+
+          if(this.state.toggleDrop_medalimg_1){
+              var dropzone_medalimg_1 =
+                <Dropzone
+                  style={{
+                  "width": "100%",
+                  "border": "1px dashed",
+                  "padding": "5%",}}
+                  accept="image/jpeg, image/png"
+                  onDrop={this.onDrop_medalimg_1}
+                  multiple={false}
+                  name="amedalmg_1">
+                <div className="text-center">
+                  <p>Try dropping some files here, or click to select files to upload.</p>
+                  <p>Only *.jpeg and *.png images will be accepted</p>
+                </div>
+                </Dropzone>
+          } else { var dropzone_medalimg_1 = "" }
+
+          //medalimg 2
+          if(this.state.medalimg_2.length != 0){
+              var previewImg_medalimg_2 =  <div className="mb-2 text-center"><button onClick={this.removePreview_medalimg_2} className="btn btn-danger float-right">X</button><br/><img className="fit-image" src={this.state.medalimg_2[0].preview} alt=""/></div>
+          } else { var previewImg_medalimg_2 =  <img src="" alt=""/> }
+
+          if(this.state.toggleDrop_medalimg_2){
+              var dropzone_medalimg_2 =
+                <Dropzone
+                  style={{
+                  "width": "100%",
+                  "border": "1px dashed",
+                  "padding": "5%",}}
+                  accept="image/jpeg, image/png"
+                  onDrop={this.onDrop_medalimg_2}
+                  multiple={false}
+                  name="medalimg_2">
+                <div className="text-center">
+                  <p>Try dropping some files here, or click to select files to upload.</p>
+                  <p>Only *.jpeg and *.png images will be accepted</p>
+                </div>
+                </Dropzone>
+          } else { var dropzone_medalimg_2 = "" }
+
+          //medalimg 3
+          if(this.state.medalimg_3.length != 0){
+              var previewImg_medalimg_3 =  <div className="mb-2 text-center"><button onClick={this.removePreview_medalimg_3} className="btn btn-danger float-right">X</button><br/><img className="fit-image" src={this.state.medalimg_3[0].preview} alt=""/></div>
+          } else { var previewImg_medalimg_3 =  <img src="" alt=""/> }
+
+          if(this.state.toggleDrop_medalimg_3){
+              var dropzone_medalimg_3 =
+                <Dropzone
+                  style={{
+                  "width": "100%",
+                  "border": "1px dashed",
+                  "padding": "5%",}}
+                  accept="image/jpeg, image/png"
+                  onDrop={this.onDrop_medalimg_3}
+                  multiple={false}
+                  name="medalimg_3">
+                <div className="text-center">
+                  <p>Try dropping some files here, or click to select files to upload.</p>
+                  <p>Only *.jpeg and *.png images will be accepted</p>
+                </div>
+                </Dropzone>
+          } else { var dropzone_medalimg_3 = "" }
+
+          //medalimg 4
+          if(this.state.medalimg_4.length != 0){
+              var previewImg_medalimg_4 =  <div className="mb-2 text-center"><button onClick={this.removePreview_medalimg_4} className="btn btn-danger float-right">X</button><br/><img className="fit-image" src={this.state.medalimg_4[0].preview} alt=""/></div>
+          } else { var previewImg_medalimg_34=  <img src="" alt=""/> }
+
+          if(this.state.toggleDrop_medalimg_4){
+              var dropzone_medalimg_4 =
+                <Dropzone
+                  style={{
+                  "width": "100%",
+                  "border": "1px dashed",
+                  "padding": "5%",}}
+                  accept="image/jpeg, image/png"
+                  onDrop={this.onDrop_medalimg_4}
+                  multiple={false}
+                  name="medalimg_4">
+                <div className="text-center">
+                  <p>Try dropping some files here, or click to select files to upload.</p>
+                  <p>Only *.jpeg and *.png images will be accepted</p>
+                </div>
+                </Dropzone>
+          } else { var dropzone_medalimg_4 = "" }
+
+          //medalimg 5
+          if(this.state.medalimg_5.length != 0){
+              var previewImg_medalimg_5 =  <div className="mb-2 text-center"><button onClick={this.removePreview_medalimg_5} className="btn btn-danger float-right">X</button><br/><img className="fit-image" src={this.state.medalimg_5[0].preview} alt=""/></div>
+          } else { var previewImg_medalimg_5 =  <img src="" alt=""/> }
+
+          if(this.state.toggleDrop_medalimg_5){
+              var dropzone_amedalmg_5 =
+                <Dropzone
+                  style={{
+                  "width": "100%",
+                  "border": "1px dashed",
+                  "padding": "5%",}}
+                  accept="image/jpeg, image/png"
+                  onDrop={this.onDrop_medalimg_5}
+                  multiple={false}
+                  name="medalimg_5">
+                <div className="text-center">
+                  <p>Try dropping some files here, or click to select files to upload.</p>
+                  <p>Only *.jpeg and *.png images will be accepted</p>
+                </div>
+                </Dropzone>
+          } else { var dropzone_medalimg_5 = "" }
+
+          //medalimg 6
+          if(this.state.medalimg_6.length != 0){
+              var previewImg_medalimg_6 =  <div className="mb-2 text-center"><button onClick={this.removePreview_medalimg_6} className="btn btn-danger float-right">X</button><br/><img className="fit-image" src={this.state.medalimg_6[0].preview} alt=""/></div>
+          } else { var previewImg_medalimg_6 =  <img src="" alt=""/> }
+
+          if(this.state.toggleDrop_medalimg_6){
+              var dropzone_medalimg_6 =
+                <Dropzone
+                  style={{
+                  "width": "100%",
+                  "border": "1px dashed",
+                  "padding": "5%",}}
+                  accept="image/jpeg, image/png"
+                  onDrop={this.onDrop_medalimg_6}
+                  multiple={false}
+                  name="medalimg_6">
+                <div className="text-center">
+                  <p>Try dropping some files here, or click to select files to upload.</p>
+                  <p>Only *.jpeg and *.png images will be accepted</p>
+                </div>
+                </Dropzone>
+          } else { var dropzone_medalimg_6 = "" }
 
         return (
 
@@ -473,6 +931,36 @@ export default class EditRaceForm extends Component {
                                             <ReactQuill style={{'minHeight':'500px'}} modules={this.modules} theme="snow"  value={this.state.medals_zh} onChange={this.handleMedalsZhChange} />
                                             <input type="hidden" name="medals_zh" value={this.state.medals_zh}/>
                                         </TabPane>
+                                        <TabPane tab="Images" key="4">
+                                            <div className="row">
+                                              <div className="col-sm-12 col-md-4">
+                                                {previewImg_medalimg_1}
+                                                {dropzone_medalimg_1}
+                                              </div>
+                                              <div className="col-sm-12 col-md-4">
+                                                {previewImg_medalimg_2}
+                                                {dropzone_medalimg_2}
+                                              </div>
+                                              <div className="col-sm-12 col-md-4">
+                                                {previewImg_medalimg_3}
+                                                {dropzone_medalimg_3}
+                                              </div>
+                                            </div>
+                                            <div className="row">
+                                              <div className="col-sm-12 col-md-4">
+                                                {previewImg_medalimg_4}
+                                                {dropzone_medalimg_4}
+                                              </div>
+                                              <div className="col-sm-12 col-md-4">
+                                                {previewImg_medalimg_5}
+                                                {dropzone_medalimg_5}
+                                              </div>
+                                              <div className="col-sm-12 col-md-4">
+                                                {previewImg_medalimg_6}
+                                                {dropzone_medalimg_6}
+                                              </div>
+                                            </div>
+                                        </TabPane>
                                     </Tabs>
                                     </div><br/><br/>
                                     <div className="form-group">
@@ -491,6 +979,36 @@ export default class EditRaceForm extends Component {
                                             <label htmlFor="about">Awards</label>
                                             <ReactQuill style={{'minHeight':'500px'}} modules={this.modules} theme="snow"  value={this.state.awards_zh} onChange={this.handleAwardsZhChange} />
                                             <input type="hidden" name="awards_zh" value={this.state.awards_zh}/>
+                                        </TabPane>
+                                        <TabPane tab="Images" key="4">
+                                            <div className="row">
+                                              <div className="col-sm-12 col-md-4">
+                                                {previewImg_awardimg_1}
+                                                {dropzone_awardimg_1}
+                                              </div>
+                                              <div className="col-sm-12 col-md-4">
+                                                {previewImg_awardimg_2}
+                                                {dropzone_awardimg_2}
+                                              </div>
+                                              <div className="col-sm-12 col-md-4">
+                                                {previewImg_awardimg_3}
+                                                {dropzone_awardimg_3}
+                                              </div>
+                                            </div>
+                                            <div className="row">
+                                              <div className="col-sm-12 col-md-4">
+                                                {previewImg_awardimg_4}
+                                                {dropzone_awardimg_4}
+                                              </div>
+                                              <div className="col-sm-12 col-md-4">
+                                                {previewImg_awardimg_5}
+                                                {dropzone_awardimg_5}
+                                              </div>
+                                              <div className="col-sm-12 col-md-4">
+                                                {previewImg_awardimg_6}
+                                                {dropzone_awardimg_6}
+                                              </div>
+                                            </div>
                                         </TabPane>
                                     </Tabs>
                                     </div>
