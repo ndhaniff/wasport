@@ -863,7 +863,7 @@ export default class CreateRaceForm extends Component {
                                     <div className="form-row">
                                       <div className="col-sm-12 col-md-4">
                                         <div className="form-group">
-                                            <label>Category (seperate with ',')</label>
+                                            <label>Category (Eg. 3km, 5km, 10km. Separate with ',')</label>
                                             <input onChange={this.handleInputChange} name="category" className="form-control" type="text" />
                                         </div>
                                       </div>
