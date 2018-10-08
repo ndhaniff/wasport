@@ -1,42 +1,68 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { Card, Steps } from 'antd';
-import styles from './style.less';
+import { Steps, Button, message } from 'antd';
 
-const { Step } = Steps;
+const Step = Steps.Step;
 
-class RegisterRaceFormEn extends PureComponent {
-  getCurrentStep() {
-    const { location } = this.props;
-    const { pathname } = location;
-    const pathList = pathname.split('/');
-    switch (pathList[pathList.length - 1]) {
-      case 'info':
-        return 0;
-      case 'confirm':
-        return 1;
-      case 'result':
-        return 2;
-      default:
-        return 0;
-    }
+const steps = [{
+  title: 'Profile',
+  content: 'First-content',
+}, {
+  title: 'Mailing Address',
+  content: 'Second-content',
+}, {
+  title: 'Race',
+  content: 'Last-content',
+}, {
+  title: 'Total',
+  content: 'Last-content',
+}];
+
+class RegisterRaceFormEn extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      current: 0,
+    };
+  }
+
+  next() {
+    const current = this.state.current + 1;
+    this.setState({ current });
+  }
+
+  prev() {
+    const current = this.state.current - 1;
+    this.setState({ current });
   }
 
   render() {
-    const { location, children } = this.props;
+    const { current } = this.state;
     return (
-
-        <Card bordered={false}>
-          <Fragment>
-            <Steps current={this.getCurrentStep()} className={styles.steps}>
-              <Step title="填写转账信息" />
-              <Step title="确认转账信息" />
-              <Step title="完成" />
-            </Steps>
-            {children}
-          </Fragment>
-        </Card>
-
+      <div>
+        <Steps current={current}>
+          {steps.map(item => <Step key={item.title} title={item.title} />)}
+        </Steps>
+        <div className="steps-content">{steps[current].content}</div>
+        <div className="steps-action">
+          {
+            current < steps.length - 1
+            && <Button type="primary" onClick={() => this.next()}>Next</Button>
+          }
+          {
+            current === steps.length - 1
+            && <Button type="primary" onClick={() => message.success('Redirecting to Payment')}>Make Payment</Button>
+          }
+          {
+            current > 0
+            && (
+            <Button style={{ marginLeft: 8 }} onClick={() => this.prev()}>
+              Previous
+            </Button>
+            )
+          }
+        </div>
+      </div>
     );
   }
 }

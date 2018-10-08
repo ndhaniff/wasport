@@ -579,16 +579,13 @@ REGISTER RACE
 */
 #registerrace { padding-top: 5rem; }
 
+#registerrace .ant-btn-primary,
 #registerrace .ant-btn:focus,
 #registerrace .ant-btn:hover,
 #registerrace .ant-btn:active {
-    color: #e02e3c;
+    color: #fff;
     border-color: #e02e3c;
-}
-
-.registerrace-btn {
-  background-color: #e02e3c;
-  color: #fff;
+    background: #e02e3c;
 }
 
 .steps-content {
@@ -604,6 +601,18 @@ REGISTER RACE
 .steps-action {
   margin-top: 24px;
 }
+
+#registerrace svg:not(:root) { display: none; }
+
+#registerrace .ant-steps-item-process .ant-steps-item-icon { background: #e02e3c; }
+
+#registerrace .ant-steps-item-process .ant-steps-item-icon,
+#registerrace .ant-steps-item-finish .ant-steps-item-icon { border-color: #e02e3c; }
+
+#registerrace .anticon-check:before { color: #e02e3c; }
+
+#registerrace .ant-steps-item-finish>.ant-steps-item-content>.ant-steps-item-title:after { background-color: #e02e3c; }
+
 
 /*
 ABOUT US

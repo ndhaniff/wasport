@@ -2,10 +2,6 @@
 
 @section('content')
 
-<style>
-
-</style>
-
 <div id="registerrace">
   <div class="container">
 

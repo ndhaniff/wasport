@@ -41,4 +41,10 @@
       @else
         <li class=""><a href="{{route('admin.contacts')}}"><i class="fas fa-envelope"></i> Contact</a></li>
       @endif
+
+      @if(is_array($active ))
+        <li class="{{($active['parent'] == 'orders') ? 'active' : ''}}"><a href="{{route('admin.orders')}}"><i class="fas fa-shopping-cart"></i> Orders</a></li>
+      @else
+        <li class=""><a href="{{route('admin.orders')}}"><i class="fas fa-shopping-cart"></i> Orders</a></li>
+      @endif
 </aside>
