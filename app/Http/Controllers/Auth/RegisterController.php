@@ -12,6 +12,8 @@ use Mail;
 use App\Mail\verifyEmail;
 use Session;
 use Softon\SweetAlert\Facades\SWAL;
+use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
 
 class RegisterController extends Controller
 {
