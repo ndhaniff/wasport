@@ -26,6 +26,7 @@ Route::group([
   Route::get('/termsandconditions', 'Pages\HomeController@termsandconditions')->name('termsandconditions');
   Route::get('/relatedcooperation', 'Pages\HomeController@relatedCooperation')->name('relatedcooperation');
   Route::get('/contactus', 'Pages\ContactController@contactus')->name('contactus');
+  Route::get('/registersuccess', 'Pages\HomeController@registersuccess')->name('registersuccess');
   Route::get('/registerrace/{rid}', 'Pages\RacesController@registerRace')->name('registerrace');
 
   //user

@@ -53,4 +53,8 @@ class HomeController extends Controller
       return view('pages.termsandconditions');
     }
 
+    public function registersuccess(){
+      return view('pages.registersuccess');
+    }
+
 }

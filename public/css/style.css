@@ -222,7 +222,7 @@ REGISTER
 SUCCESS
 */
 .register-success-box {
-  padding: 15px;
+  padding-top: 8rem;
   margin: 0 auto;
   text-align: center;
 }

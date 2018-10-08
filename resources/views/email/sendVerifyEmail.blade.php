@@ -260,7 +260,7 @@ a[x-apple-data-detectors=true] {
 
                     <div align="center" class="img-container center fixedwidth " style="padding-right: 0px;  padding-left: 0px;">
 <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr style="line-height:0px;line-height:0px;"><td style="padding-right: 0px; padding-left: 0px;" align="center"><![endif]-->
-  <img class="center fixedwidth" align="center" border="0" src="images/wasport.png" alt="Image" title="Image" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: 0;height: auto;float: none;width: 100%;max-width: 180px" width="180">
+  <img class="center fixedwidth" align="center" border="0" src="images/wasport_logo.png" alt="Image" title="Image" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: 0;height: auto;float: none;width: 100%;max-width: 180px" width="180">
 <!--[if mso]></td></tr></table><![endif]-->
 </div>
 
@@ -312,7 +312,7 @@ a[x-apple-data-detectors=true] {
                     <div class="">
 	<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px;"><![endif]-->
 	<div style="color:#555555;font-family:'Montserrat', 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif;line-height:150%; padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px;">
-		<div style="font-size:12px;line-height:18px;color:#555555;font-family:'Montserrat', 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif;text-align:left;"><p style="margin: 0;font-size: 14px;line-height: 21px;text-align: center">Thanks so much for joining WaSports!<span style="color: rgb(168, 191, 111); font-size: 14px; line-height: 21px;"><strong><br></strong></span></p></div>
+		<div style="font-size:12px;line-height:18px;color:#555555;font-family:'Montserrat', 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif;text-align:left;"><p style="margin: 0;font-size: 14px;line-height: 21px;text-align: center">Thank you so much for joining WaSports!<span style="color: rgb(168, 191, 111); font-size: 14px; line-height: 21px;"><strong><br></strong></span></p></div>
 	</div>
 	<!--[if mso]></td></tr></table><![endif]-->
 </div>
@@ -321,7 +321,7 @@ a[x-apple-data-detectors=true] {
                     <div class="">
 	<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 20px; padding-bottom: 10px;"><![endif]-->
 	<div style="color:#0D0D0D;font-family:'Montserrat', 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif;line-height:150%; padding-right: 10px; padding-left: 10px; padding-top: 20px; padding-bottom: 10px;">
-		<div style="font-size:12px;line-height:18px;color:#0D0D0D;font-family:'Montserrat', 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif;text-align:left;"><p style="margin: 0;font-size: 14px;line-height: 21px;text-align: center">TO FINISH SIGNING UP, VERIFY YOUR ACCOUNT</p></div>
+		<div style="font-size:12px;line-height:18px;color:#0D0D0D;font-family:'Montserrat', 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif;text-align:left;"><p style="margin: 0;font-size: 14px;line-height: 21px;text-align: center">CLICK THE BUTTON BELOW TO LOGIN</p></div>
 	</div>
 	<!--[if mso]></td></tr></table><![endif]-->
 </div>
@@ -331,7 +331,7 @@ a[x-apple-data-detectors=true] {
 <div align="center" class="button-container center " style="padding-right: 10px; padding-left: 10px; padding-top:25px; padding-bottom:10px;">
   <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-spacing: 0; border-collapse: collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top:25px; padding-bottom:10px;" align="center"><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{{route('login', ["email"=> $user->email, "verifyToken" => $user->verifyToken])}}" style="height:46pt; v-text-anchor:middle; width:172pt;" arcsize="7%" strokecolor="#a70826" fillcolor="#a70826"><w:anchorlock/><v:textbox inset="0,0,0,0"><center style="color:#ffffff; font-family:'Montserrat', 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif; font-size:16px;"><![endif]-->
     <a href="{{route('login', ["email"=> $user->email, "verifyToken" => $user->verifyToken])}}" target="_blank" style="display: block;text-decoration: none;-webkit-text-size-adjust: none;text-align: center;color: #ffffff; background-color: #a70826; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; max-width: 230px; width: 200px;width: auto; border-top: 0px solid transparent; border-right: 0px solid transparent; border-bottom: 0px solid transparent; border-left: 0px solid transparent; padding-top: 15px; padding-right: 15px; padding-bottom: 15px; padding-left: 15px; font-family: 'Montserrat', 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif;mso-border-alt: none">
-      <span style="font-family:'Montserrat', 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif;font-size:16px;line-height:32px;">VERIFY MY ACCOUNT</span>
+      <span style="font-family:'Montserrat', 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif;font-size:16px;line-height:32px;">LOGIN TO WASPORTS</span>
     </a>
   <!--[if mso]></center></v:textbox></v:roundrect></td></tr></table><![endif]-->
 </div>
