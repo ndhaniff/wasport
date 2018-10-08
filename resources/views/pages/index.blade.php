@@ -43,7 +43,7 @@
         <div class="row">
           <div class="col-sm-12 col-md-3">
             <h3 class="one">{{__("Login/ Register")}}</h3>
-            <p>{{__("If you are an existing UVR member, log in to continue. If not, you may register to become a member: it's totally free!")}}</p>
+            <p>{{__("If you are an existing WaSports member, log in to continue. If not, you may register to become a member: it's totally free!")}}</p>
           </div>
           <div class="col-sm-12 col-md-3">
             <h3 class="two">{{__("Enter a race")}}</h3>
@@ -65,7 +65,7 @@
       <div class="row">
         <div class="col-sm-12">
           <h3 class="one"><img src="{{asset('img/flag1.png')}}" alt=""> {{__("Login/ Register")}}</h3>
-          <p>{{__("If you are an existing UVR member, log in to continue. If not, you may register to become a member: it's totally free!")}}</p>
+          <p>{{__("If you are an existing WaSports member, log in to continue. If not, you may register to become a member: it's totally free!")}}</p>
         </div>
         <div class="col-sm-12">
           <h3 class="two"><img src="{{asset('img/flag2.png')}}" alt=""> {{__("Enter a race")}}</h3>
