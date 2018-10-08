@@ -100,7 +100,7 @@ class RegisterController extends Controller
         // $this->guard()->login($user);
 
         return $this->registered($request, $user)
-                        ?: redirect('pages.registersuccess');
+                        ?: redirect('registersuccess');
     }
 
     public function sendEmail($thisUser)
