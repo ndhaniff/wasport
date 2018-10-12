@@ -1,97 +1,85 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import ReactDOM from 'react-dom';
-import { Steps, Button, message } from 'antd';
-import { Form, Input, DatePicker, Select } from 'antd';
-import TextArea from 'antd/lib/input/TextArea';
-import moment from 'moment';
+import { Card, Steps } from 'antd';
+import StepZilla from 'react-stepzilla'
+import Step1 from './Step1'
+import Step2 from './Step2'
+import Step3 from './Step3'
+import Step4 from './Step4'
+import Step5 from './Step5'
+import Step6 from './Step6'
 
-const FormItem = Form.Item;
-const Option = Select.Option;
-
-const Step = Steps.Step;
-
-const steps = [{
-  title: 'Profile',
-  content: 'First-content',
-}, {
-  title: 'Mailing Address',
-  content: 'Second-content',
-}, {
-  title: 'Race',
-  content: 'Last-content',
-}, {
-  title: 'Total',
-  content: 'Last-content',
-}];
-
-class RegisterRaceFormEn extends React.Component {
+class RegisterRaceFormEn extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      current: 0,
+    this.state = {};
+
+    this.sampleStore = {
+      firstname: window.user.firstname,
+      lastname: window.user.lastname,
+      phone: window.user.phone,
+      gender: window.user.gender,
+      birthday: window.user.birthday,
+      add_fl: window.user.add_fl,
+      add_sl: window.user.add_sl,
+      city: window.user.city,
+      state: window.user.state,
+      postal: window.user.postal,
+      email: '',
+      savedToCloud: false,
+      rid: window.race.rid,
+      title_en: window.race.title_en,
+      price: window.race.price,
+      category: window.race.category,
+      race_category: '',
+      engrave: window.race.engrave,
+      engrave_name: '',
+      addon: '',
     };
   }
 
-  state = {
-    confirmDirty: false,
-    firstname: '',
-    lastname: '',
+  componentDidMount() {}
+
+  componentWillUnmount() {}
+
+  getStore() {
+    return this.sampleStore;
   }
 
-  next() {
-    const current = this.state.current + 1;
-    this.setState({ current });
-  }
-
-  prev() {
-    const current = this.state.current - 1;
-    this.setState({ current });
-  }
-
-  handleProfile() {
-    validateFields((err, values) => {
-      if (!err) {
-
-        
-
-        const current = this.state.current + 1;
-        this.setState({ current });
-      }
-    });
+  updateStore(update) {
+    this.sampleStore = {
+      ...this.sampleStore,
+      ...update,
+    }
   }
 
   render() {
-    const { current } = this.state;
+    const steps =
+    [
+      {name: 'Profile', component: <Step1 getStore={() => (this.getStore())} updateStore={(u) => {this.updateStore(u)}} />},
+      {name: 'Address', component: <Step2 getStore={() => (this.getStore())} updateStore={(u) => {this.updateStore(u)}} />},
+      {name: 'Race', component: <Step3 getStore={() => (this.getStore())} updateStore={(u) => {this.updateStore(u)}} />},
+      {name: 'Confirm', component: <Step4 getStore={() => (this.getStore())} updateStore={(u) => {this.updateStore(u)}} />},
+      {name: 'Step5', component: <Step5 getStore={() => (this.getStore())} updateStore={(u) => {this.updateStore(u)}} />},
+      {name: 'Step6', component: <Step6 getStore={() => (this.getStore())} updateStore={(u) => {this.updateStore(u)}} />}
+    ]
+
     return (
-      <div>
-        <Steps current={current}>
-          {steps.map(item => <Step key={item.title} title={item.title} />)}
-        </Steps>
-        <div className="steps-content">{steps[current].content}</div>
-        <div className="steps-action">
-          {
-            current == 0
-            && <Button type="primary" onClick={() => this.handleProfile()}>Next</Button>
-          }
-          /*{
-            current < steps.length - 1
-            && <Button type="primary" onClick={() => this.next()}>Next</Button>
-          }*/
-          {
-            current === steps.length - 1
-            && <Button type="primary" onClick={() => message.success('Redirecting to Payment')}>Make Payment</Button>
-          }
-          {
-            current > 0
-            && (
-            <Button style={{ marginLeft: 8 }} onClick={() => this.prev()}>
-              Previous
-            </Button>
-            )
-          }
+      <div className='example'>
+        <div className='step-progress'>
+          <StepZilla
+            stepsNavigation={false}
+            steps={steps}
+            preventEnterSubmission={true}
+            nextTextOnFinalActionStep={"Save"}
+            hocValidationAppliedTo={[3]}
+            //startAtStep={window.sessionStorage.getItem('step') ? parseFloat(window.sessionStorage.getItem('step')) : 0}
+            startAtStep={0}
+            onStepChange={(step) => window.sessionStorage.setItem('step', step)}
+           />
         </div>
       </div>
-    );
+    )
   }
 }
 

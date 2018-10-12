@@ -10,6 +10,8 @@ use App\Http\Controllers\API\StravaController;
 use App\Model\User;
 use App\Model\Race;
 use App\Model\Medal;
+use App\Model\Addon;
+use App\Model\Order;
 use Auth;
 use DB;
 
@@ -18,7 +20,7 @@ class UserController extends Controller
     public function __construct(){
       $this->middleware('auth');
     }
-
+  
     public function index(){
         return view('pages.index');
     }
@@ -143,6 +145,34 @@ class UserController extends Controller
                 ->get();
 
       return view('user.medals', ['medals' => $medals]);
+    }
+
+    public function registerRace($rid) {
+      $user = Auth::user();
+
+      $date = date('Y-m-d');
+
+      $new = DB::table('races')
+        ->where('date_to', '>', $date)
+        ->orderBy('date_from', 'ASC')
+        ->limit(3)
+        ->get();
+
+      $race = DB::table('races')
+        ->where('rid', '=', $rid)
+        ->first();
+
+      $addons = DB::table('addons')
+        ->where('races_id', '=', $rid)
+        ->get();
+
+      if (Auth::check())
+      {
+        $user = Auth::user();
+        return view('pages.registerrace', ['new' => $new, 'user' => $user, 'race' => $race, 'addons' => $addons]);
+      } else {
+        return view('pages.registerrace', ['new' => $new, 'race' => $race, 'addons' => $addons]);
+      }
     }
 
 }

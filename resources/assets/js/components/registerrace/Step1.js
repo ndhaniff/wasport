@@ -1,115 +1,216 @@
-import React, { Fragment } from 'react';
-import { connect } from 'dva';
-import { Form, Input, Button, Select, Divider } from 'antd';
-import router from 'umi/router';
-import styles from './style.less';
+import React, { Component } from 'react';
+import { Form, Input, DatePicker, Select, Button } from 'antd';
+import TextArea from 'antd/lib/input/TextArea';
+import moment from 'moment';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 
-const { Option } = Select;
+const FormItem = Form.Item;
+const Option = Select.Option;
+const MySwal = withReactContent(Swal);
 
-const formItemLayout = {
-  labelCol: {
-    span: 5,
-  },
-  wrapperCol: {
-    span: 19,
-  },
-};
+class Step1 extends Component {
+  constructor(props) {
+    super(props);
 
-@connect(({ form }) => ({
-  data: form.step,
-}))
-@Form.create()
-class Step1 extends React.PureComponent {
-  render() {
-    const { form, dispatch, data } = this.props;
-    const { getFieldDecorator, validateFields } = form;
-    const onValidateForm = () => {
-      validateFields((err, values) => {
-        if (!err) {
-          dispatch({
-            type: 'form/saveStepFormData',
-            payload: values,
-          });
-          router.push('/form/step-form/confirm');
-        }
-      });
+    this.state = {
+      firstname: props.getStore().firstname,
+      lastname: props.getStore().lastname,
+      phone: props.getStore().phone,
+      gender: props.getStore().gender,
+      birthday: props.getStore().birthday,
+      rid: props.getStore().rid,
     };
-    return (
-      <Fragment>
-        <Form layout="horizontal" className={styles.stepForm} hideRequiredMark>
-          <Form.Item {...formItemLayout} label="付款账户">
-            {getFieldDecorator('payAccount', {
-              initialValue: data.payAccount,
-              rules: [{ required: true, message: '请选择付款账户' }],
-            })(
-              <Select placeholder="test@example.com">
-                <Option value="ant-design@alipay.com">ant-design@alipay.com</Option>
-              </Select>
-            )}
-          </Form.Item>
-          <Form.Item {...formItemLayout} label="收款账户">
-            <Input.Group compact>
-              <Select defaultValue="alipay" style={{ width: 100 }}>
-                <Option value="alipay">支付宝</Option>
-                <Option value="bank">银行账户</Option>
-              </Select>
-              {getFieldDecorator('receiverAccount', {
-                initialValue: data.receiverAccount,
-                rules: [
-                  { required: true, message: '请输入收款人账户' },
-                  { type: 'email', message: '账户名应为邮箱格式' },
-                ],
-              })(<Input style={{ width: 'calc(100% - 100px)' }} placeholder="test@example.com" />)}
-            </Input.Group>
-          </Form.Item>
-          <Form.Item {...formItemLayout} label="收款人姓名">
-            {getFieldDecorator('receiverName', {
-              initialValue: data.receiverName,
-              rules: [{ required: true, message: '请输入收款人姓名' }],
-            })(<Input placeholder="请输入收款人姓名" />)}
-          </Form.Item>
-          <Form.Item {...formItemLayout} label="转账金额">
-            {getFieldDecorator('amount', {
-              initialValue: data.amount,
-              rules: [
-                { required: true, message: '请输入转账金额' },
-                {
-                  pattern: /^(\d+)((?:\.\d+)?)$/,
-                  message: '请输入合法金额数字',
-                },
-              ],
-            })(<Input prefix="￥" placeholder="请输入金额" />)}
-          </Form.Item>
-          <Form.Item
-            wrapperCol={{
-              xs: { span: 24, offset: 0 },
-              sm: {
-                span: formItemLayout.wrapperCol.span,
-                offset: formItemLayout.labelCol.span,
-              },
-            }}
-            label=""
-          >
-            <Button type="primary" onClick={onValidateForm}>
-              下一步
-            </Button>
-          </Form.Item>
-        </Form>
-        <Divider style={{ margin: '40px 0 24px' }} />
-        <div className={styles.desc}>
-          <h3>说明</h3>
-          <h4>转账到支付宝账户</h4>
-          <p>
-            如果需要，这里可以放一些关于产品的常见问题说明。如果需要，这里可以放一些关于产品的常见问题说明。如果需要，这里可以放一些关于产品的常见问题说明。
-          </p>
-          <h4>转账到银行卡</h4>
-          <p>
-            如果需要，这里可以放一些关于产品的常见问题说明。如果需要，这里可以放一些关于产品的常见问题说明。如果需要，这里可以放一些关于产品的常见问题说明。
-          </p>
-        </div>
-      </Fragment>
+  }
+
+  componentDidMount() {}
+
+  componentWillUnmount() {}
+
+  jumpToStep(toStep) {
+    // We can explicitly move to a step (we -1 as its a zero based index)
+    this.props.jumpToStep(toStep); // The StepZilla library injects this jumpToStep utility into each component
+  }
+
+  // not required as this component has no forms or user entry
+  // isValidated() {}
+
+  handleSelectChange = (value) => { }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.props.form.validateFieldsAndScroll((err, data) => {
+      if (!err) {
+        if(moment().diff(data.birthday.format('MM-DD-YYYY'), 'years') >= 18) {
+          this.props.updateStore({
+            firstname : data.firstname,
+            lastname : data.lastname,
+            gender : data.gender,
+            phone : data.prefix + data.phone,
+            birthday : data.birthday.format('MM-DD-YYYY'),
+            savedToCloud: false // use this to notify step4 that some changes took place and prompt the user to save again
+          });
+
+          this.jumpToStep(1)
+
+        } else {
+
+          MySwal.fire({
+            showConfirmButton: true,
+            confirmButtonColor: 'red',
+            type: 'error',
+            title: 'Error',
+            text: 'You must be at least age 18 to join'
+          })
+
+        }
+
+      }
+    });
+  }
+
+  render() {
+    const theDate = moment(this.state.birthday)
+
+    const { getFieldDecorator } = this.props.form;
+
+    const formItemLayout = {
+      labelCol: {
+        xs: { span: 24 },
+        sm: { span: 24 },
+      },
+      wrapperCol: {
+        xs: { span: 24 },
+        sm: { span: 24 },
+      },
+    };
+
+    const formItemLayoutWithOutLabel = {
+      wrapperCol: {
+        xs: { span: 24, offset: 0 },
+        sm: { span: 20, offset: 0 },
+      },
+    };
+
+    const prefixSelector = getFieldDecorator('prefix', {
+      initialValue: '60',
+    })(
+      <Select style={{ width: 70 }}>
+        <Option value="60">+60</Option>
+      </Select>
     );
+
+    return (
+      <Form onSubmit={this.handleSubmit}>
+        <FormItem
+            {...formItemLayout}
+            label={(
+              <span>
+                First Name&nbsp;
+              </span>
+            )}
+            hasFeedback
+          >
+            {getFieldDecorator('firstname', {
+              rules: [{ required: true, message: 'Please input your first name!', whitespace: true }],
+              initialValue: this.state.firstname != null ? this.state.firstname : ""
+            })(
+              <Input />
+            )}
+        </FormItem>
+        <FormItem
+            {...formItemLayout}
+            label={(
+              <span>
+                Last Name&nbsp;
+              </span>
+            )}
+            hasFeedback
+          >
+            {getFieldDecorator('lastname', {
+              rules: [{ required: true, message: 'Please input your last name!', whitespace: true }],
+              initialValue: this.state.lastname != null ? this.state.lastname : ""
+            })(
+              <Input />
+            )}
+        </FormItem>
+          <FormItem
+            label={(
+              <span>
+              Phone Number&nbsp;
+              </span>
+            )}
+            hasFeedback
+          >
+            {getFieldDecorator('phone', {
+              rules: [
+                { required: true, message: 'Please input your phone number!' },
+                { min: 9, message: 'Phone number must be at least 11 including prefix' },
+                { max: 11, message: 'This is not valid phone number' },
+              ],
+              initialValue: this.state.phone != null ? this.state.phone.substring(2) : ""
+            })(
+              <Input addonBefore={prefixSelector} style={{ width: '100%' }} />
+          )}
+          </FormItem>
+          <FormItem
+            labelCol = {{
+                xs: { span: 6 },
+                sm: { span: 6 },
+            }}
+            wrapperCol = {{
+                xs: { span: 6 },
+                sm: { span: 6 },
+            }}
+            {...formItemLayout}
+            label={(
+              <span>
+                Gender&nbsp;
+              </span>
+            )}
+            hasFeedback
+          >
+          {getFieldDecorator('gender', {
+            rules: [{ required: true, message: 'Please select your gender!' }],
+            initialValue: this.state.gender != null ? this.state.gender : ""
+          })(
+            <Select
+              placeholder="Select your gender"
+              onChange={this.handleSelectChange}
+            >
+              <Option value="male">Male</Option>
+              <Option value="female">Female</Option>
+            </Select>
+          )}
+        </FormItem>
+
+
+          <FormItem
+            {...formItemLayout}
+            label={(
+              <span>
+                Birthday&nbsp;
+              </span>
+            )}
+            hasFeedback
+          >
+            {getFieldDecorator('birthday', {
+              rules: [{ required: true, type: 'object', message: 'Please select your birthday!' }],
+              initialValue: theDate.isValid() ? moment(this.state.birthday, "MM-DD-YYYY") : ""
+            })(
+              <DatePicker format="MM-DD-YYYY" />
+            )}
+          </FormItem>
+
+        <FormItem {...formItemLayoutWithOutLabel}>
+          <Button type="primary" onClick={() => window.history.back()} id="register-race-prev">Previous</Button>
+          <Button type="primary" htmlType="submit" id="register-race-next">Next</Button>
+        </FormItem>
+      </Form>
+    )
   }
 }
 
-export default Step1;
+const Step1Form = Form.create()(Step1);
+
+export default Step1Form

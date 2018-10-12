@@ -97,6 +97,9 @@ export default class CreateAddonForm extends Component {
 
         let {add_en,add_ms,add_zh,desc_en,desc_ms,desc_zh,descimg_1,descimg_2,descimg_3,descimg_4,descimg_5,descimg_6,addprice,type,races_id,aid} = this.state
 
+        let addpriceF = '';
+        addpriceF = parseFloat(addprice).toFixed(2)
+
         let data = new FormData;
 
         data.append('add_en', add_en)
@@ -105,7 +108,7 @@ export default class CreateAddonForm extends Component {
         data.append('desc_en', desc_en)
         data.append('desc_ms', desc_ms)
         data.append('desc_zh', desc_zh)
-        data.append('addprice', addprice)
+        data.append('addprice', addpriceF)
         data.append('type', type)
         data.append('races_id', races_id)
         data.append('descimg_1', descimg_1[0])

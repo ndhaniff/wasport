@@ -285,12 +285,31 @@
 
             $cur = date('Y-m-d H:i a');
 
-            if($cur < $deadline) {
-              echo '<a href="/registerrace/' .$race->rid. '" class="race-register-btn">';
-              echo __("Register");
-              echo '</a>';
+            if (Auth::check()) {
+              // The user is logged in
+
+              //if user not register
+              if($cur < $deadline) {
+                echo '<a href="/registerrace/' .$race->rid. '" class="race-register-btn">';
+                echo __("Register");
+                echo '</a>';
+              } else {
+                echo '<button type="button" class="race-register-btn" disabled>';
+                echo __("Registration closed");
+                echo '</button>';
+              }
+
+              //if user register
+              //echo you had registered
+              //echo button go to profile -> dashboard
+              //已报名参加比赛 进入个人主页
+              //Anda telah daftar, pergi profile
+              
+
             } else {
-              echo '<button type="button" class="race-register-btn" disabled>Registration closed</button>';
+              echo '<a href="/login" class="race-register-btn">';
+              echo __("Login to register");
+              echo '</a>';
             }
 
             if($race->price != 0)

@@ -152,6 +152,9 @@ export default class CreateRaceForm extends Component {
 
         let {about_en,about_ms,about_zh,awards_en,awards_ms,awards_zh,title_en,title_ms,title_zh,medals_en,medals_ms,medals_zh,price,category,engrave,RaceDateFrom,RaceDateTo,RaceDeadlineFrom,RaceDeadlineTo,time_from,time_to,deadtime_from,deadtime_to,headerImg,awardimg_1,awardimg_2,awardimg_3,awardimg_4,awardimg_5,awardimg_6,medalimg_1,medalimg_2,medalimg_3,medalimg_4,medalimg_5,medalimg_6} = this.state
 
+        let priceF = '';
+        priceF = parseFloat(price).toFixed(2)
+
         let data = new FormData;
 
         if(time_from === '') { time_from = '00:00 am' }
@@ -171,7 +174,7 @@ export default class CreateRaceForm extends Component {
         data.append('medals_en', medals_en)
         data.append('medals_ms', medals_ms)
         data.append('medals_zh', medals_zh)
-        data.append('price', price)
+        data.append('price', priceF)
         data.append('category', category)
         data.append('engrave', engrave)
         data.append('RaceDateFrom', RaceDateFrom)

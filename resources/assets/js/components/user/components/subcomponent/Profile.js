@@ -32,7 +32,6 @@ class Profile extends React.Component{
     this.props.form.validateFieldsAndScroll((err, data) => {
       if (!err) {
 
-
        let profile = {
         id : window.user.id,
         name : data.displayname,
@@ -133,6 +132,8 @@ class Profile extends React.Component{
   }
 
   render(){
+    const theDate = moment(this.state.birthday)
+
     const { getFieldDecorator } = this.props.form;
 
     const formItemLayout = {
@@ -311,7 +312,8 @@ class Profile extends React.Component{
         >
           {getFieldDecorator('birthday', {
             rules: [{ type: 'object', message: 'Please select date!' }],
-            initialValue: this.state.birthday != null ?  moment("12-25-1995", "MM-DD-YYYY") : ""
+            initialValue: theDate.isValid() ? moment(this.state.birthday, "MM-DD-YYYY") : ""
+            //initialValue: this.state.birthday != null ?  moment("12-25-1995", "MM-DD-YYYY") : ""
           })(
             <DatePicker />
           )}

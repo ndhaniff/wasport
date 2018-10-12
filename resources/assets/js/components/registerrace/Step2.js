@@ -1,98 +1,203 @@
-import React from 'react';
-import { connect } from 'dva';
-import { Form, Input, Button, Alert, Divider } from 'antd';
-import { digitUppercase } from '@/utils/utils';
-import styles from './style.less';
+import React, { Component } from 'react';
+import { Form, Input, DatePicker, Select, Button } from 'antd';
+import TextArea from 'antd/lib/input/TextArea';
+import moment from 'moment';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 
-const formItemLayout = {
-  labelCol: {
-    span: 5,
-  },
-  wrapperCol: {
-    span: 19,
-  },
-};
+const FormItem = Form.Item;
+const Option = Select.Option;
+const MySwal = withReactContent(Swal);
 
-@connect(({ form, loading }) => ({
-  submitting: loading.effects['form/submitStepForm'],
-  data: form.step,
-}))
-@Form.create()
-class Step2 extends React.PureComponent {
+class Step2 extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      add_fl: props.getStore().add_fl,
+      add_sl: props.getStore().add_sl,
+      city: props.getStore().city,
+      state: props.getStore().state,
+      postal: props.getStore().postal
+    };
+  }
+
+  componentDidMount() {}
+
+  componentWillUnmount() {}
+
+  jumpToStep(toStep) {
+    // We can explicitly move to a step (we -1 as its a zero based index)
+    this.props.jumpToStep(toStep); // The StepZilla library injects this jumpToStep utility into each component
+  }
+
+  // not required as this component has no forms or user entry
+  // isValidated() {}
+
+  handleSelectChange = (value) => { }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.props.form.validateFieldsAndScroll((err, data) => {
+      if (!err) {
+
+        MySwal.fire({
+          text: 'Please confirm your mailing address is valid and mailable. Address cannot be changed after payment is made.',
+          type: 'warning',
+          showCancelButton: true,
+          confirmButtonText: 'Confirm',
+          cancelButtonText: 'Back',
+          cancelButtonColor: '#d33'
+        }).then((result) => {
+          if (result.value) {
+
+            this.props.updateStore({
+              add_fl: data.add_fl,
+              add_sl: data.add_sl,
+              city: data.city,
+              state: data.state,
+              postal: data.postal,
+              savedToCloud: false // use this to notify step4 that some changes took place and prompt the user to save again
+            });
+
+            this.jumpToStep(2)
+
+          }
+        })
+
+      }
+    });
+  }
+
   render() {
-    const { form, data, dispatch, submitting } = this.props;
-    const { getFieldDecorator, validateFields } = form;
-    const onPrev = () => {
-      router.push('/form/step-form/info');
+
+    const { getFieldDecorator } = this.props.form;
+
+    const formItemLayout = {
+      labelCol: {
+        xs: { span: 24 },
+        sm: { span: 24 },
+      },
+      wrapperCol: {
+        xs: { span: 24 },
+        sm: { span: 24 },
+      },
     };
-    const onValidateForm = e => {
-      e.preventDefault();
-      validateFields((err, values) => {
-        if (!err) {
-          dispatch({
-            type: 'form/submitStepForm',
-            payload: {
-              ...data,
-              ...values,
-            },
-          });
-        }
-      });
+
+    const formItemLayoutWithOutLabel = {
+      wrapperCol: {
+        xs: { span: 24, offset: 0 },
+        sm: { span: 20, offset: 0 },
+      },
     };
-    return (
-      <Form layout="horizontal" className={styles.stepForm}>
-        <Alert
-          closable
-          showIcon
-          message="确认转账后，资金将直接打入对方账户，无法退回。"
-          style={{ marginBottom: 24 }}
-        />
-        <Form.Item {...formItemLayout} className={styles.stepFormText} label="付款账户">
-          {data.payAccount}
-        </Form.Item>
-        <Form.Item {...formItemLayout} className={styles.stepFormText} label="收款账户">
-          {data.receiverAccount}
-        </Form.Item>
-        <Form.Item {...formItemLayout} className={styles.stepFormText} label="收款人姓名">
-          {data.receiverName}
-        </Form.Item>
-        <Form.Item {...formItemLayout} className={styles.stepFormText} label="转账金额">
-          <span className={styles.money}>{data.amount}</span>
-          <span className={styles.uppercase}>（{digitUppercase(data.amount)}）</span>
-        </Form.Item>
-        <Divider style={{ margin: '24px 0' }} />
-        <Form.Item {...formItemLayout} label="支付密码" required={false}>
-          {getFieldDecorator('password', {
-            initialValue: '123456',
-            rules: [
-              {
-                required: true,
-                message: '需要支付密码才能进行支付',
-              },
-            ],
-          })(<Input type="password" autoComplete="off" style={{ width: '80%' }} />)}
-        </Form.Item>
-        <Form.Item
-          style={{ marginBottom: 8 }}
-          wrapperCol={{
-            xs: { span: 24, offset: 0 },
-            sm: {
-              span: formItemLayout.wrapperCol.span,
-              offset: formItemLayout.labelCol.span,
-            },
-          }}
-          label=""
-        >
-          <Button type="primary" onClick={onValidateForm} loading={submitting}>
-            提交
-          </Button>
-          <Button onClick={onPrev} style={{ marginLeft: 8 }}>
-            上一步
-          </Button>
-        </Form.Item>
+
+      return(
+        <Form onSubmit={this.handleSubmit}>
+
+          <FormItem
+              {...formItemLayout}
+              label={(
+                <span>
+                  Address Line 1&nbsp;
+                </span>
+              )}
+              hasFeedback
+            >
+              {getFieldDecorator('add_fl', {
+                rules: [{ required: true, message: 'Please input your address!', whitespace: true }],
+                initialValue: this.state.add_fl != null ? this.state.add_fl : ""
+              })(
+                <Input />
+              )}
+          </FormItem>
+          <FormItem
+              {...formItemLayout}
+              label={(
+                <span>
+                  Address Line 2&nbsp;
+                </span>
+              )}
+              hasFeedback
+            >
+              {getFieldDecorator('add_sl', {
+                rules: [{ required: false, whitespace: true }],
+                initialValue: this.state.add_sl != null ? this.state.add_sl : ""
+              })(
+                <Input />
+              )}
+          </FormItem>
+          <FormItem
+              {...formItemLayout}
+              label={(
+                <span>
+                  City&nbsp;
+                </span>
+              )}
+              hasFeedback
+            >
+              {getFieldDecorator('city', {
+                rules: [{ required: true, message: 'Please input your city!', whitespace: true }],
+                initialValue: this.state.city != null ? this.state.city : ""
+              })(
+                <Input />
+              )}
+          </FormItem>
+            <FormItem
+            {...formItemLayout}
+            label="State"
+            hasFeedback
+          >
+            {getFieldDecorator('state', {
+              rules: [{ required: true, message: 'Please select your state!' }],
+              initialValue: this.state.state != null ? this.state.state : ""
+            })(
+              <Select
+                placeholder="Select your state"
+                onChange={this.handleSelectChange}
+              >
+              <option value="Johor">Johor</option>
+              <option value="Kedah">Kedah</option>
+              <option value="Kelantan">Kelantan</option>
+              <option value="Kuala Lumpur">Kuala Lumpur</option>
+              <option value="Labuan">Labuan</option>
+              <option value="Melaka">Melaka</option>
+              <option value="Negeri Sembilan">Negeri Sembilan</option>
+              <option value="Pahang">Pahang</option>
+              <option value="Perak">Perak</option>
+              <option value="Perlis">Perlis</option>
+              <option value="Pulau Pinang">Pulau Pinang</option>
+              <option value="Sabah">Sabah</option>
+              <option value="Sarawak">Sarawak</option>
+              <option value="Selangor">Selangor</option>
+              <option value="Terengganu">Terengganu</option>
+              </Select>
+            )}
+          </FormItem>
+          <FormItem
+              {...formItemLayout}
+              label={(
+                <span>
+                  Postal&nbsp;
+                </span>
+              )}
+              hasFeedback
+            >
+              {getFieldDecorator('postal', {
+                rules: [{ required: true, message: 'Please input your postal!', whitespace: true }],
+                initialValue: this.state.postal != null ? this.state.postal : ""
+              })(
+                <Input />
+              )}
+          </FormItem>
+        <FormItem {...formItemLayoutWithOutLabel}>
+          <Button type="primary" onClick={() => this.jumpToStep(0)} id="register-race-prev">Previous</Button>
+          <Button type="primary" htmlType="submit" id="register-race-next">Next</Button>
+        </FormItem>
       </Form>
-    );
+    )
   }
 }
 
-export default Step2;
+const Step2Form = Form.create()(Step2);
+
+export default Step2Form
