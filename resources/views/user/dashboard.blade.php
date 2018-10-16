@@ -57,10 +57,10 @@ var postal = "{{$user->postal}}"
       <div class="user-medal">
         <div class="row">
           <div class="col-md-6">
-            <h3>My Medals</h3>
+            <h3>{{__("My Medals")}}</h3>
           </div>
           <div class="col-md-6">
-            <span id="view-all"><a href="/user/viewMedals">View All</a></span>
+            <span id="view-all"><a href="/user/viewMedals">{{__("View All")}}</a></span>
           </div>
         </div>
 
@@ -102,19 +102,25 @@ var postal = "{{$user->postal}}"
       <div class="user-history">
         <div class="row">
           <div class="col-md-6">
-            <h3>Joined Races</h3>
+            <h3>{{__("Joined Races")}}</h3>
           </div>
           <div class="col-md-6">
-            <span id="view-all"><a href="#">View All</a></span>
+            <span id="view-all"><a href="#">{{__("View All")}}</a></span>
           </div>
         </div>
 
-        <div id="user-history">
-          <center>
-            <img src="<?php echo asset('img/strava-run.png') ?>">
-            <p>Your races will show up here and you’ll be able to submit your run when it start</p>
-          </center>
-        </div>
+        <?php if($last_join != '') {
+          echo '<div id="user-history">';
+          echo '<center>';
+          echo '<img src="' .asset('img/strava-run.png'). '">';
+          echo '<p>';
+          echo __("Your races will show up here and you’ll be able to submit your run when it start");
+          echo '</p>';
+          echo '</center>';
+          echo '</div>';
+        } ?>
+
+
       </div>
 
       <hr>
@@ -122,10 +128,10 @@ var postal = "{{$user->postal}}"
       <div class="user-current">
         <div class="row">
           <div class="col-md-6">
-            <h3>Current Races</h3>
+            <h3>{{__("Current Races")}}</h3>
           </div>
           <div class="col-md-6">
-            <span id="view-all"><a href="/races">View All</a></span>
+            <span id="view-all"><a href="/races">{{__("View All")}}</a></span>
           </div>
         </div>
 

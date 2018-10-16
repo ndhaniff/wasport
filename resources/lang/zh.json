@@ -79,5 +79,10 @@
     "You had registered" : "已报名参赛",
     "Go to profile" : "进入个人主页",
     "Logout" : "登出",
-    "Profile" : "个人主页"
+    "Profile" : "个人主页",
+    "Your races will show up here and you’ll be able to submit your run when it start" :  "你所参加的比赛将在这里出现，你将可以在这里开始时提交你的跑步成绩。",
+    "View All" : "查看全部",
+    "My Medals" : "我的奖牌",
+    "Current Races" : "当前赛事",
+    "Joined Races" : "参加赛事"
   }

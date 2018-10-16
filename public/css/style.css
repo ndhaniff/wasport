@@ -825,8 +825,8 @@ USER DASHBOARD
 .user-medal,
 .user-history,
 .user-current {
-    width: 80%;
-    margin: 0 auto 3.5rem auto;
+  width: 80%;
+  margin: 0 auto 3.5rem auto;
 }
 
 .userprofile-name {
@@ -912,7 +912,7 @@ USER DASHBOARD
 
 #user-medal-frame .row { margin-top: 0; }
 
-#user-history { margin: 12rem auto; }
+#user-history { margin: 6rem auto 9rem auto; }
 
 .user-medal #modal-img { width: 60%; }
 

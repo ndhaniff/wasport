@@ -59,8 +59,13 @@ class UserController extends Controller
         ->limit(3)
         ->get();
 
+      $last_join = DB::table('orders')
+        ->where('user_id', '=', Auth::id())
+        ->orderBy('oid', 'DESC')
+        ->first();
+
       //return view('user.dashboard')->with('user',$user);
-      return view('user.dashboard', ['user' => $user, 'races' => $races, 'medals' => $medals]);
+      return view('user.dashboard', ['user' => $user, 'races' => $races, 'medals' => $medals, 'last_join' => $last_join]);
     }
 
     public function updateProfile(Request $request){
