@@ -28,15 +28,13 @@ class CreateOrdersTable extends Migration
             $table->string('race_category')->nullable();
             $table->string('engrave_name')->nullable();
             $table->string('o_addon')->nullable();
-            $table->string('race_status');
+            $table->string('race_status')->nullable();
             $table->string('shipment')->nullable();
             $table->string('tracking number')->nullable();
-            $table->integer('races_id')->unsigned();
-            $table->foreign('races_id')->references('rid')->on('races')->onDelete('cascade')->onUpdate('cascade');
-            $table->integer('addons_id')->unsigned();
-            $table->foreign('addons_id')->references('aid')->on('addons')->onDelete('cascade')->onUpdate('cascade');
-            $table->integer('users_id')->unsigned();
-            $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->integer('race_id')->unsigned();
+            $table->foreign('race_id')->references('rid')->on('races')->onDelete('cascade')->onUpdate('cascade');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

@@ -93,6 +93,7 @@ Route::group(['prefix' =>'admin'],function()
   Route::get('/orders','Admin\AdminOrdersController@index')->name('admin.orders');
   Route::get('/orders/search', 'Admin\AdminOrdersController@search')->name('admin.orders.search');
   Route::get('/orders/filter', 'Admin\AdminOrdersController@filter')->name('admin.orders.filter');
+  Route::delete('/orders/{mid}','Admin\AdminOrdersController@orders')->name('admin.orders.destroy');
   Route::get('/orders/edit/{mid}','Admin\AdminOrdersController@editForm')->name('admin.orders.edit');
   Route::post('/orders/edit','Admin\AdminOrdersController@edit')->name('admin.orders.edit.submit');
   //Contacts
@@ -118,6 +119,9 @@ Route::post('/user/updateProfile', 'User\UserController@updateProfile' )->name('
 Route::post('/user/updateAddress', 'User\UserController@updateAddress' )->name('user.updateAddress');
 Route::post('/user/updatePassword', 'User\UserController@updatePassword' )->name('user.updatePassword');
 Route::get('/user/viewMedals', 'User\UserController@viewMedals' )->name('user.viewMedals');
+
+//Register race
+Route::post('/user/submitrace', 'User\UserController@submitRace')->name('user.submitrace');
 
 //Contact Us
 Route::post('/submitcontact', 'Pages\ContactController@submitContact')->name('submitcontact');

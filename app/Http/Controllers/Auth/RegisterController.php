@@ -43,17 +43,17 @@ class RegisterController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function register(Request $request)
-    {
-        $this->validator($request->all())->validate();
+     public function register(Request $request)
+     {
+         $this->validator($request->all())->validate();
 
-        event(new Registered($user = $this->create($request->all())));
+         event(new Registered($user = $this->create($request->all())));
 
-        // $this->guard()->login($user);
+         // $this->guard()->login($user);
 
-        return $this->registered($request, $user)
-                        ?: redirect($this->redirectPath());
-    }
+         return $this->registered($request, $user)
+                         ?: redirect($this->redirectPath());
+     }
 
     /**
      * Create a new controller instance.

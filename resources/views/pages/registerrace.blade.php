@@ -129,6 +129,10 @@ ol.progtrckr li.progtrckr-done:hover:before {
 .ant-form-item-control {
   width: 500px;
 }
+
+ol.progtrckr li.progtrckr-done:hover:before {
+    color: #fff;
+}
 </style>
 
 @section('content')

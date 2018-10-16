@@ -38,8 +38,13 @@ button:focus,
   background: #ffd1d1;
 }
 
+::selection {
+    background: #ffd1d1 !important;
+}
+
+.ant-select-dropdown-menu-item-active,
 .ant-select-dropdown-menu-item:hover {
-    background-color: #ffd1d1 !important;
+  background-color: #ffd1d1 !important;
 }
 
 .ant-tabs-ink-bar {
@@ -101,7 +106,35 @@ button:focus,
 
 .ant-radio-button-wrapper {
     margin: 0 5px;
+    border-left: 1px solid #d9d9d9;
+}
+
+.ant-radio-button-wrapper:first-child,
+.ant-radio-button-wrapper,
+.ant-radio-button-wrapper:last-child {
     border-radius: 6px;
+}
+
+.ant-radio-button-wrapper:not(:first-child):before {
+  display: none;
+}
+
+.ant-btn.active, .ant-btn:active, .ant-btn:focus, .ant-btn:hover {
+  color: #E02E3C;
+  border-color: #E02E3C;
+  background-color: #fff;
+}
+
+.ant-calendar-selected-date .ant-calendar-date:hover, .ant-calendar-selected-end-date .ant-calendar-date:hover, .ant-calendar-selected-start-date .ant-calendar-date:hover {
+  background: #ffd1d1;
+}
+
+.ant-calendar-date:active {
+  background: #E02E3C;
+}
+
+..ant-select-dropdown-menu li:first-child {
+  background-color: #ffd1d1;
 }
 
 #scroll {
@@ -683,11 +716,18 @@ REGISTER RACE
 #registerrace #next-button,
 #registerrace #prev-button { display: none; }
 
-#register-race-next { float: right; }
+#register-race-next,
+#register-race-payment { float: right; }
 
 #register-race-next,
 #register-race-prev {
   width: 85px;
+  margin-top: 1rem;
+  height: 35px;
+}
+
+#register-race-payment {
+  width: 120px;
   margin-top: 1rem;
   height: 35px;
 }

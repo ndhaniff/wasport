@@ -35,8 +35,14 @@ Admin | Orders
     <div class="col-sm-4">
       <form action="{{route('admin.orders.filter')}}" method="get">
         <div class="input-group">
-          <select name="categoryitem">
-            <option value=”” disabled selected>Filter orders</option>
+          <select name="raceitem">
+            <option value=”” disabled selected>Filter race</option>
+            @foreach($allorders as $allorder)
+              <?php foreach($races as $race) {
+                if($allorder->race_id == $race->rid)
+                  echo "<option value='" .$allorder->race_id. "'>" .$race->title_en. "</option>";
+                } ?>
+            @endforeach
           </select>
           <span class="input-group-prepend">
             <button type="submit" class="btn btn-primary">Filter</button>
@@ -106,23 +112,55 @@ Admin | Orders
                 <tr>
                   <th rowspan="5">Address</th>
                   <td>{{$order->o_add_fl}}</td>
+                </tr>
+                <tr>
                   <td>{{$order->o_add_sl}}</td>
+                </tr>
+                <tr>
                   <td>{{$order->o_city}}</td>
+                </tr>
+                <tr>
                   <td>{{$order->o_postal}}</td>
+                </tr>
+                <tr>
                   <td>{{$order->o_state}}</td>
                 </tr>
                 <tr>
                   <th>Race</th>
                   <td><?php foreach($races as $race) {
-                              if($race->id == $order->races_id) { echo $race->title_en; } } ?>
+                      if($order->race_id == $race->rid)
+                        echo $race->title_en;
+                      } ?>
                   </td>
                 </tr>
                 <tr>
                   <th>Category</th>
                   <td>{{$order->race_category}}</td>
                 </tr>
-                <?php if($order->engrave_name != '') { echo '<tr><th>Engrave<th><td>' .$order->engrave_name. '</td></tr>'; } ?>
-                <?php if($order->o_addon != '') { echo '<tr><th>Addon<th><td>' .$order->o_addon. '</td></tr>'; } ?>
+                <?php if($order->engrave_name != '') { echo '<tr><th>Engrave</th><td>' .$order->engrave_name. '</td></tr>'; } ?>
+                <?php
+                    foreach($order_addons as $order_add) {
+                      if($order_add->order_id == $order->oid) {
+                        echo '<tr><th colspan="2">Addon:</th></tr>';
+
+                        foreach($order_addons as $order_addon) {
+                          if($order_addon->order_id == $order->oid) {
+                            $addon_id = $order_addon->addon_id;
+                            $addon_type = $order_addon->a_type;
+
+                            foreach($addons as $addon) {
+                              if($addon->aid == $addon_id) {
+                                $addon_name = $addon->add_en;
+                              }
+                            }
+                            echo '<tr><th>' .$addon_name. '</th><td>' .$addon_type. '</td></tr>';
+                          }
+                        }
+                        break;
+                      }
+                    }
+                ?>
+
                 <tr>
                   <th>Race Status</th>
                   <td>{{$order->race_status}}</td>

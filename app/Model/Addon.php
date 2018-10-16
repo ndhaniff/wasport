@@ -18,4 +18,9 @@ class Addon extends Model
   {
     return $this->belongsTo(Race::class);
   }
+
+  public function orderaddon()
+  {
+    return $this->hasMany(OrderAddon::class);
+  }
 }

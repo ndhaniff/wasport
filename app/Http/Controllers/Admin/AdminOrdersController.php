@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Model\Order;
+use App\Model\OrderAddon;
 use App\Model\Race;
 use App\Model\Addon;
 use App\Model\User;
@@ -25,7 +26,7 @@ class AdminOrdersController extends Controller
     }
 
     /**
-     * Show the medals list
+     * Show the order list
      *
      * @return \Illuminate\Http\Response
      */
@@ -35,8 +36,10 @@ class AdminOrdersController extends Controller
       $races = Race::sortable()->get();
       $addons = Addon::sortable()->get();
       $users = User::sortable()->get();
+      $order_addons = OrderAddon::sortable()->get();
+      $allorders= Order::sortable()->get();
 
-      return view('auth.admin.orders.index',compact('orders', 'races', 'addons'));
+      return view('auth.admin.orders.index',compact('orders', 'races', 'addons', 'order_addons', 'allorders'));
     }
 
     public function search(Request $request)
@@ -45,21 +48,24 @@ class AdminOrdersController extends Controller
       $field = $request->get('field');
 
       $orders = Order::sortable()->where($field, 'like', '%' .$search. '%')->paginate(10);
-
       $races = DB::table('races')->get();
       $addons = DB::table('addons')->get();
+      $allorders = Order::sortable()->get();
 
-      return view('auth.admin.medals.index',compact('orders', 'races', 'addons'));
+      return view('auth.admin.orders.index',compact('orders', 'races', 'addons', 'allorders'));
     }
 
     public function filter(Request $request)
     {
       $raceitem = $request->get('raceitem');
-      $medals = DB::table('medals')->where('races_id', 'like', $raceitem)->paginate(10);
+      $orders = DB::table('orders')->where('race_id', 'like', $raceitem)->paginate(10);
       $races = DB::table('races')->get();
-      $allmedals = Medal::sortable()->get();
+      $allorders = Order::sortable()->get();
+      $order_addons = OrderAddon::sortable()->get();
+      $addons = Addon::sortable()->get();
+      $users = User::sortable()->get();
 
-      return view('auth.admin.medals.index',compact('medals', 'races', 'allmedals'));
+      return view('auth.admin.orders.index',compact('orders', 'races', 'addons', 'users', 'order_addons', 'allorders'));
     }
 
     public function editForm($oid){
@@ -67,7 +73,7 @@ class AdminOrdersController extends Controller
     }
 
     /**
-     * Edit Medals
+     * Edit Order
      *
      * @param Request $request
      * @return void
@@ -78,7 +84,7 @@ class AdminOrdersController extends Controller
     }
 
      /**
-      * Delete Medals
+      * Delete Orders
       *
       * @param [int] $id
       * @return void

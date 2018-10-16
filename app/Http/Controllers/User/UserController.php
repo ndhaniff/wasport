@@ -12,6 +12,7 @@ use App\Model\Race;
 use App\Model\Medal;
 use App\Model\Addon;
 use App\Model\Order;
+use App\Model\OrderAddon;
 use Auth;
 use DB;
 
@@ -20,7 +21,7 @@ class UserController extends Controller
     public function __construct(){
       $this->middleware('auth');
     }
-  
+
     public function index(){
         return view('pages.index');
     }
@@ -175,4 +176,42 @@ class UserController extends Controller
       }
     }
 
+    public function submitRace(Request $request) {
+
+      $order = new Order();
+      $order->o_firstname = $request->get('firstname');
+      $order->o_lastname = $request->get('lastname');
+      $order->o_phone = $request->get('phone');
+      $order->o_gender = $request->get('gender');
+      $order->o_birthday = $request->get('birthday');
+      $order->o_add_fl = $request->get('add_fl');
+      $order->o_add_sl = $request->get('add_sl');
+      $order->o_city = $request->get('city');
+      $order->o_state = $request->get('state');
+      $order->o_postal = $request->get('postal');
+      $order->race_category = $request->get('race_category');
+      $order->engrave_name = $request->get('engrave_name');
+      $order->race_id = $request->get('rid');
+      $order->user_id = $request->get('uid');
+
+      $order->save();
+
+      $oid = $order->oid;
+
+      $all_addons = $request->get('addons_selected');
+
+      $addons_selected = json_decode($all_addons);
+
+      if (is_array($addons_selected) || is_object($addons_selected)) {
+        foreach($addons_selected as $addon_selected) {
+          $order_addon = new OrderAddon();
+          $order_addon->order_id = $oid;
+          $order_addon->addon_id = $addon_selected->aid;
+          $order_addon->a_type = $addon_selected->type;
+          $order_addon->save();
+        }
+      }
+
+      return response()->json(['success' => true], 200);
+    }
 }

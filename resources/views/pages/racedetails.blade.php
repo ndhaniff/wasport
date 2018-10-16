@@ -71,8 +71,8 @@
                 echo '<p>' .$deadF. ' (' .$race->deadtime_from. ') GMT +08  or while slots last</p>' ?>
 
           <?php if($race->category) {
-                  echo '<h6>Category</6>';
-                  echo $race->category;
+                  echo '<h6>Category</h6>';
+                  echo str_replace(",", ", ", $race->category);
           } ?>
 
           <h6>Cut Off Time</h6>
@@ -304,7 +304,7 @@
               //echo button go to profile -> dashboard
               //已报名参加比赛 进入个人主页
               //Anda telah daftar, pergi profile
-              
+
 
             } else {
               echo '<a href="/login" class="race-register-btn">';

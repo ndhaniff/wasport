@@ -41,6 +41,15 @@ class Step2 extends Component {
     this.props.form.validateFieldsAndScroll((err, data) => {
       if (!err) {
 
+        this.props.updateStore({
+          add_fl: data.add_fl,
+          add_sl: data.add_sl,
+          city: data.city,
+          state: data.state,
+          postal: data.postal,
+          savedToCloud: false // use this to notify step4 that some changes took place and prompt the user to save again
+        });
+
         MySwal.fire({
           text: 'Please confirm your mailing address is valid and mailable. Address cannot be changed after payment is made.',
           type: 'warning',
@@ -51,20 +60,10 @@ class Step2 extends Component {
         }).then((result) => {
           if (result.value) {
 
-            this.props.updateStore({
-              add_fl: data.add_fl,
-              add_sl: data.add_sl,
-              city: data.city,
-              state: data.state,
-              postal: data.postal,
-              savedToCloud: false // use this to notify step4 that some changes took place and prompt the user to save again
-            });
-
             this.jumpToStep(2)
 
           }
         })
-
       }
     });
   }

@@ -20,9 +20,8 @@ class Step3 extends Component {
       title_en: props.getStore().title_en,
       price: props.getStore().price,
       category: props.getStore().category,
-      race_category: props.getStore().race_category,
       engrave: props.getStore().engrave,
-      engrave_name: props.getStore().engrave_name,
+      addons: props.getStore().addons,
     };
   }
 
@@ -42,17 +41,17 @@ class Step3 extends Component {
     return category_items;
   }
 
-  createTypeItems(rid) {
+  createTypeItems(aid) {
     let type_items = [];
 
     for(var l=0; l<addons.length; l++) {
-      if(addons[l]['rid'] == rid) {
+      if(addons[l]['aid'] == aid) {
 
         let type = addons[l]['type'];
         let items = type.split(',')
 
         for(var k=0; k<items.length; k++) {
-          type_items.push(<RadioButton key={items[k]} value={items[k]}>{items[k]}</RadioButton>);
+          type_items.push(<RadioButton key={items[k]} value={addons[l]['aid'] + ',' + items[k]}>{items[k]}</RadioButton>);
         }
       }
     }
@@ -78,14 +77,109 @@ class Step3 extends Component {
     this.props.form.validateFieldsAndScroll((err, data) => {
       if (!err) {
 
+        let all_addons = []
+
+        var add_1 = data.addon_1
+        if(typeof add_1 != 'undefined') {
+          var add_1_aid = add_1.split(',')[0]
+          var add_1_type = add_1.split(',')[1]
+
+          if(add_1_type != 'none') {
+            var addons_select = {}
+            for(var i=0; i<addons.length; i++) {
+              if(addons[i]['aid'] == add_1_aid) {
+                addons_select.aid = addons[i]['aid']
+                addons_select.add_en = addons[i]['add_en']
+                addons_select.type = add_1_type
+              }
+            }
+            all_addons.push(addons_select)
+          }
+        }
+
+        var add_2 = data.addon_2
+        if(typeof add_2 != 'undefined') {
+          var add_2_aid = add_2.split(',')[0]
+          var add_2_type = add_2.split(',')[1]
+
+          if(add_2_type != 'none') {
+            var addons_select = {}
+            for(var i=0; i<addons.length; i++) {
+              if(addons[i]['aid'] == add_2_aid) {
+                addons_select.aid = addons[i]['aid']
+                addons_select.add_en = addons[i]['add_en']
+                addons_select.type = add_2_type
+              }
+            }
+            all_addons.push(addons_select)
+          }
+        }
+
+        var add_3 = data.addon_3
+        if(typeof add_3 != 'undefined') {
+          var add_3_aid = add_3.split(',')[0]
+          var add_3_type = add_3.split(',')[1]
+
+          if(add_3_type != 'none') {
+            var addons_select = {}
+            for(var i=0; i<addons.length; i++) {
+              if(addons[i]['aid'] == add_3_aid) {
+                addons_select.aid = addons[i]['aid']
+                addons_select.add_en = addons[i]['add_en']
+                addons_select.type = add_3_type
+              }
+            }
+            all_addons.push(addons_select)
+          }
+        }
+
+        var add_4 = data.addon_4
+        if(typeof add_34!= 'undefined') {
+          var add_4_aid = add_4.split(',')[0]
+          var add_4_type = add_4.split(',')[1]
+
+          if(add_4_type != 'none') {
+            var addons_select = {}
+            for(var i=0; i<addons.length; i++) {
+              if(addons[i]['aid'] == add_4_aid) {
+                addons_select.aid = addons[i]['aid']
+                addons_select.add_en = addons[i]['add_en']
+                addons_select.type = add_4_type
+              }
+            }
+            all_addons.push(addons_select)
+          }
+        }
+
+        var add_5 = data.addon_5
+        if(typeof add_5 != 'undefined') {
+          var add_5_aid = add_5.split(',')[0]
+          var add_5_type = add_5.split(',')[1]
+
+          if(add_5_type != 'none') {
+            var addons_select = {}
+            for(var i=0; i<addons.length; i++) {
+              if(addons[i]['aid'] == add_5_aid) {
+                addons_select.aid = addons[i]['aid']
+                addons_select.add_en = addons[i]['add_en']
+                addons_select.type = add_5_type
+              }
+            }
+            all_addons.push(addons_select)
+          }
+        }
+
+        console.log(all_addons)
+
         this.props.updateStore({
-          add_fl: data.add_fl,
-          add_sl: data.add_sl,
-          city: data.city,
-          state: data.state,
-          postal: data.postal,
           engrave_name: data.engrave_name,
-          category: data.category,
+          race_category: data.race_category,
+          addon_1: data.addon_1,
+          addon_2: data.addon_2,
+          addon_3: data.addon_3,
+          addon_4: data.addon_4,
+          addon_5: data.addon_5,
+          addons_selected: all_addons,
           savedToCloud: false // use this to notify step4 that some changes took place and prompt the user to save again
         });
 
@@ -153,13 +247,12 @@ class Step3 extends Component {
           label=
                {j + '. ' + addons[i]['add_en'] + ': RM' + addons[i]['addprice']}
         >
-        {getFieldDecorator('addons', {
-          rules: [{message: 'Please select your addon' }],
-          initialValue: 'none'
+        {getFieldDecorator('addon_' + j, {
+          rules: [{required: true, message: 'Please select your addon' }],
         })(
           <RadioGroup onChange={this.handleRadioChange}>
-            <RadioButton value="none">None</RadioButton>
-            {this.createTypeItems(addons[i]['rid'])}
+            <RadioButton value={addons[i]['aid'] + ',none'}>None</RadioButton>
+            {this.createTypeItems(addons[i]['aid'])}
           </RadioGroup>
         )}
       </FormItem> )

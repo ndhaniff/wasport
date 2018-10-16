@@ -6,8 +6,6 @@ import Step1 from './Step1'
 import Step2 from './Step2'
 import Step3 from './Step3'
 import Step4 from './Step4'
-import Step5 from './Step5'
-import Step6 from './Step6'
 
 class RegisterRaceFormEn extends Component {
   constructor(props) {
@@ -15,6 +13,7 @@ class RegisterRaceFormEn extends Component {
     this.state = {};
 
     this.sampleStore = {
+      uid : window.user.id,
       firstname: window.user.firstname,
       lastname: window.user.lastname,
       phone: window.user.phone,
@@ -25,7 +24,6 @@ class RegisterRaceFormEn extends Component {
       city: window.user.city,
       state: window.user.state,
       postal: window.user.postal,
-      email: '',
       savedToCloud: false,
       rid: window.race.rid,
       title_en: window.race.title_en,
@@ -34,7 +32,13 @@ class RegisterRaceFormEn extends Component {
       race_category: '',
       engrave: window.race.engrave,
       engrave_name: '',
-      addon: '',
+      addons: window.addons,
+      addon_1: '',
+      addon_2: '',
+      addon_3: '',
+      addon_4: '',
+      addon_5: '',
+      addons_selected: [],
     };
   }
 
@@ -60,8 +64,6 @@ class RegisterRaceFormEn extends Component {
       {name: 'Address', component: <Step2 getStore={() => (this.getStore())} updateStore={(u) => {this.updateStore(u)}} />},
       {name: 'Race', component: <Step3 getStore={() => (this.getStore())} updateStore={(u) => {this.updateStore(u)}} />},
       {name: 'Confirm', component: <Step4 getStore={() => (this.getStore())} updateStore={(u) => {this.updateStore(u)}} />},
-      {name: 'Step5', component: <Step5 getStore={() => (this.getStore())} updateStore={(u) => {this.updateStore(u)}} />},
-      {name: 'Step6', component: <Step6 getStore={() => (this.getStore())} updateStore={(u) => {this.updateStore(u)}} />}
     ]
 
     return (
@@ -71,7 +73,7 @@ class RegisterRaceFormEn extends Component {
             stepsNavigation={false}
             steps={steps}
             preventEnterSubmission={true}
-            nextTextOnFinalActionStep={"Save"}
+            nextTextOnFinalActionStep={"Make Payment"}
             hocValidationAppliedTo={[3]}
             //startAtStep={window.sessionStorage.getItem('step') ? parseFloat(window.sessionStorage.getItem('step')) : 0}
             startAtStep={0}

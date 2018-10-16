@@ -443,7 +443,7 @@ export default class EditAddonForm extends Component {
                                     <div className="form-row">
                                       <div className="col-sm-12 col-md-4">
                                         <div className="form-group">
-                                            <label>Type (seperate with ',')</label>
+                                            <label>Type (Eg. S,M,L. Separate with ',')</label>
                                             <input onChange={this.handleInputChange} value={this.state.type} name="type" className="form-control" type="text" />
                                         </div>
                                       </div>
