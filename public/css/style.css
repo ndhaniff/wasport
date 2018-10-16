@@ -609,6 +609,10 @@ RACE DETAILS
   text-transform: uppercase;
 }
 
+.displayrace h4 {
+  font-family: 'SourceSansPro-Light';
+}
+
 .displayrace h5 {
   color: #df2e3c;
   margin-bottom: 2rem;
@@ -690,6 +694,7 @@ RACE DETAILS
   width: 100%;
   padding: .5rem;
   border-radius: 5px;
+  font-family: 'SourceSansPro-Semibold';
 }
 
 .race-register-btn a,

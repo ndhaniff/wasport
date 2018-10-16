@@ -262,61 +262,58 @@
 
       <div class="col-md-4">
         <div class="register-box">
-          <?php if($race->price == 0 && app()->getLocale() == 'en')
-                  echo '<h3>Free</h3>';
-                if($race->price == 0 && app()->getLocale() == 'ms')
-                  echo '<h3>Percuma</h3>';
-                if($race->price == 0 && app()->getLocale() == 'zh')
-                  echo '<h3>免费</h3>';
-                if($race->price != 0 && app()->getLocale() == 'en')
-                  echo '<h3>RM ' .number_format($race->price, 2). '</h3>';
-                if($race->price != 0 && app()->getLocale() == 'ms')
-                  echo '<h3>RM ' .number_format($race->price, 2). '</h3>';
-                if($race->price != 0 && app()->getLocale() == 'zh')
-                  echo '<h3>RM ' .number_format($race->price, 2). '</h3>'; ?>
+          <?php if (Auth::check()) {
+                  foreach($orders as $order) {
+                    if($order->user_id == Auth::id() && $order->race_id == $race->rid) {
+                      echo '<h4>';
+                      echo __("You had registered");
+                      echo '</h4>';
+                      echo '<a href="/dashboard" class="race-register-btn">';
+                      echo __("Go to profile");
+                      echo '</a>';
+                    } else {
+                      if($race->price == 0 && app()->getLocale() == 'en')
+                        echo '<h3>Free</h3>';
+                      if($race->price == 0 && app()->getLocale() == 'ms')
+                        echo '<h3>Percuma</h3>';
+                      if($race->price == 0 && app()->getLocale() == 'zh')
+                        echo '<h3>免费</h3>';
+                      if($race->price != 0 && app()->getLocale() == 'en')
+                        echo '<h3>RM ' .number_format($race->price, 2). '</h3>';
+                      if($race->price != 0 && app()->getLocale() == 'ms')
+                        echo '<h3>RM ' .number_format($race->price, 2). '</h3>';
+                      if($race->price != 0 && app()->getLocale() == 'zh')
+                        echo '<h3>RM ' .number_format($race->price, 2). '</h3>';
 
+                      date_default_timezone_set("Asia/Kuala_Lumpur");
 
-        <?php
-            date_default_timezone_set("Asia/Kuala_Lumpur");
+                      $deadT = $race->dead_to. ' ' .$race->deadtime_to;
 
-            $deadT = $race->dead_to. ' ' .$race->deadtime_to;
+                      $deadline = DateTime::createFromFormat('Y-m-d H:i a', $deadT)->format('Y-m-d H:i a');
 
-            $deadline = DateTime::createFromFormat('Y-m-d H:i a', $deadT)->format('Y-m-d H:i a');
+                      $cur = date('Y-m-d H:i a');
 
-            $cur = date('Y-m-d H:i a');
+                      if($cur < $deadline) {
+                        echo '<a href="/registerrace/' .$race->rid. '" class="race-register-btn">';
+                        echo __("Register");
+                        echo '</a>';
+                      } else {
+                        echo '<button type="button" class="race-register-btn" disabled>';
+                        echo __("Registration closed");
+                        echo '</button>';
+                      }
 
-            if (Auth::check()) {
-              // The user is logged in
-
-              //if user not register
-              if($cur < $deadline) {
-                echo '<a href="/registerrace/' .$race->rid. '" class="race-register-btn">';
-                echo __("Register");
-                echo '</a>';
+                      if($race->price != 0)
+                        echo '<h6>Finisher’s Award</h6>' .
+                        '<p><img src="' .asset('img/register-1.png'). '">&ensp;Finisher\'s Medal</p>' .
+                        '<p><img src="' .asset('img/register-2.png'). '">&ensp;Finisher\'s Certificate</p>';
+                    }
+                }
               } else {
-                echo '<button type="button" class="race-register-btn" disabled>';
-                echo __("Registration closed");
-                echo '</button>';
-              }
-
-              //if user register
-              //echo you had registered
-              //echo button go to profile -> dashboard
-              //已报名参加比赛 进入个人主页
-              //Anda telah daftar, pergi profile
-
-
-            } else {
-              echo '<a href="/login" class="race-register-btn">';
-              echo __("Login to register");
-              echo '</a>';
-            }
-
-            if($race->price != 0)
-              echo '<h6>Finisher’s Award</h6>' .
-              '<p><img src="' .asset('img/register-1.png'). '">&ensp;Finisher\'s Medal</p>' .
-              '<p><img src="' .asset('img/register-2.png'). '">&ensp;Finisher\'s Certificate</p>'; ?>
-
+                echo '<a href="/login" class="race-register-btn">';
+                echo __("Login to register");
+                echo '</a>';
+              } ?>
         </div>
       </div>
     </div>

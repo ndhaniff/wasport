@@ -38,6 +38,8 @@ class RacesController extends Controller
         ->where('races_id', '=', $rid)
         ->get();
 
-      return view('pages.racedetails', ['race' => $race, 'addons' => $addons]);
+      $orders = DB::table('orders')->get();
+
+      return view('pages.racedetails', ['race' => $race, 'addons' => $addons, 'orders' => $orders]);
     }
 }
