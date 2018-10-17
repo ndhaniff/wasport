@@ -297,6 +297,7 @@
                         echo '<a href="/registerrace/' .$race->rid. '" class="race-register-btn">';
                         echo __("Register");
                         echo '</a>';
+
                       } else {
                         echo '<button type="button" class="race-register-btn" disabled>';
                         echo __("Registration closed");

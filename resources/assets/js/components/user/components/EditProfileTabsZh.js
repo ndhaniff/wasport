@@ -4,6 +4,7 @@ import Profile from './subcomponent/ProfileZh'
 import Address from './subcomponent/AddressZh'
 import Password from './subcomponent/PasswordZh'
 
+const stravaLogo = window.location.origin + '/img/strava.png';
 const TabPane = Tabs.TabPane;
 
 function callback(key) {
@@ -41,6 +42,7 @@ class EditProfileTabsZh extends Component{
           <Password />
         </TabPane>
         <TabPane tab="Strava" key="4">
+          <img src= {stravaLogo} alt="Strava" /> <br /> <br />
           <MyApp token={this.state.token} stravaDisconnect={this.stravaDisconnect}/>
         </TabPane>
       </Tabs>

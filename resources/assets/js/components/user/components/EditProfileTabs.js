@@ -4,6 +4,7 @@ import Profile from './subcomponent/Profile'
 import Address from './subcomponent/Address'
 import Password from './subcomponent/Password'
 
+const stravaLogo = window.location.origin + '/img/strava.png';
 const TabPane = Tabs.TabPane;
 
 function callback(key) {
@@ -40,7 +41,8 @@ class EditProfileTabs extends Component{
         <TabPane tab="Password" key="3">
           <Password />
         </TabPane>
-        <TabPane tab="Stava" key="4">
+        <TabPane tab="Strava" key="4">
+          <img src= {stravaLogo} alt="Strava" /> <br /> <br />
           <MyApp token={this.state.token} stravaDisconnect={this.stravaDisconnect}/>
         </TabPane>
       </Tabs>
@@ -50,7 +52,7 @@ class EditProfileTabs extends Component{
 }
 
 const MyApp = (props) => {
-  if(typeof props.token != "undefined"){
+  if(typeof props.token == "undefined"){
     return (
       <div>
           <Button onClick={props.stravaDisconnect}>Disconnect</Button>
@@ -58,7 +60,10 @@ const MyApp = (props) => {
     )
   } else {
     return(
-      <a href={"https://www.strava.com/oauth/authorize?client_id=26162&redirect_uri="+ window.location.href +"&response_type=code"}>
+      /*<a href={"https://www.strava.com/oauth/authorize?client_id=26162&redirect_uri="+ window.location.href +"&response_type=code"}>
+        <Button>Connect To Strava</Button>
+      </a>*/
+      <a href={"https://www.strava.com/oauth/authorize?client_id=28187&redirect_uri="+ window.location.href +"&response_type=code"}>
         <Button>Connect To Strava</Button>
       </a>
     )

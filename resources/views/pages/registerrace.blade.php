@@ -1,140 +1,5 @@
 @extends('layouts.master')
 
-<style>
-ol.progtrckr {
-    list-style-type: none;
-    padding: 0;
-    text-align: center;
-    margin-bottom: 5rem;
-}
-
-ol.progtrckr li {
-  display: inline-block;
-  text-align: center;
-  line-height: 4.5rem;
-  cursor: pointer;
-}
-
-ol.progtrckr li span {
-  padding: 0 1.5rem;
-}
-
-@media (max-width: 650px) {
-  .progtrckr li span {
-    display: none;
-  }
-}
-.progtrckr em {
-  display: none;
-  font-weight: 700;
-  padding-left: 1rem;
-}
-
-@media (max-width: 650px) {
-  .progtrckr em {
-    display: inline;
-  }
-}
-
-ol.progtrckr li.progtrckr-todo {
-  color: silver;
-  border-bottom: 1px solid silver;
-}
-
-ol.progtrckr li.progtrckr-doing {
-  color: black;
-  border-bottom: 1px solid #e02e3c;
-}
-
-ol.progtrckr li.progtrckr-done {
-  color: black;
-  border-bottom: 1px solid #e02e3c;
-}
-
-ol.progtrckr li:after {
-  content: "\00a0\00a0";
-}
-
-ol.progtrckr li:before {
-  position: relative;
-  bottom: -3.7rem;
-  float: left;
-  left: 50%;
-}
-
-ol.progtrckr li.progtrckr-todo:before {
-  content: "\F111";
-  color: silver;
-  background-color: white;
-  width: 23px;
-  line-height: 24px;
-  border-radius: 23px;
-  font-family: FontAwesome;
-  font-style: normal;
-  font-weight: normal;
-  text-decoration: inherit;
-}
-
-ol.progtrckr li.progtrckr-todo:hover:before {
-  color: silver;
-}
-
-ol.progtrckr li.progtrckr-doing:before {
-  content: "\f040";
-  color: #e02e3c;
-  background-color: #ffffff;
-  width: 23px;
-  line-height: 26px;
-  border-radius: 23px;
-  font-family: FontAwesome;
-  font-style: normal;
-  font-weight: normal;
-  text-decoration: inherit;
-}
-
-ol.progtrckr li.progtrckr-doing:hover:before {
-  color: #ff4500;
-}
-
-ol.progtrckr li.progtrckr-done:before {
-  content: "\f00c";
-  color: white;
-  background-color: #e02e3c;
-  width: 23px;
-  line-height: 23px;
-  border-radius: 23px;
-  font-family: FontAwesome;
-  font-style: normal;
-  font-weight: normal;
-  text-decoration: inherit;
-}
-
-ol.progtrckr li.progtrckr-done:hover:before {
-  color: #333;
-}
-
-.ant-form-item-required:before {
-  float: right;
-}
-
-.ant-form-item-label label:after {
-  display: none;
-}
-
-.ant-form {
-  width: 500px;
-  margin: 0 auto !important;
-}
-
-.ant-form-item-control {
-  width: 500px;
-}
-
-ol.progtrckr li.progtrckr-done:hover:before {
-    color: #fff;
-}
-</style>
-
 @section('content')
 
 <div id="registerrace">
@@ -219,6 +84,8 @@ ol.progtrckr li.progtrckr-done:hover:before {
   var race = {
     rid: "{{$race->rid}}",
     title_en: "{{$race->title_en}}",
+    title_ms: "{{$race->title_ms}}",
+    title_zh: "{{$race->title_zh}}",
     price: "{{$race->price}}",
     category: "{{$race->category}}",
     engrave: "{{$race->engrave}}"

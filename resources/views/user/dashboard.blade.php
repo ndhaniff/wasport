@@ -44,7 +44,6 @@ var postal = "{{$user->postal}}"
 
       <div class="user-profile-block">
 
-
         <?php if(app()->getLocale() == 'en')
                 echo '<div id="user-profile-en"></div>';
               if(app()->getLocale() == 'ms')
@@ -122,16 +121,16 @@ var postal = "{{$user->postal}}"
           </div>
         </div>
 
-        <?php if($last_join != '') {
-          echo '<div id="user-history">';
-          echo '<center>';
-          echo '<img src="' .asset('img/strava-run.png'). '">';
-          echo '<p>';
-          echo __("Your races will show up here and you’ll be able to submit your run when it start");
-          echo '</p>';
-          echo '</center>';
-          echo '</div>';
-        } ?>
+        <?php if($last_join == '') {
+                echo '<div id="user-history">';
+                echo '<center>';
+                echo '<img src="' .asset('img/strava-run.png'). '">';
+                echo '<p>';
+                echo __("Your races will show up here and you’ll be able to submit your run when it start");
+                echo '</p>';
+                echo '</center>';
+                echo '</div>';
+              }  ?>
 
 
       </div>

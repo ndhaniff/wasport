@@ -154,7 +154,7 @@ class AddressZh extends React.Component{
             initialValue: this.state.state != null ? this.state.state : ""
           })(
             <Select
-              placeholder="Pilih negeri anda"
+              placeholder="选择州属"
               onChange={this.handleSelectChange}
             >
             <option value="Johor">Johor</option>

@@ -13,170 +13,137 @@ a:focus { text-decoration: none; }
 button:focus,
 .ant-radio-button-wrapper .ant-radio-button-wrapper-checked {outline:0;}
 
-.ant-input:focus,
-.ant-input:hover,
-.ant-select-focused .ant-select-selection, .ant-select-selection:active, .ant-select-selection:focus,
-.ant-select-focused .ant-select-selection, .ant-select-selection:active, .ant-select-selection:hover,
-.ant-calendar-picker:hover .ant-calendar-picker-input:not(.ant-input-disabled) {
-  border-color: #e02e3c;
-  -webkit-box-shadow: 0 0 0 2px rgba(248, 137, 128, 0.18);
-  box-shadow: 0 0 0 2px rgba(248, 137, 128, 0.18);
+ol.progtrckr {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+    margin-bottom: 5rem;
 }
 
-.ant-input:focus {
-  outline: 0;
-  -webkit-box-shadow: 0 0 0 2px rgba(248, 137, 128, 0.18);
-  box-shadow: 0 0 0 2px rgba(248, 137, 128, 0.18);
+ol.progtrckr li {
+  display: inline-block;
+  text-align: center;
+  line-height: 4.5rem;
+  cursor: pointer;
 }
 
-.ant-calendar-today .ant-calendar-date {
-  border-color: #e02e3c;
+ol.progtrckr li span {
+  padding: 0 1.5rem;
+}
+
+@media (max-width: 650px) {
+  .progtrckr li span {
+    display: none;
+  }
+}
+.progtrckr em {
+  display: none;
+  font-weight: 700;
+  padding-left: 1rem;
+}
+
+@media (max-width: 650px) {
+  .progtrckr em {
+    display: inline;
+  }
+}
+
+ol.progtrckr li.progtrckr-todo {
+  color: silver;
+  border-bottom: 1px solid silver;
+}
+
+ol.progtrckr li.progtrckr-doing {
+  color: black;
+  border-bottom: 1px solid #e02e3c;
+}
+
+ol.progtrckr li.progtrckr-done {
+  color: black;
+  border-bottom: 1px solid #e02e3c;
+}
+
+ol.progtrckr li:after {
+  content: "\00a0\00a0";
+}
+
+ol.progtrckr li:before {
+  position: relative;
+  bottom: -3.7rem;
+  float: left;
+  left: 50%;
+}
+
+ol.progtrckr li.progtrckr-todo:before {
+  content: "\F111";
+  color: silver;
+  background-color: white;
+  width: 23px;
+  line-height: 24px;
+  border-radius: 23px;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
+}
+
+ol.progtrckr li.progtrckr-todo:hover:before {
+  color: silver;
+}
+
+ol.progtrckr li.progtrckr-doing:before {
+  content: "\f040";
   color: #e02e3c;
+  background-color: #ffffff;
+  width: 23px;
+  line-height: 26px;
+  border-radius: 23px;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
 }
 
-.ant-calendar-selected-day .ant-calendar-date {
-  background: #ffd1d1;
+ol.progtrckr li.progtrckr-doing:hover:before {
+  color: #ff4500;
 }
 
-::selection {
-    background: #ffd1d1 !important;
+ol.progtrckr li.progtrckr-done:before {
+  content: "\f00c";
+  color: white;
+  background-color: #e02e3c;
+  width: 23px;
+  line-height: 23px;
+  border-radius: 23px;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
 }
 
-.ant-select-dropdown-menu-item-active,
-.ant-select-dropdown-menu-item:hover {
-  background-color: #ffd1d1 !important;
+ol.progtrckr li.progtrckr-done:hover:before {
+  color: #333;
 }
 
-.ant-tabs-ink-bar {
-    background-color: #E02E3C;
+.ant-form-item-required:before {
+  float: right;
 }
 
-.ant-btn-primary:focus, .ant-btn-primary:hover {
-    background-color: #E02E3C;
-    border-color: #E02E3C;
-}
-
-.ant-btn-primary {
-    background-color: #E02E3C;
-    border-color: #E02E3C;
-}
-
-.ant-radio-button-wrapper-focused, .ant-radio-button-wrapper:hover,
-.ant-radio-button-wrapper-checked {
-    color: #E02E3C;
-}
-
-.ant-radio-button-wrapper-checked,
-.ant-radio-button-wrapper-checked:active,
-.ant-radio-button-wrapper-checked:hover,
-.ant-radio-button-wrapper-checked:first-child {
-    border-color: #E02E3C;
-}
-
-.ant-click-animating-node, [ant-click-animating-without-extra-node]:after {
-    border: 0 solid #E02E3C;
-}
-
-.ant-radio-button-wrapper-checked:active {
-    border-color: #E02E3C;
-    -webkit-box-shadow: -1px 0 0 0 #E02E3C;
-    box-shadow: -1px 0 0 0 #E02E3C;
-    color: #E02E3C;
-}
-
-.ant-radio-button-wrapper-checked:before {
-    background-color: #E02E3C !important;
-}
-
-.ant-radio-button-wrapper-checked {
-    background: #fff;
-    border-color: #E02E3C;
-    color: #E02E3C;
-    -webkit-box-shadow: -1px 0 0 0 #E02E3C;
-    box-shadow: -1px 0 0 0 #E02E3C;
-    z-index: 1;
-}
-
-.ant-radio-button-wrapper-checked:hover {
-    border-color: #E02E3C;
-    -webkit-box-shadow: -1px 0 0 0 #E02E3C;
-    box-shadow: -1px 0 0 0 #a3a5a7;
-    color: #E02E3C;
-}
-
-.ant-radio-button-wrapper {
-    margin: 0 5px;
-    border-left: 1px solid #d9d9d9;
-}
-
-.ant-radio-button-wrapper:first-child,
-.ant-radio-button-wrapper,
-.ant-radio-button-wrapper:last-child {
-    border-radius: 6px;
-}
-
-.ant-radio-button-wrapper:not(:first-child):before,
-:root .ant-tabs-tab-next-icon:before, :root .ant-tabs-tab-prev-icon:before {
+.ant-form-item-label label:after {
   display: none;
 }
 
-.ant-btn.active, .ant-btn:active, .ant-btn:focus, .ant-btn:hover {
-  color: #E02E3C;
-  border-color: #E02E3C;
-  background-color: #fff;
+.ant-form {
+  width: 500px;
+  margin: 0 auto !important;
 }
 
-.ant-calendar-selected-date .ant-calendar-date:hover, .ant-calendar-selected-end-date .ant-calendar-date:hover, .ant-calendar-selected-start-date .ant-calendar-date:hover {
-  background: #ffd1d1;
+.ant-form-item-control {
+  width: 500px;
 }
 
-.ant-calendar-date:active {
-  background: #E02E3C;
-}
-
-..ant-select-dropdown-menu li:first-child {
-  background-color: #ffd1d1;
-}
-
-.ant-modal-close-x {
-  width: 45px;
-  height: 38px;
-  line-height: 38px;
-}
-
-.ant-modal-body { padding: 3rem 24px; }
-
-#scroll {
-    position:fixed;
-    right:10px;
-    bottom:10px;
-    cursor:pointer;
-    width:50px;
-    height:50px;
-    background-color:#df2e3c;
-    text-indent:-9999px;
-    display:none;
-    -webkit-border-radius:60px;
-    -moz-border-radius:60px;
-    border-radius:60px
-}
-
-#scroll span {
-    position:absolute;
-    top:50%;
-    left:50%;
-    margin-left:-8px;
-    margin-top:-12px;
-    height:0;
-    width:0;
-    border:8px solid transparent;
-    border-bottom-color:#ffffff;
-}
-
-#scroll:hover {
-    background-color: #2b292a;
-    opacity:1;filter:"alpha(opacity=100)";
-    -ms-filter:"alpha(opacity=100)";
+ol.progtrckr li.progtrckr-done:hover:before {
+    color: #fff;
 }
 
 .full-container {
@@ -221,6 +188,48 @@ button:focus,
   background-image: url("/img/wasport_homebanner.jpg");
   background-repeat: no-repeat;
 }
+
+/*
+SCROLL TO TOP
+*/
+#scroll {
+  position:fixed;
+  right:10px;
+  bottom:10px;
+  cursor:pointer;
+  width:50px;
+  height:50px;
+  /*background-color:#df2e3c;*/
+  text-indent:-9999px;
+  display:none;
+  -webkit-border-radius:60px;
+  -moz-border-radius:60px;
+  border-radius:60px;
+  background: #fcc117; /* Old browsers */
+  background: -moz-linear-gradient(left, #fcc117 0%, #f7953e 24%, #f36f39 48%, #ec1e47 68%, #9e1d26 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, #fcc117 0%,#f7953e 24%,#f36f39 48%,#ec1e47 68%,#9e1d26 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #fcc117 0%,#f7953e 24%,#f36f39 48%,#ec1e47 68%,#9e1d26 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcc117', endColorstr='#9e1d26',GradientType=1 ); /* IE6-9 */
+}
+
+#scroll span {
+  position:absolute;
+  top:50%;
+  left:50%;
+  margin-left:-8px;
+  margin-top:-12px;
+  height:0;
+  width:0;
+  border:8px solid transparent;
+  border-bottom-color:#ffffff;
+}
+
+#scroll:hover {
+  background-color: #2b292a;
+  opacity:1;filter:"alpha(opacity=100)";
+  -ms-filter:"alpha(opacity=100)";
+}
+
 
 /*NAV*/
 #navbar,

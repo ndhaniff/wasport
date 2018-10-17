@@ -191,7 +191,7 @@ class ProfileMs extends React.Component{
             hasFeedback
           >
             {getFieldDecorator('displayname', {
-              rules: [{ required: true, message: 'Sila mengimput nama yang dipapar anda!', whitespace: true }],
+              rules: [{ required: true, message: 'Sila mengimput nama pengguna anda!', whitespace: true }],
               initialValue : this.state.name
             })(
               <Input />

@@ -106,7 +106,7 @@ class AddressMs extends React.Component{
             hasFeedback
           >
             {getFieldDecorator('add_fl', {
-              rules: [{ required: true, message: 'Sila input alamat anda!', whitespace: true }],
+              rules: [{ required: true, message: 'Sila mengimput alamat anda!', whitespace: true }],
               initialValue: this.state.add_fl != null ? this.state.add_fl : ""
             })(
               <Input />

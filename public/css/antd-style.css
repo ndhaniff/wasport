@@ -1,0 +1,132 @@
+.ant-input:focus,
+.ant-input:hover,
+.ant-select-focused .ant-select-selection, .ant-select-selection:active, .ant-select-selection:focus,
+.ant-select-focused .ant-select-selection, .ant-select-selection:active, .ant-select-selection:hover,
+.ant-calendar-picker:hover .ant-calendar-picker-input:not(.ant-input-disabled) {
+  border-color: #e02e3c;
+  -webkit-box-shadow: 0 0 0 2px rgba(248, 137, 128, 0.18);
+  box-shadow: 0 0 0 2px rgba(248, 137, 128, 0.18);
+}
+
+.ant-input:focus {
+  outline: 0;
+  -webkit-box-shadow: 0 0 0 2px rgba(248, 137, 128, 0.18);
+  box-shadow: 0 0 0 2px rgba(248, 137, 128, 0.18);
+}
+
+.ant-calendar-today .ant-calendar-date {
+  border-color: #e02e3c;
+  color: #e02e3c;
+}
+
+.ant-calendar-selected-day .ant-calendar-date {
+  background: #ffd1d1;
+}
+
+::selection {
+    background: #ffd1d1 !important;
+}
+
+.ant-select-dropdown-menu-item-active,
+.ant-select-dropdown-menu-item:hover {
+  background-color: #ffd1d1 !important;
+}
+
+.ant-tabs-ink-bar {
+    background-color: #E02E3C;
+}
+
+.ant-btn-primary:focus, .ant-btn-primary:hover {
+    background-color: #E02E3C;
+    border-color: #E02E3C;
+}
+
+.ant-btn-primary {
+    background-color: #E02E3C;
+    border-color: #E02E3C;
+}
+
+.ant-radio-button-wrapper-focused, .ant-radio-button-wrapper:hover,
+.ant-radio-button-wrapper-checked {
+    color: #E02E3C;
+}
+
+.ant-radio-button-wrapper-checked,
+.ant-radio-button-wrapper-checked:active,
+.ant-radio-button-wrapper-checked:hover,
+.ant-radio-button-wrapper-checked:first-child {
+    border-color: #E02E3C;
+}
+
+.ant-click-animating-node, [ant-click-animating-without-extra-node]:after {
+    border: 0 solid #E02E3C;
+}
+
+.ant-radio-button-wrapper-checked:active {
+    border-color: #E02E3C;
+    -webkit-box-shadow: -1px 0 0 0 #E02E3C;
+    box-shadow: -1px 0 0 0 #E02E3C;
+    color: #E02E3C;
+}
+
+.ant-radio-button-wrapper-checked:before {
+    background-color: #E02E3C !important;
+}
+
+.ant-radio-button-wrapper-checked {
+    background: #fff;
+    border-color: #E02E3C;
+    color: #E02E3C;
+    -webkit-box-shadow: -1px 0 0 0 #E02E3C;
+    box-shadow: -1px 0 0 0 #E02E3C;
+    z-index: 1;
+}
+
+.ant-radio-button-wrapper-checked:hover {
+    border-color: #E02E3C;
+    -webkit-box-shadow: -1px 0 0 0 #E02E3C;
+    box-shadow: -1px 0 0 0 #a3a5a7;
+    color: #E02E3C;
+}
+
+.ant-radio-button-wrapper {
+    margin: 0 5px;
+    border-left: 1px solid #d9d9d9;
+}
+
+.ant-radio-button-wrapper:first-child,
+.ant-radio-button-wrapper,
+.ant-radio-button-wrapper:last-child {
+    border-radius: 6px;
+}
+
+.ant-radio-button-wrapper:not(:first-child):before,
+:root .ant-tabs-tab-next-icon:before, :root .ant-tabs-tab-prev-icon:before {
+  display: none;
+}
+
+.ant-btn.active, .ant-btn:active, .ant-btn:focus, .ant-btn:hover {
+  color: #E02E3C;
+  border-color: #E02E3C;
+  background-color: #fff;
+}
+
+.ant-calendar-selected-date .ant-calendar-date:hover, .ant-calendar-selected-end-date .ant-calendar-date:hover, .ant-calendar-selected-start-date .ant-calendar-date:hover {
+  background: #ffd1d1;
+}
+
+.ant-calendar-date:active {
+  background: #E02E3C;
+}
+
+..ant-select-dropdown-menu li:first-child {
+  background-color: #ffd1d1;
+}
+
+.ant-modal-close-x {
+  width: 45px;
+  height: 38px;
+  line-height: 38px;
+}
+
+.ant-modal-body { padding: 3rem 24px; }

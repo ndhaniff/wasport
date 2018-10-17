@@ -2,10 +2,10 @@ import React, { Component, Fragment } from 'react';
 import ReactDOM from 'react-dom';
 import { Card, Steps } from 'antd';
 import StepZilla from 'react-stepzilla'
-import Step1 from './Step1'
-import Step2 from './Step2'
-import Step3 from './Step3'
-import Step4 from './Step4'
+import Step1 from './steps/Step1'
+import Step2 from './steps/Step2'
+import Step3 from './steps/Step3'
+import Step4 from './steps/Step4'
 
 class RegisterRaceFormEn extends Component {
   constructor(props) {
