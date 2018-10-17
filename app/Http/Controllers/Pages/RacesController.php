@@ -8,6 +8,7 @@ use App\Model\Race;
 use App\Model\Addon;
 use App\Model\Order;
 use DB;
+use Auth;
 
 class RacesController extends Controller
 {

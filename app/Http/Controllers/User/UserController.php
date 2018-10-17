@@ -64,8 +64,14 @@ class UserController extends Controller
         ->orderBy('oid', 'DESC')
         ->first();
 
+      $number_count = DB::table('orders')
+        ->where('user_id', '=', Auth::id())
+        ->get();
+
+      $race_count = $number_count->count();
+
       //return view('user.dashboard')->with('user',$user);
-      return view('user.dashboard', ['user' => $user, 'races' => $races, 'medals' => $medals, 'last_join' => $last_join]);
+      return view('user.dashboard', ['user' => $user, 'races' => $races, 'medals' => $medals, 'last_join' => $last_join, 'race_count' => $race_count]);
     }
 
     public function updateProfile(Request $request){

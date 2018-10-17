@@ -130,3 +130,19 @@
 }
 
 .ant-modal-body { padding: 3rem 24px; }
+
+.ant-radio-checked .ant-radio-inner {
+    border-color: #E02E3C;
+}
+
+.ant-radio-checked:after {
+    border: 1px solid #E02E3C;
+}
+
+.ant-radio-focused .ant-radio-inner, .ant-radio-wrapper:hover .ant-radio .ant-radio-inner, .ant-radio:hover .ant-radio-inner {
+    border-color: #E02E3C;
+}
+
+.ant-radio-inner:after {
+    background-color: #E02E3C;
+}

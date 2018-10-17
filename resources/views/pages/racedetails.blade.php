@@ -39,9 +39,7 @@
                 echo '<h2>' .$race->title_zh. '</h2>'; ?>
 
         <?php $dateF = DateTime::createFromFormat('Y-m-d', $race->date_from)->format('d M Y');
-
               $dateT = DateTime::createFromFormat('Y-m-d', $race->date_to)->format('d M Y');
-
               echo '<h5>' .$dateF. ' (' .$race->time_from. ') GMT +08' . '<br>-<br>' .$dateT. '(' .$race->time_to. ') GMT +08</h5>'; ?>
         <hr>
 
@@ -67,7 +65,6 @@
           <h6>Registration Deadline</h6>
 
           <?php $deadF = DateTime::createFromFormat('Y-m-d', $race->dead_from)->format('d M Y');
-
                 echo '<p>' .$deadF. ' (' .$race->deadtime_from. ') GMT +08  or while slots last</p>' ?>
 
           <?php if($race->category) {
@@ -134,7 +131,6 @@
 
           <ul>
             <?php $deadT = DateTime::createFromFormat('Y-m-d', $race->dead_to)->format('d M Y');
-
                   echo '<li>Last submission by ' .$deadT. ' (' .$race->deadtime_to. ') GMT +08</li>'; ?>
             <li>“No completion, no medal” policy; This race is based on honour system, Wasport will do periodic checks on the submissions. Treat yourself, don’t cheat yourself.</li>
             <li>Change of category, refund and/or transfer of bib is not allowed.</li>
@@ -186,11 +182,8 @@
             if($addons->count() != 0) {
               echo '<div class="addons-block">';
               echo '<h6>Add-on</h6>';
-
               $i=0;
-
               foreach($addons as $addon) {
-
                 if($addon->descimg_1 != '')
                   echo "<img src='" .asset('storage/uploaded/addons/' . $addon->descimg_1). "' alt='" .$addon->add_en. "'><br /><br />";
                 if($addon->descimg_2 != '')
@@ -203,7 +196,6 @@
                   echo "<img src='" .asset('storage/uploaded/addons/' . $addon->descimg_5). "' alt='" .$addon->add_en. "'><br /><br />";
                 if($addon->descimg_6 != '')
                   echo "<img src='" .asset('storage/uploaded/addons/' . $addon->descimg_6). "' alt='" .$addon->add_en. "'><br /><br />";
-
                 if(app()->getLocale() == 'en') {
                   echo '<b>';
                   echo $i+1 .'. ' .$addon->add_en. ' - RM' .number_format($addon->addprice, 2);
@@ -262,59 +254,69 @@
 
       <div class="col-md-4">
         <div class="register-box">
-          <?php if (Auth::check()) {
-                  foreach($orders as $order) {
-                    if($order->user_id == Auth::id() && $order->race_id == $race->rid) {
-                      echo '<h4>';
-                      echo __("You had registered");
-                      echo '</h4>';
-                      echo '<a href="/dashboard" class="race-register-btn">';
-                      echo __("Go to profile");
-                      echo '</a>';
-                    } else {
-                      if($race->price == 0 && app()->getLocale() == 'en')
-                        echo '<h3>Free</h3>';
-                      if($race->price == 0 && app()->getLocale() == 'ms')
-                        echo '<h3>Percuma</h3>';
-                      if($race->price == 0 && app()->getLocale() == 'zh')
-                        echo '<h3>免费</h3>';
-                      if($race->price != 0 && app()->getLocale() == 'en')
-                        echo '<h3>RM ' .number_format($race->price, 2). '</h3>';
-                      if($race->price != 0 && app()->getLocale() == 'ms')
-                        echo '<h3>RM ' .number_format($race->price, 2). '</h3>';
-                      if($race->price != 0 && app()->getLocale() == 'zh')
-                        echo '<h3>RM ' .number_format($race->price, 2). '</h3>';
+          <?php
+            $uid = Auth::id();
+            $isRegistered = false;
 
-                      date_default_timezone_set("Asia/Kuala_Lumpur");
+            //if not user
+            if($uid == '') {
+              echo '<a href="/login" class="race-register-btn">';
+              echo __("Login to register");
+              echo '</a>';
+              echo '<h6>Finisher’s Award</h6>' .
+              '<p><img src="' .asset('img/register-1.png'). '">&ensp;Finisher\'s Medal</p>' .
+              '<p><img src="' .asset('img/register-2.png'). '">&ensp;Finisher\'s Certificate</p>';
+            }
 
-                      $deadT = $race->dead_to. ' ' .$race->deadtime_to;
-
-                      $deadline = DateTime::createFromFormat('Y-m-d H:i a', $deadT)->format('Y-m-d H:i a');
-
-                      $cur = date('Y-m-d H:i a');
-
-                      if($cur < $deadline) {
-                        echo '<a href="/registerrace/' .$race->rid. '" class="race-register-btn">';
-                        echo __("Register");
-                        echo '</a>';
-
-                      } else {
-                        echo '<button type="button" class="race-register-btn" disabled>';
-                        echo __("Registration closed");
-                        echo '</button>';
-                      }
-
-                      if($race->price != 0)
-                        echo '<h6>Finisher’s Award</h6>' .
-                        '<p><img src="' .asset('img/register-1.png'). '">&ensp;Finisher\'s Medal</p>' .
-                        '<p><img src="' .asset('img/register-2.png'). '">&ensp;Finisher\'s Certificate</p>';
-                    }
+            //if user
+            if($uid != '') {
+              //check register or not
+              foreach($orders as $order) {
+                if($order->user_id == $uid && $order->race_id == $race->rid) {
+                  $isRegistered = true;
                 }
-              } else {
-                echo '<a href="/login" class="race-register-btn">';
-                echo __("Login to register");
+              }
+
+              if($isRegistered) {
+                echo '<h4>';
+                echo __("You had registered");
+                echo '</h4>';
+                echo '<a href="/dashboard" class="race-register-btn">';
+                echo __("Go to profile");
                 echo '</a>';
-              } ?>
+              } else {
+                if($race->price == 0 && app()->getLocale() == 'en')
+                  echo '<h3>Free</h3>';
+                if($race->price == 0 && app()->getLocale() == 'ms')
+                  echo '<h3>Percuma</h3>';
+                if($race->price == 0 && app()->getLocale() == 'zh')
+                  echo '<h3>免费</h3>';
+                if($race->price != 0 && app()->getLocale() == 'en')
+                  echo '<h3>RM ' .number_format($race->price, 2). '</h3>';
+                if($race->price != 0 && app()->getLocale() == 'ms')
+                  echo '<h3>RM ' .number_format($race->price, 2). '</h3>';
+                if($race->price != 0 && app()->getLocale() == 'zh')
+                  echo '<h3>RM ' .number_format($race->price, 2). '</h3>';
+                date_default_timezone_set("Asia/Kuala_Lumpur");
+                $deadT = $race->dead_to. ' ' .$race->deadtime_to;
+                $deadline = DateTime::createFromFormat('Y-m-d H:i a', $deadT)->format('Y-m-d H:i a');
+                $cur = date('Y-m-d H:i a');
+                if($cur < $deadline) {
+                  echo '<a href="/registerrace/' .$race->rid. '" class="race-register-btn">';
+                  echo __("Register");
+                  echo '</a>';
+                } else {
+                  echo '<button type="button" class="race-register-btn" disabled>';
+                  echo __("Registration closed");
+                  echo '</button>';
+                }
+                if($race->price != 0)
+                  echo '<h6>Finisher’s Award</h6>' .
+                  '<p><img src="' .asset('img/register-1.png'). '">&ensp;Finisher\'s Medal</p>' .
+                  '<p><img src="' .asset('img/register-2.png'). '">&ensp;Finisher\'s Certificate</p>';
+              }
+            }
+          ?>
         </div>
       </div>
     </div>
@@ -330,30 +332,22 @@ const second = 1000,
     minute = second * 60,
     hour = minute * 60,
     day = hour * 24;
-
 let countDown = new Date('<?= $countDate ?>').getTime(),
   x = setInterval(function() {
-
     let now = new Date().getTime(),
     distance = countDown - now;
-
     if(distance > 0) {
       document.getElementById('days').innerText = Math.floor(distance / (day)),
       document.getElementById('hours').innerText = Math.floor((distance % (day)) / (hour)),
       document.getElementById('minutes').innerText = Math.floor((distance % (hour)) / (minute)),
       document.getElementById('seconds').innerText = Math.floor((distance % (minute)) / second);
-
     } else {
       document.getElementById("countdown-timer").style.display = "none";
       document.getElementById("countdown-closed").style.display = "block";
     }
-
-
   }, second)
-
   var acc = document.getElementsByClassName("accordion");
   var i;
-
   for (i = 0; i < acc.length; i++) {
     acc[i].addEventListener("click", function() {
       this.classList.toggle("active");

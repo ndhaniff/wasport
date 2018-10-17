@@ -114,7 +114,7 @@ var postal = "{{$user->postal}}"
       <div class="user-history">
         <div class="row">
           <div class="col-md-6">
-            <h3>{{__("Joined Races")}}</h3>
+            <h3>{{$race_count}} {{__("Joined Races")}}</h3>
           </div>
           <div class="col-md-6">
             <span id="view-all"><a href="#">{{__("View All")}}</a></span>

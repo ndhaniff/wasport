@@ -35,7 +35,8 @@ class Step4 extends Component {
       engrave_name: props.getStore().engrave_name,
       rid : props.getStore().rid,
       uid : props.getStore().uid,
-      addons_selected: props.getStore().addons_selected
+      addons_selected: props.getStore().addons_selected,
+      loading: false,
     };
   }
 
@@ -57,6 +58,8 @@ class Step4 extends Component {
 
     e.preventDefault()
 
+    this.setState({loading: true})
+
     let data = new FormData;
 
     data.append('firstname', this.state.firstname)
@@ -77,6 +80,8 @@ class Step4 extends Component {
 
     axios.post('/user/submitrace',data).then((res) => {
       if(res.data.success){
+
+      this.setState({loading: false})
 
        MySwal.fire({
          toast: true,
@@ -131,6 +136,11 @@ class Step4 extends Component {
         sm: { span: 20, offset: 0 },
       },
     };
+
+    if(this.state.loading) {
+      var submitBtn = <button className="buttonload" id="register-race-payment"> <i className="fa fa-spinner fa-spin"></i>Loading</button>
+      var submitBtn = <Button type="primary" htmlType="submit" id="register-race-payment">Make Payment</Button>
+    }
 
     if(this.state.engrave_name != '') {
       var displayEngrave = 'Medal Engraving: ' + this.state.engrave_name
@@ -300,7 +310,7 @@ class Step4 extends Component {
 
           <FormItem {...formItemLayoutWithOutLabel}>
             <Button type="primary" onClick={() => this.jumpToStep(2)} id="register-race-prev">Previous</Button>
-            <Button type="primary" htmlType="submit" id="register-race-payment">Make Payment</Button>
+            {submitBtn}
           </FormItem>
         </Form>
         </div>
