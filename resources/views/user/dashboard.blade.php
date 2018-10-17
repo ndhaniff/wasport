@@ -43,13 +43,26 @@ var postal = "{{$user->postal}}"
     <div class="container">
 
       <div class="user-profile-block">
-        <div id="user-profile"></div>
+
+
+        <?php if(app()->getLocale() == 'en')
+                echo '<div id="user-profile-en"></div>';
+              if(app()->getLocale() == 'ms')
+                echo '<div id="user-profile-ms"></div>';
+              if(app()->getLocale() == 'zh')
+                echo '<div id="user-profile-zh"></div>'; ?>
       </div>
 
       <hr>
 
       <div class="user-strava-block">
-        <div id="user-strava"></div>
+        <h3>{{__("Stats")}}</h3>
+        <?php if(app()->getLocale() == 'en')
+                echo '<div id="user-strava-en"></div>';
+              if(app()->getLocale() == 'ms')
+                echo '<div id="user-strava-ms"></div>';
+              if(app()->getLocale() == 'zh')
+                echo '<div id="user-strava-zh"></div>'; ?>
       </div>
 
       <hr>

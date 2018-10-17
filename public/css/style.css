@@ -115,7 +115,8 @@ button:focus,
     border-radius: 6px;
 }
 
-.ant-radio-button-wrapper:not(:first-child):before {
+.ant-radio-button-wrapper:not(:first-child):before,
+:root .ant-tabs-tab-next-icon:before, :root .ant-tabs-tab-prev-icon:before {
   display: none;
 }
 
@@ -136,6 +137,14 @@ button:focus,
 ..ant-select-dropdown-menu li:first-child {
   background-color: #ffd1d1;
 }
+
+.ant-modal-close-x {
+  width: 45px;
+  height: 38px;
+  line-height: 38px;
+}
+
+.ant-modal-body { padding: 3rem 24px; }
 
 #scroll {
     position:fixed;
@@ -820,6 +829,8 @@ CONTACT US
 /*
 USER DASHBOARD
 */
+.userdash h3 { font-family: 'SourceSansPro-Semibold'; }
+
 .user-profile-block,
 .user-strava-block,
 .user-medal,

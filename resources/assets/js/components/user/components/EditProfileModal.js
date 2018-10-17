@@ -32,10 +32,10 @@ class EditProfileModal extends Component {
         <Button onClick={this.showModal}>Edit Profile</Button>
 
         <Modal
-        visible={this.state.visible}
-        onOk={this.handleOk}
-        onCancel={this.handleCancel}
-        footer={null} >
+          visible={this.state.visible}
+          onOk={this.handleOk}
+          onCancel={this.handleCancel}
+          footer={null} >
         <EditProfileTabs/>
         </Modal>
       </div>
