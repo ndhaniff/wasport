@@ -35,7 +35,8 @@ class Step4Ms extends Component {
       engrave_name: props.getStore().engrave_name,
       rid : props.getStore().rid,
       uid : props.getStore().uid,
-      addons_selected: props.getStore().addons_selected
+      addons_selected: props.getStore().addons_selected,
+      loading: false,
     };
   }
 
@@ -54,6 +55,8 @@ class Step4Ms extends Component {
   handleSubmit = (e) => {
     //Continue to payment gateway
     //Pass the details needed
+
+    this.setState({loading: true})
 
     e.preventDefault()
 
@@ -77,6 +80,8 @@ class Step4Ms extends Component {
 
     axios.post('/user/submitrace',data).then((res) => {
       if(res.data.success){
+
+        this.setState({loading: false})
 
        MySwal.fire({
          toast: true,
@@ -131,6 +136,11 @@ class Step4Ms extends Component {
         sm: { span: 20, offset: 0 },
       },
     };
+
+    if(this.state.loading) {
+      var submitBtn = <button className="buttonload" id="register-race-payment"> <i className="fa fa-spinner fa-spin"></i>Loading</button>
+      var submitBtn = <Button type="primary" htmlType="submit" id="register-race-payment" style={{width : '145px'}}>Membuat Bayaran</Button>
+    }
 
     if(this.state.engrave_name != '') {
       var displayEngrave = 'Pengukiran pingat: ' + this.state.engrave_name
@@ -300,7 +310,7 @@ class Step4Ms extends Component {
 
           <FormItem {...formItemLayoutWithOutLabel}>
             <Button type="primary" onClick={() => this.jumpToStep(2)} id="register-race-prev">Balik</Button>
-            <Button type="primary" htmlType="submit" id="register-race-payment" style={{width : '145px'}}>Membuat Bayaran</Button>
+            {submitBtn}
           </FormItem>
         </Form>
         </div>
