@@ -59,7 +59,7 @@
 }
 
 .ant-click-animating-node, [ant-click-animating-without-extra-node]:after {
-    border: 0 solid #E02E3C;
+    border: 1px solid #E02E3C;
 }
 
 .ant-radio-button-wrapper-checked:active {
@@ -107,7 +107,7 @@
 
 .ant-btn.active, .ant-btn:active, .ant-btn:focus, .ant-btn:hover {
   color: #E02E3C;
-  border-color: #E02E3C;
+  border: 1px solid #E02E3C;
   background-color: #fff;
 }
 

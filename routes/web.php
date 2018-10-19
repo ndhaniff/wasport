@@ -27,7 +27,7 @@ Route::group([
   Route::get('/relatedcooperation', 'Pages\HomeController@relatedCooperation')->name('relatedcooperation');
   Route::get('/contactus', 'Pages\ContactController@contactus')->name('contactus');
   Route::get('/registersuccess', 'Pages\HomeController@registersuccess')->name('registersuccess');
-  Route::get('/registerrace/{rid}', 'User\UserController@registerRace')->name('registerrace');
+  //Route::get('/registerrace/{rid}', 'User\UserController@registerRace')->name('registerrace');
 
   //user
   Route::get('/dashboard', 'User\UserController@dashboard' )->name('user.dashboard');

@@ -159,7 +159,7 @@ class UserController extends Controller
       return view('user.medals', ['medals' => $medals]);
     }
 
-    public function registerRace($rid) {
+    /*public function registerRace($rid) {
       $user = Auth::user();
 
       $date = date('Y-m-d');
@@ -185,7 +185,7 @@ class UserController extends Controller
       } else {
         return view('pages.registerrace', ['new' => $new, 'race' => $race, 'addons' => $addons]);
       }
-    }
+    }*/
 
     public function submitRace(Request $request) {
 

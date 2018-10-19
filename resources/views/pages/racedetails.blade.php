@@ -1,5 +1,11 @@
 @extends('layouts.master')
 
+<style>
+.anticon:before { display: none !important; }
+
+svg:not(:root) { display: none; }
+</style>
+
 @section('content')
 
 <div class="displayrace">
@@ -132,7 +138,7 @@
           <ul>
             <?php $deadT = DateTime::createFromFormat('Y-m-d', $race->dead_to)->format('d M Y');
                   echo '<li>Last submission by ' .$deadT. ' (' .$race->deadtime_to. ') GMT +08</li>'; ?>
-            <li>“No completion, no medal” policy; This race is based on honour system, Wasport will do periodic checks on the submissions. Treat yourself, don’t cheat yourself.</li>
+            <li>"No completion, no medal" policy; This race is based on honour system, Wasport will do periodic checks on the submissions. Treat yourself, don’t cheat yourself.</li>
             <li>Change of category, refund and/or transfer of bib is not allowed.</li>
             <li>Pedometers are not allowed.</li>
             <li>All GPS-based app are accepted.</li>
@@ -302,9 +308,10 @@
                 $deadline = DateTime::createFromFormat('Y-m-d H:i a', $deadT)->format('Y-m-d H:i a');
                 $cur = date('Y-m-d H:i a');
                 if($cur < $deadline) {
-                  echo '<a href="/registerrace/' .$race->rid. '" class="race-register-btn">';
+                  /*echo '<a href="/registerrace/' .$race->rid. '" class="race-register-btn">';
                   echo __("Register");
-                  echo '</a>';
+                  echo '</a>';*/
+                  echo '<div id="register-race-en"></div>';
                 } else {
                   echo '<button type="button" class="race-register-btn" disabled>';
                   echo __("Registration closed");
@@ -323,6 +330,14 @@
 
   </div>
 </div>
+
+<?php $addon_arr = array();
+
+      foreach($addons as $addon) {
+        $addon_arr[] = array('aid' => $addon->aid, 'add_en' => $addon->add_en, 'addprice' => $addon->addprice, 'type' => $addon->type);
+      }
+
+      $addon_json = json_encode($addon_arr); ?>
 
 <?php $theDate = $race->dead_to . ' ' . $race->deadtime_to;
       $countDate = DateTime::createFromFormat('Y-m-d H:i a', $theDate)->format('M j, Y H:i:s'); ?>
@@ -361,4 +376,56 @@ let countDown = new Date('<?= $countDate ?>').getTime(),
   }
 </script>
 
+@endsection
+
+@section('script')
+
+<script>
+  var race = {
+    rid: "{{$race->rid}}",
+    title_en: "{{$race->title_en}}",
+    title_ms: "{{$race->title_ms}}",
+    title_zh: "{{$race->title_zh}}",
+    price: "{{$race->price}}",
+    category: "{{$race->category}}",
+    engrave: "{{$race->engrave}}"
+  }
+
+  var addons = JSON.parse('<?= $addon_json; ?>');
+
+</script>
+
+@if (Auth::check())
+  <script>
+    var user = {
+      id: "{{$user->id}}",
+      firstname: "{{$user->firstname}}",
+      lastname: "{{$user->lastname}}",
+      phone: "{{$user->phone}}",
+      gender: "{{$user->gender}}",
+      birthday: "{{$user->birthday}}",
+      add_fl: "{{$user->add_fl}}",
+      add_sl: "{{$user->add_sl}}",
+      city: "{{$user->city}}",
+      state: "{{$user->state}}",
+      postal: "{{$user->postal}}"
+    }
+  </script>
+@else
+<script>
+  var user = {
+    id: "",
+    firstname: "",
+    lastname: "",
+    phone: "",
+    gender: "",
+    birthday: "",
+    add_fl: "",
+    add_sl: "",
+    city: "",
+    state: "",
+    postal: ""
+  }
+</script>
+@endif
 @endsection

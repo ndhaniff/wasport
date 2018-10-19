@@ -25,6 +25,7 @@ ol.progtrckr li {
   text-align: center;
   line-height: 4.5rem;
   cursor: pointer;
+  margin: 0 -5px;
 }
 
 ol.progtrckr li span {
@@ -134,12 +135,12 @@ ol.progtrckr li.progtrckr-done:hover:before {
 }
 
 .ant-form {
-  width: 500px;
+  width: 470px;
   margin: 0 auto !important;
 }
 
 .ant-form-item-control {
-  width: 500px;
+  width: 470px;
 }
 
 ol.progtrckr li.progtrckr-done:hover:before {
@@ -713,6 +714,8 @@ RACE DETAILS
   padding: .5rem;
   border-radius: 5px;
   font-family: 'SourceSansPro-Semibold';
+  height: 40px;
+  font-size: 16px;
 }
 
 .race-register-btn a,
@@ -785,6 +788,8 @@ ol.progtrckr li.progtrckr-done:before:hover {
 #registerrace .anticon-check:before { color: #e02e3c; }
 
 #registerrace .ant-steps-item-finish>.ant-steps-item-content>.ant-steps-item-title:after { background-color: #e02e3c; }
+
+.footer-buttons { display: none; }
 
 /*
 ABOUT US

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Model\Race;
 use App\Model\Addon;
 use App\Model\Order;
+use App\Model\OrderAddon;
 use DB;
 use Auth;
 
@@ -41,6 +42,24 @@ class RacesController extends Controller
 
       $orders = DB::table('orders')->get();
 
-      return view('pages.racedetails', ['race' => $race, 'addons' => $addons, 'orders' => $orders]);
+      $user = Auth::user();
+
+      $date = date('Y-m-d');
+
+      $new = DB::table('races')
+        ->where('date_to', '>', $date)
+        ->orderBy('date_from', 'ASC')
+        ->limit(3)
+        ->get();
+
+      if (Auth::check())
+      {
+        $user = Auth::user();
+        return view('pages.racedetails', ['new' => $new, 'user' => $user, 'race' => $race, 'addons' => $addons, 'orders' => $orders]);
+      } else {
+        return view('pages.racedetails', ['new' => $new, 'race' => $race, 'addons' => $addons, 'orders' => $orders]);
+      }
+
+      //return view('pages.racedetails', ['race' => $race, 'addons' => $addons, 'orders' => $orders]);
     }
 }
