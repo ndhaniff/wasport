@@ -124,7 +124,7 @@ var medal = JSON.parse('<?= $medal_json; ?>');
 
         <div id="user-medal-frame">
           <div id="dashboard-medal-en"></div>
-          
+
         </div>
       </div>
 
@@ -141,7 +141,7 @@ var medal = JSON.parse('<?= $medal_json; ?>');
         </div>
 
         <?php //if user never join race before
-              if($latest_race->isEmpty() && $last_join->isEmpty()) {
+              if($latest_race->isEmpty() {
                   echo '<div id="user-history-none">';
                   echo '<center>';
                   echo '<img src="' .asset('img/strava-run.png'). '">';
