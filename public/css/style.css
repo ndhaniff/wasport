@@ -907,7 +907,10 @@ USER DASHBOARD
 
 .userdash #view-all { float: right; }
 
-.userdash #view-all a { color: #df2e3c; }
+.userdash #view-all a {
+  color: #df2e3c;
+  font-family: 'SourceSansPro-Semibold';
+}
 
 .userdash #view-all a:focus { text-decoration: none; }
 
@@ -973,6 +976,8 @@ USER DASHBOARD
 }
 
 #user-medal-frame .row { margin-top: 0; }
+
+#dash-medal-modal { text-align: center; }
 
 #user-history { margin: 6rem auto 9rem auto; }
 

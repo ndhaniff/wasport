@@ -42,11 +42,11 @@ svg:not(:root) { display: none; }
 
       $race_json = json_encode($latest_race_arr);
 
-      $medals_arr = array();
+      $medal_arr = array();
       $j=0;
 
       foreach($medals as $medal) {
-        $medals_arr[] = array('mid' => $medal->mid,
+        $medal_arr[] = array('mid' => $medal->mid,
                               'title_en' => $medal->title_en,
                               'title_ms' => $medal->title_ms,
                               'title_zh' => $medal->title_zh,
@@ -55,7 +55,7 @@ svg:not(:root) { display: none; }
         if($j==3) break;
       }
 
-      $medal_json = json_encode($medals_arr);
+      $medal_json = json_encode($medal_arr);
        ?>
 
 <script>
@@ -123,8 +123,12 @@ var medal = JSON.parse('<?= $medal_json; ?>');
 
 
         <div id="user-medal-frame">
-          <div id="dashboard-medal-en"></div>
-
+          <?php if(app()->getLocale() == 'en')
+                  echo '<div id="dashboard-medal-en"></div>';
+                if(app()->getLocale() == 'ms')
+                  echo '<div id="dashboard-medal-ms"></div>';
+                if(app()->getLocale() == 'zh')
+                  echo '<div id="dashboard-medal-zh"></div>'; ?>
         </div>
       </div>
 
@@ -160,7 +164,6 @@ var medal = JSON.parse('<?= $medal_json; ?>');
                   echo '<div id="user-history-joined-ms"></div>';
                 if(app()->getLocale() == 'zh')
                   echo '<div id="user-history-joined-zh"></div>';
-
               }
 
 
