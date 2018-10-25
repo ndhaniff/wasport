@@ -100,7 +100,7 @@ class RegisterController extends Controller
         $thisUser = User::findOrFail($user->id);
         $this->sendEmail($thisUser);
 
-        return $user;
+        return view('pages.registersuccess');
     }
 
     /**
