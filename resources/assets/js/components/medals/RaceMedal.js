@@ -6,17 +6,16 @@ class RaceMedal extends React.Component{
   constructor(){
     super()
     this.state = {
-      medal: window.medal,
     }
   }
 
 
 
   render(){
-    
+
     return(
       <div>
-      {this.props.medalID}
+      hi
       </div>
     )
   }

@@ -10,17 +10,16 @@ class DashboardMedal extends Component{
   constructor(){
     super();
     this.state = {
-      medal : window.medal
+      medal : window.medal,
+      mid: ''
     }
   }
 
   state = { visible: false }
 
-  showModal = (mid) => {
+  showModal = () => {
     this.setState({
       visible: true,
-      medalID: mid,
-      medalInfo: medal
     });
   }
 
@@ -44,7 +43,7 @@ class DashboardMedal extends Component{
     for(var i=0; i<medal.length; i++) {
       items.push(
         <div className="col-md-4">
-          <Button onClick={this.showModal(medal[i]['mid'])} >
+          <Button onClick={this.showModal()} >
             <img src={medal[i]['grey_medal']} />
           </Button>
 
@@ -53,7 +52,7 @@ class DashboardMedal extends Component{
             onOk={this.handleOk}
             onCancel={this.handleCancel}
             footer={false} >
-            <RaceMedal medalID = {this.state.medalID}/>
+            <RaceMedal/>
           </Modal>
         </div>)}
 
