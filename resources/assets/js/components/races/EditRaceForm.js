@@ -143,6 +143,7 @@ export default class EditRaceForm extends Component {
         e.preventDefault()
 
         let {about_en,about_ms,about_zh,awards_en,awards_ms,awards_zh,medals_en,medals_ms,medals_zh,title_en,title_ms,title_zh,price,category,engrave,RaceDateFrom,RaceDateTo,RaceDeadlineFrom,RaceDeadlineTo,time_from,time_to,deadtime_from,deadtime_to,headerImg,awardimg_1,awardimg_2,awardimg_3,awardimg_4,awardimg_5,awardimg_6,medalimg_1,medalimg_2,medalimg_3,medalimg_4,medalimg_5,medalimg_6,rid} = this.state
+        let{toggleDrop}  = this.state
 
         let priceF = '';
         priceF = parseFloat(price).toFixed(2)
@@ -192,7 +193,7 @@ export default class EditRaceForm extends Component {
         let award_img = [];
         let medal_img = [];
 
-        if(typeof headerImg[0] != 'undefined') { message.push('Banner') }
+        if(toggleDrop) { message.push('Banner') }
         if(title_ms === '') { message.push('Title(MS)') }
         if(title_zh === '') { message.push('Title(ZH)') }
         if(about_ms.length == 0) { message.push('About(MS)') }
@@ -839,8 +840,8 @@ export default class EditRaceForm extends Component {
                                     <div className="form-row">
                                       <div className="col-sm-12 col-md-4">
                                         <div className="form-group">
-                                            <label>Category (Eg. 3km,5km,10km. Separate with ',')</label>
-                                            <input onChange={this.handleInputChange} name="category" className="form-control" type="text" />
+                                            <label>Category (Eg. 3km,5km,10km. Separate with ',')<span className="required-field">*</span></label>
+                                            <input onChange={this.handleInputChange} value={this.state.category} name="category" className="form-control" type="text" />
                                         </div>
                                       </div>
 
@@ -933,7 +934,7 @@ export default class EditRaceForm extends Component {
                                     <div className="form-group">
                                     <Tabs defaultActiveKey="1" type="card">
                                         <TabPane tab="En" key="1">
-                                            <label htmlFor="about">Awards (EN)<span className="required-field">*</span></label>
+                                            <label htmlFor="about">Awards (EN)</label>
                                             <ReactQuill style={{'minHeight':'500px'}} modules={this.modules} theme="snow"  value={this.state.awards_en} onChange={this.handleAwardsEnChange} required/>
                                             <input type="hidden" name="awards_en" value={this.state.awards_en}/>
                                         </TabPane>

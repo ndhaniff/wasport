@@ -663,7 +663,7 @@ export default class CreateRaceForm extends Component {
               var dropzone_medalimg_1 =
                 <Dropzone
                   className="dropzone-style"
-                  accept="image/jpeg, image/png"
+                  accept="image/jpeg, image/png, image/gif"
                   onDrop={this.onDrop_medalimg_1}
                   multiple={false}
                   name="amedalmg_1">
@@ -866,7 +866,7 @@ export default class CreateRaceForm extends Component {
                                     <div className="form-row">
                                       <div className="col-sm-12 col-md-4">
                                         <div className="form-group">
-                                            <label>Category (Eg. 3km,5km,10km. Separate with ',')</label>
+                                            <label>Category (Eg. 3km,5km,10km. Separate with ',')<span className="required-field">*</span></label>
                                             <input onChange={this.handleInputChange} name="category" className="form-control" type="text" />
                                         </div>
                                       </div>
@@ -962,7 +962,7 @@ export default class CreateRaceForm extends Component {
                                     <div className="form-group">
                                     <Tabs defaultActiveKey="1" type="card">
                                         <TabPane tab="En" key="1">
-                                            <label htmlFor="about">Awards (EN)<span className="required-field">*</span></label>
+                                            <label htmlFor="about">Awards (EN)</label>
                                             <ReactQuill style={{'minHeight':'500px'}} modules={this.modules} theme="snow"  value={this.state.awards_en} onChange={this.handleAwardsEnChange} />
                                             <input type="hidden" name="awards_en" value={this.state.awards_en} required/>
                                         </TabPane>

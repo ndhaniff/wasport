@@ -111,7 +111,7 @@ Admin | Races
                 </tr>
                 <tr>
                   <th colspan="2">Price</th>
-                  <td><?php echo ($race->price) ? $race->price : '-'; ?></td>
+                  <td><?php echo ($race->price) ? $race->price : 'Free'; ?></td>
                 </tr>
                 <tr>
                   <th colspan="2">Category</th>

@@ -139,10 +139,11 @@ class Step4 extends Component {
 
     if(this.state.loading) {
       var submitBtn = <button className="buttonload" id="register-race-payment"> <i className="fa fa-spinner fa-spin"></i>Loading</button>
+    } else {
       var submitBtn = <Button type="primary" htmlType="submit" id="register-race-payment">Make Payment</Button>
     }
 
-    if(this.state.engrave_name != '') {
+    if(typeof this.state.engrave_name != 'undefined') {
       var displayEngrave = 'Medal Engraving: ' + this.state.engrave_name
     } else {
       var displayEngrave = ''

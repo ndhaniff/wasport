@@ -59,19 +59,24 @@ class UserController extends Controller
         ->limit(3)
         ->get();
 
-      $last_join = DB::table('orders')
-        ->where('user_id', '=', Auth::id())
-        ->orderBy('oid', 'DESC')
-        ->first();
-
       $number_count = DB::table('orders')
         ->where('user_id', '=', Auth::id())
+        ->get();
+
+      $date = date('Y-m-d');
+
+      $latest_race = DB::table('orders')
+        ->join('races', 'races.rid', '=', 'race_id')
+        ->where('user_id', '=', Auth::id())
+        ->where('date_to', '>', $date)
+        ->orderBy('date_from', 'DESC')
         ->get();
 
       $race_count = $number_count->count();
 
       //return view('user.dashboard')->with('user',$user);
-      return view('user.dashboard', ['user' => $user, 'races' => $races, 'medals' => $medals, 'last_join' => $last_join, 'race_count' => $race_count]);
+      return view('user.dashboard', ['user' => $user, 'races' => $races, 'medals' => $medals,
+                                      'latest_race' => $latest_race, 'race_count' => $race_count]);
     }
 
     public function updateProfile(Request $request){

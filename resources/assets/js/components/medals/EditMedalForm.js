@@ -59,6 +59,7 @@ export default class EditMedalForm extends Component {
         e.preventDefault()
 
         let {name, medal_grey, medal_color, cert, bib, races_id, mid} = this.state
+        let{toggleDrop_medalGrey,toggleDrop_medalColor,toggleDrop_cert,toggleDrop_bib}  = this.state
 
         let data = new FormData;
 
@@ -73,10 +74,14 @@ export default class EditMedalForm extends Component {
         let message = [];
         let messageF = '';
 
-        if(typeof medal_grey[0] != 'undefined') { message.push('Grey Medal') }
+        if(toggleDrop_medalGrey) { message.push('Grey Medal') }
+        if(toggleDrop_medalColor) { message.push('Color Medal') }
+        if(toggleDrop_cert) { message.push('Cert') }
+        if(toggleDrop_bib) { message.push('Bib') }
+        /*if(typeof medal_grey[0] != 'undefined') { message.push('Grey Medal') }
         if(typeof medal_color[0] != 'undefined') { message.push('Color Medal') }
         if(typeof cert[0] != 'undefined') { message.push('Cert') }
-        if(typeof bib[0] != 'undefined') { message.push('Bib') }
+        if(typeof bib[0] != 'undefined') { message.push('Bib') }*/
         if(races_id == '') { message.push('Races') }
 
         messageF = message.join(', ')

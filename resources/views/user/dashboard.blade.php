@@ -15,6 +15,49 @@ svg:not(:root) { display: none; }
 .anticon-close-circle:before, .anticon-cross-circle:before { display: none; }
 </style>
 
+<?php $latest_race_arr = array();
+      $submission = 'false';
+      $i=0;
+
+      foreach($latest_race as $latest) {
+        $date = date('Y-m-d');
+        $dateF = DateTime::createFromFormat('Y-m-d', $latest->date_from)->format('d M Y');
+        $dateT = DateTime::createFromFormat('Y-m-d', $latest->date_to)->format('d M Y');
+
+        foreach($medals as $medal) {
+          if($medal->races_id == $latest->race_id)
+            $grey_medal = asset('storage/uploaded/medals/grey/' . $medal->medal_grey);
+        }
+
+        $latest_race_arr[] = array('submission' => $submission,
+                                    'title_en' => $latest->title_en,
+                                    'title_ms' => $latest->title_ms,
+                                    'title_zh' => $latest->title_zh,
+                                    'category'=> $latest->race_category,
+                                    'date' => $dateF. ' (' .$latest->time_from. ') GMT +08' . ' - ' .$dateT. ' (' .$latest->time_to. ') GMT +08',
+                                    'header' => asset('storage/uploaded/races/' . $latest->header));
+        $i++;
+        if($i==2) break;
+      }
+
+      $race_json = json_encode($latest_race_arr);
+
+      $medals_arr = array();
+      $j=0;
+
+      foreach($medals as $medal) {
+        $medals_arr[] = array('mid' => $medal->mid,
+                              'title_en' => $medal->title_en,
+                              'title_ms' => $medal->title_ms,
+                              'title_zh' => $medal->title_zh,
+                              'grey_medal' => asset('storage/uploaded/medals/grey/' . $medal->medal_grey));
+        $j++;
+        if($j==3) break;
+      }
+
+      $medal_json = json_encode($medals_arr);
+       ?>
+
 <script>
 var user = {
   id: "{{$user->id}}",
@@ -37,6 +80,8 @@ var city = "{{$user->city}}"
 var state = "{{$user->state}}"
 var postal = "{{$user->postal}}"
 
+var race = JSON.parse('<?= $race_json; ?>');
+var medal = JSON.parse('<?= $medal_json; ?>');
 </script>
 
   <div class="userdash p-5">
@@ -78,34 +123,8 @@ var postal = "{{$user->postal}}"
 
 
         <div id="user-medal-frame">
-          <div class="row">
-            @foreach($medals as $medal)
-            <div class="col-md-4">
-              <a id="medal-modal" data-toggle="modal" data-target="#medalViewer-{{$medal->mid}}" data-id="{{$medal->mid}}">
-                <img src="<?= asset('storage/uploaded/medals/grey/' . $medal->medal_grey) ?>" alt="{{$medal->title_en}}">
-              </a>
-            </div>
-
-            <!-- The Modal -->
-            <div class="modal hide fade" id="medalViewer-{{$medal->mid}}" tabindex="-1" role="document" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-
-                  <!-- Modal body -->
-                  <div class="modal-body">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-
-                    <img src="<?= asset('storage/uploaded/medals/grey/' . $medal->medal_grey) ?>" alt="{{$medal->title_en}}" id="modal-img"> <br>
-
-                    <h3>{{$medal->title_en}}</h3>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            @endforeach
-          </div>
+          <div id="dashboard-medal-en"></div>
+          
         </div>
       </div>
 
@@ -121,17 +140,62 @@ var postal = "{{$user->postal}}"
           </div>
         </div>
 
-        <?php if($last_join == '') {
-                echo '<div id="user-history">';
-                echo '<center>';
-                echo '<img src="' .asset('img/strava-run.png'). '">';
-                echo '<p>';
-                echo __("Your races will show up here and you’ll be able to submit your run when it start");
-                echo '</p>';
-                echo '</center>';
-                echo '</div>';
-              }  ?>
+        <?php //if user never join race before
+              if($latest_race->isEmpty() && $last_join->isEmpty()) {
+                  echo '<div id="user-history-none">';
+                  echo '<center>';
+                  echo '<img src="' .asset('img/strava-run.png'). '">';
+                  echo '<p>';
+                  echo __("Your races will show up here and you’ll be able to submit your run when it start");
+                  echo '</p>';
+                  echo '</center>';
+                  echo '</div>';
+              }
 
+              //if user has join race that submission not yet open
+              if(!$latest_race->isEmpty()) {
+                if(app()->getLocale() == 'en')
+                  echo '<div id="user-history-joined-en"></div>';
+                if(app()->getLocale() == 'ms')
+                  echo '<div id="user-history-joined-ms"></div>';
+                if(app()->getLocale() == 'zh')
+                  echo '<div id="user-history-joined-zh"></div>';
+
+              }
+
+
+                /*echo '<div id="user-history-joined">';
+
+                echo '<div class="row">';
+                for($i=0; $i<1; $i++) {
+                  echo '<div class="col-md-10">';
+                  //echo '<img src="' .asset('storage/uploaded/races/' . $latest_race[$i]->header). '">';
+
+                  echo '<h4>' .$latest_race[$i]->title_en. '</h4>';
+
+                  $dateF = DateTime::createFromFormat('Y-m-d', $latest_race[$i]->date_from)->format('d M Y');
+                  $dateT = DateTime::createFromFormat('Y-m-d', $latest_race[$i]->date_to)->format('d M Y');
+
+                  echo '<p style="font-family:SourceSansPro-Light;">' .$dateF. ' (' .$latest_race[$i]->time_from. ') GMT +08' . ' - ' .$dateT. ' (' .$latest_race[$i]->time_to. ') GMT +08'. '</p>';
+
+                  echo '<div id="race-progress"></div>';
+
+                  echo '</div>';
+
+                  echo '<div class="col-md-2">';
+                  foreach($medals as $medal) {
+                    if($medal->races_id == $latest_race[$i]->race_id)
+                      echo '<img src="' .asset('storage/uploaded/medals/grey/' . $medal->medal_grey). '">';
+                  }
+                  echo '</div>';
+                }
+                echo '</div>';
+                echo '</div>';
+              }*/
+
+              //if user had joined past race && no join new race
+              //if(!$last_join->isEmpty())
+              ?>
 
       </div>
 
@@ -150,32 +214,34 @@ var postal = "{{$user->postal}}"
         <div class="row">
           @foreach ($races as $race)
           <div class="col-sm-12 col-md-4">
-            <a href="racedetails/{{ $race->rid }}">
-              <div class="race-box">
-                <div class="race-img">
-                  <img src="<?php echo asset('storage/uploaded/races/' . $race->header) ?>" alt="{{ $race->title_en }}">
-                </div>
-
-                <div class="race-caption">
-                  <?php if(app()->getLocale() == 'en')
-                          echo '<h5>' .$race->title_en. '</h5>';
-                        if(app()->getLocale() == 'ms')
-                          echo '<h5>' .$race->title_ms. '</h5>';
-                        if(app()->getLocale() == 'zh')
-                          echo '<h5>' .$race->title_zh. '</h5>'; ?>
-
-                  <hr>
-
-                  <div class="raceslisting-date">
-                    <?php $dateF = DateTime::createFromFormat('Y-m-d', $race->date_from)->format('d M Y');
-                          $dateT = DateTime::createFromFormat('Y-m-d', $race->date_to)->format('d M Y');
-
-                          echo $dateF. ' (' .$race->time_from. ') GMT +08' . '<br>-<br>' .$dateT. '(' .$race->time_to. ') GMT +08'; ?>
+            <div class="current-listing">
+              <a href="racedetails/{{ $race->rid }}">
+                <div class="race-box">
+                  <div class="race-img">
+                    <img src="<?php echo asset('storage/uploaded/races/' . $race->header) ?>" alt="{{ $race->title_en }}">
                   </div>
 
+                  <div class="race-caption">
+                    <?php if(app()->getLocale() == 'en')
+                            echo '<h5>' .$race->title_en. '</h5>';
+                          if(app()->getLocale() == 'ms')
+                            echo '<h5>' .$race->title_ms. '</h5>';
+                          if(app()->getLocale() == 'zh')
+                            echo '<h5>' .$race->title_zh. '</h5>'; ?>
+
+                    <hr>
+
+                    <div class="raceslisting-date">
+                      <?php $dateF = DateTime::createFromFormat('Y-m-d', $race->date_from)->format('d M Y');
+                            $dateT = DateTime::createFromFormat('Y-m-d', $race->date_to)->format('d M Y');
+
+                            echo $dateF. ' (' .$race->time_from. ') GMT +08' . '<br>-<br>' .$dateT. '(' .$race->time_to. ') GMT +08'; ?>
+                    </div>
+
+                  </div>
                 </div>
-              </div>
-            </a>
+              </a>
+            </div>
           </div>
           @endforeach
         </div>

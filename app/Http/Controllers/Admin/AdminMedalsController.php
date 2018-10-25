@@ -83,10 +83,6 @@ class AdminMedalsController extends Controller
 
         $formdata = [
             'name' => $request->get('name'),
-            'medal_grey' => $request->get('medal_grey'),
-            'medal_color' => $request->get('medal_color'),
-            'cert' => $request->get('cert'),
-            'bib' => $request->get('bib'),
             'races_id' => $request->get('races_id'),
         ];
 
@@ -165,10 +161,6 @@ class AdminMedalsController extends Controller
 
       $formdata = [
         'name' => $request->get('name'),
-        'medal_grey' => $request->get('medal_grey'),
-        'medal_color' => $request->get('medal_color'),
-        'cert' => $request->get('cert'),
-        'bib' => $request->get('bib'),
         'races_id' => $request->get('races_id'),
         'mid' => $request->get('mid')
       ];
@@ -176,11 +168,6 @@ class AdminMedalsController extends Controller
 
       $medal = Medal::find($formdata['mid']);
       $medal->name = $formdata['name'];
-      $medal->medal_grey = $formdata['medal_grey'];
-      $medal->medal_color = $formdata['medal_color'];
-      $medal->cert = $formdata['cert'];
-      $medal->bib = $formdata['bib'];
-      $medal->races_id = $formdata['races_id'];
 
       //handle grey medal
       if($request->hasFile('medal_grey')){

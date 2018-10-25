@@ -38,3 +38,7 @@ require('./components/contact/ContactFormZh');
 require('./components/registerrace/RegisterRaceEn');
 require('./components/registerrace/RegisterRaceMs');
 require('./components/registerrace/RegisterRaceZh');
+require('./components/joinedrace/JoinedRaceEn');
+require('./components/joinedrace/JoinedRaceMs');
+require('./components/joinedrace/JoinedRaceZh');
+require('./components/medals/DashboardMedal')

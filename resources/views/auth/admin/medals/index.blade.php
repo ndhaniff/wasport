@@ -100,19 +100,19 @@ Admin | Medals
                 </tr>
                 <tr>
                   <th>Grey Medal</th>
-                  <td><?php echo ($medal->medal_grey != 'noimage.png') ? 'uploaded' : '-'; ?></td>
+                  <td><?php echo ($medal->medal_grey) ? 'uploaded' : '-'; ?></td>
                 </tr>
                 <tr>
                   <th>Color Medal</th>
-                  <td><?php echo ($medal->medal_color != 'noimage.png') ? 'uploaded' : '-'; ?></td>
+                  <td><?php echo ($medal->medal_color) ? 'uploaded' : '-'; ?></td>
                 </tr>
                 <tr>
                   <th>Bib</th>
-                  <td><?php echo ($medal->bib != 'noimage.png') ? 'uploaded' : '-'; ?></td>
+                  <td><?php echo ($medal->bib) ? 'uploaded' : '-'; ?></td>
                 </tr>
                 <tr>
                   <th>Certificate</th>
-                  <td><?php echo ($medal->cert != 'noimage.png') ? 'uploaded' : '-'; ?></td>
+                  <td><?php echo ($medal->cert) ? 'uploaded' : '-'; ?></td>
                 </tr>
                 <tr>
                   <th>Races</th>

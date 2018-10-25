@@ -3,6 +3,7 @@ html { overflow-x: hidden; }
 body {
   font-family: 'SourceSansPro-Light';
   font-size: 18px;
+  overflow-x: hidden;
 }
 
 .required-field { color: red; }
@@ -163,11 +164,15 @@ ol.progtrckr li.progtrckr-done:hover:before {
   height: 100px;
 }
 
+#logo img {
+    position: relative;
+    margin-top: 10px;
+    left: 32px;
+}
+
 #wasport-logo {
-  position: absolute;
-  top: 0;
-  left: 250px;
-  height: 80px;
+  position: relative;
+  margin-top: 15px;
 }
 
 #logo + div {
@@ -553,24 +558,29 @@ RACE LIST
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.race-img {
+.raceslisting .race-img {
   position: relative;
   width: 100%;
-  height: 270px;
   overflow: hidden;
+  height: 243px;
+  /*height: 270px;*/
 }
 
 .raceslisting img {
   position: absolute;
   margin: auto;
-  min-height: 100%;
+  /*min-height: 100%;
   min-width: 100%;
   left: -100%;
   right: -100%;
   top: -100%;
   bottom: -100%;
   width: 335px;
-  height: 255px;
+  height: 255px;*/
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
 }
 
 .raceslisting-date,
@@ -579,17 +589,17 @@ RACE LIST
   text-align: left;
 }
 
-.raceslisting-date {
+.raceslisting .raceslisting-date {
   color: #df2e3c;
   font-size: 14px;
 }
 
-.race-caption h5 {
+.raceslisting .race-caption h5 {
   color: #000;
   height: 50px;
 }
 
-.race-caption { padding: 15px 25px; }
+.raceslisting .race-caption { padding: 20px 25px; }
 
 /*
 RACE DETAILS
@@ -767,7 +777,7 @@ REGISTER RACE
 
 /* Add a right margin to each icon */
 .fa {
-    margin-left: -12px;
+    margin-left: 4px;
     margin-right: 8px;
 }
 
@@ -882,7 +892,6 @@ USER DASHBOARD
 .user-edit { margin-top: 10px; }
 
 .user-medal .row,
-.user-history .row,
 .user-current .row {
   font-family: 'SourceSansPro-Semibold';
   margin-top: 2.5rem;
@@ -948,14 +957,144 @@ USER DASHBOARD
   width: 100%;
 }
 
+#user-medal-frame .ant-btn {
+  background-color: transparent;
+  height: 200px;
+  border: none;
+}
+
+#user-medal-frame .ant-btn:active,
+#user-medal-frame .ant-btn:focus,
+#user-medal-frame .ant-btn:hover,
+#user-medal-frame .ant-btn .ant-click-animating-node, [ant-click-animating-without-extra-node]:after,
+#user-medal-frame [ant-click-animating-without-extra-node]:after {
+  border: none;
+  background-color: transparent;
+}
+
 #user-medal-frame .row { margin-top: 0; }
 
 #user-history { margin: 6rem auto 9rem auto; }
+
+#user-history-none { margin: 5rem 0 9rem 0; }
 
 .user-medal #modal-img { width: 60%; }
 
 body.modal-open {
     overflow: visible;
+}
+
+#user-history-joined {
+  margin-top: 1rem;
+  padding: 2rem;
+}
+
+#user-history-joined img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.current-listing img {
+    position: absolute;
+    margin: auto;
+    width: 100%;
+    height: 95%;
+    top: 0;
+    left: 0;
+}
+
+.current-listing .race-img {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    height: 215px;
+}
+
+.current-listing .race-caption h5 {
+    color: #000;
+    height: 50px;
+    font-size: 17px;
+}
+
+.current-listing .raceslisting-date {
+    color: #df2e3c;
+    font-size: 13px;
+}
+
+.current-listing .race-caption {
+    padding: 5px 25px 20px 25px;
+}
+
+#joined-medal {
+  width: 100%;
+}
+
+.user-history-joined {
+  border: 1px solid #DFE3E8;
+}
+
+.user-history-joined-content {
+  padding: 2rem;
+}
+
+.user-history-joined hr {
+  margin: 1rem 0 1.5rem 0;
+}
+
+#progress-race-end {
+  float: right;
+}
+
+#progress-race-start,
+#progress-race-end {
+  font-size: 15px;
+}
+
+.user-history-joined h4 {
+  font-size: 1.6rem;
+}
+
+#joined-race-footer .col-sm-4 {
+  float: none;
+  text-align: center;
+}
+
+#joined-race-footer .ant-btn {
+  line-height: 2.5;
+  height: 55px;
+}
+
+#joined-race-footer img {
+  margin-bottom: -8px;
+}
+
+#joined-race-footer span {
+  font-size: 12px;
+}
+
+#joined-race-footer .ant-btn:active,
+#joined-race-footer .ant-btn:focus,
+#joined-race-footer .ant-btn:hover,
+#joined-race-footer .ant-btn,
+#joined-race-footer .ant-click-animating-node, [ant-click-animating-without-extra-node]:after {
+  border: none;
+  background-color: #fff;
+}
+
+#joined-race-footer [ant-click-animating-without-extra-node]:after {
+  border-color: #fff;
+}
+
+#race-bib-canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+#btn-download-canvas {
+    background-color: red;
+    color: #fff;
+    border-radius: 5px;
+    padding: 5px 10px;
 }
 
 /*

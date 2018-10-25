@@ -139,10 +139,11 @@ class Step4Ms extends Component {
 
     if(this.state.loading) {
       var submitBtn = <button className="buttonload" id="register-race-payment"> <i className="fa fa-spinner fa-spin"></i>Loading</button>
+    } else {
       var submitBtn = <Button type="primary" htmlType="submit" id="register-race-payment" style={{width : '145px'}}>Membuat Bayaran</Button>
     }
 
-    if(this.state.engrave_name != '') {
+    if(typeof this.state.engrave_name != 'undefined') {
       var displayEngrave = 'Pengukiran pingat: ' + this.state.engrave_name
     } else {
       var displayEngrave = ''

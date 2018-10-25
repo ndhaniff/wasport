@@ -110,13 +110,25 @@ svg:not(:root) { display: none; }
 
           <br />
 
-          <h6>Medals</h6>
-          <?php if(app()->getLocale() == 'en')
-                  echo htmlspecialchars_decode($race->medals_en);
-                if(app()->getLocale() == 'ms')
-                  echo htmlspecialchars_decode($race->medals_ms);
-                if(app()->getLocale() == 'zh')
-                  echo htmlspecialchars_decode($race->medals_zh); ?>
+          <?php if($race->price == 0) {
+                  echo '<h6>Finisher\'s Award</h6>';
+
+                  if(app()->getLocale() == 'en')
+                    echo htmlspecialchars_decode($race->medals_en);
+                  if(app()->getLocale() == 'ms')
+                    echo htmlspecialchars_decode($race->medals_ms);
+                  if(app()->getLocale() == 'zh')
+                    echo htmlspecialchars_decode($race->medals_zh);
+                } else {
+                  echo '<h6>Medals</h6>';
+
+                  if(app()->getLocale() == 'en')
+                    echo htmlspecialchars_decode($race->medals_en);
+                  if(app()->getLocale() == 'ms')
+                    echo htmlspecialchars_decode($race->medals_ms);
+                  if(app()->getLocale() == 'zh')
+                    echo htmlspecialchars_decode($race->medals_zh);
+                } ?>
         </div>
 
         <hr>
@@ -230,14 +242,17 @@ svg:not(:root) { display: none; }
             }
             ?>
 
-          <div class="awards-block">
-            <h6>Awards</h6>
-            <?php if(app()->getLocale() == 'en')
+          <?php if($race->awards_en != '') {
+                  echo '<div class="awards-block">';
+                  echo '<h6>Awards</h6>';
+
+                  if(app()->getLocale() == 'en')
                     echo htmlspecialchars_decode($race->awards_en);
                   if(app()->getLocale() == 'ms')
                     echo htmlspecialchars_decode($race->awards_ms);
                   if(app()->getLocale() == 'zh')
-                    echo htmlspecialchars_decode($race->awards_zh); ?>
+                    echo htmlspecialchars_decode($race->awards_zh);
+                } ?>
 
             <br />
 
@@ -264,14 +279,25 @@ svg:not(:root) { display: none; }
             $uid = Auth::id();
             $isRegistered = false;
 
+            $deadT = $race->dead_to. ' ' .$race->deadtime_to;
+            $deadline = DateTime::createFromFormat('Y-m-d H:i a', $deadT)->format('Y-m-d H:i a');
+            $cur = date('Y-m-d H:i a');
+
             //if not user
             if($uid == '') {
-              echo '<a href="/login" class="race-register-btn">';
-              echo __("Login to register");
-              echo '</a>';
-              echo '<h6>Finisher’s Award</h6>' .
-              '<p><img src="' .asset('img/register-1.png'). '">&ensp;Finisher\'s Medal</p>' .
-              '<p><img src="' .asset('img/register-2.png'). '">&ensp;Finisher\'s Certificate</p>';
+
+              if($cur < $deadline) {
+                echo '<a href="/login" class="race-register-btn">';
+                echo __("Login to register");
+                echo '</a>';
+                echo '<h6>Finisher’s Award</h6>' .
+                '<p><img src="' .asset('img/register-1.png'). '">&ensp;Finisher\'s Medal</p>' .
+                '<p><img src="' .asset('img/register-2.png'). '">&ensp;Finisher\'s Certificate</p>';
+              } else {
+                echo '<button type="button" class="race-register-btn" disabled>';
+                echo __("Registration closed");
+                echo '</button>';
+              }
             }
 
             //if user
@@ -303,15 +329,20 @@ svg:not(:root) { display: none; }
                   echo '<h3>RM ' .number_format($race->price, 2). '</h3>';
                 if($race->price != 0 && app()->getLocale() == 'zh')
                   echo '<h3>RM ' .number_format($race->price, 2). '</h3>';
-                date_default_timezone_set("Asia/Kuala_Lumpur");
-                $deadT = $race->dead_to. ' ' .$race->deadtime_to;
-                $deadline = DateTime::createFromFormat('Y-m-d H:i a', $deadT)->format('Y-m-d H:i a');
-                $cur = date('Y-m-d H:i a');
+
+
                 if($cur < $deadline) {
                   /*echo '<a href="/registerrace/' .$race->rid. '" class="race-register-btn">';
                   echo __("Register");
                   echo '</a>';*/
-                  echo '<div id="register-race-en"></div>';
+
+                  if(app()->getLocale() == 'en')
+                    echo '<div id="register-race-en"></div>';
+                  if(app()->getLocale() == 'ms')
+                    echo '<div id="register-race-ms"></div>';
+                  if(app()->getLocale() == 'zh')
+                    echo '<div id="register-race-zh"></div>';
+
                 } else {
                   echo '<button type="button" class="race-register-btn" disabled>';
                   echo __("Registration closed");

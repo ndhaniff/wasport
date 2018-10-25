@@ -67,13 +67,13 @@ class AdminRacesController extends Controller
         $request->validate([
             'title_en' => 'required|string',
             'about_en' => 'required|string',
-            'awards_en' => 'required|string',
             'RaceDateFrom' => 'required|string',
             'RaceDateTo' => 'required|string',
             'RaceDeadlineFrom' => 'required|string',
             'RaceDeadlineTo' => 'required|string',
             'medals_en' => 'required|string',
             'price' => 'required|string',
+            'category' => 'required|string'
         ]);
 
         $formdata = [
@@ -292,13 +292,13 @@ class AdminRacesController extends Controller
         $request->validate([
             'title_en' => 'required|string',
             'about_en' => 'required|string',
-            'awards_en' => 'required|string',
             'RaceDateFrom' => 'required|string',
             'RaceDateTo' => 'required|string',
             'RaceDeadlineFrom' => 'required|string',
             'RaceDeadlineTo' => 'required|string',
             'price' => 'required|string',
             'medals_en' => 'required|string',
+            'category' => 'required|string'
         ]);
 
         $formdata = [

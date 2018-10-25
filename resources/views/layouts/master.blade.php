@@ -29,7 +29,7 @@
     <body>
 
       <div id="navbar" class="d-flex flex-column flex-md-row align-items-center bg-dark">
-        <h1 id="logo" class="m-0"><a href="{{url('/')}}"><img src="{{asset('img/wasport_logo.png')}}" alt="" id="wasport-logp"></a></h1>
+        <h1 id="logo" class="m-0"><a href="{{url('/')}}"><img src="{{asset('img/wasport_logo.png')}}" alt="" id="wasport-logo"></a></h1>
         <div>
         <nav id="topbar" class=" text-right p-2">
         <span class="dropdown">
