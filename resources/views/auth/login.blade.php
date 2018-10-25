@@ -10,9 +10,8 @@
               <script>
               swal({
                 title: "Thank you for joining WaSports",
-                text: "We had send you an email to activate your account. Please activate your account to login.",
                 type: "success",
-                confirmButtonText: "Click here to login",
+                confirmButtonText: "Login",
                 showConfirmButton: true,
                 confirmButtonColor: '#d33'
                 position: 'center',
