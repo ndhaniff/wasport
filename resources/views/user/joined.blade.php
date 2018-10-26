@@ -125,7 +125,7 @@ Joined Races | WaSportsrun
   }
 </script>
 
-  <div class="medaldash p-5">
+  <div class="joineddash p-5">
     <div class="container">
 
       <div class="medal-block">

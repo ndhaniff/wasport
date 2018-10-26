@@ -138,7 +138,7 @@ var medal = JSON.parse('<?= $medal_json; ?>');
       <hr>
 
       <div class="user-history">
-        <div class="row">
+        <div class="row" id="user-history-header">
           <div class="col-md-6">
             <h3>{{$race_count}} {{__("Joined Races")}}</h3>
           </div>

@@ -8,6 +8,7 @@ import BibModal from './BibModalZh';
 const submitIC = window.location.origin + '/img/ic-submit.png';
 const rankIC = window.location.origin + '/img/ic-rank.png';
 const certIC = window.location.origin + '/img/ic-cert.png';
+const infoIC = window.location.origin + '/img/ic-info.png';
 
 class CurrentJoinedZh extends Component{
 
@@ -32,8 +33,11 @@ class CurrentJoinedZh extends Component{
                 <h4 style={{fontFamily: 'SourceSansPro-Semibold'}}>{current[i]['title_zh']}</h4>
                 <p style={{fontFamily: 'SourceSansPro-Light'}}>{current[i]['date']}</p>
                 <Progress percent={0} showInfo={false}/>
-                <span id="progress-race-start">0%</span><span id='progress-race-end'>0/{current[i]['category']}</span>
+                <span id="progress-race-start">0%</span><span id='progress-race-end'>0/{current[i]['category']}</span><br />
 
+                <div className="submission-info-row">
+                  <img src= {infoIC} /><span class="submission-info">当比赛开始，您将可以上传您的跑步记录</span>
+                </div>
                 <hr />
 
                 <div className="row" id="joined-race-footer">
@@ -66,8 +70,11 @@ class CurrentJoinedZh extends Component{
                 <h4 style={{fontFamily: 'SourceSansPro-Semibold'}}>{current[i]['title_zh']}</h4>
                 <p style={{fontFamily: 'SourceSansPro-Light'}}>{current[i]['date']}</p>
                 <Progress percent={0} showInfo={false}/>
-                <span id="progress-race-start">0%</span><span id='progress-race-end'>0/{current[i]['category']}</span>
+                <span id="progress-race-start">0%</span><span id='progress-race-end'>0/{current[i]['category']}</span><br />
 
+                <div className="submission-info-row">
+                  <img src= {infoIC} /><span class="submission-info">现在可以提交成绩</span>
+                </div>
                 <hr />
 
                 <div className="row" id="joined-race-footer">

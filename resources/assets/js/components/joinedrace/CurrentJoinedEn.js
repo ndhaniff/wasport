@@ -8,6 +8,7 @@ import BibModal from './BibModalEn';
 const submitIC = window.location.origin + '/img/ic-submit.png';
 const rankIC = window.location.origin + '/img/ic-rank.png';
 const certIC = window.location.origin + '/img/ic-cert.png';
+const infoIC = window.location.origin + '/img/ic-info.png';
 
 class CurrentJoinedEn extends Component{
 
@@ -32,8 +33,11 @@ class CurrentJoinedEn extends Component{
                 <h4 style={{fontFamily: 'SourceSansPro-Semibold'}}>{current[i]['title_en']}</h4>
                 <p style={{fontFamily: 'SourceSansPro-Light'}}>{current[i]['date']}</p>
                 <Progress percent={0} showInfo={false}/>
-                <span id="progress-race-start">0%</span><span id='progress-race-end'>0/{current[i]['category']}</span>
+                <span id="progress-race-start">0%</span><span id='progress-race-end'>0/{current[i]['category']}</span><br />
 
+                <div className="submission-info-row">
+                  <img src= {infoIC} /><span class="submission-info">Submission opens when the race start</span>
+                </div>
                 <hr />
 
                 <div className="row" id="joined-race-footer">
@@ -66,8 +70,11 @@ class CurrentJoinedEn extends Component{
                 <h4 style={{fontFamily: 'SourceSansPro-Semibold'}}>{current[i]['title_en']}</h4>
                 <p style={{fontFamily: 'SourceSansPro-Light'}}>{current[i]['date']}</p>
                 <Progress percent={0} showInfo={false}/>
-                <span id="progress-race-start">0%</span><span id='progress-race-end'>0/{current[i]['category']}</span>
+                <span id="progress-race-start">0%</span><span id='progress-race-end'>0/{current[i]['category']}</span><br />
 
+                <div className="submission-info-row">
+                  <img src= {infoIC} /><span class="submission-info">You can now submit your race</span>
+                </div>
                 <hr />
 
                 <div className="row" id="joined-race-footer">

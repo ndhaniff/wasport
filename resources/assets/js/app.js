@@ -47,6 +47,6 @@ require('./components/medals/DashboardMedalZh');
 require('./components/joinedrace/CurrentJoinedEn');
 require('./components/joinedrace/CurrentJoinedMs');
 require('./components/joinedrace/CurrentJoinedZh');
-require('./components/joinedrace/PastJoinedZh');
-require('./components/joinedrace/PastJoinedZh');
+require('./components/joinedrace/PastJoinedEn');
+require('./components/joinedrace/PastJoinedMs');
 require('./components/joinedrace/PastJoinedZh');
