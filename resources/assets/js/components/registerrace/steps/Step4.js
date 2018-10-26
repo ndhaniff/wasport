@@ -84,12 +84,16 @@ class Step4 extends Component {
       this.setState({loading: false})
 
        MySwal.fire({
-         toast: true,
          position: 'top-end',
-         showConfirmButton: true,
          type: 'success',
-         title: 'Race submitted'
+         title: 'Race submitted',
+         timer: 3000,
+         type: 'success',
        })
+
+       window.setTimeout(function(){
+         location.href = location.origin + '/racedetails/' + this.state.rid
+       } ,3000)
 
      } else {
           alert('something wrong')

@@ -230,4 +230,24 @@ class UserController extends Controller
 
       return response()->json(['success' => true], 200);
     }
+
+    public function viewJoined() {
+      $date = date('Y-m-d');
+
+      $current_races = DB::table('orders')
+        ->join('races', 'races.rid', '=', 'race_id')
+        ->where('user_id', '=', Auth::id())
+        ->where('date_to', '>', $date)
+        ->orderBy('date_from', 'DESC')
+        ->get();
+
+      $past_races = DB::table('orders')
+        ->join('races', 'races.rid', '=', 'race_id')
+        ->where('user_id', '=', Auth::id())
+        ->where('date_to', '<', $date)
+        ->orderBy('date_from', 'DESC')
+        ->get();
+
+      return view('user.joined', ['current_races' => $current_races, 'past_races' => $past_races]);
+    }
 }

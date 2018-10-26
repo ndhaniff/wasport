@@ -157,7 +157,7 @@
         </nav>
       </div>
 
-      <a href="#" id="scroll" style="display: none;"><span></span></a>
+      <a href="#" id="scroll" style="display:none"><span></span></a>
 
       <div class="full-container">
         @yield('content')

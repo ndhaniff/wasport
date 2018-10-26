@@ -47,6 +47,7 @@ svg:not(:root) { display: none; }
 
       foreach($medals as $medal) {
         $medal_arr[] = array('mid' => $medal->mid,
+                              'rid' => $medal->rid,
                               'title_en' => $medal->title_en,
                               'title_ms' => $medal->title_ms,
                               'title_zh' => $medal->title_zh,
@@ -55,8 +56,7 @@ svg:not(:root) { display: none; }
         if($j==3) break;
       }
 
-      $medal_json = json_encode($medal_arr);
-       ?>
+      $medal_json = json_encode($medal_arr); ?>
 
 <script>
 var user = {
@@ -140,7 +140,7 @@ var medal = JSON.parse('<?= $medal_json; ?>');
             <h3>{{$race_count}} {{__("Joined Races")}}</h3>
           </div>
           <div class="col-md-6">
-            <span id="view-all"><a href="#">{{__("View All")}}</a></span>
+            <span id="view-all"><a href="/user/viewjoined">{{__("View All")}}</a></span>
           </div>
         </div>
 

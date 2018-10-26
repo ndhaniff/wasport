@@ -119,6 +119,7 @@ Route::post('/user/updateProfile', 'User\UserController@updateProfile' )->name('
 Route::post('/user/updateAddress', 'User\UserController@updateAddress' )->name('user.updateAddress');
 Route::post('/user/updatePassword', 'User\UserController@updatePassword' )->name('user.updatePassword');
 Route::get('/user/viewMedals', 'User\UserController@viewMedals' )->name('user.viewMedals');
+Route::get('/user/viewjoined', 'User\UserController@viewJoined' )->name('user.viewjoined');
 
 //Register race
 Route::post('/user/submitrace', 'User\UserController@submitRace')->name('user.submitrace');

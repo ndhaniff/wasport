@@ -83,13 +83,17 @@ class Step4Ms extends Component {
 
         this.setState({loading: false})
 
-       MySwal.fire({
-         toast: true,
-         position: 'top-end',
-         showConfirmButton: true,
-         type: 'success',
-         title: 'Race submitted'
-       })
+        MySwal.fire({
+          position: 'top-end',
+          type: 'success',
+          title: 'Race submitted',
+          timer: 3000,
+          type: 'success',
+        })
+
+        window.setTimeout(function(){
+          location.href = location.origin + '/racedetails/' + this.state.rid
+        } ,3000)
 
      } else {
           alert('something wrong')
