@@ -232,6 +232,8 @@ class UserController extends Controller
     }
 
     public function viewJoined() {
+      $user = Auth::user();
+
       $date = date('Y-m-d');
 
       $current_races = DB::table('orders')
@@ -248,6 +250,6 @@ class UserController extends Controller
         ->orderBy('date_from', 'DESC')
         ->get();
 
-      return view('user.joined', ['current_races' => $current_races, 'past_races' => $past_races]);
+      return view('user.joined', ['user' => $user, 'current_races' => $current_races, 'past_races' => $past_races]);
     }
 }

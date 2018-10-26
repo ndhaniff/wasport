@@ -109,6 +109,12 @@ Joined Races | WaSportsrun
 
 <script>
   var current = JSON.parse('<?= $current_json; ?>');
+  var past = JSON.parse('<?= $past_json; ?>');
+
+  var user = {
+    id: "{{$user->id}}",
+    name: "{{$user->name}}"
+  }
 </script>
 
   <div class="medaldash p-5">
@@ -135,7 +141,7 @@ Joined Races | WaSportsrun
                         if(app()->getLocale() == 'zh')
                           echo '<div id="current-joined-zh"></div>';
                       }
-                    }?>
+                    } ?>
             </div>
           </div>
 
