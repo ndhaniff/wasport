@@ -15,19 +15,23 @@ svg:not(:root) { display: none; }
 .anticon-close-circle:before, .anticon-cross-circle:before { display: none; }
 </style>
 
-<?php $latest_race_arr = array();
-      $submission = 'false';
+<?php date_default_timezone_set("Asia/Kuala_Lumpur");
+      $date = date('Y-m-d H:i a');
+      $latest_race_arr = array();
       $i=0;
 
       foreach($latest_race as $latest) {
-        $date = date('Y-m-d');
+        $submission = 'false';
+
+        $dateTimeFrom = $latest->date_from .' '. $latest->time_from;
+        $dateTimeTo = $latest->date_to .' '. $latest->time_to;
+
+        if($dateTimeFrom <= $date && $dateTimeTo >= $date) {
+          $submission = 'true';
+        }
+
         $dateF = DateTime::createFromFormat('Y-m-d', $latest->date_from)->format('d M Y');
         $dateT = DateTime::createFromFormat('Y-m-d', $latest->date_to)->format('d M Y');
-
-        foreach($medals as $medal) {
-          if($medal->races_id == $latest->race_id)
-            $grey_medal = asset('storage/uploaded/medals/grey/' . $medal->medal_grey);
-        }
 
         $latest_race_arr[] = array('submission' => $submission,
                                     'title_en' => $latest->title_en,
@@ -117,10 +121,9 @@ var medal = JSON.parse('<?= $medal_json; ?>');
             <h3>{{__("My Medals")}}</h3>
           </div>
           <div class="col-md-6">
-            <span id="view-all"><a href="/user/viewMedals">{{__("View All")}}</a></span>
+            <span id="view-all"><a href="/viewMedals">{{__("View All")}}</a></span>
           </div>
         </div>
-
 
         <div id="user-medal-frame">
           <?php if(app()->getLocale() == 'en')
@@ -140,7 +143,7 @@ var medal = JSON.parse('<?= $medal_json; ?>');
             <h3>{{$race_count}} {{__("Joined Races")}}</h3>
           </div>
           <div class="col-md-6">
-            <span id="view-all"><a href="/user/viewjoined">{{__("View All")}}</a></span>
+            <span id="view-all"><a href="/viewjoined">{{__("View All")}}</a></span>
           </div>
         </div>
 

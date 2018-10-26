@@ -74,10 +74,19 @@ Joined Races | WaSportsrun
 
 <?php $current_race_arr = array();
       $past_race_arr = array();
-      $submission = 'false';
+      date_default_timezone_set("Asia/Kuala_Lumpur");
+      $date = date('Y-m-d H:i a');
 
       foreach($current_races as $current) {
-        $date = date('Y-m-d');
+        $submission = 'false';
+
+        $dateTimeFrom = $current->date_from .' '. $current->time_from;
+        $dateTimeTo = $current->date_to .' '. $current->time_to;
+
+        if($dateTimeFrom <= $date && $dateTimeTo >= $date) {
+          $submission = 'true';
+        }
+
         $dateF = DateTime::createFromFormat('Y-m-d', $current->date_from)->format('d M Y');
         $dateT = DateTime::createFromFormat('Y-m-d', $current->date_to)->format('d M Y');
 
@@ -91,17 +100,16 @@ Joined Races | WaSportsrun
       }
 
       foreach($past_races as $past) {
-        $date = date('Y-m-d');
+
         $dateF = DateTime::createFromFormat('Y-m-d', $past->date_from)->format('d M Y');
         $dateT = DateTime::createFromFormat('Y-m-d', $past->date_to)->format('d M Y');
 
-        $past_race_arr[] = array('submission' => $submission,
-                                    'title_en' => $past->title_en,
-                                    'title_ms' => $past->title_ms,
-                                    'title_zh' => $past->title_zh,
-                                    'category'=> $past->race_category,
-                                    'date' => $dateF. ' (' .$past->time_from. ') GMT +08' . ' - ' .$dateT. ' (' .$past->time_to. ') GMT +08',
-                                    'header' => asset('storage/uploaded/races/' . $past->header));
+        $past_race_arr[] = array('title_en' => $past->title_en,
+                                  'title_ms' => $past->title_ms,
+                                  'title_zh' => $past->title_zh,
+                                  'category'=> $past->race_category,
+                                  'date' => $dateF. ' (' .$past->time_from. ') GMT +08' . ' - ' .$dateT. ' (' .$past->time_to. ') GMT +08',
+                                  'header' => asset('storage/uploaded/races/' . $past->header));
       }
 
       $current_json = json_encode($current_race_arr);

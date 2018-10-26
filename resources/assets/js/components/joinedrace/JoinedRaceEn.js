@@ -22,37 +22,79 @@ class JoinedRaceEn extends Component{
     let items = [];
 
     for(var i=0; i<race.length; i++) {
-      items.push(
-        <div className="col-sm-12 col-md-6">
-          <div className="user-history-joined">
-            <img src={race[i]['header']} style={{width: '100%'}}/>
+      if(race[i]['submission'] == 'false') {
+        items.push(
+          <div className="col-sm-12 col-md-6">
+            <div className="user-history-joined">
+              <img src={race[i]['header']} style={{width: '100%'}}/>
 
-            <div className="user-history-joined-content">
-              <h4 style={{fontFamily: 'SourceSansPro-Semibold'}}>{race[i]['title_en']}</h4>
-              <p style={{fontFamily: 'SourceSansPro-Light'}}>{race[i]['date']}</p>
-              <Progress percent={0} showInfo={false}/>
-              <span id="progress-race-start">0%</span><span id='progress-race-end'>0/{race[i]['category']}</span>
+              <div className="user-history-joined-content">
+                <h4 style={{fontFamily: 'SourceSansPro-Semibold'}}>{race[i]['title_en']}</h4>
+                <p style={{fontFamily: 'SourceSansPro-Light'}}>{race[i]['date']}</p>
+                <Progress percent={0} showInfo={false}/>
+                <span id="progress-race-start">0%</span><span id='progress-race-end'>0/{race[i]['category']}</span>
 
-              <hr />
+                <hr />
 
-              <div className="row" id="joined-race-footer">
-                <div className="col-sm-4">
-                  <Button>
-                    <img src= {rankIC} /><br />
-                    <span>Rankings</span></Button>
-                </div>
-                <div className="col-sm-4">
-                  <BibModal raceCategory = {race[i]['category']} />
-                </div>
-                <div className="col-sm-4">
-                  <Button>
-                    <img src= {certIC} /><br />
-                    <span>Certificate</span></Button>
+                <div className="row" id="joined-race-footer">
+                  <div className="col-sm-4">
+                    <Button>
+                      <img src= {rankIC} /><br />
+                      <span>Rankings</span></Button>
+                  </div>
+                  <div className="col-sm-4">
+                    <BibModal raceCategory = {race[i]['category']} />
+                  </div>
+                  <div className="col-sm-4">
+                    <Button>
+                      <img src= {certIC} /><br />
+                      <span>Certificate</span></Button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>)}
+          </div>)
+      }
+
+      if(race[i]['submission'] == 'true') {
+        items.push(
+          <div className="col-sm-12 col-md-6">
+            <div className="user-history-joined">
+              <img src={race[i]['header']} style={{width: '100%'}}/>
+
+              <div className="user-history-joined-content">
+                <h4 style={{fontFamily: 'SourceSansPro-Semibold'}}>{race[i]['title_en']}</h4>
+                <p style={{fontFamily: 'SourceSansPro-Light'}}>{race[i]['date']}</p>
+                <Progress percent={0} showInfo={false}/>
+                <span id="progress-race-start">0%</span><span id='progress-race-end'>0/{race[i]['category']}</span>
+
+                <hr />
+
+                <div className="row" id="joined-race-footer">
+                  <div className="col-sm-3">
+                    <Button>
+                      <img src= {submitIC} /><br />
+                      <span>Submission</span></Button>
+                  </div>
+                  <div className="col-sm-3">
+                    <Button>
+                      <img src= {rankIC} /><br />
+                      <span>Rankings</span></Button>
+                  </div>
+                  <div className="col-sm-3">
+                    <BibModal raceCategory = {race[i]['category']} />
+                  </div>
+                  <div className="col-sm-3">
+                    <Button>
+                      <img src= {certIC} /><br />
+                      <span>Certificate</span></Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>)
+      }
+    }
 
     return items;
   }
