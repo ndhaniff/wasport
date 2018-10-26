@@ -34,6 +34,7 @@ svg:not(:root) { display: none; }
         $dateT = DateTime::createFromFormat('Y-m-d', $latest->date_to)->format('d M Y');
 
         $latest_race_arr[] = array('submission' => $submission,
+                                    'rid' => $latest->rid,
                                     'title_en' => $latest->title_en,
                                     'title_ms' => $latest->title_ms,
                                     'title_zh' => $latest->title_zh,
@@ -60,7 +61,15 @@ svg:not(:root) { display: none; }
         if($j==3) break;
       }
 
-      $medal_json = json_encode($medal_arr); ?>
+      $medal_json = json_encode($medal_arr);
+
+      $allmedal_arr = array();
+      foreach($allmedals as $allmedal) {
+        $allmedal_arr[] = array('races_id' => $allmedal->races_id,
+                                'bib_img' => asset('storage/uploaded/bib/' . $allmedal->bib),
+                                'cert_img' => asset('storage/uploaded/cert/' . $allmedal->cert));
+      }
+      $allmedal_json = json_encode($allmedal_arr); ?>
 
 <script>
 var user = {
@@ -86,6 +95,7 @@ var postal = "{{$user->postal}}"
 
 var race = JSON.parse('<?= $race_json; ?>');
 var medal = JSON.parse('<?= $medal_json; ?>');
+var allmedal = JSON.parse('<?= $allmedal_json; ?>');
 </script>
 
   <div class="userdash p-5">

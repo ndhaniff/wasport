@@ -35,7 +35,7 @@ class PastJoinedEn extends Component{
               <span id="progress-race-start">0%</span><span id='progress-race-end'>0/{past[i]['category']}</span><br />
 
               <div className="submission-info-row">
-                <img src= {infoIC} /><span class="submission-info">Submission closed</span>
+                <img src= {infoIC} /><span className="submission-info">Submission closed</span>
               </div>
               <hr />
 
@@ -46,7 +46,7 @@ class PastJoinedEn extends Component{
                     <span>Rankings</span></Button>
                 </div>
                 <div className="col-sm-4">
-                  <BibModal raceCategory = {past[i]['category']} />
+                  <BibModal raceCategory = {past[i]['category']} raceID = {past[i]['rid']} />
                 </div>
                 <div className="col-sm-4">
                   <Button>

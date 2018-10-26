@@ -36,7 +36,7 @@ class CurrentJoinedMs extends Component{
                 <span id="progress-race-start">0%</span><span id='progress-race-end'>0/{current[i]['category']}</span><br />
 
                 <div className="submission-info-row">
-                  <img src= {infoIC} /><span class="submission-info">Penyerahan buka semasa acara mula</span>
+                  <img src= {infoIC} /><span className="submission-info">Penyerahan buka semasa acara mula</span>
                 </div>
                 <hr />
 
@@ -47,7 +47,7 @@ class CurrentJoinedMs extends Component{
                       <span>Kedudukan</span></Button>
                   </div>
                   <div className="col-sm-4">
-                    <BibModal raceCategory = {current[i]['category']} />
+                    <BibModal raceCategory = {current[i]['category']} raceID = {current[i]['rid']} />
                   </div>
                   <div className="col-sm-4">
                     <Button>
@@ -72,7 +72,7 @@ class CurrentJoinedMs extends Component{
                 <span id="progress-race-start">0%</span><span id='progress-race-end'>0/{current[i]['category']}</span><br />
 
                 <div className="submission-info-row">
-                  <img src= {infoIC} /><span class="submission-info">Pengyerahan buka</span>
+                  <img src= {infoIC} /><span className="submission-info">Pengyerahan buka</span>
                 </div>
                 <hr />
 
@@ -88,7 +88,7 @@ class CurrentJoinedMs extends Component{
                       <span>Kedudukan</span></Button>
                   </div>
                   <div className="col-sm-3">
-                    <BibModal raceCategory = {current[i]['category']} />
+                    <BibModal raceCategory = {current[i]['category']} raceID = {current[i]['rid']} />
                   </div>
                   <div className="col-sm-3">
                     <Button>

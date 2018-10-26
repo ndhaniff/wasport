@@ -70,10 +70,13 @@ Joined Races | WaSportsrun
       margin-left: 100%; }
     .tabs .tab-2:last-child [type="radio"]:checked + div {
       margin-left: -100%; }
+
+  .anticon:before, svg:not(:root) { display: none; }
 </style>
 
 <?php $current_race_arr = array();
       $past_race_arr = array();
+      $allmedal_arr = array();
       date_default_timezone_set("Asia/Kuala_Lumpur");
       $date = date('Y-m-d H:i a');
 
@@ -91,6 +94,7 @@ Joined Races | WaSportsrun
         $dateT = DateTime::createFromFormat('Y-m-d', $current->date_to)->format('d M Y');
 
         $current_race_arr[] = array('submission' => $submission,
+                                    'rid' => $current->rid,
                                     'title_en' => $current->title_en,
                                     'title_ms' => $current->title_ms,
                                     'title_zh' => $current->title_zh,
@@ -104,7 +108,10 @@ Joined Races | WaSportsrun
         $dateF = DateTime::createFromFormat('Y-m-d', $past->date_from)->format('d M Y');
         $dateT = DateTime::createFromFormat('Y-m-d', $past->date_to)->format('d M Y');
 
-        $past_race_arr[] = array('title_en' => $past->title_en,
+
+
+        $past_race_arr[] = array('rid' => $current->rid,
+                                  'title_en' => $past->title_en,
                                   'title_ms' => $past->title_ms,
                                   'title_zh' => $past->title_zh,
                                   'category'=> $past->race_category,
@@ -112,12 +119,20 @@ Joined Races | WaSportsrun
                                   'header' => asset('storage/uploaded/races/' . $past->header));
       }
 
+      foreach($allmedals as $allmedal) {
+        $allmedal_arr[] = array('races_id' => $allmedal->races_id,
+                                'bib_img' => asset('storage/uploaded/bib/' . $allmedal->bib),
+                                'cert_img' => asset('storage/uploaded/cert/' . $allmedal->cert));
+      }
+
       $current_json = json_encode($current_race_arr);
-      $past_json = json_encode($past_race_arr); ?>
+      $past_json = json_encode($past_race_arr);
+      $allmedal_json = json_encode($allmedal_arr); ?>
 
 <script>
   var current = JSON.parse('<?= $current_json; ?>');
   var past = JSON.parse('<?= $past_json; ?>');
+  var allmedal = JSON.parse('<?= $allmedal_json; ?>');
 
   var user = {
     id: "{{$user->id}}",

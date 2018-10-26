@@ -6,6 +6,12 @@ const bibIC = window.location.origin + '/img/ic-bib.png';
 
 class BibModalMs extends Component {
 
+  constructor(){
+    super();
+    this.state = {
+      allmedal : window.allmedal
+    }
+  }
   state = { visible: false }
 
   showModal = () => {
@@ -33,6 +39,13 @@ class BibModalMs extends Component {
   }
 
   render(){
+
+    for(var i=0; i<allmedal.length; i++) {
+      if(allmedal[i]['races_id'] == this.props.raceID) {
+        var racebib = <RaceBib raceCategory = {this.props.raceCategory} bibImg = {allmedal[i]['bib_img']}/>
+      }
+    }
+
     return (
       <div>
 
@@ -48,7 +61,7 @@ class BibModalMs extends Component {
           footer={[
             <a href="#" download="race_bib.jpg" className="ant-button" id="btn-download-canvas" onClick={this.downloadCanvas}>Download</a>,
           ]} >
-          <RaceBib raceCategory = {this.props.raceCategory}/>
+          {racebib}
         </Modal>
       </div>
     )

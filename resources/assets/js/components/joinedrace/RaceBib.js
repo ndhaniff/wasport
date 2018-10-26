@@ -29,7 +29,7 @@ class RaceBib extends React.Component{
 
         imageObj.onload = function() {
         context.drawImage(imageObj, 0, 0, 800, 520);
-        context.rect(0, 185, 800, 150);
+        context.rect(0, 200, 850, 150);
         var grd = thebox.createLinearGradient(10, 0, 10, 10);
       	grd.addColorStop(0, '#fff');
       	thebox.fillStyle = grd;
@@ -37,16 +37,22 @@ class RaceBib extends React.Component{
         context.font = 'italic 100pt Calibri';
         context.textAlign = 'center';
         context.fillStyle = "#000";
-      	context.fillText(uid, x, 300);
+      	context.fillText(uid, x, 315);
+        context.beginPath();
+        context.globalAlpha=0.5;
+      	context.rect(0, 460, 800, 60);
+      	context.fillStyle = '#fff';
+      	context.fill();
+        thecontext.fillStyle = '#000';
+        thecontext.globalAlpha=1;
         thecontext.font = '25pt Calibri';
         thecontext.fillText(name, 115, 500);
         thecontext.fillText(category, 675, 500);
       };
-      imageObj.src = 'http://www.ultravrunner.com/shared/race/Mayday2018/BlackBlackPlanet/black-black-planet-poster-01.jpg';
+      imageObj.src = this.props.bibImg;
   }
 
   downloadCanvas = (event) => {
-
     this.refs.canvas.toDataURL("image/jpg");
   }
 

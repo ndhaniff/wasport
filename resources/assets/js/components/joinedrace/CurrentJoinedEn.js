@@ -36,7 +36,7 @@ class CurrentJoinedEn extends Component{
                 <span id="progress-race-start">0%</span><span id='progress-race-end'>0/{current[i]['category']}</span><br />
 
                 <div className="submission-info-row">
-                  <img src= {infoIC} /><span class="submission-info">Submission opens when the race start</span>
+                  <img src= {infoIC} /><span className="submission-info">Submission opens when the race start</span>
                 </div>
                 <hr />
 
@@ -47,7 +47,7 @@ class CurrentJoinedEn extends Component{
                       <span>Rankings</span></Button>
                   </div>
                   <div className="col-sm-4">
-                    <BibModal raceCategory = {current[i]['category']} />
+                    <BibModal raceCategory = {current[i]['category']} raceID = {current[i]['rid']} />
                   </div>
                   <div className="col-sm-4">
                     <Button>
@@ -73,7 +73,7 @@ class CurrentJoinedEn extends Component{
                 <span id="progress-race-start">0%</span><span id='progress-race-end'>0/{current[i]['category']}</span><br />
 
                 <div className="submission-info-row">
-                  <img src= {infoIC} /><span class="submission-info">You can now submit your race</span>
+                  <img src= {infoIC} /><span className="submission-info">You can now submit your race</span>
                 </div>
                 <hr />
 
@@ -89,7 +89,7 @@ class CurrentJoinedEn extends Component{
                       <span>Rankings</span></Button>
                   </div>
                   <div className="col-sm-3">
-                    <BibModal raceCategory = {current[i]['category']} />
+                    <BibModal raceCategory = {current[i]['category']} raceID = {current[i]['rid']} />
                   </div>
                   <div className="col-sm-3">
                     <Button>

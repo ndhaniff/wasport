@@ -74,9 +74,12 @@ class UserController extends Controller
 
       $race_count = $number_count->count();
 
+      $allmedals = DB::table('medals')->get();
+
       //return view('user.dashboard')->with('user',$user);
       return view('user.dashboard', ['user' => $user, 'races' => $races, 'medals' => $medals,
-                                      'latest_race' => $latest_race, 'race_count' => $race_count]);
+                                      'latest_race' => $latest_race, 'race_count' => $race_count,
+                                      'allmedals' => $allmedals]);
     }
 
     public function updateProfile(Request $request){
@@ -250,6 +253,9 @@ class UserController extends Controller
         ->orderBy('date_from', 'DESC')
         ->get();
 
-      return view('user.joined', ['user' => $user, 'current_races' => $current_races, 'past_races' => $past_races]);
+      $allmedals = DB::table('medals')->get();
+
+      return view('user.joined', ['user' => $user, 'current_races' => $current_races,
+                                  'past_races' => $past_races, 'allmedals' => $allmedals]);
     }
 }

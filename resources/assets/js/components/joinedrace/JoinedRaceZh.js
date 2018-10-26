@@ -36,7 +36,7 @@ class JoinedRaceZh extends Component{
                 <span id="progress-race-start">0%</span><span id='progress-race-end'>0/{race[i]['category']}</span><br />
 
                 <div className="submission-info-row">
-                  <img src= {infoIC} /><span class="submission-info">当比赛开始，您将可以上传您的跑步记录</span>
+                  <img src= {infoIC} /><span className="submission-info">当比赛开始，您将可以上传您的跑步记录</span>
                 </div>
                 <hr />
 
@@ -47,7 +47,7 @@ class JoinedRaceZh extends Component{
                       <span>排名</span></Button>
                   </div>
                   <div className="col-sm-4">
-                    <BibModal raceCategory = {race[i]['category']} />
+                    <BibModal raceCategory = {race[i]['category']} raceID = {race[i]['rid']} />
                   </div>
                   <div className="col-sm-4">
                     <Button>
@@ -73,7 +73,7 @@ class JoinedRaceZh extends Component{
                 <span id="progress-race-start">0%</span><span id='progress-race-end'>0/{race[i]['category']}</span><br />
 
                 <div className="submission-info-row">
-                  <img src= {infoIC} /><span class="submission-info">现在可以提交成绩</span>
+                  <img src= {infoIC} /><span className="submission-info">现在可以提交成绩</span>
                 </div>
                 <hr />
 
@@ -89,7 +89,7 @@ class JoinedRaceZh extends Component{
                       <span>排名</span></Button>
                   </div>
                   <div className="col-sm-3">
-                    <BibModal raceCategory = {race[i]['category']} />
+                    <BibModal raceCategory = {race[i]['category']} raceID = {race[i]['rid']} />
                   </div>
                   <div className="col-sm-3">
                     <Button>
