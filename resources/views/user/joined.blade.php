@@ -100,7 +100,8 @@ Joined Races | WaSportsrun
                                     'title_zh' => $current->title_zh,
                                     'category'=> $current->race_category,
                                     'date' => $dateF. ' (' .$current->time_from. ') GMT +08' . ' - ' .$dateT. ' (' .$current->time_to. ') GMT +08',
-                                    'header' => asset('storage/uploaded/races/' . $current->header));
+                                    'header' => asset('storage/uploaded/races/' . $current->header),
+                                    'race_status' => $current->race_status);
       }
 
       foreach($past_races as $past) {
@@ -116,7 +117,8 @@ Joined Races | WaSportsrun
                                   'title_zh' => $past->title_zh,
                                   'category'=> $past->race_category,
                                   'date' => $dateF. ' (' .$past->time_from. ') GMT +08' . ' - ' .$dateT. ' (' .$past->time_to. ') GMT +08',
-                                  'header' => asset('storage/uploaded/races/' . $past->header));
+                                  'header' => asset('storage/uploaded/races/' . $past->header),
+                                  'race_status' => $past->race_status);
       }
 
       foreach($allmedals as $allmedal) {

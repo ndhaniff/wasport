@@ -60,7 +60,7 @@ class BibModalZh extends Component {
           onCancel={this.handleCancel}
           width={'850px'}
           footer={[
-            <a href="#" download="race_bib.jpg" className="ant-button" id="btn-download-canvas" onClick={this.downloadCanvas}>Download</a>,
+            <a href="#" download="race_bib.jpg" className="ant-button" id="btn-download-canvas" onClick={this.downloadCanvas}>下载</a>,
           ]} >
           {racebib}
         </Modal>

@@ -40,7 +40,8 @@ svg:not(:root) { display: none; }
                                     'title_zh' => $latest->title_zh,
                                     'category'=> $latest->race_category,
                                     'date' => $dateF. ' (' .$latest->time_from. ') GMT +08' . ' - ' .$dateT. ' (' .$latest->time_to. ') GMT +08',
-                                    'header' => asset('storage/uploaded/races/' . $latest->header));
+                                    'header' => asset('storage/uploaded/races/' . $latest->header),
+                                    'race_status' => $latest->race_status);
         $i++;
         if($i==2) break;
       }

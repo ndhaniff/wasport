@@ -61,6 +61,7 @@ Admin | Orders
       <th scope="col">@sortablelink('oid', 'Order ID')</th>
       <th scope="col">@sortablelink('o_firstname', 'First Name')</th>
       <th scope="col">@sortablelink('o_lastname', 'Last Name')</th>
+      <th scope="col">Race</th>
       <th scope="col"></th>
     </tr>
   </thead>
@@ -71,6 +72,8 @@ Admin | Orders
       <td>{{$order->oid}}</td>
       <td>{{$order->o_firstname}}</td>
       <td>{{$order->o_lastname}}</td>
+      <td><?php foreach($races as $race) {
+                  if($order->race_id == $race->rid) echo $race->title_en; } ?></td>
       <td>
       <div class="btn-group " role="group" aria-label="Basic example">
         <a data-toggle="modal" data-target="#orderViewer-{{$order->oid}}" data-id="{{$order->oid}}">
@@ -137,7 +140,7 @@ Admin | Orders
                   <th>Category</th>
                   <td>{{$order->race_category}}</td>
                 </tr>
-                <?php if($order->engrave_name != '') { echo '<tr><th>Engrave</th><td>' .$order->engrave_name. '</td></tr>'; } ?>
+                <?php if($order->engrave_name != 'undefined') { echo '<tr><th>Engrave</th><td>' .$order->engrave_name. '</td></tr>'; } ?>
                 <?php
                     foreach($order_addons as $order_add) {
                       if($order_add->order_id == $order->oid) {

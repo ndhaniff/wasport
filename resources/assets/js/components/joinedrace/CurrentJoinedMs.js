@@ -4,10 +4,10 @@ import { Button,Tabs, Progress } from 'antd';
 import axios from 'axios';
 import CountUp from 'react-countup';
 import BibModal from './BibModalMs';
+import CertModal from './CertModalMs';
 
 const submitIC = window.location.origin + '/img/ic-submit.png';
 const rankIC = window.location.origin + '/img/ic-rank.png';
-const certIC = window.location.origin + '/img/ic-cert.png';
 const infoIC = window.location.origin + '/img/ic-info.png';
 
 class CurrentJoinedMs extends Component{
@@ -50,9 +50,7 @@ class CurrentJoinedMs extends Component{
                     <BibModal raceCategory = {current[i]['category']} raceID = {current[i]['rid']} />
                   </div>
                   <div className="col-sm-4">
-                    <Button>
-                      <img src= {certIC} /><br />
-                      <span>Sijil</span></Button>
+                    <CertModal raceStatus = {current[i]['race_status']} />
                   </div>
                 </div>
               </div>
@@ -91,9 +89,7 @@ class CurrentJoinedMs extends Component{
                     <BibModal raceCategory = {current[i]['category']} raceID = {current[i]['rid']} />
                   </div>
                   <div className="col-sm-3">
-                    <Button>
-                      <img src= {certIC} /><br />
-                      <span>Sijil</span></Button>
+                    <CertModal raceStatus = {current[i]['race_status']} />
                   </div>
                 </div>
               </div>
