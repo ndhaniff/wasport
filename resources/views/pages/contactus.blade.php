@@ -18,6 +18,11 @@ svg:not(:root) { display: none; }
 
     <p>{{__("Thank you for your love and support of the Wasports run, we will do our best to respond to any questions or concerns in a timely fashion!")}}</p>
 
+    <p>WA SPORTS (002870275-A) <br />
+    {{__("Address")}}: 860-B Lorong 8 kg baru aulong, Taiping, 34000 Perak, Malaysia. <br />
+    {{__("Email")}}: clement@wasportsrun.com <br />
+    {{__("Tel")}}: 016-637 8026</p>
+
     <?php if(app()->getLocale() == 'en')
             echo '<div id="contactform-en"></div>';
           if(app()->getLocale() == 'ms')
