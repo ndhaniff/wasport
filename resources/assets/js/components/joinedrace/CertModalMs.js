@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Button, Modal} from 'antd'
-import Cert from './Certificate'
+import Certificate  from './Certificate'
 
 const certIC = window.location.origin + '/img/ic-cert.png';
 
