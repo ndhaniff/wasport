@@ -3,9 +3,17 @@ html {
 }
 
 body {
-  font-family: 'SourceSansPro-Light';
   font-size: 18px;
   overflow-x: hidden;
+}
+
+:lang(en) body,
+:lang(ms) body, {
+    font-family: 'SourceSansPro-Light';
+}
+
+:lang(zh) body, {
+    font-family: 'DFSong1B-GB';
 }
 
 .required-field { color: red; }

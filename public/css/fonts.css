@@ -33,3 +33,21 @@
   font-weight: normal;
   font-style: normal;
 }
+
+@font-face {
+  font-family: 'DFSong1B-GB';
+  src: url('../fonts/DFSong1B-GB.woff') format('woff'),
+       url('../fonts/DFSong1B-GB.ttf') format('truetype'),
+       url('../fonts/DFSong1B-GB.svg#DFSong1B-GB') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'dfsong';
+  src: url('../fonts/dfsong.eot');
+  src: url('../fonts/dfsong.woff2') format('woff2'),
+       url('../fonts/dfsong.eot?#iefix') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+}
