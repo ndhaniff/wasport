@@ -109,9 +109,7 @@ Joined Races | WaSportsrun
         $dateF = DateTime::createFromFormat('Y-m-d', $past->date_from)->format('d M Y');
         $dateT = DateTime::createFromFormat('Y-m-d', $past->date_to)->format('d M Y');
 
-
-
-        $past_race_arr[] = array('rid' => $current->rid,
+        $past_race_arr[] = array('rid' => $past->rid,
                                   'title_en' => $past->title_en,
                                   'title_ms' => $past->title_ms,
                                   'title_zh' => $past->title_zh,
@@ -138,7 +136,9 @@ Joined Races | WaSportsrun
 
   var user = {
     id: "{{$user->id}}",
-    name: "{{$user->name}}"
+    name: "{{$user->name}}",
+    firstname: "{{$user->firstname}}",
+    lastname: "{{$user->lastname}}"
   }
 </script>
 

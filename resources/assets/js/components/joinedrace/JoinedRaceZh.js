@@ -50,7 +50,7 @@ class JoinedRaceZh extends Component{
                     <BibModal raceCategory = {race[i]['category']} raceID = {race[i]['rid']} />
                   </div>
                   <div className="col-sm-4">
-                    <CertModal raceStatus = {race[i]['race_status']} />
+                    <CertModal raceCategory = {race[i]['category']} raceTitle = {race[i]['title_en']} raceID = {race[i]['rid']} raceStatus = {race[i]['race_status']} />
                   </div>
                 </div>
               </div>
@@ -90,7 +90,7 @@ class JoinedRaceZh extends Component{
                     <BibModal raceCategory = {race[i]['category']} raceID = {race[i]['rid']} />
                   </div>
                   <div className="col-sm-3">
-                    <CertModal raceStatus = {race[i]['race_status']} />
+                    <CertModal raceCategory = {race[i]['category']} raceTitle = {race[i]['title_en']} raceID = {past[i]['rid']} raceStatus = {race[i]['race_status']} />
                   </div>
                 </div>
               </div>

@@ -8,6 +8,7 @@ class RaceBib extends React.Component{
     this.state = {
       name : window.user.name,
       userID: window.user.id,
+      imgData: ''
     }
   }
 
@@ -52,14 +53,10 @@ class RaceBib extends React.Component{
       imageObj.src = this.props.bibImg;
   }
 
-  downloadCanvas = (event) => {
-    this.refs.canvas.toDataURL("image/jpg");
-  }
-
   render(){
     return(
       <div>
-        <canvas id="race-bib-canvas" ref="canvas" width={800} height={520}/>
+        <canvas id="canvas-bib" ref="canvas" width={800} height={520}/>
       </div>
     )
   }

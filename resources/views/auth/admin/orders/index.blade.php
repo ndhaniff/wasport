@@ -140,7 +140,7 @@ Admin | Orders
                   <th>Category</th>
                   <td>{{$order->race_category}}</td>
                 </tr>
-                <?php if($order->engrave_name != 'undefined') { echo '<tr><th>Engrave</th><td>' .$order->engrave_name. '</td></tr>'; } ?>
+                <?php if($order->engrave_name != 'undefined' || $order->engrave_name == '') { echo '<tr><th>Engrave</th><td>' .$order->engrave_name. '</td></tr>'; } ?>
                 <?php
                     foreach($order_addons as $order_add) {
                       if($order_add->order_id == $order->oid) {

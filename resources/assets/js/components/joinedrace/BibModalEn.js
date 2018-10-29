@@ -9,7 +9,8 @@ class BibModalEn extends Component {
   constructor(){
     super();
     this.state = {
-      allmedal : window.allmedal
+      allmedal : window.allmedal,
+      imgData: ''
     }
   }
 
@@ -35,8 +36,9 @@ class BibModalEn extends Component {
     });
   }
 
-  downloadCanvas = (event) => {
-    this.refs.canvas.toDataURL("image/jpg");
+  downloadCanvas = () => {
+    var temp = this.refs.canvas.toDataURL("image/png;base64;")
+    this.setState({ imgData: temp })
   }
 
   render(){
@@ -60,7 +62,7 @@ class BibModalEn extends Component {
           onCancel={this.handleCancel}
           width={'850px'}
           footer={[
-            <a href="#" download="race_bib.jpg" className="ant-button" id="btn-download-canvas" onClick={this.downloadCanvas}>Download</a>,
+            <a href={this.state.imgData} download="race-bib.png" className="ant-button" id="btn-download-canvas" onClick={this.downloadCanvas}>Download</a>,
           ]} >
           {racebib}
         </Modal>

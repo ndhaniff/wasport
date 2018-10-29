@@ -49,7 +49,7 @@ class PastJoinedMs extends Component{
                   <BibModal raceCategory = {past[i]['category']} raceID = {past[i]['rid']} />
                 </div>
                 <div className="col-sm-4">
-                  <CertModal raceStatus = {past[i]['race_status']} />
+                  <CertModal raceCategory = {past[i]['category']} raceTitle = {past[i]['title_en']} raceID = {past[i]['rid']} raceStatus = {past[i]['race_status']} />
                 </div>
               </div>
             </div>
