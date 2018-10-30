@@ -170,41 +170,7 @@ var allmedal = JSON.parse('<?= $allmedal_json; ?>');
                   echo '<div id="user-history-joined-ms"></div>';
                 if(app()->getLocale() == 'zh')
                   echo '<div id="user-history-joined-zh"></div>';
-              }
-
-
-                /*echo '<div id="user-history-joined">';
-
-                echo '<div class="row">';
-                for($i=0; $i<1; $i++) {
-                  echo '<div class="col-md-10">';
-                  //echo '<img src="' .asset('storage/uploaded/races/' . $latest_race[$i]->header). '">';
-
-                  echo '<h4>' .$latest_race[$i]->title_en. '</h4>';
-
-                  $dateF = DateTime::createFromFormat('Y-m-d', $latest_race[$i]->date_from)->format('d M Y');
-                  $dateT = DateTime::createFromFormat('Y-m-d', $latest_race[$i]->date_to)->format('d M Y');
-
-                  echo '<p style="font-family:SourceSansPro-Light;">' .$dateF. ' (' .$latest_race[$i]->time_from. ') GMT +08' . ' - ' .$dateT. ' (' .$latest_race[$i]->time_to. ') GMT +08'. '</p>';
-
-                  echo '<div id="race-progress"></div>';
-
-                  echo '</div>';
-
-                  echo '<div class="col-md-2">';
-                  foreach($medals as $medal) {
-                    if($medal->races_id == $latest_race[$i]->race_id)
-                      echo '<img src="' .asset('storage/uploaded/medals/grey/' . $medal->medal_grey). '">';
-                  }
-                  echo '</div>';
-                }
-                echo '</div>';
-                echo '</div>';
-              }*/
-
-              //if user had joined past race && no join new race
-              //if(!$last_join->isEmpty())
-              ?>
+              } ?>
 
       </div>
 
@@ -261,16 +227,6 @@ var allmedal = JSON.parse('<?= $allmedal_json; ?>');
   </div>
 
 @endsection
-
-@if($user->strava_access_token)
-  @section('script')
-  <script>
-    document.getElementById("medal-modal").addEventListener("click", function(event){
-      return false;
-    });
-  </script>
-  @endsection
-@endif
 
 @if($user->motto)
 @section('script')

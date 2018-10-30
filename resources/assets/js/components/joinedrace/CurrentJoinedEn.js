@@ -5,8 +5,8 @@ import axios from 'axios';
 import CountUp from 'react-countup';
 import BibModal from './BibModalEn';
 import CertModal from './CertModalEn';
+import SubmitModal from './SubmitModalEn';
 
-const submitIC = window.location.origin + '/img/ic-submit.png';
 const rankIC = window.location.origin + '/img/ic-rank.png';
 const infoIC = window.location.origin + '/img/ic-info.png';
 
@@ -77,9 +77,7 @@ class CurrentJoinedEn extends Component{
 
                 <div className="row" id="joined-race-footer">
                   <div className="col-sm-3">
-                    <Button>
-                      <img src= {submitIC} /><br />
-                      <span>Submission</span></Button>
+                    <SubmitModal />
                   </div>
                   <div className="col-sm-3">
                     <Button>

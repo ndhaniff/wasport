@@ -5,8 +5,8 @@ import axios from 'axios';
 import CountUp from 'react-countup';
 import BibModal from './BibModalMs';
 import CertModal from './CertModalMs';
+import SubmitModal from './SubmitModalMs';
 
-const submitIC = window.location.origin + '/img/ic-submit.png';
 const rankIC = window.location.origin + '/img/ic-rank.png';
 const infoIC = window.location.origin + '/img/ic-info.png';
 
@@ -106,15 +106,13 @@ class JoinedRaceMs extends Component{
                 <span id="progress-race-start">0%</span><span id='progress-race-end'>0/{race[i]['category']}</span><br />
 
                 <div className="submission-info-row">
-                  <img src= {infoIC} /><span className="submission-info">Pengyerahan buka</span>
+                  <img src= {infoIC} /><span className="submission-info">Penyerahan buka</span>
                 </div>
                 <hr />
 
                 <div className="row" id="joined-race-footer">
                   <div className="col-sm-3">
-                    <Button>
-                      <img src= {submitIC} /><br />
-                      <span>Pengyerahan</span></Button>
+                    <SubmitModal />
                   </div>
                   <div className="col-sm-3">
                     <Button>
