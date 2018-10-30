@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Button, Modal} from 'antd'
+import Submission from './SubmitFormEn'
 
 const submitIC = window.location.origin + '/img/ic-submit.png';
 
@@ -37,7 +38,6 @@ class SubmitModalEn extends Component {
 
     return (
       <div>
-
         <Button onClick={this.showModal}>
           <img src= {submitIC} /><br />
           <span>Submission</span></Button>
@@ -48,7 +48,7 @@ class SubmitModalEn extends Component {
           onCancel={this.handleCancel}
           width={'850px'}
           footer={false} >
-          Show submit form
+          <Submission />
         </Modal>
       </div>
     )

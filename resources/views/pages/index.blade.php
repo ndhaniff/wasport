@@ -20,6 +20,7 @@
 
 @include('pages.header-banner')
 
+@guest
 <div id="home-signup-section">
   <div class="container">
     <div class="row">
@@ -32,6 +33,7 @@
     </div>
   </div>
 </div>
+@endguest
 
 <div class="home-how container-fluid p-5 bg-gray">
   <div class="container">
@@ -87,6 +89,7 @@
 <div class="home container-fluid p-5">
 
   <div class="home-race raceslisting container mb-5">
+    <div id="index-displayrace-desktop">
     <div class="row">
       <div class="col-sm-0 col-md-2"></div>
 
@@ -151,10 +154,77 @@
           </div>
         </a>
       </div>
+    </div>
 
-      <div class="col-sm-0 col-md-2"></div>
+    <div class="col-sm-0 col-md-2"></div>
+  </div>
+
+  <div id="index-displayrace-mobile">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6">
+        <h2>{{__("NEW RACE")}}</h2>
+
+        <a href="racedetails/{{ $new->rid }}">
+          <div class="race-box">
+            <div class="race-img">
+              <img src=" <?php echo asset('storage/uploaded/races/' . $new->header) ?>" alt="{{ $new->title_en }}">
+            </div>
+
+            <div class="race-caption">
+              <?php if(app()->getLocale() == 'en')
+                      echo '<h5>' .$new->title_en. '</h5>';
+                    if(app()->getLocale() == 'ms')
+                      echo '<h5>' .$new->title_ms. '</h5>';
+                    if(app()->getLocale() == 'zh')
+                      echo '<h5>' .$new->title_zh. '</h5>'; ?>
+
+              <hr>
+
+              <div class="raceslisting-date">
+                <?php $dateF = DateTime::createFromFormat('Y-m-d', $new->date_from)->format('d M Y');
+
+                      $dateT = DateTime::createFromFormat('Y-m-d', $new->date_to)->format('d M Y');
+
+                      echo $dateF. ' (' .$new->time_from. ') GMT +08' . '<br>-<br>' .$dateT. '(' .$new->time_to. ') GMT +08'; ?>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-xs-12 col-sm-6">
+        <h2>{{__("PAST RACE")}}</h2>
+
+        <a href="racedetails/{{ $new->rid }}">
+          <div class="race-box">
+            <div class="race-img">
+              <img src=" <?php echo asset('storage/uploaded/races/' . $old->header) ?>" alt="{{ $old->title_en }}">
+            </div>
+
+            <div class="race-caption">
+              <?php if(app()->getLocale() == 'en')
+                      echo '<h5>' .$old->title_en. '</h5>';
+                    if(app()->getLocale() == 'ms')
+                      echo '<h5>' .$old->title_ms. '</h5>';
+                    if(app()->getLocale() == 'zh')
+                      echo '<h5>' .$old->title_zh. '</h5>'; ?>
+
+              <hr>
+
+              <div class="raceslisting-date">
+                <?php $dateF = DateTime::createFromFormat('Y-m-d', $old->date_from)->format('d M Y');
+
+                      $dateT = DateTime::createFromFormat('Y-m-d', $old->date_to)->format('d M Y');
+
+                      echo $dateF. ' (' .$old->time_from. ') GMT +08' . '<br>-<br>' .$dateT. '(' .$old->time_to. ') GMT +08'; ?>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
     </div>
   </div>
+</div>
 
   <div class="rewarding-experience mb-5">
     <div class="container">

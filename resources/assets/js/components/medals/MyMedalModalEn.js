@@ -46,7 +46,7 @@ class MyMedalModalEn extends Component{
         items.push(
           <div className="col-md-4">
             <Button onClick={this.showModal.bind(this)} data-id={medal[i]['mid']}>
-              <img src={medal[i]['color_medal']} />
+              <img src={medal[i]['medal_color']} />
             </Button>
 
             <Modal
@@ -55,7 +55,7 @@ class MyMedalModalEn extends Component{
               onCancel={this.handleCancel}
               maskStyle={{backgroundColor: 'rgba(0,0,0,.2)'}}
               footer={false} >
-              <RaceMedal medalID={this.state.medalID} medalImg={medal[i]['color_medal']} />
+              <RaceMedal medalID={this.state.medalID} />
             </Modal>
 
           </div>)

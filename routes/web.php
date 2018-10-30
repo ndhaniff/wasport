@@ -112,6 +112,7 @@ Route::get('verify/{email}/{verifyToken}', 'Auth\RegisterController@verifyEmailD
 //Strava
 Route::get('/strava/getAuthToken','API\StravaController@getAuthToken')->name('strava.getToken');
 Route::post('/strava/getStats','API\StravaController@getStats')->name('strava.getStats');
+Route::post('/strava/latestStrava', 'API\StravaController@latestStrava')->name('strava.latestStrava');
 Route::post('/strava/disconnect','API\StravaController@disconnect')->name('strava.disconnect');
 
 //User profile

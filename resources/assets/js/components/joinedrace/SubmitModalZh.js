@@ -37,7 +37,6 @@ class SubmitModalZh extends Component {
 
     return (
       <div>
-
         <Button onClick={this.showModal}>
           <img src= {submitIC} /><br />
           <span>提交</span></Button>

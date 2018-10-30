@@ -124,7 +124,6 @@ Joined Races | WaSportsrun
                                 'bib_img' => asset('storage/uploaded/bib/' . $allmedal->bib),
                                 'cert_img' => asset('storage/uploaded/cert/' . $allmedal->cert));
       }
-
       $current_json = json_encode($current_race_arr);
       $past_json = json_encode($past_race_arr);
       $allmedal_json = json_encode($allmedal_arr); ?>
@@ -180,7 +179,7 @@ Joined Races | WaSportsrun
                       echo __("NO RACES");
                       echo '</span></center>';
                     } else {
-                      if($current_races->count()) {
+                      if($past_races->count()) {
                         if(app()->getLocale() == 'en')
                           echo '<div id="past-joined-en"></div>';
                         if(app()->getLocale() == 'ms')

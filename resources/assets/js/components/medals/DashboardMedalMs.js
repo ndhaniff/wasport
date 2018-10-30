@@ -10,7 +10,7 @@ class DashboardMedalMs extends Component{
   constructor(){
     super();
     this.state = {
-      medal : window.medal,
+      medal : window.dashmedal,
       medalID : '',
     }
   }
@@ -41,23 +41,43 @@ class DashboardMedalMs extends Component{
   createMedalItems() {
     let items = [];
 
-    for(var i=0; i<medal.length; i++) {
-      items.push(
-        <div className="col-md-4">
-          <Button onClick={this.showModal.bind(this)} data-id={medal[i]['mid']}>
-            <img src={medal[i]['grey_medal']} />
-          </Button>
+    for(var i=0; i<3; i++) {
+      if(medal[i]['medal_status'] == 'true') {
+        items.push(
+          <div className="col-md-4">
+            <Button onClick={this.showModal.bind(this)} data-id={medal[i]['mid']}>
+              <img src={medal[i]['medal_color']} />
+            </Button>
 
-          <Modal
-            visible={this.state.visible}
-            onOk={this.handleOk}
-            onCancel={this.handleCancel}
-            maskStyle={{backgroundColor: 'rgba(0,0,0,.2)'}}
-            footer={false} >
-            <RaceMedal medalID={this.state.medalID}/>
-          </Modal>
+            <Modal
+              visible={this.state.visible}
+              onOk={this.handleOk}
+              onCancel={this.handleCancel}
+              maskStyle={{backgroundColor: 'rgba(0,0,0,.2)'}}
+              footer={false} >
+              <RaceMedal medalID={this.state.medalID} medalImg={medal[i]['medal_color']} />
+            </Modal>
 
-        </div>)}
+          </div>)
+      } else {
+        items.push(
+          <div className="col-md-4">
+            <Button onClick={this.showModal.bind(this)} data-id={medal[i]['mid']}>
+              <img src={medal[i]['medal_grey']} />
+            </Button>
+
+            <Modal
+              visible={this.state.visible}
+              onOk={this.handleOk}
+              onCancel={this.handleCancel}
+              maskStyle={{backgroundColor: 'rgba(0,0,0,.2)'}}
+              footer={false} >
+              <RaceMedal medalID={this.state.medalID} />
+            </Modal>
+
+          </div>)
+      }
+    }
 
     return items;
   }

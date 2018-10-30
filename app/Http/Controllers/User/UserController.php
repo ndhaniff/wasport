@@ -68,28 +68,37 @@ class UserController extends Controller
       $latest_race = DB::table('orders')
         ->join('races', 'races.rid', '=', 'race_id')
         ->where('user_id', '=', Auth::id())
-        ->where('date_to', '>', $date)
         ->orderBy('date_from', 'DESC')
         ->get();
+
 
       $race_count = $number_count->count();
 
       $allmedals = DB::table('medals')->get();
 
       $dashmedals = DB::table('medals')
-        ->join('races', 'medals.races_id', '=', 'races.rid')
-        ->orderBy('date_to', 'DESC')
-        ->get();
-
-      $ordermedals = DB::table('medals')
         ->leftjoin('orders', 'medals.races_id', '=', 'orders.race_id')
         ->join('races', 'medals.races_id', '=', 'races.rid')
+        ->get();
+
+      $joinedmedals = DB::table('medals')
+        ->join('orders', 'medals.races_id', '=', 'orders.race_id')
+        ->join('races', 'medals.races_id', '=', 'races.rid')
+        ->where('user_id', '=', Auth::id())
+        ->get();
+
+      $usermedals = DB::table('medals')
+        ->leftjoin('orders', 'medals.races_id', '=', 'orders.race_id')
+        ->join('races', 'medals.races_id', '=', 'races.rid')
+        ->where('user_id', '=', Auth::id())
+        ->where('race_status', '=', 'success')
         ->get();
 
       //return view('user.dashboard')->with('user',$user);
       return view('user.dashboard', ['user' => $user, 'races' => $races, 'medals' => $medals,
                                       'latest_race' => $latest_race, 'race_count' => $race_count,
-                                      'allmedals' => $allmedals, 'dashmedals' => $dashmedals, 'ordermedals' => $ordermedals]);
+                                      'allmedals' => $allmedals, 'dashmedals' => $dashmedals,
+                                      'usermedals' => $usermedals, 'joinedmedals' => $joinedmedals]);
     }
 
     public function updateProfile(Request $request){
@@ -168,34 +177,6 @@ class UserController extends Controller
           return response()->json(['success' => false], 200 );
     }
 
-    /*public function registerRace($rid) {
-      $user = Auth::user();
-
-      $date = date('Y-m-d');
-
-      $new = DB::table('races')
-        ->where('date_to', '>', $date)
-        ->orderBy('date_from', 'ASC')
-        ->limit(3)
-        ->get();
-
-      $race = DB::table('races')
-        ->where('rid', '=', $rid)
-        ->first();
-
-      $addons = DB::table('addons')
-        ->where('races_id', '=', $rid)
-        ->get();
-
-      if (Auth::check())
-      {
-        $user = Auth::user();
-        return view('pages.registerrace', ['new' => $new, 'user' => $user, 'race' => $race, 'addons' => $addons]);
-      } else {
-        return view('pages.registerrace', ['new' => $new, 'race' => $race, 'addons' => $addons]);
-      }
-    }*/
-
     public function submitRace(Request $request) {
 
       $order = new Order();
@@ -236,13 +217,21 @@ class UserController extends Controller
     }
 
     public function viewMedals() {
+      $user = Auth::user();
 
       $allmedals = DB::table('medals')
         ->leftjoin('orders', 'medals.races_id', '=', 'orders.race_id')
         ->join('races', 'medals.races_id', '=', 'races.rid')
         ->get();
 
-      return view('user.medals', ['allmedals' => $allmedals]);
+      $usermedals = DB::table('medals')
+        ->leftjoin('orders', 'medals.races_id', '=', 'orders.race_id')
+        ->join('races', 'medals.races_id', '=', 'races.rid')
+        ->where('user_id', '=', Auth::id())
+        ->where('race_status', '=', 'success')
+        ->get();
+
+      return view('user.medals', ['allmedals' => $allmedals, 'usermedals' => $usermedals]);
     }
 
     public function viewJoined() {

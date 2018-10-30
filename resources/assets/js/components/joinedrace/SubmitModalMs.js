@@ -37,7 +37,6 @@ class SubmitModalMs extends Component {
 
     return (
       <div>
-
         <Button onClick={this.showModal}>
           <img src= {submitIC} /><br />
           <span>Penyerahan</span></Button>

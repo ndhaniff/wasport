@@ -57,8 +57,47 @@ svg:not(:root) { display: none; }
       $allmedal_json = json_encode($allmedal_arr);
 
       $medal_arr = array();
+      $check_arr = array();
+      foreach($usermedals as $medal) {
+        $medal_arr[] = array('mid' => $medal->mid,
+                              'rid' => $medal->rid,
+                              'title_en' => $medal->title_en,
+                              'title_ms' => $medal->title_ms,
+                              'title_zh' => $medal->title_zh,
+                              'medal_status' => 'true',
+                              'medal_color' => asset('storage/uploaded/medals/color/' . $medal->medal_color));
+        array_push($check_arr, $medal->title_en);
+      }
 
-      //when user never join race
+      foreach($joinedmedals as $medal) {
+        if(in_array($medal->title_en, $check_arr)){
+
+        } else {
+          $medal_arr[] = array('mid' => $medal->mid,
+                              'rid' => $medal->rid,
+                              'title_en' => $medal->title_en,
+                              'title_ms' => $medal->title_ms,
+                              'title_zh' => $medal->title_zh,
+                              'medal_status' => 'false',
+                              'medal_grey' => asset('storage/uploaded/medals/grey/' . $medal->medal_grey));
+          array_push($check_arr, $medal->title_en);
+        }
+      }
+
+      foreach($dashmedals as $medal) {
+        if(in_array($medal->title_en, $check_arr)){
+
+        } else {
+          $medal_arr[] = array('mid' => $medal->mid,
+                                'rid' => $medal->rid,
+                                'title_en' => $medal->title_en,
+                                'title_ms' => $medal->title_ms,
+                                'title_zh' => $medal->title_zh,
+                                'medal_status' => 'false',
+                                'medal_grey' => asset('storage/uploaded/medals/grey/' . $medal->medal_grey));
+          array_push($check_arr, $medal->title_en);
+          }
+      }
 
       $medal_json = json_encode($medal_arr); ?>
 
@@ -87,8 +126,8 @@ var strava_id = "{{$user->strava_id}}"
 var strava_token = "{{$user->strava_access_token}}"
 
 var race = JSON.parse('<?= $race_json; ?>');
-var medal = JSON.parse('<?= $medal_json; ?>');
 var allmedal = JSON.parse('<?= $allmedal_json; ?>');
+var medal = JSON.parse('<?= $medal_json; ?>');
 </script>
 
   <div class="userdash p-5">
@@ -246,7 +285,6 @@ var allmedal = JSON.parse('<?= $allmedal_json; ?>');
       var token = localStorage.getItem("strava_token")
       var strava_id = localStorage.getItem("strava_id")
     }
-    console.log({{$user->strava_access_token}})
   </script>
   @endsection
 @endif

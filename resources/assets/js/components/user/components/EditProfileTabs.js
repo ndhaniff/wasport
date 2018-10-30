@@ -52,7 +52,7 @@ class EditProfileTabs extends Component{
 }
 
 const MyApp = (props) => {
-  if(typeof props.token == "undefined"){
+  if(window.strava_token != ""){
     return (
       <div>
           <Button onClick={props.stravaDisconnect}>Disconnect</Button>

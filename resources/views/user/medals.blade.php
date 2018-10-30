@@ -76,28 +76,35 @@ Medals | WaSportsrun
 
 <?php
   $allmedal_arr = array();
+  $check_arr = array();
   $mymedal = 'false';
 
+  foreach($usermedals as $medal) {
+    $mymedal = 'true';
+    $allmedal_arr[] = array('mid' => $medal->mid,
+                              'rid' => $medal->rid,
+                              'title_en' => $medal->title_en,
+                              'title_ms' => $medal->title_ms,
+                              'title_zh' => $medal->title_zh,
+                              'medal_status' => 'true',
+                              'medal_color' => asset('storage/uploaded/medals/color/' . $medal->medal_color));
+    array_push($check_arr, $medal->title_en);
+  }
+
   foreach($allmedals as $medal) {
-    if($medal->race_status == 'success') {
-      $mymedal = 'true';
-      $allmedal_arr[] = array('mid' => $medal->mid,
-                            'rid' => $medal->rid,
-                            'title_en' => $medal->title_en,
-                            'title_ms' => $medal->title_ms,
-                            'title_zh' => $medal->title_zh,
-                            'medal_status' => 'true',
-                            'color_medal' => asset('storage/uploaded/medals/color/' . $medal->medal_color));
+    if(in_array($medal->title_en, $check_arr)){
+
     } else {
       $allmedal_arr[] = array('mid' => $medal->mid,
-                            'rid' => $medal->rid,
-                            'title_en' => $medal->title_en,
-                            'title_ms' => $medal->title_ms,
-                            'title_zh' => $medal->title_zh,
-                            'medal_status' => 'false',
-                            'grey_medal' => asset('storage/uploaded/medals/grey/' . $medal->medal_grey));
+                                'rid' => $medal->rid,
+                                'title_en' => $medal->title_en,
+                                'title_ms' => $medal->title_ms,
+                                'title_zh' => $medal->title_zh,
+                                'medal_status' => 'false',
+                                'medal_grey' => asset('storage/uploaded/medals/grey/' . $medal->medal_grey));
     }
   }
+
   $allmedal_json = json_encode($allmedal_arr); ?>
 
   <script>
@@ -133,7 +140,7 @@ Medals | WaSportsrun
             <div>
               <?php if($mymedal == 'false') {
                       echo '<center><span>';
-                      echo __("NO RACES");
+                      echo __("NO MEDALS");
                       echo '</span></center>';
                     } else {
                       echo '<div id="user-medal-frame">';

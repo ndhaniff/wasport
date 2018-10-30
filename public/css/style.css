@@ -209,6 +209,7 @@ ol.progtrckr li.progtrckr-done:hover:before {
 SCROLL TO TOP
 */
 #scroll {
+  z-index: 1;
   position:fixed;
   right: 35px;
   bottom: 35px;
@@ -428,7 +429,10 @@ h2 { font-family: 'SourceSansPro-Semibold'; }
 
 .bg-gray { background-color: #EAEBEB; }
 
-.howitworks { position: relative; }
+.howitworks {
+  position: relative;
+  margin-top: 3rem;
+}
 
 .howitworks-desktop { display: block; }
 
@@ -482,7 +486,6 @@ h2 { font-family: 'SourceSansPro-Semibold'; }
 }
 
 .home-join-desktop { display: block; }
-
 .home-join-mobile { display: none; }
 
 .ql-editor {
@@ -549,6 +552,9 @@ h2 { font-family: 'SourceSansPro-Semibold'; }
   font-size: 25px !important;
   padding: 0 5px;
 }
+
+#index-displayrace-desktop { display: block; }
+#index-displayrace-mobile { display: none; }
 
 /*
 RACE LIST
@@ -1152,6 +1158,10 @@ MEDALS
 /*
 RESPONSIVE
 */
+@media screen and (max-width: 1440px) {
+  #home-signup-section { height: 18vh; }
+}
+
 @media screen and (max-width: 1024px) {
   #navbar { display: none !important;}
 
@@ -1184,9 +1194,9 @@ RESPONSIVE
 
   #homebanner { height: 22vh; }
 
-  #home-signup-section { height: 10vh; }
+  #home-signup-section { height: 12vh; }
 
-  #home-signup-section .row { padding: 45px 0; }
+  #home-signup-section .row { padding: 22px 0; }
 
   .howitworks-desktop { display: none; }
 
@@ -1195,6 +1205,9 @@ RESPONSIVE
   .howitworks h3 { font-size: 1.15rem; }
 
   #howitworks { margin: 2rem 0; }
+
+  #index-displayrace-desktop { display: none; }
+  #index-displayrace-mobile { display: block; }
 }
 
 @media screen and (max-width: 800px) {
