@@ -71,7 +71,38 @@ Medals | WaSportsrun
       margin-left: 100%; }
     .tabs .tab-2:last-child [type="radio"]:checked + div {
       margin-left: -100%; }
+    svg:not(:root), .anticon:before { display: none; }
 </style>
+
+<?php
+  $allmedal_arr = array();
+  $mymedal = 'false';
+
+  foreach($allmedals as $medal) {
+    if($medal->race_status == 'success') {
+      $mymedal = 'true';
+      $allmedal_arr[] = array('mid' => $medal->mid,
+                            'rid' => $medal->rid,
+                            'title_en' => $medal->title_en,
+                            'title_ms' => $medal->title_ms,
+                            'title_zh' => $medal->title_zh,
+                            'medal_status' => 'true',
+                            'color_medal' => asset('storage/uploaded/medals/color/' . $medal->medal_color));
+    } else {
+      $allmedal_arr[] = array('mid' => $medal->mid,
+                            'rid' => $medal->rid,
+                            'title_en' => $medal->title_en,
+                            'title_ms' => $medal->title_ms,
+                            'title_zh' => $medal->title_zh,
+                            'medal_status' => 'false',
+                            'grey_medal' => asset('storage/uploaded/medals/grey/' . $medal->medal_grey));
+    }
+  }
+  $allmedal_json = json_encode($allmedal_arr); ?>
+
+  <script>
+    var medal = JSON.parse('<?= $allmedal_json; ?>');
+  </script>
 
   <div class="medaldash p-5">
     <div class="container">
@@ -80,49 +111,40 @@ Medals | WaSportsrun
 
         <div class="tabs">
           <div class="tab-2">
-            <label for="tab2-1">All Medals</label>
+            <label for="tab2-1">{{__("All Medals")}}</label>
             <input id="tab2-1" name="tabs-two" type="radio" checked="checked">
 
             <div>
               <div id="user-medal-frame">
-                <div class="row">
-                  @foreach($medals as $medal)
-                  <div class="col-md-4">
-                    <a data-toggle="modal" data-target="#medalViewer-{{$medal->mid}}" data-id="{{$medal->mid}}">
-                      <img src="<?= asset('storage/uploaded/medals/grey/' . $medal->medal_grey) ?>" alt="{{$medal->title_en}}">
-                    </a>
-                  </div>
-
-                  <!-- The Modal -->
-                  <div class="modal fade" id="medalViewer-{{$medal->mid}}">
-                    <div class="modal-dialog modal-dialog-centered">
-                      <div class="modal-content">
-
-                        <!-- Modal body -->
-                        <div class="modal-body">
-                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-
-                          <img src="<?= asset('storage/uploaded/medals/grey/' . $medal->medal_grey) ?>" alt="{{$medal->title_en}}" id="modal-img"> <br>
-
-                          <h3>{{$medal->title_en}}</h3>
-
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  @endforeach
-                </div>
+                <?php if(app()->getLocale() == 'en')
+                        echo '<div id="allmedals-en"></div>';
+                      if(app()->getLocale() == 'ms')
+                        echo '<div id="allmedals-ms"></div>';
+                      if(app()->getLocale() == 'zh')
+                        echo '<div id="allmedals-zh"></div>'; ?>
               </div>
             </div>
           </div>
 
           <div class="tab-2">
-            <label for="tab2-2">My Medals</label>
+            <label for="tab2-2">{{__("My Medals")}}</label>
             <input id="tab2-2" name="tabs-two" type="radio">
 
             <div>
-
+              <?php if($mymedal == 'false') {
+                      echo '<center><span>';
+                      echo __("NO RACES");
+                      echo '</span></center>';
+                    } else {
+                      echo '<div id="user-medal-frame">';
+                      if(app()->getLocale() == 'en')
+                        echo '<div id="mymedals-en"></div>';
+                      if(app()->getLocale() == 'ms')
+                        echo '<div id="mymedals-ms"></div>';
+                      if(app()->getLocale() == 'zh')
+                        echo '<div id="mymedals-zh"></div>';
+                      echo '</div>';
+                    }?>
             </div>
           </div>
         </div>

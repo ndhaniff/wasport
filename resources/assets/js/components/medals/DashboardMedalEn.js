@@ -41,6 +41,8 @@ class DashboardMedalEn extends Component{
   createMedalItems() {
     let items = [];
 
+    console.log(medal);
+
     for(var i=0; i<medal.length; i++) {
       items.push(
         <div className="col-md-4">

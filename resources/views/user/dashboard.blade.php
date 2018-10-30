@@ -48,29 +48,19 @@ svg:not(:root) { display: none; }
 
       $race_json = json_encode($latest_race_arr);
 
-      $medal_arr = array();
-      $j=0;
-
-      foreach($medals as $medal) {
-        $medal_arr[] = array('mid' => $medal->mid,
-                              'rid' => $medal->rid,
-                              'title_en' => $medal->title_en,
-                              'title_ms' => $medal->title_ms,
-                              'title_zh' => $medal->title_zh,
-                              'grey_medal' => asset('storage/uploaded/medals/grey/' . $medal->medal_grey));
-        $j++;
-        if($j==3) break;
-      }
-
-      $medal_json = json_encode($medal_arr);
-
       $allmedal_arr = array();
       foreach($allmedals as $allmedal) {
         $allmedal_arr[] = array('races_id' => $allmedal->races_id,
                                 'bib_img' => asset('storage/uploaded/bib/' . $allmedal->bib),
                                 'cert_img' => asset('storage/uploaded/cert/' . $allmedal->cert));
       }
-      $allmedal_json = json_encode($allmedal_arr); ?>
+      $allmedal_json = json_encode($allmedal_arr);
+
+      $medal_arr = array();
+
+      //when user never join race
+
+      $medal_json = json_encode($medal_arr); ?>
 
 <script>
 var user = {

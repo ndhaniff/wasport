@@ -16,7 +16,7 @@ class RaceMedalZh extends React.Component{
 
     for(var i=0; i<medal.length; i++) {
       if(medal[i]['mid'] == this.props.medalID) {
-        var displayMedal = <img src={medal[i]['grey_medal']} style={{width:'100%'}} id="dash-medal-img" />
+        var displayMedal = <img src={this.props.medalImg} style={{width:'100%'}} id="dash-medal-img" />
         var displayTitle = <h3>{medal[i]['title_zh']}</h3>
         var viewRace = <a id="btn-view-race-info" href={location.origin + '/racedetails/' + medal[i]['rid']}>View Race Info</a>
       }

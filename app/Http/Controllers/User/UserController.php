@@ -76,10 +76,20 @@ class UserController extends Controller
 
       $allmedals = DB::table('medals')->get();
 
+      $dashmedals = DB::table('medals')
+        ->join('races', 'medals.races_id', '=', 'races.rid')
+        ->orderBy('date_to', 'DESC')
+        ->get();
+
+      $ordermedals = DB::table('medals')
+        ->leftjoin('orders', 'medals.races_id', '=', 'orders.race_id')
+        ->join('races', 'medals.races_id', '=', 'races.rid')
+        ->get();
+
       //return view('user.dashboard')->with('user',$user);
       return view('user.dashboard', ['user' => $user, 'races' => $races, 'medals' => $medals,
                                       'latest_race' => $latest_race, 'race_count' => $race_count,
-                                      'allmedals' => $allmedals]);
+                                      'allmedals' => $allmedals, 'dashmedals' => $dashmedals, 'ordermedals' => $ordermedals]);
     }
 
     public function updateProfile(Request $request){
@@ -158,15 +168,6 @@ class UserController extends Controller
           return response()->json(['success' => false], 200 );
     }
 
-    public function viewMedals() {
-
-      $medals = DB::table('medals')
-                ->join('races', 'medals.races_id', '=', 'races.rid')
-                ->get();
-
-      return view('user.medals', ['medals' => $medals]);
-    }
-
     /*public function registerRace($rid) {
       $user = Auth::user();
 
@@ -232,6 +233,16 @@ class UserController extends Controller
       }
 
       return response()->json(['success' => true], 200);
+    }
+
+    public function viewMedals() {
+
+      $allmedals = DB::table('medals')
+        ->leftjoin('orders', 'medals.races_id', '=', 'orders.race_id')
+        ->join('races', 'medals.races_id', '=', 'races.rid')
+        ->get();
+
+      return view('user.medals', ['allmedals' => $allmedals]);
     }
 
     public function viewJoined() {
