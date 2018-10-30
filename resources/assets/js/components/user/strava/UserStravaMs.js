@@ -16,17 +16,17 @@ const Stats = (props) => {
     <div className="col-md-4" id="border-right">
       <img src= {distanceLogo} alt="Distance" /> <br/>
       <h6>{props.distance}</h6>
-      <b>Jarak (KM)</b>
+      <span>Jarak (KM)</span>
     </div>
     <div className="col-md-4" id="border-right">
       <img src={timeLogo} alt="Pace" /> <br/>
       <h6>{props.pace}</h6>
-      <b>Kecepatan</b>
+      <span>Kecepatan</span>
     </div>
     <div className="col-md-4">
       <img src={runLogo} alt="Number of runs" /> <br/>
       <h6>{props.noofruns}</h6>
-      <b>Jumlah Larian</b>
+      <span>Jumlah Larian</span>
     </div>
   </div>
   )
@@ -48,7 +48,7 @@ class UserStravaMs extends Component{
       let api_url = "/strava/getStats/";
       axios.post(api_url, {
         id : window.strava_id,
-        access_token : window.token
+        access_token : window.strava_token
       })
       .then((res) => {
         if(res.status == 200){

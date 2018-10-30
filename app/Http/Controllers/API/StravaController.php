@@ -8,12 +8,13 @@ use Auth;
 
 class StravaController extends Controller
 {
-
+  //26162
+  //50970d1573958f75aa2b029edc71b73bfb6e5502
   private $api_url = "https://www.strava.com/oauth/authorize";
   private $oauth_url = "https://www.strava.com/oauth/";
   private $revoke_url = 'https://www.strava.com/oauth/deauthorize';
-  private $client_id="26162";
-  private $client_secret = "50970d1573958f75aa2b029edc71b73bfb6e5502";
+  private $client_id="28187";
+  private $client_secret = "79b455bb51c7a1eaee4d252ff63ee9b5afbb8729";
   private $redirect_uri="http://localhost:8000/en/dashboard";
   private $response_type="code";
     /**

@@ -907,10 +907,14 @@ USER DASHBOARD
 
 .user-strava-block #border-right { border-right: 1px solid #e7eced; }
 
-#user-strava h6 {
+.user-strava-block h6 {
   font-family: 'SourceSansPro-Semibold';
   font-size: 20px;
-  margin: 0;
+  margin-top: 10px;
+}
+
+.user-strava-block span {
+  font-size: 15px;
 }
 
 .userdash #view-all { float: right; }

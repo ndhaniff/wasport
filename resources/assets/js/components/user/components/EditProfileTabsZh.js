@@ -60,8 +60,8 @@ const MyApp = (props) => {
     )
   } else {
     return(
-      <a href={"https://www.strava.com/oauth/authorize?client_id=26162&redirect_uri="+ window.location.href +"&response_type=code"}>
-        <Button>Strava 连线</Button>
+      <a href={"https://www.strava.com/oauth/authorize?client_id=28187&redirect_uri="+ window.location.href +"&response_type=code"}>
+        <Button>连线</Button>
       </a>
     )
   }

@@ -16,17 +16,17 @@ const Stats = (props) => {
     <div className="col-md-4" id="border-right">
       <img src= {distanceLogo} alt="Distance" /> <br/>
       <h6>{props.distance}</h6>
-      <b>Distance (KM)</b>
+      <span>Distance (KM)</span>
     </div>
     <div className="col-md-4" id="border-right">
       <img src={timeLogo} alt="Pace" /> <br/>
       <h6>{props.pace}</h6>
-      <b>Pace</b>
+      <span>Pace</span>
     </div>
     <div className="col-md-4">
       <img src={runLogo} alt="Number of runs" /> <br/>
       <h6>{props.noofruns}</h6>
-      <b>No of runs</b>
+      <span>No of runs</span>
     </div>
   </div>
   )
@@ -44,15 +44,15 @@ class UserStravaEn extends Component{
   }
 
   componentDidMount(){
-    if(typeof window.token != "undefined" && typeof window.strava_id != "undefined"){
+
+    if(typeof window.strava_token != "undefined" && typeof window.strava_id != "undefined"){
       let api_url = "/strava/getStats/";
       axios.post(api_url, {
         id : window.strava_id,
-        access_token : window.token
+        access_token : window.strava_token
       })
       .then((res) => {
         if(res.status == 200){
-
           let data = res.data.data
           /* Calculate Pace */
           let distance_pace = data.all_run_totals.distance / 1000
@@ -67,7 +67,7 @@ class UserStravaEn extends Component{
           //adding 0 before, if lower than 10
           sec = (sec > 10) ? sec : '0' + sec;
           //set pace
-          let avg_pace = min + ":" + Math.floor(sec);
+          let avg_pace = min + "\"" + Math.floor(sec);
           //set distance
           let distance = distance_pace;
           let no_of_runs = data.all_run_totals.count;
@@ -84,6 +84,7 @@ class UserStravaEn extends Component{
   }
 
   render(){
+
     return(
       <div>
 

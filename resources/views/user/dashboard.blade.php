@@ -83,6 +83,8 @@ var add_sl = "{{$user->add_sl}}"
 var city = "{{$user->city}}"
 var state = "{{$user->state}}"
 var postal = "{{$user->postal}}"
+var strava_id = "{{$user->strava_id}}"
+var strava_token = "{{$user->strava_access_token}}"
 
 var race = JSON.parse('<?= $race_json; ?>');
 var medal = JSON.parse('<?= $medal_json; ?>');
@@ -288,6 +290,7 @@ var allmedal = JSON.parse('<?= $allmedal_json; ?>');
       var token = localStorage.getItem("strava_token")
       var strava_id = localStorage.getItem("strava_id")
     }
+    console.log({{$user->strava_access_token}})
   </script>
   @endsection
 @endif
