@@ -79,6 +79,9 @@ Medals | WaSportsrun
   $check_arr = array();
   $mymedal = 'false';
 
+  date_default_timezone_set("Asia/Kuala_Lumpur");
+  $date = date('Y-m-d H:i a');
+
   foreach($usermedals as $medal) {
     $mymedal = 'true';
     $allmedal_arr[] = array('mid' => $medal->mid,
@@ -87,21 +90,52 @@ Medals | WaSportsrun
                               'title_ms' => $medal->title_ms,
                               'title_zh' => $medal->title_zh,
                               'medal_status' => 'true',
+                              'medal_message' => 'Joined',
                               'medal_color' => asset('storage/uploaded/medals/color/' . $medal->medal_color));
     array_push($check_arr, $medal->title_en);
+  }
+
+  foreach($joinedmedals as $medal) {
+    if(in_array($medal->title_en, $check_arr)){
+
+    } else {
+      $allmedal_arr[] = array('mid' => $medal->mid,
+                          'rid' => $medal->rid,
+                          'title_en' => $medal->title_en,
+                          'title_ms' => $medal->title_ms,
+                          'title_zh' => $medal->title_zh,
+                          'medal_status' => 'false',
+                          'medal_message' => 'Joined',
+                          'medal_grey' => asset('storage/uploaded/medals/grey/' . $medal->medal_grey));
+      array_push($check_arr, $medal->title_en);
+    }
   }
 
   foreach($allmedals as $medal) {
     if(in_array($medal->title_en, $check_arr)){
 
     } else {
-      $allmedal_arr[] = array('mid' => $medal->mid,
+      $deadTimeTo = $medal->dead_to .' '. $medal->deadtime_to;
+
+      if($deadTimeTo > $date) {
+        $allmedal_arr[] = array('mid' => $medal->mid,
                                 'rid' => $medal->rid,
                                 'title_en' => $medal->title_en,
                                 'title_ms' => $medal->title_ms,
                                 'title_zh' => $medal->title_zh,
                                 'medal_status' => 'false',
+                                'medal_message' => 'Open',
                                 'medal_grey' => asset('storage/uploaded/medals/grey/' . $medal->medal_grey));
+      } else {
+        $allmedal_arr[] = array('mid' => $medal->mid,
+                              'rid' => $medal->rid,
+                              'title_en' => $medal->title_en,
+                              'title_ms' => $medal->title_ms,
+                              'title_zh' => $medal->title_zh,
+                              'medal_status' => 'false',
+                              'medal_message' => 'Closed',
+                              'medal_grey' => asset('storage/uploaded/medals/grey/' . $medal->medal_grey));
+      }
     }
   }
 

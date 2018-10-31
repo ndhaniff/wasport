@@ -48,23 +48,7 @@ class DashboardMedalEn extends Component{
             <Button onClick={this.showModal.bind(this)} data-id={medal[i]['mid']}>
               <img src={medal[i]['medal_color']} />
             </Button>
-
-            <Modal
-              visible={this.state.visible}
-              onOk={this.handleOk}
-              onCancel={this.handleCancel}
-              maskStyle={{backgroundColor: 'rgba(0,0,0,.2)'}}
-              footer={false} >
-              <RaceMedal medalID={this.state.medalID} medalImg={medal[i]['medal_color']} />
-            </Modal>
-
-          </div>)
-      } else {
-        items.push(
-          <div className="col-md-4">
-            <Button onClick={this.showModal.bind(this)} data-id={medal[i]['mid']}>
-              <img src={medal[i]['medal_grey']} />
-            </Button>
+            <span id="medal-msg">{medal[i]['medal_message']}</span>
 
             <Modal
               visible={this.state.visible}
@@ -74,7 +58,23 @@ class DashboardMedalEn extends Component{
               footer={false} >
               <RaceMedal medalID={this.state.medalID} />
             </Modal>
+          </div>)
+      } else {
+        items.push(
+          <div className="col-md-4">
+            <Button onClick={this.showModal.bind(this)} data-id={medal[i]['mid']}>
+              <img src={medal[i]['medal_grey']} />
+            </Button>
+            <span id="medal-msg">{medal[i]['medal_message']}</span>
 
+            <Modal
+              visible={this.state.visible}
+              onOk={this.handleOk}
+              onCancel={this.handleCancel}
+              maskStyle={{backgroundColor: 'rgba(0,0,0,.2)'}}
+              footer={false} >
+              <RaceMedal medalID={this.state.medalID} />
+            </Modal>
           </div>)
       }
     }

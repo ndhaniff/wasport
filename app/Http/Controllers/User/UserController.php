@@ -224,6 +224,12 @@ class UserController extends Controller
         ->join('races', 'medals.races_id', '=', 'races.rid')
         ->get();
 
+      $joinedmedals = DB::table('medals')
+        ->join('orders', 'medals.races_id', '=', 'orders.race_id')
+        ->join('races', 'medals.races_id', '=', 'races.rid')
+        ->where('user_id', '=', Auth::id())
+        ->get();
+
       $usermedals = DB::table('medals')
         ->leftjoin('orders', 'medals.races_id', '=', 'orders.race_id')
         ->join('races', 'medals.races_id', '=', 'races.rid')
@@ -231,7 +237,8 @@ class UserController extends Controller
         ->where('race_status', '=', 'success')
         ->get();
 
-      return view('user.medals', ['allmedals' => $allmedals, 'usermedals' => $usermedals]);
+      return view('user.medals', ['allmedals' => $allmedals, 'joinedmedals' => $joinedmedals,
+                                  'usermedals' => $usermedals]);
     }
 
     public function viewJoined() {

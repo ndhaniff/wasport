@@ -952,6 +952,11 @@ USER DASHBOARD
   height: 350%;
 }
 
+#medal-msg {
+  font-size: 15px;
+  font-family: 'SourceSansPro-Light';
+}
+
 /*#user-medal-frame:before {
   border-radius:2px;
   bottom:-2vmin;
@@ -1154,6 +1159,11 @@ MEDALS
 }
 
 .medaldash #modal-img { width: 60%; }
+
+.medaldash #medal-msg {
+  display: block;
+  padding-bottom: 2rem;
+}
 
 /*
 RESPONSIVE

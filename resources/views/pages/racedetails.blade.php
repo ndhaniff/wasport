@@ -23,12 +23,13 @@ svg:not(:root) { display: none; }
         <li><span id="seconds"></span>secs</li>
       </ul>
 
-      <ul id="countdown-closed">
-        <li><span id="days"></span>0 days</li>
+      <p id="countdown-closed">
+        Registration closed
+        <!--<li><span id="days"></span>0 days</li>
         <li><span id="hours"></span>0 hours</li>
         <li><span id="minutes"></span>0 mins</li>
-        <li><span id="seconds"></span>0 secs</li>
-      </ul>
+        <li><span id="seconds"></span>0 secs</li>-->
+      </p>
 
     </section>
 

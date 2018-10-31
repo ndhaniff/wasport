@@ -48,6 +48,7 @@ class MyMedalModalMs extends Component{
             <Button onClick={this.showModal.bind(this)} data-id={medal[i]['mid']}>
               <img src={medal[i]['medal_color']} />
             </Button>
+            <span id="medal-msg">Sertai</span>
 
             <Modal
               visible={this.state.visible}

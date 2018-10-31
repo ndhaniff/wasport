@@ -65,6 +65,7 @@ svg:not(:root) { display: none; }
                               'title_ms' => $medal->title_ms,
                               'title_zh' => $medal->title_zh,
                               'medal_status' => 'true',
+                              'medal_message' => 'Joined',
                               'medal_color' => asset('storage/uploaded/medals/color/' . $medal->medal_color));
         array_push($check_arr, $medal->title_en);
       }
@@ -79,6 +80,7 @@ svg:not(:root) { display: none; }
                               'title_ms' => $medal->title_ms,
                               'title_zh' => $medal->title_zh,
                               'medal_status' => 'false',
+                              'medal_message' => 'Joined',
                               'medal_grey' => asset('storage/uploaded/medals/grey/' . $medal->medal_grey));
           array_push($check_arr, $medal->title_en);
         }
@@ -88,17 +90,30 @@ svg:not(:root) { display: none; }
         if(in_array($medal->title_en, $check_arr)){
 
         } else {
-          $medal_arr[] = array('mid' => $medal->mid,
-                                'rid' => $medal->rid,
-                                'title_en' => $medal->title_en,
-                                'title_ms' => $medal->title_ms,
-                                'title_zh' => $medal->title_zh,
-                                'medal_status' => 'false',
-                                'medal_grey' => asset('storage/uploaded/medals/grey/' . $medal->medal_grey));
+          $deadTimeTo = $medal->dead_to .' '. $medal->deadtime_to;
+
+          if($deadTimeTo > $date) {
+            $medal_arr[] = array('mid' => $medal->mid,
+                                  'rid' => $medal->rid,
+                                  'title_en' => $medal->title_en,
+                                  'title_ms' => $medal->title_ms,
+                                  'title_zh' => $medal->title_zh,
+                                  'medal_status' => 'false',
+                                  'medal_message' => 'Open',
+                                  'medal_grey' => asset('storage/uploaded/medals/grey/' . $medal->medal_grey));
+          } else {
+            $medal_arr[] = array('mid' => $medal->mid,
+                                  'rid' => $medal->rid,
+                                  'title_en' => $medal->title_en,
+                                  'title_ms' => $medal->title_ms,
+                                  'title_zh' => $medal->title_zh,
+                                  'medal_status' => 'false',
+                                  'medal_message' => 'Closed',
+                                  'medal_grey' => asset('storage/uploaded/medals/grey/' . $medal->medal_grey));
+          }
           array_push($check_arr, $medal->title_en);
           }
       }
-
       $medal_json = json_encode($medal_arr); ?>
 
 <script>
