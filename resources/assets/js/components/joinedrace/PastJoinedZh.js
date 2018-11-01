@@ -57,9 +57,7 @@ class PastJoinedZh extends Component{
             </div>
           </div>)
         }
-    }
-
-    if(past[i]['race_status'] == 'fail' || past[i]['race_status'] == '') {
+    } else {
       items.push(
         <div className="col-sm-12 col-md-6">
           <div className="user-history-joined">

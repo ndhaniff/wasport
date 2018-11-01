@@ -90,6 +90,10 @@ Joined Races | WaSportsrun
           $submission = 'true';
         }
 
+        if($dateTimeTo < $date) {
+          $submission = 'closed';
+        }
+
         $dateF = DateTime::createFromFormat('Y-m-d', $current->date_from)->format('d M Y');
         $dateT = DateTime::createFromFormat('Y-m-d', $current->date_to)->format('d M Y');
 
@@ -105,7 +109,6 @@ Joined Races | WaSportsrun
       }
 
       foreach($past_races as $past) {
-
         $dateF = DateTime::createFromFormat('Y-m-d', $past->date_from)->format('d M Y');
         $dateT = DateTime::createFromFormat('Y-m-d', $past->date_to)->format('d M Y');
 

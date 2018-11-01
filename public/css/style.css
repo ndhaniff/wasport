@@ -955,6 +955,7 @@ USER DASHBOARD
 #medal-msg {
   font-size: 15px;
   font-family: 'SourceSansPro-Light';
+  color: #fff;
 }
 
 /*#user-medal-frame:before {

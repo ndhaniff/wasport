@@ -30,6 +30,10 @@ svg:not(:root) { display: none; }
           $submission = 'true';
         }
 
+        if($dateTimeTo < $date) {
+          $submission = 'closed';
+        }
+
         $dateF = DateTime::createFromFormat('Y-m-d', $latest->date_from)->format('d M Y');
         $dateT = DateTime::createFromFormat('Y-m-d', $latest->date_to)->format('d M Y');
 

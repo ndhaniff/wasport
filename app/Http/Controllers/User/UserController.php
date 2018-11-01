@@ -71,7 +71,6 @@ class UserController extends Controller
         ->orderBy('date_from', 'DESC')
         ->get();
 
-
       $race_count = $number_count->count();
 
       $allmedals = DB::table('medals')->get();
@@ -85,6 +84,7 @@ class UserController extends Controller
         ->join('orders', 'medals.races_id', '=', 'orders.race_id')
         ->join('races', 'medals.races_id', '=', 'races.rid')
         ->where('user_id', '=', Auth::id())
+        ->orderBy('date_from', 'DESC')
         ->get();
 
       $usermedals = DB::table('medals')
@@ -243,20 +243,20 @@ class UserController extends Controller
 
     public function viewJoined() {
       $user = Auth::user();
-
+      date_default_timezone_set("Asia/Kuala_Lumpur");
       $date = date('Y-m-d');
 
       $current_races = DB::table('orders')
         ->join('races', 'races.rid', '=', 'race_id')
         ->where('user_id', '=', Auth::id())
-        ->where('date_to', '>', $date)
+        ->where('date_to', '>=', $date)
         ->orderBy('date_from', 'DESC')
         ->get();
 
       $past_races = DB::table('orders')
         ->join('races', 'races.rid', '=', 'race_id')
         ->where('user_id', '=', Auth::id())
-        ->where('date_to', '<', $date)
+        ->where('date_to', '<=', $date)
         ->orderBy('date_from', 'DESC')
         ->get();
 
