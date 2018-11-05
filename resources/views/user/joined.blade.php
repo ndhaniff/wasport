@@ -77,6 +77,7 @@ Joined Races | WaSportsrun
 <?php $current_race_arr = array();
       $past_race_arr = array();
       $allmedal_arr = array();
+      $allsubmissions_arr = array();
       date_default_timezone_set("Asia/Kuala_Lumpur");
       $date = date('Y-m-d H:i a');
 
@@ -127,14 +128,28 @@ Joined Races | WaSportsrun
                                 'bib_img' => asset('storage/uploaded/bib/' . $allmedal->bib),
                                 'cert_img' => asset('storage/uploaded/cert/' . $allmedal->cert));
       }
+
+      foreach($submissions as $submission) {
+        $allsubmissions_arr[] = array('race_id' => $submission->race_id,
+                                    's_hour' => $submission->s_hour,
+                                    's_minute' => $submission->s_minute,
+                                    's_second' => $submission->s_second,
+                                    's_distance' => $submission->s_distance,
+                                    'strava_activity' => $submission->strava_activity);
+
+      }
+
       $current_json = json_encode($current_race_arr);
       $past_json = json_encode($past_race_arr);
-      $allmedal_json = json_encode($allmedal_arr); ?>
+      $allmedal_json = json_encode($allmedal_arr);
+      $allsubmissions_json = json_encode($allsubmissions_arr); ?>
 
 <script>
+  var allorder = JSON.parse('<?= $current_json; ?>');
   var current = JSON.parse('<?= $current_json; ?>');
   var past = JSON.parse('<?= $past_json; ?>');
   var allmedal = JSON.parse('<?= $allmedal_json; ?>');
+  var allsubmissions = JSON.parse('<?= $allsubmissions_json; ?>');
 
   var user = {
     id: "{{$user->id}}",
@@ -142,6 +157,8 @@ Joined Races | WaSportsrun
     firstname: "{{$user->firstname}}",
     lastname: "{{$user->lastname}}"
   }
+
+  var strava_token = "{{$user->strava_access_token}}"
 </script>
 
   <div class="joineddash p-5">

@@ -1143,6 +1143,33 @@ JOINED RACES
 .submission-info-row { margin-top: 8px; }
 
 /*
+SUBMISSION
+*/
+#strava-form-change {
+  color: red;
+}
+
+#submission-form .ant-form-item-required:before {
+    float: left;
+}
+
+#submission-form .ant-form-item-control {
+    width: 445px;
+}
+
+#route-uploader {
+    border: 1px dashed #ccc;
+    background: #f2f2f2;
+}
+
+#submission-history-table {
+  width: 100%;
+  text-align: center;
+}
+
+#submission-history-table tr:nth-child(even){background-color: #ddd;}
+
+/*
 MEDALS
 */
 .medaldash {

@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 import { Button,Tabs, Progress } from 'antd';
 import axios from 'axios';
 import CountUp from 'react-countup';
-import BibModal from './BibModalMs';
-import CertModal from './CertModalMs';
-import SubmitModal from './SubmitModalMs';
+import BibModal from './bib/BibModalMs';
+import CertModal from './cert/CertModalMs';
+import SubmitModal from './submit/SubmitModalMs';
 
 const rankIC = window.location.origin + '/img/ic-rank.png';
 const infoIC = window.location.origin + '/img/ic-info.png';
@@ -15,7 +15,7 @@ class JoinedRaceMs extends Component{
   constructor(){
     super();
     this.state = {
-      race : window.race,
+      race : window.race
     }
   }
 
@@ -48,10 +48,10 @@ class JoinedRaceMs extends Component{
                         <span>Kedudukan</span></Button>
                     </div>
                     <div className="col-sm-4">
-                      <BibModal raceCategory = {race[i]['category']} raceID = {race[i]['rid']} />
+                      <BibModal raceCategory = {race[i]['category']} raceID = {race[i]['rid']}/>
                     </div>
                     <div className="col-sm-4">
-                      <CertModal raceCategory = {race[i]['category']} raceTitle = {race[i]['title_en']} raceID = {race[i]['rid']} raceStatus = {race[i]['race_status']} />
+                      <CertModal raceCategory = {race[i]['category']} raceTitle = {race[i]['title_ms']} raceID = {race[i]['rid']} raceStatus = {race[i]['race_status']} />
                     </div>
                   </div>
                 </div>
@@ -81,10 +81,10 @@ class JoinedRaceMs extends Component{
                         <span>Kedudukan</span></Button>
                     </div>
                     <div className="col-sm-4">
-                      <BibModal raceCategory = {race[i]['category']} raceID = {race[i]['rid']} />
+                      <BibModal raceCategory = {race[i]['category']} raceID = {race[i]['rid']}/>
                     </div>
                     <div className="col-sm-4">
-                      <CertModal raceCategory = {race[i]['category']} raceTitle = {race[i]['title_en']} raceID = {race[i]['rid']} raceStatus = {race[i]['race_status']} />
+                      <CertModal raceCategory = {race[i]['category']} raceTitle = {race[i]['title_ms']} raceID = {race[i]['rid']} raceStatus = {race[i]['race_status']} />
                     </div>
                   </div>
                 </div>
@@ -106,18 +106,18 @@ class JoinedRaceMs extends Component{
                 <span id="progress-race-start">0%</span><span id='progress-race-end'>0/{race[i]['category']}</span><br />
 
                 <div className="submission-info-row">
-                  <img src= {infoIC} /><span className="submission-info">Penyerahan buka</span>
+                  <img src= {infoIC} /><span className="submission-info">Anda boleh menyerah sekarang</span>
                 </div>
                 <hr />
 
                 <div className="row" id="joined-race-footer">
                   <div className="col-sm-3">
-                    <SubmitModal />
+                      <SubmitModal raceID = {race[i]['rid']}/>
                   </div>
                   <div className="col-sm-3">
                     <Button>
                       <img src= {rankIC} /><br />
-                      <span>Kedudukan</span></Button>
+                      <span>Rankings</span></Button>
                   </div>
                   <div className="col-sm-3">
                     <BibModal raceCategory = {race[i]['category']} raceID = {race[i]['rid']} />
@@ -130,44 +130,41 @@ class JoinedRaceMs extends Component{
             </div>
           </div>)
       }
-    }
 
-    if(race[i]['submission'] == 'closed') {
-      items.push(
-        <div className="col-sm-12 col-md-6">
-          <div className="user-history-joined">
-            <img src={race[i]['header']} style={{width: '100%'}}/>
+      if(race[i]['submission'] == 'closed') {
+        items.push(
+          <div className="col-sm-12 col-md-6">
+            <div className="user-history-joined">
+              <img src={race[i]['header']} style={{width: '100%'}}/>
 
-            <div className="user-history-joined-content">
-              <h4 style={{fontFamily: 'SourceSansPro-Semibold'}}>{race[i]['title_ms']}</h4>
-              <p style={{fontFamily: 'SourceSansPro-Light'}}>{race[i]['date']}</p>
-              <Progress percent={0} showInfo={false}/>
-              <span id="progress-race-start">0%</span><span id='progress-race-end'>0/{race[i]['category']}</span><br />
+              <div className="user-history-joined-content">
+                <h4 style={{fontFamily: 'SourceSansPro-Semibold'}}>{race[i]['title_en']}</h4>
+                <p style={{fontFamily: 'SourceSansPro-Light'}}>{race[i]['date']}</p>
+                <Progress percent={0} showInfo={false}/>
+                <span id="progress-race-start">0%</span><span id='progress-race-end'>0/{race[i]['category']}</span><br />
 
-              <div className="submission-info-row">
-                <img src= {infoIC} /><span className="submission-info">Penyerahan tamat</span>
-              </div>
-              <hr />
-
-              <div className="row" id="joined-race-footer">
-                <div className="col-sm-3">
-                  <SubmitModal />
+                <div className="submission-info-row">
+                  <img src= {infoIC} /><span className="submission-info">Submission Closed</span>
                 </div>
-                <div className="col-sm-3">
-                  <Button>
-                    <img src= {rankIC} /><br />
-                    <span>Kedudukan</span></Button>
-                </div>
-                <div className="col-sm-3">
-                  <BibModal raceCategory = {race[i]['category']} raceID = {race[i]['rid']} />
-                </div>
-                <div className="col-sm-3">
-                  <CertModal raceCategory = {race[i]['category']} raceTitle = {race[i]['title_en']} raceID = {race[i]['rid']} raceStatus = {race[i]['race_status']} />
+                <hr />
+
+                <div className="row" id="joined-race-footer">
+                  <div className="col-sm-4">
+                    <Button>
+                      <img src= {rankIC} /><br />
+                      <span>Rankings</span></Button>
+                  </div>
+                  <div className="col-sm-4">
+                    <BibModal raceCategory = {race[i]['category']} raceID = {race[i]['rid']} />
+                  </div>
+                  <div className="col-sm-4">
+                    <CertModal raceCategory = {race[i]['category']} raceTitle = {race[i]['title_en']} raceID = {race[i]['rid']} raceStatus = {race[i]['race_status']} />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>)
+          </div>)
+      }
     }
 
     return items;

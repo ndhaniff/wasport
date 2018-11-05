@@ -59,6 +59,7 @@ class StravaController extends Controller
 
        if ($http_response_code == 401) {
            throw new \Exception('Error: getOAuthToken() - Access has been revoked.');
+           $json_response = 401;
        }
 
        curl_close($ch);
@@ -89,7 +90,7 @@ class StravaController extends Controller
        return response()->json(["success" => true, "data" => json_decode($json_response)]);
     }
 
-    public function latestStrava(Request $request){
+    public function getLatest(Request $request){
       $access_token = $request->get('access_token');
       $url = 'https://www.strava.com/api/v3/athlete/activities?access_token=' .$access_token;
 
@@ -100,6 +101,9 @@ class StravaController extends Controller
         CURLOPT_HTTPHEADER => array('Accept: appliction/json'),
         CURLOPT_RETURNTRANSFER => true,
       ));
+
+      $json_response = curl_exec($ch);
+      $http_response_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
       if ($http_response_code == 401) {
           throw new \Exception('Error: getOAuthToken() - Access has been revoked.');

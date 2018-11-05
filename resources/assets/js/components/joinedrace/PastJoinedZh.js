@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import { Button,Tabs, Progress } from 'antd';
 import axios from 'axios';
 import CountUp from 'react-countup';
-import BibModal from './BibModalZh';
-import CertModal from './CertModalZh';
+import BibModal from './bib/BibModalZh';
+import CertModal from './cert/CertModalZh';
 
 const submitIC = window.location.origin + '/img/ic-submit.png';
 const rankIC = window.location.origin + '/img/ic-rank.png';
@@ -56,40 +56,40 @@ class PastJoinedZh extends Component{
               </div>
             </div>
           </div>)
-        }
-    } else {
-      items.push(
-        <div className="col-sm-12 col-md-6">
-          <div className="user-history-joined">
-            <img src={past[i]['header']} style={{width: '100%'}}/>
+        } else {
+          items.push(
+            <div className="col-sm-12 col-md-6">
+              <div className="user-history-joined">
+                <img src={past[i]['header']} style={{width: '100%'}}/>
 
-            <div className="user-history-joined-content">
-              <h4 style={{fontFamily: 'SourceSansPro-Semibold'}}>{past[i]['title_en']}</h4>
-              <p style={{fontFamily: 'SourceSansPro-Light'}}>{past[i]['date']}</p>
-              <Progress percent={0} showInfo={false}/>
-              <span id="progress-race-start">0%</span><span id='progress-race-end'>0/{past[i]['category']}</span><br />
+                <div className="user-history-joined-content">
+                  <h4 style={{fontFamily: 'SourceSansPro-Semibold'}}>{past[i]['title_en']}</h4>
+                  <p style={{fontFamily: 'SourceSansPro-Light'}}>{past[i]['date']}</p>
+                  <Progress percent={0} showInfo={false}/>
+                  <span id="progress-race-start">0%</span><span id='progress-race-end'>0/{past[i]['category']}</span><br />
 
-              <div className="submission-info-row">
-                <img src= {infoIC} /><span className="submission-info">成绩提交結束</span>
+                  <div className="submission-info-row">
+                    <img src= {infoIC} /><span className="submission-info">成绩提交結束</span>
+                  </div>
+                  <hr />
+
+                  <div className="row" id="joined-race-footer">
+                    <div className="col-sm-4">
+                      <Button>
+                        <img src= {rankIC} /><br />
+                        <span>排名</span></Button>
+                    </div>
+                    <div className="col-sm-4">
+                      <BibModal raceCategory = {past[i]['category']} raceID = {past[i]['rid']} />
+                    </div>
+                    <div className="col-sm-4">
+                      <CertModal raceCategory = {past[i]['category']} raceTitle = {past[i]['title_en']} raceID = {past[i]['rid']} raceStatus = {past[i]['race_status']} />
+                    </div>
+                  </div>
+                </div>
               </div>
-              <hr />
-
-              <div className="row" id="joined-race-footer">
-                <div className="col-sm-4">
-                  <Button>
-                    <img src= {rankIC} /><br />
-                    <span>排名</span></Button>
-                </div>
-                <div className="col-sm-4">
-                  <BibModal raceCategory = {past[i]['category']} raceID = {past[i]['rid']} />
-                </div>
-                <div className="col-sm-4">
-                  <CertModal raceCategory = {past[i]['category']} raceTitle = {past[i]['title_en']} raceID = {past[i]['rid']} raceStatus = {past[i]['race_status']} />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>)
+            </div>)
+          }
     }
 
     return items;

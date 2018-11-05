@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import { Button,Tabs, Progress } from 'antd';
 import axios from 'axios';
 import CountUp from 'react-countup';
-import BibModal from './BibModalMs';
-import CertModal from './CertModalMs';
+import BibModal from './bib/BibModalMs';
+import CertModal from './cert/CertModalMs';
 
 const submitIC = window.location.origin + '/img/ic-submit.png';
 const rankIC = window.location.origin + '/img/ic-rank.png';

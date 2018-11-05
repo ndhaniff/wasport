@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 import { Button,Tabs, Progress } from 'antd';
 import axios from 'axios';
 import CountUp from 'react-countup';
-import BibModal from './BibModalEn';
-import CertModal from './CertModalEn';
-import SubmitModal from './SubmitModalEn';
+import BibModal from './bib/BibModalEn';
+import CertModal from './cert/CertModalEn';
+import SubmitModal from './submit/SubmitModalEn';
 
 const rankIC = window.location.origin + '/img/ic-rank.png';
 const infoIC = window.location.origin + '/img/ic-info.png';
@@ -112,7 +112,7 @@ class JoinedRaceEn extends Component{
 
                 <div className="row" id="joined-race-footer">
                   <div className="col-sm-3">
-                      <SubmitModal />
+                      <SubmitModal raceID = {race[i]['rid']}/>
                   </div>
                   <div className="col-sm-3">
                     <Button>
@@ -149,18 +149,15 @@ class JoinedRaceEn extends Component{
                 <hr />
 
                 <div className="row" id="joined-race-footer">
-                  <div className="col-sm-3">
-                      <SubmitModal />
-                  </div>
-                  <div className="col-sm-3">
+                  <div className="col-sm-4">
                     <Button>
                       <img src= {rankIC} /><br />
                       <span>Rankings</span></Button>
                   </div>
-                  <div className="col-sm-3">
+                  <div className="col-sm-4">
                     <BibModal raceCategory = {race[i]['category']} raceID = {race[i]['rid']} />
                   </div>
-                  <div className="col-sm-3">
+                  <div className="col-sm-4">
                     <CertModal raceCategory = {race[i]['category']} raceTitle = {race[i]['title_en']} raceID = {race[i]['rid']} raceStatus = {race[i]['race_status']} />
                   </div>
                 </div>

@@ -224,7 +224,7 @@ class Step3Ms extends Component {
         >
           {getFieldDecorator('engrave_name', {
             rules: [
-              { required: true, message: 'Sila mengimput nama untuk pengukiran pingat!', whitespace: true },
+              { required: true, message: 'Sila mengisikan nama untuk pengukiran pingat!', whitespace: true },
               { min: 1, message: 'Pengukiran pingat mesti sekurang-kurangnya mengandungi 1 abjad angka' },
               { max: 15, message: 'Pengukiran pingat mesti kurang daripada 15 abjad angka' },
             ],
@@ -277,7 +277,7 @@ class Step3Ms extends Component {
           >
             {getFieldDecorator('title_ms', {
               rules: [{
-                required: true, message: 'Sila mengimput acara',
+                required: true, message: 'Sila mengisikan acara',
               }],
               initialValue : this.state.title_ms
             })(

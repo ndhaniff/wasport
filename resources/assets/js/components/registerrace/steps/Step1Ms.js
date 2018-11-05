@@ -112,7 +112,7 @@ class Step1Ms extends Component {
             hasFeedback
           >
             {getFieldDecorator('firstname', {
-              rules: [{ required: true, message: 'Sila mengimput nama pertama anda!', whitespace: true }],
+              rules: [{ required: true, message: 'Sila mengisikan nama pertama anda!', whitespace: true }],
               initialValue: this.state.firstname != null ? this.state.firstname : ""
             })(
               <Input />
@@ -128,7 +128,7 @@ class Step1Ms extends Component {
             hasFeedback
           >
             {getFieldDecorator('lastname', {
-              rules: [{ required: true, message: 'Sila mengimput nama terakhir anda!', whitespace: true }],
+              rules: [{ required: true, message: 'Sila mengisikan nama terakhir anda!', whitespace: true }],
               initialValue: this.state.lastname != null ? this.state.lastname : ""
             })(
               <Input />
@@ -144,9 +144,9 @@ class Step1Ms extends Component {
           >
             {getFieldDecorator('phone', {
               rules: [
-                { required: true, message: 'Sila mengimput nombor telefon anda!' },
+                { required: true, message: 'Sila mengisikan nombor telefon anda!' },
                 { min: 9, message: 'Nombor telefon mesti sekurang-kurangnya mengandungi 11 digit termasuk awalan' },
-                { max: 11, message: 'Sila mengimput nombor telefon yang sah' },
+                { max: 11, message: 'Sila mengisikan nombor telefon yang sah' },
               ],
               initialValue: this.state.phone != null ? this.state.phone.substring(2) : ""
             })(

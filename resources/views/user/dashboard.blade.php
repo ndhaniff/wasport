@@ -118,7 +118,39 @@ svg:not(:root) { display: none; }
           array_push($check_arr, $medal->title_en);
           }
       }
-      $medal_json = json_encode($medal_arr); ?>
+      $medal_json = json_encode($medal_arr);
+
+      $allorder_arr = array();
+      foreach($latest_race as $order) {
+
+        $routeimg = '';
+
+        if($order->routeimg != "")
+          $routeimg = asset('storage/uploaded/submissions/' . $order->routeimg);
+        else
+          $routeimg = $order->routeimg;
+
+        $allorder_arr[] = array('rid' => $order->rid,
+                                'oid' => $order->oid,
+                                'uid' => $order->user_id,
+                                'title_en' => $order->title_en,
+                                'title_ms' => $order->title_ms,
+                                'title_zh' => $order->title_zh,
+                                'category'=> $order->race_category);
+      }
+      $allorder_json = json_encode($allorder_arr);
+
+      $allsubmissions_arr = array();
+      foreach($submissions as $submission) {
+        $allsubmissions_arr[] = array('race_id' => $submission->race_id,
+                                    's_hour' => $submission->s_hour,
+                                    's_minute' => $submission->s_minute,
+                                    's_second' => $submission->s_second,
+                                    's_distance' => $submission->s_distance,
+                                    'strava_activity' => $submission->strava_activity);
+
+      }
+      $allsubmissions_json = json_encode($allsubmissions_arr);?>
 
 <script>
 var user = {
@@ -147,6 +179,8 @@ var strava_token = "{{$user->strava_access_token}}"
 var race = JSON.parse('<?= $race_json; ?>');
 var allmedal = JSON.parse('<?= $allmedal_json; ?>');
 var medal = JSON.parse('<?= $medal_json; ?>');
+var allorder = JSON.parse('<?= $allorder_json; ?>');
+var allsubmissions = JSON.parse('<?= $allsubmissions_json; ?>');
 </script>
 
   <div class="userdash p-5">

@@ -142,7 +142,7 @@ class Step4Zh extends Component {
     };
 
     if(this.state.loading) {
-      var submitBtn = <button className="buttonload" id="register-race-payment"> <i className="fa fa-spinner fa-spin"></i>Loading</button>
+      var submitBtn = <button className="buttonload" id="register-race-payment"> <i className="fa fa-spinner fa-spin"></i>提交中</button>
     } else {
       var submitBtn = <Button type="primary" htmlType="submit" id="register-race-payment">付款</Button>
     }

@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 import { Button,Tabs, Progress } from 'antd';
 import axios from 'axios';
 import CountUp from 'react-countup';
-import BibModal from './BibModalMs';
-import CertModal from './CertModalMs';
-import SubmitModal from './SubmitModalMs';
+import BibModal from './bib/BibModalMs';
+import CertModal from './cert/CertModalMs';
+import SubmitModal from './submit/SubmitModalMs';
 
 const rankIC = window.location.origin + '/img/ic-rank.png';
 const infoIC = window.location.origin + '/img/ic-info.png';
@@ -74,7 +74,7 @@ class CurrentJoinedMs extends Component{
 
                 <div className="row" id="joined-race-footer">
                   <div className="col-sm-3">
-                    <SubmitModal />
+                    <SubmitModal raceID = {current[i]['rid']}/>
                   </div>
                   <div className="col-sm-3">
                     <Button>

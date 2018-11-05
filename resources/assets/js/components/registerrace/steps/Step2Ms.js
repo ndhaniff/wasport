@@ -103,7 +103,7 @@ class Step2Ms extends Component {
               hasFeedback
             >
               {getFieldDecorator('add_fl', {
-                rules: [{ required: true, message: 'Sila mengimput alamat anda!', whitespace: true }],
+                rules: [{ required: true, message: 'Sila mengisikan alamat anda!', whitespace: true }],
                 initialValue: this.state.add_fl != null ? this.state.add_fl : ""
               })(
                 <Input />
@@ -135,7 +135,7 @@ class Step2Ms extends Component {
               hasFeedback
             >
               {getFieldDecorator('city', {
-                rules: [{ required: true, message: 'Sila mengimput bandar anda!', whitespace: true }],
+                rules: [{ required: true, message: 'Sila mengisikan bandar anda!', whitespace: true }],
                 initialValue: this.state.city != null ? this.state.city : ""
               })(
                 <Input />
@@ -147,11 +147,11 @@ class Step2Ms extends Component {
             hasFeedback
           >
             {getFieldDecorator('state', {
-              rules: [{ required: true, message: 'Sila mengimput negeri anda!' }],
+              rules: [{ required: true, message: 'Sila mengisikan negeri anda!' }],
               initialValue: this.state.state != null ? this.state.state : ""
             })(
               <Select
-                placeholder="Select your state"
+                placeholder="Pilih negeri"
                 onChange={this.handleSelectChange}
               >
               <option value="Johor">Johor</option>
@@ -182,7 +182,7 @@ class Step2Ms extends Component {
               hasFeedback
             >
               {getFieldDecorator('postal', {
-                rules: [{ required: true, message: 'Sila mengimput poskod anda!', whitespace: true }],
+                rules: [{ required: true, message: 'Sila mengisikan poskod anda!', whitespace: true }],
                 initialValue: this.state.postal != null ? this.state.postal : ""
               })(
                 <Input />

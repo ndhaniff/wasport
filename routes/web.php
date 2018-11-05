@@ -112,7 +112,7 @@ Route::get('verify/{email}/{verifyToken}', 'Auth\RegisterController@verifyEmailD
 //Strava
 Route::get('/strava/getAuthToken','API\StravaController@getAuthToken')->name('strava.getToken');
 Route::post('/strava/getStats','API\StravaController@getStats')->name('strava.getStats');
-Route::post('/strava/latestStrava', 'API\StravaController@latestStrava')->name('strava.latestStrava');
+Route::post('/strava/getLatest', 'API\StravaController@getLatest')->name('strava.getLatest');
 Route::post('/strava/disconnect','API\StravaController@disconnect')->name('strava.disconnect');
 
 //User profile
@@ -121,6 +121,9 @@ Route::post('/user/uploadImage', 'User\UserController@uploadProfileImg' )->name(
 Route::post('/user/updateProfile', 'User\UserController@updateProfile' )->name('user.updateProfile');
 Route::post('/user/updateAddress', 'User\UserController@updateAddress' )->name('user.updateAddress');
 Route::post('/user/updatePassword', 'User\UserController@updatePassword' )->name('user.updatePassword');
+
+Route::post('/user/uploadRoute', 'User\UserController@uploadRoute' )->name('user.uploadRoute');
+Route::post('/user/updateSubmission', 'User\UserController@updateSubmission' )->name('user.updateSubmission');
 
 //Register race
 Route::post('/user/submitrace', 'User\UserController@submitRace')->name('user.submitrace');

@@ -13,6 +13,7 @@ use App\Model\Medal;
 use App\Model\Addon;
 use App\Model\Order;
 use App\Model\OrderAddon;
+use App\Model\Submission;
 use Auth;
 use DB;
 
@@ -94,11 +95,16 @@ class UserController extends Controller
         ->where('race_status', '=', 'success')
         ->get();
 
+      $submissions = DB::table('submissions')
+        ->where('user_id', '=', Auth::id())
+        ->get();
+
       //return view('user.dashboard')->with('user',$user);
       return view('user.dashboard', ['user' => $user, 'races' => $races, 'medals' => $medals,
                                       'latest_race' => $latest_race, 'race_count' => $race_count,
                                       'allmedals' => $allmedals, 'dashmedals' => $dashmedals,
-                                      'usermedals' => $usermedals, 'joinedmedals' => $joinedmedals]);
+                                      'usermedals' => $usermedals, 'joinedmedals' => $joinedmedals,
+                                      'submissions' => $submissions]);
     }
 
     public function updateProfile(Request $request){
@@ -250,7 +256,7 @@ class UserController extends Controller
         ->join('races', 'races.rid', '=', 'race_id')
         ->where('user_id', '=', Auth::id())
         ->where('date_to', '>=', $date)
-        ->orderBy('date_from', 'DESC')
+        ->orderBy('date_from', 'ASC')
         ->get();
 
       $past_races = DB::table('orders')
@@ -262,7 +268,66 @@ class UserController extends Controller
 
       $allmedals = DB::table('medals')->get();
 
+      $submissions = DB::table('submissions')
+        ->where('user_id', '=', Auth::id())
+        ->get();
+
       return view('user.joined', ['user' => $user, 'current_races' => $current_races,
-                                  'past_races' => $past_races, 'allmedals' => $allmedals]);
+                                  'past_races' => $past_races, 'allmedals' => $allmedals,
+                                  'submissions' => $submissions]);
+    }
+
+    public function handleRouteImg(Request $request){
+      dd($request->file('routeimg'));
+    }
+
+    public function updateSubmission(Request $request){
+
+      //update submission to order table
+      $oid = $request->get('oid');
+      $order = Order::find($oid);
+
+      //add submission to submission table
+      $submit = new Submission();
+
+      $order->race_hour = $request->get('race_hour');
+      $order->race_minute = $request->get('race_minute');
+      $order->race_second = $request->get('race_minute');
+      $order->distance = $request->get('distance');
+
+      $submit->order_id = $oid;
+      $submit->user_id = $request->get('user_id');
+      $submit->race_id = $request->get('race_id');
+      $submit->s_hour = $request->get('race_hour');
+      $submit->s_minute = $request->get('race_minute');
+      $submit->s_second = $request->get('race_minute');
+      $submit->s_distance = $request->get('distance');
+      $submit->strava_activity = $request->get('strava_activity');
+
+      $map_polyline = $request->get('map_polyline');
+
+      if($map_polyline == null) {
+        $routeimg = $request->file('routeimg');
+        if($routeimg != null) {
+          $filenameWithExt = $oid;
+          $filename =  str_replace(' ', '_', pathinfo($filenameWithExt, PATHINFO_FILENAME ));
+          $ext = $routeimg->getClientOriginalExtension();
+          $filenameToStore = $filename."_".time().".".$ext;
+          $path = $routeimg->storeAs('public/uploaded/submissions/', $filenameToStore);
+          $order->routeimg = $filenameToStore;
+          $submit->s_routeimg = $filenameToStore;
+        }
+      }
+
+      if($map_polyline != null) {
+        $order->routeimg = null;
+        $order->map_polyline = $map_polyline;
+        $submit->s_map_polyline = $map_polyline;
+      }
+
+      $order->save();
+      $submit->save();
+
+      return response()->json(['success' => true], 200 );
     }
 }

@@ -19,6 +19,11 @@ class Order extends Model
     return $this->belongsTo(Race::class);
   }
 
+  public function submission()
+  {
+    return $this->hasMany(Submission::class);
+  }
+
   public function orderaddon()
   {
     return $this->hasMany(OrderAddon::class);
