@@ -71,7 +71,11 @@ Joined Races | WaSportsrun
     .tabs .tab-2:last-child [type="radio"]:checked + div {
       margin-left: -100%; }
 
-  .anticon:before, svg:not(:root) { display: none; }
+  .anticon-close:before, .anticon-cross:before,
+  .anticon-check-circle:before,
+  svg:not(:root) {
+    display: none;
+  }
 </style>
 
 <?php $current_race_arr = array();

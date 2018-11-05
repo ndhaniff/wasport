@@ -262,7 +262,7 @@ class UserController extends Controller
       $past_races = DB::table('orders')
         ->join('races', 'races.rid', '=', 'race_id')
         ->where('user_id', '=', Auth::id())
-        ->where('date_to', '<=', $date)
+        ->where('date_to', '<', $date)
         ->orderBy('date_from', 'DESC')
         ->get();
 
