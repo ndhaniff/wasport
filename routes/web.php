@@ -124,6 +124,7 @@ Route::post('/user/updatePassword', 'User\UserController@updatePassword' )->name
 
 Route::post('/user/uploadRoute', 'User\UserController@uploadRoute' )->name('user.uploadRoute');
 Route::post('/user/updateSubmission', 'User\UserController@updateSubmission' )->name('user.updateSubmission');
+Route::post('/user/deleteSubmission', 'User\UserController@deleteSubmission' )->name('user.deleteSubmission');
 
 //Register race
 Route::post('/user/submitrace', 'User\UserController@submitRace')->name('user.submitrace');

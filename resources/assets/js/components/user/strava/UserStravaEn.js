@@ -54,15 +54,13 @@ class UserStravaEn extends Component{
     let second = 0
 
     //get user data for wasports
-    for(var i=0; i<allorder.length; i++) {
-      if(allorder[i]['distance'] != null) {
-        no_of_runs += 1
-        race_distance += Number(allorder[i]['distance'])
+    for(var i=0; i<allsubmissions.length; i++) {
+      no_of_runs += 1
+      race_distance += Number(allsubmissions[i]['s_distance'])
 
-        hour += Number(allorder[i]['race_hour'])
-        minute += Number(allorder[i]['race_minute'])
-        second += Number(allorder[i]['race_second'])
-      }
+      hour += Number(allsubmissions[i]['s_hour'])
+      minute += Number(allsubmissions[i]['s_minute'])
+      second += Number(allsubmissions[i]['s_second'])
     }
 
     //calcaule total time in seconds

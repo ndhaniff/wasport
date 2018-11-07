@@ -35,27 +35,61 @@ class SubmitTabsMs extends Component{
 
         let time_taken = hour + ":" + min + ":" + sec
 
-        items.push(<tr><td>{i+1 + '.'} </td><td>{allsubmissions[i]['s_distance']}</td><td>{time_taken}</td></tr>);
+        items.push(<tr><td>{i+1 + '.'} </td>
+                        <td>{allsubmissions[i]['s_distance']}</td>
+                        <td>{time_taken}</td>
+                        <td><Button id="delete-btn" onClick={this.handleDelete} value={allsubmissions[i]['sid']}>DELETE</Button></td></tr>);
       }
     }
 
     return items;
   }
 
+  handleDelete(e) {
+    console.log('value: ' + e.target.value);
+
+    let delete_url = "/user/deleteSubmission/";
+    axios.post(delete_url, {
+      sid : e.target.value
+    }).then((res) => {
+
+        if(res.status == 200){
+          MySwal.fire({
+            type: 'success',
+            title: 'Rekod deleted',
+            showConfirmButton: false,
+            timer: 3000,
+          })
+
+          window.setTimeout(function(){
+            location.href = location.origin + '/dashboard'
+          } ,3000);
+
+        }
+      })
+  }
+
   render(){
 
-    var historyTable = <table id="submission-history-table">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Jarak(km)</th>
-          <th>Masa yang diambil</th>
-        </tr>
-      </thead>
-      <tbody>
-        {this.createHistoryItems()}
-      </tbody>
-      </table>
+    if (this.createHistoryItems() === undefined || this.createHistoryItems() == 0) {
+      var latestMsg = ''
+      var historyTable = <span><center>TIDAK ADA REKOD</center></span>
+    } else {
+      var latestMsg = <span style={{color: 'red'}}>Hanya rekod yang terbaru akan diambil</span>
+      var historyTable = <table id="submission-history-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Jarak(km)</th>
+            <th>Masa yang diambil</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {this.createHistoryItems()}
+        </tbody>
+        </table>
+    }
 
     return(
       <Tabs defaultActiveKey="1" onChange={callback}>
@@ -63,6 +97,7 @@ class SubmitTabsMs extends Component{
           <Submission raceID = {this.props.raceID}/>
         </TabPane>
         <TabPane tab="Rekod Penyerahan" key="2">
+          {latestMsg}
           {historyTable}
         </TabPane>
       </Tabs>

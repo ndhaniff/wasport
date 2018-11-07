@@ -134,12 +134,13 @@ Joined Races | WaSportsrun
       }
 
       foreach($submissions as $submission) {
-        $allsubmissions_arr[] = array('race_id' => $submission->race_id,
-                                    's_hour' => $submission->s_hour,
-                                    's_minute' => $submission->s_minute,
-                                    's_second' => $submission->s_second,
-                                    's_distance' => $submission->s_distance,
-                                    'strava_activity' => $submission->strava_activity);
+        $allsubmissions_arr[] = array('sid' => $submission->sid,
+                                      'race_id' => $submission->race_id,
+                                      's_hour' => $submission->s_hour,
+                                      's_minute' => $submission->s_minute,
+                                      's_second' => $submission->s_second,
+                                      's_distance' => $submission->s_distance,
+                                      'strava_activity' => $submission->strava_activity);
 
       }
 

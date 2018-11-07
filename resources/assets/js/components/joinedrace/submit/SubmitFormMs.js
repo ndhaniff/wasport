@@ -70,64 +70,77 @@ class SubmitFormMs extends React.Component{
     this.props.form.validateFieldsAndScroll((err, data) => {
       if (!err) {
 
-        this.setState({btnloading: true})
-
-        let routedata = new FormData;
-
-        routedata.append('oid', this.state.order_id)
-        routedata.append('oid', this.state.order_id)
-        routedata.append('race_hour', data.race_hour)
-        routedata.append('race_minute', data.race_minute)
-        routedata.append('race_second', data.race_second)
-        routedata.append('distance', data.distance)
-        routedata.append('routeimg', this.state.routeimg)
-        routedata.append('strava_activity', this.state.strava_activity)
-        routedata.append('map_polyline', this.state.map_polyline)
-        routedata.append('user_id', this.state.user_id)
-        routedata.append('race_id', this.state.race_id)
-
-        console.log('routeimg:' + this.state.routeimg)
-
-       axios.post('/user/updateSubmission',routedata).then((res) => {
-         if(res.data.success){
-
-           this.setState({loading: false})
-
-           MySwal.fire({
-             toast: true,
-             position: 'top-end',
-             showConfirmButton: false,
-             timer: 3000,
-             type: 'success',
-             title: 'Penyerahan dimuat naik'
-           })
-
-           window.setTimeout(function(){
-             location.reload();
-           } ,3000);
-
-          } else {
-             alert('something wrong')
+        //check strava activity used before
+        if(this.state.strava_activity != null) {
+          for(var i=0; i<allsubmissions.length; i++) {
+            if(allsubmissions[i]['strava_activity'] == this.state.strava_activity) {
+              MySwal.fire({
+                showConfirmButton: false,
+                timer: 3000,
+                type: 'error',
+                title: 'Aktiviti Strava telah diguna sebelum ini'
+              })
+            }
           }
-       }) .catch((error) => {
-           // Error
-           if (error.response) {
-               // The request was made and the server responded with a status code
-               // that falls out of the range of 2xx
-               console.log(error.response.data);
-               console.log(error.response.status);
-               console.log(error.response.headers);
-           } else if (error.request) {
-               // The request was made but no response was received
-               // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-               // http.ClientRequest in node.js
-               console.log(error.request);
-           } else {
-               // Something happened in setting up the request that triggered an Error
-               console.log('Error', error.message);
-           }
-           console.log(error.config);
-       });
+        } else {
+          this.setState({btnloading: true})
+
+          let routedata = new FormData;
+
+          routedata.append('oid', this.state.order_id)
+          routedata.append('oid', this.state.order_id)
+          routedata.append('race_hour', data.race_hour)
+          routedata.append('race_minute', data.race_minute)
+          routedata.append('race_second', data.race_second)
+          routedata.append('distance', data.distance)
+          routedata.append('routeimg', this.state.routeimg)
+          routedata.append('strava_activity', this.state.strava_activity)
+          routedata.append('map_polyline', this.state.map_polyline)
+          routedata.append('user_id', this.state.user_id)
+          routedata.append('race_id', this.state.race_id)
+
+         axios.post('/user/updateSubmission',routedata).then((res) => {
+           if(res.data.success){
+
+             this.setState({loading: false})
+
+             MySwal.fire({
+               toast: true,
+               position: 'top-end',
+               showConfirmButton: false,
+               timer: 3000,
+               type: 'success',
+               title: 'Penyerahan telah dimuat naik'
+             })
+
+             window.setTimeout(function(){
+               location.reload();
+             } ,3000);
+
+            } else {
+               alert('something wrong')
+            }
+         }) .catch((error) => {
+             // Error
+             if (error.response) {
+                 // The request was made and the server responded with a status code
+                 // that falls out of the range of 2xx
+                 console.log(error.response.data);
+                 console.log(error.response.status);
+                 console.log(error.response.headers);
+             } else if (error.request) {
+                 // The request was made but no response was received
+                 // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+                 // http.ClientRequest in node.js
+                 console.log(error.request);
+             } else {
+                 // Something happened in setting up the request that triggered an Error
+                 console.log('Error', error.message);
+             }
+             console.log(error.config);
+         });
+        }
+
       }
     });
   }
@@ -231,7 +244,7 @@ class SubmitFormMs extends React.Component{
 
           //get route image
           let polyline =  data[0]['map']['summary_polyline']
-          let map_url = 'https://maps.googleapis.com/maps/api/staticmap?size=500x500&zoom=16&path=weight:3%7Ccolor:red%7Cenc:' + polyline
+          let map_url = 'https://maps.googleapis.com/maps/api/staticmap?size=800x800&key=AIzaSyCKZLJ1sdzNyXkp8xYiwOkmk0magbQaiKU&zoom=16&path=weight:3%7Ccolor:red%7Cenc:' + polyline
 
           //insert data
           this.setState({

@@ -35,27 +35,61 @@ class SubmitTabsZh extends Component{
 
         let time_taken = hour + ":" + min + ":" + sec
 
-        items.push(<tr><td>{i+1 + '.'} </td><td>{allsubmissions[i]['s_distance']}</td><td>{time_taken}</td></tr>);
+        items.push(<tr><td>{i+1 + '.'} </td>
+                        <td>{allsubmissions[i]['s_distance']}</td>
+                        <td>{time_taken}</td>
+                        <td><Button id="delete-btn" onClick={this.handleDelete} value={allsubmissions[i]['sid']}>DELETE</Button></td></tr>);
       }
     }
 
     return items;
   }
 
+  handleDelete(e) {
+    console.log('value: ' + e.target.value);
+
+    let delete_url = "/user/deleteSubmission/";
+    axios.post(delete_url, {
+      sid : e.target.value
+    }).then((res) => {
+
+        if(res.status == 200){
+          MySwal.fire({
+            type: 'success',
+            title: 'Record deleted',
+            showConfirmButton: false,
+            timer: 3000,
+          })
+
+          window.setTimeout(function(){
+            location.href = location.origin + '/dashboard'
+          } ,3000);
+
+        }
+      })
+  }
+
   render(){
 
-    var historyTable = <table id="submission-history-table">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>距离(公里)</th>
-          <th>所用时间</th>
-        </tr>
-      </thead>
-      <tbody>
-        {this.createHistoryItems()}
-      </tbody>
-      </table>
+    if (this.createHistoryItems() === undefined || this.createHistoryItems() == 0) {
+      var latestMsg = ''
+      var historyTable = <span><center>无记录</center></span>
+    } else {
+      var latestMsg = <span style={{color: 'red'}}>只有最新的记录才会被录取</span>
+      var historyTable = <table id="submission-history-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>距离(公里)</th>
+            <th>所用时间</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {this.createHistoryItems()}
+        </tbody>
+        </table>
+    }
 
     return(
       <Tabs defaultActiveKey="1" onChange={callback}>
@@ -63,6 +97,7 @@ class SubmitTabsZh extends Component{
           <Submission raceID = {this.props.raceID}/>
         </TabPane>
         <TabPane tab="记录历史" key="2">
+          {latestMsg}
           {historyTable}
         </TabPane>
       </Tabs>

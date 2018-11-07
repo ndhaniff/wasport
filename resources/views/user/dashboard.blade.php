@@ -136,18 +136,23 @@ svg:not(:root) { display: none; }
                                 'title_en' => $order->title_en,
                                 'title_ms' => $order->title_ms,
                                 'title_zh' => $order->title_zh,
-                                'category'=> $order->race_category);
+                                'category'=> $order->race_category,
+                                'distance' => $order->distance,
+                                'race_hour' => $order->race_hour,
+                                'race_minute' => $order->race_minute,
+                                'race_second' => $order->race_second);
       }
       $allorder_json = json_encode($allorder_arr);
 
       $allsubmissions_arr = array();
       foreach($submissions as $submission) {
-        $allsubmissions_arr[] = array('race_id' => $submission->race_id,
-                                    's_hour' => $submission->s_hour,
-                                    's_minute' => $submission->s_minute,
-                                    's_second' => $submission->s_second,
-                                    's_distance' => $submission->s_distance,
-                                    'strava_activity' => $submission->strava_activity);
+        $allsubmissions_arr[] = array('sid' => $submission->sid,
+                                      'race_id' => $submission->race_id,
+                                      's_hour' => $submission->s_hour,
+                                      's_minute' => $submission->s_minute,
+                                      's_second' => $submission->s_second,
+                                      's_distance' => $submission->s_distance,
+                                      'strava_activity' => $submission->strava_activity);
 
       }
       $allsubmissions_json = json_encode($allsubmissions_arr);?>

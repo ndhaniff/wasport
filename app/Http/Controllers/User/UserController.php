@@ -285,15 +285,15 @@ class UserController extends Controller
 
       //update submission to order table
       $oid = $request->get('oid');
-      $order = Order::find($oid);
+      //$order = Order::find($oid);
 
       //add submission to submission table
       $submit = new Submission();
 
-      $order->race_hour = $request->get('race_hour');
+      /*$order->race_hour = $request->get('race_hour');
       $order->race_minute = $request->get('race_minute');
       $order->race_second = $request->get('race_minute');
-      $order->distance = $request->get('distance');
+      $order->distance = $request->get('distance');*/
 
       $submit->order_id = $oid;
       $submit->user_id = $request->get('user_id');
@@ -314,19 +314,27 @@ class UserController extends Controller
           $ext = $routeimg->getClientOriginalExtension();
           $filenameToStore = $filename."_".time().".".$ext;
           $path = $routeimg->storeAs('public/uploaded/submissions/', $filenameToStore);
-          $order->routeimg = $filenameToStore;
+          //$order->routeimg = $filenameToStore;
           $submit->s_routeimg = $filenameToStore;
         }
       }
 
       if($map_polyline != null) {
-        $order->routeimg = null;
-        $order->map_polyline = $map_polyline;
+        //$order->routeimg = null;
+        //$order->map_polyline = $map_polyline;
         $submit->s_map_polyline = $map_polyline;
       }
 
-      $order->save();
+      //$order->save();
       $submit->save();
+
+      return response()->json(['success' => true], 200 );
+    }
+
+    public function deleteSubmission(Request $request){
+      $sid = $request->get('sid');
+      $submission = Submission::find($sid);
+      $submission->delete();
 
       return response()->json(['success' => true], 200 );
     }
