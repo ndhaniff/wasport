@@ -70,21 +70,7 @@ class SubmitFormMs extends React.Component{
     this.props.form.validateFieldsAndScroll((err, data) => {
       if (!err) {
 
-        //check strava activity used before
-        if(this.state.strava_activity != null) {
-          for(var i=0; i<allsubmissions.length; i++) {
-            if(allsubmissions[i]['strava_activity'] == this.state.strava_activity) {
-              MySwal.fire({
-                showConfirmButton: false,
-                timer: 3000,
-                type: 'error',
-                title: 'Strava活动之前已提交过'
-              })
-            }
-          }
-        } else {
-          this.setState({btnloading: true})
-
+        if(this.checkStrava()) {
           let routedata = new FormData;
 
           routedata.append('oid', this.state.order_id)
@@ -99,50 +85,67 @@ class SubmitFormMs extends React.Component{
           routedata.append('user_id', this.state.user_id)
           routedata.append('race_id', this.state.race_id)
 
-         axios.post('/user/updateSubmission',routedata).then((res) => {
-           if(res.data.success){
+          axios.post('/user/updateSubmission',routedata).then((res) => {
+            if(res.data.success){
 
-             this.setState({loading: false})
+              this.setState({loading: false})
 
-             MySwal.fire({
-               toast: true,
-               position: 'top-end',
-               showConfirmButton: false,
-               timer: 3000,
-               type: 'success',
-               title: '记录已提交'
-             })
+              MySwal.fire({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                type: 'success',
+                title: '记录已提交'
+              })
 
-             window.setTimeout(function(){
-               location.reload();
-             } ,3000);
+              window.setTimeout(function(){
+                location.reload();
+              } ,3000);
 
-            } else {
-               alert('something wrong')
-            }
-         }) .catch((error) => {
-             // Error
-             if (error.response) {
-                 // The request was made and the server responded with a status code
-                 // that falls out of the range of 2xx
-                 console.log(error.response.data);
-                 console.log(error.response.status);
-                 console.log(error.response.headers);
-             } else if (error.request) {
-                 // The request was made but no response was received
-                 // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-                 // http.ClientRequest in node.js
-                 console.log(error.request);
              } else {
-                 // Something happened in setting up the request that triggered an Error
-                 console.log('Error', error.message);
+                alert('something wrong')
              }
-             console.log(error.config);
-         });
+          }) .catch((error) => {
+              // Error
+              if (error.response) {
+                  // The request was made and the server responded with a status code
+                  // that falls out of the range of 2xx
+                  console.log(error.response.data);
+                  console.log(error.response.status);
+                  console.log(error.response.headers);
+              } else if (error.request) {
+                  // The request was made but no response was received
+                  // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+                  // http.ClientRequest in node.js
+                  console.log(error.request);
+              } else {
+                  // Something happened in setting up the request that triggered an Error
+                  console.log('Error', error.message);
+              }
+              console.log(error.config);
+          });
         }
 
       }
     });
+  }
+
+  checkStrava() {
+    if(this.state.strava_activity != null) {
+      for(var i=0; i<allsubmissions.length; i++) {
+        if(allsubmissions[i]['strava_activity'] == this.state.strava_activity) {
+          MySwal.fire({
+            showConfirmButton: false,
+            timer: 3000,
+            type: 'error',
+            title: 'Strava活动之前已提交过'
+          })
+          return false;
+        }
+      }
+    }
+    return true;
   }
 
   normFile = (e) => {
@@ -192,7 +195,7 @@ class SubmitFormMs extends React.Component{
         formStatus : 'manual',
         routeimg: '',
         routeimgPreview: '',
-        race_distance: '',
+        distance: '',
         race_hour: '',
         race_minute: '',
         race_second: ''
@@ -204,7 +207,7 @@ class SubmitFormMs extends React.Component{
         formStatus : 'strava',
         routeimg: '',
         routeimgPreview: '',
-        race_distance: '',
+        distance: '',
         race_hour: '',
         race_minute: '',
         race_second: ''

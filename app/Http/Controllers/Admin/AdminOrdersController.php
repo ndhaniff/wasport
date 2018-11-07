@@ -42,7 +42,7 @@ class AdminOrdersController extends Controller
       return view('auth.admin.orders.index',compact('orders', 'races', 'addons', 'order_addons', 'allorders'));
     }
 
-    public function search(Request $request)
+    public function searchBy(Request $request)
     {
       $search = $request->get('search');
       $field = $request->get('field');
@@ -55,10 +55,30 @@ class AdminOrdersController extends Controller
       return view('auth.admin.orders.index',compact('orders', 'races', 'addons', 'allorders'));
     }
 
-    public function filter(Request $request)
+    public function filterRace(Request $request)
     {
       $raceitem = $request->get('raceitem');
-      $orders = DB::table('orders')->where('race_id', 'like', $raceitem)->paginate(10);
+      $racestatus = $request->get('racestatus');
+
+      if($raceitem != null && $racestatus != null) {
+        $orders = DB::table('orders')
+          ->where('race_id', 'like', $raceitem)
+          ->where('race_status', 'like', $racestatus)
+          ->paginate(10);
+      }
+
+      if($raceitem == null) {
+        $orders = DB::table('orders')
+          ->where('race_status', 'like', $racestatus)
+          ->paginate(10);
+      }
+
+      if($racestatus == null) {
+        $orders = DB::table('orders')
+          ->where('race_id', 'like', $raceitem)
+          ->paginate(10);
+      }
+
       $races = DB::table('races')->get();
       $allorders = Order::sortable()->get();
       $order_addons = OrderAddon::sortable()->get();

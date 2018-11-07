@@ -93,11 +93,12 @@ Route::group(['prefix' =>'admin'],function()
   Route::post('/medals/edit/{mid}','Admin\AdminMedalsController@duplicate')->name('admin.medals.edit.dupe');
   //Orders
   Route::get('/orders','Admin\AdminOrdersController@index')->name('admin.orders');
-  Route::get('/orders/search', 'Admin\AdminOrdersController@search')->name('admin.orders.search');
-  Route::get('/orders/filter', 'Admin\AdminOrdersController@filter')->name('admin.orders.filter');
+  Route::get('/orders/searchBy', 'Admin\AdminOrdersController@searchBy')->name('admin.orders.searchBy');
+  Route::get('/orders/filterRace', 'Admin\AdminOrdersController@filterRace')->name('admin.orders.filterRace');
   Route::delete('/orders/{mid}','Admin\AdminOrdersController@orders')->name('admin.orders.destroy');
   Route::get('/orders/edit/{mid}','Admin\AdminOrdersController@editForm')->name('admin.orders.edit');
   Route::post('/orders/edit','Admin\AdminOrdersController@edit')->name('admin.orders.edit.submit');
+
   //Contacts
   Route::get('/contacts','Admin\AdminContactsController@index')->name('admin.contacts');
   Route::get('/contacts/search', 'Admin\AdminContactsController@search')->name('admin.contacts.search');

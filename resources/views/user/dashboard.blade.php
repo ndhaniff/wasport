@@ -123,24 +123,12 @@ svg:not(:root) { display: none; }
       $allorder_arr = array();
       foreach($latest_race as $order) {
 
-        $routeimg = '';
-
-        if($order->routeimg != "")
-          $routeimg = asset('storage/uploaded/submissions/' . $order->routeimg);
-        else
-          $routeimg = $order->routeimg;
-
         $allorder_arr[] = array('rid' => $order->rid,
                                 'oid' => $order->oid,
                                 'uid' => $order->user_id,
                                 'title_en' => $order->title_en,
                                 'title_ms' => $order->title_ms,
-                                'title_zh' => $order->title_zh,
-                                'category'=> $order->race_category,
-                                'distance' => $order->distance,
-                                'race_hour' => $order->race_hour,
-                                'race_minute' => $order->race_minute,
-                                'race_second' => $order->race_second);
+                                'title_zh' => $order->title_zh);
       }
       $allorder_json = json_encode($allorder_arr);
 
@@ -253,7 +241,7 @@ var allsubmissions = JSON.parse('<?= $allsubmissions_json; ?>');
                   echo '<center>';
                   echo '<img src="' .asset('img/strava-run.png'). '">';
                   echo '<p>';
-                  echo __("Your races will show up here and you’ll be able to submit your run when it start");
+                  echo __("Your races will show up here and you'll be able to submit your run when it start");
                   echo '</p>';
                   echo '</center>';
                   echo '</div>';

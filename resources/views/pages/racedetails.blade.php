@@ -280,8 +280,7 @@ svg:not(:root) { display: none; }
             $uid = Auth::id();
             $isRegistered = false;
 
-            $deadT = $race->dead_to. ' ' .$race->deadtime_to;
-            $deadline = DateTime::createFromFormat('Y-m-d H:i a', $deadT)->format('Y-m-d H:i a');
+            $deadline = $race->dead_to. ' ' .$race->deadtime_to;
             $cur = date('Y-m-d H:i a');
 
             //if not user
@@ -375,12 +374,14 @@ svg:not(:root) { display: none; }
       $countDate = DateTime::createFromFormat('Y-m-d H:i a', $theDate)->format('M j, Y H:i:s'); ?>
 
 <script type="text/javascript">
+
 const second = 1000,
     minute = second * 60,
     hour = minute * 60,
     day = hour * 24;
+
 let countDown = new Date('<?= $countDate ?>').getTime(),
-  x = setInterval(function() {
+    x = setInterval(function() {
     let now = new Date().getTime(),
     distance = countDown - now;
     if(distance > 0) {

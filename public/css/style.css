@@ -1,6 +1,4 @@
-html {
-  overflow-x:visible;
-}
+html { overflow-x:visible; }
 
 body {
   font-size: 18px;
@@ -8,13 +6,9 @@ body {
 }
 
 :lang(en) body,
-:lang(ms) body, {
-    font-family: 'SourceSansPro-Light';
-}
+:lang(ms) body, { font-family: 'SourceSansPro-Light'; }
 
-:lang(zh) body, {
-    font-family: 'DFSong1B-GB';
-}
+:lang(zh) body, { font-family: 'DFSong1B-GB'; }
 
 .required-field { color: red; }
 
@@ -25,10 +19,10 @@ button:focus,
 .ant-radio-button-wrapper .ant-radio-button-wrapper-checked {outline:0;}
 
 ol.progtrckr {
-    list-style-type: none;
-    padding: 0;
-    text-align: center;
-    margin-bottom: 5rem;
+  list-style-type: none;
+  padding: 0;
+  text-align: center;
+  margin-bottom: 5rem;
 }
 
 ol.progtrckr li {
@@ -135,23 +129,6 @@ ol.progtrckr li.progtrckr-done:before {
 
 ol.progtrckr li.progtrckr-done:hover:before {
   color: #333;
-}
-
-.ant-form-item-required:before {
-  float: right;
-}
-
-.ant-form-item-label label:after {
-  display: none;
-}
-
-.ant-form {
-  width: 470px;
-  margin: 0 auto !important;
-}
-
-.ant-form-item-control {
-  width: 470px;
 }
 
 ol.progtrckr li.progtrckr-done:hover:before {
@@ -724,11 +701,12 @@ RACE DETAILS
   text-align: left;
 }
 
-.register-box h3 {
-  color: #df2e3c;
-}
+.register-box h3 { color: #df2e3c; }
 
-.race-register-btn {
+.race-register-btn { transition: 0.3s; }
+
+.race-register-btn,
+.register-btn-disabled {
   text-align: center;
   display: block;
   border: none;
@@ -740,7 +718,6 @@ RACE DETAILS
   font-family: 'SourceSansPro-Semibold';
   height: 40px;
   font-size: 16px;
-  transition: 0.3s;
 }
 
 .race-register-btn a,
@@ -760,9 +737,9 @@ REGISTER RACE
 #registerrace .ant-btn:focus,
 #registerrace .ant-btn:hover,
 #registerrace .ant-btn:active {
-    color: #fff;
-    border-color: #e02e3c;
-    background: #e02e3c;
+  color: #fff;
+  border-color: #e02e3c;
+  background: #e02e3c;
 }
 
 #registerrace #next-button,
@@ -793,8 +770,8 @@ REGISTER RACE
 
 /* Add a right margin to each icon */
 .fa {
-    margin-left: 4px;
-    margin-right: 8px;
+  margin-left: 4px;
+  margin-right: 8px;
 }
 
 ol.progtrckr li.progtrckr-done:before:hover {
@@ -875,10 +852,6 @@ CONTACT US
   padding-left: 3.5rem;
 }
 
-.contactus-radiogroup {
-
-}
-
 /*
 USER DASHBOARD
 */
@@ -921,9 +894,7 @@ USER DASHBOARD
   margin-top: 10px;
 }
 
-.user-strava-block span {
-  font-size: 15px;
-}
+.user-strava-block span { font-size: 15px; }
 
 .userdash #view-all { float: right; }
 
@@ -960,31 +931,7 @@ USER DASHBOARD
   color: #fff;
 }
 
-/*#user-medal-frame:before {
-  border-radius:2px;
-  bottom:-2vmin;
-  box-shadow:0 2px 5px 0 rgba(0,0,0,.25) inset;
-  content:"";
-  left:-2vmin;
-  position:absolute;
-  right:-2vmin;
-  top:-2vmin;
-}
-
-#user-medal-frame:after {
-  border-radius:2px;
-  bottom:-2.5vmin;
-  box-shadow: 0 2px 5px 0 rgba(0,0,0,.25);
-  content:"";
-  left:-2.5vmin;
-  position:absolute;
-  right:-2.5vmin;
-  top:-2.5vmin;
-}*/
-
-#user-medal-frame img {
-  width: 100%;
-}
+#user-medal-frame img { width: 100%; }
 
 #user-medal-frame .ant-btn {
   background-color: transparent;
@@ -1006,20 +953,20 @@ USER DASHBOARD
 #dash-medal-modal { text-align: center; }
 
 #btn-view-race-info {
-    background-color: red;
-    color: #fff;
-    border-radius: 5px;
-    padding: 10px 10px;
-    margin-top: 1rem;
+  font-family: 'SourceSansPro-Semibold';
+  background-color: red;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 10px;
+  margin-top: 1rem;
+  transition: 0.3s;
 }
 
-#dash-medal-img {
-  max-width: 400px;
-}
+#btn-view-race-info:hover { border-radius: 25px; }
 
-#dash-medal-modal h3 {
-  margin-bottom: 2rem;
-}
+#dash-medal-img { max-width: 400px; }
+
+#dash-medal-modal h3 { margin-bottom: 2rem; }
 
 #user-history { margin: 6rem auto 9rem auto; }
 
@@ -1040,30 +987,30 @@ body.modal-open { overflow: visible; }
 }
 
 .current-listing img {
-    position: absolute;
-    margin: auto;
-    width: 100%;
-    height: 95%;
-    top: 0;
-    left: 0;
+  position: absolute;
+  margin: auto;
+  width: 100%;
+  height: 95%;
+  top: 0;
+  left: 0;
 }
 
 .current-listing .race-img {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    height: 215px;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  height: 215px;
 }
 
 .current-listing .race-caption h5 {
-    color: #000;
-    height: 50px;
-    font-size: 17px;
+  color: #000;
+  height: 50px;
+  font-size: 17px;
 }
 
 .current-listing .raceslisting-date {
-    color: #df2e3c;
-    font-size: 13px;
+  color: #df2e3c;
+  font-size: 13px;
 }
 
 .current-listing .race-caption { padding: 5px 25px 20px 25px; }
@@ -1147,17 +1094,11 @@ JOINED RACES
 /*
 SUBMISSION
 */
-#strava-form-change {
-  color: red;
-}
+#strava-form-change { color: red; }
 
-#submission-form .ant-form-item-required:before {
-    float: left;
-}
+#submission-form .ant-form-item-required:before { float: left; }
 
-#submission-form .ant-form-item-control {
-    width: 445px;
-}
+#submission-form .ant-form-item-control { width: 445px; }
 
 #route-uploader {
   border: 1px dashed #ccc;

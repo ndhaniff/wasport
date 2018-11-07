@@ -22,7 +22,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/antd/3.8.2/antd.min.css">
         <link href="{{ asset('css/style.css') }}" rel="stylesheet">
         <link href="{{ asset('css/antd-style.css') }}" rel="stylesheet">
-        
+
         @yield('meta')
 		@yield('script')
     </head>
@@ -201,7 +201,7 @@
               <h5>{{__("Get In Touch")}}</h5>
               <hr id="footer-title-hr">
               <p>{{__("To work with WaSport, please click")}} <a href="\relatedcooperation">{{__("HERE")}}</a><br id="footer-br"/>
-              {{__("or send email to")}} info@wasport.com.my</p>
+              {{__("or send email to")}} info@wasports.com.my</p>
             </div>
           </div>
         </div>

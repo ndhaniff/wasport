@@ -157,3 +157,20 @@
 .ant-radio-inner:after {
     background-color: #E02E3C;
 }
+
+.ant-form-item-required:before {
+  float: right;
+}
+
+.ant-form-item-label label:after {
+  display: none;
+}
+
+.ant-form {
+  width: 470px;
+  margin: 0 auto !important;
+}
+
+.ant-form-item-control {
+  width: 470px;
+}

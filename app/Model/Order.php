@@ -10,7 +10,7 @@ class Order extends Model
 {
   use Sortable;
 
-  public $sortable = ['firstname, lastname'];
+  public $sortable = ['firstname, lastname', 'race_status'];
 
   protected $primaryKey = 'oid';
 

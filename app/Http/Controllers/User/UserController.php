@@ -55,10 +55,10 @@ class UserController extends Controller
         ->limit(3)
         ->get();
 
-      $medals = DB::table('medals')
+      /*$medals = DB::table('medals')
         ->join('races', 'medals.races_id', '=', 'races.rid')
         ->limit(3)
-        ->get();
+        ->get();*/
 
       $number_count = DB::table('orders')
         ->where('user_id', '=', Auth::id())
@@ -79,6 +79,7 @@ class UserController extends Controller
       $dashmedals = DB::table('medals')
         ->leftjoin('orders', 'medals.races_id', '=', 'orders.race_id')
         ->join('races', 'medals.races_id', '=', 'races.rid')
+        ->orderBy('date_from', 'DESC')
         ->get();
 
       $joinedmedals = DB::table('medals')
@@ -100,11 +101,10 @@ class UserController extends Controller
         ->get();
 
       //return view('user.dashboard')->with('user',$user);
-      return view('user.dashboard', ['user' => $user, 'races' => $races, 'medals' => $medals,
-                                      'latest_race' => $latest_race, 'race_count' => $race_count,
-                                      'allmedals' => $allmedals, 'dashmedals' => $dashmedals,
-                                      'usermedals' => $usermedals, 'joinedmedals' => $joinedmedals,
-                                      'submissions' => $submissions]);
+      return view('user.dashboard', ['user' => $user, 'races' => $races, 'latest_race' => $latest_race,
+                                      'race_count' => $race_count, 'allmedals' => $allmedals,
+                                      'dashmedals' => $dashmedals, 'usermedals' => $usermedals,
+                                      'joinedmedals' => $joinedmedals, 'submissions' => $submissions]);
     }
 
     public function updateProfile(Request $request){

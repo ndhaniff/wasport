@@ -59,79 +59,82 @@ class SubmitFormEn extends React.Component{
     this.props.form.validateFieldsAndScroll((err, data) => {
       if (!err) {
 
-        //check strava activity used before
-        if(this.state.strava_activity != null) {
-          for(var i=0; i<allsubmissions.length; i++) {
-            if(allsubmissions[i]['strava_activity'] == this.state.strava_activity) {
-              MySwal.fire({
-                showConfirmButton: false,
-                timer: 3000,
-                type: 'error',
-                title: 'Strava activity has been used before'
-              })
-            }
-          }
-        } else {
-          this.setState({btnloading: true})
+      if(this.checkStrava()) {
+        let routedata = new FormData;
 
-          let routedata = new FormData;
+        routedata.append('oid', this.state.order_id)
+        routedata.append('oid', this.state.order_id)
+        routedata.append('race_hour', data.race_hour)
+        routedata.append('race_minute', data.race_minute)
+        routedata.append('race_second', data.race_second)
+        routedata.append('distance', data.distance)
+        routedata.append('routeimg', this.state.routeimg)
+        routedata.append('strava_activity', this.state.strava_activity)
+        routedata.append('map_polyline', this.state.map_polyline)
+        routedata.append('user_id', this.state.user_id)
+        routedata.append('race_id', this.state.race_id)
 
-          routedata.append('oid', this.state.order_id)
-          routedata.append('oid', this.state.order_id)
-          routedata.append('race_hour', data.race_hour)
-          routedata.append('race_minute', data.race_minute)
-          routedata.append('race_second', data.race_second)
-          routedata.append('distance', data.distance)
-          routedata.append('routeimg', this.state.routeimg)
-          routedata.append('strava_activity', this.state.strava_activity)
-          routedata.append('map_polyline', this.state.map_polyline)
-          routedata.append('user_id', this.state.user_id)
-          routedata.append('race_id', this.state.race_id)
+        axios.post('/user/updateSubmission',routedata).then((res) => {
+          if(res.data.success){
 
-         axios.post('/user/updateSubmission',routedata).then((res) => {
-           if(res.data.success){
+            this.setState({loading: false})
 
-             this.setState({loading: false})
+            MySwal.fire({
+              toast: true,
+              position: 'top-end',
+              showConfirmButton: false,
+              timer: 3000,
+              type: 'success',
+              title: 'Submission uploaded'
+            })
 
-             MySwal.fire({
-               toast: true,
-               position: 'top-end',
-               showConfirmButton: false,
-               timer: 3000,
-               type: 'success',
-               title: 'Submission uploaded'
-             })
+            window.setTimeout(function(){
+              location.reload();
+            } ,3000);
 
-             window.setTimeout(function(){
-               location.reload();
-             } ,3000);
-
+           } else {
+              alert('something wrong')
+           }
+        }) .catch((error) => {
+            // Error
+            if (error.response) {
+                // The request was made and the server responded with a status code
+                // that falls out of the range of 2xx
+                console.log(error.response.data);
+                console.log(error.response.status);
+                console.log(error.response.headers);
+            } else if (error.request) {
+                // The request was made but no response was received
+                // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+                // http.ClientRequest in node.js
+                console.log(error.request);
             } else {
-               alert('something wrong')
+                // Something happened in setting up the request that triggered an Error
+                console.log('Error', error.message);
             }
-         }) .catch((error) => {
-             // Error
-             if (error.response) {
-                 // The request was made and the server responded with a status code
-                 // that falls out of the range of 2xx
-                 console.log(error.response.data);
-                 console.log(error.response.status);
-                 console.log(error.response.headers);
-             } else if (error.request) {
-                 // The request was made but no response was received
-                 // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-                 // http.ClientRequest in node.js
-                 console.log(error.request);
-             } else {
-                 // Something happened in setting up the request that triggered an Error
-                 console.log('Error', error.message);
-             }
-             console.log(error.config);
-         });
-        }
-
+            console.log(error.config);
+        });
       }
-    });
+
+    }
+  });
+}
+
+  checkStrava() {
+    if(this.state.strava_activity != null) {
+      for(var i=0; i<allsubmissions.length; i++) {
+        if(allsubmissions[i]['strava_activity'] == this.state.strava_activity) {
+          MySwal.fire({
+            showConfirmButton: false,
+            timer: 3000,
+            type: 'error',
+            title: 'Strava activity has been used before'
+          })
+          return false;
+        }
+      }
+    }
+    return true;
   }
 
   normFile = (e) => {
@@ -181,10 +184,11 @@ class SubmitFormEn extends React.Component{
         formStatus : 'manual',
         routeimg: '',
         routeimgPreview: '',
-        race_distance: '',
+        distance: '',
         race_hour: '',
         race_minute: '',
-        race_second: ''
+        race_second: '',
+        strava_activity: '',
       })
     }
 
@@ -193,10 +197,11 @@ class SubmitFormEn extends React.Component{
         formStatus : 'strava',
         routeimg: '',
         routeimgPreview: '',
-        race_distance: '',
+        distance: '',
         race_hour: '',
         race_minute: '',
-        race_second: ''
+        race_second: '',
+        strava_activity: ''
       })
 
       if(window.strava_token == "") {

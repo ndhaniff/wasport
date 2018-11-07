@@ -16,7 +16,7 @@ Admin | Orders
 
   <div class="row">
     <div class="col-sm-4">
-      <form action="{{route('admin.orders.search')}}" method="get">
+      <form action="{{route('admin.orders.searchBy')}}" method="get">
         <div class="input-group">
           <input type="search" name="search" class="form-control" placeholder="Search by">
           <select name="field" class="form-control">
@@ -33,9 +33,9 @@ Admin | Orders
     </div>
 
     <div class="col-sm-4">
-      <form action="{{route('admin.orders.filter')}}" method="get">
+      <form action="{{route('admin.orders.filterRace')}}" method="get">
         <div class="input-group">
-          <select name="raceitem">
+          <select name="raceitem" required>
             <option value=”” disabled selected>Filter race</option>
             @foreach($allorders as $allorder)
               <?php foreach($races as $race) {
@@ -43,6 +43,12 @@ Admin | Orders
                   echo "<option value='" .$allorder->race_id. "'>" .$race->title_en. "</option>";
                 } ?>
             @endforeach
+          </select>
+          <select name="racestatus">
+            <option value=”” disabled selected>Filter status</option>
+            <option value="awaiting">awaiting review</option>
+            <option value="success">success</option>
+            <option value="fail">fail</option>
           </select>
           <span class="input-group-prepend">
             <button type="submit" class="btn btn-primary">Filter</button>
@@ -61,6 +67,7 @@ Admin | Orders
       <th scope="col">@sortablelink('oid', 'Order ID')</th>
       <th scope="col">@sortablelink('o_firstname', 'First Name')</th>
       <th scope="col">@sortablelink('o_lastname', 'Last Name')</th>
+      <th scope="col">@sortablelink('race_status', 'Race Status')</th>
       <th scope="col">Race</th>
       <th scope="col"></th>
     </tr>
@@ -72,6 +79,7 @@ Admin | Orders
       <td>{{$order->oid}}</td>
       <td>{{$order->o_firstname}}</td>
       <td>{{$order->o_lastname}}</td>
+      <td><?php if($order->race_status == null || $order->race_status == 'undefined') echo '<i>Awaiting review</i>'; else echo $order->race_status; ?></td>
       <td><?php foreach($races as $race) {
                   if($order->race_id == $race->rid) echo $race->title_en; } ?></td>
       <td>
@@ -166,7 +174,7 @@ Admin | Orders
 
                 <tr>
                   <th>Race Status</th>
-                  <td>{{$order->race_status}}</td>
+                  <td><?php if($order->race_status == null || $order->race_status == 'undefined') echo '<i>Awaiting review</i>'; else echo $order->race_status; ?></td>
                 </tr>
                 <tr>
                   <th>Shipment</th>
