@@ -35,7 +35,7 @@ Admin | Contacts
       <form action="{{route('admin.contacts.filter')}}" method="get">
         <div class="input-group">
           <select name="categoryitem">
-            <option value=”” disabled selected>Filter contact</option>
+            <option value=”” disabled selected>Filter category</option>
             <option value="Registration Enquiry">Registration Enquiry</option>
             <option value="Account Enquiry">Account Enquiry</option>
             <option value="Payment Enquiry">Payment Enquiry</option>
