@@ -55,11 +55,6 @@ class UserController extends Controller
         ->limit(3)
         ->get();
 
-      /*$medals = DB::table('medals')
-        ->join('races', 'medals.races_id', '=', 'races.rid')
-        ->limit(3)
-        ->get();*/
-
       $number_count = DB::table('orders')
         ->where('user_id', '=', Auth::id())
         ->get();
@@ -98,13 +93,19 @@ class UserController extends Controller
 
       $submissions = DB::table('submissions')
         ->where('user_id', '=', Auth::id())
+        ->orderBy('sid', 'ASC')
         ->get();
 
-      //return view('user.dashboard')->with('user',$user);
+      $certdatas = DB::table('submissions')
+        ->where('user_id', '=', Auth::id())
+        ->orderBy('sid', 'DESC')
+        ->get();
+
       return view('user.dashboard', ['user' => $user, 'races' => $races, 'latest_race' => $latest_race,
                                       'race_count' => $race_count, 'allmedals' => $allmedals,
                                       'dashmedals' => $dashmedals, 'usermedals' => $usermedals,
-                                      'joinedmedals' => $joinedmedals, 'submissions' => $submissions]);
+                                      'joinedmedals' => $joinedmedals, 'submissions' => $submissions,
+                                      'certdatas' => $certdatas]);
     }
 
     public function updateProfile(Request $request){
@@ -198,6 +199,7 @@ class UserController extends Controller
       $order->o_postal = $request->get('postal');
       $order->race_category = $request->get('race_category');
       $order->engrave_name = $request->get('engrave_name');
+      $order->race_status = 'awaiting';
       $order->race_id = $request->get('rid');
       $order->user_id = $request->get('uid');
 
@@ -255,7 +257,7 @@ class UserController extends Controller
       $current_races = DB::table('orders')
         ->join('races', 'races.rid', '=', 'race_id')
         ->where('user_id', '=', Auth::id())
-        ->where('date_to', '>=', $date)
+        ->where('date_to', '>', $date)
         ->orderBy('date_from', 'ASC')
         ->get();
 
@@ -266,15 +268,27 @@ class UserController extends Controller
         ->orderBy('date_from', 'DESC')
         ->get();
 
+      $now_races = DB::table('orders')
+        ->join('races', 'races.rid', '=', 'race_id')
+        ->where('user_id', '=', Auth::id())
+        ->where('date_to', '=', $date)
+        ->get();
+
       $allmedals = DB::table('medals')->get();
 
       $submissions = DB::table('submissions')
         ->where('user_id', '=', Auth::id())
         ->get();
 
+      $certdatas = DB::table('submissions')
+        ->where('user_id', '=', Auth::id())
+        ->orderBy('sid', 'DESC')
+        ->get();
+
       return view('user.joined', ['user' => $user, 'current_races' => $current_races,
-                                  'past_races' => $past_races, 'allmedals' => $allmedals,
-                                  'submissions' => $submissions]);
+                                  'past_races' => $past_races, 'now_races' => $now_races,
+                                  'allmedals' => $allmedals, 'submissions' => $submissions,
+                                  'certdatas' => $certdatas]);
     }
 
     public function handleRouteImg(Request $request){

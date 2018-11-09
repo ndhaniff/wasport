@@ -56,7 +56,13 @@ class AdminAddonsController extends Controller
     public function filter(Request $request)
     {
       $raceitem = $request->get('raceitem');
-      $addons = DB::table('addons')->where('races_id', 'like', $raceitem)->paginate(10);
+
+      $query = Order::sortable();
+        if($raceitem != '') {
+          $query->where('race_id', 'like', $raceitem);
+        }
+      $addons = $query->paginate(10);
+      
       $races = DB::table('races')->get();
       $alladdons = Addon::sortable()->get();
 

@@ -82,6 +82,8 @@ Joined Races | WaSportsrun
       $past_race_arr = array();
       $allmedal_arr = array();
       $allsubmissions_arr = array();
+      $certdatas_arr = array();
+
       date_default_timezone_set("Asia/Kuala_Lumpur");
       $date = date('Y-m-d H:i a');
 
@@ -111,6 +113,46 @@ Joined Races | WaSportsrun
                                     'date' => $dateF. ' (' .$current->time_from. ') GMT +08' . ' - ' .$dateT. ' (' .$current->time_to. ') GMT +08',
                                     'header' => asset('storage/uploaded/races/' . $current->header),
                                     'race_status' => $current->race_status);
+      }
+
+      foreach($now_races as $now) {
+        $submission = 'false';
+
+        $dateTimeFrom = $now->date_from .' '. $now->time_from;
+        $dateTimeTo = $now->date_to .' '. $now->time_to;
+
+        if($dateTimeFrom <= $date && $dateTimeTo >= $date) {
+          $submission = 'true';
+        }
+
+        if($dateTimeTo < $date) {
+          $submission = 'closed';
+        }
+
+        $dateF = DateTime::createFromFormat('Y-m-d', $now->date_from)->format('d M Y');
+        $dateT = DateTime::createFromFormat('Y-m-d', $now->date_to)->format('d M Y');
+
+        if($submission == 'closed') {
+          $past_race_arr[] = array('rid' => $now->rid,
+                                    'title_en' => $now->title_en,
+                                    'title_ms' => $now->title_ms,
+                                    'title_zh' => $now->title_zh,
+                                    'category'=> $now->race_category,
+                                    'date' => $dateF. ' (' .$now->time_from. ') GMT +08' . ' - ' .$dateT. ' (' .$now->time_to. ') GMT +08',
+                                    'header' => asset('storage/uploaded/races/' . $now->header),
+                                    'race_status' => $now->race_status);
+        } else {
+          $current_race_arr[] = array('submission' => $submission,
+                                      'rid' => $now->rid,
+                                      'title_en' => $now->title_en,
+                                      'title_ms' => $now->title_ms,
+                                      'title_zh' => $now->title_zh,
+                                      'category'=> $now->race_category,
+                                      'date' => $dateF. ' (' .$now->time_from. ') GMT +08' . ' - ' .$dateT. ' (' .$now->time_to. ') GMT +08',
+                                      'header' => asset('storage/uploaded/races/' . $now->header),
+                                      'race_status' => $now->race_status);
+        }
+
       }
 
       foreach($past_races as $past) {
@@ -144,10 +186,20 @@ Joined Races | WaSportsrun
 
       }
 
+      foreach($certdatas as $certdata) {
+        $certdatas_arr[] =array('sid' => $certdata->sid,
+                                'race_id' => $submission->race_id,
+                                's_hour' => $submission->s_hour,
+                                's_minute' => $submission->s_minute,
+                                's_second' => $submission->s_second,
+                                's_distance' => $submission->s_distance);
+      }
+
       $current_json = json_encode($current_race_arr);
       $past_json = json_encode($past_race_arr);
       $allmedal_json = json_encode($allmedal_arr);
-      $allsubmissions_json = json_encode($allsubmissions_arr); ?>
+      $allsubmissions_json = json_encode($allsubmissions_arr);
+      $allcertdatas_json = json_encode($certdatas_arr); ?>
 
 <script>
   var allorder = JSON.parse('<?= $current_json; ?>');
@@ -155,6 +207,7 @@ Joined Races | WaSportsrun
   var past = JSON.parse('<?= $past_json; ?>');
   var allmedal = JSON.parse('<?= $allmedal_json; ?>');
   var allsubmissions = JSON.parse('<?= $allsubmissions_json; ?>');
+  var allcertdatas = JSON.parse('<?= $allcertdatas_json; ?>');
 
   var user = {
     id: "{{$user->id}}",
@@ -177,19 +230,18 @@ Joined Races | WaSportsrun
             <input id="tab2-1" name="tabs-two" type="radio" checked="checked">
 
             <div id="joined-current">
-              <?php if(!$current_races->count()) {
+              <?php if(empty($current_race_arr)) {
                       echo '<center><span>';
                       echo __("NO RACES");
                       echo '</span></center>';
                     } else {
-                      if($current_races->count()) {
                         if(app()->getLocale() == 'en')
                           echo '<div id="current-joined-en"></div>';
                         if(app()->getLocale() == 'ms')
                           echo '<div id="current-joined-ms"></div>';
                         if(app()->getLocale() == 'zh')
                           echo '<div id="current-joined-zh"></div>';
-                      }
+
                     } ?>
             </div>
           </div>
@@ -199,19 +251,18 @@ Joined Races | WaSportsrun
             <input id="tab2-2" name="tabs-two" type="radio">
 
             <div id="joined-past">
-              <?php if(!$past_races->count()) {
+              <?php if(empty($past_race_arr)) {
                       echo '<center><span>';
                       echo __("NO RACES");
                       echo '</span></center>';
                     } else {
-                      if($past_races->count()) {
                         if(app()->getLocale() == 'en')
                           echo '<div id="past-joined-en"></div>';
                         if(app()->getLocale() == 'ms')
                           echo '<div id="past-joined-ms"></div>';
                         if(app()->getLocale() == 'zh')
                           echo '<div id="past-joined-zh"></div>';
-                      }
+
                     } ?>
             </div>
           </div>

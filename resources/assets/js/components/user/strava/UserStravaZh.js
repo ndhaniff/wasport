@@ -83,11 +83,11 @@ class UserStravaZh extends Component{
           //get min from pace
           let min = Math.floor(pace / 60);
           //add 0 before if lower than 10
-          min = (min > 10) ? min : '0' + min;
+          if(min < 10) min = '0' + min;
           //getting remaining seconds
           let sec = pace % 60;
           //adding 0 before, if lower than 10
-          sec = (sec > 10) ? sec : '0' + sec;
+          if(sec < 10) sec = '0' + sec;
           //set pace
           let avg_pace = min + "\"" + Math.floor(sec);
           //set distance

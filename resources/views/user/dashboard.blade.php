@@ -49,7 +49,6 @@ svg:not(:root) { display: none; }
         $i++;
         if($i==2) break;
       }
-
       $race_json = json_encode($latest_race_arr);
 
       $allmedal_arr = array();
@@ -143,7 +142,18 @@ svg:not(:root) { display: none; }
                                       'strava_activity' => $submission->strava_activity);
 
       }
-      $allsubmissions_json = json_encode($allsubmissions_arr);?>
+      $allsubmissions_json = json_encode($allsubmissions_arr);
+
+      $certdatas_arr = array();
+      foreach($certdatas as $certdata) {
+        $certdatas_arr[] =array('sid' => $certdata->sid,
+                                'race_id' => $submission->race_id,
+                                's_hour' => $submission->s_hour,
+                                's_minute' => $submission->s_minute,
+                                's_second' => $submission->s_second,
+                                's_distance' => $submission->s_distance);
+      }
+      $allcertdatas_json = json_encode($certdatas_arr); ?>
 
 <script>
 var user = {
@@ -174,6 +184,7 @@ var allmedal = JSON.parse('<?= $allmedal_json; ?>');
 var medal = JSON.parse('<?= $medal_json; ?>');
 var allorder = JSON.parse('<?= $allorder_json; ?>');
 var allsubmissions = JSON.parse('<?= $allsubmissions_json; ?>');
+var allcertdatas = JSON.parse('<?= $allcertdatas_json; ?>');
 </script>
 
   <div class="userdash p-5">

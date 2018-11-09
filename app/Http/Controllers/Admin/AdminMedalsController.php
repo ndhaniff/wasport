@@ -49,7 +49,13 @@ class AdminMedalsController extends Controller
     public function filter(Request $request)
     {
       $raceitem = $request->get('raceitem');
-      $medals = DB::table('medals')->where('races_id', 'like', $raceitem)->paginate(10);
+
+      $query = Order::sortable();
+        if($raceitem != '') {
+          $query->where('race_id', 'like', $raceitem);
+        }
+      $medals = $query->paginate(10);
+
       $races = DB::table('races')->get();
       $allmedals = Medal::sortable()->get();
 

@@ -46,3 +46,17 @@ label, option {
   padding: 7rem 0;
   margin-bottom: 1rem;
 }
+
+#review-table {
+  width: 100%;
+}
+
+#racestatus-form select {
+  height: 30px;
+}
+
+#racestatus-btn {
+  font-size: 12px;
+  height: 30px;
+  margin-top: -5px;
+}

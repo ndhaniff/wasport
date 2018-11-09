@@ -28,6 +28,10 @@ class SubmitFormEn extends React.Component{
     order_id: '',
     category: '',
     routeimg: '',
+    strava_distance: '',
+    strava_hour: '',
+    strava_minute: '',
+    strava_second: '',
     strava_activity: '',
     map_polyline: ''
   }
@@ -63,16 +67,25 @@ class SubmitFormEn extends React.Component{
         let routedata = new FormData;
 
         routedata.append('oid', this.state.order_id)
-        routedata.append('oid', this.state.order_id)
-        routedata.append('race_hour', data.race_hour)
-        routedata.append('race_minute', data.race_minute)
-        routedata.append('race_second', data.race_second)
-        routedata.append('distance', data.distance)
-        routedata.append('routeimg', this.state.routeimg)
-        routedata.append('strava_activity', this.state.strava_activity)
-        routedata.append('map_polyline', this.state.map_polyline)
         routedata.append('user_id', this.state.user_id)
         routedata.append('race_id', this.state.race_id)
+
+        if(this.state.formStatus == 'manual') {
+          routedata.append('race_hour', data.race_hour)
+          routedata.append('race_minute', data.race_minute)
+          routedata.append('race_second', data.race_second)
+          routedata.append('distance', data.distance)
+          routedata.append('routeimg', this.state.routeimg)
+        }
+
+        if(this.state.formStatus == 'strava') {
+          routedata.append('race_hour', data.strava_hour)
+          routedata.append('race_minute', data.strava_minute)
+          routedata.append('race_second', data.strava_second)
+          routedata.append('distance', data.strava_distance)
+          routedata.append('strava_activity', this.state.strava_activity)
+          routedata.append('map_polyline', this.state.map_polyline)
+        }
 
         axios.post('/user/updateSubmission',routedata).then((res) => {
           if(res.data.success){
@@ -197,10 +210,10 @@ class SubmitFormEn extends React.Component{
         formStatus : 'strava',
         routeimg: '',
         routeimgPreview: '',
-        distance: '',
-        race_hour: '',
-        race_minute: '',
-        race_second: '',
+        strava_distance: '',
+        strava_hour: '',
+        strava_minute: '',
+        strava_second: '',
         strava_activity: ''
       })
 
@@ -238,14 +251,14 @@ class SubmitFormEn extends React.Component{
 
           //get route image
           let polyline =  data[0]['map']['summary_polyline']
-          let map_url = 'https://maps.googleapis.com/maps/api/staticmap?size=800x800&key=AIzaSyCKZLJ1sdzNyXkp8xYiwOkmk0magbQaiKU&zoom=16&path=weight:3%7Ccolor:red%7Cenc:' + polyline
+          let map_url = 'https://maps.googleapis.com/maps/api/staticmap?size=640x640&key=AIzaSyD72_ThnAh5eTa7BAlAA-2XhwZ_AKDy_Iw&zoom=16&path=weight:3%7Ccolor:red%7Cenc:' + polyline
 
           //insert data
           this.setState({
-            distance: strava_distance,
-            race_hour: strava_hour,
-            race_minute: strava_min,
-            race_second: strava_sec,
+            strava_distance: strava_distance,
+            strava_hour: strava_hour,
+            strava_minute: strava_min,
+            strava_second: strava_sec,
             routeimgPreview: map_url,
             strava_activity: strava_activity_id,
             map_polyline: polyline
@@ -430,11 +443,11 @@ class SubmitFormEn extends React.Component{
           )}
           hasFeedback
         >
-          {getFieldDecorator('distance', {
+          {getFieldDecorator('strava_distance', {
             rules: [{
               required: true, message: 'Please input distance',
             }],
-            initialValue: this.state.distance != null ? this.state.distance : ""
+            initialValue: this.state.strava_distance != null ? this.state.strava_distance : ""
           })(
             <InputNumber disabled={true}/>
           )}
@@ -449,11 +462,11 @@ class SubmitFormEn extends React.Component{
           )}
           hasFeedback
         >
-          {getFieldDecorator('race_hour', {
+          {getFieldDecorator('strava_hour', {
             rules: [{
               required: true, message: 'Please input hour',
             }],
-            initialValue: this.state.race_hour != null ? this.state.race_hour : ""
+            initialValue: this.state.strava_hour != null ? this.state.strava_hour : ""
           })(
             <InputNumber disabled={true}/>
           )}
@@ -468,11 +481,11 @@ class SubmitFormEn extends React.Component{
           )}
           hasFeedback
         >
-          {getFieldDecorator('race_minute', {
+          {getFieldDecorator('strava_minute', {
             rules: [{
               required: true, message: 'Please input minute',
             }],
-            initialValue: this.state.race_minute != null ? this.state.race_minute : ""
+            initialValue: this.state.strava_minute != null ? this.state.strava_minute : ""
           })(
             <InputNumber disabled={true}/>
           )}
@@ -487,11 +500,11 @@ class SubmitFormEn extends React.Component{
           )}
           hasFeedback
         >
-          {getFieldDecorator('race_second', {
+          {getFieldDecorator('strava_second', {
             rules: [{
               required: true, message: 'Please input second',
             }],
-            initialValue: this.state.race_second != null ? this.state.race_second : ""
+            initialValue: this.state.strava_second != null ? this.state.strava_second : ""
           })(
             <InputNumber disabled={true}/>
           )}

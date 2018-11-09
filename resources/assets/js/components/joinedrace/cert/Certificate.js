@@ -6,22 +6,71 @@ class Certificate extends React.Component{
   constructor(){
     super()
     this.state = {
+      displayname: window.name,
       firstname : window.user.firstname,
       lastname : window.user.lastname,
-      allmedal : window.allmedal
+      allmedal : window.allmedal,
+      allcertdatas: window.allcertdatas
     }
   }
 
   componentDidMount() {
-      this.updateCanvas();
+    this.updateCanvas();
   }
 
   updateCanvas() {
 
-    const name = this.state.firstname + ' ' + this.state.lastname
+    //get user name
+    var name = ''
+
+
+    //if user did not update first name & last name
+    //get display name
+    if(this.state.firstname == null || this.state.firstname == '')
+      name = this.state.displayname
+    else
+      name = this.state.firstname + ' ' + this.state.lastname
+
+    //get category joined
     const category = 'CATEGORY: ' + this.props.raceCategory
-    const timing = 'TIMING: 01:30:22'
-    const pace = 'PACE: 3"2'
+
+    //get time used to complete race
+    var time_used = ''
+    var avg_pace = ''
+
+    for(var i=0; i<allcertdatas.length; i++) {
+      if(allcertdatas[i]['race_id'] == this.props.raceID) {
+        var distance = allcertdatas[i]['s_distance']
+        var hour = allcertdatas[i]['s_hour']
+        var minute = allcertdatas[i]['s_minute']
+        var second = allcertdatas[i]['s_second']
+
+        var time_second = (hour * 3600) + (minute * 60) + Number(second)
+        if(hour<10) hour = '0' + hour
+        if(minute<10) minute = '0' + minute
+        if(second<10) second = '0' + second
+        time_used = hour + ':' + minute + ':' + second
+
+        var pace = time_second / distance
+        var pace_min = Math.floor(pace / 60)
+        if(pace_min < 10)
+          var min = '0' + pace_min
+        else
+          var min = pace_min
+
+        var pace_sec = pace % 60
+        if(pace_min < 10)
+          var sec = '0' + pace_sec
+        else
+          var sec = pace_sec
+
+        avg_pace = min + '\"' + Math.floor(sec)
+        break;
+       }
+    }
+
+    const timing = 'TIMING: ' + time_used
+    const showPace = 'PACE: ' + avg_pace
     const title = this.props.raceTitle
 
     const context = this.refs.canvas.getContext('2d')
@@ -54,7 +103,7 @@ class Certificate extends React.Component{
       context.font = '15pt Calibri';
       context.fillText(category, x, 435);
       context.fillText(timing, x, 465);
-      context.fillText(pace, x, 495);
+      context.fillText(showPace, x, 495);
       context.font = '12pt Calibri';
       context.fillText('wasportsrun.com', 135, 575);
       context.drawImage(logo, 25, 553 ,45, 30)

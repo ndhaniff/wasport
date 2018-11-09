@@ -95,10 +95,10 @@ Route::group(['prefix' =>'admin'],function()
   Route::get('/orders','Admin\AdminOrdersController@index')->name('admin.orders');
   Route::get('/orders/searchBy', 'Admin\AdminOrdersController@searchBy')->name('admin.orders.searchBy');
   Route::get('/orders/filterRace', 'Admin\AdminOrdersController@filterRace')->name('admin.orders.filterRace');
-  Route::delete('/orders/{mid}','Admin\AdminOrdersController@orders')->name('admin.orders.destroy');
-  Route::get('/orders/edit/{mid}','Admin\AdminOrdersController@editForm')->name('admin.orders.edit');
+  Route::delete('/orders/{oid}','Admin\AdminOrdersController@orders')->name('admin.orders.destroy');
+  Route::get('/orders/edit/{oid}','Admin\AdminOrdersController@editForm')->name('admin.orders.edit');
   Route::post('/orders/edit','Admin\AdminOrdersController@edit')->name('admin.orders.edit.submit');
-
+  Route::post('/orders/updateRaceStatus/{oid}', 'Admin\AdminOrdersController@updateRaceStatus')->name('admin.orders.updateRaceStatus');
   //Contacts
   Route::get('/contacts','Admin\AdminContactsController@index')->name('admin.contacts');
   Route::get('/contacts/search', 'Admin\AdminContactsController@search')->name('admin.contacts.search');

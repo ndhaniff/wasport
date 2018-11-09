@@ -10,6 +10,7 @@ use App\Model\OrderAddon;
 use App\Model\Race;
 use App\Model\Addon;
 use App\Model\User;
+use App\Model\Submission;
 use Kyslik\ColumnSortable\Sortable;
 
 class AdminOrdersController extends Controller
@@ -38,8 +39,11 @@ class AdminOrdersController extends Controller
       $users = User::sortable()->get();
       $order_addons = OrderAddon::sortable()->get();
       $allorders= Order::sortable()->get();
+      $submissions = DB::table('submissions')
+        ->orderBy('sid', 'DESC')
+        ->get();
 
-      return view('auth.admin.orders.index',compact('orders', 'races', 'addons', 'order_addons', 'allorders'));
+      return view('auth.admin.orders.index',compact('orders', 'races', 'addons', 'order_addons', 'allorders', 'submissions'));
     }
 
     public function searchBy(Request $request)
@@ -47,37 +51,31 @@ class AdminOrdersController extends Controller
       $search = $request->get('search');
       $field = $request->get('field');
 
-      $orders = Order::sortable()->where($field, 'like', '%' .$search. '%')->paginate(10);
+      $orders = Order::sortable()
+        ->where($field, 'like', '%' .$search. '%')
+        ->paginate(10);
+
       $races = DB::table('races')->get();
       $addons = DB::table('addons')->get();
       $allorders = Order::sortable()->get();
+      $order_addons = OrderAddon::sortable()->get();
 
-      return view('auth.admin.orders.index',compact('orders', 'races', 'addons', 'allorders'));
+      $submissions = DB::table('submissions')
+        ->orderBy('sid', 'DESC')
+        ->get();
+
+      return view('auth.admin.orders.index',compact('orders', 'races', 'addons', 'allorders', 'order_addons', 'submissions'));
     }
 
     public function filterRace(Request $request)
     {
       $raceitem = $request->get('raceitem');
-      $racestatus = $request->get('racestatus');
 
-      if($raceitem != null && $racestatus != null) {
-        $orders = DB::table('orders')
-          ->where('race_id', 'like', $raceitem)
-          ->where('race_status', 'like', $racestatus)
-          ->paginate(10);
-      }
-
-      if($raceitem == null) {
-        $orders = DB::table('orders')
-          ->where('race_status', 'like', $racestatus)
-          ->paginate(10);
-      }
-
-      if($racestatus == null) {
-        $orders = DB::table('orders')
-          ->where('race_id', 'like', $raceitem)
-          ->paginate(10);
-      }
+      $query = Order::sortable();
+        if($raceitem != '') {
+          $query->where('race_id', 'like', $raceitem);
+        }
+      $orders = $query->paginate(10);
 
       $races = DB::table('races')->get();
       $allorders = Order::sortable()->get();
@@ -85,7 +83,11 @@ class AdminOrdersController extends Controller
       $addons = Addon::sortable()->get();
       $users = User::sortable()->get();
 
-      return view('auth.admin.orders.index',compact('orders', 'races', 'addons', 'users', 'order_addons', 'allorders'));
+      $submissions = DB::table('submissions')
+        ->orderBy('sid', 'DESC')
+        ->get();
+
+      return view('auth.admin.orders.index',compact('orders', 'races', 'addons', 'users', 'order_addons', 'allorders', 'submissions'));
     }
 
     public function editForm($oid){
@@ -118,5 +120,24 @@ class AdminOrdersController extends Controller
         } else {
             return response()->json(['success' => false, 'msg' => 'order not found' ], 200 );
         }
+    }
+
+    public function updateRaceStatus($oid)
+    {
+        $update = Order::find($oid);
+        $update->race_status = request('racestatus');
+        $update->save();
+
+        $orders = Order::sortable()->paginate(10);
+        $races = Race::sortable()->get();
+        $addons = Addon::sortable()->get();
+        $users = User::sortable()->get();
+        $order_addons = OrderAddon::sortable()->get();
+        $allorders= Order::sortable()->get();
+        $submissions = DB::table('submissions')
+          ->orderBy('sid', 'DESC')
+          ->get();
+
+        return view('auth.admin.orders.index',compact('orders', 'races', 'addons', 'order_addons', 'allorders', 'submissions'));
     }
 }

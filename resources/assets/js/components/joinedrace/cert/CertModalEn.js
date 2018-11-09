@@ -45,7 +45,8 @@ class CertModalEn extends Component {
 
     for(var i=0; i<allmedal.length; i++) {
       if(allmedal[i]['races_id'] == this.props.raceID) {
-        var certItem = <Certificate raceCategory = {this.props.raceCategory} raceTitle = {this.props.raceTitle} certImg = {allmedal[i]['cert_img']} />
+        var certItem = <Certificate raceCategory = {this.props.raceCategory} raceTitle = {this.props.raceTitle}
+                                    certImg = {allmedal[i]['cert_img']} raceID = {this.props.raceID} />
       }
     }
 
