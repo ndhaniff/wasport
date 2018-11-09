@@ -50,15 +50,6 @@ class CertModalEn extends Component {
       }
     }
 
-    if(this.props.raceStatus == null || this.props.raceStatus == 'fail') {
-      var showmodal = <Modal
-        visible={this.state.visible}
-        onOk={this.handleOk}
-        onCancel={this.handleCancel}
-        width={'500px'} >
-        Your certificate will be given when the race submission period ends and you completed the required distance
-        </Modal>
-    }
     if(this.props.raceStatus == 'success'){
       var showmodal = <Modal
         visible={this.state.visible}
@@ -70,6 +61,14 @@ class CertModalEn extends Component {
         ]} >
         {certItem}
       </Modal>
+    } else {
+      var showmodal = <Modal
+        visible={this.state.visible}
+        onOk={this.handleOk}
+        onCancel={this.handleCancel}
+        width={'500px'} >
+        Your certificate will be given when the race submission period ends and you completed the required distance
+        </Modal>
     }
 
     return (

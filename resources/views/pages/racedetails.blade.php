@@ -38,14 +38,15 @@ svg:not(:root) { display: none; }
 
     <div class="row">
       <div class="col-md-8 race-details">
+
         <?php if(app()->getLocale() == 'en')
                 echo '<h2>' .$race->title_en. '</h2>';
               if(app()->getLocale() == 'ms')
                 echo '<h2>' .$race->title_ms. '</h2>';
               if(app()->getLocale() == 'zh')
-                echo '<h2>' .$race->title_zh. '</h2>'; ?>
+                echo '<h2>' .$race->title_zh. '</h2>';
 
-        <?php $dateF = DateTime::createFromFormat('Y-m-d', $race->date_from)->format('d M Y');
+              $dateF = DateTime::createFromFormat('Y-m-d', $race->date_from)->format('d M Y');
               $dateT = DateTime::createFromFormat('Y-m-d', $race->date_to)->format('d M Y');
               echo '<h5>' .$dateF. ' (' .$race->time_from. ') GMT +08' . '<br>-<br>' .$dateT. '(' .$race->time_to. ') GMT +08</h5>'; ?>
         <hr>
@@ -194,54 +195,54 @@ svg:not(:root) { display: none; }
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
             </div>
           </div>
+        </div>
 
-          <hr>
+        <hr>
 
-          <?php
-            if($addons->count() != 0) {
-              echo '<div class="addons-block">';
-              echo '<h6>Add-on</h6>';
-              $i=0;
-              foreach($addons as $addon) {
-                if($addon->descimg_1 != '')
-                  echo "<img src='" .asset('storage/uploaded/addons/' . $addon->descimg_1). "' alt='" .$addon->add_en. "'><br /><br />";
-                if($addon->descimg_2 != '')
-                  echo "<img src='" .asset('storage/uploaded/addons/' . $addon->descimg_2). "' alt='" .$addon->add_en. "'><br /><br />";
-                if($addon->descimg_3 != '')
-                  echo "<img src='" .asset('storage/uploaded/addons/' . $addon->descimg_3). "' alt='" .$addon->add_en. "'><br /><br />";
-                if($addon->descimg_4 != '')
-                  echo "<img src='" .asset('storage/uploaded/addons/' . $addon->descimg_4). "' alt='" .$addon->add_en. "'><br /><br />";
-                if($addon->descimg_5 != '')
-                  echo "<img src='" .asset('storage/uploaded/addons/' . $addon->descimg_5). "' alt='" .$addon->add_en. "'><br /><br />";
-                if($addon->descimg_6 != '')
-                  echo "<img src='" .asset('storage/uploaded/addons/' . $addon->descimg_6). "' alt='" .$addon->add_en. "'><br /><br />";
-                if(app()->getLocale() == 'en') {
-                  echo '<b>';
-                  echo $i+1 .'. ' .$addon->add_en. ' - RM' .number_format($addon->addprice, 2);
-                  echo '</b>';
-                  echo $addon->desc_en;
-                  echo '<br/>';
-                }
-                if(app()->getLocale() == 'ms') {
-                  echo '<b>';
-                  echo $i+1 .'. ' .$addon->add_ms. ' - RM' .number_format($addon->addprice, 2);
-                  echo '</b>';
-                  echo $addon->desc_ms;
-                  echo '<br/>';
-                }
-                if(app()->getLocale() == 'zh') {
-                  echo '<b>';
-                  echo $i+1 .'. ' .$addon->add_zh. ' - RM' .number_format($addon->addprice, 2);
-                  echo '</b>';
-                  echo $addon->desc_zh;
-                  echo '<br/>';
-                }
-                $i++;
+        <?php
+          if($addons->count() != 0) {
+            echo '<div class="addons-block">';
+            echo '<h6>Add-on</h6>';
+            $i=0;
+            foreach($addons as $addon) {
+              if($addon->descimg_1 != '')
+                echo "<img src='" .asset('storage/uploaded/addons/' . $addon->descimg_1). "' alt='" .$addon->add_en. "'><br /><br />";
+              if($addon->descimg_2 != '')
+                echo "<img src='" .asset('storage/uploaded/addons/' . $addon->descimg_2). "' alt='" .$addon->add_en. "'><br /><br />";
+              if($addon->descimg_3 != '')
+                echo "<img src='" .asset('storage/uploaded/addons/' . $addon->descimg_3). "' alt='" .$addon->add_en. "'><br /><br />";
+              if($addon->descimg_4 != '')
+                echo "<img src='" .asset('storage/uploaded/addons/' . $addon->descimg_4). "' alt='" .$addon->add_en. "'><br /><br />";
+              if($addon->descimg_5 != '')
+                echo "<img src='" .asset('storage/uploaded/addons/' . $addon->descimg_5). "' alt='" .$addon->add_en. "'><br /><br />";
+              if($addon->descimg_6 != '')
+                echo "<img src='" .asset('storage/uploaded/addons/' . $addon->descimg_6). "' alt='" .$addon->add_en. "'><br /><br />";
+              if(app()->getLocale() == 'en') {
+                echo '<b>';
+                echo $i+1 .'. ' .$addon->add_en. ' - RM' .number_format($addon->addprice, 2);
+                echo '</b>';
+                echo $addon->desc_en;
+                echo '<br/>';
               }
-              echo '</div>';
-              echo '<hr>';
+              if(app()->getLocale() == 'ms') {
+                echo '<b>';
+                echo $i+1 .'. ' .$addon->add_ms. ' - RM' .number_format($addon->addprice, 2);
+                echo '</b>';
+                echo $addon->desc_ms;
+                echo '<br/>';
+              }
+              if(app()->getLocale() == 'zh') {
+                echo '<b>';
+                echo $i+1 .'. ' .$addon->add_zh. ' - RM' .number_format($addon->addprice, 2);
+                echo '</b>';
+                echo $addon->desc_zh;
+                echo '<br/>';
+              }
+              $i++;
             }
-            ?>
+            echo '</div>';
+            echo '<hr>';
+          } ?>
 
           <?php if($race->awards_en != '') {
                   echo '<div class="awards-block">';
@@ -253,11 +254,10 @@ svg:not(:root) { display: none; }
                     echo htmlspecialchars_decode($race->awards_ms);
                   if(app()->getLocale() == 'zh')
                     echo htmlspecialchars_decode($race->awards_zh);
-                } ?>
 
-            <br />
+                  echo '<br />';
 
-            <?php if($race->awardimg_1 != '')
+                  if($race->awardimg_1 != '')
                     echo "<img src='" .asset('storage/uploaded/awards/' . $race->awardimg_1). "' alt='" .$race->title_en. "'><br /><br />";
                   if($race->awardimg_2 != '')
                     echo "<img src='" .asset('storage/uploaded/awards/' . $race->awardimg_2). "' alt='" .$race->title_en. "'><br /><br />";
@@ -268,11 +268,14 @@ svg:not(:root) { display: none; }
                   if($race->awardimg_5 != '')
                     echo "<img src='" .asset('storage/uploaded/awards/' . $race->awardimg_5). "' alt='" .$race->title_en. "'><br /><br />";
                   if($race->awardimg_6 != '')
-                    echo "<img src='" .asset('storage/uploaded/awards/' . $race->awardimg_6). "' alt='" .$race->title_en. "'><br /><br />"; ?>
-          </div>
-        </div>
+                    echo "<img src='" .asset('storage/uploaded/awards/' . $race->awardimg_6). "' alt='" .$race->title_en. "'><br /><br />";
+
+                  echo '</div>';
+                } ?>
 
       </div>
+
+
 
       <div class="col-md-4">
         <div class="register-box">

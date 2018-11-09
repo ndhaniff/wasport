@@ -33,6 +33,7 @@ Route::group([
   Route::get('/dashboard', 'User\UserController@dashboard' )->name('user.dashboard');
   Route::get('/viewMedals', 'User\UserController@viewMedals' )->name('user.viewMedals');
   Route::get('/viewjoined', 'User\UserController@viewJoined' )->name('user.viewjoined');
+  Route::get('/vieworders', 'User\UserController@viewOrders' )->name('user.vieworders');
 
   Auth::routes();
 

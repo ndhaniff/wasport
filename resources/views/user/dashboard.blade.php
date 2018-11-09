@@ -318,6 +318,18 @@ var allcertdatas = JSON.parse('<?= $allcertdatas_json; ?>');
         </div>
       </div>
 
+      <hr>
+
+      <div class="user-others">
+        <div class="row">
+          <div class="col-md-6">
+            <h3>{{__("My Orders")}}</h3>
+          </div>
+          <div class="col-md-6">
+            <span id="view-all"><a href="/vieworders">{{__("View All")}}</a></span>
+          </div>
+        </div>
+      </div>
       <!--<div id ="user-dashboard"></div>-->
     </div>
   </div>

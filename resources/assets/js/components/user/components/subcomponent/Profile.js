@@ -57,10 +57,6 @@ class Profile extends React.Component{
             title: 'Profile updated'
           })
 
-          window.setTimeout(function(){
-            location.reload();
-          } ,3000);
-
         } else {
              alert('something wrong')
          }

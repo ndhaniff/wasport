@@ -50,15 +50,6 @@ class CertModalZh extends Component {
       }
     }
 
-    if(this.props.raceStatus == null || this.props.raceStatus == 'fail') {
-      var showmodal = <Modal
-        visible={this.state.visible}
-        onOk={this.handleOk}
-        onCancel={this.handleCancel}
-        width={'850px'} >
-        证书将在赛事结束与上传里程后颁发
-        </Modal>
-    }
     if(this.props.raceStatus == 'success'){
       var showmodal = <Modal
         visible={this.state.visible}
@@ -70,8 +61,15 @@ class CertModalZh extends Component {
         ]} >
         {certItem}
       </Modal>
+    } else {
+      var showmodal = <Modal
+        visible={this.state.visible}
+        onOk={this.handleOk}
+        onCancel={this.handleCancel}
+        width={'850px'} >
+        证书将在赛事结束与上传里程后颁发
+        </Modal>
     }
-
 
     return (
       <div>

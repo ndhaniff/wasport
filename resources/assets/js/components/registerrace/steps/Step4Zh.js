@@ -92,7 +92,7 @@ class Step4Zh extends Component {
         })
 
         window.setTimeout(function(){
-          location.href = location.origin + '/racedetails/' + this.state.rid
+          location.href = location.origin + '/racedetails/' + props.getStore().rid
         } ,3000)
 
      } else {
@@ -153,24 +153,29 @@ class Step4Zh extends Component {
       var displayEngrave = ''
     }
 
+    var addprice_1 = 0
+    var addprice_2 = 0
+    var addprice_3 = 0
+    var addprice_4 = 0
+    var addprice_5 = 0
+
     if(typeof this.state.addon_1 != 'undefined') {
       var add_1 = this.state.addon_1
       var add_1_aid = add_1.split(',')[0]
       var add_1_type = add_1.split(',')[1]
 
+      var add_1_en = ''
+      var add_1_price = ''
+
       if(add_1_type != 'none') {
         for(var i=0; i<addons.length; i++) {
           if(addons[i]['aid'] == add_1_aid) {
             var add_1_en = addons[i]['add_en'] + ': ' + add_1_type
-            var add_1_price = 'RM ' + addons[i]['addprice']
-            var addprice_1 = parseFloat(addons[i]['addprice'])
+            var add_1_price = 'RM ' + Number(addons[i]['addprice']).toFixed(2)
+            addprice_1 = Number(addons[i]['addprice'])
           }
         }
       }
-    } else {
-      var add_1_en = ''
-      var add_1_price = ''
-      var addprice_1 = parseFloat("0")
     }
 
     if(typeof this.state.addon_2 != 'undefined') {
@@ -178,19 +183,18 @@ class Step4Zh extends Component {
       var add_2_aid = add_2.split(',')[0]
       var add_2_type = add_2.split(',')[1]
 
+      var add_2_en = ''
+      var add_2_price = ''
+
       if(add_2_type != 'none') {
         for(var i=0; i<addons.length; i++) {
           if(addons[i]['aid'] == add_2_aid) {
             var add_2_en = addons[i]['add_en'] + ': ' + add_2_type
-            var add_2_price = 'RM ' + addons[i]['addprice']
-            var addprice_2 = parseFloat(addons[i]['addprice'])
+            var add_2_price = 'RM ' + Number(addons[i]['addprice']).toFixed(2)
+            addprice_2 = Number(addons[i]['addprice'])
           }
         }
       }
-    } else {
-      var add_2_en = ''
-      var add_2_price = ''
-      var addprice_2 = parseFloat("0")
     }
 
     if(typeof this.state.addon_3 != 'undefined') {
@@ -198,19 +202,18 @@ class Step4Zh extends Component {
       var add_3_aid = add_3.split(',')[0]
       var add_3_type = add_3.split(',')[1]
 
+      var add_3_en = ''
+      add_3_price = ''
+
       if(add_3_type != 'none') {
         for(var i=0; i<addons.length; i++) {
           if(addons[i]['aid'] == add_3_aid) {
             var add_3_en = addons[i]['add_en'] + ': ' + add_3_type
-            var add_3_price = 'RM ' + addons[i]['addprice']
-            var addprice_3 = parseFloat(addons[i]['addprice'])
+            var add_3_price = 'RM ' + Number(addons[i]['addprice']).toFixed(2)
+            addprice_3 = Number(addons[i]['addprice'])
           }
         }
       }
-    } else {
-      var add_3_en = ''
-      var add_3_price = ''
-      var addprice_3 = parseFloat("0")
     }
 
     if(typeof this.state.addon_4 != 'undefined') {
@@ -218,19 +221,18 @@ class Step4Zh extends Component {
       var add_4_aid = add_4.split(',')[0]
       var add_4_type = add_4.split(',')[1]
 
+      var add_4_en = ''
+      var add_4_price = ''
+
       if(add_4_type != 'none') {
         for(var i=0; i<addons.length; i++) {
           if(addons[i]['aid'] == add_4_aid) {
             var add_4_en = addons[i]['add_en'] + ': ' + add_4_type
-            var add_4_price = 'RM ' + addons[i]['addprice']
-            var addprice_4 = parseFloat(addons[i]['addprice'])
+            var add_4_price = 'RM ' + Number(addons[i]['addprice']).toFixed(2)
+            addprice_4 = Number(addons[i]['addprice'])
           }
         }
       }
-    } else {
-      var add_4_en = ''
-      var add_4_price = ''
-      var addprice_4 = parseFloat("0")
     }
 
     if(typeof this.state.addon_5 != 'undefined') {
@@ -238,22 +240,21 @@ class Step4Zh extends Component {
       var add_5_aid = add_5.split(',')[0]
       var add_5_type = add_5.split(',')[1]
 
+      var add_5_en = ''
+      var add_5_price = ''
+
       if(add_5_type != 'none') {
         for(var i=0; i<addons.length; i++) {
           if(addons[i]['aid'] == add_5_aid) {
             var add_5_en = addons[i]['add_en'] + ': ' + add_5_type
-            var add_5_price = 'RM ' + addons[i]['addprice']
-            var addprice_5 = parseFloat(addons[i]['addprice'])
+            var add_5_price = 'RM ' + Number(addons[i]['addprice']).toFixed(2)
+            addprice_5 = Number(addons[i]['addprice'])
           }
         }
       }
-    } else {
-      var add_5_en = ''
-      var add_5_price = ''
-      var addprice_5 = parseFloat("0")
     }
 
-    let totalAmount = addprice_1 + addprice_2 + addprice_3 + addprice_4 + addprice_5 + parseFloat(this.state.price)
+    let totalAmount = addprice_1 + addprice_2 + addprice_3 + addprice_4 + addprice_5 + Number(this.state.price)
     let totalAmountF = totalAmount.toFixed(2)
 
     return(

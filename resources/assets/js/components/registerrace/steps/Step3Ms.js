@@ -245,7 +245,7 @@ class Step3Ms extends Component {
         addon_radio.push( <FormItem
           {...formItemLayout}
           label=
-               {j + '. ' + addons[i]['add_en'] + ': RM' + addons[i]['addprice']}
+               {j + '. ' + addons[i]['add_en'] + ': RM ' + Number(addons[i]['addprice']).toFixed(2)}
         >
         {getFieldDecorator('addon_' + j, {
           rules: [{required: true, message: 'Sila memilih tambahan anda!' }],

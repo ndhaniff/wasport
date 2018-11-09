@@ -140,8 +140,7 @@ Admin | Orders
                   <td><?php foreach($races as $race) {
                       if($order->race_id == $race->rid)
                         echo $race->title_en;
-                      } ?>
-                  </td>
+                      } ?></td>
                 </tr>
                 <tr>
                   <th>Category</th>
@@ -278,90 +277,67 @@ Admin | Orders
       </div> <!-- end of reviewViewer -->
 
       <!-- The Shipment Modal -->
-      <div class="modal fade" id="reviewViewer-{{$order->oid}}">
+      <div class="modal fade" id="shipmentViewer-{{$order->oid}}">
         <div class="modal-dialog modal-dialog-centered" style="max-width:800px;">
           <div class="modal-content">
 
             <!-- Modal body -->
             <div class="modal-body">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
-
-              @foreach($submissions as $submission)
-                @if($submission->order_id == $order->oid)
-                  @if ($loop->first)
-                    <?php
-                      $distance = $submission->s_distance;
-                      $hour = $submission->s_hour;
-                      $min = $submission->s_minute;
-                      $sec = $submission->s_second;
-                      $submitimg = $submission->s_routeimg;
-                      $strava_activity = $submission->strava_activity;
-                      $polyline = $submission->s_map_polyline;
-
-                      $distanceCompleted = $distance .'km';
-
-                      $hour = ($hour > 10) ? $hour : '0' .$hour;
-                      $min = ($min > 10) ? $min : '0' .$min;
-                      $sec = ($sec > 10) ? $sec : '0' .$sec;
-                      $timeTaken = $hour. ':' .$min. ':' .$sec;
-
-                      if($submitimg != null) {
-                        $routeImage = asset('storage/uploaded/submissions/' . $submitimg);
-                      }
-
-                      if($polyline != null) {
-                        $routeImage = 'https://maps.googleapis.com/maps/api/staticmap?size=640x640&key=AIzaSyD72_ThnAh5eTa7BAlAA-2XhwZ_AKDy_Iw&zoom=16&path=weight:3%7Ccolor:red%7Cenc:' . $polyline;
-                      }
-                    ?>
-
-                    <table id="review-table">
-                      <tr>
-                        <th>Route Image</th>
-                        <td><img src="{{$routeImage}}"/ style="max-width: 100%;"></td>
-                      </tr>
-                      <tr>
-                        <th>Distance completed</th>
-                        <td>{{$distanceCompleted}}</td>
-                      </tr>
-                      <tr>
-                        <th>Time used</th>
-                        <td>{{$timeTaken}}</td>
-                      </tr>
-                      <tr>
-                        <th>Strava Activity ID</th>
-                        <td><?php echo ($strava_activity != null) ? $strava_activity : '-'; ?></td>
-                      </tr>
-                      <tr>
-                        <th>Race Status</th>
-                        <td>
-                          <form method="POST" action="{{route('admin.orders.updateRaceStatus',['oid' => $order->oid ])}}" id="racestatus-form">
-                            @csrf
-                            <?php echo Form::select('racestatus', array('awaiting' => 'awaiting', 'success' => 'success', 'fail' => 'fail'), $order->race_status); ?>
-                            <button type="submit" class="btn btn-danger" id="racestatus-btn">Submit</button>
-                          </form>
-                        </td>
-                      </tr>
-                    </table>
-                  @endif
-                @else
-                <table id="review-table">
-                  <tr>
-                    <td colspan="2"><center>NO RECORD AVAILABLE</center></td>
-                  </tr>
-                  <tr>
-                    <th>Race Status</th>
+              <?php $price = '';
+                    foreach($races as $race) {
+                      if($race->rid == $order->race_id) {
+                        $price = $race->price;
+                    }
+                } ?>
+              <table id="review-table">
+                <tr>
+                  <th>Race Status</th>
+                  <td>{{$order->race_status}}</td>
+                </tr>
+                <tr>
+                  <th>To be shipped</th>
+                  @if($price == 0)
+                    <td>-</td>
+                  @else
                     <td>
-                      <form method="POST" action="{{route('admin.orders.updateRaceStatus',['oid' => $order->oid ])}}" id="racestatus-form">
-                        @csrf
-                        <?php echo Form::select('racestatus', array('awaiting' => 'awaiting', 'success' => 'success', 'fail' => 'fail'), $order->race_status); ?>
-                        <button type="submit" class="btn btn-danger" id="racestatus-btn">Submit</button>
-                      </form>
+                      <ul>
+                        <li>Medal <?php if($order->engrave_name != null || $order->engrave_name != 'undefined') echo '(' .$order->engrave_name. ')' ?></li>
+                        <?php foreach($order_addons as $order_addon) {
+                                if($order_addon->order_id == $order->oid) {
+                                  foreach($addons as $addon) {
+                                    if($addon->aid == $order_addon->addon_id) {
+                                      echo '<li>' .$addon->add_en. '('.$order_addon->a_type. ')</li>';
+                                    }
+                                  }
+                                }
+                        } ?>
+                      </ul>
                     </td>
-                  </tr>
-                </table>
-                @break
-              @endif
-              @endforeach
+                  @endif
+                </tr>
+                <tr>
+                  <th>Shipment Status</th>
+                  <td>
+                    <form method="POST" action="" id="shipment-form">
+                      @csrf
+                      <?php echo Form::select('shipment', array('order placed' => 'order placed',
+                                                                'order confirmed' => 'order confirmed',
+                                                                'order being processed' => 'order being processed',
+                                                                'shipped' => 'shipped',
+                                                                'delivered' => 'delivered',
+                                                                'order closed' => 'order closed'), $order->shipment); ?>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Tracking Number</th>
+                  <td>
+                      <?php echo Form::text('tracking_number'); ?>
+                      <button type="submit" class="btn btn-danger" id="racestatus-btn">Submit</button>
+                    </form>
+                  </td>
+                </tr>
+              </table>
 
             </div>
           </div>

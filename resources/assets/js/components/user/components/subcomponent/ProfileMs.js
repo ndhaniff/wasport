@@ -57,10 +57,6 @@ class ProfileMs extends React.Component{
             title: 'Profil telah dikemas kini'
           })
 
-          window.setTimeout(function(){
-            location.reload();
-          } ,3000);
-
         } else {
              alert('something wrong')
          }

@@ -861,7 +861,8 @@ USER DASHBOARD
 .user-strava-block,
 .user-medal,
 .user-history,
-.user-current {
+.user-current,
+.user-others {
   width: 80%;
   margin: 0 auto 3.5rem auto;
 }
@@ -1070,6 +1071,10 @@ body.modal-open { overflow: visible; }
     border-radius: 5px;
     padding: 5px 10px;
     margin-top: 1rem;
+}
+
+.user-others {
+  
 }
 
 /*

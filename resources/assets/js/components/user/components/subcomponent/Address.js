@@ -47,10 +47,6 @@ class Address extends React.Component{
                title: 'Address updated'
              })
 
-             window.setTimeout(function(){
-               location.reload();
-             } ,3000);
-
          } else {
              alert('something wrong')
          }

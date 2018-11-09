@@ -125,7 +125,18 @@ class AdminOrdersController extends Controller
     public function updateRaceStatus($oid)
     {
         $update = Order::find($oid);
-        $update->race_status = request('racestatus');
+        $raceStatus = request('racestatus');
+        $update->race_status = $raceStatus;
+
+        if($raceStatus == 'fail')
+          $update->shipment = 'order closed';
+
+        if($raceStatus == 'success')
+          $update->shipment = 'order confirmed';
+
+        if($raceStatus == 'awaiting')
+          $update->shipment = 'order placed';
+
         $update->save();
 
         $orders = Order::sortable()->paginate(10);

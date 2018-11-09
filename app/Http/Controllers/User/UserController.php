@@ -198,10 +198,18 @@ class UserController extends Controller
       $order->o_state = $request->get('state');
       $order->o_postal = $request->get('postal');
       $order->race_category = $request->get('race_category');
-      $order->engrave_name = $request->get('engrave_name');
       $order->race_status = 'awaiting';
+      $order->shipment = 'order placed';
       $order->race_id = $request->get('rid');
       $order->user_id = $request->get('uid');
+
+      $engraveName = $request->get('engrave_name');
+
+      if($engraveName == 'undefined') {
+        $order->engrave_name = '';
+      } else {
+        $order->engrave_name = $engraveName;
+      }
 
       $order->save();
 
@@ -289,6 +297,12 @@ class UserController extends Controller
                                   'past_races' => $past_races, 'now_races' => $now_races,
                                   'allmedals' => $allmedals, 'submissions' => $submissions,
                                   'certdatas' => $certdatas]);
+    }
+
+    public function viewOrders() {
+      $user = Auth::user();
+
+      return view('user.orders');
     }
 
     public function handleRouteImg(Request $request){

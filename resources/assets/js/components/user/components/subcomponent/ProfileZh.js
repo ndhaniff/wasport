@@ -57,10 +57,6 @@ class ProfileZh extends React.Component{
             title: '个人资料已更新'
           })
 
-          window.setTimeout(function(){
-            location.reload();
-          } ,3000);
-
         } else {
              alert('something wrong')
          }

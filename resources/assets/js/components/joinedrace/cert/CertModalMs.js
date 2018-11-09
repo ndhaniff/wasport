@@ -50,15 +50,6 @@ class CertModalMs extends Component {
       }
     }
 
-    if(this.props.raceStatus == null || this.props.raceStatus == 'fail') {
-      var showmodal = <Modal
-        visible={this.state.visible}
-        onOk={this.handleOk}
-        onCancel={this.handleCancel}
-        width={'500px'} >
-        Sijil anda akan diberikan selepas acara tamat dan anda telah menyelesaikan jarak yang diperlukan
-        </Modal>
-    }
     if(this.props.raceStatus == 'success'){
       var showmodal = <Modal
         visible={this.state.visible}
@@ -70,6 +61,14 @@ class CertModalMs extends Component {
         ]} >
         {certItem}
       </Modal>
+    } else {
+      var showmodal = <Modal
+        visible={this.state.visible}
+        onOk={this.handleOk}
+        onCancel={this.handleCancel}
+        width={'500px'} >
+        Sijil anda akan diberikan selepas acara tamat dan anda telah menyelesaikan jarak yang diperlukan
+        </Modal>
     }
 
 

@@ -47,10 +47,6 @@ class AddressZh extends React.Component{
                title: '邮寄地址已更新'
              })
 
-             window.setTimeout(function(){
-               location.reload();
-             } ,3000);
-
          } else {
              alert('something wrong')
          }

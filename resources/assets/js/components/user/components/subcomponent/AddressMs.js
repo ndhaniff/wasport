@@ -47,10 +47,6 @@ class AddressMs extends React.Component{
                title: 'Alamat telah dikemas kini'
              })
 
-             window.setTimeout(function(){
-               location.reload();
-             } ,3000);
-
          } else {
              alert('something wrong')
          }
