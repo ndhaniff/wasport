@@ -322,14 +322,18 @@ var allcertdatas = JSON.parse('<?= $allcertdatas_json; ?>');
 
       <div class="user-others">
         <div class="row">
-          <div class="col-md-6">
-            <h3>{{__("My Orders")}}</h3>
+          <div class=col-sm-4>
+            <a href="/vieworders"><img src="/img/ic-order.png" />&emsp; My Orders</a>
           </div>
-          <div class="col-md-6">
-            <span id="view-all"><a href="/vieworders">{{__("View All")}}</a></span>
+          <div class=col-sm-4>
+            <a href="/guide"><img src="/img/ic-guide.png" />&emsp; Guide</a>
+          </div>
+          <div class=col-sm-4>
+            <a href="/howitworks"><img src="/img/ic-how.png" />&emsp; How it Works</a>
           </div>
         </div>
       </div>
+
       <!--<div id ="user-dashboard"></div>-->
     </div>
   </div>

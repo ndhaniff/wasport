@@ -3,6 +3,7 @@ html { overflow-x:visible; }
 body {
   font-size: 18px;
   overflow-x: hidden;
+  font-family: 'SourceSansPro-Light';
 }
 
 :lang(en) body,
@@ -266,7 +267,7 @@ SCROLL TO TOP
 FOOTER
 */
 footer {
-  background-color: #e02e3c;
+  background-color: #505050;
   color: #fff;
   font-family: 'SourceSansPro-Regular';
   padding-top: 50px;
@@ -1074,7 +1075,11 @@ body.modal-open { overflow: visible; }
 }
 
 .user-others {
-  
+  margin-top: 3rem;
+}
+
+.user-others a {
+  color: #505050;
 }
 
 /*
@@ -1156,6 +1161,30 @@ MEDALS
 .medaldash #medal-msg {
   display: block;
   padding-bottom: 2rem;
+}
+
+/*
+ORDERS
+*/
+.orders-block {
+  width: 50%;
+  margin: 0 auto;
+}
+
+#orders-hr {
+  border-bottom: 1px solid #ddd;
+  margin: 2.5rem 0 3rem 0px;
+}
+
+.orders-block p {
+  font-size: 15px;
+}
+
+.orders-info,
+.orders-subheading,
+.orders-desc,
+.ant-timeline-item-content {
+  font-family: 'SourceSansPro-Regular';
 }
 
 /*

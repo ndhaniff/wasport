@@ -302,12 +302,12 @@ Admin | Orders
                   @else
                     <td>
                       <ul>
-                        <li>Medal <?php if($order->engrave_name != null || $order->engrave_name != 'undefined') echo '(' .$order->engrave_name. ')' ?></li>
+                        <li>Medal <?php if($order->engrave_name != null) echo ' - ' .$order->engrave_name; ?></li>
                         <?php foreach($order_addons as $order_addon) {
                                 if($order_addon->order_id == $order->oid) {
                                   foreach($addons as $addon) {
                                     if($addon->aid == $order_addon->addon_id) {
-                                      echo '<li>' .$addon->add_en. '('.$order_addon->a_type. ')</li>';
+                                      echo '<li>' .$addon->add_en. ' - '.$order_addon->a_type. '</li>';
                                     }
                                   }
                                 }
@@ -319,7 +319,7 @@ Admin | Orders
                 <tr>
                   <th>Shipment Status</th>
                   <td>
-                    <form method="POST" action="" id="shipment-form">
+                    <form method="POST" action="{{route('admin.orders.updateDeliveryStatus',['oid' => $order->oid ])}}" id="shipment-form">
                       @csrf
                       <?php echo Form::select('shipment', array('order placed' => 'order placed',
                                                                 'order confirmed' => 'order confirmed',
@@ -332,7 +332,7 @@ Admin | Orders
                 <tr>
                   <th>Tracking Number</th>
                   <td>
-                      <?php echo Form::text('tracking_number'); ?>
+                      <?php echo Form::text('tracking_number', $order->tracking_number); ?>
                       <button type="submit" class="btn btn-danger" id="racestatus-btn">Submit</button>
                     </form>
                   </td>

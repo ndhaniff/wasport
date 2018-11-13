@@ -206,7 +206,7 @@ class UserController extends Controller
       $engraveName = $request->get('engrave_name');
 
       if($engraveName == 'undefined') {
-        $order->engrave_name = '';
+        $order->engrave_name = null;
       } else {
         $order->engrave_name = $engraveName;
       }
@@ -301,8 +301,25 @@ class UserController extends Controller
 
     public function viewOrders() {
       $user = Auth::user();
+      date_default_timezone_set("Asia/Kuala_Lumpur");
+      $date = date('Y-m-d');
 
-      return view('user.orders');
+      $orders = DB::table('orders')
+
+      ->join('races', 'races.rid', '=', 'race_id')
+      ->where('user_id', '=', Auth::id())
+        ->orderBy('date_to', 'DESC')
+        ->get();
+
+      $order_addons = DB::table('order_addons')
+        ->join('orders', 'orders.oid', '=', 'order_id')
+        ->where('user_id', '=', Auth::id())
+        ->get();
+
+      $addons = DB::table('addons')->get();
+
+      return view('user.orders', ['orders' => $orders, 'order_addons' => $order_addons,
+                                  'addons' => $addons]);
     }
 
     public function handleRouteImg(Request $request){

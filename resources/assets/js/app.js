@@ -56,3 +56,6 @@ require('./components/joinedrace/CurrentJoinedZh');
 require('./components/joinedrace/PastJoinedEn');
 require('./components/joinedrace/PastJoinedMs');
 require('./components/joinedrace/PastJoinedZh');
+require('./components/orders/OrdersEn');
+require('./components/orders/OrdersMs');
+require('./components/orders/OrdersZh');

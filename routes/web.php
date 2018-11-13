@@ -100,6 +100,7 @@ Route::group(['prefix' =>'admin'],function()
   Route::get('/orders/edit/{oid}','Admin\AdminOrdersController@editForm')->name('admin.orders.edit');
   Route::post('/orders/edit','Admin\AdminOrdersController@edit')->name('admin.orders.edit.submit');
   Route::post('/orders/updateRaceStatus/{oid}', 'Admin\AdminOrdersController@updateRaceStatus')->name('admin.orders.updateRaceStatus');
+  Route::post('/orders/updateDeliveryStatus/{oid}', 'Admin\AdminOrdersController@updateDeliveryStatus')->name('admin.orders.updateDeliveryStatus');
   //Contacts
   Route::get('/contacts','Admin\AdminContactsController@index')->name('admin.contacts');
   Route::get('/contacts/search', 'Admin\AdminContactsController@search')->name('admin.contacts.search');
