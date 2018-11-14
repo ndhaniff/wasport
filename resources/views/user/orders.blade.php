@@ -41,6 +41,7 @@ svg:not(:root) { display: none; }
                               'engrave_name' => $order->engrave_name,
                               'race_status' => $order->race_status,
                               'shipment' => $order->shipment,
+                              'courier' => $order->courier,
                               'tracking_number' => $order->tracking_number,
                               'race_id' => $order->race_id,
                               'title_en' => $order->title_en,

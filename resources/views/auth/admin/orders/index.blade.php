@@ -146,7 +146,8 @@ Admin | Orders
                   <th>Category</th>
                   <td>{{$order->race_category}}</td>
                 </tr>
-                <?php if($order->engrave_name != 'undefined' || $order->engrave_name == '') { echo '<tr><th>Engrave</th><td>' .$order->engrave_name. '</td></tr>'; } ?>
+                <?php if($order->engrave_name != null)
+                        echo '<tr><th>Engrave</th><td>' .$order->engrave_name. '</td></tr>'; ?>
                 <?php
                     foreach($order_addons as $order_add) {
                       if($order_add->order_id == $order->oid) {
@@ -177,6 +178,14 @@ Admin | Orders
                 <tr>
                   <th>Shipment</th>
                   <td>{{$order->shipment}}</td>
+                </tr>
+                <tr>
+                  <th>Courier</th>
+                  <td><?php if($order->courier == null || $order->courier == 'undefined') echo '-'; else echo $order->courier ?></td>
+                </tr>
+                <tr>
+                  <th>Tracking Number</th>
+                  <td><?php if($order->tracking_number == null || $order->tracking_number == 'undefined') echo '-'; else echo $order->tracking_number ?></td>
                 </tr>
               </table>
 
@@ -328,6 +337,17 @@ Admin | Orders
                                                                 'delivered' => 'delivered',
                                                                 'order closed' => 'order closed'), $order->shipment); ?>
                   </td>
+                </tr>
+                <tr>
+                  <th>Courier</th>
+                  <td><?php echo Form::select('courier', array('' => '',
+                                                                'POS LAJU=' => 'Pos Laju',
+                                                                'CITYLINK EXPRESS' => 'Citylink Express',
+                                                                'FEDEX EXPRESS' => 'FedEx Express',
+                                                                'GDEX EXPRESS' => 'Gdex Express',
+                                                                'NINJA VAN' => 'Ninja Van',
+                                                                'PGEON DELIVERY' => 'Pgeon Delivery',
+                                                                'SKYNET EXPRESS' => 'Skynet Express'), $order->courier); ?></td>
                 </tr>
                 <tr>
                   <th>Tracking Number</th>

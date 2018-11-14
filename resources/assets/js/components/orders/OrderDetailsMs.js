@@ -24,6 +24,7 @@ class OrderDetailsMs extends Component{
       phone_number : '',
       race_status : '',
       shipment : '',
+      courier : '',
       tracking_number : '',
       price : ''
     }
@@ -46,6 +47,7 @@ class OrderDetailsMs extends Component{
           phone_number : orders[i]['phone_number'],
           race_status : orders[i]['race_status'],
           shipment : orders[i]['shipment'],
+          courier : orders[i]['courier'],
           tracking_number : orders[i]['tracking_number'],
           price : orders[i]['price']
         })
@@ -95,6 +97,14 @@ class OrderDetailsMs extends Component{
       var displayEngrave = ''
     }
 
+    if(this.state.tracking_number != null) {
+      var displayTracking = 'NOMBOR PENJEJAKAN: ' + this.state.tracking_number
+    } else { var displayTracking = '' }
+
+    if(this.state.courier != null) {
+      var displayCourier = 'KURIER: ' + this.state.courier
+    } else { var displayCourier = '' }
+
     if(this.state.shipment == 'order closed') {
       var displayTimeline = <Timeline>
         <Timeline.Item dot={<Icon type="check-circle" />} color="green">PESANAN DIBUAT</Timeline.Item>
@@ -131,7 +141,9 @@ class OrderDetailsMs extends Component{
         <Timeline.Item dot={<Icon type="check-circle" />} color="green">PESANAN DIBUAT</Timeline.Item>
         <Timeline.Item dot={<Icon type="check-circle" />} color="green">PESANAN DISAH</Timeline.Item>
         <Timeline.Item dot={<Icon type="check-circle" />} color="green">PEMBUNGKUSAN</Timeline.Item>
-        <Timeline.Item dot={<Icon type="check-circle" />} color="green">BUNGKUSAN DIHANTAR<br />NOMBOR PENJEJAKAN: {this.state.tracking_number}</Timeline.Item>
+        <Timeline.Item dot={<Icon type="check-circle" />} color="green">BUNGKUSAN DIHANTAR<br />
+          {displayTracking} <br />
+          {displayCourier}</Timeline.Item>
         <Timeline.Item color="grey">DELIVERED</Timeline.Item>
       </Timeline>
     }
@@ -141,7 +153,9 @@ class OrderDetailsMs extends Component{
       <Timeline.Item dot={<Icon type="check-circle" />} color="green">PESANAN DIBUAT</Timeline.Item>
       <Timeline.Item dot={<Icon type="check-circle" />} color="green">PESANAN DISAH</Timeline.Item>
       <Timeline.Item dot={<Icon type="check-circle" />} color="green">PEMBUNGKUSAN</Timeline.Item>
-        <Timeline.Item dot={<Icon type="check-circle" />} color="green">BUNGKUSAN DIHANTAR<br />TRACKING NUMBER: {this.state.tracking_number}</Timeline.Item>
+        <Timeline.Item dot={<Icon type="check-circle" />} color="green">BUNGKUSAN DIHANTAR<br />
+          {displayTracking} <br />
+          {displayCourier}</Timeline.Item>
         <Timeline.Item dot={<Icon type="check-circle" />} color="green">BUNGKUSAN DITERIMA</Timeline.Item>
       </Timeline>
     }

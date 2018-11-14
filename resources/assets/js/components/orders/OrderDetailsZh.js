@@ -24,6 +24,7 @@ class OrderDetailsZh extends Component{
       phone_number : '',
       race_status : '',
       shipment : '',
+      courier : '',
       tracking_number : '',
       price : ''
     }
@@ -46,6 +47,7 @@ class OrderDetailsZh extends Component{
           phone_number : orders[i]['phone_number'],
           race_status : orders[i]['race_status'],
           shipment : orders[i]['shipment'],
+          courier : orders[i]['courier'],
           tracking_number : orders[i]['tracking_number'],
           price : orders[i]['price']
         })
@@ -91,9 +93,15 @@ class OrderDetailsZh extends Component{
     if(this.state.engrave_name != null) {
       var displayEngrave = <div><span className="orders-subheading">奖牌雕刻</span><br />
         <span className="orders-desc">{this.state.engrave_name}</span><br /><br /></div>
-    } else {
-      var displayEngrave = ''
-    }
+    } else { var displayEngrave = '' }
+
+    if(this.state.tracking_number != null) {
+      var displayTracking = '运单编号: ' + this.state.tracking_number
+    } else { var displayTracking = '' }
+
+    if(this.state.courier != null) {
+      var displayCourier = '速递: ' + this.state.courier
+    } else { var displayCourier = '' }
 
     if(this.state.shipment == 'order closed') {
       var displayTimeline = <Timeline>
@@ -131,8 +139,9 @@ class OrderDetailsZh extends Component{
         <Timeline.Item dot={<Icon type="check-circle" />} color="green">已下单</Timeline.Item>
         <Timeline.Item dot={<Icon type="check-circle" />} color="green">订单已确认</Timeline.Item>
         <Timeline.Item dot={<Icon type="check-circle" />} color="green">处理订单中</Timeline.Item>
-        <Timeline.Item dot={<Icon type="check-circle" />} color="green">订单已发货<br />运单编号: {this.state.tracking_number}</Timeline.Item>
-        <Timeline.Item color="grey">订单已签收</Timeline.Item>
+        <Timeline.Item dot={<Icon type="check-circle" />} color="green">订单已发货<br />
+          {displayTracking} <br />
+          {displayCourier}</Timeline.Item>
       </Timeline>
     }
 
@@ -141,7 +150,9 @@ class OrderDetailsZh extends Component{
       <Timeline.Item dot={<Icon type="check-circle" />} color="green">已下单</Timeline.Item>
       <Timeline.Item dot={<Icon type="check-circle" />} color="green">订单已确认</Timeline.Item>
       <Timeline.Item dot={<Icon type="check-circle" />} color="green">处理订单中</Timeline.Item>
-        <Timeline.Item dot={<Icon type="check-circle" />} color="green">订单已发货<br />TRACKING NUMBER: {this.state.tracking_number}</Timeline.Item>
+        <Timeline.Item dot={<Icon type="check-circle" />} color="green">订单已发货<br />
+          {displayTracking} <br />
+          {displayCourier}</Timeline.Item>
         <Timeline.Item dot={<Icon type="check-circle" />} color="green">订单已签收</Timeline.Item>
       </Timeline>
     }

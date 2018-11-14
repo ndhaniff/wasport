@@ -25,6 +25,7 @@ class OrderDetailsEn extends Component{
       race_status : '',
       shipment : '',
       tracking_number : '',
+      courier : '',
       price : ''
     }
   }
@@ -47,6 +48,7 @@ class OrderDetailsEn extends Component{
           race_status : orders[i]['race_status'],
           shipment : orders[i]['shipment'],
           tracking_number : orders[i]['tracking_number'],
+          courier : orders[i]['courier'],
           price : orders[i]['price']
         })
       }
@@ -91,9 +93,15 @@ class OrderDetailsEn extends Component{
     if(this.state.engrave_name != null) {
       var displayEngrave = <div><span className="orders-subheading">MEDAL ENGRAVING</span><br />
         <span className="orders-desc">{this.state.engrave_name}</span><br /><br /></div>
-    } else {
-      var displayEngrave = ''
-    }
+    } else { var displayEngrave = '' }
+
+    if(this.state.tracking_number != null) {
+      var displayTracking = 'TRACKING NUMBER: ' + this.state.tracking_number
+    } else { var displayTracking = '' }
+
+    if(this.state.courier != null) {
+      var displayCourier = 'COURIER: ' + this.state.courier
+    } else { var displayCourier = '' }
 
     if(this.state.shipment == 'order closed') {
       var displayTimeline = <Timeline>
@@ -131,7 +139,9 @@ class OrderDetailsEn extends Component{
         <Timeline.Item dot={<Icon type="check-circle" />} color="green">ORDER PLACED</Timeline.Item>
         <Timeline.Item dot={<Icon type="check-circle" />} color="green">ORDER CONFIRMED</Timeline.Item>
         <Timeline.Item dot={<Icon type="check-circle" />} color="green">PACKING</Timeline.Item>
-        <Timeline.Item dot={<Icon type="check-circle" />} color="green">SHIPPED<br />TRACKING NUMBER: {this.state.tracking_number}</Timeline.Item>
+        <Timeline.Item dot={<Icon type="check-circle" />} color="green">SHIPPED<br />
+          {displayTracking} <br />
+          {displayCourier}</Timeline.Item>
         <Timeline.Item color="grey">DELIVERED</Timeline.Item>
       </Timeline>
     }
@@ -141,7 +151,9 @@ class OrderDetailsEn extends Component{
       <Timeline.Item dot={<Icon type="check-circle" />} color="green">ORDER PLACED</Timeline.Item>
       <Timeline.Item dot={<Icon type="check-circle" />} color="green">ORDER CONFIRMED</Timeline.Item>
         <Timeline.Item dot={<Icon type="check-circle" />} color="green">PACKING</Timeline.Item>
-        <Timeline.Item dot={<Icon type="check-circle" />} color="green">SHIPPED<br />TRACKING NUMBER: {this.state.tracking_number}</Timeline.Item>
+        <Timeline.Item dot={<Icon type="check-circle" />} color="green">SHIPPED<br />
+          {displayTracking} <br />
+          {displayCourier}</Timeline.Item>
         <Timeline.Item dot={<Icon type="check-circle" />} color="green">DELIVERED</Timeline.Item>
       </Timeline>
     }

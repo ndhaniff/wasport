@@ -157,6 +157,7 @@ class AdminOrdersController extends Controller
       $order = Order::find($oid);
       $order->shipment = request('shipment');
       $order->tracking_number = request('tracking_number');
+      $order->courier = request('courier');
       $order->save();
 
       $orders = Order::sortable()->paginate(10);
