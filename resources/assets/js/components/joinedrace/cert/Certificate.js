@@ -23,7 +23,6 @@ class Certificate extends React.Component{
     //get user name
     var name = ''
 
-
     //if user did not update first name & last name
     //get display name
     if(this.state.firstname == null || this.state.firstname == '')
@@ -106,8 +105,8 @@ class Certificate extends React.Component{
       context.fillText(showPace, x, 495);
       context.font = '12pt Calibri';
       context.fillText('wasportsrun.com', 135, 575);
-      context.drawImage(logo, 25, 553 ,45, 30)
-      context.drawImage(signature, 680, 500 , 120, 80)
+      context.drawImage(signature, 680, 500 , 120, 80);
+      context.drawImage(logo, 25, 553 ,45, 30);
     };
     headerObj.src = this.props.certImg;
     logo.src = window.location.origin + '/img/wasport-logo-footer.png';

@@ -35,11 +35,11 @@ class UserProfileMs extends Component{
       <div>
 
           <div className="row">
-            <div className="col-sm-2">
+            <div className="col-sm-2" id="user-profile-left">
               {this.renderAvatar()}
             </div>
 
-            <div className="col-sm-10">
+            <div className="col-sm-10" id="user-profile-right">
               <div className="userprofile-name">{this.state.name}</div>
               <div className="userprofile-motto">{this.renderMotto()}</div>
               <div className="userprofile-id">ID Pengguna : {this.state.id}</div>

@@ -72,6 +72,22 @@ Medals | WaSportsrun
     .tabs .tab-2:last-child [type="radio"]:checked + div {
       margin-left: -100%; }
     svg:not(:root), .anticon:before { display: none; }
+
+@media screen and (max-width: 414px) {
+  #user-medal-frame .col-md-4 { width: 50%; }
+
+  #user-medal-frame .ant-btn { height: 175px; }
+
+  .medaldash #medal-msg { padding-bottom: 1.5rem; }
+}
+
+@media screen and (max-width: 375px) {
+  #user-medal-frame .ant-btn { height: 160px; }
+}
+
+@media screen and (max-width: 320px) {
+  #user-medal-frame .ant-btn { height: 135px; }
+}
 </style>
 
 <?php

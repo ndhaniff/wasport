@@ -130,15 +130,64 @@
       </div>
 
       <div id="navbar-mobile">
-        <nav class="navbar navbar-inverse">
+        <nav id="topbar" class="navbar navbar-inverse text-right p-2">
           <div class="container-fluid">
+            <a class="navbar-brand" href="#"><img src="{{ asset('img/wasport-logo-mobile.png') }}" id="navbar-mobile-logo"></a>
+            <div style="float:right">
+              <span class="dropdown">
+                <a class="p-2 text-light btn locale" id="dropdownMenuLink" data-toggle="dropdown" >
+                  <i class="fa fa-globe" aria-hidden="true" style="color:#fff;"></i>
+                  {{App::getLocale()}}
+                  <i class="fa fa-caret-down" aria-hidden="true" style="color:#fff;"></i></a>
+                  <ul class="dropdown-menu w-50" name="lang" id="lang">
+                    @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                    <li>
+                        <a class="dropdown-item" rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], false) }}">
+                            {{ $properties['native'] }}
+                        </a>
+                    </li>
+                    @endforeach
+                  </ul>
+              </span>
+
+                @guest
+                <a class="p-2 text-light btn" href="{{ route('login') }}" >{{__("LOGIN")}}</a>
+                <a class="p-2 text-light" href="{{ route('register') }}">
+                  <button id="create-account-btn">{{__("CREATE ACCOUNT")}}</button>
+                </a>
+                @else
+                <span class="dropdown loggedIn">
+                <a id="navbarDropdown" class="btn dropdown-toggle text-light" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        {{ Auth::user()->name }} <span class="caret"></span>
+                    </a>
+                    <div class="w-50 dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="/dashboard">
+                          {{ __('Profile') }}</a>
+
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}</a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </div>
+                @endguest
+              </span>
+            </div>
+          </div>
+        </nav>
+        <nav id="btmbar" class="navbar navbar-inverse">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#"><img src="{{ asset('img/wasport-logo-mobile.png') }}" id="navbar-logo"></a>
             <div class="navbar-header">
               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                 <div class="bar"></div>
                 <div class="bar"></div>
                 <div class="bar"></div>
               </button>
-              <a class="navbar-brand" href="#"><img src="{{ asset('img/wasport-logo-mobile.png') }}" alt=""></a>
+
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
               <ul class="nav navbar-nav">
@@ -147,10 +196,6 @@
                 <li><a href="/races">{{__("EVENT")}}</a></li>
                 <li><a href="#">{{__("OFFLINE EVENT")}}</a></li>
                 <li><a href="/howitworks">{{__("HOW IT WORKS")}}</a></li>
-              </ul>
-              <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
               </ul>
             </div>
           </div>
@@ -243,9 +288,6 @@
             return false;
           });
 
-          $('#medal-modal').on('click', function (e) {
-            e.preventDefault();
-          });
         });
       </script>
     </body>

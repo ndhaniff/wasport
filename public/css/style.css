@@ -596,7 +596,10 @@ RACE LIST
 /*
 RACE DETAILS
 */
-.displayrace { margin-top: 40px;}
+.displayrace {
+  margin-top: 40px;
+  margin-bottom: 10rem;
+}
 
 .displayrace img { max-width: 100%; }
 
@@ -692,6 +695,7 @@ RACE DETAILS
 .awards-block { margin-bottom: 5rem; }
 
 .register-box {
+  display: block;
   position: -webkit-sticky; /* Safari */
   position: sticky;
   top: 0;
@@ -701,6 +705,9 @@ RACE DETAILS
   padding: 1.5rem;
   text-align: left;
 }
+
+.register-box-mobile,
+.finisher-mobile { display: none; }
 
 .register-box h3 { color: #df2e3c; }
 
@@ -728,6 +735,9 @@ RACE DETAILS
   font-family: 'SourceSansPro-Semibold';
   border-radius: 25px;
 }
+
+#countdown-line { visibility: visible; }
+#countdown-br { display: none; }
 
 /*
 REGISTER RACE
@@ -1001,7 +1011,7 @@ body.modal-open { overflow: visible; }
   position: relative;
   width: 100%;
   overflow: hidden;
-  height: 215px;
+  height: 180px;
 }
 
 .current-listing .race-caption h5 {
@@ -1074,13 +1084,12 @@ body.modal-open { overflow: visible; }
     margin-top: 1rem;
 }
 
-.user-others {
-  margin-top: 3rem;
-}
+.user-others { margin-top: 3rem; }
 
-.user-others a {
-  color: #505050;
-}
+.user-others a { color: #505050; }
+
+.tabs [class^="tab"] label,
+.tabs [class*=" tab"] label { font-family: 'SourceSansPro-Semibold'; }
 
 /*
 JOINED RACES
@@ -1190,18 +1199,45 @@ ORDERS
 /*
 RESPONSIVE
 */
+@media screen and (max-width: 1680px) {
+  .medaldash,
+  .joineddash { width: 55%; }
+}
+
 @media screen and (max-width: 1440px) {
   #home-signup-section { height: 18vh; }
+
+  .raceslisting .race-img { height: 220px; }
+
+  .current-listing .race-img { height: 170px; }
+
+  .medaldash,
+  .joineddash { width: 60%; }
+}
+
+@media screen and (max-width: 1366px) {
+  .medaldash,
+  .joineddash { width: 65%; }
 }
 
 @media screen and (max-width: 1024px) {
   #navbar { display: none !important;}
 
-  #navbar-mobile { display: block; }
+  #navbar-mobile,
+  #navbar-mobile-logo { display: block; }
+
+  #navbar-logo { display: none; }
+
+  .navbar-brand img {
+    position: absolute;
+    z-index: 1;
+  }
+
+  #topbar .dropdown-item { color: #000; }
 
   .navbar-header { width: 100%; }
 
-  .navbar { background: #e02e3c; }
+  .navbar { background: #505050; }
 
   .navbar li a { color:#fff; }
 
@@ -1240,6 +1276,24 @@ RESPONSIVE
 
   #index-displayrace-desktop { display: none; }
   #index-displayrace-mobile { display: block; }
+
+  .raceslisting .race-img { height: 180px; }
+
+  .raceslisting .race-caption h5 {
+    height: 40px;
+    font-size: 15px;
+  }
+
+  .raceslisting .raceslisting-date { font-size: 12px; }
+
+  .register-box { width: 280px; }
+
+  .user-profile-block, .user-strava-block,
+  .user-medal, .user-history,
+  .user-current, .user-others { width: 100%; }
+
+  .medaldash,
+  .joineddash { width: 85%; }
 }
 
 @media screen and (max-width: 800px) {
@@ -1293,9 +1347,91 @@ RESPONSIVE
   .guide-steps { width: 75%; }
 
   #howitworks p { margin-bottom: 3.5rem; }
+
+  .raceslisting .race-img { height: 130px; }
+
+  .raceslisting .race-caption h5 {
+    height: 25px;
+    font-size: 12.5px;
+  }
+
+  .raceslisting .raceslisting-date { font-size: 10px; }
+
+  .displayrace h2 { font-size: 22px; }
+
+  .displayrace h5 { font-size: 15px; }
+
+  #countdown-timer { padding: 0; }
+
+  #countdown-timer li,
+  #countdown-timer li span,
+  #countdown-closed li span { font-size: 17px; }
+
+  .register-box {
+    width: 230px;
+    padding: 1rem;
+  }
+
+  .register-box h3 { font-size: 20px; }
+
+  #contactform-en,
+  #contactform-ms,
+  #contactform-zh { width: 100%; }
+
+  #user-profile-right { padding-left: 3.5rem; }
+
+  .user-history-joined h4 { font-size: 1.2rem; }
+
+  .user-history-joined p { font-size: 13.5px; }
+
+  .submission-info { font-size: 12px; }
+
+  .current-listing .race-img { height: 135px; }
+
+  .current-listing .race-caption h5 { font-size: 13.5px; }
+
+  .current-listing .race-caption h5 { height: 35px; }
+
+  .current-listing .raceslisting-date { font-size: 10px; }
+
+  .user-others a { margin: 1rem 0; }
+
+  .medaldash,
+  .joineddash { width: 100%; }
+
+  canvas { width: 100%; }
+
+  .ant-modal { width: 85% !important; }
+
+  .register-box { display: none; }
+
+  .register-box-mobile {
+    display: block;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+    width: 100%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 1.5rem;
+    text-align: left;
+    background: #fff;
+    margin-bottom: 3rem;
+    z-index: 1;
+  }
+
+  .finisher-mobile { display: block; }
 }
 
 @media screen and (max-width: 414px) {
+  #btmbar { height: 60px; }
+
+  #topbar img {
+    padding-top: 20px;
+    width: 85px;
+  }
+
+  .navbar-toggle { margin-top: -10px; }
+
   #footer-logo { width: 35%; }
 
   #footer-logo {
@@ -1343,17 +1479,154 @@ RESPONSIVE
   .howitoperate h2,
   .related-cooperation h2 { padding-top: 0; }
 
-  .p-5 { padding: 0 !important; }
+  .p-5 { padding: 1rem !important; }
+
+  .raceslisting .race-img { height: 205px; }
+
+  .raceslisting .race-caption h5 {
+    height: 35px;
+    font-size: 15px;
+  }
+
+  .raceslisting .raceslisting-date { font-size: 12px; }
+
+  #countdown-line { display: none; }
+  #countdown-br { display: block; }
+
+  .user-strava-block #border-right { border: none; }
+
+  #user-profile-left { width: 40%; }
+
+  #user-profile-right {
+    padding-left: 1rem;
+    width: 60%;
+  }
+
+  .userdash h3 { font-size: 22px; }
+
+  #dash-title-left { width: 60%; }
+  #dash-title-right { width: 40%; }
+
+  .user-strava-block .col-md-4 { width: 33.33%; }
+
+  .user-strava-block img { width: 50px; }
+
+  .user-strava-block h6 {
+    font-size: 16px;
+    margin-top: 5px;
+  }
+
+  .user-strava-block span { font-size: 13px; }
+
+  #user-strava-en,
+  #user-strava-ms,
+  #user-strava-zh { margin-top: 3rem; }
+
+  #user-medal-frame .col-md-4 { width: 33.33%; }
+
+  #user-medal-frame .ant-btn {
+    height: 70px;
+    padding: 0;
+  }
+
+  #medal-msg { font-size: 12px; }
+
+  #joined-race-footer .col-sm-4 { width: 33.33%; }
+  #joined-race-footer .col-sm-3 { width: 25%; }
+
+  .user-history-joined-content { padding: 1.5rem; }
+
+  .user-history-joined,
+  .user-current .col-sm-12 .col-md-4 { margin-bottom: 3rem; }
+
+  .current-listing .race-img { height: 210px; }
+
+  .user-others .col-sm-12 { margin: 1rem 0; }
+
+  .userprofile-name { font-size: 22px; }
+
+  .userprofile-motto, .userprofile-id { font-size: 14px; }
+
+  #joined-current h4, #joined-past h4 { font-size: 1.1rem; }
+
+  #joined-current p, #joined-past p { font-size: 14px; }
+
+  .tabs [class^="tab"] label,
+  .tabs [class*=" tab"] label { font-size: 1.1rem !important; }
 }
 
 @media screen and (max-width: 375px) {
   #homebanner { height: 13vh; }
 
   #home-signup-section { height: 20%; }
+
+  #user-profile-right { padding-left: 2rem; }
+
+  .current-listing .race-img { height: 185px; }
+
+  .userdash h3,
+  .userdash #view-all a { font-size: 18px; }
+
+  .userprofile-name { font-size: 20px; }
+
+  .userprofile-motto, .userprofile-id { font-size: 13px; }
 }
 
 @media screen and (max-width: 320px) {
+  #topbar { font-size: 10px; }
+
+  #navbar-mobile-logo { display: none; }
+
+  #navbar-logo {
+    display: block;
+    width: 75px;
+    top: 3px;
+  }
+
+  .navbar-toggle { margin-top: -15px; }
+
   #homebanner { height: 15.5vh; }
 
   #home-signup-section { height: 25vh; }
+
+  .current-listing .race-img { height: 155px; }
+
+  .user-history-joined h4 { font-size: 15px; }
+
+  .user-strava-block h6 { font-size: 14.5px; }
+
+  .user-strava-block span { font-size: 11.5px; }
+
+  .user-strava-block img { width: 40px; }
+
+  .userdash h3,
+  .userdash #view-all a { font-size: 16px; }
+
+  .ant-avatar {
+    width: 80px !important;
+    height: 80px !important;
+    line-height: 80px !important;
+    font-size: 40px !important;
+  }
+
+  #user-profile-right { padding-left: 0; }
+
+  .user-history-joined p { font-size: 11.5px; }
+
+  .submission-info { font-size: 10px; }
+
+  #progress-race-start, #progress-race-end { font-size: 11px; }
+
+  #progress-race-end { padding-top: 10px; }
+
+  #joined-race-footer img { width: 35px; }
+
+  #joined-race-footer span { font-size: 10px; }
+
+  #joined-race-footer .col-sm-4 { width: 30%; }
+
+  #joined-current h4, #joined-past h4 {
+    font-size: 1rem;
+    height: 2rem;
+  }
 }

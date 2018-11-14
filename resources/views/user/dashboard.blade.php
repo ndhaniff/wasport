@@ -216,10 +216,10 @@ var allcertdatas = JSON.parse('<?= $allcertdatas_json; ?>');
 
       <div class="user-medal">
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-sm-6" id="dash-title-left">
             <h3>{{__("My Medals")}}</h3>
           </div>
-          <div class="col-md-6">
+          <div class="col-sm-6" id="dash-title-right">
             <span id="view-all"><a href="/viewMedals">{{__("View All")}}</a></span>
           </div>
         </div>
@@ -238,10 +238,10 @@ var allcertdatas = JSON.parse('<?= $allcertdatas_json; ?>');
 
       <div class="user-history">
         <div class="row" id="user-history-header">
-          <div class="col-md-6">
+          <div class="col-md-6" id="dash-title-left">
             <h3>{{$race_count}} {{__("Joined Races")}}</h3>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-6" id="dash-title-right">
             <span id="view-all"><a href="/viewjoined">{{__("View All")}}</a></span>
           </div>
         </div>
@@ -274,10 +274,10 @@ var allcertdatas = JSON.parse('<?= $allcertdatas_json; ?>');
 
       <div class="user-current">
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-6" id="dash-title-left">
             <h3>{{__("Current Races")}}</h3>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-6" id="dash-title-right">
             <span id="view-all"><a href="/races">{{__("View All")}}</a></span>
           </div>
         </div>
@@ -322,13 +322,13 @@ var allcertdatas = JSON.parse('<?= $allcertdatas_json; ?>');
 
       <div class="user-others">
         <div class="row">
-          <div class=col-sm-4>
+          <div class="col-sm-12 col-md-4">
             <a href="/vieworders"><img src="/img/ic-order.png" />&emsp; My Orders</a>
           </div>
-          <div class=col-sm-4>
+          <div class="col-sm-12 col-md-4">
             <a href="/guide"><img src="/img/ic-guide.png" />&emsp; Guide</a>
           </div>
-          <div class=col-sm-4>
+          <div class="col-sm-12 col-md-4">
             <a href="/howitworks"><img src="/img/ic-how.png" />&emsp; How it Works</a>
           </div>
         </div>

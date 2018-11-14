@@ -1,9 +1,41 @@
 @extends('layouts.master')
 
 <style>
-.anticon:before { display: none !important; }
+.anticon:before,
+svg:not(:root) { display: none !important; }
 
-svg:not(:root) { display: none; }
+@media screen and (max-width: 414px) {
+  .ant-modal-content,
+  .ant-form {
+    width: 395px;
+  }
+
+  .ant-form-item-control {
+    width: 348px !important;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .ant-modal-content,
+  .ant-form {
+    width: 355px;
+  }
+
+  .ant-form-item-control {
+    width: 310px !important;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .ant-modal-content,
+  .ant-form {
+    width: 300px;
+  }
+
+  .ant-form-item-control {
+    width: 255px !important;
+  }
+}
 </style>
 
 @section('content')
@@ -16,15 +48,15 @@ svg:not(:root) { display: none; }
       <img src="<?php echo asset('storage/uploaded/races/' . $race->header) ?>" alt="{{ $race->title_en }}">
 
       <ul id="countdown-timer">
-        <li>Hurry! Registration closed in | </li>
-        <li><span id="days"></span>days</li>
-        <li><span id="hours"></span>hours</li>
-        <li><span id="minutes"></span>mins</li>
-        <li><span id="seconds"></span>secs</li>
+        <li>{{__("Hurry! Registration closed in")}} <span id="countdown-line">|</span></li><br id="countdown-br"/>
+        <li><span id="days"></span> {{__("days")}}</li>
+        <li><span id="hours"></span> {{__("hours")}}</li>
+        <li><span id="minutes"></span> {{__("mins")}}</li>
+        <li><span id="seconds"></span> {{__("secs")}}</li>
       </ul>
 
       <p id="countdown-closed">
-        Registration closed
+        {{__("Registration closed")}}
         <!--<li><span id="days"></span>0 days</li>
         <li><span id="hours"></span>0 hours</li>
         <li><span id="minutes"></span>0 mins</li>
@@ -37,8 +69,66 @@ svg:not(:root) { display: none; }
     <center>
 
     <div class="row">
-      <div class="col-md-8 race-details">
 
+      <div class="register-box-mobile">
+        <?php
+          $uid = Auth::id();
+          $isRegistered = false;
+
+          $deadline = $race->dead_to. ' ' .$race->deadtime_to;
+          $cur = date('Y-m-d H:i a');
+
+          //if not user
+          if($uid == '') {
+
+            if($cur < $deadline) {
+              echo '<a href="/login" class="race-register-btn">' .__("Login to register"). '</a>';
+            } else {
+              echo '<button type="button" class="race-register-btn" disabled>' .__("Registration closed"). '</button>';
+            }
+          }
+
+          //if user
+          if($uid != '') {
+            //check register or not
+            foreach($orders as $order) {
+              if($order->user_id == $uid && $order->race_id == $race->rid) {
+                $isRegistered = true;
+              }
+            }
+
+            if($isRegistered) {
+              echo '<div class="row"><div style="width: 50%;">';
+              echo '<h4>' .__("You had registered"). '</h4></div>';
+              echo '<div style="width: 50%;"><a href="/dashboard" class="race-register-btn">' .__("Go to profile") .'</a></div></div>';
+            } else {
+              if($race->price == 0) {
+                echo '<div class="row"><div style="width: 50%;">';
+                echo '<h3 style="padding-top: 3px;">' .__("Free"). '</h3></div>';
+              }
+              if($race->price != 0) {
+                echo '<div class="row"><div style="width: 50%;">';
+                echo '<h3 style="padding-top: 3px;">RM ' .number_format($race->price, 2). '</h3></div>';
+              }
+
+              if($cur < $deadline) {
+                echo '<div style="width: 50%;">';
+                if(app()->getLocale() == 'en')
+                  echo '<div id="register-race-mobile-en"></div>';
+                if(app()->getLocale() == 'ms')
+                  echo '<div id="register-race-mobile-ms"></div>';
+                if(app()->getLocale() == 'zh')
+                  echo '<div id="register-race-mobile-zh"></div>';
+
+                echo '</div></div>';
+              } else {
+                echo '<button type="button" class="race-register-btn" disabled>' .__("Registration closed"). '</button>';
+              }
+            }
+          } ?>
+      </div>
+
+      <div class="col-md-8 race-details">
         <?php if(app()->getLocale() == 'en')
                 echo '<h2>' .$race->title_en. '</h2>';
               if(app()->getLocale() == 'ms')
@@ -49,45 +139,48 @@ svg:not(:root) { display: none; }
               $dateF = DateTime::createFromFormat('Y-m-d', $race->date_from)->format('d M Y');
               $dateT = DateTime::createFromFormat('Y-m-d', $race->date_to)->format('d M Y');
               echo '<h5>' .$dateF. ' (' .$race->time_from. ') GMT +08' . '<br>-<br>' .$dateT. '(' .$race->time_to. ') GMT +08</h5>'; ?>
+
         <hr>
 
+        <?php if($race->price != 0) {
+                echo '<div class="finisher-mobile">';
+                echo '<h6>' .__("Finisher's Award"). '</h6>';
+                echo '<p><img src="' .asset('img/register-1.png'). '">&ensp;' .__("Finisher's Medal"). '</p>';
+                echo '<p><img src="' .asset('img/register-2.png'). '">&ensp;' .__("Finisher's Certificate"). '</p>';
+                echo '</div>';
+              } ?>
+
         <div class="details-block">
-          <h6>Where</h6>
+          <h6>{{__("Where")}}</h6>
+
           <p>This is a Virtual Race, you can join and run anywhere in the world. All you need is a GPS-tracking running app.
-            <a href="\howitworks">How does it work</a></p>
+            <a href="\howitworks">{{__("How does it work")}}</a></p>
 
-          <h6>Price</h6>
-          <?php if($race->price == 0 && app()->getLocale() == 'en')
-                  echo '<p>Free</p>';
-                if($race->price == 0 && app()->getLocale() == 'ms')
-                  echo '<p>Percuma</p>';
-                if($race->price == 0 && app()->getLocale() == 'zh')
-                  echo '<p>免费</p>';
-                if($race->price != 0 && app()->getLocale() == 'en')
-                  echo '<p>RM ' .number_format($race->price, 2). '(Incl. postage fee)</p>';
-                if($race->price != 0 && app()->getLocale() == 'ms')
-                  echo '<p>RM ' .number_format($race->price, 2). '(Termasuk pengiriman)</p>';
-                if($race->price != 0 && app()->getLocale() == 'zh')
-                  echo '<p>RM ' .number_format($race->price, 2). '(包邮)</p>'; ?>
 
-          <h6>Registration Deadline</h6>
+          <h6>{{__("Price")}}</h6>
+          <?php if($race->price == 0)
+                  echo '<p>' .__("Free"). '</p>';
+                if($race->price != 0)
+                  echo '<p>RM ' .number_format($race->price, 2). '(' .__("Incl. postage fee"). ')</p>'; ?>
+
+          <h6>{{__("Registration Deadline")}}</h6>
 
           <?php $deadF = DateTime::createFromFormat('Y-m-d', $race->dead_from)->format('d M Y');
                 echo '<p>' .$deadF. ' (' .$race->deadtime_from. ') GMT +08  or while slots last</p>' ?>
 
           <?php if($race->category) {
-                  echo '<h6>Category</h6>';
+                  echo '<h6>' .__("Category"). '</h6>';
                   echo str_replace(",", ", ", $race->category);
           } ?>
 
-          <h6>Cut Off Time</h6>
-          <p>No cut off time</p>
+          <h6>{{__("Cut Off Time")}}</h6>
+          <p>{{__("No cut off time")}}</p>
         </div>
 
         <hr>
 
         <div class="about-block">
-          <h6>About</h6>
+          <h6>{{__("About")}}</h6>
           <?php if(app()->getLocale() == 'en')
                   echo htmlspecialchars_decode($race->about_en);
                 if(app()->getLocale() == 'ms')
@@ -113,7 +206,7 @@ svg:not(:root) { display: none; }
           <br />
 
           <?php if($race->price == 0) {
-                  echo '<h6>Finisher\'s Award</h6>';
+                  echo '<h6>' .__("Finisher's Award"). '</h6>';
 
                   if(app()->getLocale() == 'en')
                     echo htmlspecialchars_decode($race->medals_en);
@@ -122,7 +215,7 @@ svg:not(:root) { display: none; }
                   if(app()->getLocale() == 'zh')
                     echo htmlspecialchars_decode($race->medals_zh);
                 } else {
-                  echo '<h6>Medals</h6>';
+                  echo '<h6>' .__("Medals"). '</h6>';
 
                   if(app()->getLocale() == 'en')
                     echo htmlspecialchars_decode($race->medals_en);
@@ -147,7 +240,7 @@ svg:not(:root) { display: none; }
         <hr>
 
         <div class="rules-block">
-          <h6>Rules</h6>
+          <h6>{{__("Rules")}}</h6>
 
           <ul>
             <?php $deadT = DateTime::createFromFormat('Y-m-d', $race->dead_to)->format('d M Y');
@@ -197,12 +290,11 @@ svg:not(:root) { display: none; }
           </div>
         </div>
 
-        <hr>
-
         <?php
           if($addons->count() != 0) {
+            echo '<hr>';
             echo '<div class="addons-block">';
-            echo '<h6>Add-on</h6>';
+            echo '<h6>' .__("Add-on"). '</h6>';
             $i=0;
             foreach($addons as $addon) {
               if($addon->descimg_1 != '')
@@ -246,7 +338,7 @@ svg:not(:root) { display: none; }
 
           <?php if($race->awards_en != '') {
                   echo '<div class="awards-block">';
-                  echo '<h6>Awards</h6>';
+                  echo '<h6>' .__("Awards"). '</h6>';
 
                   if(app()->getLocale() == 'en')
                     echo htmlspecialchars_decode($race->awards_en);
@@ -275,8 +367,6 @@ svg:not(:root) { display: none; }
 
       </div>
 
-
-
       <div class="col-md-4">
         <div class="register-box">
           <?php
@@ -290,12 +380,14 @@ svg:not(:root) { display: none; }
             if($uid == '') {
 
               if($cur < $deadline) {
-                echo '<a href="/login" class="race-register-btn">';
-                echo __("Login to register");
-                echo '</a>';
-                echo '<h6>Finisher’s Award</h6>' .
-                '<p><img src="' .asset('img/register-1.png'). '">&ensp;Finisher\'s Medal</p>' .
-                '<p><img src="' .asset('img/register-2.png'). '">&ensp;Finisher\'s Certificate</p>';
+                if($race->price == 0) {
+                  echo '<a href="/login" class="race-register-btn">' .__("Login to register"). '</a>';
+                } else {
+                  echo '<a href="/login" class="race-register-btn">' .__("Login to register"). '</a>';
+                  echo '<h6>' .__("Finisher's Award"). '</h6>';
+                  echo '<p><img src="' .asset('img/register-1.png'). '">&ensp;' .__("Finisher's Medal"). '</p>';
+                  echo '<p><img src="' .asset('img/register-2.png'). '">&ensp;' .__("Finisher's Certificate"). '</p>';
+                }
               } else {
                 echo '<button type="button" class="race-register-btn" disabled>';
                 echo __("Registration closed");
@@ -313,26 +405,13 @@ svg:not(:root) { display: none; }
               }
 
               if($isRegistered) {
-                echo '<h4>';
-                echo __("You had registered");
-                echo '</h4>';
-                echo '<a href="/dashboard" class="race-register-btn">';
-                echo __("Go to profile");
-                echo '</a>';
+                echo '<h4>' .__("You had registered"). '</h4>';
+                echo '<a href="/dashboard" class="race-register-btn">' .__("Go to profile"). '</a>';
               } else {
-                if($race->price == 0 && app()->getLocale() == 'en')
-                  echo '<h3>Free</h3>';
-                if($race->price == 0 && app()->getLocale() == 'ms')
-                  echo '<h3>Percuma</h3>';
-                if($race->price == 0 && app()->getLocale() == 'zh')
-                  echo '<h3>免费</h3>';
-                if($race->price != 0 && app()->getLocale() == 'en')
+                if($race->price == 0)
+                  echo '<h3>' .__("Free"). '</h3>';
+                else
                   echo '<h3>RM ' .number_format($race->price, 2). '</h3>';
-                if($race->price != 0 && app()->getLocale() == 'ms')
-                  echo '<h3>RM ' .number_format($race->price, 2). '</h3>';
-                if($race->price != 0 && app()->getLocale() == 'zh')
-                  echo '<h3>RM ' .number_format($race->price, 2). '</h3>';
-
 
                 if($cur < $deadline) {
                   /*echo '<a href="/registerrace/' .$race->rid. '" class="race-register-btn">';
@@ -347,17 +426,17 @@ svg:not(:root) { display: none; }
                     echo '<div id="register-race-zh"></div>';
 
                 } else {
-                  echo '<button type="button" class="race-register-btn" disabled>';
-                  echo __("Registration closed");
-                  echo '</button>';
+                  echo '<button type="button" class="race-register-btn" disabled>' .__("Registration closed"). '</button>';
                 }
-                if($race->price != 0)
-                  echo '<h6>Finisher’s Award</h6>' .
-                  '<p><img src="' .asset('img/register-1.png'). '">&ensp;Finisher\'s Medal</p>' .
-                  '<p><img src="' .asset('img/register-2.png'). '">&ensp;Finisher\'s Certificate</p>';
+
+                if($race->price != 0) {
+                  echo '<h6>' .__("Finisher's Award"). '</h6>';
+                  echo '<p><img src="' .asset('img/register-1.png'). '">&ensp;' .__("Finisher's Medal"). '</p>';
+                  echo '<p><img src="' .asset('img/register-2.png'). '">&ensp;' .__("Finisher's Certificate"). '</p>';
+                }
+
               }
-            }
-          ?>
+            } ?>
         </div>
       </div>
     </div>

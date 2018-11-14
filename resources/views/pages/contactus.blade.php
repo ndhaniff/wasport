@@ -3,13 +3,25 @@
 @section('content')
 
 <style>
-svg:not(:root) { display: none; }
-
 .anticon-check-circle:before,
 .anticon-close:before, .anticon-cross:before,
 .ant-calendar-picker-icon:after,
 .anticon-close-circle:before, .anticon-cross-circle:before,
-.anticon:before { display: none; }
+.anticon:before, svg:not(:root) { display: none; }
+
+@media screen and (max-width: 414px) {
+  .ant-form-item-control,
+  .ant-form {
+    width: 300px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .ant-form-item-control,
+  .ant-form {
+    width: 280px;
+  }
+}
 </style>
 
 <div id="contactus">
