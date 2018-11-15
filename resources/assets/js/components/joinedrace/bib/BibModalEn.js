@@ -36,11 +36,6 @@ class BibModalEn extends Component {
     });
   }
 
-  downloadCanvas = () => {
-    var temp = this.refs.canvas.toDataURL("image/png;base64;")
-    this.setState({ imgData: temp })
-  }
-
   render(){
 
     for(var i=0; i<allmedal.length; i++) {
@@ -61,9 +56,7 @@ class BibModalEn extends Component {
           onOk={this.handleOk}
           onCancel={this.handleCancel}
           width={'850px'}
-          footer={[
-            <a href={this.state.imgData} download="race-bib.png" className="ant-button" id="btn-download-canvas" onClick={this.downloadCanvas}>Download</a>,
-          ]} >
+          footer={false} >
           {racebib}
         </Modal>
       </div>

@@ -53,10 +53,19 @@ class RaceBib extends React.Component{
       imageObj.src = this.props.bibImg;
   }
 
+  downloadCanvas = () => {
+    var temp = this.refs.canvas.toDataURL("image/png;base64;")
+    this.setState({ imgData: temp })
+  }
+
   render(){
     return(
       <div>
         <canvas id="canvas-bib" ref="canvas" width={800} height={520}/>
+
+        <hr />
+
+        <a href={this.state.imgData} download="race-bib.png" className="ant-button" id="btn-download-canvas" onClick={this.downloadCanvas}>Download</a>
       </div>
     )
   }

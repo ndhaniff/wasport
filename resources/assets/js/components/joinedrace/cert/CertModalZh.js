@@ -36,11 +36,6 @@ class CertModalZh extends Component {
     });
   }
 
-  downloadCanvas = () => {
-    var temp = this.refs.canvas.toDataURL("image/png;base64;")
-    this.setState({ imgData: temp })
-  }
-
   render(){
 
     for(var i=0; i<allmedal.length; i++) {
@@ -56,9 +51,7 @@ class CertModalZh extends Component {
         onOk={this.handleOk}
         onCancel={this.handleCancel}
         width={'850px'}
-        footer={[
-          <a href="#" download="certificate.jpg" className="ant-button" id="btn-download-canvas" onClick={this.downloadCanvas}>下载</a>,
-        ]} >
+        footer={false} >
         {certItem}
       </Modal>
     } else {

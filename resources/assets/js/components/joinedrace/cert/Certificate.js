@@ -108,15 +108,24 @@ class Certificate extends React.Component{
       context.drawImage(signature, 680, 500 , 120, 80);
       context.drawImage(logo, 25, 553 ,45, 30);
     };
+    signature.src = window.location.origin + '/img/signature.png';
     headerObj.src = this.props.certImg;
     logo.src = window.location.origin + '/img/wasport-logo-footer.png';
-    signature.src = window.location.origin + '/img/signature.png';
+  }
+
+  downloadCanvas = () => {
+    var temp = this.refs.canvas.toDataURL("image/png;base64;")
+    this.setState({ imgData: temp })
   }
 
   render(){
     return(
       <div>
         <canvas id="canvas-cert" ref="canvas" width={842} height={595}/>
+
+        <hr />
+
+        <a href="#" download="certificate.png" className="ant-button" id="btn-download-canvas" onClick={this.downloadCanvas}>Download</a>
       </div>
     )
   }
