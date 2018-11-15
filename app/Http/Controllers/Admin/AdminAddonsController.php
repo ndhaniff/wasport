@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Model\Addon;
 use App\Model\Race;
 use Kyslik\ColumnSortable\Sortable;
+use Session;
 
 class AdminAddonsController extends Controller
 {
@@ -62,7 +63,7 @@ class AdminAddonsController extends Controller
           $query->where('race_id', 'like', $raceitem);
         }
       $addons = $query->paginate(10);
-      
+
       $races = DB::table('races')->get();
       $alladdons = Addon::sortable()->get();
 
@@ -333,11 +334,13 @@ class AdminAddonsController extends Controller
       */
     public function destroy($aid)
     {
-        $addons = Addon::find($aid);
-        if($addons->count()  > 0){
-            $addons->delete();
+        $addon = Addon::find($aid);
+        if($addon->count()  > 0){
+            $addon->delete();
+            Session::flash('message', 'Successfully deleted');
             return redirect()->back();
         } else {
+            Session::flash('message', 'Unable to delete');
             return response()->json(['success' => false, 'msg' => 'addon not found' ], 200 );
         }
     }

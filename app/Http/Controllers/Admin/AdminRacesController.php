@@ -531,8 +531,10 @@ class AdminRacesController extends Controller
         $race = Race::find($rid);
         if($race->count()  > 0){
             $race->delete();
+            Session::flash('message', 'Successfully deleted');
             return redirect()->back();
         } else {
+            Session::flash('message', 'Unable to delete');
             return response()->json(['success' => false, 'msg' => 'race not found' ], 200 );
         }
     }

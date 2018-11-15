@@ -311,12 +311,12 @@ export default class CreateMedalForm extends Component {
                                     <div className="form-group">
                                         <Tabs defaultActiveKey="1" type="card">
                                             <TabPane tab="Grey" key="1">
-                                                <label htmlFor="medalGrey">Medal</label>
+                                                <label htmlFor="medalGrey">Medal<span class="required-field"></span></label>
                                                 {previewImg_medalGrey}
                                                 {dropzone_medalGrey}
                                             </TabPane>
                                             <TabPane tab="Color" key="2">
-                                                <label htmlFor="e">Medal</label>
+                                                <label htmlFor="e">Medal<span class="required-field"></span></label>
                                                 {previewImg_medalColor}
                                                 {dropzone_medalColor}
                                             </TabPane>

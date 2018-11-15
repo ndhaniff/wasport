@@ -14,11 +14,9 @@ Admin | Orders
 
   <hr />
 
-  @foreach (['danger', 'warning', 'success', 'info'] as $key)
-    @if(Session::has($key))
-     <p class="alert alert-{{ $key }}">{{ Session::get($key) }}</p>
-    @endif
-  @endforeach
+  @if (Session::has('message'))
+    <div class="alert alert-info">{{ Session::get('message') }}</div>
+  @endif
 
   <div class="row">
     <div class="col-sm-4">

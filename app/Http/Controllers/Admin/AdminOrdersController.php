@@ -200,12 +200,13 @@ class AdminOrdersController extends Controller
 
       // check for failures
       if (Mail::failures()) {
-        return back()->with('error','Email unable sent to ' .$order->o_firstname. ', ' . $order->lastname);
+        //return back()->with('error','Email unable sent to ' .$order->o_firstname. ', ' . $order->lastname);
+        Session::flash('message', 'Email unable send to ' .$order->o_firstname. ', ' . $order->lastname);
+        return redirect()->back();
       } else {
-        return back()->with('success','Email sent to ' .$order->o_firstname. ', ' . $order->lastname);
+        return redirect()->back();
+        Session::flash('message', 'Email successfully sent to ' .$order->o_firstname. ', ' . $order->lastname);
       }
-
-
 
       //return redirect()->back();
     }

@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Model\Medal;
 use App\Model\Race;
 use Kyslik\ColumnSortable\Sortable;
+use Session;
 
 class AdminMedalsController extends Controller
 {
@@ -236,8 +237,10 @@ class AdminMedalsController extends Controller
         $medal = Medal::find($mid);
         if($medal->count()  > 0){
             $medal->delete();
+            Session::flash('message', 'Successfully deleted');
             return redirect()->back();
         } else {
+            Session::flash('message', 'Unable to delete');
             return response()->json(['success' => false, 'msg' => 'medal not found' ], 200 );
         }
     }

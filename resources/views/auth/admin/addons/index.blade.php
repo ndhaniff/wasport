@@ -15,6 +15,10 @@ Admin | Addons
 
   <h1 style="font-size: 2.2rem">Addons</h1>
 
+  @if (Session::has('message'))
+    <div class="alert alert-info">{{ Session::get('message') }}</div>
+  @endif
+
   <hr />
 
   <div class="row">

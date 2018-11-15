@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Model\Contact;
 use Kyslik\ColumnSortable\Sortable;
+use Session;
 
 class AdminContactsController extends Controller
 {
@@ -53,7 +54,7 @@ class AdminContactsController extends Controller
           $query->where('category', 'like', $categoryitem);
         }
       $contacts = $query->paginate(10);
-      
+
       $allcontacts = Contact::sortable()->get();
 
       return view('auth.admin.contacts.index',compact('contacts', 'allcontacts'));
@@ -67,12 +68,15 @@ class AdminContactsController extends Controller
       */
     public function destroy($cid)
     {
-        $contacts = Contact::find($cid);
-        if($contacts->count()  > 0){
-            $contacts->delete();
+        $contact = Contact::find($cid);
+        if($contact->count()  > 0){
+            $contact->delete();
+            Session::flash('message', 'Successfully deleted');
             return redirect()->back();
         } else {
+            Session::flash('message', 'Unable to delete');
             return response()->json(['success' => false, 'msg' => 'contact not found' ], 200 );
+
         }
     }
 }
