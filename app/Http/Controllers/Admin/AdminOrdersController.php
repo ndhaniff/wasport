@@ -12,6 +12,8 @@ use App\Model\Addon;
 use App\Model\User;
 use App\Model\Submission;
 use Kyslik\ColumnSortable\Sortable;
+use Mail;
+use App\Mail\notifyEmail;
 
 class AdminOrdersController extends Controller
 {
@@ -171,5 +173,31 @@ class AdminOrdersController extends Controller
         ->get();
 
       return view('auth.admin.orders.index',compact('orders', 'races', 'addons', 'order_addons', 'allorders', 'submissions'));
+    }
+
+    public function notifyUser($oid) {
+
+      $order = DB::table('orders')
+        ->join('users', 'orders.user_id', '=', 'users.id')
+        ->join('races', 'orders.race_id', '=', 'races.rid')
+        ->where('oid', '=', $oid)
+        ->first();
+
+        $email = DB::table('users')
+          ->join('orders', 'users.id', '=', 'orders.user_id')
+          ->where('id', '=', $order->user_id)
+          ->get(['email']);
+
+        $race = DB::table('races')
+        ->join('orders', 'races.rid', '=', 'orders.race_id')
+        ->where('oid', '=', $oid)
+        ->get(['title_en']);
+
+        Mail::send('email.sendNotifyEmail', ['order' => $order], function ($m) use ($order) {
+        $m->from('info@wasportsrun.com', 'WaSportsRun');
+        $m->to($order->email, $order->name)->subject('Congratulations on completing ' . $order->title_en);
+        });
+
+      return redirect()->back();
     }
 }

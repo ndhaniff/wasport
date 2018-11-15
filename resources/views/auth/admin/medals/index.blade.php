@@ -77,7 +77,7 @@ Admin | Medals
         <a href="{{route('admin.medals.edit',['mid'=>$medal->mid])}}">
           <button type="button" class="btn btn-info"><i class="far fa-edit"></i></button>
         </a>
-        <form method="POST" action="{{route('admin.medals.destroy',['aid' => $medal->mid ])}}">
+        <form method="POST" action="{{route('admin.medals.destroy',['mid' => $medal->mid ])}}">
           @method('DELETE')
           @csrf
           <button onclick="return confirm('Are you sure?')" type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>

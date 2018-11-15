@@ -14,6 +14,11 @@ Admin | Orders
 
   <hr />
 
+  <!-- will be used to show any messages -->
+  @if (Session::has('message'))
+  <div class="alert alert-{{ Session::get('status') }}">{{ Session::get('message') }}</div>
+  @endif
+
   <div class="row">
     <div class="col-sm-4">
       <form action="{{route('admin.orders.searchBy')}}" method="get">
@@ -90,6 +95,10 @@ Admin | Orders
           @method('DELETE')
           @csrf
           <button onclick="return confirm('Are you sure?')" type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+        </form>
+        <form method="POST" action="{{route('admin.orders.notifyUser',['oid' => $order->oid ])}}">
+          @csrf
+          <button onclick="return confirm('Send Email?')" type="submit" class="btn btn-danger"><i class="far fa-envelope"></i></button>
         </form>
       </div>
 
@@ -293,6 +302,7 @@ Admin | Orders
             <!-- Modal body -->
             <div class="modal-body">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
+
               <?php $price = '';
                     foreach($races as $race) {
                       if($race->rid == $order->race_id) {
@@ -320,7 +330,7 @@ Admin | Orders
                                     }
                                   }
                                 }
-                        } ?>
+                              } ?>
                       </ul>
                     </td>
                   @endif
