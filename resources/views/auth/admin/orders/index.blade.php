@@ -14,10 +14,11 @@ Admin | Orders
 
   <hr />
 
-  <!-- will be used to show any messages -->
-  @if (Session::has('message'))
-  <div class="alert alert-{{ Session::get('status') }}">{{ Session::get('message') }}</div>
-  @endif
+  @foreach (['danger', 'warning', 'success', 'info'] as $key)
+    @if(Session::has($key))
+     <p class="alert alert-{{ $key }}">{{ Session::get($key) }}</p>
+    @endif
+  @endforeach
 
   <div class="row">
     <div class="col-sm-4">
@@ -98,7 +99,7 @@ Admin | Orders
         </form>
         <form method="POST" action="{{route('admin.orders.notifyUser',['oid' => $order->oid ])}}">
           @csrf
-          <button onclick="return confirm('Send Email?')" type="submit" class="btn btn-danger"><i class="far fa-envelope"></i></button>
+          <button onclick="return confirm('Send Email?')" type="submit" class="btn btn-default"><i class="far fa-envelope"></i></button>
         </form>
       </div>
 

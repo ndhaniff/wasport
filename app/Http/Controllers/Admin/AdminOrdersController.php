@@ -183,21 +183,30 @@ class AdminOrdersController extends Controller
         ->where('oid', '=', $oid)
         ->first();
 
-        $email = DB::table('users')
-          ->join('orders', 'users.id', '=', 'orders.user_id')
-          ->where('id', '=', $order->user_id)
-          ->get(['email']);
+      $email = DB::table('users')
+        ->join('orders', 'users.id', '=', 'orders.user_id')
+        ->where('id', '=', $order->user_id)
+        ->get(['email']);
 
-        $race = DB::table('races')
+      $race = DB::table('races')
         ->join('orders', 'races.rid', '=', 'orders.race_id')
         ->where('oid', '=', $oid)
         ->get(['title_en']);
 
-        Mail::send('email.sendNotifyEmail', ['order' => $order], function ($m) use ($order) {
+      Mail::send('email.sendNotifyEmail', ['order' => $order], function ($m) use ($order) {
         $m->from('info@wasportsrun.com', 'WaSportsRun');
-        $m->to($order->email, $order->name)->subject('Congratulations on completing ' . $order->title_en);
-        });
+        $m->to($order->email, $order->name)->subject('Congratulations for Completing ' . $order->title_en);
+      });
 
-      return redirect()->back();
+      // check for failures
+      if (Mail::failures()) {
+        return back()->with('error','Email unable sent to ' .$order->o_firstname. ', ' . $order->lastname);
+      } else {
+        return back()->with('success','Email sent to ' .$order->o_firstname. ', ' . $order->lastname);
+      }
+
+
+
+      //return redirect()->back();
     }
 }

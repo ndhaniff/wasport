@@ -21,7 +21,7 @@ class CreateOrdersTable extends Migration
             $table->string('o_phone');
             $table->string('o_gender');
             $table->string('o_add_fl');
-            $table->string('o_add_sl');
+            $table->string('o_add_sl')->nullable();
             $table->string('o_city');
             $table->string('o_state');
             $table->string('o_postal');

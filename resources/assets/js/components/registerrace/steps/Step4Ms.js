@@ -141,6 +141,9 @@ class Step4Ms extends Component {
       },
     };
 
+    var price = this.state.price
+    var priceF = Number(price).toFixed(2)
+
     if(this.state.loading) {
       var submitBtn = <button className="buttonload" id="register-race-payment"> <i className="fa fa-spinner fa-spin"></i>Loading</button>
     } else {
@@ -285,7 +288,7 @@ class Step4Ms extends Component {
             </div>
 
             <div className="col-sm-3" style={{textAlign: 'right'}}>
-              RM {this.state.price} <br />
+              RM {priceF} <br />
               {add_1_price} <br />
               {add_2_price} <br />
               {add_3_price} <br />
