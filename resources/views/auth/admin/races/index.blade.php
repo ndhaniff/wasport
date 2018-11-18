@@ -98,20 +98,20 @@ Admin | Races
                   <td><?php echo ($race->title_zh) ? $race->title_zh : '-'; ?></td>
                 </tr>
                 <tr>
+                  <th colspan="2">Engrave Deadline</th>
+                  <td><?php echo ($race->dead_from) ? $race->dead_from. ' (' .$race->deadtime_from. ')' : '-'; ?></td>
+                </tr>
+                <tr>
+                  <th colspan="2">Register Deadline</th>
+                  <td><?php echo ($race->dead_to) ? $race->dead_to. ' (' .$race->deadtime_to. ')' : '-'; ?></td>
+                </tr>
+                <tr>
                   <th colspan="2">Race Date</th>
                   <td><?php echo ($race->date_from) ? $race->date_from. ' (' .$race->time_from. ')' : '-'; ?></td>
                 </tr>
                 <tr>
                   <th colspan="2">Race Deadline</th>
                   <td><?php echo ($race->date_to) ? $race->date_to. ' (' .$race->time_to. ')' : '-'; ?></td>
-                </tr>
-                <tr>
-                  <th colspan="2">Register Date</th>
-                  <td><?php echo ($race->dead_from) ? $race->dead_from. ' (' .$race->deadtime_from. ')' : '-'; ?></td>
-                </tr>
-                <tr>
-                  <th colspan="2">Register Deadline</th>
-                  <td><?php echo ($race->dead_to) ? $race->dead_to. ' (' .$race->deadtime_to. ')' : '-'; ?></td>
                 </tr>
                 <tr>
                   <th colspan="2">Price</th>

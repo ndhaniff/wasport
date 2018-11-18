@@ -835,33 +835,37 @@ export default class CreateRaceForm extends Component {
                                           </div>
                                          </div>
                                         </div>
-                                    </div>
-                                    <div className="col-sm-12 col-md-6">
-                                      <div className="form-group">
-                                        <label htmlFor="price">Registration Deadline<span className="required-field">*</span></label>
+                                      </div>
+                                      <div className="col-sm-12 col-md-3">
+                                        <div className="form-group">
+                                          <label htmlFor="price">Engrave Deadline</label>
                                           <div className="form-row">
-                                            <div className="col-sm-8 col-md-3">
+                                            <div className="col-sm-8">
                                               <Datetime isValidDate={ deadFrom } onChange={this.handleRaceDeadlineFrom} timeFormat={false}/>
                                               <input type="hidden" name="RaceDeadlineFrom" value={this.state.RaceDeadlineFrom}/>
                                             </div>
-                                            <div className="col-sm-4 col-md-2">
+                                            <div className="col-sm-4">
                                               <Datetime timeFormat="HH:mm a" defaultValue={'00:00 am'} onChange={this.handleDeadTimeFrom} showTimeSelect dateFormat={false} />
                                               <input type="hidden" name="deadtime_from" value={this.state.deadtime_from}/>
                                             </div>
-                                            <div className="col-sm-12 col-md-1">
-                                              to
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div className="col-sm-12 col-md-3">
+                                        <div className="form-group">
+                                          <label htmlFor="price">Register Deadline<span className="required-field">*</span></label>
+                                          <div className="form-row">
+                                            <div className="col-sm-8">
+                                              <Datetime isValidDate={ deadFrom } onChange={this.handleRaceDeadlineTo} timeFormat={false}/>
+                                              <input type="hidden" name="RaceDeadlineTo" value={this.state.RaceDeadlineTo}/>
                                             </div>
-                                            <div className="col-sm-8 col-md-3">
-                                            <Datetime isValidDate={ deadFrom } onChange={this.handleRaceDeadlineTo} timeFormat={false}/>
-                                            <input type="hidden" name="RaceDeadlineTo" value={this.state.RaceDeadlineTo}/>
-                                            </div>
-                                            <div className="col-sm-4 col-md-2">
+                                            <div className="col-sm-4">
                                               <Datetime timeFormat="HH:mm a" defaultValue={'00:00 am'} onChange={this.handleDeadTimeTo} dateFormat={false} />
                                               <input type="hidden" name="deadtime_to" value={this.state.deadtime_to}/>
                                             </div>
-                                         </div>
+                                          </div>
                                         </div>
-                                    </div>
+                                      </div>
                                     </div>
                                     <div className="form-row">
                                       <div className="col-sm-12 col-md-4">

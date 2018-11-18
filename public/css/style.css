@@ -604,22 +604,27 @@ RACE DETAILS
 .displayrace img { max-width: 100%; }
 
 #countdown-timer,
-#countdown-closed { font-family: 'SourceSansPro-Semibold'; }
+#countdown-closed,
+#engrave-timer{ font-family: 'SourceSansPro-Semibold'; }
 
 #countdown-timer li,
-#countdown-closed li {
+#countdown-closed li,
+#engrave-timer li {
   display: inline-block;
-  font-size: 22px;
+  font-size: 18px;
   list-style-type: none;
-  padding: 1em;
+  padding: 1rem 8px;
 }
 
 #countdown-timer li span,
-#countdown-closed li span {
-  font-size: 22px;
+#countdown-closed li span,
+#engrave-timer li span {
+  font-size: 18px;
 }
 
-#countdown-closed { display: none; }
+#countdown-closed,
+#countdown-timer,
+#engrave-timer { display: none; }
 
 .race-details { text-align: left; }
 
@@ -1297,8 +1302,10 @@ RESPONSIVE
 }
 
 @media screen and (max-width: 800px) {
-  #countdown-timer { margin-top: 1rem; }
-  #countdown-timer li { padding: 0px 8px; }
+  #countdown-timer,
+  #engrave-timer { margin-top: 1rem; }
+  #countdown-timer li,
+  #engrave-timer li { padding: 0px 8px; }
 }
 
 @media screen and (max-width: 768px) {
@@ -1361,11 +1368,14 @@ RESPONSIVE
 
   .displayrace h5 { font-size: 15px; }
 
-  #countdown-timer { padding: 0; }
+  #countdown-timer,
+  #engrave-timer { padding: 0; }
 
   #countdown-timer li,
   #countdown-timer li span,
-  #countdown-closed li span { font-size: 17px; }
+  #countdown-closed li span,
+  #engrave-timer li,
+  #engrave-timer li span { font-size: 17px; }
 
   .register-box {
     width: 230px;

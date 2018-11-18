@@ -814,28 +814,32 @@ export default class EditRaceForm extends Component {
                                          </div>
                                         </div>
                                     </div>
-                                    <div className="col-sm-12 col-md-6">
-                                        <div className="form-group">
-                                        <label htmlFor="price">Registration Deadline<span className="required-field">*</span></label>
+                                    <div className="col-sm-12 col-md-3">
+                                      <div className="form-group">
+                                        <label htmlFor="price">Engrave Deadline</label>
                                          <div className="form-row">
-                                          <div className="col-sm-8 col-md-3">
+                                          <div className="col-sm-8">
                                             <Datetime isValidDate={ deadFrom } value={this.state.RaceDeadlineFrom} onChange={this.handleRaceDeadlineFrom} timeFormat={false}/>
                                           </div>
-                                          <div className="col-sm-4 col-md-2">
+                                          <div className="col-sm-4">
                                             <Datetime value={this.state.deadtime_from} onChange={this.handleDeadTimeFrom} showTimeSelect dateFormat={false} />
                                           </div>
-                                          <div className="col-sm-12 col-md-1">
-                                            to
-                                          </div>
-                                          <div className="col-sm-8 col-md-3">
-                                            <Datetime isValidDate={ deadFrom } value={this.state.RaceDeadlineTo} onChange={this.handleRaceDeadlineTo} timeFormat={false}/>
-                                          </div>
-                                          <div className="col-sm-4 col-md-2">
-                                            <Datetime value={this.state.deadtime_to} onChange={this.handleDeadTimeTo} dateFormat={false} />
-                                          </div>
-                                         </div>
                                         </div>
+                                      </div>
                                     </div>
+                                    <div className="col-sm-12 col-md-3">
+                                      <div className="form-group">
+                                        <label htmlFor="price">Register Deadline<span className="required-field">*</span></label>
+                                          <div className="form-row">
+                                            <div className="col-sm-8">
+                                              <Datetime isValidDate={ deadFrom } value={this.state.RaceDeadlineTo} onChange={this.handleRaceDeadlineTo} timeFormat={false}/>
+                                            </div>
+                                            <div className="col-sm-4">
+                                              <Datetime value={this.state.deadtime_to} onChange={this.handleDeadTimeTo} dateFormat={false} />
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
                                     </div>
                                     <div className="form-row">
                                       <div className="col-sm-12 col-md-4">

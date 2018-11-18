@@ -21,6 +21,7 @@ class Step3 extends Component {
       price: props.getStore().price,
       category: props.getStore().category,
       engrave: props.getStore().engrave,
+      engrave_status: props.getStore().engrave_status,
       addons: props.getStore().addons,
     };
   }
@@ -190,7 +191,6 @@ class Step3 extends Component {
   }
 
   render() {
-
     const { getFieldDecorator } = this.props.form;
 
     const formItemLayout = {
@@ -211,7 +211,7 @@ class Step3 extends Component {
       },
     };
 
-    if(this.state.engrave == 'yes') {
+    if(this.state.engrave == 'yes' && this.state.engrave_status == 'true') {
       var engrave_input =
         <FormItem
           {...formItemLayout}

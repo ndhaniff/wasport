@@ -6,35 +6,23 @@ svg:not(:root) { display: none !important; }
 
 @media screen and (max-width: 414px) {
   .ant-modal-content,
-  .ant-form {
-    width: 395px;
-  }
+  .ant-form { width: 395px; }
 
-  .ant-form-item-control {
-    width: 348px !important;
-  }
+  .ant-form-item-control { width: 348px !important; }
 }
 
 @media screen and (max-width: 375px) {
   .ant-modal-content,
-  .ant-form {
-    width: 355px;
-  }
+  .ant-form { width: 355px; }
 
-  .ant-form-item-control {
-    width: 310px !important;
-  }
+  .ant-form-item-control { width: 310px !important; }
 }
 
 @media screen and (max-width: 320px) {
   .ant-modal-content,
-  .ant-form {
-    width: 300px;
-  }
+  .ant-form { width: 300px; }
 
-  .ant-form-item-control {
-    width: 255px !important;
-  }
+  .ant-form-item-control { width: 255px !important; }
 }
 </style>
 
@@ -47,8 +35,16 @@ svg:not(:root) { display: none !important; }
     <section class="mb-5">
       <img src="<?php echo asset('storage/uploaded/races/' . $race->header) ?>" alt="{{ $race->title_en }}">
 
+      <ul id="engrave-timer">
+        <li>{{__("Free engraving when you register in")}} &emsp; <span id="countdown-line">|</span></li><br id="countdown-br"/>
+        <li><span id="edays"></span> {{__("days")}}</li>
+        <li><span id="ehours"></span> {{__("hours")}}</li>
+        <li><span id="eminutes"></span> {{__("mins")}}</li>
+        <li><span id="eseconds"></span> {{__("secs")}}</li>
+      </ul>
+
       <ul id="countdown-timer">
-        <li>{{__("Hurry! Registration closed in")}} <span id="countdown-line">|</span></li><br id="countdown-br"/>
+        <li>{{__("Hurry! Registration closed in")}} &emsp; <span id="countdown-line">|</span></li><br id="countdown-br"/>
         <li><span id="days"></span> {{__("days")}}</li>
         <li><span id="hours"></span> {{__("hours")}}</li>
         <li><span id="minutes"></span> {{__("mins")}}</li>
@@ -57,10 +53,6 @@ svg:not(:root) { display: none !important; }
 
       <p id="countdown-closed">
         {{__("Registration closed")}}
-        <!--<li><span id="days"></span>0 days</li>
-        <li><span id="hours"></span>0 hours</li>
-        <li><span id="minutes"></span>0 mins</li>
-        <li><span id="seconds"></span>0 secs</li>-->
       </p>
 
     </section>
@@ -165,8 +157,8 @@ svg:not(:root) { display: none !important; }
 
           <h6>{{__("Registration Deadline")}}</h6>
 
-          <?php $deadF = DateTime::createFromFormat('Y-m-d', $race->dead_from)->format('d M Y');
-                echo '<p>' .$deadF. ' (' .$race->deadtime_from. ') GMT +08  or while slots last</p>' ?>
+          <?php $deadF = DateTime::createFromFormat('Y-m-d', $race->dead_to)->format('d M Y');
+                echo '<p>' .$deadF. ' (' .$race->deadtime_to. ') GMT +08  or while slots last</p>' ?>
 
           <?php if($race->category) {
                   echo '<h6>' .__("Category"). '</h6>';
@@ -452,27 +444,70 @@ svg:not(:root) { display: none !important; }
 
       $addon_json = json_encode($addon_arr); ?>
 
-<?php $theDate = $race->dead_to . ' ' . $race->deadtime_to;
-      $countDate = DateTime::createFromFormat('Y-m-d H:i a', $theDate)->format('M j, Y H:i:s'); ?>
+<?php $engrave = $race->engrave;
+      $engrave_status = '';
+
+      date_default_timezone_set("Asia/Kuala_Lumpur");
+      $date = date('M j, Y H:i:s');
+
+echo $date;
+
+      if($engrave == 'yes') {
+        $theEngraveDead = $race->dead_from . '' . $race->deadtime_from;
+        $countEngraveDate = DateTime::createFromFormat('Y-m-d H:i a', $theEngraveDead)->format('M j, Y H:i:s');
+
+        if($date > $countEngraveDate)
+          $engrave_status = 'false';
+
+        if($date < $countEngraveDate)
+          $engrave_status = 'true';
+      } else {
+        $countEngraveDate = 0;
+        $engrave_status = 'false';
+      }
+
+      $theRegisterDead = $race->dead_to . ' ' . $race->deadtime_to;
+      $countRegisterDate = DateTime::createFromFormat('Y-m-d H:i a', $theRegisterDead)->format('M j, Y H:i:s'); ?>
 
 <script type="text/javascript">
 
 const second = 1000,
-    minute = second * 60,
-    hour = minute * 60,
-    day = hour * 24;
+      minute = second * 60,
+      hour = minute * 60,
+      day = hour * 24;
 
-let countDown = new Date('<?= $countDate ?>').getTime(),
+if('{{$engrave}}' == 'yes')
+  var countdownEngrave = new Date('<?= $countEngraveDate ?>').getTime()
+else
+  var countdownEngrave = 0
+
+let countdownRegister = new Date('<?= $countRegisterDate ?>').getTime(),
     x = setInterval(function() {
     let now = new Date().getTime(),
-    distance = countDown - now;
-    if(distance > 0) {
-      document.getElementById('days').innerText = Math.floor(distance / (day)),
-      document.getElementById('hours').innerText = Math.floor((distance % (day)) / (hour)),
-      document.getElementById('minutes').innerText = Math.floor((distance % (hour)) / (minute)),
-      document.getElementById('seconds').innerText = Math.floor((distance % (minute)) / second);
+    distanceE = countdownEngrave - now,
+    distanceR = countdownRegister - now;
+
+    if('{{$engrave}}' == 'yes' && distanceE > 0){
+      document.getElementById("countdown-timer").style.display = "none";
+      document.getElementById("engrave-timer").style.display = "block";
+      document.getElementById("countdown-closed").style.display = "none"
+
+      document.getElementById('edays').innerText = Math.floor(distanceE / (day)),
+      document.getElementById('ehours').innerText = Math.floor((distanceE % (day)) / (hour)),
+      document.getElementById('eminutes').innerText = Math.floor((distanceE % (hour)) / (minute)),
+      document.getElementById('eseconds').innerText = Math.floor((distanceE % (minute)) / second);
+    } else if('{{$engrave}}' == 'no' || distanceR > 0) {
+      document.getElementById("countdown-timer").style.display = "block";
+      document.getElementById("engrave-timer").style.display = "none";
+      document.getElementById("countdown-closed").style.display = "none";
+
+      document.getElementById('days').innerText = Math.floor(distanceR / (day)),
+      document.getElementById('hours').innerText = Math.floor((distanceR % (day)) / (hour)),
+      document.getElementById('minutes').innerText = Math.floor((distanceR % (hour)) / (minute)),
+      document.getElementById('seconds').innerText = Math.floor((distanceR % (minute)) / second);
     } else {
       document.getElementById("countdown-timer").style.display = "none";
+      document.getElementById("engrave-timer").style.display = "none";
       document.getElementById("countdown-closed").style.display = "block";
     }
   }, second)
@@ -489,13 +524,7 @@ let countDown = new Date('<?= $countDate ?>').getTime(),
       }
     });
   }
-</script>
 
-@endsection
-
-@section('script')
-
-<script>
   var race = {
     rid: "{{$race->rid}}",
     title_en: "{{$race->title_en}}",
@@ -503,8 +532,11 @@ let countDown = new Date('<?= $countDate ?>').getTime(),
     title_zh: "{{$race->title_zh}}",
     price: "{{$race->price}}",
     category: "{{$race->category}}",
-    engrave: "{{$race->engrave}}"
+    engrave: "{{$race->engrave}}",
+    engrave_status : "{{$engrave_status}}"
   }
+
+  console.log(race)
 
   var addons = JSON.parse('<?= $addon_json; ?>');
 

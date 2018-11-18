@@ -31,6 +31,7 @@ class RegisterRaceFormEn extends Component {
       category: window.race.category,
       race_category: '',
       engrave: window.race.engrave,
+      engrave_status: window.race.engrave_status,
       engrave_name: '',
       addons: window.addons,
       addon_1: '',

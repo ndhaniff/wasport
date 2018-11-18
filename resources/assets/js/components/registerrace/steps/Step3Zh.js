@@ -21,6 +21,7 @@ class Step3Zh extends Component {
       price: props.getStore().price,
       category: props.getStore().category,
       engrave: props.getStore().engrave,
+      engrave_status: props.getStore().engrave_status,
       addons: props.getStore().addons,
     };
   }
@@ -211,7 +212,7 @@ class Step3Zh extends Component {
       },
     };
 
-    if(this.state.engrave == 'yes') {
+    if(this.state.engrave == 'yes' && this.state.engrave_status == 'true') {
       var engrave_input =
         <FormItem
           {...formItemLayout}
