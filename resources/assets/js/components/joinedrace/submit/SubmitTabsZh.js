@@ -25,17 +25,17 @@ class SubmitTabsZh extends Component{
       if(allsubmissions[i]['race_id'] == this.props.raceID) {
 
         let hour = allsubmissions[i]['s_hour']
-        hour = (hour > 10) ? hour : '0' + hour
+        hour = (hour > 9) ? hour : '0' + hour
 
         let min = allsubmissions[i]['s_minute']
-        min = (min > 10) ? min : '0' + min
+        min = (min > 9) ? min : '0' + min
 
         let sec = allsubmissions[i]['s_second']
-        sec = (sec > 10) ? sec : '0' + sec
+        sec = (sec > 9) ? sec : '0' + sec
 
         let time_taken = hour + ":" + min + ":" + sec
 
-        items.push(<tr><td>{i+1 + '.'} </td>
+        items.push(<tr><td>{Number(i+1) + '.'} </td>
                         <td>{allsubmissions[i]['s_distance']}</td>
                         <td>{time_taken}</td>
                         <td><Button id="delete-btn" onClick={this.handleDelete} value={allsubmissions[i]['sid']}>DELETE</Button></td></tr>);

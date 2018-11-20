@@ -42,9 +42,9 @@ class CurrentJoinedEn extends Component{
 
                 <div className="row" id="joined-race-footer">
                   <div className="col-sm-4">
-                    <Button>
+                    <a href= {'/ranking/' + current[i]['rid']}><Button>
                       <img src= {rankIC} /><br />
-                      <span>Rankings</span></Button>
+                      <span>Rankings</span></Button></a>
                   </div>
                   <div className="col-sm-4">
                     <BibModal raceCategory = {current[i]['category']} raceID = {current[i]['rid']} />
@@ -80,9 +80,9 @@ class CurrentJoinedEn extends Component{
                     <SubmitModal raceID = {current[i]['rid']}/>
                   </div>
                   <div className="col-sm-3">
-                    <Button>
+                    <a href= {'/ranking/' + current[i]['rid']}><Button>
                       <img src= {rankIC} /><br />
-                      <span>Rankings</span></Button>
+                      <span>Rankings</span></Button></a>
                   </div>
                   <div className="col-sm-3">
                     <BibModal raceCategory = {current[i]['category']} raceID = {current[i]['rid']} />

@@ -43,9 +43,9 @@ class PastJoinedMs extends Component{
 
                 <div className="row" id="joined-race-footer">
                   <div className="col-sm-4">
-                    <Button>
+                    <a href= {'/ranking/' + past[i]['rid']}><Button>
                       <img src= {rankIC} /><br />
-                      <span>Kedudukan</span></Button>
+                      <span>Kedudukan</span></Button></a>
                   </div>
                   <div className="col-sm-4">
                     <BibModal raceCategory = {past[i]['category']} raceID = {past[i]['rid']} />

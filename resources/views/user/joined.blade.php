@@ -105,6 +105,7 @@ Joined Races | WaSportsrun
         $dateT = DateTime::createFromFormat('Y-m-d', $current->date_to)->format('d M Y');
 
         $current_race_arr[] = array('submission' => $submission,
+                                    'oid' => $current->oid,
                                     'rid' => $current->rid,
                                     'title_en' => $current->title_en,
                                     'title_ms' => $current->title_ms,
@@ -143,6 +144,7 @@ Joined Races | WaSportsrun
                                     'race_status' => $now->race_status);
         } else {
           $current_race_arr[] = array('submission' => $submission,
+                                      'oid' => $now->oid,
                                       'rid' => $now->rid,
                                       'title_en' => $now->title_en,
                                       'title_ms' => $now->title_ms,

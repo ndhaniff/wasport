@@ -345,7 +345,7 @@ class UserController extends Controller
       $submit->race_id = $request->get('race_id');
       $submit->s_hour = $request->get('race_hour');
       $submit->s_minute = $request->get('race_minute');
-      $submit->s_second = $request->get('race_minute');
+      $submit->s_second = $request->get('race_second');
       $submit->s_distance = $request->get('distance');
       $submit->strava_activity = $request->get('strava_activity');
 
@@ -369,6 +369,22 @@ class UserController extends Controller
         //$order->map_polyline = $map_polyline;
         $submit->s_map_polyline = $map_polyline;
       }
+
+      $distance = $request->get('distance');
+      $hour =  $request->get('race_hour');
+      $minute =  $request->get('race_minute');
+      $second =  $request->get('race_second');
+
+      $time_second = ($hour * 3600) + ($minute * 60) + $second;
+
+      $pace = $time_second / $distance;
+
+      //$pace_min = floor($pace / 60);
+      //$pace_sec = $pace % 60;
+      //$avg_pace = $pace_min. '"' .floor($pace_sec);
+
+      $submit->s_pace_min = floor($pace / 60);
+      $submit->s_pace_sec = floor($pace % 60);
 
       //$order->save();
       $submit->save();

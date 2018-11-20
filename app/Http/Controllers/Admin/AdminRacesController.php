@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Model\Race;
 use Kyslik\ColumnSortable\Sortable;
+use Session;
 
 class AdminRacesController extends Controller
 {

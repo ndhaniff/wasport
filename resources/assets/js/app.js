@@ -44,6 +44,7 @@ require('./components/registerrace/RegisterRaceMobileZh');
 require('./components/joinedrace/JoinedRaceEn');
 require('./components/joinedrace/JoinedRaceMs');
 require('./components/joinedrace/JoinedRaceZh');
+require('./components/joinedrace/ranking/RankEn');
 require('./components/medals/DashboardMedalEn');
 require('./components/medals/DashboardMedalMs');
 require('./components/medals/DashboardMedalZh');

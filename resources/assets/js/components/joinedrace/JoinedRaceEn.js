@@ -43,9 +43,9 @@ class JoinedRaceEn extends Component{
 
                   <div className="row" id="joined-race-footer">
                     <div className="col-sm-4">
-                      <Button>
+                      <a href= {'/ranking/' + race[i]['rid']}><Button>
                         <img src= {rankIC} /><br />
-                        <span>Rankings</span></Button>
+                        <span>Rankings</span></Button></a>
                     </div>
                     <div className="col-sm-4">
                       <BibModal raceCategory = {race[i]['category']} raceID = {race[i]['rid']}/>
@@ -76,9 +76,9 @@ class JoinedRaceEn extends Component{
 
                   <div className="row" id="joined-race-footer">
                     <div className="col-sm-4">
-                      <Button>
+                      <a href= {'/ranking/' + race[i]['rid']}><Button>
                         <img src= {rankIC} /><br />
-                        <span>Rankings</span></Button>
+                        <span>Rankings</span></Button></a>
                     </div>
                     <div className="col-sm-4">
                       <BibModal raceCategory = {race[i]['category']} raceID = {race[i]['rid']}/>
@@ -115,9 +115,9 @@ class JoinedRaceEn extends Component{
                       <SubmitModal raceID = {race[i]['rid']}/>
                   </div>
                   <div className="col-sm-3">
-                    <Button>
+                    <a href= {'/ranking/' + race[i]['rid']}><Button>
                       <img src= {rankIC} /><br />
-                      <span>Rankings</span></Button>
+                      <span>Rankings</span></Button></a>
                   </div>
                   <div className="col-sm-3">
                     <BibModal raceCategory = {race[i]['category']} raceID = {race[i]['rid']} />
@@ -151,9 +151,9 @@ class JoinedRaceEn extends Component{
 
                   <div className="row" id="joined-race-footer">
                     <div className="col-sm-4">
-                      <Button>
+                      <a href= {'/ranking/' + race[i]['rid']}><Button>
                         <img src= {rankIC} /><br />
-                        <span>Rankings</span></Button>
+                        <span>Rankings</span></Button></a>
                     </div>
                     <div className="col-sm-4">
                       <BibModal raceCategory = {race[i]['category']} raceID = {race[i]['rid']} />
@@ -184,9 +184,9 @@ class JoinedRaceEn extends Component{
 
                   <div className="row" id="joined-race-footer">
                     <div className="col-sm-4">
-                      <Button>
+                      <a href= {'/ranking/' + race[i]['rid']}><Button>
                         <img src= {rankIC} /><br />
-                        <span>Rankings</span></Button>
+                        <span>Rankings</span></Button></a>
                     </div>
                     <div className="col-sm-4">
                       <BibModal raceCategory = {race[i]['category']} raceID = {race[i]['rid']} />

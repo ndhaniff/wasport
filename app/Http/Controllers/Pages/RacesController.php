@@ -8,6 +8,7 @@ use App\Model\Race;
 use App\Model\Addon;
 use App\Model\Order;
 use App\Model\OrderAddon;
+use App\Model\Submission;
 use DB;
 use Auth;
 
@@ -61,5 +62,22 @@ class RacesController extends Controller
       }
 
       //return view('pages.racedetails', ['race' => $race, 'addons' => $addons, 'orders' => $orders]);
+    }
+
+    public function ranking($rid) {
+
+      $race = DB::table('races')
+        ->where('rid', '=', $rid)
+        ->first();
+
+      $orders = DB::table('orders')
+        ->where('race_id', '=', $rid)
+        ->where('race_status', '=', 'success')
+        ->orderBy('pace_min', 'ASC')
+        ->orderBy('pace_sec', 'ASC')
+        ->paginate(10);
+
+      return view('pages.ranking', ['race' => $race, 'orders' => $orders]);
+      //return view('pages.ranking',compact('race', 'orders'));
     }
 }

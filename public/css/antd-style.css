@@ -174,3 +174,9 @@
 .ant-form-item-control {
   width: 470px;
 }
+
+.anticon-close-circle:before, .anticon-cross-circle:before,
+.ant-pagination-prev .ant-pagination-item-link:after,
+.ant-pagination-next .ant-pagination-item-link:after {
+  display: none;
+}

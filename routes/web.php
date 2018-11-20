@@ -19,6 +19,7 @@ Route::group([
 	Route::get('/', 'Pages\HomeController@index')->name('home');
   Route::get('/races', 'Pages\RacesController@index')->name('races');
   Route::get('/racedetails/{rid}', 'Pages\RacesController@details')->name('racedetails');
+  Route::get('/ranking/{rid}', 'Pages\RacesController@ranking')->name('ranking');
   Route::get('/aboutus', 'Pages\HomeController@aboutus')->name('aboutus');
   Route::get('/guide', 'Pages\HomeController@guide')->name('guide');
   Route::get('/howitworks', 'Pages\HomeController@howitworks')->name('howitworks');

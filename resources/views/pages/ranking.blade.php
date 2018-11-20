@@ -1,0 +1,82 @@
+@extends('layouts.master')
+
+@section('content')
+<style>
+svg:not(:root) { display: none; }
+</style>
+
+<?php $rank_arr = array();
+      foreach($orders as $order) {
+      $rank_arr[] =array('oid' => $order->oid,
+                          'firstname' => $order->o_firstname,
+                          'lastname' => $order->o_lastname,
+                          'r_gender' => $order->o_gender,
+                          'r_category' => $order->race_category,
+                          'pace_min' => $order->pace_min,
+                          'pace_sec' => $order->pace_sec,
+                          'race_id' => $order->race_id);
+}
+$rank_json = json_encode($rank_arr); ?>
+
+<script>
+var rank = JSON.parse('<?= $rank_json; ?>');
+var category = '{{$race->category}}'
+
+let items = category.split(',')
+var firstcategory = items[0]
+</script>
+
+<div class="ranking p-5">
+  <div class="container">
+    <h1>Rankings</h1>
+    <?php if(app()->getLocale() == 'en')
+            echo '<h4>' .$race->title_en. '</h4>';
+          if(app()->getLocale() == 'ms')
+            echo '<h4>' .$race->title_ms. '</h4>';
+          if(app()->getLocale() == 'zh')
+            echo '<h4>' .$race->title_zh. '</h4>';
+
+
+          $dateF = DateTime::createFromFormat('Y-m-d', $race->date_from)->format('d M Y');
+          $dateT = DateTime::createFromFormat('Y-m-d', $race->date_to)->format('d M Y');
+
+          echo '<p>' .$dateF. ' (' .$race->time_from. ') GMT +08 - ' .$dateT. ' (' .$race->time_to. ') GMT +08' . '</p>';
+
+          if(app()->getLocale() == 'en')
+            echo '<div id="ranking-en"></div>';
+          if(app()->getLocale() == 'ms')
+            echo '<div id="ranking-ms"></div>';
+          if(app()->getLocale() == 'zh')
+            echo '<div id="ranking-zh"></div>'; ?>
+
+            <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">RUNNER</th>
+                <th scope="col">RESULT</th>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach($orders as $index => $order)
+              <tr>
+                <th scope="row"><?php $rank = ($orders->currentpage()-1) * $orders->perpage() + $index + 1;
+                                      if($rank == '1') echo 'NUMBER #1';
+                                      if($rank == '2') echo 'NUMBER #2';
+                                      if($rank == '3') echo 'NUMBER #3';
+                                      if($rank != '1' && $rank != '2' && $rank != '3') echo $rank; ?></th>
+                <td>{{$order->o_firstname}} {{$order->o_lastname}}</td>
+                <td><?php echo $order->pace_min. '"' .$order->pace_sec; ?></td>
+              </tr>
+              @endforeach
+            </tbody>
+            </table>
+
+            {{ $orders->links() }}
+
+        </div>
+
+  </div>
+</div>
+
+@endsection

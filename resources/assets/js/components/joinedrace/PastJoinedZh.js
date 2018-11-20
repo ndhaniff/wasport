@@ -42,9 +42,9 @@ class PastJoinedZh extends Component{
 
                 <div className="row" id="joined-race-footer">
                   <div className="col-sm-4">
-                    <Button>
+                    <a href= {'/ranking/' + past[i]['rid']}><Button>
                       <img src= {rankIC} /><br />
-                      <span>排名</span></Button>
+                      <span>排名</span></Button></a>
                   </div>
                   <div className="col-sm-4">
                     <BibModal raceCategory = {past[i]['category']} raceID = {past[i]['rid']} />

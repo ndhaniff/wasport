@@ -22,6 +22,8 @@ class CreateSubmissionsTable extends Migration
             $table->string('s_second')->nullable();
             $table->string('strava_activity')->nullable();
             $table->string('s_map_polyline')->nullable();
+            $table->integer('s_pace_min')->unsigned()->nullable();
+            $table->integer('s_pace_sec')->unsigned()->nullable();
             $table->integer('order_id')->unsigned();
             $table->foreign('order_id')->references('rid')->on('orders')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('race_id')->unsigned();

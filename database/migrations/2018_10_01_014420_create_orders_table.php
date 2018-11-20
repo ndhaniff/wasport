@@ -32,6 +32,8 @@ class CreateOrdersTable extends Migration
             $table->string('shipment')->nullable();
             $table->string('tracking_number')->nullable();
             $table->string('courier')->nullable();
+            $table->integer('pace_min')->unsigned()->nullable();
+            $table->integer('pace_sec')->unsigned()->nullable();
             $table->integer('race_id')->unsigned();
             $table->foreign('race_id')->references('rid')->on('races')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('user_id')->unsigned();

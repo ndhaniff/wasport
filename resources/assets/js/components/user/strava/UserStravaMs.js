@@ -66,6 +66,32 @@ class UserStravaMs extends Component{
     //calcaule total time in seconds
     total_time = (hour * 60 * 60) + (minute * 60) + second
 
+    if(typeof window.strava_token != "undefined" && typeof window.strava_id != "undefined"){
+      /* Calculate Pace */
+      let distance_pace = race_distance;
+      let pace = total_time / distance_pace;
+
+      //get min from pace
+      let min = Math.floor(pace / 60);
+      //add 0 before if lower than 10
+      if(min < 10) min = '0' + min;
+      //getting remaining seconds
+      let sec = pace % 60;
+      //adding 0 before, if lower than 10
+      if(sec < 10) sec = '0' + sec;
+      //set pace
+      let avg_pace = min + "\"" + Math.floor(sec);
+      //set distance
+      let distance = distance_pace;
+
+      //insert data
+      this.setState({
+        distance : distance.toFixed(2),
+        pace : avg_pace,
+        no_of_runs : no_of_runs,
+      })
+    }
+
     if(typeof window.token != "undefined" && typeof window.strava_id != "undefined"){
       let api_url = "/strava/getStats/";
       axios.post(api_url, {

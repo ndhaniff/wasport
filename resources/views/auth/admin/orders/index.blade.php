@@ -213,7 +213,6 @@ Admin | Orders
 
               @foreach($submissions as $submission)
                 @if($submission->order_id == $order->oid)
-                  @if ($loop->first)
                     <?php
                       $distance = $submission->s_distance;
                       $hour = $submission->s_hour;
@@ -267,8 +266,11 @@ Admin | Orders
                         </td>
                       </tr>
                     </table>
+                  @break
                   @endif
-                @else
+                  @endforeach
+                @foreach($submissions as $submission)
+                  @if(!$submission->order_id == $order->oid)
                 <table id="review-table">
                   <tr>
                     <td colspan="2"><center>NO RECORD AVAILABLE</center></td>
@@ -285,9 +287,8 @@ Admin | Orders
                   </tr>
                 </table>
                 @break
-              @endif
-              @endforeach
-
+                @endif
+                @endforeach
             </div>
           </div>
         </div>

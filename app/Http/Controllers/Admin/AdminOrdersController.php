@@ -13,6 +13,7 @@ use App\Model\User;
 use App\Model\Submission;
 use Kyslik\ColumnSortable\Sortable;
 use Mail;
+use Session;
 use App\Mail\notifyEmail;
 
 class AdminOrdersController extends Controller
@@ -133,11 +134,20 @@ class AdminOrdersController extends Controller
         if($raceStatus == 'fail')
           $update->shipment = 'order closed';
 
-        if($raceStatus == 'success')
-          $update->shipment = 'order confirmed';
-
         if($raceStatus == 'awaiting')
           $update->shipment = 'order placed';
+
+        if($raceStatus == 'success') {
+          $update->shipment = 'order confirmed';
+
+          $submission = DB::table('submissions')
+              ->where('order_id' , '=', $oid)
+              ->orderBy('updated_at', 'DESC')
+              ->first();
+
+          $update->pace_min = $submission->s_pace_min;
+          $update->pace_sec = $submission->s_pace_sec;
+        }
 
         $update->save();
 
