@@ -41,6 +41,8 @@ class DashboardMedalEn extends Component{
   createMedalItems() {
     let items = [];
 
+    console.log(medal)
+
     for(var i=0; i<3; i++) {
       if(medal[i]['medal_status'] == 'true') {
         items.push(

@@ -69,24 +69,32 @@ class UserStravaMs extends Component{
     if(typeof window.strava_token != "undefined" && typeof window.strava_id != "undefined"){
       /* Calculate Pace */
       let distance_pace = race_distance;
-      let pace = total_time / distance_pace;
+      let avg_pace = 0
 
-      //get min from pace
-      let min = Math.floor(pace / 60);
-      //add 0 before if lower than 10
-      if(min < 10) min = '0' + min;
-      //getting remaining seconds
-      let sec = pace % 60;
-      //adding 0 before, if lower than 10
-      if(sec < 10) sec = '0' + sec;
-      //set pace
-      let avg_pace = min + "\"" + Math.floor(sec);
+      if(race_distance != 0) {
+        let pace = total_time / distance_pace;
+
+        //get min from pace
+        let min = Math.floor(pace / 60);
+        //add 0 before if lower than 10
+        if(min < 10) min = '0' + min;
+        //getting remaining seconds
+        let sec = pace % 60;
+        //adding 0 before, if lower than 10
+        if(sec < 10) sec = '0' + sec;
+        //set pace
+        avg_pace = min + "\"" + Math.floor(sec);
+      }
+
       //set distance
       let distance = distance_pace;
 
+      if(distance != 0)
+        distance = distance.toFixed(2)
+
       //insert data
       this.setState({
-        distance : distance.toFixed(2),
+        distance : distance,
         pace : avg_pace,
         no_of_runs : no_of_runs,
       })
