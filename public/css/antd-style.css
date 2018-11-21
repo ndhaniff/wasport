@@ -180,3 +180,16 @@
 .ant-pagination-next .ant-pagination-item-link:after {
   display: none;
 }
+
+.ant-table-tbody>tr.ant-table-row-hover>td, .ant-table-tbody>tr:hover>td, .ant-table-thead>tr.ant-table-row-hover>td, .ant-table-thead>tr:hover>td {
+  background: #ffd1d1;
+}
+
+.ant-pagination-item-active:focus, .ant-pagination-item-active:hover,
+.ant-pagination-item-active {
+  border-color: #E02E3C;
+}
+
+.ant-pagination-item-active:focus a, .ant-pagination-item-active:hover a {
+  color: #E02E3C;
+}

@@ -9,7 +9,7 @@ const columns = [{
   dataIndex: 'rank',
   key: 'rank',
 }, {
-  title: 'RUNNER',
+  title: '跑者',
   dataIndex: 'runner',
   key: 'runner',
   render: (text, record) => (
@@ -26,12 +26,12 @@ const columns = [{
    <div style={{'display' : 'none'}}></div>
  ),
 }, {
-  title: 'RESULT',
+  title: '成绩',
   dataIndex: 'result',
   key: 'result',
 }];
 
-class RankEn extends Component{
+class RankZh extends Component{
 
   constructor(){
     super();
@@ -162,9 +162,9 @@ class RankEn extends Component{
     return(
       <div>
           <Select defaultValue="all" style={{ width: 120 }} onChange={this.handleGenderChange}>
-            <Option value="all">All</Option>
-            <Option value="female">Female</Option>
-            <Option value="male">Male</Option>
+            <Option value="all">全部</Option>
+            <Option value="female">女生</Option>
+            <Option value="male">男生</Option>
           </Select>
 
           <Select value={this.state.category} style={{ width: 120 }} onChange={this.handleCategoryChange}>
@@ -178,8 +178,8 @@ class RankEn extends Component{
 
 }
 
-export default RankEn
+export default RankZh
 
-if(document.getElementById('ranking-en')){
-    ReactDOM.render(<RankEn />, document.getElementById('ranking-en'))
+if(document.getElementById('ranking-zh')){
+    ReactDOM.render(<RankZh />, document.getElementById('ranking-zh'))
 }

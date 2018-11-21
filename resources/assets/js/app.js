@@ -45,6 +45,8 @@ require('./components/joinedrace/JoinedRaceEn');
 require('./components/joinedrace/JoinedRaceMs');
 require('./components/joinedrace/JoinedRaceZh');
 require('./components/joinedrace/ranking/RankEn');
+require('./components/joinedrace/ranking/RankMs');
+require('./components/joinedrace/ranking/RankZh');
 require('./components/medals/DashboardMedalEn');
 require('./components/medals/DashboardMedalMs');
 require('./components/medals/DashboardMedalZh');

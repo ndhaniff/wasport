@@ -132,7 +132,7 @@
       <div id="navbar-mobile">
         <nav id="topbar" class="navbar navbar-inverse text-right p-2">
           <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="{{ asset('img/wasport-logo-mobile.png') }}" id="navbar-mobile-logo"></a>
+            <a class="navbar-brand" href="/"><img src="{{ asset('img/wasport-logo-mobile.png') }}" id="navbar-mobile-logo"></a>
             <div style="float:right">
               <span class="dropdown">
                 <a class="p-2 text-light btn locale" id="dropdownMenuLink" data-toggle="dropdown" >
@@ -178,18 +178,27 @@
             </div>
           </div>
         </nav>
+
         <nav id="btmbar" class="navbar navbar-inverse">
           <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="{{ asset('img/wasport-logo-mobile.png') }}" id="navbar-logo"></a>
-            <div class="navbar-header">
+            <a class="navbar-brand" href="/"><img src="{{ asset('img/wasport-logo-mobile.png') }}" id="navbar-logo"></a>
+            <!--<div class="navbar-header">
               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                 <div class="bar"></div>
                 <div class="bar"></div>
                 <div class="bar"></div>
               </button>
-
+            </div>-->
+            <span style="font-size:30px;cursor:pointer;color:#fff;" onclick="openNav()">&#9776;</span>
+            <div id="mySidenav" class="sidenav">
+              <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+              <a href="/">{{__("HOME")}}</a>
+              <a href="/guide">{{__("GUIDE")}}</a>
+              <a href="/races">{{__("EVENT")}}</a>
+              <a href="#">{{__("OFFLINE EVENT")}}</a>
+              <a href="/howitworks">{{__("HOW IT WORKS")}}</a>
             </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
+            <!--<div class="collapse navbar-collapse" id="myNavbar">
               <ul class="nav navbar-nav">
                 <li><a href="/">{{__("HOME")}}</a></li>
                 <li><a href="/guide">{{__("GUIDE")}}</a></li>
@@ -197,7 +206,7 @@
                 <li><a href="#">{{__("OFFLINE EVENT")}}</a></li>
                 <li><a href="/howitworks">{{__("HOW IT WORKS")}}</a></li>
               </ul>
-            </div>
+            </div>-->
           </div>
         </nav>
       </div>
@@ -212,7 +221,7 @@
         <div class="container">
           <div class="row" id="footer-content">
             <div class="col-sm-12 col-md-4" id="footer-col-1">
-              <img src="{{asset('img/wasport-logo-footer.png')}}" alt="WaSport" id="footer-logo">
+              <a href="/"><img src="{{asset('img/wasport-logo-footer.png')}}" id="footer-logo"></a>
 
               <div class="footer-social">
                 <a href="#"><img src="{{asset('img/footer-social-fb.png')}}" alt="Facebook"></a>
@@ -264,6 +273,14 @@
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
       <script type="text/javascript">
+      function openNav() {
+        document.getElementById("mySidenav").style.width = "200px";
+      }
+
+      function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+      }
+
         $(document).ready(function() {
           $("#carousel").owlCarousel({
             navigation : false,

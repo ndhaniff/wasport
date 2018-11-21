@@ -9,7 +9,7 @@ const columns = [{
   dataIndex: 'rank',
   key: 'rank',
 }, {
-  title: 'RUNNER',
+  title: 'Pelari',
   dataIndex: 'runner',
   key: 'runner',
   render: (text, record) => (
@@ -26,12 +26,12 @@ const columns = [{
    <div style={{'display' : 'none'}}></div>
  ),
 }, {
-  title: 'RESULT',
+  title: 'Pencapaian',
   dataIndex: 'result',
   key: 'result',
 }];
 
-class RankEn extends Component{
+class RankMs extends Component{
 
   constructor(){
     super();
@@ -162,9 +162,9 @@ class RankEn extends Component{
     return(
       <div>
           <Select defaultValue="all" style={{ width: 120 }} onChange={this.handleGenderChange}>
-            <Option value="all">All</Option>
-            <Option value="female">Female</Option>
-            <Option value="male">Male</Option>
+            <Option value="all">Semua</Option>
+            <Option value="female">Perempuan</Option>
+            <Option value="male">Lelaki</Option>
           </Select>
 
           <Select value={this.state.category} style={{ width: 120 }} onChange={this.handleCategoryChange}>
@@ -178,8 +178,8 @@ class RankEn extends Component{
 
 }
 
-export default RankEn
+export default RankMs
 
-if(document.getElementById('ranking-en')){
-    ReactDOM.render(<RankEn />, document.getElementById('ranking-en'))
+if(document.getElementById('ranking-ms')){
+    ReactDOM.render(<RankMs />, document.getElementById('ranking-ms'))
 }

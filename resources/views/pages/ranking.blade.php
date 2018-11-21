@@ -49,31 +49,6 @@ var firstcategory = items[0]
           if(app()->getLocale() == 'zh')
             echo '<div id="ranking-zh"></div>'; ?>
 
-            <table class="table table-bordered">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">RUNNER</th>
-                <th scope="col">RESULT</th>
-              </tr>
-            </thead>
-            <tbody>
-              @foreach($orders as $index => $order)
-              <tr>
-                <th scope="row"><?php $rank = ($orders->currentpage()-1) * $orders->perpage() + $index + 1;
-                                      if($rank == '1') echo 'NUMBER #1';
-                                      if($rank == '2') echo 'NUMBER #2';
-                                      if($rank == '3') echo 'NUMBER #3';
-                                      if($rank != '1' && $rank != '2' && $rank != '3') echo $rank; ?></th>
-                <td>{{$order->o_firstname}} {{$order->o_lastname}}</td>
-                <td><?php echo $order->pace_min. '"' .$order->pace_sec; ?></td>
-              </tr>
-              @endforeach
-            </tbody>
-            </table>
-
-            {{ $orders->links() }}
-
         </div>
 
   </div>
