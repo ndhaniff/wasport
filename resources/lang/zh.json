@@ -19,7 +19,7 @@
     "Contact" : "联络",
     "Life Sharing" : "分享",
     "Get In Touch" : "保持联系",
-    "To work with WaSport, please click" : "与WaSport合作，请按",
+    "To work with WaSports, please click" : "与WaSport合作，请按",
     "HERE" : "这里",
     "or send email to" : "或邮件致",
     "Enter a race" : "参加比赛",
@@ -35,7 +35,7 @@
     "Rewarding experience" : "奖励体验",
     "Be the envy of your friends with our exciting medals! Share the joy of earning medals with them and create new memories together." : "赢取让人羡慕的精美奖牌！和你的朋友分享获得奖牌的乐趣并一起创造新的回忆！",
     "Connect with our online and offline community" : "加入我们的线上线下社交平台",
-    "8976225 runners have joined WaSport. Join our diverse community of runners, from first-time runners to elite marathon finishers - from all over the world!" : "8976225 跑者已经加入了42Race。和世界各地的朋友们一起加入42Race, 从新手到精英跑者，在这里你都可以找到！",
+    "8976225 runners have joined WaSports. Join our diverse community of runners, from first-time runners to elite marathon finishers - from all over the world!" : "8976225 跑者已经加入了42Race。和世界各地的朋友们一起加入42Race, 从新手到精英跑者，在这里你都可以找到！",
     "Join Now" : "立即加入",
     "Name" : "名称",
     "E-Mail Address" : "电子邮件地址",
@@ -123,5 +123,12 @@
     "Free engraving when you register in" : "注册时免费刻字",
     "Click here to login" : "点这里登入",
     "Your account has been successfully registered." : "注册成功。",
-    "Thank you for joining WaSports." : "谢谢参与WaSports。"
+    "Thank you for joining WaSports." : "谢谢参与WaSports。",
+    "Rankings" : "排名",
+    "Offline Races" : "线下跑",
+    "Date" : "日期",
+    "Location" : "地点",
+    "Category" : "类别",
+    "Website" : "网站",
+    "Go to website" : "前往网站"
   }

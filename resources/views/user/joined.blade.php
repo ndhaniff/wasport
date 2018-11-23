@@ -1,9 +1,5 @@
 @extends('layouts.master')
 
-@section('title')
-Joined Races | WaSportsrun
-@endsection
-
 @section('content')
 <style>
 .tabs {

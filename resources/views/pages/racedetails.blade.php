@@ -9,6 +9,12 @@ svg:not(:root) { display: none !important; }
   .ant-form { width: 395px; }
 
   .ant-form-item-control { width: 348px !important; }
+
+  #register-step4 { width: 100% !important; }
+
+  #register-step4 .col-sm-9 { width: 65% !important; }
+
+  #register-step4 .col-sm-3 { width: 35% !important; }
 }
 
 @media screen and (max-width: 375px) {
@@ -51,9 +57,7 @@ svg:not(:root) { display: none !important; }
         <li><span id="seconds"></span> {{__("secs")}}</li>
       </ul>
 
-      <p id="countdown-closed">
-        {{__("Registration closed")}}
-      </p>
+      <p id="countdown-closed">{{__("Registration closed")}}</p>
 
     </section>
 
@@ -450,8 +454,6 @@ svg:not(:root) { display: none !important; }
       date_default_timezone_set("Asia/Kuala_Lumpur");
       $date = date('M j, Y H:i:s');
 
-echo $date;
-
       if($engrave == 'yes') {
         $theEngraveDead = $race->dead_from . '' . $race->deadtime_from;
         $countEngraveDate = DateTime::createFromFormat('Y-m-d H:i a', $theEngraveDead)->format('M j, Y H:i:s');
@@ -535,8 +537,6 @@ let countdownRegister = new Date('<?= $countRegisterDate ?>').getTime(),
     engrave: "{{$race->engrave}}",
     engrave_status : "{{$engrave_status}}"
   }
-
-  console.log(race)
 
   var addons = JSON.parse('<?= $addon_json; ?>');
 

@@ -1,9 +1,5 @@
 @extends('layouts.master')
 
-@section('title')
-Medals | WaSportsrun
-@endsection
-
 @section('content')
 
 <style>

@@ -243,7 +243,7 @@
     </div>
     </div>
   </div>
-
+  
   <div class="connect-community">
     <div class="container">
     <h2>{{__("Connect with our online and offline community")}}</h2>
@@ -251,7 +251,7 @@
     <div class="home-join-desktop">
       <div class="row">
         <div class="col-md-10">
-          <p>{{__("8976225 runners have joined WaSport. Join our diverse community of runners, from first-time runners to elite marathon finishers - from all over the world!")}}</p><br>
+          <p>{{__("8976225 runners have joined WaSports. Join our diverse community of runners, from first-time runners to elite marathon finishers - from all over the world!")}}</p><br>
         </div>
         <div class="col-md-2">
           <a class="wbtn btn btn-primary" href="#">{{__("Join Now")}}</a>

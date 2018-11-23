@@ -19,6 +19,8 @@ Route::group([
 	Route::get('/', 'Pages\HomeController@index')->name('home');
   Route::get('/races', 'Pages\RacesController@index')->name('races');
   Route::get('/racedetails/{rid}', 'Pages\RacesController@details')->name('racedetails');
+  Route::get('/offline', 'Pages\RacesController@offline')->name('offline');
+  Route::get('/offlinedetails/{fid}', 'Pages\RacesController@offlinedetails')->name('offlinedetails');
   Route::get('/ranking/{rid}', 'Pages\RacesController@ranking')->name('ranking');
   Route::get('/aboutus', 'Pages\HomeController@aboutus')->name('aboutus');
   Route::get('/guide', 'Pages\HomeController@guide')->name('guide');
@@ -60,6 +62,15 @@ Route::group(['prefix' =>'admin'],function()
   Route::post('/races/edit','Admin\AdminRacesController@edit')->name('admin.races.edit.submit');
   Route::delete('/races/{rid}','Admin\AdminRacesController@destroy')->name('admin.races.destroy');
   Route::post('/races/edit/{rid}','Admin\AdminRacesController@duplicate')->name('admin.races.edit.dupe');
+  //Offline
+  Route::get('/offlines','Admin\AdminOfflinesController@index')->name('admin.offlines');
+  Route::get('/offlines/search', 'Admin\AdminOfflinesController@search')->name('admin.offlines.search');
+  Route::get('/offlines/filter', 'Admin\AdminOfflinesController@filter')->name('admin.offlines.filter');
+  Route::get('/offlines/create','Admin\AdminOfflinesController@create')->name('admin.offlines.create');
+  Route::post('/offlines/create','Admin\AdminOfflinesController@store')->name('admin.offlines.submit');
+  Route::get('/offlines/edit/{fid}','Admin\AdminOfflinesController@editForm')->name('admin.offlines.edit');
+  Route::post('/offlines/edit','Admin\AdminOfflinesController@edit')->name('admin.offlines.edit.submit');
+  Route::delete('/offlines/{fid}','Admin\AdminOfflinesController@destroy')->name('admin.offlines.destroy');
   //Addons
   Route::get('/addons','Admin\AdminAddonsController@index')->name('admin.addons');
   Route::get('/addons/search', 'Admin\AdminAddonsController@search')->name('admin.addons.search');

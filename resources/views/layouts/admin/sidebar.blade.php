@@ -13,6 +13,12 @@
       @endif
 
       @if(is_array($active ))
+        <li class="{{($active['parent'] == 'offlines') ? 'active' : ''}}"><a href="{{route('admin.offlines')}}"><i class="fas fa-flag"></i> Offline</a></li>
+      @else
+        <li class=""><a href="{{route('admin.offlines')}}"><i class="fas fa-flag"></i> Offline</a></li>
+      @endif
+
+      @if(is_array($active ))
         <li class="{{($active['parent'] == 'addons') ? 'active' : ''}}"><a href="{{route('admin.addons')}}"><i class="fas fa-plus-square"></i> Addons</a></li>
           <!--<div class="children">
             <li class="{{($active['child'] == 'create') ? 'active' : ''}}"><a href="{{route('admin.addons.create')}}">Add New Addons</a></li>

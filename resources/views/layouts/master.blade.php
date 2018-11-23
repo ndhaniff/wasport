@@ -5,9 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <title>@yield('title', 'WaSport')</title>
-
-        <!-- $title . " | WaSport" -->
+        <title>@yield('title', 'WaSports')</title>
 
         <link rel="shortcut icon" href="{{ asset('img/favicon.ico') }}" >
 
@@ -123,7 +121,7 @@
             <a class="p-2 text-light" href="/">{{__("HOME")}}</a> |
             <a class="p-2 text-light" href="/guide">{{__("GUIDE")}}</a> |
             <a class="p-2 text-light" href="/races">{{__("EVENT")}}</a> |
-            <a class="p-2 text-light" href="#">{{__("OFFLINE EVENT")}}</a> |
+            <a class="p-2 text-light" href="/offline">{{__("OFFLINE EVENT")}}</a> |
             <a class="p-2 text-light" href="/howitworks">{{__("HOW IT WORKS")}}</a>
         </nav>
         </div>
@@ -195,7 +193,7 @@
               <a href="/">{{__("HOME")}}</a>
               <a href="/guide">{{__("GUIDE")}}</a>
               <a href="/races">{{__("EVENT")}}</a>
-              <a href="#">{{__("OFFLINE EVENT")}}</a>
+              <a href="/offline">{{__("OFFLINE EVENT")}}</a>
               <a href="/howitworks">{{__("HOW IT WORKS")}}</a>
             </div>
             <!--<div class="collapse navbar-collapse" id="myNavbar">
@@ -246,15 +244,15 @@
               <p><a href="/termsandconditions">{{__("Terms and Conditions")}}</a></p>
             </div>
             <div class="col-sm-12 col-md-2">
-              <h5><a href="\races">{{__("Event")}}</a></h5>
+              <h5><a href="\/aces">{{__("Event")}}</a></h5>
               <hr id="footer-title-hr">
-              <p><a href="\races#new-race">{{__("New Race")}}</a></p>
-              <p><a href="\races#past-race">{{__("Past Race")}}</a></p>
+              <p><a href="/races#new-race">{{__("New Race")}}</a></p>
+              <p><a href="/races#past-race">{{__("Past Race")}}</a></p>
             </div>
             <div class="col-sm-12 col-md-4">
               <h5>{{__("Get In Touch")}}</h5>
               <hr id="footer-title-hr">
-              <p>{{__("To work with WaSport, please click")}} <a href="\relatedcooperation">{{__("HERE")}}</a><br id="footer-br"/>
+              <p>{{__("To work with WaSports, please click")}} <a href="\relatedcooperation">{{__("HERE")}}</a><br id="footer-br"/>
               {{__("or send email to")}} info@wasportsrun.com</p>
             </div>
           </div>
@@ -265,7 +263,7 @@
         <hr id="footer-hr">
 
         <div class="container">
-          <p id="copyright">© 2018 WaSport.Designed by Jumix</p>
+          <p id="copyright">© 2018 WaSports. Designed by Jumix</p>
         </div>
       </footer>
 

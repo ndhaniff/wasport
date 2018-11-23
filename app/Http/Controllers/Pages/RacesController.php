@@ -9,6 +9,7 @@ use App\Model\Addon;
 use App\Model\Order;
 use App\Model\OrderAddon;
 use App\Model\Submission;
+use App\Model\Offline;
 use DB;
 use Auth;
 
@@ -79,5 +80,21 @@ class RacesController extends Controller
 
       return view('pages.ranking', ['race' => $race, 'orders' => $orders]);
       //return view('pages.ranking',compact('race', 'orders'));
+    }
+
+    public function offline(){
+      $offlines = DB::table('offlines')
+        ->orderBy('date', 'DESC')
+        ->get();
+
+      return view('pages.offlineraces', ['offlines' => $offlines]);
+    }
+
+    public function offlinedetails($fid){
+      $offline = DB::table('offlines')
+        ->where('fid', '=', $fid)
+        ->first();
+
+      return view('pages.offlinedetails', ['offline' => $offline]);
     }
 }

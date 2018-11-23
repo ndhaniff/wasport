@@ -61,6 +61,7 @@ class Step4Zh extends Component {
     e.preventDefault()
 
     let data = new FormData;
+    let race_id = this.state.rid
 
     data.append('firstname', this.state.firstname)
     data.append('lastname', this.state.lastname)
@@ -92,8 +93,8 @@ class Step4Zh extends Component {
         })
 
         window.setTimeout(function(){
-          location.href = location.origin + '/racedetails/' + props.getStore().rid
-        } ,3000)
+          location.href = location.origin + '/racedetails/' + race_id
+        } ,2000)
 
      } else {
           alert('something wrong')
@@ -264,7 +265,7 @@ class Step4Zh extends Component {
         <div>
 
 
-        <Form onSubmit={this.handleSubmit}>
+        <Form onSubmit={this.handleSubmit} id="register-step4">
 
           <div className="row">
             <div className="col-sm-9">

@@ -12,11 +12,12 @@ body {
     position: fixed;
     z-index: 1;
     top: 0;
-    left: 0;
+    right: 0;
     background-color: #111;
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
+    z-index: 99;
 }
 
 .sidenav a {
@@ -851,6 +852,42 @@ ol.progtrckr li.progtrckr-done:before:hover {
 .footer-buttons { display: none; }
 
 /*
+OFFLINE EVENTS
+*/
+.offline {
+  width: 45%;
+  margin: 0 auto;
+}
+
+#offline-select { float: right; }
+
+.offline .ant-list { margin-top: 1rem; }
+
+.offline .ant-list-item-meta-title>a { color:  #e02e3c; }
+
+#offline-date-block { text-align: center; }
+
+#offline-date-block #first { padding-left: 4px; }
+
+#offline-date-block #second {
+  font-size: 1rem;
+  font-weight: normal;
+  color: rgba(0,0,0,.45);
+}
+
+.offline-details #banner { max-height: 750px; }
+
+.offline-details .details { margin: 3rem 0; }
+
+.offline-details .details a { color: #e02e3c; }
+
+.offline-details h3 { font-weight: bold; }
+
+.offline-details table th { width: 120px; }
+
+.offline-details .details-gallery img { width: 100%; }
+
+/*
 ABOUT US
 */
 #aboutus h4,
@@ -1262,12 +1299,14 @@ RESPONSIVE
   .current-listing .race-img { height: 170px; }
 
   .medaldash,
-  .joineddash { width: 60%; }
+  .joineddash,
+  .offline { width: 60%; }
 }
 
 @media screen and (max-width: 1366px) {
   .medaldash,
-  .joineddash { width: 65%; }
+  .joineddash,
+  .offline { width: 65%; }
 }
 
 @media screen and (max-width: 1024px) {
@@ -1343,7 +1382,8 @@ RESPONSIVE
   .user-current, .user-others { width: 100%; }
 
   .medaldash,
-  .joineddash { width: 85%; }
+  .joineddash,
+  .offline { width: 85%; }
 }
 
 @media screen and (max-width: 800px) {
@@ -1452,7 +1492,8 @@ RESPONSIVE
   .user-others a { margin: 1rem 0; }
 
   .medaldash,
-  .joineddash { width: 100%; }
+  .joineddash,
+  .offline { width: 100%; }
 
   canvas { width: 100%; }
 
@@ -1475,6 +1516,11 @@ RESPONSIVE
   }
 
   .finisher-mobile { display: block; }
+
+  .offline-details #banner {
+    max-height: unset;
+    width: 100% !important;
+  }
 }
 
 @media screen and (max-width: 414px) {

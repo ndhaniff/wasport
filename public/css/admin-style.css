@@ -60,3 +60,7 @@ label, option {
   height: 30px;
   margin-top: -5px;
 }
+
+.sidebar {
+    background-color: #212d33;
+}

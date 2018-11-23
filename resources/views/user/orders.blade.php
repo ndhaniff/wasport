@@ -1,9 +1,5 @@
 @extends('layouts.master')
 
-@section('title')
-Orders | WaSportsrun
-@endsection
-
 @section('content')
 
 <style>

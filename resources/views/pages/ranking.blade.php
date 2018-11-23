@@ -28,7 +28,7 @@ var firstcategory = items[0]
 
 <div class="ranking p-5">
   <div class="container">
-    <h1>Rankings</h1>
+    <h2>{{__("Rankings")}}</h2>
     <?php if(app()->getLocale() == 'en')
             echo '<h4>' .$race->title_en. '</h4>';
           if(app()->getLocale() == 'ms')
