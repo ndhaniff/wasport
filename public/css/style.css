@@ -74,6 +74,8 @@ ol.progtrckr li {
   margin: 0 -5px;
 }
 
+ol.progtrckr li:last-child { display: none; }
+
 ol.progtrckr li span {
   padding: 0 1.5rem;
 }

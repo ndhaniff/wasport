@@ -555,7 +555,8 @@ let countdownRegister = new Date('<?= $countRegisterDate ?>').getTime(),
       add_sl: "{{$user->add_sl}}",
       city: "{{$user->city}}",
       state: "{{$user->state}}",
-      postal: "{{$user->postal}}"
+      postal: "{{$user->postal}}",
+      email: "{{$user->email}}"
     }
   </script>
 @else
@@ -567,6 +568,7 @@ let countdownRegister = new Date('<?= $countRegisterDate ?>').getTime(),
     phone: "",
     gender: "",
     birthday: "",
+    email: "",
     add_fl: "",
     add_sl: "",
     city: "",

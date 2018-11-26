@@ -19,6 +19,7 @@ class Step1 extends Component {
       phone: props.getStore().phone,
       gender: props.getStore().gender,
       birthday: props.getStore().birthday,
+      email: props.getStore().email,
       rid: props.getStore().rid,
     };
   }
@@ -48,6 +49,7 @@ class Step1 extends Component {
             gender : data.gender,
             phone : data.prefix + data.phone,
             birthday : data.birthday.format('MM-DD-YYYY'),
+            email : data.email,
             savedToCloud: false // use this to notify step4 that some changes took place and prompt the user to save again
           });
 
@@ -153,6 +155,24 @@ class Step1 extends Component {
               <Input addonBefore={prefixSelector} style={{ width: '100%' }} />
           )}
           </FormItem>
+
+          <FormItem
+            {...formItemLayout}
+            label={(
+              <span>
+                Birthday&nbsp;
+              </span>
+            )}
+            hasFeedback
+          >
+            {getFieldDecorator('birthday', {
+              rules: [{ required: true, type: 'object', message: 'Please select your birthday!' }],
+              initialValue: theDate.isValid() ? moment(this.state.birthday, "MM-DD-YYYY") : ""
+            })(
+              <DatePicker format="MM-DD-YYYY" />
+            )}
+          </FormItem>
+
           <FormItem
             labelCol = {{
                 xs: { span: 6 },
@@ -184,22 +204,21 @@ class Step1 extends Component {
           )}
         </FormItem>
 
-
           <FormItem
-            {...formItemLayout}
-            label={(
-              <span>
-                Birthday&nbsp;
-              </span>
-            )}
-            hasFeedback
-          >
-            {getFieldDecorator('birthday', {
-              rules: [{ required: true, type: 'object', message: 'Please select your birthday!' }],
-              initialValue: theDate.isValid() ? moment(this.state.birthday, "MM-DD-YYYY") : ""
-            })(
-              <DatePicker format="MM-DD-YYYY" />
-            )}
+              {...formItemLayout}
+              label={(
+                <span>
+                  Email&nbsp;
+                </span>
+              )}
+              hasFeedback
+            >
+              {getFieldDecorator('email', {
+                rules: [{ required: true, message: 'Please input your email!', whitespace: true }],
+                initialValue: this.state.email != null ? this.state.email : ""
+              })(
+                <Input />
+              )}
           </FormItem>
 
         <FormItem {...formItemLayoutWithOutLabel}>

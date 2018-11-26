@@ -19,6 +19,11 @@ use DB;
 
 class UserController extends Controller
 {
+    private $merchantcode = 'M18793';
+    private $merchantkey = 'flICG0S4Ul';
+    private $responseurl = 'http://wasportsrun.com/payment/ipay88/callback';
+    private $backendurl = 'http://wasportsrun.com/payment/ipay88/backendcallback';
+
     public function __construct(){
       $this->middleware('auth');
     }
@@ -192,6 +197,7 @@ class UserController extends Controller
       $order->o_phone = $request->get('phone');
       $order->o_gender = $request->get('gender');
       $order->o_birthday = $request->get('birthday');
+      $order->o_email = $request->get('email');
       $order->o_add_fl = $request->get('add_fl');
       $order->o_add_sl = $request->get('add_sl');
       $order->o_city = $request->get('city');
@@ -199,6 +205,7 @@ class UserController extends Controller
       $order->o_postal = $request->get('postal');
       $order->race_category = $request->get('race_category');
       $order->race_status = 'awaiting';
+      $order->payment_status = 'pending';
       $order->shipment = 'order placed';
       $order->race_id = $request->get('rid');
       $order->user_id = $request->get('uid');
@@ -229,7 +236,20 @@ class UserController extends Controller
         }
       }
 
-      return response()->json(['success' => true], 200);
+      //generate digial signature
+      $orderamount = $request->get('order_amount');
+      $hashamount = str_replace('.','',str_replace(',','',$orderamount));
+      $merchantkey = $this->merchantkey;
+      $merchantcode = $this->merchantcode;
+      $responseURL = $this->responseurl;
+      $backendURL = $this->backendurl;
+      $digital_signature = $merchantkey.$merchantcode.$oid.$hashamount.'MYR';
+      $hashsign = hash('sha256', $digital_signature);
+
+      return response()->json(['success' => true, 'oid' => $oid,
+                                'hashsign' => $hashsign, 'merchantkey' => $merchantkey,
+                                'merchantcode' => $merchantcode, 'responseURL' => $responseURL,
+                                'backendURL' => $backendURL], 200);
     }
 
     public function viewMedals() {
@@ -305,9 +325,8 @@ class UserController extends Controller
       $date = date('Y-m-d');
 
       $orders = DB::table('orders')
-
-      ->join('races', 'races.rid', '=', 'race_id')
-      ->where('user_id', '=', Auth::id())
+        ->join('races', 'races.rid', '=', 'race_id')
+        ->where('user_id', '=', Auth::id())
         ->orderBy('date_to', 'DESC')
         ->get();
 
@@ -399,4 +418,75 @@ class UserController extends Controller
 
       return response()->json(['success' => true], 200 );
     }
+
+    public function callback() {
+
+		  $expected_sign = $_POST['Signature'];
+	    $merchantcode = $this->merchantcode;
+      $merchantkey = $this->merchantkey;
+
+		  $check_sign = '';
+		  $ipaySignature = '';
+		  $str = '';
+		  $HashAmount = '';
+      $orderID = $_POST['RefNo'];
+
+		  $HashAmount = str_replace(array(',','.'), "", $_POST['Amount']);
+		  $str = $merchantkey . $merchantcode . $_POST['PaymentId'].trim(stripslashes($orderID)). $HashAmount . $_POST['Currency'] . $_POST['Status'];
+      $str = sha1($str);
+
+	    for ($i=0;$i<strlen($str);$i=$i+2) {
+        $ipaySignature .= chr(hexdec(substr($str,$i,2)));
+		  }
+
+		  $check_sign = base64_encode($ipaySignature);
+
+      //Payment success
+	     if ($_POST['Status']=="1" && $check_sign==$expected_sign) {
+         //update order payment to success
+         $order = Order::find($orderID);
+         $order->payment_status = 'paid';
+
+         return view('payment.paymentsuccess');
+
+		     } else { return view('payment.paymentfail'); }
+
+	}
+
+  public function backendcallback() {
+
+    $expected_sign = $_POST['Signature'];
+    $merchantcode = $this->merchantcode;
+    $merchantkey = $this->merchantkey;
+
+    $check_sign = '';
+    $ipaySignature = '';
+    $str = '';
+    $HashAmount = '';
+    $orderID = $_POST['RefNo'];
+
+		$HashAmount = str_replace(array(',','.'), "", $_POST['Amount']);
+		$str = $ikey . $merId . $_POST['PaymentId'].trim(stripslashes($_POST['RefNo'])). $HashAmount . $_POST['Currency'] . $_POST['Status'];
+
+
+    $HashAmount = str_replace(array(',','.'), "", $_POST['Amount']);
+    $str = $merchantkey . $merchantcode . $_POST['PaymentId'].trim(stripslashes($orderID)). $HashAmount . $_POST['Currency'] . $_POST['Status'];
+    $str = sha1($str);
+
+    for ($i=0;$i<strlen($str);$i=$i+2) {
+      $ipaySignature .= chr(hexdec(substr($str,$i,2)));
+    }
+
+    $check_sign = base64_encode($ipaySignature);
+
+    //Payment success
+     if ($_POST['Status']=="1" && $check_sign==$expected_sign) {
+       //update order payment to success
+       $order = Order::find($orderID);
+       $order->payment_status = 'paid';
+
+       return view('payment.paymentsuccessbackend');
+
+     } else { return view('payment.paymentfail'); }
+   }
 }

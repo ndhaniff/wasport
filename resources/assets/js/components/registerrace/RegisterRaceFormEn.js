@@ -6,6 +6,7 @@ import Step1 from './steps/Step1'
 import Step2 from './steps/Step2'
 import Step3 from './steps/Step3'
 import Step4 from './steps/Step4'
+import Step5 from './steps/Step5'
 
 class RegisterRaceFormEn extends Component {
   constructor(props) {
@@ -19,6 +20,7 @@ class RegisterRaceFormEn extends Component {
       phone: window.user.phone,
       gender: window.user.gender,
       birthday: window.user.birthday,
+      email: window.user.email,
       add_fl: window.user.add_fl,
       add_sl: window.user.add_sl,
       city: window.user.city,
@@ -40,6 +42,17 @@ class RegisterRaceFormEn extends Component {
       addon_4: '',
       addon_5: '',
       addons_selected: [],
+      MerchantCode: '',
+      RefNo: '',
+      Amount: '',
+      ProdDesc: '',
+      UserName: '',
+      UserEmail: '',
+      UserContact: '',
+      Remark: '',
+      Signature: '',
+      ResponseURL: '',
+      BackendURL: '',
     };
   }
 
@@ -65,6 +78,7 @@ class RegisterRaceFormEn extends Component {
       {name: 'Address', component: <Step2 getStore={() => (this.getStore())} updateStore={(u) => {this.updateStore(u)}} />},
       {name: 'Race', component: <Step3 getStore={() => (this.getStore())} updateStore={(u) => {this.updateStore(u)}} />},
       {name: 'Confirm', component: <Step4 getStore={() => (this.getStore())} updateStore={(u) => {this.updateStore(u)}} />},
+      {name: '', component: <Step5 getStore={() => (this.getStore())} updateStore={(u) => {this.updateStore(u)}} />},
     ]
 
     return (
