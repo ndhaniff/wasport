@@ -39,8 +39,6 @@ Route::group([
   Route::get('/vieworders', 'User\UserController@viewOrders' )->name('user.vieworders');
   Route::get('/payment/ipay88/callback', 'User\UserController@callback')->name('callback');
   Route::get('/payment/ipay88/backendcallback', 'User\UserController@backendcallback')->name('backendcallback');
-  Route::get('/payment/paymentsuccess', 'User\UserController@callback')->name('callback');
-  Route::get('/payment/paymentfailure', 'User\UserController@backendcallback')->name('backendcallback');
 
   Auth::routes();
 
