@@ -88,8 +88,8 @@ svg:not(:root) { display: none !important; }
           if($uid != '') {
             //check register or not
             foreach($orders as $order) {
-              if($order->user_id == $uid && $order->race_id == $race->rid) {
-                $isRegistered = true;
+              if($order->payment_status == 'paid') {
+                  $isRegistered = 'true';
               }
             }
 
@@ -395,7 +395,7 @@ svg:not(:root) { display: none !important; }
             if($uid != '') {
               //check register or not
               foreach($orders as $order) {
-                if($order->user_id == $uid && $order->race_id == $race->rid) {
+                if($order->payment_status == 'paid') {
                   $isRegistered = true;
                 }
               }
@@ -403,7 +403,9 @@ svg:not(:root) { display: none !important; }
               if($isRegistered) {
                 echo '<h4>' .__("You had registered"). '</h4>';
                 echo '<a href="/dashboard" class="race-register-btn">' .__("Go to profile"). '</a>';
-              } else {
+              }
+
+              if(!$isRegistered) {
                 if($race->price == 0)
                   echo '<h3>' .__("Free"). '</h3>';
                 else

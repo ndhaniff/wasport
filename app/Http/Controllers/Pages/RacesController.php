@@ -34,6 +34,8 @@ class RacesController extends Controller
 
     public function details($rid) {
 
+      $user = Auth::user();
+
       $race = DB::table('races')
         ->where('rid', '=', $rid)
         ->first();
@@ -42,9 +44,10 @@ class RacesController extends Controller
         ->where('races_id', '=', $rid)
         ->get();
 
-      $orders = DB::table('orders')->get();
-
-      $user = Auth::user();
+      $orders = DB::table('orders')
+        ->where('user_id', '=', Auth::id())
+        ->where('race_id', '=', $rid)
+        ->get();
 
       $date = date('Y-m-d');
 

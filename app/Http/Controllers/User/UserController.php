@@ -62,6 +62,7 @@ class UserController extends Controller
 
       $number_count = DB::table('orders')
         ->where('user_id', '=', Auth::id())
+        ->where('payment_status', '=', 'paid')
         ->get();
 
       $date = date('Y-m-d');
@@ -69,6 +70,7 @@ class UserController extends Controller
       $latest_race = DB::table('orders')
         ->join('races', 'races.rid', '=', 'race_id')
         ->where('user_id', '=', Auth::id())
+        ->where('payment_status', '=', 'paid')
         ->orderBy('date_from', 'DESC')
         ->get();
 
@@ -86,6 +88,7 @@ class UserController extends Controller
         ->join('orders', 'medals.races_id', '=', 'orders.race_id')
         ->join('races', 'medals.races_id', '=', 'races.rid')
         ->where('user_id', '=', Auth::id())
+        ->where('payment_status', '=', 'paid')
         ->orderBy('date_from', 'DESC')
         ->get();
 
@@ -264,6 +267,7 @@ class UserController extends Controller
         ->join('orders', 'medals.races_id', '=', 'orders.race_id')
         ->join('races', 'medals.races_id', '=', 'races.rid')
         ->where('user_id', '=', Auth::id())
+        ->where('payment_status', '=', 'paid')
         ->get();
 
       $usermedals = DB::table('medals')
@@ -285,6 +289,7 @@ class UserController extends Controller
       $current_races = DB::table('orders')
         ->join('races', 'races.rid', '=', 'race_id')
         ->where('user_id', '=', Auth::id())
+        ->where('payment_status', '=', 'paid')
         ->where('date_to', '>', $date)
         ->orderBy('date_from', 'ASC')
         ->get();
@@ -292,6 +297,7 @@ class UserController extends Controller
       $past_races = DB::table('orders')
         ->join('races', 'races.rid', '=', 'race_id')
         ->where('user_id', '=', Auth::id())
+        ->where('payment_status', '=', 'paid')
         ->where('date_to', '<', $date)
         ->orderBy('date_from', 'DESC')
         ->get();
@@ -299,6 +305,7 @@ class UserController extends Controller
       $now_races = DB::table('orders')
         ->join('races', 'races.rid', '=', 'race_id')
         ->where('user_id', '=', Auth::id())
+        ->where('payment_status', '=', 'paid')
         ->where('date_to', '=', $date)
         ->get();
 
