@@ -37,8 +37,6 @@ Route::group([
   Route::get('/viewMedals', 'User\UserController@viewMedals' )->name('user.viewMedals');
   Route::get('/viewjoined', 'User\UserController@viewJoined' )->name('user.viewjoined');
   Route::get('/vieworders', 'User\UserController@viewOrders' )->name('user.vieworders');
-  Route::get('/payment/ipay88/callback', 'User\UserController@callback')->name('callback');
-  Route::get('/payment/ipay88/backendcallback', 'User\UserController@backendcallback')->name('backendcallback');
 
   Auth::routes();
 
@@ -148,8 +146,10 @@ Route::post('/user/deleteSubmission', 'User\UserController@deleteSubmission' )->
 Route::post('/user/submitrace', 'User\UserController@submitRace')->name('user.submitrace');
 Route::post('/ipay88/submitrace', 'API\IPay88Controller@submitRace')->name('ipay88.submitrace');
 
-//Make payment
-Route::post('/ipay88/makepayment', 'API\IPay88Controller@makePayment')->name('ipay88.makepayment');
+//iPay88
+Route::post('/payment/ipay88/callback', 'User\UserController@callback')->name('callback');
+Route::post('/payment/ipay88/backendcallback', 'User\UserController@backendcallback')->name('backendcallback');
+//Route::post('/ipay88/makepayment', 'API\IPay88Controller@makePayment')->name('ipay88.makepayment');
 
 //Contact Us
 Route::post('/submitcontact', 'Pages\ContactController@submitContact')->name('submitcontact');
