@@ -1286,6 +1286,13 @@ RANK
 .rank-table { margin-top: 1rem; }
 
 /*
+PAYMENT
+*/
+#paymentfailure,
+#paymentsuccess { padding-top: 8rem; }
+
+
+/*
 RESPONSIVE
 */
 @media screen and (max-width: 1680px) {

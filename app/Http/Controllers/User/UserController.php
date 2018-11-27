@@ -449,14 +449,14 @@ class UserController extends Controller
 		  $check_sign = base64_encode($ipaySignature);
 
       //Payment success
-	     if ($_POST['Status']=="1" && $check_sign==$expected_sign) {
+	    if ($_POST['Status']=="1" && $check_sign==$expected_sign) {
          //update order payment to success
          $order = Order::find($orderID);
          $order->payment_status = 'paid';
 
          return view('payment.paymentsuccess');
 
-		     } else { return view('payment.paymentfail'); }
+		  } else { return view('payment.paymentfail'); }
 
 	}
 

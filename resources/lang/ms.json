@@ -129,5 +129,9 @@
     "Location" : "Lokasi",
     "Category" : "Kategori",
     "Website" : "Laman Web",
-    "Go to website" : "Pergi ke laman web"
+    "Go to website" : "Pergi ke laman web",
+    "View Dashboard": "Lihat Dashboard",
+    "Thank You!" : "Terima Kasih",
+    "Your Transaction was Successful" : "Transaksi anda berjaya",
+    "Your Transaction was not successful" : "Transaki anda tidak berjaya"
   }

@@ -130,5 +130,9 @@
     "Location" : "地点",
     "Category" : "类别",
     "Website" : "网站",
-    "Go to website" : "前往网站"
+    "Go to website" : "前往网站",
+    "View Dashboard": "看仪表板",
+    "Thank You!" : "谢谢",
+    "Your Transaction was Successful" : "交易成功",
+    "Your Transaction was not successful" : "交易失败"
   }
