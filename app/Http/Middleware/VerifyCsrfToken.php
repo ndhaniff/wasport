@@ -15,6 +15,6 @@ class VerifyCsrfToken extends Middleware
         "/user/upload",
         "https://payment.ipay88.com.my/*",
         "/payment/ipay88/callback",
-        '/payment/ipay88/backendcallback'
+        "/payment/ipay88/backendcallback"
     ];
 }

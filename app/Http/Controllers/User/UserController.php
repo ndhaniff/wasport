@@ -462,7 +462,7 @@ class UserController extends Controller
 
          return view('payment.paymentsuccess');
 
-		  } else { return view('payment.paymentfail'); }
+		  } else { return view('payment.paymentfailure'); }
 
 	}
 
