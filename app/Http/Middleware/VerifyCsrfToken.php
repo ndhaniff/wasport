@@ -12,6 +12,7 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        "/user/upload"
+        "/user/upload",
+        "https://payment.ipay88.com.my/*"
     ];
 }
