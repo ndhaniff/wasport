@@ -100,11 +100,11 @@ svg:not(:root) { display: none !important; }
             } else {
               if($race->price == 0) {
                 echo '<div class="row"><div style="width: 50%;">';
-                echo '<h3 style="padding-top: 3px;">' .__("Free"). '</h3></div>';
+                echo '<h3 style="padding-top: 3px;">' .__("Free"). '</h3></div></div>';
               }
               if($race->price != 0) {
                 echo '<div class="row"><div style="width: 50%;">';
-                echo '<h3 style="padding-top: 3px;">RM ' .number_format($race->price, 2). '</h3></div>';
+                echo '<h3 style="padding-top: 3px;">RM ' .number_format($race->price, 2). '</h3></div></div>';
               }
 
               if($cur < $deadline) {
@@ -116,7 +116,7 @@ svg:not(:root) { display: none !important; }
                 if(app()->getLocale() == 'zh')
                   echo '<div id="register-race-mobile-zh"></div>';
 
-                echo '</div></div>';
+                echo '</div>';
               } else {
                 echo '<button type="button" class="race-register-btn" disabled>' .__("Registration closed"). '</button>';
               }
@@ -305,6 +305,7 @@ svg:not(:root) { display: none !important; }
                 echo "<img src='" .asset('storage/uploaded/addons/' . $addon->descimg_5). "' alt='" .$addon->add_en. "'><br /><br />";
               if($addon->descimg_6 != '')
                 echo "<img src='" .asset('storage/uploaded/addons/' . $addon->descimg_6). "' alt='" .$addon->add_en. "'><br /><br />";
+
               if(app()->getLocale() == 'en') {
                 echo '<b>';
                 echo $i+1 .'. ' .$addon->add_en. ' - RM' .number_format($addon->addprice, 2);

@@ -208,7 +208,6 @@ class UserController extends Controller
       $order->o_postal = $request->get('postal');
       $order->race_category = $request->get('race_category');
       $order->race_status = 'awaiting';
-      $order->payment_status = 'pending';
       $order->shipment = 'order placed';
       $order->race_id = $request->get('rid');
       $order->user_id = $request->get('uid');
@@ -220,6 +219,13 @@ class UserController extends Controller
       } else {
         $order->engrave_name = $engraveName;
       }
+
+      $orderamount = $request->get('order_amount');
+      //if race is not free update payment status to pending
+      //if race is race is free update payment status to paid
+      if($orderamount != '0.00') {
+        $order->payment_status = 'pending';
+      } else { $order->payment_status = 'paid'; }
 
       $order->save();
 

@@ -120,7 +120,10 @@ class Step4 extends Component {
           savedToCloud: false // use this to notify step4 that some changes took place and prompt the user to save again
         });
 
-        this.jumpToStep(4)
+        if(order_amount != '0.00')
+          this.jumpToStep(4)
+        else
+          location.href = location.origin + '/racedetails/' + race_id
 
      } else {
           alert('something wrong')
