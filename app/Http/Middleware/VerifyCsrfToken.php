@@ -13,6 +13,8 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         "/user/upload",
-        "https://payment.ipay88.com.my/*"
+        "https://payment.ipay88.com.my/*",
+        "/payment/ipay88/callback",
+        '/payment/ipay88/backendcallback'
     ];
 }
