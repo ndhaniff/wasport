@@ -1,1 +1,1 @@
-"RECEIVEOK"
+<?php echo "RECEIVEOK"; ?>
