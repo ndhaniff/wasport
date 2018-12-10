@@ -444,9 +444,11 @@ class UserController extends Controller
 		  $str = '';
 		  $HashAmount = '';
       $orderID = $_POST['RefNo'];
+      $paymentID = $_POST['PaymentId'];
+      $paymentStatus = $_POST['Status'];
 
 		  $HashAmount = str_replace(array(',','.'), "", $_POST['Amount']);
-		  $str = $merchantkey . $merchantcode . $_POST['PaymentId'].trim(stripslashes($orderID)). $HashAmount . $_POST['Currency'] . $_POST['Status'];
+		  $str = $merchantkey . $merchantcode . $paymentID .trim(stripslashes($orderID)). $HashAmount . $_POST['Currency'] . $paymentStatus;
       $str = sha1($str);
 
 	    for ($i=0;$i<strlen($str);$i=$i+2) {
@@ -457,12 +459,14 @@ class UserController extends Controller
 
       $payment = new Payment();
       $payment->check_sign = $check_sign;
-      $payment->expected_sign= $expected_sign;
+      $payment->expected_sign = $expected_sign;
       $payment->order_id = $orderID;
+      $payment->payment_id = $paymentID;
+      $payment->payment_status = $paymentStatus;
       $payment->save();
 
       //Payment success
-	    if ($_POST['Status']=="1" && $check_sign==$expected_sign) {
+	    if ($paymentStatus == "1") {
          //update order payment to success
          $order = Order::find($orderID);
          $order->payment_status = 'paid';
@@ -485,9 +489,11 @@ class UserController extends Controller
     $str = '';
     $HashAmount = '';
     $orderID = $_POST['RefNo'];
+    $paymentID = $_POST['PaymentId'];
+    $paymentStatus = $_POST['Status'];
 
 		$HashAmount = str_replace(array(',','.'), "", $_POST['Amount']);
-    $str = $merchantkey . $merchantcode . $_POST['PaymentId'].trim(stripslashes($orderID)). $HashAmount . $_POST['Currency'] . $_POST['Status'];
+    $str = $merchantkey . $merchantcode . $paymentID .trim(stripslashes($orderID)). $HashAmount . $_POST['Currency'] . $paymentStatus;
     $str = sha1($str);
 
     for ($i=0;$i<strlen($str);$i=$i+2) {
@@ -500,10 +506,12 @@ class UserController extends Controller
     $payment->check_sign = $check_sign;
     $payment->expected_sign= $expected_sign;
     $payment->order_id = $orderID;
+    $payment->payment_id = $paymentID;
+    $payment->payment_status = $paymentStatus;
     $payment->save();
 
     //Payment success
-     if ($_POST['Status']=="1" && $check_sign==$expected_sign) {
+     if ($paymentStatus == "1") {
        //update order payment to success
        $order = Order::find($orderID);
        $order->payment_status = 'paid';

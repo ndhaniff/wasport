@@ -11,6 +11,27 @@ svg:not(:root) { display: none; }
 .anticon-close-circle:before, .anticon-cross-circle:before { display: none; }
 </style>
 
+<?php
+
+$merchantcode = 'M18793';
+$merchantkey = 'flICG0S4Ul';
+$orderID = '10015';
+$str = $merchantkey . $merchantcode . '3' .trim(stripslashes($orderID)). '100' . 'MYR' . '1';
+
+$str = sha1($str);
+
+$ipaySignature = '';
+
+for ($i=0;$i<strlen($str);$i=$i+2) {
+  $ipaySignature .= chr(hexdec(substr($str,$i,2)));
+}
+
+$check_sign = base64_encode($ipaySignature);
+
+echo $check_sign;
+
+?>
+
 <?php date_default_timezone_set("Asia/Kuala_Lumpur");
       $date = date('Y-m-d H:i a');
       $latest_race_arr = array();
