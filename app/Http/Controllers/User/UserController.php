@@ -56,7 +56,7 @@ class UserController extends Controller
       $date = date('Y-m-d');
 
       $races = DB::table('races')
-        ->where('dead_from', '>', $date)
+        ->where('dead_to', '>', $date)
         ->orderBy('date_from')
         ->limit(3)
         ->get();
@@ -459,12 +459,14 @@ class UserController extends Controller
       $payment->check_sign = $check_sign;
       $payment->expected_sign= $expected_sign;
       $payment->order_id = $orderID;
+      $payment->save();
 
       //Payment success
 	    if ($_POST['Status']=="1" && $check_sign==$expected_sign) {
          //update order payment to success
          $order = Order::find($orderID);
          $order->payment_status = 'paid';
+         $order->save();
 
          return view('payment.paymentsuccess');
 
@@ -502,12 +504,14 @@ class UserController extends Controller
     $payment->check_sign = $check_sign;
     $payment->expected_sign= $expected_sign;
     $payment->order_id = $orderID;
+    $payment->save();
 
     //Payment success
      if ($_POST['Status']=="1" && $check_sign==$expected_sign) {
        //update order payment to success
        $order = Order::find($orderID);
        $order->payment_status = 'paid';
+       $order->save();
 
        return view('payment.paymentsuccessbackend');
 
