@@ -14,6 +14,7 @@ use App\Model\Addon;
 use App\Model\Order;
 use App\Model\OrderAddon;
 use App\Model\Submission;
+use App\Model\Payment;
 use Auth;
 use DB;
 
@@ -454,6 +455,11 @@ class UserController extends Controller
 
 		  $check_sign = base64_encode($ipaySignature);
 
+      $payment = new Payment();
+      $payment->check_sign = $check_sign;
+      $payment->expected_sign= $expected_sign;
+      $payment->order_id = $orderID;
+
       //Payment success
 	    if ($_POST['Status']=="1" && $check_sign==$expected_sign) {
          //update order payment to success
@@ -492,6 +498,11 @@ class UserController extends Controller
 
     $check_sign = base64_encode($ipaySignature);
 
+    $payment = new Payment();
+    $payment->check_sign = $check_sign;
+    $payment->expected_sign= $expected_sign;
+    $payment->order_id = $orderID;
+
     //Payment success
      if ($_POST['Status']=="1" && $check_sign==$expected_sign) {
        //update order payment to success
@@ -500,6 +511,6 @@ class UserController extends Controller
 
        return view('payment.paymentsuccessbackend');
 
-     } else { return view('payment.paymentfail'); }
+     } else { return view('payment.paymentfailure'); }
    }
 }
