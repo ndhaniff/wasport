@@ -182,7 +182,8 @@ class AdminOrdersController extends Controller
         ->orderBy('sid', 'DESC')
         ->get();
 
-      return view('auth.admin.orders.index',compact('orders', 'races', 'addons', 'order_addons', 'allorders', 'submissions'));
+      //return view('auth.admin.orders.index',compact('orders', 'races', 'addons', 'order_addons', 'allorders', 'submissions'));
+      return redirect()->back();
     }
 
     public function notifyUser($oid) {

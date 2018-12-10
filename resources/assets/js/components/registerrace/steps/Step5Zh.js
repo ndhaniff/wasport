@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
 const MySwal = withReactContent(Swal);
 const FormItem = Form.Item;
 
-class Step5 extends Component {
+class Step5Zh extends Component {
   constructor(props) {
     super(props);
 
@@ -44,7 +44,7 @@ class Step5 extends Component {
 
     return(
         <div>
-          You will be directed to the payment page.
+          你将会转移至付款的页面。
 
           <Form onSubmit={this.handleSubmit} method="post" name="ePayment" action="https://payment.ipay88.com.my/ePayment/entry.asp">
             <Input type="hidden" name="MerchantCode" value={this.state.MerchantCode} />
@@ -69,6 +69,6 @@ class Step5 extends Component {
   }
 }
 
-const Step5Form = Form.create()(Step5);
+const Step5Form = Form.create()(Step5Zh);
 
 export default Step5Form

@@ -181,7 +181,7 @@ class ProfileZh extends React.Component{
             {...formItemLayout}
             label={(
               <span>
-                用户民&nbsp;
+                用户名&nbsp;
               </span>
             )}
             hasFeedback

@@ -19,6 +19,7 @@ class Step1Zh extends Component {
       phone: props.getStore().phone,
       gender: props.getStore().gender,
       birthday: props.getStore().birthday,
+      email: props.getStore().email,
       rid: props.getStore().rid,
     };
   }
@@ -48,6 +49,7 @@ class Step1Zh extends Component {
             gender : data.gender,
             phone : data.prefix + data.phone,
             birthday : data.birthday.format('MM-DD-YYYY'),
+            email : data.email,
             savedToCloud: false // use this to notify step4 that some changes took place and prompt the user to save again
           });
 
@@ -154,6 +156,22 @@ class Step1Zh extends Component {
           )}
           </FormItem>
           <FormItem
+            {...formItemLayout}
+            label={(
+              <span>
+                生日日期&nbsp;
+              </span>
+            )}
+            hasFeedback
+          >
+            {getFieldDecorator('birthday', {
+              rules: [{ required: true, type: 'object', message: '请选择生日日期!' }],
+              initialValue: theDate.isValid() ? moment(this.state.birthday, "MM-DD-YYYY") : ""
+            })(
+              <DatePicker format="MM-DD-YYYY" />
+            )}
+          </FormItem>
+          <FormItem
             labelCol = {{
                 xs: { span: 6 },
                 sm: { span: 6 },
@@ -183,24 +201,22 @@ class Step1Zh extends Component {
             </Select>
           )}
         </FormItem>
-
-
-          <FormItem
+        <FormItem
             {...formItemLayout}
             label={(
               <span>
-                生日日期&nbsp;
+                电子邮箱&nbsp;
               </span>
             )}
             hasFeedback
           >
-            {getFieldDecorator('birthday', {
-              rules: [{ required: true, type: 'object', message: '请选择生日日期!' }],
-              initialValue: theDate.isValid() ? moment(this.state.birthday, "MM-DD-YYYY") : ""
+            {getFieldDecorator('email', {
+              rules: [{ required: true, message: '请填入电子邮箱!', whitespace: true }],
+              initialValue: this.state.email != null ? this.state.email : ""
             })(
-              <DatePicker format="MM-DD-YYYY" />
+              <Input />
             )}
-          </FormItem>
+        </FormItem>
 
         <FormItem {...formItemLayoutWithOutLabel}>
           <Button type="primary" onClick={() => window.history.back()} id="register-race-prev">上一步</Button>

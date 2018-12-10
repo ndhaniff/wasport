@@ -6,6 +6,7 @@ import Step1 from './steps/Step1Zh'
 import Step2 from './steps/Step2Zh'
 import Step3 from './steps/Step3Zh'
 import Step4 from './steps/Step4Zh'
+import Step5 from './steps/Step5Zh'
 
 class RegisterRaceFormZh extends Component {
   constructor(props) {
@@ -19,6 +20,7 @@ class RegisterRaceFormZh extends Component {
       phone: window.user.phone,
       gender: window.user.gender,
       birthday: window.user.birthday,
+      email: window.user.email,
       add_fl: window.user.add_fl,
       add_sl: window.user.add_sl,
       city: window.user.city,
@@ -26,6 +28,7 @@ class RegisterRaceFormZh extends Component {
       postal: window.user.postal,
       savedToCloud: false,
       rid: window.race.rid,
+      title_en: window.race.title_en,
       title_zh: window.race.title_zh,
       price: window.race.price,
       category: window.race.category,
@@ -40,6 +43,17 @@ class RegisterRaceFormZh extends Component {
       addon_4: '',
       addon_5: '',
       addons_selected: [],
+      MerchantCode: '',
+      RefNo: '',
+      Amount: '',
+      ProdDesc: '',
+      UserName: '',
+      UserEmail: '',
+      UserContact: '',
+      Remark: '',
+      Signature: '',
+      ResponseURL: '',
+      BackendURL: '',
     };
   }
 
@@ -65,6 +79,7 @@ class RegisterRaceFormZh extends Component {
       {name: '邮寄地址', component: <Step2 getStore={() => (this.getStore())} updateStore={(u) => {this.updateStore(u)}} />},
       {name: '项目', component: <Step3 getStore={() => (this.getStore())} updateStore={(u) => {this.updateStore(u)}} />},
       {name: '确认', component: <Step4 getStore={() => (this.getStore())} updateStore={(u) => {this.updateStore(u)}} />},
+      {name: '', component: <Step5 getStore={() => (this.getStore())} updateStore={(u) => {this.updateStore(u)}} />},
     ]
 
     return (

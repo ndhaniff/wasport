@@ -111,6 +111,7 @@ Route::group(['prefix' =>'admin'],function()
   Route::delete('/orders/{oid}','Admin\AdminOrdersController@orders')->name('admin.orders.destroy');
   Route::get('/orders/edit/{oid}','Admin\AdminOrdersController@editForm')->name('admin.orders.edit');
   Route::post('/orders/edit','Admin\AdminOrdersController@edit')->name('admin.orders.edit.submit');
+  //Route::post('/orders/updateRaceStatus/{oid}', 'Admin\AdminOrdersController@updateRaceStatus')->name('admin.orders.updateRaceStatus');
   Route::post('/orders/updateRaceStatus/{oid}', 'Admin\AdminOrdersController@updateRaceStatus')->name('admin.orders.updateRaceStatus');
   Route::post('/orders/updateDeliveryStatus/{oid}', 'Admin\AdminOrdersController@updateDeliveryStatus')->name('admin.orders.updateDeliveryStatus');
   Route::post('/orders/notifyUser/{oid}', 'Admin\AdminOrdersController@notifyUser')->name('admin.orders.notifyUser');

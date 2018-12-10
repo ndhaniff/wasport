@@ -127,7 +127,7 @@
       <div class="col-sm-12 col-md-4">
         <h2>{{__("PAST RACE")}}</h2>
 
-        <a href="racedetails/{{ $new->rid }}">
+        <a href="racedetails/{{ $old->rid }}">
           <div class="race-box">
             <div class="race-img">
               <img src=" <?php echo asset('storage/uploaded/races/' . $old->header) ?>" alt="{{ $old->title_en }}">
@@ -243,7 +243,7 @@
     </div>
     </div>
   </div>
-  
+
   <div class="connect-community">
     <div class="container">
     <h2>{{__("Connect with our online and offline community")}}</h2>

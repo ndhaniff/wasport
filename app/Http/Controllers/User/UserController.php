@@ -341,6 +341,7 @@ class UserController extends Controller
       $orders = DB::table('orders')
         ->join('races', 'races.rid', '=', 'race_id')
         ->where('user_id', '=', Auth::id())
+        ->where('payment_status', '=', 'paid')
         ->orderBy('date_to', 'DESC')
         ->get();
 

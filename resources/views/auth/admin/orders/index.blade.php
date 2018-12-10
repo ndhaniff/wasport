@@ -64,6 +64,7 @@ Admin | Orders
       <th scope="col">@sortablelink('oid', 'Order ID')</th>
       <th scope="col">@sortablelink('o_firstname', 'First Name')</th>
       <th scope="col">@sortablelink('o_lastname', 'Last Name')</th>
+      <th scope="col">@sortablelink('payment_status', 'Payment Status')</th>
       <th scope="col">@sortablelink('race_status', 'Race Status')</th>
       <th scope="col">Race</th>
       <th scope="col"></th>
@@ -76,6 +77,7 @@ Admin | Orders
       <td>{{$order->oid}}</td>
       <td>{{$order->o_firstname}}</td>
       <td>{{$order->o_lastname}}</td>
+      <td>{{$order->payment_status}}</td>
       <td><?php if($order->race_status == null || $order->race_status == 'undefined') echo '<i>Awaiting review</i>'; else echo $order->race_status; ?></td>
       <td><?php foreach($races as $race) {
                   if($order->race_id == $race->rid) echo $race->title_en; } ?></td>
@@ -178,7 +180,10 @@ Admin | Orders
                       }
                     }
                 ?>
-
+                <tr>
+                  <th>Payment Status</th>
+                  <td>{{$order->payment_status}}</td>
+                </tr>
                 <tr>
                   <th>Race Status</th>
                   <td><?php if($order->race_status == null || $order->race_status == 'undefined') echo '<i>Awaiting review</i>'; else echo $order->race_status; ?></td>
@@ -310,6 +315,10 @@ Admin | Orders
                     }
                 } ?>
               <table id="review-table">
+                <tr>
+                  <th>Payment Status</th>
+                  <td>{{$order->payment_status}}</td>
+                </tr>
                 <tr>
                   <th>Race Status</th>
                   <td>{{$order->race_status}}</td>

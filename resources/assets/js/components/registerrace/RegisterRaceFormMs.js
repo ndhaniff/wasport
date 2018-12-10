@@ -6,6 +6,7 @@ import Step1 from './steps/Step1Ms'
 import Step2 from './steps/Step2Ms'
 import Step3 from './steps/Step3Ms'
 import Step4 from './steps/Step4Ms'
+import Step5 from './steps/Step5Ms'
 
 class RegisterRaceFormMs extends Component {
   constructor(props) {
@@ -19,6 +20,7 @@ class RegisterRaceFormMs extends Component {
       phone: window.user.phone,
       gender: window.user.gender,
       birthday: window.user.birthday,
+      email: window.user.email,
       add_fl: window.user.add_fl,
       add_sl: window.user.add_sl,
       city: window.user.city,
@@ -26,6 +28,7 @@ class RegisterRaceFormMs extends Component {
       postal: window.user.postal,
       savedToCloud: false,
       rid: window.race.rid,
+      title_en: window.race.title_en,
       title_ms: window.race.title_ms,
       price: window.race.price,
       category: window.race.category,
@@ -40,6 +43,17 @@ class RegisterRaceFormMs extends Component {
       addon_4: '',
       addon_5: '',
       addons_selected: [],
+      MerchantCode: '',
+      RefNo: '',
+      Amount: '',
+      ProdDesc: '',
+      UserName: '',
+      UserEmail: '',
+      UserContact: '',
+      Remark: '',
+      Signature: '',
+      ResponseURL: '',
+      BackendURL: '',
     };
   }
 
@@ -65,6 +79,7 @@ class RegisterRaceFormMs extends Component {
       {name: 'Alamat', component: <Step2 getStore={() => (this.getStore())} updateStore={(u) => {this.updateStore(u)}} />},
       {name: 'Acara', component: <Step3 getStore={() => (this.getStore())} updateStore={(u) => {this.updateStore(u)}} />},
       {name: 'Sahkan', component: <Step4 getStore={() => (this.getStore())} updateStore={(u) => {this.updateStore(u)}} />},
+      {name: '', component: <Step5 getStore={() => (this.getStore())} updateStore={(u) => {this.updateStore(u)}} />},
     ]
 
     return (
