@@ -487,10 +487,6 @@ class UserController extends Controller
     $orderID = $_POST['RefNo'];
 
 		$HashAmount = str_replace(array(',','.'), "", $_POST['Amount']);
-		$str = $ikey . $merId . $_POST['PaymentId'].trim(stripslashes($_POST['RefNo'])). $HashAmount . $_POST['Currency'] . $_POST['Status'];
-
-
-    $HashAmount = str_replace(array(',','.'), "", $_POST['Amount']);
     $str = $merchantkey . $merchantcode . $_POST['PaymentId'].trim(stripslashes($orderID)). $HashAmount . $_POST['Currency'] . $_POST['Status'];
     $str = sha1($str);
 
