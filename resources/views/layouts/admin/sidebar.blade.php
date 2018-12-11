@@ -53,4 +53,22 @@
       @else
         <li class=""><a href="{{route('admin.orders')}}"><i class="fas fa-shopping-cart"></i> Orders</a></li>
       @endif
+
+      @if(is_array($active ))
+        <li class="{{($active['parent'] == 'payments') ? 'active' : ''}}"><a href="{{route('admin.payments')}}"><i class="far fa-credit-card"></i> Payments</a></li>
+      @else
+        <li class=""><a href="{{route('admin.payments')}}"><i class="far fa-credit-card"></i> Payments</a></li>
+      @endif
+
+      @if(is_array($active ))
+        <li class="{{($active['parent'] == 'reviews') ? 'active' : ''}}"><a href="{{route('admin.reviews')}}"><i class="fas fa-clipboard-check"></i> Reviews</a></li>
+      @else
+        <li class=""><a href="{{route('admin.reviews')}}"><i class="fas fa-clipboard-check"></i> Reviews</a></li>
+      @endif
+
+      @if(is_array($active ))
+        <li class="{{($active['parent'] == 'shipments') ? 'active' : ''}}"><a href="{{route('admin.shipments')}}"><i class="fas fa-truck"></i> Shipments</a></li>
+      @else
+        <li class=""><a href="{{route('admin.shipments')}}"><i class="fas fa-truck"></i> Shipments</a></li>
+      @endif
 </aside>

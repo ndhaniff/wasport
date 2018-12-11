@@ -109,12 +109,25 @@ Route::group(['prefix' =>'admin'],function()
   Route::get('/orders/searchBy', 'Admin\AdminOrdersController@searchBy')->name('admin.orders.searchBy');
   Route::get('/orders/filterRace', 'Admin\AdminOrdersController@filterRace')->name('admin.orders.filterRace');
   Route::delete('/orders/{oid}','Admin\AdminOrdersController@orders')->name('admin.orders.destroy');
-  Route::get('/orders/edit/{oid}','Admin\AdminOrdersController@editForm')->name('admin.orders.edit');
-  Route::post('/orders/edit','Admin\AdminOrdersController@edit')->name('admin.orders.edit.submit');
-  //Route::post('/orders/updateRaceStatus/{oid}', 'Admin\AdminOrdersController@updateRaceStatus')->name('admin.orders.updateRaceStatus');
   Route::post('/orders/updateRaceStatus/{oid}', 'Admin\AdminOrdersController@updateRaceStatus')->name('admin.orders.updateRaceStatus');
   Route::post('/orders/updateDeliveryStatus/{oid}', 'Admin\AdminOrdersController@updateDeliveryStatus')->name('admin.orders.updateDeliveryStatus');
   Route::post('/orders/notifyUser/{oid}', 'Admin\AdminOrdersController@notifyUser')->name('admin.orders.notifyUser');
+  //Payments
+  Route::get('/payments','Admin\AdminOrdersController@payments')->name('admin.payments');
+  //Reviews
+  Route::get('/reviews','Admin\AdminReviewsController@index')->name('admin.reviews');
+  Route::get('/reviews/searchBy', 'Admin\AdminReviewsController@searchBy')->name('admin.reviews.searchBy');
+  Route::get('/reviews/filterRace', 'Admin\AdminReviewsController@filterRace')->name('admin.reviews.filterRace');
+  Route::delete('/reviews/{oid}','Admin\AdminReviewsController@orders')->name('admin.reviews.destroy');
+  Route::post('/reviews/updateRaceStatus/{oid}', 'Admin\AdminReviewsController@updateRaceStatus')->name('admin.reviews.updateRaceStatus');
+  Route::post('/reviews/updateDeliveryStatus/{oid}', 'Admin\AdminReviewsController@updateDeliveryStatus')->name('admin.reviews.updateDeliveryStatus');
+  //Shipments
+  Route::get('/shipments','Admin\AdminShipmentsController@index')->name('admin.shipments');
+  Route::get('/shipments/searchBy', 'Admin\AdminShipmentsController@searchBy')->name('admin.shipments.searchBy');
+  Route::get('/shipments/filterRace', 'Admin\AdminShipmentsController@filterRace')->name('admin.shipments.filterRace');
+  Route::delete('/shipments/{oid}','Admin\AdminShipmentsController@orders')->name('admin.shipments.destroy');
+  Route::post('/reviews/updateDeliveryStatus/{oid}', 'Admin\AdminShipmentsController@updateDeliveryStatus')->name('admin.shipments.updateDeliveryStatus');
+  Route::post('/reviews/notifyUser/{oid}', 'Admin\AdminShipmentsController@notifyUser')->name('admin.shipments.notifyUser');
   //Contacts
   Route::get('/contacts','Admin\AdminContactsController@index')->name('admin.contacts');
   Route::get('/contacts/search', 'Admin\AdminContactsController@search')->name('admin.contacts.search');

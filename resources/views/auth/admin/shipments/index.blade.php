@@ -1,6 +1,6 @@
-@extends('auth.admin.dashboard', ['active' => ['parent' => 'orders', 'child' => null]])
+@extends('auth.admin.dashboard', ['active' => ['parent' => 'shipments', 'child' => null]])
 @section('title')
-Admin | Orders
+Admin | Shipments
 @endsection
 @section('meta')
 
@@ -10,7 +10,7 @@ Admin | Orders
 <?php $i=1 ?>
 <div class="p-3">
 
-  <h1 style="font-size: 2.2rem">Orders</h1>
+  <h1 style="font-size: 2.2rem">Shipments</h1>
 
   <hr />
 
@@ -86,16 +86,12 @@ Admin | Orders
         <a data-toggle="modal" data-target="#orderViewer-{{$order->oid}}">
           <button type="button" class="btn btn-success"><i class="far fa-eye"></i></button>
         </a>
-        <a data-toggle="modal" data-target="#reviewViewer-{{$order->oid}}">
-          <button type="button" class="btn btn-info"><i class="fas fa-clipboard-list"></i></button>
-        </a>
         <a data-toggle="modal" data-target="#shipmentViewer-{{$order->oid}}">
           <button type="button" class="btn btn-warning"><i class="fas fa-truck"></i></button>
         </a>
-        <form method="POST" action="{{route('admin.orders.destroy',['oid' => $order->oid ])}}">
-          @method('DELETE')
+        <form method="POST" action="{{route('admin.orders.notifyUser',['oid' => $order->oid ])}}">
           @csrf
-          <button onclick="return confirm('Are you sure?')" type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+          <button onclick="return confirm('Send Email?')" type="submit" class="btn btn-default"><i class="far fa-envelope"></i></button>
         </form>
       </div>
 
@@ -202,86 +198,6 @@ Admin | Orders
           </div>
         </div>
       </div> <!-- end of orderViewer -->
-
-      <!-- The Review Modal -->
-      <div class="modal fade" id="reviewViewer-{{$order->oid}}">
-        <div class="modal-dialog modal-dialog-centered" style="max-width:800px;">
-          <div class="modal-content">
-
-            <!-- Modal body -->
-            <div class="modal-body">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-
-              <?php $distanceCompleted = '0km';
-                    $timeTaken = '0';
-                    $routeImage = 'null';
-                    $strava_activity = ''; ?>
-
-              @foreach($submissions as $submission)
-                @if($submission->order_id == $order->oid)
-                    <?php
-                      $distance = $submission->s_distance;
-                      $hour = $submission->s_hour;
-                      $min = $submission->s_minute;
-                      $sec = $submission->s_second;
-                      $submitimg = $submission->s_routeimg;
-                      $strava_activity = $submission->strava_activity;
-                      $polyline = $submission->s_map_polyline;
-
-                      $distanceCompleted = $distance .'km';
-
-                      $hour = ($hour > 10) ? $hour : '0' .$hour;
-                      $min = ($min > 10) ? $min : '0' .$min;
-                      $sec = ($sec > 10) ? $sec : '0' .$sec;
-                      $timeTaken = $hour. ':' .$min. ':' .$sec;
-
-                      if($submitimg != null) {
-                        $routeImage = asset('storage/uploaded/submissions/' . $submitimg);
-                      }
-
-                      if($polyline != null) {
-                        $routeImage = 'https://maps.googleapis.com/maps/api/staticmap?size=640x640&key=AIzaSyD72_ThnAh5eTa7BAlAA-2XhwZ_AKDy_Iw&zoom=16&path=weight:3%7Ccolor:red%7Cenc:' . $polyline;
-                      }
-                    ?> @break
-                  @endif
-                @endforeach
-
-                <table id="review-table">
-                  <tr>
-                    <th>Route Image</th>
-                    <td><?php if($routeImage == 'null') echo $routeImage; else echo '<img src="' .$routeImage. '"/ style="max-width: 100%;">'; ?></td>
-                  </tr>
-                  <tr>
-                    <th>Race Category</th>
-                    <td>{{$order->race_category}}</td>
-                  </tr>
-                  <tr>
-                    <th>Distance completed</th>
-                    <td>{{$distanceCompleted}}</td>
-                  </tr>
-                  <tr>
-                    <th>Time used</th>
-                    <td>{{$timeTaken}}</td>
-                  </tr>
-                  <tr>
-                    <th>Strava Activity ID</th>
-                    <td><?php echo ($strava_activity != null) ? $strava_activity : '-'; ?></td>
-                  </tr>
-                  <tr>
-                    <th>Race Status</th>
-                    <td>
-                      <form method="POST" action="{{route('admin.orders.updateRaceStatus',['oid' => $order->oid ])}}" id="racestatus-form">
-                        @csrf
-                        <?php echo Form::select('racestatus', array('awaiting' => 'awaiting', 'success' => 'success', 'fail' => 'fail'), $order->race_status); ?>
-                        <button type="submit" class="btn btn-danger" id="racestatus-btn">Submit</button>
-                      </form>
-                    </td>
-                  </tr>
-                </table>
-            </div>
-          </div>
-        </div>
-      </div> <!-- end of reviewViewer -->
 
       <!-- The Shipment Modal -->
       <div class="modal fade" id="shipmentViewer-{{$order->oid}}">

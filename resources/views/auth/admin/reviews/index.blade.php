@@ -1,6 +1,6 @@
-@extends('auth.admin.dashboard', ['active' => ['parent' => 'orders', 'child' => null]])
+@extends('auth.admin.dashboard', ['active' => ['parent' => 'reviews', 'child' => null]])
 @section('title')
-Admin | Orders
+Admin | Reviews
 @endsection
 @section('meta')
 
@@ -10,7 +10,7 @@ Admin | Orders
 <?php $i=1 ?>
 <div class="p-3">
 
-  <h1 style="font-size: 2.2rem">Orders</h1>
+  <h1 style="font-size: 2.2rem">Reviews</h1>
 
   <hr />
 
@@ -20,7 +20,7 @@ Admin | Orders
 
   <div class="row">
     <div class="col-sm-4">
-      <form action="{{route('admin.orders.searchBy')}}" method="get">
+      <form action="{{route('admin.reviews.searchBy')}}" method="get">
         <div class="input-group">
           <input type="search" name="search" class="form-control" placeholder="Search by">
           <select name="field" class="form-control">
@@ -37,7 +37,7 @@ Admin | Orders
     </div>
 
     <div class="col-sm-4">
-      <form action="{{route('admin.orders.filterRace')}}" method="get">
+      <form action="{{route('admin.reviews.filterRace')}}" method="get">
         <div class="input-group">
           <select name="raceitem">
             <option value="" disabled selected>Filter race</option>
@@ -92,11 +92,6 @@ Admin | Orders
         <a data-toggle="modal" data-target="#shipmentViewer-{{$order->oid}}">
           <button type="button" class="btn btn-warning"><i class="fas fa-truck"></i></button>
         </a>
-        <form method="POST" action="{{route('admin.orders.destroy',['oid' => $order->oid ])}}">
-          @method('DELETE')
-          @csrf
-          <button onclick="return confirm('Are you sure?')" type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
-        </form>
       </div>
 
       <!-- The Order Modal -->
