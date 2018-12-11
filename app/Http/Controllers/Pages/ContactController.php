@@ -38,9 +38,11 @@ class ContactController extends Controller
     $cid = $contact->cid;
     $contact = Contact::findOrFail($cid);
 
+    $emails = ['yunni@jumix.com.my', 'xsaintzx@gmail.com'];
+
     Mail::send('email.sendContactEmail', ['contact' => $contact], function ($m) use ($contact) {
-    $m->from($contact->email, $contact->name);
-    $m->to('yunni@jumix.com.my', 'WaSports')->subject('[Contact Us] ' . $contact->category);
+      $m->from($contact->email, $contact->name);
+      $m->to($emails, 'WaSports')->subject('[Contact Us] ' . $contact->category);
     });
 
     return response()->json(['success' => true], 200 );
