@@ -40,7 +40,7 @@ class ContactController extends Controller
 
     $emails = ['yunni@jumix.com.my', 'xsaintzx@gmail.com'];
 
-    Mail::send('email.sendContactEmail', ['contact' => $contact], function ($m) use ($contact) {
+    Mail::send('email.sendContactEmail', ['contact' => $contact], function ($m) use ($emails) {
       $m->from($contact->email, $contact->name);
       $m->to($emails, 'WaSports')->subject('[Contact Us] ' . $contact->category);
     });
