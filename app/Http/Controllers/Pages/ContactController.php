@@ -45,7 +45,7 @@ class ContactController extends Controller
 
     Mail::send('email.sendContactEmail', ['contact' => $contact], function ($m) use ($contact) {
       $m->from($contact->email, $contact->name);
-      $m->to('xsaintzx@gmail.com', 'WaSports')->subject('[Contact Us] ' . $contact->category);
+      $m->to('yunni_yeoh@outlook.com', 'WaSports')->subject('[Contact Us] ' . $contact->category);
     });
 
     return response()->json(['success' => true], 200 );
