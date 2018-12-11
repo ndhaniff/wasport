@@ -10,11 +10,10 @@ use App\Model\OrderAddon;
 use App\Model\Race;
 use App\Model\Addon;
 use App\Model\User;
-use App\Model\Payment;
 use App\Model\Submission;
 use Kyslik\ColumnSortable\Sortable;
-use Session;
 use Mail;
+use Session;
 use App\Mail\notifyEmail;
 
 class AdminOrdersController extends Controller
@@ -152,9 +151,7 @@ class AdminOrdersController extends Controller
 
         $update->save();
 
-        $orders = Order::sortable()
-          ->where('payment_status', '=', 'paid')
-          ->paginate(10);
+        $orders = Order::sortable()->paginate(10);
         $races = Race::sortable()->get();
         $addons = Addon::sortable()->get();
         $users = User::sortable()->get();
@@ -164,8 +161,7 @@ class AdminOrdersController extends Controller
           ->orderBy('sid', 'DESC')
           ->get();
 
-        //return view('auth.admin.orders.index',compact('orders', 'races', 'addons', 'order_addons', 'allorders', 'submissions'));
-        return redirect()->back();
+        return view('auth.admin.orders.index',compact('orders', 'races', 'addons', 'order_addons', 'allorders', 'submissions'));
     }
 
     public function updateDeliveryStatus($oid)
@@ -224,19 +220,5 @@ class AdminOrdersController extends Controller
       }
 
       //return redirect()->back();
-    }
-
-    public function payments()
-    {
-      $orders = Order::sortable()->paginate(10);
-
-      $payments = Payment::sortable()->get();
-      $races = Race::sortable()->get();
-      $addons = Addon::sortable()->get();
-      $users = User::sortable()->get();
-      $order_addons = OrderAddon::sortable()->get();
-      $allorders = Order::sortable()->get();
-
-      return view('auth.admin.payments.index',compact('orders', 'payments', 'races', 'addons', 'order_addons', 'allorders'));
     }
 }
