@@ -93,21 +93,6 @@ class AdminOrdersController extends Controller
       return view('auth.admin.orders.index',compact('orders', 'races', 'addons', 'users', 'order_addons', 'allorders', 'submissions'));
     }
 
-    public function editForm($oid){
-
-    }
-
-    /**
-     * Edit Order
-     *
-     * @param Request $request
-     * @return void
-     */
-    public function edit(Request $request)
-    {
-
-    }
-
      /**
       * Delete Orders
       *

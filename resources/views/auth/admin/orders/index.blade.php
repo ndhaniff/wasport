@@ -216,6 +216,11 @@ Admin | Orders
             <div class="modal-body">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
 
+              <?php $distanceCompleted = '0km';
+                    $timeTaken = '0';
+                    $routeImage = 'null';
+                    $strava_activity = ''; ?>
+
               @foreach($submissions as $submission)
                 @if($submission->order_id == $order->oid)
                     <?php
@@ -241,44 +246,30 @@ Admin | Orders
                       if($polyline != null) {
                         $routeImage = 'https://maps.googleapis.com/maps/api/staticmap?size=640x640&key=AIzaSyD72_ThnAh5eTa7BAlAA-2XhwZ_AKDy_Iw&zoom=16&path=weight:3%7Ccolor:red%7Cenc:' . $polyline;
                       }
-                    ?>
-
-                    <table id="review-table">
-                      <tr>
-                        <th>Route Image</th>
-                        <td><img src="{{$routeImage}}"/ style="max-width: 100%;"></td>
-                      </tr>
-                      <tr>
-                        <th>Distance completed</th>
-                        <td>{{$distanceCompleted}}</td>
-                      </tr>
-                      <tr>
-                        <th>Time used</th>
-                        <td>{{$timeTaken}}</td>
-                      </tr>
-                      <tr>
-                        <th>Strava Activity ID</th>
-                        <td><?php echo ($strava_activity != null) ? $strava_activity : '-'; ?></td>
-                      </tr>
-                      <tr>
-                        <th>Race Status</th>
-                        <td>
-                          <form method="POST" action="{{route('admin.orders.updateRaceStatus',['oid' => $order->oid ])}}" id="racestatus-form">
-                            @csrf
-                            <?php echo Form::select('racestatus', array('awaiting' => 'awaiting', 'success' => 'success', 'fail' => 'fail'), $order->race_status); ?>
-                            <button type="submit" class="btn btn-danger" id="racestatus-btn">Submit</button>
-                          </form>
-                        </td>
-                      </tr>
-                    </table>
-                  @break
+                    ?> @break
                   @endif
-                  @endforeach
-                @foreach($submissions as $submission)
-                  @if(!$submission->order_id == $order->oid)
+                @endforeach
+
                 <table id="review-table">
                   <tr>
-                    <td colspan="2"><center>NO RECORD AVAILABLE</center></td>
+                    <th>Route Image</th>
+                    <td><?php if($routeImage == 'null') echo $routeImage; else echo '<img src="' .$routeImage. '"/ style="max-width: 100%;">'; ?></td>
+                  </tr>
+                  <tr>
+                    <th>Race Category</th>
+                    <td>{{$order->race_category}}</td>
+                  </tr>
+                  <tr>
+                    <th>Distance completed</th>
+                    <td>{{$distanceCompleted}}</td>
+                  </tr>
+                  <tr>
+                    <th>Time used</th>
+                    <td>{{$timeTaken}}</td>
+                  </tr>
+                  <tr>
+                    <th>Strava Activity ID</th>
+                    <td><?php echo ($strava_activity != null) ? $strava_activity : '-'; ?></td>
                   </tr>
                   <tr>
                     <th>Race Status</th>
@@ -291,9 +282,6 @@ Admin | Orders
                     </td>
                   </tr>
                 </table>
-                @break
-                @endif
-                @endforeach
             </div>
           </div>
         </div>

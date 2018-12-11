@@ -128,7 +128,7 @@ class Step4 extends Component {
      } else {
           alert('something wrong')
       }
-    }) .catch((error) => {
+    }).catch((error) => {
         // Error
         if (error.response) {
             // The request was made and the server responded with a status code
