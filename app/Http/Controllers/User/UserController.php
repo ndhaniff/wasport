@@ -513,13 +513,8 @@ class UserController extends Controller
 
     //Payment success
      if ($paymentStatus == "1") {
-       //update order payment to success
-       $order = Order::find($orderID);
-       $order->payment_status = 'paid';
-       $order->save();
-
        return view('payment.paymentsuccessbackend');
 
-     } else { return view('payment.paymentfailure'); }
+     } //else { return view('payment.paymentfailure'); }
    }
 }
