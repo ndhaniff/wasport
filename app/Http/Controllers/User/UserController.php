@@ -281,7 +281,7 @@ class UserController extends Controller
 
         Mail::send('email.sendConfirmEmail', ['order' => $order], function ($m) use ($order) {
           $m->from('info@wasportsrun.com', 'WaSportsRun');
-          $m->to($order->o_email, $order->o_firstname)->subject('[WaSports] You had joined ' . $order->title_en);
+          $m->to($order->email, $order->o_firstname)->subject('[WaSports] You had joined ' . $order->title_en);
         });
       }
 
@@ -590,7 +590,7 @@ class UserController extends Controller
 
        Mail::send('email.sendConfirmEmail', ['order' => $order], function ($m) use ($order) {
          $m->from('info@wasportsrun.com', 'WaSportsRun');
-         $m->to($order->o_email, $order->o_firstname)->subject('[WaSports] You had joined ' . $order->title_en);
+         $m->to($order->email, $order->o_firstname)->subject('[WaSports] You had joined ' . $order->title_en);
        });
 
        return view('payment.paymentsuccessbackend');
