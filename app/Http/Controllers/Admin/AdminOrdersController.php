@@ -191,7 +191,7 @@ class AdminOrdersController extends Controller
 
       Mail::send('email.sendNotifyEmail', ['order' => $order], function ($m) use ($order) {
         $m->from('info@wasportsrun.com', 'WaSportsRun');
-        $m->to($order->email, $order->name)->subject('Congratulations for Completing ' . $order->title_en);
+        $m->to($order->email, $order->name)->subject('[WaSports] Congratulations for Completing ' . $order->title_en);
       });
 
       // check for failures

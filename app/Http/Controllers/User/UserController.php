@@ -22,8 +22,8 @@ class UserController extends Controller
 {
     private $merchantcode = 'M18793';
     private $merchantkey = 'flICG0S4Ul';
-    private $responseurl = 'http://wasportsrun.com/payment/ipay88/callback';
-    private $backendurl = 'http://wasportsrun.com/payment/ipay88/backendcallback';
+    private $responseurl = 'https://wasportsrun.com/payment/ipay88/callback';
+    private $backendurl = 'https://wasportsrun.com/payment/ipay88/backendcallback';
 
     public function __construct(){
       $this->middleware('auth');
@@ -222,11 +222,14 @@ class UserController extends Controller
       }
 
       $orderamount = $request->get('order_amount');
+
       //if race is not free update payment status to pending
-      //if race is race is free update payment status to paid
       if($orderamount != '0.00') {
         $order->payment_status = 'pending';
-      } else { $order->payment_status = 'paid'; }
+      } else {
+        //if race is race is free update payment status to paid
+        $order->payment_status = 'paid';
+      }
 
       $order->save();
 
@@ -246,7 +249,41 @@ class UserController extends Controller
         }
       }
 
-      //generate digial signature
+      //if race is free send race confirm email
+      if($orderamount == '0.00') {
+        $race = DB::table('races')
+          ->join('orders', 'races.rid', '=', 'orders.race_id')
+          ->where('oid', '=', $oid)
+          ->first();
+
+        $remark = 'Order for ' .$race->title_en. '(Order ID: ' .$oid. ')';
+
+        $payment = new Payment();
+        $payment->order_id = $oid;
+        $payment->p_status = '1';
+        $payment->amound_paid = '0.00';
+        $payment->remark = $remark;
+        $payment->save();
+
+        $order = DB::table('orders')
+          ->join('users', 'orders.user_id', '=', 'users.id')
+          ->join('races', 'orders.race_id', '=', 'races.rid')
+          ->join('payments', 'orders.oid', '=', 'payments.order_id')
+          ->where('oid', '=', $oid)
+          ->get();
+
+        /*$addons = DB::table('order_addons')
+          ->join('addons', 'order_addons.addon_id', '=', 'addons.aid')
+          ->where('order_id', '=', $oid)
+          ->all();*/
+
+        Mail::send('email.sendConfirmEmail', ['order' => $order], function ($m) use ($order) {
+          $m->from('info@wasportsrun.com', 'WaSportsRun');
+          $m->to($order->o_email, $order->o_firstname)->subject('[WaSports] You had joined ' . $order->title_en);
+        });
+      }
+
+      //generate digital signature
       $orderamount = $request->get('order_amount');
       $hashamount = str_replace('.','',str_replace(',','',$orderamount));
       $merchantkey = $this->merchantkey;
@@ -441,37 +478,46 @@ class UserController extends Controller
       $merchantkey = $this->merchantkey;
 
 		  $check_sign = '';
-		  $ipaySignature = '';
+		  //$ipaySignature = '';
 		  $str = '';
 		  $HashAmount = '';
       $orderID = $_POST['RefNo'];
       $paymentID = $_POST['PaymentId'];
       $paymentStatus = $_POST['Status'];
+      $amountPaid = $_POST['Amount'];
+      $transID = $_POST['TransId'];
+      $remark = $_POST['Remark'];
+      $errDesc = $_POST['ErrDesc'];
 
 		  $HashAmount = str_replace(array(',','.'), "", $_POST['Amount']);
 		  $str = $merchantkey . $merchantcode . $paymentID .trim(stripslashes($orderID)). $HashAmount . $_POST['Currency'] . $paymentStatus;
-      $str = sha1($str);
+      //$str = sha1($str);
+      $check_sign = hash('sha256', $str);
 
-	    for ($i=0;$i<strlen($str);$i=$i+2) {
+	    /*for ($i=0;$i<strlen($str);$i=$i+2) {
         $ipaySignature .= chr(hexdec(substr($str,$i,2)));
 		  }
 
-		  $check_sign = base64_encode($ipaySignature);
+		  $check_sign = base64_encode($ipaySignature);*/
 
-      $payment = new Payment();
+      /*$payment = new Payment();
       $payment->check_sign = $check_sign;
       $payment->expected_sign = $expected_sign;
       $payment->order_id = $orderID;
       $payment->payment_id = $paymentID;
-      $payment->payment_status = $paymentStatus;
-      $payment->save();
+      $payment->p_status = $paymentStatus;
+      $payment->amound_paid = $amountPaid;
+      $payment->trans_id = $transID;
+      $payment->remark = $remark;
+      $payment->err_desc = $errDesc;
+      $payment->save();*/
 
       //Payment success
-	    if ($paymentStatus == "1") {
+	    if ($paymentStatus == "1" && $expected_sign == $check_sign) {
          //update order payment to success
-         $order = Order::find($orderID);
+         /*$order = Order::find($orderID);
          $order->payment_status = 'paid';
-         $order->save();
+         $order->save();*/
 
          return view('payment.paymentsuccess');
 
@@ -486,35 +532,67 @@ class UserController extends Controller
     $merchantkey = $this->merchantkey;
 
     $check_sign = '';
-    $ipaySignature = '';
+    //$ipaySignature = '';
     $str = '';
     $HashAmount = '';
     $orderID = $_POST['RefNo'];
     $paymentID = $_POST['PaymentId'];
     $paymentStatus = $_POST['Status'];
+    $amountPaid = $_POST['Amount'];
+    $transID = $_POST['TransId'];
+    $remark = $_POST['Remark'];
+    $err_desc = $_POST['ErrDesc'];
 
 		$HashAmount = str_replace(array(',','.'), "", $_POST['Amount']);
     $str = $merchantkey . $merchantcode . $paymentID .trim(stripslashes($orderID)). $HashAmount . $_POST['Currency'] . $paymentStatus;
-    $str = sha1($str);
+    //$str = sha1($str);
+    $check_sign = hash('sha256', $str);
 
-    for ($i=0;$i<strlen($str);$i=$i+2) {
+    /*for ($i=0;$i<strlen($str);$i=$i+2) {
       $ipaySignature .= chr(hexdec(substr($str,$i,2)));
     }
 
-    $check_sign = base64_encode($ipaySignature);
+    $check_sign = base64_encode($ipaySignature);*/
 
     $payment = new Payment();
     $payment->check_sign = $check_sign;
     $payment->expected_sign= $expected_sign;
     $payment->order_id = $orderID;
     $payment->payment_id = $paymentID;
-    $payment->payment_status = $paymentStatus;
+    $payment->p_status = $paymentStatus;
+    $payment->amound_paid = $amountPaid;
+    $payment->trans_id = $transID;
+    $payment->remark = $remark;
+    $payment->err_desc = $errDesc;
     $payment->save();
 
     //Payment success
-     if ($paymentStatus == "1") {
+     if ($paymentStatus == "1" && $expected_sign == $check_sign) {
+
+       //update order payment to success
+       $order = Order::find($orderID);
+       $order->payment_status = 'paid';
+       $order->save();
+
+       $order = DB::table('orders')
+         ->join('users', 'orders.user_id', '=', 'users.id')
+         ->join('races', 'orders.race_id', '=', 'races.rid')
+         ->join('payments', 'orders.oid', '=', 'payments.order_id')
+         ->where('oid', '=', $orderID)
+         ->get();
+
+       /*$addons = DB::table('order_addons')
+         ->join('addons', 'order_addons.addon_id', '=', 'addons.aid')
+         ->where('order_id', '=', $oid)
+         ->all();*/
+
+       Mail::send('email.sendConfirmEmail', ['order' => $order], function ($m) use ($order) {
+         $m->from('info@wasportsrun.com', 'WaSportsRun');
+         $m->to($order->o_email, $order->o_firstname)->subject('[WaSports] You had joined ' . $order->title_en);
+       });
+
        return view('payment.paymentsuccessbackend');
 
-     } //else { return view('payment.paymentfailure'); }
+     } else { return view('payment.paymentfailure'); }
    }
 }

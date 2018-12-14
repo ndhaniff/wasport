@@ -8,12 +8,12 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Str;
-use Mail;
-use App\Mail\verifyEmail;
-use Session;
 use Softon\SweetAlert\Facades\SWAL;
 use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Registered;
+use Session;
+use Mail;
+use App\Mail\verifyEmail;
 
 class RegisterController extends Controller
 {
