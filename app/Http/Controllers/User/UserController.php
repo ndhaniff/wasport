@@ -17,6 +17,8 @@ use App\Model\Submission;
 use App\Model\Payment;
 use Auth;
 use DB;
+use Mail;
+use App\Mail\confirmEmail;
 
 class UserController extends Controller
 {
