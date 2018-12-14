@@ -274,6 +274,11 @@ class UserController extends Controller
           ->where('oid', '=', $oid)
           ->get();
 
+      $email = DB::table('users')
+          ->join('orders', 'users.id', '=', 'orders.user_id')
+          ->where('id', '=', $order->user_id)
+          ->get(['email']);
+
         /*$addons = DB::table('order_addons')
           ->join('addons', 'order_addons.addon_id', '=', 'addons.aid')
           ->where('order_id', '=', $oid)
@@ -576,12 +581,17 @@ class UserController extends Controller
        $order->payment_status = 'paid';
        $order->save();
 
-       $order = DB::table('orders')
+       /*$order = DB::table('orders')
          ->join('users', 'orders.user_id', '=', 'users.id')
          ->join('races', 'orders.race_id', '=', 'races.rid')
          ->join('payments', 'orders.oid', '=', 'payments.order_id')
          ->where('oid', '=', $orderID)
          ->get();
+
+      $email = DB::table('users')
+        ->join('orders', 'users.id', '=', 'orders.user_id')
+        ->where('id', '=', $order->user_id)
+        ->get(['email']);
 
        /*$addons = DB::table('order_addons')
          ->join('addons', 'order_addons.addon_id', '=', 'addons.aid')
@@ -591,7 +601,7 @@ class UserController extends Controller
        Mail::send('email.sendConfirmEmail', ['order' => $order], function ($m) use ($order) {
          $m->from('info@wasportsrun.com', 'WaSportsRun');
          $m->to($order->email, $order->o_firstname)->subject('[WaSports] You had joined ' . $order->title_en);
-       });
+       });*/
 
        return view('payment.paymentsuccessbackend');
 
