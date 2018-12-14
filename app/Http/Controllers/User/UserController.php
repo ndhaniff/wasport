@@ -261,7 +261,7 @@ class UserController extends Controller
         $payment = new Payment();
         $payment->order_id = $oid;
         $payment->p_status = '1';
-        $payment->amound_paid = '0.00';
+        $payment->amount_paid = '0.00';
         $payment->remark = $remark;
         $payment->save();
 
@@ -560,7 +560,7 @@ class UserController extends Controller
     $payment->order_id = $orderID;
     $payment->payment_id = $paymentID;
     $payment->p_status = $paymentStatus;
-    $payment->amound_paid = $amountPaid;
+    $payment->amount_paid = $amountPaid;
     $payment->trans_id = $transID;
     $payment->remark = $remark;
     $payment->err_desc = $errDesc;
