@@ -26,7 +26,7 @@ return [
     |
     */
 
-    'env' => env('APP_ENV', 'development'),
+    'env' => env('APP_ENV', 'production'),
 
     /*
     |--------------------------------------------------------------------------
@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://wasportsrun.com'),
+    'url' => env('APP_URL', 'https://wasportsrun.com'),
 
     /*
     |--------------------------------------------------------------------------
