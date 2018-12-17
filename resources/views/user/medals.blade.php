@@ -138,6 +138,7 @@
                                 'medal_status' => 'false',
                                 'medal_message' => 'Open',
                                 'medal_grey' => asset('storage/uploaded/medals/grey/' . $medal->medal_grey));
+        array_push($check_arr, $medal->title_en);
       }
     }
 
@@ -155,6 +156,7 @@
                               'medal_status' => 'false',
                               'medal_message' => 'Closed',
                               'medal_grey' => asset('storage/uploaded/medals/grey/' . $medal->medal_grey));
+        array_push($check_arr, $medal->title_en);
       }
     }
   }
