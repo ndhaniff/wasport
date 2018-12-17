@@ -272,18 +272,13 @@ class UserController extends Controller
           ->join('races', 'orders.race_id', '=', 'races.rid')
           ->join('payments', 'orders.oid', '=', 'payments.order_id')
           ->where('oid', '=', $oid)
-          ->get();
+          ->first();
 
-      $email = DB::table('users')
+        $email = DB::table('users')
           ->join('orders', 'users.id', '=', 'orders.user_id')
           ->where('id', '=', $order->user_id)
           ->get(['email']);
-
-        /*$addons = DB::table('order_addons')
-          ->join('addons', 'order_addons.addon_id', '=', 'addons.aid')
-          ->where('order_id', '=', $oid)
-          ->all();*/
-
+          
         Mail::send('email.sendConfirmEmail', ['order' => $order], function ($m) use ($order) {
           $m->from('info@wasportsrun.com', 'WaSportsRun');
           $m->to($order->email, $order->o_firstname)->subject('[WaSports] You had joined ' . $order->title_en);
@@ -507,7 +502,7 @@ class UserController extends Controller
 
 		  $check_sign = base64_encode($ipaySignature);*/
 
-      /*$payment = new Payment();
+      $payment = new Payment();
       $payment->check_sign = $check_sign;
       $payment->expected_sign = $expected_sign;
       $payment->order_id = $orderID;
@@ -517,14 +512,14 @@ class UserController extends Controller
       $payment->trans_id = $transID;
       $payment->remark = $remark;
       $payment->err_desc = $errDesc;
-      $payment->save();*/
+      $payment->save();
 
       //Payment success
 	    if ($paymentStatus == "1" && $expected_sign == $check_sign) {
          //update order payment to success
-         /*$order = Order::find($orderID);
+         $order = Order::find($orderID);
          $order->payment_status = 'paid';
-         $order->save();*/
+         $order->save();
 
          return view('payment.paymentsuccess');
 
@@ -561,25 +556,8 @@ class UserController extends Controller
 
     $check_sign = base64_encode($ipaySignature);*/
 
-    $payment = new Payment();
-    $payment->check_sign = $check_sign;
-    $payment->expected_sign= $expected_sign;
-    $payment->order_id = $orderID;
-    $payment->payment_id = $paymentID;
-    $payment->p_status = $paymentStatus;
-    $payment->amount_paid = $amountPaid;
-    $payment->trans_id = $transID;
-    $payment->remark = $remark;
-    $payment->err_desc = $errDesc;
-    $payment->save();
-
     //Payment success
      if ($paymentStatus == "1" && $expected_sign == $check_sign) {
-
-       //update order payment to success
-       $order = Order::find($orderID);
-       $order->payment_status = 'paid';
-       $order->save();
 
        return view('payment.paymentsuccessbackend');
 
