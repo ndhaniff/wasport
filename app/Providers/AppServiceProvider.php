@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
-use Class App\Providers\UrlGenerator;
+use App\Providers\UrlGenerator;
 
 class AppServiceProvider extends ServiceProvider
 {
