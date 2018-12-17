@@ -171,3 +171,5 @@ Route::post('/submitcontact', 'Pages\ContactController@submitContact')->name('su
 // OAuth Routes
 Route::get('auth/{provider}', 'Auth\LoginController@redirectToProvider');
 Route::get('auth/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
+
+URL::forceScheme('https');
