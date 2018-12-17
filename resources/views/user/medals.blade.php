@@ -138,7 +138,15 @@
                                 'medal_status' => 'false',
                                 'medal_message' => 'Open',
                                 'medal_grey' => asset('storage/uploaded/medals/grey/' . $medal->medal_grey));
-      } else {
+      }
+    }
+
+    if(in_array($medal->title_en, $check_arr)){
+
+    } else {
+      $deadTimeTo = $medal->dead_to .' '. $medal->deadtime_to;
+
+      if($deadTimeTo < $date) {
         $allmedal_arr[] = array('mid' => $medal->mid,
                               'rid' => $medal->rid,
                               'title_en' => $medal->title_en,
