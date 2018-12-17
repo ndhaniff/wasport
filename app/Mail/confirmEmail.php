@@ -20,7 +20,7 @@ class confirmEmail extends Mailable
      * @return void
      */
     public $order;
-    public $orderaddon;
+    public $addons;
 
     public function __construct(Order $order)
     {
@@ -34,6 +34,8 @@ class confirmEmail extends Mailable
      */
     public function build()
     {
+        $oid = $order->oid;
+
         $addons = DB::table('order_addons')
           ->join('addons', 'order_addons.addon_id', '=', 'addons.aid')
           ->where('order_id', '=', $oid)

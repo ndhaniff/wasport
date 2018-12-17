@@ -278,7 +278,7 @@ class UserController extends Controller
           ->join('orders', 'users.id', '=', 'orders.user_id')
           ->where('id', '=', $order->user_id)
           ->get(['email']);
-          
+
         Mail::send('email.sendConfirmEmail', ['order' => $order], function ($m) use ($order) {
           $m->from('info@wasportsrun.com', 'WaSportsRun');
           $m->to($order->email, $order->o_firstname)->subject('[WaSports] You had joined ' . $order->title_en);
@@ -508,7 +508,7 @@ class UserController extends Controller
       $payment->order_id = $orderID;
       $payment->payment_id = $paymentID;
       $payment->p_status = $paymentStatus;
-      $payment->amound_paid = $amountPaid;
+      $payment->amount_paid = $amountPaid;
       $payment->trans_id = $transID;
       $payment->remark = $remark;
       $payment->err_desc = $errDesc;
@@ -520,6 +520,28 @@ class UserController extends Controller
          $order = Order::find($orderID);
          $order->payment_status = 'paid';
          $order->save();
+
+         $race = DB::table('races')
+           ->join('orders', 'races.rid', '=', 'orders.race_id')
+           ->where('oid', '=', $orderID)
+           ->first();
+
+         $order = DB::table('orders')
+           ->join('users', 'orders.user_id', '=', 'users.id')
+           ->join('races', 'orders.race_id', '=', 'races.rid')
+           ->join('payments', 'orders.oid', '=', 'payments.order_id')
+           ->where('oid', '=', $orderID)
+           ->first();
+
+         $email = DB::table('users')
+           ->join('orders', 'users.id', '=', 'orders.user_id')
+           ->where('id', '=', $order->user_id)
+           ->get(['email']);
+
+         Mail::send('email.sendConfirmEmail', ['order' => $order], function ($m) use ($order) {
+           $m->from('info@wasportsrun.com', 'WaSportsRun');
+           $m->to($order->email, $order->o_firstname)->subject('[WaSports] You had joined ' . $order->title_en);
+         });
 
          return view('payment.paymentsuccess');
 
