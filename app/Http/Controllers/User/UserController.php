@@ -565,12 +565,30 @@ class UserController extends Controller
     $amountPaid = $_POST['Amount'];
     $transID = $_POST['TransId'];
     $remark = $_POST['Remark'];
-    $err_desc = $_POST['ErrDesc'];
+    $errDesc = $_POST['ErrDesc'];
 
-		$HashAmount = str_replace(array(',','.'), "", $_POST['Amount']);
+    $HashAmount = str_replace(array(',','.'), "", $_POST['Amount']);
     $str = $merchantkey . $merchantcode . $paymentID .trim(stripslashes($orderID)). $HashAmount . $_POST['Currency'] . $paymentStatus;
     //$str = sha1($str);
     $check_sign = hash('sha256', $str);
+
+    /*for ($i=0;$i<strlen($str);$i=$i+2) {
+      $ipaySignature .= chr(hexdec(substr($str,$i,2)));
+    }
+
+    $check_sign = base64_encode($ipaySignature);*/
+
+    $payment = new Payment();
+    $payment->check_sign = $check_sign;
+    $payment->expected_sign = $expected_sign;
+    $payment->order_id = $orderID;
+    $payment->payment_id = $paymentID;
+    $payment->p_status = $paymentStatus;
+    $payment->amount_paid = $amountPaid;
+    $payment->trans_id = $transID;
+    $payment->remark = $remark . "(backend)";
+    $payment->err_desc = $errDesc;
+    $payment->save();
 
     /*for ($i=0;$i<strlen($str);$i=$i+2) {
       $ipaySignature .= chr(hexdec(substr($str,$i,2)));
