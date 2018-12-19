@@ -510,7 +510,7 @@ class UserController extends Controller
       $payment->p_status = $paymentStatus;
       $payment->amount_paid = $amountPaid;
       $payment->trans_id = $transID;
-      $payment->remark = $remark;
+      $payment->remark = $remark . "(callback)";
       $payment->err_desc = $errDesc;
       $payment->save();
 
@@ -521,7 +521,7 @@ class UserController extends Controller
          $order->payment_status = 'paid';
          $order->save();
 
-         $race = DB::table('races')
+         /*$race = DB::table('races')
            ->join('orders', 'races.rid', '=', 'orders.race_id')
            ->where('oid', '=', $orderID)
            ->first();
@@ -541,7 +541,7 @@ class UserController extends Controller
          Mail::send('email.sendConfirmEmail', ['order' => $order], function ($m) use ($order) {
            $m->from('info@wasportsrun.com', 'WaSportsRun');
            $m->to($order->email, $order->o_firstname)->subject('[WaSports] You had joined ' . $order->title_en);
-         });
+         });*/
 
          return view('payment.paymentsuccess');
 
