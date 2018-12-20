@@ -263,7 +263,7 @@
         <hr id="footer-hr">
 
         <div class="container">
-          <p id="copyright">© 2018 WaSports. Designed by Jumix</p>
+          <p id="copyright">© 2018 WaSports. Designed by <a href="https://jumixdesign.com/" target="_blank">Jumix</a></p>
         </div>
       </footer>
 
