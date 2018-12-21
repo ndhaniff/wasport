@@ -20,7 +20,7 @@ class confirmEmail extends Mailable
      * @return void
      */
     public $order;
-    public $addons;
+    protected $addon;
 
     public function __construct(Order $order)
     {
