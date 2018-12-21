@@ -20,7 +20,7 @@ class confirmEmail extends Mailable
      * @return void
      */
     public $order;
-    protected $addon;
+    public $addon;
 
     public function __construct(Order $order)
     {
@@ -47,8 +47,6 @@ class confirmEmail extends Mailable
           $addon . = $addon->add_en. '(Size ' .$addon->a_type. ')<br>';
         }
 
-        $addon = $this->addon;
-
-        return $this->view('email.sendConfirmEmail', compact('addon'));
+        return $this->view('email.sendConfirmEmail')->with(['addon', $this->addon]);;
     }
 }
