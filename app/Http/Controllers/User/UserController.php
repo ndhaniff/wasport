@@ -218,7 +218,7 @@ class UserController extends Controller
       $engraveName = $request->get('engrave_name');
 
       if($engraveName == 'undefined') {
-        $order->engrave_name = null;
+        $order->engrave_name = '-';
       } else {
         $order->engrave_name = $engraveName;
       }

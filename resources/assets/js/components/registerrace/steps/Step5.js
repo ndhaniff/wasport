@@ -23,6 +23,7 @@ class Step5 extends Component {
       Signature: props.getStore().Signature,
       ResponseURL: props.getStore().ResponseURL,
       BackendURL: props.getStore().BackendURL,
+      addons_selected: props.getStore().addons_selected,
     };
   }
 
@@ -42,8 +43,12 @@ class Step5 extends Component {
 
   render() {
 
+    console.log(JSON.stringify(this.state.addons_selected))
+
     return(
         <div>
+          <p>{this.state.addons_selected}</p>
+
           You will be directed to the payment page.
 
           <Form onSubmit={this.handleSubmit} method="post" name="ePayment" action="https://payment.ipay88.com.my/ePayment/entry.asp">

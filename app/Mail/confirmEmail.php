@@ -20,7 +20,6 @@ class confirmEmail extends Mailable
      * @return void
      */
     public $order;
-    public $addon;
 
     public function __construct(Order $order)
     {
@@ -34,19 +33,6 @@ class confirmEmail extends Mailable
      */
     public function build()
     {
-        $oid = $order->oid;
-
-        $addons = DB::table('order_addons')
-          ->join('addons', 'order_addons.addon_id', '=', 'addons.aid')
-          ->where('order_id', '=', $oid)
-          ->all();
-
-        $addon = '-';
-
-        foreach($addons as $addon) {
-          $addon . = $addon->add_en. '(Size ' .$addon->a_type. ')<br>';
-        }
-
-        return $this->view('email.sendConfirmEmail')->with(['addon', $this->addon]);;
+        return $this->view('email.sendConfirmEmail');
     }
 }
