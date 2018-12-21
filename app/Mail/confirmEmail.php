@@ -44,7 +44,7 @@ class confirmEmail extends Mailable
         $addon = '-';
 
         foreach($addons as $addon) {
-          $addon .= $addon->add_en. '(Size ' .$addon->a_type. ')<br>';
+          $addon . = $addon->add_en. '(Size ' .$addon->a_type. ')<br>';
         }
 
         return $this->view('email.sendConfirmEmail')->with([
