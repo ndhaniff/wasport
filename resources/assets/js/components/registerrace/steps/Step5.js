@@ -43,11 +43,11 @@ class Step5 extends Component {
 
   render() {
 
-    console.log(JSON.stringify(this.state.addons_selected))
+    console.log(this.state.addons_selected)
 
     return(
         <div>
-          <p>{this.state.addons_selected}</p>
+          <p></p>
 
           You will be directed to the payment page.
 
