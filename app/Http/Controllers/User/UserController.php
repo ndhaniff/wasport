@@ -260,7 +260,7 @@ class UserController extends Controller
           $order_addon->a_type = $addon_type;
           $order_addon->save();
 
-          $addon_remark. = $addon_title. '(' .$addon_type. ')<br>';
+          $addon_remark .= $addon_title. '(' .$addon_type. ')<br>';
 
         }
       } else {
