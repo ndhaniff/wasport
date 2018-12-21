@@ -263,8 +263,10 @@ class UserController extends Controller
           $addon_remark .= $addon_title. '(' .$addon_type. ')<br>';
 
         }
-      } else {
-          $addon_remark = '-';
+      }
+
+      if($addon_remark == ''){
+        $addon_remark = '-';
       }
 
       $update = Order::find($oid);
