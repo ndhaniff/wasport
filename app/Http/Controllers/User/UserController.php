@@ -236,20 +236,40 @@ class UserController extends Controller
       $order->save();
 
       $oid = $order->oid;
+      $addon_remark = '';
 
       $all_addons = $request->get('addons_selected');
-
       $addons_selected = json_decode($all_addons);
+
+      $addons = DB::table('addons')->get();
 
       if (is_array($addons_selected) || is_object($addons_selected)) {
         foreach($addons_selected as $addon_selected) {
+          $addon_id = $addon_selected->aid;
+          $addon_type = $addon_selected->type;
+
+          foreach($addons as $addon) {
+            if($addon_id == $addon->aid) {
+              $addon_title = $addon->add_en;
+            }
+          }
+
           $order_addon = new OrderAddon();
           $order_addon->order_id = $oid;
-          $order_addon->addon_id = $addon_selected->aid;
-          $order_addon->a_type = $addon_selected->type;
+          $order_addon->addon_id = $addon_id;
+          $order_addon->a_type = $addon_type;
           $order_addon->save();
+
+          $addon_remark. = $addon_title. '(' .$addon_type. ')<br>';
+
         }
+      } else {
+          $addon_remark = '-';
       }
+
+      $update = Order::find($oid);
+      $update->addon_remark = $addon_remark;
+      $update->save();
 
       //if race is free send race confirm email
       if($orderamount == '0.00') {

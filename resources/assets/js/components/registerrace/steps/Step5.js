@@ -42,9 +42,6 @@ class Step5 extends Component {
   handleSubmit = (e) => {}
 
   render() {
-
-    console.log(this.state.addons_selected)
-
     return(
         <div>
           <p></p>
