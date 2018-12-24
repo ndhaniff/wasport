@@ -888,7 +888,7 @@ a[x-apple-data-detectors=true] {
                     <div class="">
 	<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px;"><![endif]-->
 	<div style="color:#555555;font-family:'Open Sans', Helvetica, Arial, sans-serif;line-height:120%; padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px;">
-		<div style="font-size:12px;line-height:14px;font-family:'Open Sans', Helvetica, Arial, sans-serif;color:#555555;text-align:left;"><p style="margin: 0;font-size: 14px;line-height: 17px;text-align: center"><span style="font-size: 12px; line-height: 14px;">© 2018 <a href="https://wasportsrun.com" target="_blank" style="text-decoration:none;">WaSports</a>. Designed by <a href="https://jumixdesign.com" target="_blank" style="text-decoration:none;">Jumix</a></span></p></div>
+		<div style="font-size:12px;line-height:14px;font-family:'Open Sans', Helvetica, Arial, sans-serif;color:#555555;text-align:left;"><p style="margin: 0;font-size: 14px;line-height: 17px;text-align: center"><span style="font-size: 12px; line-height: 14px;">© 2018 <a href="https://wasportsrun.com" target="_blank" style="text-decoration:none;color:gray;">WaSports</a>. Designed by <a href="https://jumixdesign.com" target="_blank" style="text-decoration:none;color:gray;">Jumix</a></span></p></div>
 	</div>
 	<!--[if mso]></td></tr></table><![endif]-->
 </div>
