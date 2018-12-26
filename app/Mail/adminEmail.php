@@ -6,9 +6,11 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use App\User;
+use App\Model\Order;
+use App\Model\OrderAddon;
+use App\Model\Addon;
 
-class verifyEmail extends Mailable
+class adminEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -17,11 +19,11 @@ class verifyEmail extends Mailable
      *
      * @return void
      */
-    public $user;
+    public $order;
 
-    public function __construct(User $user)
+    public function __construct(Order $order)
     {
-        $this->user = $user;
+        $this->order = $order;
     }
 
     /**
@@ -31,6 +33,6 @@ class verifyEmail extends Mailable
      */
     public function build()
     {
-        return $this->subject('[WaSports] Account Created')->view('email.sendVerifyEmail');
+        return $this->view('email.sendAdminEmail');
     }
 }

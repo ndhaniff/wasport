@@ -1115,7 +1115,10 @@ body.modal-open { overflow: visible; }
 
 #user-history-header { margin-bottom: 2rem; }
 
-.user-history-joined { border: 1px solid #DFE3E8; }
+.user-history-joined {
+  border: 1px solid #DFE3E8;
+  margin: 1.5rem 0;
+}
 
 .user-history-joined-content { padding: 2rem; }
 

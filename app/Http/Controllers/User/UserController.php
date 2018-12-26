@@ -273,7 +273,9 @@ class UserController extends Controller
       $update->addon_remark = $addon_remark;
       $update->save();
 
-      //if race is free send race confirm email
+      //if race is free
+      //send race confirm email to user
+      //send notification email to admin
       if($orderamount == '0.00') {
         $race = DB::table('races')
           ->join('orders', 'races.rid', '=', 'orders.race_id')
@@ -301,10 +303,24 @@ class UserController extends Controller
           ->where('id', '=', $order->user_id)
           ->get(['email']);
 
+
+        //send to user
         Mail::send('email.sendConfirmEmail', ['order' => $order], function ($m) use ($order) {
           $m->from('info@wasportsrun.com', 'WaSportsRun');
           $m->to($order->email, $order->o_firstname)->subject('[WaSports] You had joined ' . $order->title_en);
         });
+
+        //send to admin
+        Mail::send('email.sendAdminEmail', ['order' => $order], function ($m) use ($order) {
+          $m->from('info@wasportsrun.com', 'WaSportsRun');
+          $m->to('yunni@jumix.com.my', 'Admin')->subject('[WaSports]' .$order->o_firstname. 'had joined ' . $order->title_en);
+        });
+
+        /*Mail::send('email.sendAdminEmail', ['order' => $order], function ($m) use ($order) {
+          $m->from('info@wasportsrun.com', 'WaSportsRun');
+          $m->to('xsaintzx@gmail.com', 'Admin')->subject('[WaSports]' .$order->o_firstname. 'had joined ' . $order->title_en);
+        });*/
+
       }
 
       //generate digital signature
@@ -538,12 +554,12 @@ class UserController extends Controller
 
       //Payment success
 	    if ($paymentStatus == "1" && $expected_sign == $check_sign) {
-         //update order payment to success
+         //update order payment status to paid
          $order = Order::find($orderID);
          $order->payment_status = 'paid';
          $order->save();
 
-         /*$race = DB::table('races')
+         $race = DB::table('races')
            ->join('orders', 'races.rid', '=', 'orders.race_id')
            ->where('oid', '=', $orderID)
            ->first();
@@ -560,10 +576,22 @@ class UserController extends Controller
            ->where('id', '=', $order->user_id)
            ->get(['email']);
 
+         //send to user
          Mail::send('email.sendConfirmEmail', ['order' => $order], function ($m) use ($order) {
            $m->from('info@wasportsrun.com', 'WaSportsRun');
            $m->to($order->email, $order->o_firstname)->subject('[WaSports] You had joined ' . $order->title_en);
-         });*/
+         });
+
+         //send to admin
+         Mail::send('email.sendAdminEmail', ['order' => $order], function ($m) use ($order) {
+           $m->from('info@wasportsrun.com', 'WaSportsRun');
+           $m->to('yunni@jumix.com.my', 'Admin')->subject('[WaSports]' .$order->o_firstname. 'had joined ' . $order->title_en);
+         });
+
+         Mail::send('email.sendAdminEmail', ['order' => $order], function ($m) use ($order) {
+           $m->from('info@wasportsrun.com', 'WaSportsRun');
+           $m->to('xsaintzx@gmail.com', 'Admin')->subject('[WaSports]' .$order->o_firstname. 'had joined ' . $order->title_en);
+         });
 
          return view('payment.paymentsuccess');
 
