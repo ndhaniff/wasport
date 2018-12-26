@@ -754,7 +754,7 @@ export default class CreateRaceForm extends Component {
 
           //medalimg 4
           if(this.state.medalimg_4.length != 0){
-              var previewImg_amedalmg_4 =  <div className="mb-2 text-center"><button onClick={this.removePreview_medalimg_4} className="btn btn-danger float-right">X</button><br/><img className="fit-image" src={this.state.medalimg_4[0].preview} alt=""/></div>
+              var previewImg_medalmg_4 =  <div className="mb-2 text-center"><button onClick={this.removePreview_medalimg_4} className="btn btn-danger float-right">X</button><br/><img className="fit-image" src={this.state.medalimg_4[0].preview} alt=""/></div>
           } else { var previewImg_medalimg_4 =  <img src="" alt=""/> }
 
           if(this.state.toggleDrop_medalimg_4){

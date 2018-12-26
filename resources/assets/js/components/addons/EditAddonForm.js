@@ -285,13 +285,13 @@ export default class EditAddonForm extends Component {
               "width": "100%",
               "border": "1px dashed",
               "padding": "5%",}}
-              accept="image/jpeg, image/png"
+              accept="image/jpeg, image/png, image/gif"
               onDrop={this.onDrop_descimg_1}
               multiple={false}
               name="descimg_1">
             <div className="text-center">
               <p>Try dropping some files here, or click to select files to upload.</p>
-              <p>Only *.jpeg and *.png images will be accepted</p>
+              <p>*.jpeg, *.png and *.gif images are accepted</p>
             </div>
             </Dropzone>
         } else { var dropzone_descimg_1 = "" }
@@ -308,13 +308,13 @@ export default class EditAddonForm extends Component {
                 "width": "100%",
                 "border": "1px dashed",
                 "padding": "5%",}}
-                accept="image/jpeg, image/png"
+                accept="image/jpeg, image/png, image/gif"
                 onDrop={this.onDrop_descimg_2}
                 multiple={false}
                 name="descimg_2">
               <div className="text-center">
                 <p>Try dropping some files here, or click to select files to upload.</p>
-                <p>Only *.jpeg and *.png images will be accepted</p>
+                <p>*.jpeg, *.png and *.gif images are accepted</p>
               </div>
               </Dropzone>
           } else { var dropzone_descimg_2 = "" }
@@ -331,13 +331,13 @@ export default class EditAddonForm extends Component {
                 "width": "100%",
                 "border": "1px dashed",
                 "padding": "5%",}}
-                accept="image/jpeg, image/png"
+                accept="image/jpeg, image/png, image/gif"
                 onDrop={this.onDrop_descimg_3}
                 multiple={false}
                 name="descimg_3">
               <div className="text-center">
                 <p>Try dropping some files here, or click to select files to upload.</p>
-                <p>Only *.jpeg and *.png images will be accepted</p>
+                <p>*.jpeg, *.png and *.gif images are accepted</p>
               </div>
               </Dropzone>
         } else { var dropzone_descimg_3 = "" }
@@ -354,13 +354,13 @@ export default class EditAddonForm extends Component {
                 "width": "100%",
                 "border": "1px dashed",
                 "padding": "5%",}}
-                accept="image/jpeg, image/png"
+                accept="image/jpeg, image/png, image/gif"
                 onDrop={this.onDrop_descimg_4}
                 multiple={false}
                 name="descimg_4">
               <div className="text-center">
                 <p>Try dropping some files here, or click to select files to upload.</p>
-                <p>Only *.jpeg and *.png images will be accepted</p>
+                <p>*.jpeg, *.png and *.gif images are accepted</p>
               </div>
               </Dropzone>
         } else { var dropzone_descimg_4 = "" }
@@ -377,13 +377,13 @@ export default class EditAddonForm extends Component {
                 "width": "100%",
                 "border": "1px dashed",
                 "padding": "5%",}}
-                accept="image/jpeg, image/png"
+                accept="image/jpeg, image/png, image/gif"
                 onDrop={this.onDrop_descimg_5}
                 multiple={false}
                 name="descimg_5">
               <div className="text-center">
                 <p>Try dropping some files here, or click to select files to upload.</p>
-                <p>Only *.jpeg and *.png images will be accepted</p>
+                <p>*.jpeg, *.png and *.gif images are accepted</p>
               </div>
               </Dropzone>
         } else { var dropzone_descimg_5 = "" }
@@ -400,13 +400,13 @@ export default class EditAddonForm extends Component {
                 "width": "100%",
                 "border": "1px dashed",
                 "padding": "5%",}}
-                accept="image/jpeg, image/png"
+                accept="image/jpeg, image/png, image/gif"
                 onDrop={this.onDrop_descimg_6}
                 multiple={false}
                 name="descimg_6">
               <div className="text-center">
                 <p>Try dropping some files here, or click to select files to upload.</p>
-                <p>Only *.jpeg and *.png images will be accepted</p>
+                <p>*.jpeg, *.png and *.gif images are accepted</p>
               </div>
               </Dropzone>
         } else { var dropzone_descimg_6 = "" }
