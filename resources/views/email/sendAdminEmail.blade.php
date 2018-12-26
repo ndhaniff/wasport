@@ -575,7 +575,7 @@ a[x-apple-data-detectors=true] {
                     <div class="">
 	<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 20px; padding-left: 20px; padding-top: 10px; padding-bottom: 10px;"><![endif]-->
 	<div style="color:#000000;font-family:'Open Sans', Helvetica, Arial, sans-serif;line-height:120%; padding-right: 20px; padding-left: 20px; padding-top: 10px; padding-bottom: 10px;">
-		<div style="font-size:12px;line-height:14px;font-family:'Open Sans', Helvetica, Arial, sans-serif;color:#000000;text-align:left;"><p style="margin: 0;font-size: 14px;line-height: 17px"><?php echo str_replace('\n', '&lt;br&gt;', $order->addon_remark); ?></p></div>
+		<div style="font-size:12px;line-height:14px;font-family:'Open Sans', Helvetica, Arial, sans-serif;color:#000000;text-align:left;"><p style="margin: 0;font-size: 14px;line-height: 17px"><?php echo str_replace('\n', '<br>', $order->addon_remark); ?></p></div>
 	</div>
 	<!--[if mso]></td></tr></table><![endif]-->
 </div>
@@ -618,7 +618,7 @@ a[x-apple-data-detectors=true] {
                     <div class="">
 	<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 20px; padding-left: 20px; padding-top: 10px; padding-bottom: 10px;"><![endif]-->
 	<div style="color:#000000;font-family:'Open Sans', Helvetica, Arial, sans-serif;line-height:120%; padding-right: 20px; padding-left: 20px; padding-top: 10px; padding-bottom: 10px;">
-		<div style="font-size:12px;line-height:14px;font-family:'Open Sans', Helvetica, Arial, sans-serif;color:#000000;text-align:left;"><p style="margin: 0;font-size: 14px;line-height: 17px"><?php echo $order->o_add_fl. '<br>'; if($order->o_add_sl != null) echo $order->o_add_sl. '<br>'; echo $order->o_postal .$order->o_city. '<br>' . $order->o_state; ?></p></div>
+		<div style="font-size:12px;line-height:14px;font-family:'Open Sans', Helvetica, Arial, sans-serif;color:#000000;text-align:left;"><p style="margin: 0;font-size: 14px;line-height: 17px"><?php echo $order->o_add_fl. '<br>'; if($order->o_add_sl != null) echo $order->o_add_sl. '<br>'; echo $order->o_postal. ' ' .$order->o_city. '<br>' . $order->o_state; ?></p></div>
 	</div>
 	<!--[if mso]></td></tr></table><![endif]-->
 </div>
@@ -747,7 +747,7 @@ a[x-apple-data-detectors=true] {
                     <div class="">
 	<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 20px; padding-left: 20px; padding-top: 10px; padding-bottom: 10px;"><![endif]-->
 	<div style="color:#000000;font-family:'Open Sans', Helvetica, Arial, sans-serif;line-height:120%; padding-right: 20px; padding-left: 20px; padding-top: 10px; padding-bottom: 10px;">
-		<div style="font-size:12px;line-height:14px;font-family:'Open Sans', Helvetica, Arial, sans-serif;color:#000000;text-align:left;"><p style="margin: 0;font-size: 14px;line-height: 17px">{{$order->trans_id}}</p></div>
+		<div style="font-size:12px;line-height:14px;font-family:'Open Sans', Helvetica, Arial, sans-serif;color:#000000;text-align:left;"><p style="margin: 0;font-size: 14px;line-height: 17px"><?php if($order->trans_id != null){ echo $order->trans_id; } else { echo '-'; } ?></p></div>
 	</div>
 	<!--[if mso]></td></tr></table><![endif]-->
 </div>
@@ -790,7 +790,7 @@ a[x-apple-data-detectors=true] {
                     <div class="">
 	<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 20px; padding-left: 20px; padding-top: 10px; padding-bottom: 10px;"><![endif]-->
 	<div style="color:#000000;font-family:'Open Sans', Helvetica, Arial, sans-serif;line-height:120%; padding-right: 20px; padding-left: 20px; padding-top: 10px; padding-bottom: 10px;">
-		<div style="font-size:12px;line-height:14px;font-family:'Open Sans', Helvetica, Arial, sans-serif;color:#000000;text-align:left;"><p style="margin: 0;font-size: 14px;line-height: 17px">{{$order->amount_paid}}</p></div>
+		<div style="font-size:12px;line-height:14px;font-family:'Open Sans', Helvetica, Arial, sans-serif;color:#000000;text-align:left;"><p style="margin: 0;font-size: 14px;line-height: 17px">RM{{$order->amount_paid}}</p></div>
 	</div>
 	<!--[if mso]></td></tr></table><![endif]-->
 </div>

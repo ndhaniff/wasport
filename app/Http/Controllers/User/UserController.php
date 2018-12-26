@@ -313,12 +313,12 @@ class UserController extends Controller
         //send to admin
         Mail::send('email.sendAdminEmail', ['order' => $order], function ($m) use ($order) {
           $m->from('info@wasportsrun.com', 'WaSportsRun');
-          $m->to('yunni@jumix.com.my', 'Admin')->subject('[WaSports]' .$order->o_firstname. 'had joined ' . $order->title_en);
+          $m->to('yunni@jumix.com.my', 'Admin')->subject('[WaSports] ' .$order->o_firstname. ' had joined ' . $order->title_en);
         });
 
         /*Mail::send('email.sendAdminEmail', ['order' => $order], function ($m) use ($order) {
           $m->from('info@wasportsrun.com', 'WaSportsRun');
-          $m->to('xsaintzx@gmail.com', 'Admin')->subject('[WaSports]' .$order->o_firstname. 'had joined ' . $order->title_en);
+          $m->to('xsaintzx@gmail.com', 'Admin')->subject('[WaSports] ' .$order->o_firstname. ' had joined ' . $order->title_en);
         });*/
 
       }
@@ -585,12 +585,12 @@ class UserController extends Controller
          //send to admin
          Mail::send('email.sendAdminEmail', ['order' => $order], function ($m) use ($order) {
            $m->from('info@wasportsrun.com', 'WaSportsRun');
-           $m->to('yunni@jumix.com.my', 'Admin')->subject('[WaSports]' .$order->o_firstname. 'had joined ' . $order->title_en);
+           $m->to('yunni@jumix.com.my', 'Admin')->subject('[WaSports] ' .$order->o_firstname. ' had joined ' . $order->title_en);
          });
 
          Mail::send('email.sendAdminEmail', ['order' => $order], function ($m) use ($order) {
            $m->from('info@wasportsrun.com', 'WaSportsRun');
-           $m->to('xsaintzx@gmail.com', 'Admin')->subject('[WaSports]' .$order->o_firstname. 'had joined ' . $order->title_en);
+           $m->to('xsaintzx@gmail.com', 'Admin')->subject('[WaSports] ' .$order->o_firstname. ' had joined ' . $order->title_en);
          });
 
          return view('payment.paymentsuccess');
