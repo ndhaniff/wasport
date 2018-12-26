@@ -40,12 +40,12 @@ class ContactController extends Controller
 
     Mail::send('email.sendContactEmail', ['contact' => $contact], function ($m) use ($contact) {
       $m->from($contact->email, $contact->name);
-      $m->to('yunni@jumix.com.my', 'WaSports')->subject('[WaSports Contact] ' . $contact->category);
+      $m->to('yunni@jumix.com.my', 'WaSports Admin')->subject('[WaSports Contact] ' . $contact->category);
     });
 
     Mail::send('email.sendContactEmail', ['contact' => $contact], function ($m) use ($contact) {
       $m->from($contact->email, $contact->name);
-      $m->to('yunni_yeoh@outlook.com', 'WaSports')->subject('[WaSports Contact] ' . $contact->category);
+      $m->to('xsaintzx@gmail.com', 'WaSports Admin')->subject('[WaSports Contact] ' . $contact->category);
     });
 
     return response()->json(['success' => true], 200 );
