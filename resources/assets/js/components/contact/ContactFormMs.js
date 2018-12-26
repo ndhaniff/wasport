@@ -39,7 +39,7 @@ class ContactFormMs extends React.Component{
             toast: true,
             position: 'top-end',
             showConfirmButton: true,
-            confirmButtonColor: #E02E3C,
+            confirmButtonColor: '#E02E3C',
             timer: 3000,
             type: 'success',
             title: 'Sent. We will get to you as soon as possible'

@@ -542,6 +542,7 @@ export default class CreateRaceForm extends Component {
                 "width": "100%",
                 "border": "1px dashed",
                 "padding": "5%",}}
+            accept="image/jpeg, image/png"
             onDrop={this.onDrop}
             multiple={true}
             name="headerimg"
@@ -573,13 +574,13 @@ export default class CreateRaceForm extends Component {
             var dropzone_awardimg_1 =
               <Dropzone
                 className="dropzone-style"
-                accept="image/jpeg, image/png"
+                accept="image/jpeg, image/png, image/gif"
                 onDrop={this.onDrop_awardimg_1}
                 multiple={false}
                 name="awardimg_1">
               <div className="text-center">
                 <p>Try dropping some files here, or click to select files to upload.</p>
-                <p>Only *.jpeg and *.png images will be accepted</p>
+                <p>*.jpeg, *.png and *.gif images are accepted</p>
               </div>
               </Dropzone>
         } else { var dropzone_awardimg_1 = "" }
@@ -594,13 +595,13 @@ export default class CreateRaceForm extends Component {
               <Dropzone
                 className="dropzone-style"
                 style={{"display": this.state.show_awardimg_2 ? 'block' : 'none'}}
-                accept="image/jpeg, image/png"
+                accept="image/jpeg, image/png, image/gif"
                 onDrop={this.onDrop_awardimg_2}
                 multiple={false}
                 name="awardimg_2">
               <div className="text-center">
                 <p>Try dropping some files here, or click to select files to upload.</p>
-                <p>Only *.jpeg and *.png images will be accepted</p>
+                <p>*.jpeg, *.png and *.gif images are accepted</p>
               </div>
               </Dropzone>
           } else { var dropzone_awardimg_2 = "" }
@@ -615,13 +616,13 @@ export default class CreateRaceForm extends Component {
                 <Dropzone
                   className="dropzone-style"
                   style={{"display": this.state.show_awardimg_3 ? 'block' : 'none'}}
-                  accept="image/jpeg, image/png"
+                  accept="image/jpeg, image/png, image/gif"
                   onDrop={this.onDrop_awardimg_3}
                   multiple={false}
                   name="awardimg_3">
                 <div className="text-center">
                   <p>Try dropping some files here, or click to select files to upload.</p>
-                  <p>Only *.jpeg and *.png images will be accepted</p>
+                  <p>*.jpeg, *.png and *.gif images are accepted</p>
                 </div>
                 </Dropzone>
           } else { var dropzone_awardimg_3 = "" }
@@ -636,13 +637,13 @@ export default class CreateRaceForm extends Component {
                 <Dropzone
                   className="dropzone-style"
                   style={{"display": this.state.show_awardimg_4 ? 'block' : 'none'}}
-                  accept="image/jpeg, image/png"
+                  accept="image/jpeg, image/png, image/gif"
                   onDrop={this.onDrop_awardimg_4}
                   multiple={false}
                   name="awardimg_4">
                 <div className="text-center">
                   <p>Try dropping some files here, or click to select files to upload.</p>
-                  <p>Only *.jpeg and *.png images will be accepted</p>
+                  <p>*.jpeg, *.png and *.gif images are accepted</p>
                 </div>
                 </Dropzone>
           } else { var dropzone_awardimg_4 = "" }
@@ -657,13 +658,13 @@ export default class CreateRaceForm extends Component {
                 <Dropzone
                   className="dropzone-style"
                   style={{"display": this.state.show_awardimg_5 ? 'block' : 'none'}}
-                  accept="image/jpeg, image/png"
+                  accept="image/jpeg, image/png, image/gif"
                   onDrop={this.onDrop_awardimg_5}
                   multiple={false}
                   name="awardimg_5">
                 <div className="text-center">
                   <p>Try dropping some files here, or click to select files to upload.</p>
-                  <p>Only *.jpeg and *.png images will be accepted</p>
+                  <p>*.jpeg, *.png and *.gif images are accepted</p>
                 </div>
                 </Dropzone>
           } else { var dropzone_awardimg_5 = "" }
@@ -678,13 +679,13 @@ export default class CreateRaceForm extends Component {
                 <Dropzone
                   className="dropzone-style"
                   style={{"display": this.state.show_awardimg_6 ? 'block' : 'none'}}
-                  accept="image/jpeg, image/png"
+                  accept="image/jpeg, image/png, image/gif"
                   onDrop={this.onDrop_awardimg_6}
                   multiple={false}
                   name="awardimg_6">
                 <div className="text-center">
                   <p>Try dropping some files here, or click to select files to upload.</p>
-                  <p>Only *.jpeg and *.png images will be accepted</p>
+                  <p>*.jpeg, *.png and *.gif images are accepted</p>
                 </div>
                 </Dropzone>
           } else { var dropzone_awardimg_6 = "" }
@@ -704,7 +705,7 @@ export default class CreateRaceForm extends Component {
                   name="amedalmg_1">
                 <div className="text-center">
                   <p>Try dropping some files here, or click to select files to upload.</p>
-                  <p>Only *.jpeg and *.png images will be accepted</p>
+                  <p>*.jpeg, *.png and *.gif images are accepted</p>
                 </div>
                 </Dropzone>
           } else { var dropzone_medalimg_1 = "" }
@@ -719,13 +720,13 @@ export default class CreateRaceForm extends Component {
                 <Dropzone
                   className="dropzone-style"
                   style={{"display": this.state.show_medalimg_2 ? 'block' : 'none'}}
-                  accept="image/jpeg, image/png"
+                  accept="image/jpeg, image/png, image/gif"
                   onDrop={this.onDrop_medalimg_2}
                   multiple={false}
                   name="medalimg_2">
                 <div className="text-center">
                   <p>Try dropping some files here, or click to select files to upload.</p>
-                  <p>Only *.jpeg and *.png images will be accepted</p>
+                  <p>*.jpeg, *.png and *.gif images are accepted</p>
                 </div>
                 </Dropzone>
           } else { var dropzone_medalimg_2 = "" }
@@ -740,13 +741,13 @@ export default class CreateRaceForm extends Component {
                 <Dropzone
                   className="dropzone-style"
                   style={{"display": this.state.show_medalimg_3 ? 'block' : 'none'}}
-                  accept="image/jpeg, image/png"
+                  accept="image/jpeg, image/png, image/gif"
                   onDrop={this.onDrop_medalimg_3}
                   multiple={false}
                   name="medalimg_3">
                 <div className="text-center">
                   <p>Try dropping some files here, or click to select files to upload.</p>
-                  <p>Only *.jpeg and *.png images will be accepted</p>
+                  <p>*.jpeg, *.png and *.gif images are accepted</p>
                 </div>
                 </Dropzone>
           } else { var dropzone_medalimg_3 = "" }
@@ -761,13 +762,13 @@ export default class CreateRaceForm extends Component {
                 <Dropzone
                   className="dropzone-style"
                   style={{"display": this.state.show_medalimg_4 ? 'block' : 'none'}}
-                  accept="image/jpeg, image/png"
+                  accept="image/jpeg, image/png, image/gif"
                   onDrop={this.onDrop_medalimg_4}
                   multiple={false}
                   name="medalimg_4">
                 <div className="text-center">
                   <p>Try dropping some files here, or click to select files to upload.</p>
-                  <p>Only *.jpeg and *.png images will be accepted</p>
+                  <p>*.jpeg, *.png and *.gif images are accepted</p>
                 </div>
                 </Dropzone>
           } else { var dropzone_medalimg_4 = "" }
@@ -782,13 +783,13 @@ export default class CreateRaceForm extends Component {
                 <Dropzone
                   className="dropzone-style"
                   style={{"display": this.state.show_awardimg_5 ? 'block' : 'none'}}
-                  accept="image/jpeg, image/png"
+                  accept="image/jpeg, image/png, image/gif"
                   onDrop={this.onDrop_medalimg_5}
                   multiple={false}
                   name="medalimg_5">
                 <div className="text-center">
                   <p>Try dropping some files here, or click to select files to upload.</p>
-                  <p>Only *.jpeg and *.png images will be accepted</p>
+                  <p>*.jpeg, *.png and *.gif images are accepted</p>
                 </div>
                 </Dropzone>
           } else { var dropzone_medalimg_5 = "" }
@@ -803,13 +804,13 @@ export default class CreateRaceForm extends Component {
                 <Dropzone
                   className="dropzone-style"
                   style={{"display": this.state.show_medalimg_6 ? 'block' : 'none'}}
-                  accept="image/jpeg, image/png"
+                  accept="image/jpeg, image/png, image/gif"
                   onDrop={this.onDrop_medalimg_6}
                   multiple={false}
                   name="medalimg_6">
                 <div className="text-center">
                   <p>Try dropping some files here, or click to select files to upload.</p>
-                  <p>Only *.jpeg and *.png images will be accepted</p>
+                  <p>*.jpeg, *.png and *.gif images are accepted</p>
                 </div>
                 </Dropzone>
           } else { var dropzone_medalimg_6 = "" }
