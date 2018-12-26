@@ -497,7 +497,7 @@ export default class EditRaceForm extends Component {
                 "width": "100%",
                 "border": "1px dashed",
                 "padding": "5%",}}
-            accept="image/jpeg, image/png"
+            accept="image/jpeg, image/png, image/gif"
             onDrop={this.onDrop}
             multiple={false}
             name="headerImg">
