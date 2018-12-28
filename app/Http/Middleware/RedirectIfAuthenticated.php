@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Session;
 use Illuminate\Support\Facades\Auth;
 
 class RedirectIfAuthenticated
@@ -26,7 +27,7 @@ class RedirectIfAuthenticated
             default:
               if (Auth::guard($guard)->check()) {
                   //return redirect()->route('user.dashboard');
-                  return redirect()->intended();
+                  return Redirect::to(Session::get('url.intended'));
               }
               break;
           }

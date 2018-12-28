@@ -18,6 +18,7 @@ use App\Model\Payment;
 use Auth;
 use DB;
 use Mail;
+use Session;
 use App\Mail\confirmEmail;
 
 class UserController extends Controller
@@ -36,10 +37,7 @@ class UserController extends Controller
     }
 
     public function showLogin(){
-      if(!session()->has('url.intended'))
-      {
-        session(['url.intended' => url()->previous()]);
-      }
+      Session::put('url.intended',URL::previous());
       return view('auth.login');
     }
 
