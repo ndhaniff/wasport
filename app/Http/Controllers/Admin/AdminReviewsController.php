@@ -54,6 +54,7 @@ class AdminReviewsController extends Controller
     {
       $search = $request->get('search');
       $field = $request->get('field');
+      $race_id = $request->get('race_id');
 
       $orders = Order::sortable()
         ->where($field, 'like', '%' .$search. '%')

@@ -30,7 +30,7 @@ Admin | Reviews
             <option value="o_phone">phone</option>
             <option value="o_email">email</option>
           </select>
-          <select name="raceitem">
+          <select name="race_id">
             <option value="" disabled selected>Filter race</option>
             @foreach($allorders as $allorder)
               <?php foreach($races as $race) {
