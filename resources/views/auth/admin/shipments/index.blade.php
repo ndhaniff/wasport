@@ -39,11 +39,14 @@ Admin | Shipments
                 } ?>
             @endforeach
           </select>
-          <select name="race_status">
-            <option value="" disabled selected>Race status</option>
-            <option value="awaiting">awaiting</option>
-            <option value="success">success</option>
-            <option value="fail">fail</option>
+          <select name="shipment">
+            <option value="" disabled selected>Shipment status</option>
+            <option value="order placed">order placed</option>
+            <option value="order confirmed">order confirmed</option>
+            <option value="order being processed">order being processed</option>
+            <option value="shipped">shipped</option>
+            <option value="delivered">delivered</option>
+            <option value="order closed">order closed</option>
           </select>
           <span class="input-group-prepend">
             <button type="submit" class="btn btn-primary">Search</button>
