@@ -60,7 +60,7 @@ class AdminReviewsController extends Controller
 
       $query = Order::sortable()
         ->where($field, 'like', '%' .$search. '%')
-        ->where('payment_status', '=', 'paid')
+        ->where('payment_status', '=', 'paid');
 
       if($race_id != '') {
         $query->where('race_id', '=', $race_id);
