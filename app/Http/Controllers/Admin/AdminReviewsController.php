@@ -55,12 +55,20 @@ class AdminReviewsController extends Controller
       $search = $request->get('search');
       $field = $request->get('field');
       $race_id = $request->get('race_id');
+      $orders = '';
 
-      $orders = Order::sortable()
-        ->where($field, 'like', '%' .$search. '%')
-        ->where('payment_status', '=', 'paid')
-        ->where('race_id', '=', $race_id)
-        ->paginate(10);
+      if($race_id == '') {
+        $orders = Order::sortable()
+          ->where($field, 'like', '%' .$search. '%')
+          ->where('payment_status', '=', 'paid')
+          ->paginate(10);
+      } else {
+        $orders = Order::sortable()
+          ->where($field, 'like', '%' .$search. '%')
+          ->where('payment_status', '=', 'paid')
+          ->where('race_id', '=', $race_id)
+          ->paginate(10);
+      }
 
       $races = DB::table('races')->get();
       $addons = DB::table('addons')->get();
