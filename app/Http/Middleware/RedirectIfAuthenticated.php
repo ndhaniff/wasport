@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Session;
+use Redirect;
 use Illuminate\Support\Facades\Auth;
 
 class RedirectIfAuthenticated
