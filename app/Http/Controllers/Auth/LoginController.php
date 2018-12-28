@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Auth;
 use Session;
+use Redirect;
 use Socialite;
 use App\User;
 
@@ -36,7 +37,7 @@ class LoginController extends Controller
     protected function authenticated(Request $request, $user)
     {
       //return redirect('/dashboard');
-      return Redirect::to(Session::get('url.intended'));
+      return redirect(session()->get('url.intended'));
     }
 
     /**
