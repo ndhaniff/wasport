@@ -56,12 +56,24 @@ class AdminShipmentsController extends Controller
       $shipment = $request->get('shipment');
       $orders = '';
 
+      $query = Order::sortable()
+        ->where($field, 'like', '%' .$search. '%')
+        ->where('race_status', '=', 'success');
+
+      if($race_id != '') {
+        $query->where('race_id', '=', $race_id);
+      }
+      if($shipment != '') {
+        $query->where('shipment', '=', $shipment)
+      }
+      $orders = $query->paginate(10);
+
       /*$orders = Order::sortable()
         ->where($field, 'like', '%' .$search. '%')
         ->where('race_status', '=', 'success')
         ->paginate(10);*/
 
-      if($race_id == '' && $shipment == '') {
+      /*if($race_id == '' && $shipment == '') {
         $orders = Order::sortable()
           ->where($field, 'like', '%' .$search. '%')
           ->where('race_status', '=', 'success')
@@ -88,7 +100,7 @@ class AdminShipmentsController extends Controller
             ->where('shipment', '=', $shipment)
             ->where('race_id', '=', $race_id)
             ->paginate(10);
-      }
+      }*/
 
       $races = DB::table('races')->get();
       $addons = DB::table('addons')->get();

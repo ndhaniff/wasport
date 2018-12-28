@@ -19,7 +19,7 @@ Admin | Orders
   @endif
 
   <div class="row">
-    <div class="col-sm-4">
+    <div class="col-sm-8">
       <form action="{{route('admin.orders.searchBy')}}" method="get">
         <div class="input-group">
           <input type="search" name="search" class="form-control" placeholder="Search by">
@@ -30,17 +30,7 @@ Admin | Orders
             <option value="o_phone">phone</option>
             <option value="o_email">email</option>
           </select>
-          <span class="input-group-prepend">
-            <button type="submit" class="btn btn-primary">Search</button>
-          </span>
-        </div>
-      </form>
-    </div>
-
-    <div class="col-sm-4">
-      <form action="{{route('admin.orders.filterRace')}}" method="get">
-        <div class="input-group">
-          <select name="raceitem">
+          <select name="race_id">
             <option value="" disabled selected>Filter race</option>
             @foreach($allorders as $allorder)
               <?php foreach($races as $race) {
@@ -48,12 +38,45 @@ Admin | Orders
                 } ?>
             @endforeach
           </select>
+          <select name="race_status">
+            <option value="" disabled selected>Race status</option>
+            <option value="awaiting">awaiting</option>
+            <option value="success">success</option>
+            <option value="fail">fail</option>
+          </select>
+          <select name="shipment">
+            <option value="" disabled selected>Shipment status</option>
+            <option value="order placed">order placed</option>
+            <option value="order confirmed">order confirmed</option>
+            <option value="order being processed">order being processed</option>
+            <option value="shipped">shipped</option>
+            <option value="delivered">delivered</option>
+            <option value="order closed">order closed</option>
+          </select>
+          <span class="input-group-prepend">
+            <button type="submit" class="btn btn-primary">Search</button>
+          </span>
+        </div>
+      </form>
+    </div>
+
+    <!--<div class="col-sm-4">
+      <form action="{{route('admin.orders.filterRace')}}" method="get">
+        <div class="input-group">
+          <select name="raceitem">
+            <option value="" disabled selected>Filter race</option>
+            @foreach($allorders as $allorder)
+              <?php //foreach($races as $race) {
+                  //echo "<option value='" .$race->rid. "'>" .$race->title_en. "</option>";
+                //} ?>
+            @endforeach
+          </select>
           <span class="input-group-prepend">
             <button type="submit" class="btn btn-primary">Filter</button>
           </span>
         </div>
       </form>
-    </div>
+    </div>-->
   </div>
 
   <br />

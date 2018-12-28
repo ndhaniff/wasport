@@ -29,7 +29,6 @@ Admin | Shipments
             <option value="o_lastname">last name</option>
             <option value="o_phone">phone</option>
             <option value="o_email">email</option>
-            <option value="o_email">race status</option>
           </select>
           <select name="race_id">
             <option value="" disabled selected>Filter race</option>

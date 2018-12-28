@@ -53,10 +53,76 @@ class AdminOrdersController extends Controller
     {
       $search = $request->get('search');
       $field = $request->get('field');
+      $race_id = $request->get('race_id');
+      $race_status = $request->get('race_status');
+      $shipment = $request->get('shipment');
+      $orders = '';
 
-      $orders = Order::sortable()
-        ->where($field, 'like', '%' .$search. '%')
-        ->paginate(10);
+      $query = Order::sortable()->where($field, 'like', '%' .$search. '%');
+
+      if($race_id != '') {
+        $query->where('race_id', '=', $race_id);
+      }
+      if($race_status != '') {
+        $query->where('race_status', '=', $race_status)
+      }
+      if($shipment != '') {
+        $query->where('shipment', '=', $shipment)
+      }
+      $orders = $query->paginate(10);
+
+        /*if($race_id == '' && $race_status == '' && $shipment == '') {
+          $orders = Order::sortable()
+            ->where($field, 'like', '%' .$search. '%')
+            ->paginate(10);
+        }
+        if($race_id == '' && $race_status == '' && $shipment != '') {
+          $orders = Order::sortable()
+            ->where($field, 'like', '%' .$search. '%')
+            ->where('shipment', '=', $shipment)
+            ->paginate(10);
+        }
+        if($race_id == '' && $race_status != '' && $shipment == '') {
+          $orders = Order::sortable()
+            ->where($field, 'like', '%' .$search. '%')
+            ->where('race_status', '=', $race_status)
+            ->paginate(10);
+        }
+        if($race_id != '' && $race_status == '' && $shipment == '') {
+            $orders = Order::sortable()
+              ->where($field, 'like', '%' .$search. '%')
+              ->where('race_id', '=', $race_id)
+              ->paginate(10);
+        }
+        if($race_id == '' && $race_status != '' && $shipment != '') {
+          $orders = Order::sortable()
+            ->where($field, 'like', '%' .$search. '%')
+            ->where('shipment', '=', $shipment)
+            ->where('race_status', '=', $race_status)
+            ->paginate(10);
+        }
+        if($race_id != '' && $race_status == '' && $shipment != '') {
+          $orders = Order::sortable()
+            ->where($field, 'like', '%' .$search. '%')
+            ->where('shipment', '=', $shipment)
+            ->where('race_id', '=', $race_id)
+            ->paginate(10);
+        }
+        if($race_id != '' && $race_status != '' && $shipment == '') {
+          $orders = Order::sortable()
+            ->where($field, 'like', '%' .$search. '%')
+            ->where('race_status', '=', $race_status)
+            ->where('race_id', '=', $race_id)
+            ->paginate(10);
+        }
+        if($race_id != '' && $race_status != '' && $shipment != '') {
+          $orders = Order::sortable()
+            ->where($field, 'like', '%' .$search. '%')
+            ->where('race_status', '=', $race_status)
+            ->where('shipment', '=', $shipment)
+            ->where('race_id', '=', $race_id)
+            ->paginate(10);
+        }*/
 
       $races = DB::table('races')->get();
       $addons = DB::table('addons')->get();
