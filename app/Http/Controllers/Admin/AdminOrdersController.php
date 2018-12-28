@@ -64,10 +64,10 @@ class AdminOrdersController extends Controller
         $query->where('race_id', '=', $race_id);
       }
       if($race_status != '') {
-        $query->where('race_status', '=', $race_status)
+        $query->where('race_status', '=', $race_status);
       }
       if($shipment != '') {
-        $query->where('shipment', '=', $shipment)
+        $query->where('shipment', '=', $shipment);
       }
       $orders = $query->paginate(10);
 

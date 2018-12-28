@@ -66,7 +66,7 @@ class AdminReviewsController extends Controller
         $query->where('race_id', '=', $race_id);
       }
       if($race_status != '') {
-        $query->where('race_status', '=', $race_status)
+        $query->where('race_status', '=', $race_status);
       }
       $orders = $query->paginate(10);
 

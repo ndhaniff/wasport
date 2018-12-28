@@ -64,7 +64,7 @@ class AdminShipmentsController extends Controller
         $query->where('race_id', '=', $race_id);
       }
       if($shipment != '') {
-        $query->where('shipment', '=', $shipment)
+        $query->where('shipment', '=', $shipment);
       }
       $orders = $query->paginate(10);
 
