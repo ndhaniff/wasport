@@ -47,7 +47,7 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
         //$this->redirectTo = route('user.dashboard');
-        //return redirect()->intended('/dashboard');
+        return redirect(session('link'));
     }
 
     /**
