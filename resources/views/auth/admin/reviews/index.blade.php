@@ -19,7 +19,7 @@ Admin | Reviews
   @endif
 
   <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-8">
       <form action="{{route('admin.reviews.searchBy')}}" method="get">
         <div class="input-group">
           <input type="search" name="search" class="form-control" placeholder="Search by">

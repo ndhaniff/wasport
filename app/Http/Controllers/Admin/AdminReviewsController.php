@@ -178,7 +178,7 @@ class AdminReviewsController extends Controller
           ->get();
 
         //return view('auth.admin.orders.index',compact('orders', 'races', 'addons', 'order_addons', 'allorders', 'submissions'));
-        return redirect()->back();
+        return route(admin.reviews);
     }
 
     public function updateDeliveryStatus($oid)
