@@ -19,7 +19,7 @@ Admin | Reviews
   @endif
 
   <div class="row">
-    <div class="col-sm-4">
+    <div class="col-sm-12">
       <form action="{{route('admin.reviews.searchBy')}}" method="get">
         <div class="input-group">
           <input type="search" name="search" class="form-control" placeholder="Search by">
@@ -38,6 +38,12 @@ Admin | Reviews
                 } ?>
             @endforeach
           </select>
+          <select name="race_status">
+            <option value="" disabled selected>Race status</option>
+            <option value="awaiting">awaiting</option>
+            <option value="success">success</option>
+            <option value="fail">fail</option>
+          </select>
           <span class="input-group-prepend">
             <button type="submit" class="btn btn-primary">Search</button>
           </span>
@@ -45,14 +51,14 @@ Admin | Reviews
       </form>
     </div>
 
-    <div class="col-sm-4">
+    <!--<div class="col-sm-4">
       <form action="{{route('admin.reviews.filterRace')}}" method="get">
         <div class="input-group">
           <select name="raceitem">
             <option value="" disabled selected>Filter race</option>
             @foreach($allorders as $allorder)
-              <?php foreach($races as $race) {
-                  echo "<option value='" .$race->rid. "'>" .$race->title_en. "</option>";
+              <?php //foreach($races as $race) {
+                  //echo "<option value='" .$race->rid. "'>" .$race->title_en. "</option>";
                 } ?>
             @endforeach
           </select>
@@ -61,7 +67,7 @@ Admin | Reviews
           </span>
         </div>
       </form>
-    </div>
+    </div>-->
   </div>
 
   <br />
