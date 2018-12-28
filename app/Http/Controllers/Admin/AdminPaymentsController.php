@@ -11,10 +11,13 @@ use App\Model\Race;
 use App\Model\Addon;
 use App\Model\User;
 use App\Model\Submission;
+use App\Model\Payment;
 use Kyslik\ColumnSortable\Sortable;
+use Mail;
 use Session;
+use App\Mail\notifyEmail;
 
-class AdminReviewsController extends Controller
+class AdminPaymentsController extends Controller
 {
 
     /**
@@ -34,20 +37,12 @@ class AdminReviewsController extends Controller
      */
     public function index()
     {
-      $orders = Order::sortable()
-        ->where('payment_status', '=', 'paid')
-        ->paginate(10);
-
+      $payments = Payment::sortable()->paginate(10);
+      $orders = Order::sortable()->get();
       $races = Race::sortable()->get();
-      $addons = Addon::sortable()->get();
-      $users = User::sortable()->get();
-      $order_addons = OrderAddon::sortable()->get();
-      $allorders = Order::sortable()->get();
-      $submissions = DB::table('submissions')
-        ->orderBy('sid', 'DESC')
-        ->get();
+      $allorders= Order::sortable()->get();
 
-      return view('auth.admin.reviews.index',compact('orders', 'races', 'addons', 'order_addons', 'allorders', 'submissions'));
+      return view('auth.admin.payments.index',compact('payments', 'orders', 'races', 'allorders'));
     }
 
     public function searchBy(Request $request)
@@ -55,22 +50,15 @@ class AdminReviewsController extends Controller
       $search = $request->get('search');
       $field = $request->get('field');
 
-      $orders = Order::sortable()
+      $payments = Payment::sortable()
         ->where($field, 'like', '%' .$search. '%')
-        ->where('payment_status', '=', 'paid')
-        ->where('race_id', '=', $race_id)
         ->paginate(10);
 
+      $orders = Order::sortable()->get();
       $races = DB::table('races')->get();
-      $addons = DB::table('addons')->get();
       $allorders = Order::sortable()->get();
-      $order_addons = OrderAddon::sortable()->get();
 
-      $submissions = DB::table('submissions')
-        ->orderBy('sid', 'DESC')
-        ->get();
-
-      return view('auth.admin.reviews.index',compact('orders', 'races', 'addons', 'allorders', 'order_addons', 'submissions'));
+      return view('auth.admin.payments.index',compact('payments', 'orders', 'races', 'allorders'));
     }
 
     public function filterRace(Request $request)
@@ -81,7 +69,7 @@ class AdminReviewsController extends Controller
         if($raceitem != '') {
           $query->where('race_id', 'like', $raceitem);
         }
-      $orders = $query->where('payment_status', '=', 'paid')->paginate(10);
+      $orders = $query->paginate(10);
 
       $races = DB::table('races')->get();
       $allorders = Order::sortable()->get();
@@ -93,7 +81,7 @@ class AdminReviewsController extends Controller
         ->orderBy('sid', 'DESC')
         ->get();
 
-      return view('auth.admin.reviews.index',compact('orders', 'races', 'addons', 'users', 'order_addons', 'allorders', 'submissions'));
+      return view('auth.admin.orders.index',compact('orders', 'races', 'addons', 'users', 'order_addons', 'allorders', 'submissions'));
     }
 
      /**
@@ -139,9 +127,7 @@ class AdminReviewsController extends Controller
 
         $update->save();
 
-        $orders = Order::sortable()
-          ->where('payment_status', '=', 'paid')
-          ->paginate(10);
+        $orders = Order::sortable()->paginate(10);
         $races = Race::sortable()->get();
         $addons = Addon::sortable()->get();
         $users = User::sortable()->get();
@@ -151,8 +137,7 @@ class AdminReviewsController extends Controller
           ->orderBy('sid', 'DESC')
           ->get();
 
-        //return view('auth.admin.orders.index',compact('orders', 'races', 'addons', 'order_addons', 'allorders', 'submissions'));
-        return redirect()->back();
+        return view('auth.admin.orders.index',compact('orders', 'races', 'addons', 'order_addons', 'allorders', 'submissions'));
     }
 
     public function updateDeliveryStatus($oid)
@@ -175,5 +160,41 @@ class AdminReviewsController extends Controller
 
       //return view('auth.admin.orders.index',compact('orders', 'races', 'addons', 'order_addons', 'allorders', 'submissions'));
       return redirect()->back();
+    }
+
+    public function notifyUser($oid) {
+
+      $order = DB::table('orders')
+        ->join('users', 'orders.user_id', '=', 'users.id')
+        ->join('races', 'orders.race_id', '=', 'races.rid')
+        ->where('oid', '=', $oid)
+        ->first();
+
+      $email = DB::table('users')
+        ->join('orders', 'users.id', '=', 'orders.user_id')
+        ->where('id', '=', $order->user_id)
+        ->get(['email']);
+
+      $race = DB::table('races')
+        ->join('orders', 'races.rid', '=', 'orders.race_id')
+        ->where('oid', '=', $oid)
+        ->get(['title_en']);
+
+      Mail::send('email.sendNotifyEmail', ['order' => $order], function ($m) use ($order) {
+        $m->from('info@wasportsrun.com', 'WaSportsRun');
+        $m->to($order->email, $order->name)->subject('[WaSports] Congratulations for Completing ' . $order->title_en);
+      });
+
+      // check for failures
+      if (Mail::failures()) {
+        //return back()->with('error','Email unable sent to ' .$order->o_firstname. ', ' . $order->lastname);
+        Session::flash('message', 'Email unable send to ' .$order->o_firstname. ', ' . $order->lastname);
+        return redirect()->back();
+      } else {
+        return redirect()->back();
+        Session::flash('message', 'Email successfully sent to ' .$order->o_firstname. ', ' . $order->lastname);
+      }
+
+      //return redirect()->back();
     }
 }

@@ -28,6 +28,8 @@ Admin | Shipments
             <option value="o_firstname">first name</option>
             <option value="o_lastname">last name</option>
             <option value="o_phone">phone</option>
+            <option value="o_email">email</option>
+            <option value="o_email">race status</option>
           </select>
           <span class="input-group-prepend">
             <button type="submit" class="btn btn-primary">Search</button>
@@ -112,6 +114,10 @@ Admin | Shipments
                 <tr>
                   <th>Phone</th>
                   <td>{{$order->o_phone}}</td>
+                </tr>
+                <tr>
+                  <th>Email</th>
+                  <td>{{$order->o_email}}</td>
                 </tr>
                 <tr>
                   <th>Birthday</th>

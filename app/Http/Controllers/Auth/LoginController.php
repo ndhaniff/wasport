@@ -36,8 +36,7 @@ class LoginController extends Controller
 
     protected function authenticated(Request $request, $user)
     {
-      //return redirect('/dashboard');
-      return redirect(session()->get('url.intended'));
+      return redirect('/dashboard');
     }
 
     /**
@@ -48,7 +47,7 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
-        //$this->redirectTo = route('user.dashboard');
+        $this->redirectTo = route('user.dashboard');
     }
 
     /**

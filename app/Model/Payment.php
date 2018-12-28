@@ -9,7 +9,7 @@ class Payment extends Model
 {
     use Sortable;
 
-    public $sortable = [];
+    public $sortable = ['pid'];
 
     protected $primaryKey = 'pid';
 

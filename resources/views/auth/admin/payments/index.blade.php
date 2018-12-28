@@ -28,6 +28,7 @@ Admin | Payments
             <option value="o_firstname">first name</option>
             <option value="o_lastname">last name</option>
             <option value="o_phone">phone</option>
+            <option value="o_email">email</option>
           </select>
           <span class="input-group-prepend">
             <button type="submit" class="btn btn-primary">Search</button>

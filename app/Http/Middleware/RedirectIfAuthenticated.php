@@ -27,8 +27,7 @@ class RedirectIfAuthenticated
               break;
             default:
               if (Auth::guard($guard)->check()) {
-                  //return redirect()->route('user.dashboard');
-                  return redirect(session()->get('url.intended'));
+                  return redirect()->route('user.dashboard');
               }
               break;
           }

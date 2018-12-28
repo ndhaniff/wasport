@@ -37,7 +37,6 @@ class UserController extends Controller
     }
 
     public function showLogin(){
-      Session::put('url.intended',URL::previous());
       return view('auth.login');
     }
 

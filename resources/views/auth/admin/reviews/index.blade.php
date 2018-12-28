@@ -28,6 +28,15 @@ Admin | Reviews
             <option value="o_firstname">first name</option>
             <option value="o_lastname">last name</option>
             <option value="o_phone">phone</option>
+            <option value="o_email">email</option>
+          </select>
+          <select name="raceitem">
+            <option value="" disabled selected>Filter race</option>
+            @foreach($allorders as $allorder)
+              <?php foreach($races as $race) {
+                  echo "<option value='" .$race->rid. "'>" .$race->title_en. "</option>";
+                } ?>
+            @endforeach
           </select>
           <span class="input-group-prepend">
             <button type="submit" class="btn btn-primary">Search</button>
@@ -111,6 +120,10 @@ Admin | Reviews
                 <tr>
                   <th>Phone</th>
                   <td>{{$order->o_phone}}</td>
+                </tr>
+                <tr>
+                  <th>Email</th>
+                  <td>{{$order->o_email}}</td>
                 </tr>
                 <tr>
                   <th>Birthday</th>
