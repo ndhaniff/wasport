@@ -36,7 +36,10 @@ class UserController extends Controller
     }
 
     public function showLogin(){
-      session(['link' => url()->previous()]);
+      if(!session()->has('url.intended'))
+      {
+        session(['url.intended' => url()->previous()]);
+      }
       return view('auth.login');
     }
 
