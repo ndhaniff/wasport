@@ -126,8 +126,8 @@ Route::group(['prefix' =>'admin'],function()
   Route::get('/shipments/searchBy', 'Admin\AdminShipmentsController@searchBy')->name('admin.shipments.searchBy');
   Route::get('/shipments/filterRace', 'Admin\AdminShipmentsController@filterRace')->name('admin.shipments.filterRace');
   Route::delete('/shipments/{oid}','Admin\AdminShipmentsController@orders')->name('admin.shipments.destroy');
-  Route::post('/reviews/updateDeliveryStatus/{oid}', 'Admin\AdminShipmentsController@updateDeliveryStatus')->name('admin.shipments.updateDeliveryStatus');
-  Route::post('/reviews/notifyUser/{oid}', 'Admin\AdminShipmentsController@notifyUser')->name('admin.shipments.notifyUser');
+  Route::post('/shipments/updateDeliveryStatus/{oid}', 'Admin\AdminShipmentsController@updateDeliveryStatus')->name('admin.shipments.updateDeliveryStatus');
+  Route::post('/shipments /notifyUser/{oid}', 'Admin\AdminShipmentsController@notifyUser')->name('admin.shipments.notifyUser');
   //Contacts
   Route::get('/contacts','Admin\AdminContactsController@index')->name('admin.contacts');
   Route::get('/contacts/search', 'Admin\AdminContactsController@search')->name('admin.contacts.search');

@@ -165,7 +165,7 @@ class AdminReviewsController extends Controller
 
         $update->save();
 
-        $orders = Order::sortable()
+        /*$orders = Order::sortable()
           ->where('payment_status', '=', 'paid')
           ->paginate(10);
         $races = Race::sortable()->get();
@@ -175,10 +175,10 @@ class AdminReviewsController extends Controller
         $allorders= Order::sortable()->get();
         $submissions = DB::table('submissions')
           ->orderBy('sid', 'DESC')
-          ->get();
+          ->get();*/
 
         //return view('auth.admin.orders.index',compact('orders', 'races', 'addons', 'order_addons', 'allorders', 'submissions'));
-        return route(admin.reviews);
+        return redirect()->back();
     }
 
     public function updateDeliveryStatus($oid)
@@ -189,7 +189,7 @@ class AdminReviewsController extends Controller
       $order->courier = request('courier');
       $order->save();
 
-      $orders = Order::sortable()->paginate(10);
+      /*$orders = Order::sortable()->paginate(10);
       $races = Race::sortable()->get();
       $addons = Addon::sortable()->get();
       $users = User::sortable()->get();
@@ -197,7 +197,7 @@ class AdminReviewsController extends Controller
       $allorders= Order::sortable()->get();
       $submissions = DB::table('submissions')
         ->orderBy('sid', 'DESC')
-        ->get();
+        ->get();*/
 
       //return view('auth.admin.orders.index',compact('orders', 'races', 'addons', 'order_addons', 'allorders', 'submissions'));
       return redirect()->back();

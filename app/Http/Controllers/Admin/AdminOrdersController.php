@@ -136,7 +136,7 @@ class AdminOrdersController extends Controller
 
         $update->save();
 
-        $orders = Order::sortable()->paginate(10);
+        /*$orders = Order::sortable()->paginate(10);
         $races = Race::sortable()->get();
         $addons = Addon::sortable()->get();
         $users = User::sortable()->get();
@@ -144,9 +144,10 @@ class AdminOrdersController extends Controller
         $allorders= Order::sortable()->get();
         $submissions = DB::table('submissions')
           ->orderBy('sid', 'DESC')
-          ->get();
+          ->get();*/
 
-        return view('auth.admin.orders.index',compact('orders', 'races', 'addons', 'order_addons', 'allorders', 'submissions'));
+        //return view('auth.admin.orders.index',compact('orders', 'races', 'addons', 'order_addons', 'allorders', 'submissions'));
+        return redirect()->back();
     }
 
     public function updateDeliveryStatus($oid)
