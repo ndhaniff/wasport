@@ -36,6 +36,7 @@ class UserController extends Controller
     }
 
     public function showLogin(){
+      session(['link' => url()->previous()]);
       return view('auth.login');
     }
 

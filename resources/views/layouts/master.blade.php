@@ -47,7 +47,7 @@
         </span>
 
             @guest
-            <span class="dropdown">
+            <!--<span class="dropdown">
                 <a class="p-2 text-light btn" id="dropdownMenuLink" data-toggle="dropdown" >{{__("LOGIN")}}</a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     <div class="dropdown-item sign-in">
@@ -91,7 +91,7 @@
                     </form>
                     </div>
                 </div>
-            </span>
+            </span>-->
             <a class="p-2 text-light btn" href="{{ route('login') }}" >{{__("LOGIN")}}</a>
             <a class="p-2 text-light" href="{{ route('register') }}">
               <button id="create-account-btn">{{__("CREATE ACCOUNT")}}</button>
