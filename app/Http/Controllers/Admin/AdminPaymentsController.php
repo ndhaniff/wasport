@@ -85,23 +85,23 @@ class AdminPaymentsController extends Controller
     }
 
      /**
-      * Delete Orders
+      * Delete Payment
       *
       * @param [int] $id
       * @return void
       */
-    public function destroy($oid)
+    public function destroy($pid)
     {
-        $order = Order::find($oid);
-        if($order->count()  > 0){
-            $order->delete();
+        $payment = Payment::find($pid);
+        if($payment->count()  > 0){
+            $payment->delete();
             return redirect()->back();
         } else {
-            return response()->json(['success' => false, 'msg' => 'order not found' ], 200 );
+            return response()->json(['success' => false, 'msg' => 'payment not found' ], 200 );
         }
     }
 
-    public function updateRaceStatus($oid)
+    public function updatePaymentStatus($pid)
     {
         $update = Order::find($oid);
         $raceStatus = request('racestatus');

@@ -59,7 +59,7 @@ Admin | Reviews
             @foreach($allorders as $allorder)
               <?php //foreach($races as $race) {
                   //echo "<option value='" .$race->rid. "'>" .$race->title_en. "</option>";
-                } ?>
+                //} ?>
             @endforeach
           </select>
           <span class="input-group-prepend">
