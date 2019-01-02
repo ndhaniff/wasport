@@ -70,35 +70,6 @@ class AdminReviewsController extends Controller
       }
       $orders = $query->paginate(10);
 
-      /*if($race_id == '' && $race_status == '') {
-        $orders = Order::sortable()
-          ->where($field, 'like', '%' .$search. '%')
-          ->where('payment_status', '=', 'paid')
-          ->paginate(10);
-      }
-      if($race_id == '' && $race_status != '') {
-        $orders = Order::sortable()
-          ->where($field, 'like', '%' .$search. '%')
-          ->where('payment_status', '=', 'paid')
-          ->where('race_status', '=', $race_status)
-          ->paginate(10);
-      }
-      if($race_id != '' && $race_status == '') {
-        $orders = Order::sortable()
-          ->where($field, 'like', '%' .$search. '%')
-          ->where('payment_status', '=', 'paid')
-          ->where('race_id', '=', $race_id)
-          ->paginate(10);
-      }
-      if($race_id != '' && $race_status != '') {
-        $orders = Order::sortable()
-          ->where($field, 'like', '%' .$search. '%')
-          ->where('payment_status', '=', 'paid')
-          ->where('race_status', '=', $race_status)
-          ->where('race_id', '=', $race_id)
-          ->paginate(10);
-      }*/
-
       $races = DB::table('races')->get();
       $addons = DB::table('addons')->get();
       $allorders = Order::sortable()->get();

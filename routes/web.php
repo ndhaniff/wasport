@@ -114,6 +114,8 @@ Route::group(['prefix' =>'admin'],function()
   Route::post('/orders/notifyUser/{oid}', 'Admin\AdminOrdersController@notifyUser')->name('admin.orders.notifyUser');
   //Payments
   Route::get('/payments','Admin\AdminOrdersController@payments')->name('admin.payments');
+  Route::delete('/payments/{pid}','Admin\AdminPaymentsController@payments')->name('admin.payments.destroy');
+  Route::post('/payments/updatePaymentStatus/{pid}', 'Admin\AdminPaymentsController@updatePaymentStatus')->name('admin.payments.updatePaymentStatus');
   //Reviews
   Route::get('/reviews','Admin\AdminReviewsController@index')->name('admin.reviews');
   Route::get('/reviews/searchBy', 'Admin\AdminReviewsController@searchBy')->name('admin.reviews.searchBy');

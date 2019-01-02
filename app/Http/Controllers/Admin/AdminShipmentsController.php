@@ -68,40 +68,6 @@ class AdminShipmentsController extends Controller
       }
       $orders = $query->paginate(10);
 
-      /*$orders = Order::sortable()
-        ->where($field, 'like', '%' .$search. '%')
-        ->where('race_status', '=', 'success')
-        ->paginate(10);*/
-
-      /*if($race_id == '' && $shipment == '') {
-        $orders = Order::sortable()
-          ->where($field, 'like', '%' .$search. '%')
-          ->where('race_status', '=', 'success')
-          ->paginate(10);
-      }
-      if($race_id == '' && $shipment != '') {
-        $orders = Order::sortable()
-          ->where($field, 'like', '%' .$search. '%')
-          ->where('race_status', '=', 'success')
-          ->where('shipment', '=', $shipment)
-          ->paginate(10);
-      }
-      if($race_id != '' && $shipment == '') {
-        $orders = Order::sortable()
-          ->where($field, 'like', '%' .$search. '%')
-          ->where('race_status', '=', 'success')
-          ->where('race_id', '=', $race_id)
-          ->paginate(10);
-      }
-      if($race_id != '' && $shipment != '') {
-          $orders = Order::sortable()
-            ->where($field, 'like', '%' .$search. '%')
-            ->where('race_status', '=', 'success')
-            ->where('shipment', '=', $shipment)
-            ->where('race_id', '=', $race_id)
-            ->paginate(10);
-      }*/
-
       $races = DB::table('races')->get();
       $addons = DB::table('addons')->get();
       $allorders = Order::sortable()->get();

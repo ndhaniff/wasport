@@ -358,7 +358,7 @@ Admin | Reviews
                 <tr>
                   <th>Courier</th>
                   <td><?php echo Form::select('courier', array('' => '',
-                                                                'POS LAJU=' => 'Pos Laju',
+                                                                'POS LAJU' => 'Pos Laju',
                                                                 'CITYLINK EXPRESS' => 'Citylink Express',
                                                                 'FEDEX EXPRESS' => 'FedEx Express',
                                                                 'GDEX EXPRESS' => 'Gdex Express',

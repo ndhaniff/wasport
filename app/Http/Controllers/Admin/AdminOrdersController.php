@@ -71,59 +71,6 @@ class AdminOrdersController extends Controller
       }
       $orders = $query->paginate(10);
 
-        /*if($race_id == '' && $race_status == '' && $shipment == '') {
-          $orders = Order::sortable()
-            ->where($field, 'like', '%' .$search. '%')
-            ->paginate(10);
-        }
-        if($race_id == '' && $race_status == '' && $shipment != '') {
-          $orders = Order::sortable()
-            ->where($field, 'like', '%' .$search. '%')
-            ->where('shipment', '=', $shipment)
-            ->paginate(10);
-        }
-        if($race_id == '' && $race_status != '' && $shipment == '') {
-          $orders = Order::sortable()
-            ->where($field, 'like', '%' .$search. '%')
-            ->where('race_status', '=', $race_status)
-            ->paginate(10);
-        }
-        if($race_id != '' && $race_status == '' && $shipment == '') {
-            $orders = Order::sortable()
-              ->where($field, 'like', '%' .$search. '%')
-              ->where('race_id', '=', $race_id)
-              ->paginate(10);
-        }
-        if($race_id == '' && $race_status != '' && $shipment != '') {
-          $orders = Order::sortable()
-            ->where($field, 'like', '%' .$search. '%')
-            ->where('shipment', '=', $shipment)
-            ->where('race_status', '=', $race_status)
-            ->paginate(10);
-        }
-        if($race_id != '' && $race_status == '' && $shipment != '') {
-          $orders = Order::sortable()
-            ->where($field, 'like', '%' .$search. '%')
-            ->where('shipment', '=', $shipment)
-            ->where('race_id', '=', $race_id)
-            ->paginate(10);
-        }
-        if($race_id != '' && $race_status != '' && $shipment == '') {
-          $orders = Order::sortable()
-            ->where($field, 'like', '%' .$search. '%')
-            ->where('race_status', '=', $race_status)
-            ->where('race_id', '=', $race_id)
-            ->paginate(10);
-        }
-        if($race_id != '' && $race_status != '' && $shipment != '') {
-          $orders = Order::sortable()
-            ->where($field, 'like', '%' .$search. '%')
-            ->where('race_status', '=', $race_status)
-            ->where('shipment', '=', $shipment)
-            ->where('race_id', '=', $race_id)
-            ->paginate(10);
-        }*/
-
       $races = DB::table('races')->get();
       $addons = DB::table('addons')->get();
       $allorders = Order::sortable()->get();

@@ -37,28 +37,44 @@ class AdminPaymentsController extends Controller
      */
     public function index()
     {
-      $payments = Payment::sortable()->paginate(10);
+      $payments = Payment::sortable()
+        ->join('orders', 'orders.oid', '=', 'order_id')
+        ->paginate(10);
       $orders = Order::sortable()->get();
       $races = Race::sortable()->get();
-      $allorders= Order::sortable()->get();
+      $allpayments = Payment::sortable()
+        ->join('orders', 'orders.oid', '=', 'order_id')
+        ->get();
 
-      return view('auth.admin.payments.index',compact('payments', 'orders', 'races', 'allorders'));
+      return view('auth.admin.payments.index',compact('payments', 'orders', 'races', 'allpayments'));
     }
 
     public function searchBy(Request $request)
     {
       $search = $request->get('search');
       $field = $request->get('field');
+      $race_id = $request->get('race_id');
+      $payment_status = $request->get('p_status');
+      $payments = '';
 
-      $payments = Payment::sortable()
-        ->where($field, 'like', '%' .$search. '%')
-        ->paginate(10);
+      $query = Payment::sortable()->where($field, 'like', '%' .$search. '%');
 
+      if($race_id != '') {
+        $query->where('race_id', '=', $race_id);
+      }
+      if($payment_status != '') {
+        $query->where('p_status', '=', $payment_status);
+      }
+      $payments = $query->join('orders', 'orders.oid', '=', 'order_id')->paginate(10);
+
+      $payments = Payment::sortable()->paginate(10);
       $orders = Order::sortable()->get();
-      $races = DB::table('races')->get();
-      $allorders = Order::sortable()->get();
+      $races = Race::sortable()->get();
+      $allpayments = Payment::sortable()
+        ->join('orders', 'orders.oid', '=', 'order_id')
+        ->get();
 
-      return view('auth.admin.payments.index',compact('payments', 'orders', 'races', 'allorders'));
+      return view('auth.admin.payments.index',compact('payments', 'orders', 'races', 'allpayments'));
     }
 
     public function filterRace(Request $request)
@@ -103,98 +119,35 @@ class AdminPaymentsController extends Controller
 
     public function updatePaymentStatus($pid)
     {
-        $update = Order::find($oid);
-        $raceStatus = request('racestatus');
-        $update->race_status = $raceStatus;
+        $updatePayment = Payment::find($pid);
+        $paymentStatus = request('paymentstatus');
+        $updatePayment->p_status = $paymentStatus;
 
-        if($raceStatus == 'fail')
-          $update->shipment = 'order closed';
+        $oid = $updatePayment->order_id;
 
-        if($raceStatus == 'awaiting')
-          $update->shipment = 'order placed';
-
-        if($raceStatus == 'success') {
-          $update->shipment = 'order confirmed';
-
-          $submission = DB::table('submissions')
-              ->where('order_id' , '=', $oid)
-              ->orderBy('updated_at', 'DESC')
-              ->first();
-
-          $update->pace_min = $submission->s_pace_min;
-          $update->pace_sec = $submission->s_pace_sec;
+        if($paymentStatus == '1') {
+          $paymentRemark = 'paid';
+          //send receipt
+        }
+        if($paymentStatus == '0') {
+          $paymentRemark = 'pending';
         }
 
-        $update->save();
+        $updatePayment->save();
 
-        $orders = Order::sortable()->paginate(10);
+        $updateOrder = Order::find($oid);
+        $updateOrder->payment_status = $paymentRemark;
+        $updateOrder->save();
+
+        $payments = Payment::sortable()
+          ->join('orders', 'orders.oid', '=', 'order_id')
+          ->paginate(10);
+        $orders = Order::sortable()->get();
         $races = Race::sortable()->get();
-        $addons = Addon::sortable()->get();
-        $users = User::sortable()->get();
-        $order_addons = OrderAddon::sortable()->get();
-        $allorders= Order::sortable()->get();
-        $submissions = DB::table('submissions')
-          ->orderBy('sid', 'DESC')
+        $allpayments = Payment::sortable()
+          ->join('orders', 'orders.oid', '=', 'order_id')
           ->get();
 
-        return view('auth.admin.orders.index',compact('orders', 'races', 'addons', 'order_addons', 'allorders', 'submissions'));
-    }
-
-    public function updateDeliveryStatus($oid)
-    {
-      $order = Order::find($oid);
-      $order->shipment = request('shipment');
-      $order->tracking_number = request('tracking_number');
-      $order->courier = request('courier');
-      $order->save();
-
-      $orders = Order::sortable()->paginate(10);
-      $races = Race::sortable()->get();
-      $addons = Addon::sortable()->get();
-      $users = User::sortable()->get();
-      $order_addons = OrderAddon::sortable()->get();
-      $allorders= Order::sortable()->get();
-      $submissions = DB::table('submissions')
-        ->orderBy('sid', 'DESC')
-        ->get();
-
-      //return view('auth.admin.orders.index',compact('orders', 'races', 'addons', 'order_addons', 'allorders', 'submissions'));
-      return redirect()->back();
-    }
-
-    public function notifyUser($oid) {
-
-      $order = DB::table('orders')
-        ->join('users', 'orders.user_id', '=', 'users.id')
-        ->join('races', 'orders.race_id', '=', 'races.rid')
-        ->where('oid', '=', $oid)
-        ->first();
-
-      $email = DB::table('users')
-        ->join('orders', 'users.id', '=', 'orders.user_id')
-        ->where('id', '=', $order->user_id)
-        ->get(['email']);
-
-      $race = DB::table('races')
-        ->join('orders', 'races.rid', '=', 'orders.race_id')
-        ->where('oid', '=', $oid)
-        ->get(['title_en']);
-
-      Mail::send('email.sendNotifyEmail', ['order' => $order], function ($m) use ($order) {
-        $m->from('info@wasportsrun.com', 'WaSportsRun');
-        $m->to($order->email, $order->name)->subject('[WaSports] Congratulations for Completing ' . $order->title_en);
-      });
-
-      // check for failures
-      if (Mail::failures()) {
-        //return back()->with('error','Email unable sent to ' .$order->o_firstname. ', ' . $order->lastname);
-        Session::flash('message', 'Email unable send to ' .$order->o_firstname. ', ' . $order->lastname);
-        return redirect()->back();
-      } else {
-        return redirect()->back();
-        Session::flash('message', 'Email successfully sent to ' .$order->o_firstname. ', ' . $order->lastname);
-      }
-
-      //return redirect()->back();
+        return view('auth.admin.payments.index',compact('payments', 'orders', 'races', 'allpayments'));
     }
 }
