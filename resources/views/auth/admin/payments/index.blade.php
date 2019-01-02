@@ -159,7 +159,7 @@ Admin | Payments
   </tbody>
 </table>
 
-{{ $payment->links() }}
+{{ $payments->links() }}
 
 </div>
 
