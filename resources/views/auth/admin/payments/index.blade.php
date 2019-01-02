@@ -32,7 +32,7 @@ Admin | Payments
           </select>
           <select name="race_id">
             <option value="" disabled selected>Filter race</option>
-            @foreach($allorders as $allorder)
+            @foreach($allpayments as $allpayment)
               <?php foreach($races as $race) {
                   echo "<option value='" .$race->rid. "'>" .$race->title_en. "</option>";
                 } ?>
