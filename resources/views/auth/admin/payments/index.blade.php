@@ -83,7 +83,7 @@ Admin | Payments
                   }
                 }*/
                 foreach($races as $race) {
-                  if($order->race_id == $race->rid) echo $race->title_en;
+                  if($payment->race_id == $race->rid) echo $race->title_en;
                 } ?></td>
       <td>
       <div class="btn-group " role="group" aria-label="Basic example">
@@ -143,7 +143,7 @@ Admin | Payments
                 <tr>
                   <th>Race</th>
                   <td><?php foreach($races as $race) {
-                              if($order->race_id == $race->rid) echo $race->title_en;
+                              if($payment->race_id == $race->rid) echo $race->title_en;
                             } ?></td>
                 </tr>
               </table>
