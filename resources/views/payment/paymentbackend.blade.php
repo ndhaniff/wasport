@@ -19,8 +19,8 @@ $s_country  = $_REQUEST["S_country"];
 //Add your programming code here
 <?php
 $expected_sign = $signature;
-$merchantcode = $this->merchantcode;
-$merchantkey = $this->merchantkey;
+//$merchantcode = $merchantcode;
+$merchantkey = 'flICG0S4Ul';
 
 $check_sign = '';
 $str = '';
