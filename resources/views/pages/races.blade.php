@@ -53,8 +53,9 @@
         @foreach ($current as $currentrace)
         <?php date_default_timezone_set("Asia/Kuala_Lumpur");
               $current_time = date("h:i a");
+              $race_time = $currentrace->time_to;
         ?>
-        @if($current_time <= date('h:i a',$currentrace->time_to))
+        @if($current_time <= date('h:i a',$race_time))
         <div class="col-sm-12 col-md-4">
           <a href="racedetails/{{ $currentrace->rid }}">
             <div class="race-box">
@@ -128,8 +129,9 @@
         @foreach ($current as $currentrace)
         <?php date_default_timezone_set("Asia/Kuala_Lumpur");
               $current_time = date("h:i a");
+              $race_time = $currentrace->time_to;
         ?>
-        @if($current_time > date('h:i a',$currentrace->time_to))
+        @if($current_time <= date('h:i a',$race_time))
         <div class="col-sm-12 col-md-4">
           <a href="racedetails/{{ $currentrace->rid }}">
             <div class="race-box">
