@@ -602,7 +602,7 @@ class UserController extends Controller
 
   public function backendcallback() {
 
-    $expected_sign = $_POST['Signature'];
+    /*$expected_sign = $_POST['Signature'];
     $merchantcode = $this->merchantcode;
     $merchantkey = $this->merchantkey;
 
@@ -629,7 +629,7 @@ class UserController extends Controller
 
     $check_sign = base64_encode($ipaySignature);*/
 
-    $payment = new Payment();
+    /*$payment = new Payment();
     $payment->check_sign = $check_sign;
     $payment->expected_sign = $expected_sign;
     $payment->order_id = $orderID;
@@ -648,10 +648,12 @@ class UserController extends Controller
     $check_sign = base64_encode($ipaySignature);*/
 
     //Payment success
-     if ($paymentStatus == "1" && $expected_sign == $check_sign) {
+     /*if ($paymentStatus == "1" && $expected_sign == $check_sign) {
 
        return view('payment.paymentsuccessbackend');
 
      } else { return view('payment.paymentfailure'); }
-   }
+   }*/
+
+   return view('payment.paymentbackend');
 }

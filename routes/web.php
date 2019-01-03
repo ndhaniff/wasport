@@ -165,7 +165,8 @@ Route::post('/ipay88/submitrace', 'API\IPay88Controller@submitRace')->name('ipay
 
 //iPay88
 Route::post('/payment/ipay88/callback', 'User\UserController@callback')->name('callback');
-Route::post('/payment/ipay88/backendcallback', 'User\UserController@backendcallback')->name('backendcallback');
+//Route::post('/payment/ipay88/backendcallback', 'User\UserController@backendcallback')->name('backendcallback');
+Route::get('/payment/ipay88/backendcallback', 'User\UserController@backendcallback')->name('backendcallback');
 //Route::post('/ipay88/makepayment', 'API\IPay88Controller@makePayment')->name('ipay88.makepayment');
 
 //Contact Us
