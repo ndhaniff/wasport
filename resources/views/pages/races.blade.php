@@ -53,9 +53,9 @@
         @foreach ($current as $currentrace)
         <?php date_default_timezone_set("Asia/Kuala_Lumpur");
               $current_time = date("h:i a");
-              $race_time = $currentrace->time_to;
-              if($current_time <= date('h:i a',$race_time)) { echo 'ok'; }
+              $race_time = strtotime($currentrace->time_to);
         ?>
+        @if($current_time <= date('h:i a',$race_time))
         <div class="col-sm-12 col-md-4">
           <a href="racedetails/{{ $currentrace->rid }}">
             <div class="race-box">
@@ -85,6 +85,7 @@
             </div>
           </a>
         </div>
+        @endif
         @endforeach
       </div>
     </div>
@@ -125,7 +126,43 @@
           </a>
         </div>
         @endforeach
-        
+        @foreach ($current as $currentrace)
+        <?php date_default_timezone_set("Asia/Kuala_Lumpur");
+              $current_time = date("h:i a");
+              $race_time = strtotime($currentrace->time_to);
+        ?>
+        @if($current_time <= date('h:i a',$race_time))
+        <div class="col-sm-12 col-md-4">
+          <a href="racedetails/{{ $currentrace->rid }}">
+            <div class="race-box">
+              <div class="race-img">
+                <img src="<?php echo asset('storage/uploaded/races/' . $currentrace->header) ?>" alt="{{ $currentrace->title_en }}">
+              </div>
+
+              <div class="race-caption">
+                <?php if(app()->getLocale() == 'en')
+                        echo '<h5>' .$currentrace->title_en. '</h5>';
+                      if(app()->getLocale() == 'ms')
+                        echo '<h5>' .$currentrace->title_ms. '</h5>';
+                      if(app()->getLocale() == 'zh')
+                        echo '<h5>' .$currentrace->title_zh. '</h5>'; ?>
+
+                <hr>
+
+                <div class="raceslisting-date">
+                  <?php $dateF = DateTime::createFromFormat('Y-m-d', $currentrace->date_from)->format('d M Y');
+
+                        $dateT = DateTime::createFromFormat('Y-m-d', $currentrace->date_to)->format('d M Y');
+
+                        echo $dateF. ' (' .$currentrace->time_from. ') GMT +08' . '<br>-<br>' .$dateT. ' (' .$currentrace->time_to. ') GMT +08'; ?>
+                </div>
+
+              </div>
+            </div>
+          </a>
+        </div>
+        @endif
+        @endforeach
       </div>
     </div>
   </div>
