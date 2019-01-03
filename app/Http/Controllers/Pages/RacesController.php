@@ -20,7 +20,7 @@ class RacesController extends Controller
         $date = date('Y-m-d');
 
         $new = DB::table('races')
-          ->where('date_to', '>=', $date)
+          ->where('date_to', '>', $date)
           ->orderBy('date_from', 'DESC')
           ->get();
 
@@ -29,7 +29,12 @@ class RacesController extends Controller
           ->orderBy('date_from', 'DESC')
           ->get();
 
-        return view('pages.races', ['new' => $new, 'old' => $old]);
+        $current = DB::table('races')
+          ->where('date_to', '=', $date)
+          ->orderBy('date_from', 'DESC')
+          ->get();
+
+        return view('pages.races', ['new' => $new, 'old' => $old, 'current' => $current]);
     }
 
     public function details($rid) {
