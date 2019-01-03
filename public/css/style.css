@@ -877,7 +877,10 @@ OFFLINE EVENTS
   color: rgba(0,0,0,.45);
 }
 
-.offline-details #banner { max-height: 750px; }
+.offline-details #banner {
+  max-height: 750px;
+  width: 100%;
+}
 
 .offline-details .details { margin: 3rem 0; }
 

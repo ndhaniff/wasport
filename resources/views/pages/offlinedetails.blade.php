@@ -36,7 +36,7 @@
     </div>
 
     <?php if(app()->getLocale() == 'en' && $offline->details_en != null) {
-            echo '<div class="btm-details"><hr><b>Race Details</b>';
+            echo '<div class="btm-details"><hr><b><u>Race Details</u></b>';
             echo $offline->details_en;
             echo '</div><br />';
 
