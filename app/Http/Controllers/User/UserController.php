@@ -18,7 +18,6 @@ use App\Model\Payment;
 use Auth;
 use DB;
 use Mail;
-use Session;
 use App\Mail\confirmEmail;
 
 class UserController extends Controller
