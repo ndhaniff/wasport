@@ -222,14 +222,14 @@
               <a href="/"><img src="{{asset('img/wasport-logo-footer.png')}}" id="footer-logo"></a>
 
               <div class="footer-social">
-                <a href="#"><img src="{{asset('img/footer-social-fb.png')}}" alt="Facebook"></a>
+                <a href="https://www.facebook.com/WasportsRun/" target="_blank"><img src="{{asset('img/footer-social-fb.png')}}" alt="Facebook"></a>
                 <a href="#"><img src="{{asset('img/footer-social-twitter.png')}}" alt="Twitter"></a>
                 <a href="#"><img src="{{asset('img/footer-social-ig.png')}}" alt="Instagram"></a>
               </div>
 
               <div class="footer-social-mobile">
                 <center>
-                  <a href="#"><img src="{{asset('img/footer-social-fb.png')}}" alt="Facebook"></a>
+                  <a href="https://www.facebook.com/WasportsRun/" target="_blank"><img src="{{asset('img/footer-social-fb.png')}}" alt="Facebook"></a>
                   <a href="#"><img src="{{asset('img/footer-social-twitter.png')}}" alt="Twitter"></a>
                   <a href="#"><img src="{{asset('img/footer-social-ig.png')}}" alt="Instagram"></a>
                 </center>
