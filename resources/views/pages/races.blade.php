@@ -131,7 +131,7 @@
               $current_time = date("h:i a");
               $race_time = strtotime($currentrace->time_to);
         ?>
-        @if($current_time <= date('h:i a',$race_time))
+        @if($current_time > date('h:i a',$race_time))
         <div class="col-sm-12 col-md-4">
           <a href="racedetails/{{ $currentrace->rid }}">
             <div class="race-box">
