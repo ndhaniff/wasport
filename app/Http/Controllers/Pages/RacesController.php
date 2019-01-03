@@ -20,8 +20,8 @@ class RacesController extends Controller
         $date = date('Y-m-d');
 
         $new = DB::table('races')
-          ->where('date_to', '>', $date)
-          ->orderBy('date_from', 'ASC')
+          ->where('date_to', '>=', $date)
+          ->orderBy('date_from', 'DESC')
           ->get();
 
         $old = DB::table('races')
