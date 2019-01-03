@@ -656,4 +656,5 @@ class UserController extends Controller
    }*/
 
    return view('payment.paymentbackend');
+ }
 }
