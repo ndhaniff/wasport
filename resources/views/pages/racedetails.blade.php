@@ -452,9 +452,7 @@ svg:not(:root) { display: none !important; }
       $addon_json = json_encode($addon_arr); ?>
 
 <?php $engrave = $race->engrave;
-      $engrave_status = '';
-
-      echo $engrave;
+      $engrave_status = 'false';
 
       date_default_timezone_set("Asia/Kuala_Lumpur");
       $date = date('M j, Y H:i:s');
@@ -464,15 +462,15 @@ svg:not(:root) { display: none !important; }
         $theEngraveDead = $race->dead_from . '' . $race->deadtime_from;
         $countEngraveDate = DateTime::createFromFormat('Y-m-d H:i a', $theEngraveDead)->format('M j, Y H:i:s');
 
-        if($date < $countEngraveDate) {
+        /*if($date < $countEngraveDate) {
           $engrave_status = 'false';
-        }
+        }*/
         if($date > $countEngraveDate) {
           $engrave_status = 'true';
         }
       }else if($engrave == 'no') {
         $countEngraveDate = 0;
-        $engrave_status = 'false';
+        //$engrave_status = 'false';
       }
 
       $theRegisterDead = $race->dead_to . ' ' . $race->deadtime_to;
@@ -544,6 +542,8 @@ let countdownRegister = new Date('<?= $countRegisterDate ?>').getTime(),
     engrave: "{{$race->engrave}}",
     engrave_status : "{{$engrave_status}}"
   }
+
+  console.log({{$engrave_status}})
 
   var addons = JSON.parse('<?= $addon_json; ?>');
 </script>
