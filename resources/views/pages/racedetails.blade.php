@@ -464,11 +464,11 @@ svg:not(:root) { display: none !important; }
 
         echo '<br>Engrave Deadline is ' .$countEngraveDate;
 
-        if($date > $countEngraveDate) {
-          $engrave_status = 'false';
-          echo '<br> date > engravedate, engrave expire';
-        }
         if($date < $countEngraveDate) {
+          $engrave_status = 'false';
+          echo '<br> date < engravedate, engrave expire';
+        }
+        if($date > $countEngraveDate) {
           $engrave_status = 'true';
           echo '<br> date > engravedate, engrave active';
         }
