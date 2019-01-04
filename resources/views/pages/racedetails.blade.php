@@ -462,16 +462,11 @@ svg:not(:root) { display: none !important; }
         $theEngraveDead = $race->dead_from . '' . $race->deadtime_from;
         $countEngraveDate = DateTime::createFromFormat('Y-m-d H:i a', $theEngraveDead)->format('M j, Y H:i:s');
 
-        echo 'current date is ' .$date;
-        echo '<br>$countEngraveDate is ' .$countEngraveDate;
-
         if(strtotime($date) > strtotime($countEngraveDate)) {
           $engrave_status = 'false';
-          echo '<br>$date < $countEngraveDate and $engrave_status is ' .$engrave_status;
         }
         if(strtotime($date) < strtotime($countEngraveDate)) {
           $engrave_status = 'true';
-          echo '<br>$date > $countEngraveDate $engrave_status is ' .$engrave_status;
         }
       }else if($engrave == 'no') {
         $countEngraveDate = 0;
@@ -547,8 +542,6 @@ let countdownRegister = new Date('<?= $countRegisterDate ?>').getTime(),
     engrave: "{{$race->engrave}}",
     engrave_status : "{{$engrave_status}}"
   }
-
-  console.log({{$engrave_status}})
 
   var addons = JSON.parse('<?= $addon_json; ?>');
 </script>
