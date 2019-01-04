@@ -456,23 +456,17 @@ svg:not(:root) { display: none !important; }
 
       date_default_timezone_set("Asia/Kuala_Lumpur");
       $date = date('M j, Y H:i:s');
-      echo 'current date time is ' .$date;
 
       if($engrave == 'yes') {
         $theEngraveDead = $race->dead_from . '' . $race->deadtime_from;
         $countEngraveDate = DateTime::createFromFormat('Y-m-d H:i a', $theEngraveDead)->format('M j, Y H:i:s');
 
-        echo '<br>Engrave Deadline is ' .$countEngraveDate;
-
         if($date < $countEngraveDate) {
           $engrave_status = 'false';
-          echo '<br> date < engravedate, engrave expire';
         }
         if($date > $countEngraveDate) {
           $engrave_status = 'true';
-          echo '<br> date > engravedate, engrave active';
         }
-
       }
       if($engrave == 'no') {
         $countEngraveDate = 0;
@@ -550,9 +544,6 @@ let countdownRegister = new Date('<?= $countRegisterDate ?>').getTime(),
   }
 
   var addons = JSON.parse('<?= $addon_json; ?>');
-
-  console.log('{{$engrave_status}}')
-
 </script>
 
 @if (Auth::check())
