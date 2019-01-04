@@ -1,5 +1,5 @@
 <?PHP
-$merchantcode = $_REQUEST["MerchantCode"];
+/*$merchantcode = $_REQUEST["MerchantCode"];
 $paymentid  = $_REQUEST["PaymentId"];
 $refno  = $_REQUEST["RefNo"];
 $amount  = $_REQUEST["Amount"];
@@ -13,7 +13,18 @@ $signature  = $_REQUEST["Signature"];
 $ccname  = $_REQUEST["CCName"];
 $ccno   = $_REQUEST["CCNo"];
 $s_bankname  = $_REQUEST["S_bankname"];
-$s_country  = $_REQUEST["S_country"];
+$s_country  = $_REQUEST["S_country"];*/
+
+$merchantcode = 'M18793';
+$paymentid  = '31'
+$refno  = '10057';
+$amount  = '1.00'
+$ecurrency  = 'MYR';
+$remark  = 'Order for Very Miss Rabbit Virtual Run (Order ID: 10057)'
+$transid  = 'T201922481900';
+$estatus  = '1';
+$errdesc  = '';
+$signature  = 'd99d30691fa04a09528c1391d536e301e871fb66d601f61ab1914abba416ff4e';
 ?>
 
 //Add your programming code here
