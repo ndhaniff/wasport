@@ -465,11 +465,11 @@ svg:not(:root) { display: none !important; }
         echo 'current date is ' .$date;
         echo '<br>$countEngraveDate is ' .$countEngraveDate;
 
-        if($date < $countEngraveDate) {
+        if(strtotime($date) > strtotime($countEngraveDate)) {
           $engrave_status = 'false';
           echo '<br>$date < $countEngraveDate and $engrave_status is ' .$engrave_status;
         }
-        if($date > $countEngraveDate) {
+        if(strtotime($date) < strtotime($countEngraveDate)) {
           $engrave_status = 'true';
           echo '<br>$date > $countEngraveDate $engrave_status is ' .$engrave_status;
         }
