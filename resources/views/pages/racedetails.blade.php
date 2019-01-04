@@ -457,10 +457,9 @@ svg:not(:root) { display: none !important; }
       date_default_timezone_set("Asia/Kuala_Lumpur");
       $date = date('M j, Y H:i:s');
 
-      $theEngraveDead = $race->dead_from . '' . $race->deadtime_from;
-      $countEngraveDate = DateTime::createFromFormat('Y-m-d H:i a', $theEngraveDead)->format('M j, Y H:i:s');
-
       if($engrave == 'yes') {
+        $theEngraveDead = $race->dead_from . '' . $race->deadtime_from;
+        $countEngraveDate = DateTime::createFromFormat('Y-m-d H:i a', $theEngraveDead)->format('M j, Y H:i:s');
 
         if($date < $countEngraveDate) {
           $engrave_status = 'false';
@@ -468,8 +467,7 @@ svg:not(:root) { display: none !important; }
         if($date > $countEngraveDate) {
           $engrave_status = 'true';
         }
-      }
-      if($engrave == 'no') {
+      }elseif($engrave == 'no') {
         $countEngraveDate = 0;
         $engrave_status = 'false';
       }
