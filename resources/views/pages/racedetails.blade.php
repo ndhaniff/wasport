@@ -543,6 +543,8 @@ let countdownRegister = new Date('<?= $countRegisterDate ?>').getTime(),
 
   var addons = JSON.parse('<?= $addon_json; ?>');
 
+  console.log('{{$engrave_status}}')
+
 </script>
 
 @if (Auth::check())
