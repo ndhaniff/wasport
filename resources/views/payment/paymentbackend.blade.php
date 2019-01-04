@@ -27,7 +27,6 @@ $errdesc  = '';
 $signature  = 'd99d30691fa04a09528c1391d536e301e871fb66d601f61ab1914abba416ff4e';
 ?>
 
-//Add your programming code here
 <?php
 $expected_sign = $signature;
 //$merchantcode = $merchantcode;
