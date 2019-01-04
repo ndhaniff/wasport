@@ -67,7 +67,7 @@ class Step4 extends Component {
     let race_id = this.state.rid
     let order_firstname = this.state.firstname
     let order_lastname = this.state.lastname
-    let order_name = order_lastname + ' ' + order_lastname
+    let order_name = order_firstname + ' ' + order_lastname
     let order_email = this.state.email
     let order_phone = this.state.phone
     let order_amount = e.target.totalprice.value
