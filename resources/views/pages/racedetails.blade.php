@@ -462,15 +462,20 @@ svg:not(:root) { display: none !important; }
         $theEngraveDead = $race->dead_from . '' . $race->deadtime_from;
         $countEngraveDate = DateTime::createFromFormat('Y-m-d H:i a', $theEngraveDead)->format('M j, Y H:i:s');
 
-        /*if($date < $countEngraveDate) {
+        echo 'current date is ' .$date;
+        echo '<br>$countEngraveDate is ' .$countEngraveDate;
+
+        if($date < $countEngraveDate) {
           $engrave_status = 'false';
-        }*/
+          echo '<br>$date < $countEngraveDate and $engrave_status is ' .$engrave_status;
+        }
         if($date > $countEngraveDate) {
           $engrave_status = 'true';
+          echo '<br>$date > $countEngraveDate $engrave_status is ' .$engrave_status;
         }
       }else if($engrave == 'no') {
         $countEngraveDate = 0;
-        //$engrave_status = 'false';
+        $engrave_status = 'false';
       }
 
       $theRegisterDead = $race->dead_to . ' ' . $race->deadtime_to;
