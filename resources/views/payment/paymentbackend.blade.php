@@ -16,7 +16,7 @@ $s_bankname  = $_REQUEST["S_bankname"];
 $s_country  = $_REQUEST["S_country"];*/
 
 $merchantcode = 'M18793';
-$paymentid  = '31'
+$paymentid  = '31';
 $refno  = '10057';
 $amount  = '1.00'
 $ecurrency  = 'MYR';
