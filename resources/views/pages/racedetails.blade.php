@@ -454,6 +454,8 @@ svg:not(:root) { display: none !important; }
 <?php $engrave = $race->engrave;
       $engrave_status = '';
 
+      echo $engrave;
+
       date_default_timezone_set("Asia/Kuala_Lumpur");
       $date = date('M j, Y H:i:s');
       $countEngraveDate = 0;
