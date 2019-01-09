@@ -599,7 +599,7 @@ class UserController extends Controller
 
 	}
 
-  public function backendcallback() {
+  //public function backendcallback() {
 
     /*$expected_sign = $_POST['Signature'];
     $merchantcode = $this->merchantcode;
@@ -654,6 +654,6 @@ class UserController extends Controller
      } else { return view('payment.paymentfailure'); }
    }*/
 
-   return view('payment.paymentbackend');
- }
+   //return view('payment.paymentbackend');
+ //}
 }

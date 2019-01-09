@@ -57,4 +57,7 @@ class HomeController extends Controller
       return view('pages.registersuccess');
     }
 
+    public function backendcallback() {
+     return view('payment.paymentbackend');
+    }
 }

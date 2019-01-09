@@ -31,7 +31,7 @@ Route::group([
   Route::get('/contactus', 'Pages\ContactController@contactus')->name('contactus');
   Route::get('/registersuccess', 'Pages\HomeController@registersuccess')->name('registersuccess');
   //Route::get('/registerrace/{rid}', 'User\UserController@registerRace')->name('registerrace');
-  Route::get('/payment/ipay88/backendcallback', 'User\UserController@backendcallback')->name('backendcallback');
+  Route::get('/payment/ipay88/backendcallback', 'Pages\HomeController@backendcallback')->name('backendcallback');
 
   //user
   Route::get('/dashboard', 'User\UserController@dashboard' )->name('user.dashboard');
